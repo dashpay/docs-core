@@ -49,5 +49,5 @@ Welcome to the Dash Core developer documentation. You'll find guides and documen
    :maxdepth: 2
    :titlesonly:
 
-   docs/ref/core-ref-introduction
+   docs/index
 ```
