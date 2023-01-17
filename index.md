@@ -46,8 +46,9 @@ Welcome to the Dash Core developer documentation. You'll find guides and documen
 .. _core-reference:
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    :titlesonly:
+   :hidden:
 
    docs/index
 ```

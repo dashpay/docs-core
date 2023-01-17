@@ -2,7 +2,7 @@
 .. _reference-index:
 ```
 
-# Reference
+# Introduction
 
 The Developer Reference aims to provide technical details and API information to help you start building Dash-based applications, but it is not a specification. To make the best use of this documentation, you may want to install the current version of Dash Core, either from [source](https://www.github.com/dashpay/dash) or from a [pre-compiled executable](https://github.com/dashpay/dash/releases/latest).
 
@@ -20,14 +20,3 @@ Dash security depends on <<glossary:consensus>>. Should your program diverge fro
 The only correct specification of consensus behavior is the actual behavior of programs on the network which maintain consensus. As that behavior is subject to arbitrary inputs in a large variety of unique environments, it cannot ever be fully documented here or anywhere else.
 
 In addition, we also warn you that this documentation has not been extensively reviewed by Dash experts and so likely contains numerous errors.
-
-```{toctree}
-:maxdepth: 2
-:caption: Core Reference
-   
-block-chain
-transactions
-wallets
-p2p-network
-improvement-proposals
-```
