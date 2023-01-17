@@ -266,19 +266,19 @@ This translates into an JSON-RPC Request object of the form:
 :maxdepth: 3
 :titlesonly:
 
-core-api-ref-remote-procedure-call-quick-reference
-core-api-ref-remote-procedure-calls-address-index
-core-api-ref-remote-procedure-calls-blockchain
-core-api-ref-remote-procedure-calls-control
-core-api-ref-remote-procedure-calls-dash
-core-api-ref-remote-procedure-calls-evo
-core-api-ref-remote-procedure-calls-generating
-core-api-ref-remote-procedure-calls-mining
-core-api-ref-remote-procedure-calls-network
-core-api-ref-remote-procedure-calls-raw-transactions
-core-api-ref-remote-procedure-calls-util
-core-api-ref-remote-procedure-calls-wallet
-core-api-ref-remote-procedure-calls-wallet-deprecated
-core-api-ref-remote-procedure-calls-removed
-core-api-ref-remote-procedure-calls-zmq
+remote-procedure-call-quick-reference
+remote-procedure-calls-address-index
+remote-procedure-calls-blockchain
+remote-procedure-calls-control
+remote-procedure-calls-dash
+remote-procedure-calls-evo
+remote-procedure-calls-generating
+remote-procedure-calls-mining
+remote-procedure-calls-network
+remote-procedure-calls-raw-transactions
+remote-procedure-calls-util
+remote-procedure-calls-wallet
+remote-procedure-calls-wallet-deprecated
+remote-procedure-calls-removed
+remote-procedure-calls-zmq
 ```

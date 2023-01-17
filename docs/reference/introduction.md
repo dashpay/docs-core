@@ -25,9 +25,9 @@ In addition, we also warn you that this documentation has not been extensively r
 :maxdepth: 2
 :caption: Core Reference
    
-core-ref-block-chain
-core-ref-transactions
-core-ref-wallets
-core-ref-p2p-network
-core-ref-improvement-proposals
+block-chain
+transactions
+wallets
+p2p-network
+improvement-proposals
 ```

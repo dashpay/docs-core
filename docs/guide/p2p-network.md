@@ -10,10 +10,10 @@ To provide practical examples of the Dash peer-to-peer network, this section use
 :maxdepth: 3
 :titlesonly:
 
-core-guide-p2p-network-peer-discovery
-core-guide-p2p-network-connecting-to-peers
-core-guide-p2p-network-initial-block-download
-core-guide-p2p-network-block-broadcasting
-core-guide-p2p-network-transaction-broadcasting
-core-guide-p2p-network-misbehaving-nodes
+p2p-network-peer-discovery
+p2p-network-connecting-to-peers
+p2p-network-initial-block-download
+p2p-network-block-broadcasting
+p2p-network-transaction-broadcasting
+p2p-network-misbehaving-nodes
 ```

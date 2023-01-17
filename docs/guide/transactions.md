@@ -55,13 +55,13 @@ After putting his signature and public key in the signature script, Bob broadcas
 :maxdepth: 3
 :titlesonly:
 
-core-guide-transactions-p2pkh-script-validation
-core-guide-transactions-p2sh-scripts
-core-guide-transactions-standard-transactions
-core-guide-transactions-non-standard-transactions
-core-guide-transactions-signature-hash-types
-core-guide-transactions-locktime-and-sequence-number
-core-guide-transactions-transaction-fees-and-change
-core-guide-transactions-avoiding-key-reuse
-core-guide-transactions-transaction-malleability
+transactions-p2pkh-script-validation
+transactions-p2sh-scripts
+transactions-standard-transactions
+transactions-non-standard-transactions
+transactions-signature-hash-types
+transactions-locktime-and-sequence-number
+transactions-transaction-fees-and-change
+transactions-avoiding-key-reuse
+transactions-transaction-malleability
 ```

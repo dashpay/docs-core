@@ -7,6 +7,6 @@ Wallet programs and wallet files are addressed below in separate subsections, an
 ```{toctree}
 :maxdepth: 3
 
-core-guide-wallets-wallet-programs
-core-guide-wallets-wallet-files
+wallets-wallet-programs
+wallets-wallet-files
 ```

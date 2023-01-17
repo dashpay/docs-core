@@ -22,9 +22,9 @@ The following subsections briefly document core transaction details.
 ```{toctree}
 :maxdepth: 2
 
-core-ref-transactions-opcodes
-core-ref-transactions-address-conversion
-core-ref-transactions-raw-transaction-format
-core-ref-transactions-special-transactions
-core-ref-transactions-compactsize-unsigned-integers
+transactions-opcodes
+transactions-address-conversion
+transactions-raw-transaction-format
+transactions-special-transactions
+transactions-compactsize-unsigned-integers
 ```

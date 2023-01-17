@@ -14,9 +14,9 @@ Once installed, you'll have access to three programs: `dashd`, `dash-qt`, and `d
 :maxdepth: 2
 :caption: Examples
 
-core-examples-configuration-file
-core-examples-testing-applications
-core-examples-transaction-tutorial
-core-examples-p2p-network
-core-examples-receiving-zmq-notifications
+configuration-file
+testing-applications
+transaction-tutorial
+p2p-network
+receiving-zmq-notifications
 ```

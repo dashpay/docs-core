@@ -5,7 +5,7 @@ Currently there are two primary methods of validating the <<glossary:block chain
 ```{toctree}
 :maxdepth: 3
 
-core-guide-operating-modes-full-node
-core-guide-operating-modes-simplified-payment-verification-spv
-core-guide-operating-modes-future-proposals
+operating-modes-full-node
+operating-modes-simplified-payment-verification-spv
+operating-modes-future-proposals
 ```

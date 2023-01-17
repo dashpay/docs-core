@@ -86,9 +86,9 @@ Usage:
 :maxdepth: 2
 :titlesonly: 
 
-dash-core-wallet-arguments-and-commands-dashd
-dash-core-wallet-arguments-and-commands-dash-qt
-dash-core-wallet-arguments-and-commands-dash-cli
-dash-core-wallet-arguments-and-commands-dash-tx
-dash-core-wallet-arguments-and-commands-dash-wallet
+wallet-arguments-and-commands-dashd
+wallet-arguments-and-commands-dash-qt
+wallet-arguments-and-commands-dash-cli
+wallet-arguments-and-commands-dash-tx
+wallet-arguments-and-commands-dash-wallet
 ```

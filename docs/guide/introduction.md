@@ -11,12 +11,12 @@ In the following documentation, some strings have been shortened or wrapped: "[.
 :caption: Guide
 :titlesonly:
 
-core-guide-dash-features
-core-guide-block-chain
-core-guide-transactions
-core-guide-contracts
-core-guide-wallets
-core-guide-operating-modes
-core-guide-p2p-network
-core-guide-mining
+dash-features
+block-chain
+transactions
+contracts
+wallets
+operating-modes
+p2p-network
+mining
 ```

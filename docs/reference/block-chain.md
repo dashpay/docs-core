@@ -20,6 +20,6 @@ The following subsections briefly document core block details.
 
 ```{toctree}
 :maxdepth: 2
-core-ref-block-chain-block-headers
-core-ref-block-chain-serialized-blocks
+block-chain-block-headers
+block-chain-serialized-blocks
 ```

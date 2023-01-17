@@ -47,13 +47,13 @@ Lite mode is enable by setting `litemode=1` in the `dash.conf` file or by runnin
 ```{toctree}
 :maxdepth: 3
 
-core-guide-dash-features-instantsend
-core-guide-dash-features-chainlocks
-core-guide-dash-features-governance
-core-guide-dash-features-privatesend
-core-guide-dash-features-masternode-quorums
-core-guide-dash-features-proof-of-service
-core-guide-dash-features-masternode-payment
-core-guide-dash-features-masternode-sync
-core-guide-dash-features-historical-reference
+dash-features-instantsend
+dash-features-chainlocks
+dash-features-governance
+dash-features-privatesend
+dash-features-masternode-quorums
+dash-features-proof-of-service
+dash-features-masternode-payment
+dash-features-masternode-sync
+dash-features-historical-reference
 ```

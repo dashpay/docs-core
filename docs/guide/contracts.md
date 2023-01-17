@@ -9,6 +9,6 @@ Besides the contract types described below, many other contract types have been 
 ```{toctree}
 :maxdepth: 3
 
-core-guide-contracts-escrow-and-arbitration
-core-guide-contracts-micropayment-channel
+contracts-escrow-and-arbitration
+contracts-micropayment-channel
 ```

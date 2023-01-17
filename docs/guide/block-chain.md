@@ -7,9 +7,9 @@ Each full node in the Dash network independently stores a blockchain containing 
 ```{toctree}
 :maxdepth: 3
 
-core-guide-block-chain-block-chain-overview
-core-guide-block-chain-proof-of-work
-core-guide-block-chain-block-height-and-forking
-core-guide-block-chain-transaction-data
-core-guide-block-chain-consensus-rule-changes
+block-chain-block-chain-overview
+block-chain-proof-of-work
+block-chain-block-height-and-forking
+block-chain-transaction-data
+block-chain-consensus-rule-changes
 ```

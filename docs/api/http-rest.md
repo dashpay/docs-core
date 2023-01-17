@@ -12,6 +12,6 @@ The interface is not intended for public access and is only accessible from loca
 :maxdepth: 3
 :titlesonly:
 
-core-api-ref-http-rest-quick-reference
-core-api-ref-http-rest-requests
+http-rest-quick-reference
+http-rest-requests
 ```

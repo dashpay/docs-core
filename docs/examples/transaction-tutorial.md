@@ -10,9 +10,9 @@ In order to use this tutorial, you will need to setup [Dash Core](https://www.da
 :maxdepth: 3
 :titlesonly:
   
-core-examples-transaction-tutorial-simple-spending
-core-examples-transaction-tutorial-simple-raw-transaction
-core-examples-transaction-tutorial-complex-raw-transaction
-core-examples-transaction-tutorial-offline-signing
-core-examples-transaction-tutorial-p2sh-multisig
+transaction-tutorial-simple-spending
+transaction-tutorial-simple-raw-transaction
+transaction-tutorial-complex-raw-transaction
+transaction-tutorial-offline-signing
+transaction-tutorial-p2sh-multisig
 ```

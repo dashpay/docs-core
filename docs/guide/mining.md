@@ -9,7 +9,7 @@ Mining adds new <<glossary:blocks>> to the <<glossary:block chain>>, making tran
 ```{toctree}
 :maxdepth: 3
 
-core-guide-mining-solo-mining
-core-guide-mining-pool-mining
-core-guide-mining-block-prototypes
+mining-solo-mining
+mining-pool-mining
+mining-block-prototypes
 ```

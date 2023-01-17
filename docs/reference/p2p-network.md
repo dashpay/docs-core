@@ -27,15 +27,15 @@ All peer-to-peer communication occurs entirely over TCP.
 ```{toctree}
 :maxdepth: 2
 
-core-ref-p2p-network-constants-and-defaults
-core-ref-p2p-network-protocol-versions
-core-ref-p2p-network-message-headers
-core-ref-p2p-network-control-messages
-core-ref-p2p-network-data-messages
-core-ref-p2p-network-governance-messages
-core-ref-p2p-network-instantsend-messages
-core-ref-p2p-network-masternode-messages
-core-ref-p2p-network-privatesend-messages
-core-ref-p2p-network-quorum-messages
-core-ref-p2p-network-deprecated-messages
+p2p-network-constants-and-defaults
+p2p-network-protocol-versions
+p2p-network-message-headers
+p2p-network-control-messages
+p2p-network-data-messages
+p2p-network-governance-messages
+p2p-network-instantsend-messages
+p2p-network-masternode-messages
+p2p-network-privatesend-messages
+p2p-network-quorum-messages
+p2p-network-deprecated-messages
 ```

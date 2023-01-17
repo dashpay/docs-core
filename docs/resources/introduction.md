@@ -5,5 +5,5 @@
 :titlesonly:
 :caption: Additional Resources
 
-core-additional-resources-glossary
+glossary
 ```

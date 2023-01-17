@@ -5,6 +5,6 @@
 :titlesonly: 
 :caption: Dash Core Wallet
 
-dash-core-wallet-arguments-and-commands
-dash-core-wallet-configuration-file
+wallet-arguments-and-commands
+wallet-configuration-file
 ```
