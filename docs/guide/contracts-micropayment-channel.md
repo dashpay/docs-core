@@ -16,6 +16,6 @@ Alice and Bob repeat these work-and-pay steps until Alice finishes for the day, 
 
 If Alice fails to broadcast a version of the refund transaction before its time lock expires, Bob can broadcast the first version and receive a full refund. This is one reason micropayment channels are best suited to small payments---if Alice's Internet service goes out for a few hours near the time lock expiry, she could be cheated out of her payment.
 
-Transaction malleability, discussed in the [Transactions section](core-guide-transactions-transaction-malleability), is another reason to limit the value of micropayment channels. If someone uses transaction malleability to break the link between the two transactions, Alice could hold Bob's 100 millidash hostage even if she hadn't done any work.
+Transaction malleability, discussed in the [Transactions section](../guide/transactions-transaction-malleability), is another reason to limit the value of micropayment channels. If someone uses transaction malleability to break the link between the two transactions, Alice could hold Bob's 100 millidash hostage even if she hadn't done any work.
 
 For larger payments, Dash transaction fees are very low as a percentage of the total transaction value, so it makes more sense to protect payments with immediately-broadcast separate transactions.

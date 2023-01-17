@@ -89,7 +89,7 @@ Neither the address nor the redeem script are stored in the wallet when you use 
 
 ## 4. Fund multisig address
 
-Paying the P2SH multisig address with Dash Core is as simple as paying a more common P2PKH address. Here we use the same command (but different variable) we used in the [Simple Spending subsection](core-examples-transaction-tutorial-simple-spending). As before, this command automatically selects an UTXO, creates a <<glossary:change output>> to a new one of our P2PKH addresses if necessary, and pays a <<glossary:transaction fee>> if necessary.
+Paying the P2SH multisig address with Dash Core is as simple as paying a more common P2PKH address. Here we use the same command (but different variable) we used in the [Simple Spending subsection](../examples/transaction-tutorial-simple-spending). As before, this command automatically selects an UTXO, creates a <<glossary:change output>> to a new one of our P2PKH addresses if necessary, and pays a <<glossary:transaction fee>> if necessary.
 
 We save that <<glossary:TXID>> to a shell variable as the TXID of the UTXO we plan to spend next.
 
@@ -190,7 +190,7 @@ yZSxAakpoWGG3vcsvpk9qNtsYREhump4Cr
 
 ## 7. Create raw transaction
 
-We generate the <<glossary:raw transaction>> the same way we did in the [Simple Raw Transaction subsection](core-examples-transaction-tutorial-simple-raw-transaction).
+We generate the <<glossary:raw transaction>> the same way we did in the [Simple Raw Transaction subsection](../examples/transaction-tutorial-simple-raw-transaction).
 
 ``` bash
 ## Outputs - inputs = transaction fee, so always double-check your math!
@@ -223,7 +223,7 @@ We get the <<glossary:private keys>> for two of the <<glossary:public keys>> we 
 
 >❗️ Private Key Warning
 >
-> **Reminder:** Users should never manually manage private keys on mainnet. See the warning in the [complex raw transaction section](core-examples-transaction-tutorial-complex-raw-transaction).
+> **Reminder:** Users should never manually manage private keys on mainnet. See the warning in the [complex raw transaction section](../examples/transaction-tutorial-complex-raw-transaction).
 
 ``` bash
 > dash-cli -regtest dumpprivkey $NEW_ADDRESS1

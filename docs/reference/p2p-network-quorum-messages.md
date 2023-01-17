@@ -799,4 +799,4 @@ The [`qwatch` message](../reference/p2p-network-quorum-messages.md#qwatch) tells
 
 This message is sent when a Dash Core node is started with the [`-watchquorums` option](../dashcore/wallet-arguments-and-commands-dashd.md#debuggingtesting-options) enabled.
 
-There is no payload in a [`qwatch` message](../reference/p2p-network-quorum-messages.md#qwatch).  See the [message header section](core-ref-p2p-network-message-headers) for an example of a message without a payload.
+There is no payload in a [`qwatch` message](../reference/p2p-network-quorum-messages.md#qwatch).  See the [message header section](../reference/p2p-network-message-headers) for an example of a message without a payload.

@@ -220,7 +220,7 @@ To sign the second input, we repeat the process we used to sign the first input 
 }
 ```
 
-Clean up the shell variables used. Unlike previous subsections, we're not going to send this transaction to the connected node with `sendrawtransaction`. This will allow us to illustrate in the [Offline Signing subsection](core-examples-transaction-tutorial-offline-signing) below how to spend a transaction which is not yet in the block chain or memory pool.
+Clean up the shell variables used. Unlike previous subsections, we're not going to send this transaction to the connected node with `sendrawtransaction`. This will allow us to illustrate in the [Offline Signing subsection](../examples/transaction-tutorial-offline-signing) below how to spend a transaction which is not yet in the block chain or memory pool.
 
 ``` bash
 > unset PARTLY_SIGNED_RAW_TX RAW_TX NEW_ADDRESS1 [...]

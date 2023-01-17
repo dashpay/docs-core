@@ -6,7 +6,7 @@ This subsection covers one of the simplest possible raw transactions.
 
 > 📘 
 >
-> Note: the following steps pick up where the [Simple Spending Tutorial](core-examples-transaction-tutorial-simple-spending) left off
+> Note: the following steps pick up where the [Simple Spending Tutorial](../examples/transaction-tutorial-simple-spending) left off
 
 ## 1. List unspent outputs
 

@@ -63,4 +63,4 @@ To run the script, we simply pipe it to the Unix [`netcat` command](https://en.w
 python get-merkle.py | nc localhost 8333 | hd
 ```
 
-Part of the response is shown in the [Parsing a MerkleBlock](core-examples-p2p-network-parsing-a-merkleblock) section.
+Part of the response is shown in the [Parsing a MerkleBlock](../examples/p2p-network-parsing-a-merkleblock) section.

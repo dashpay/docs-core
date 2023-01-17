@@ -84,7 +84,7 @@ Wallet programs which run in difficult-to-secure environments, such as webserver
 
 ![Distributing-Only Wallets](https://dash-docs.github.io/img/dev/en-wallets-distributing-only.svg)
 
-* Pre-populate a database with a number of public keys or addresses, and then distribute on request a pubkey script or address using one of the database entries. To [avoid key reuse](core-guide-transactions-avoiding-key-reuse), webservers should keep track of used keys and never run out of public keys. This can be made easier by using parent public keys as suggested in the next method.
+* Pre-populate a database with a number of public keys or addresses, and then distribute on request a pubkey script or address using one of the database entries. To [avoid key reuse](../guide/transactions-avoiding-key-reuse), webservers should keep track of used keys and never run out of public keys. This can be made easier by using parent public keys as suggested in the next method.
 
 * Use a parent public key to create child public keys. To avoid key reuse, a method must be used to ensure the same public key isn't distributed twice. This can be a database entry for each key distributed or an incrementing pointer to the key index number.
 
