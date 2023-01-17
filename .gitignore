@@ -1,0 +1,5 @@
+*.db
+*.exe
+_build
+.DS_Store
+.vscode
