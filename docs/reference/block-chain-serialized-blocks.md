@@ -4,9 +4,9 @@ Under current <<glossary:consensus rules>>, a <<glossary:block>> is not valid un
 
 | Bytes    | Name         | Data Type        | Description |
 | - | - | - | - |
-| 80       | block header | block_header     | The <<glossary:block header>> in the format described in the [block header section](../ref/core-ref-block-chain-block-headers.md).
+| 80       | block header | block_header     | The <<glossary:block header>> in the format described in the [block header section](../reference/block-chain-block-headers.md).
 | *Varies* | txn_count    | <<glossary:compactSize uint>> | The total number of transactions in this block, including the coinbase transaction.
-| *Varies* | txns         | <<glossary:raw transaction>>  | Every transaction in this block, one after another, in raw transaction format.  Transactions must appear in the data stream in the same order their TXIDs appeared in the first row of the merkle tree.  See the [merkle tree section](../ref/core-ref-block-chain-block-headers.md#merkle-trees) for details.
+| *Varies* | txns         | <<glossary:raw transaction>>  | Every transaction in this block, one after another, in raw transaction format.  Transactions must appear in the data stream in the same order their TXIDs appeared in the first row of the merkle tree.  See the [merkle tree section](../reference/block-chain-block-headers.md#merkle-trees) for details.
 
 ## Coinbase
 
@@ -25,7 +25,7 @@ The block reward is divided into three parts: <<glossary:miner>>, <<glossary:mas
 | Payee | Subsidy | Description |
 | ----- | -------- | ----------- |
 | Miner | Varies | Payment for mining
-| Masternode | Varies | Payment for masternode services ([CoinJoin](../guide/core-guide-dash-features-privatesend.md), [InstantSend](../guide/core-guide-dash-features-instantsend.md), [Governance](https://docs.dash.org/en/stable/introduction/features.html#decentralized-governance), etc.)
+| Masternode | Varies | Payment for masternode services ([CoinJoin](../guide/dash-features-privatesend.md), [InstantSend](../guide/dash-features-instantsend.md), [Governance](https://docs.dash.org/en/stable/introduction/features.html#decentralized-governance), etc.)
 | Superblock | 10% | Payment for maintenance/expansion of the ecosystem (Core development, marketing, integration, etc.)
 [block:image]
 {

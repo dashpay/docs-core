@@ -14,7 +14,7 @@
 >
 > Requires <<glossary:wallet>> support (**unavailable on masternodes**)
 
-The [`getaccount` RPC](../api-ref/core-api-ref-remote-procedure-calls-wallet-deprecated.md#getaccount) returns the name of the account associated with the given address.
+The [`getaccount` RPC](../api/remote-procedure-calls-wallet-deprecated.md#getaccount) returns the name of the account associated with the given address.
 
 
 *Parameter #1---a Dash address*
@@ -43,7 +43,7 @@ doc test
 
 *See also*
 
-* [GetAddressesByAccount](../api-ref/core-api-ref-remote-procedure-calls-wallet-deprecated.md#getaddressesbyaccount): returns a list of every address assigned to a particular account.
+* [GetAddressesByAccount](../api/remote-procedure-calls-wallet-deprecated.md#getaddressesbyaccount): returns a list of every address assigned to a particular account.
 
 ## GetAccountAddress
 
@@ -55,7 +55,7 @@ doc test
 >
 > Requires <<glossary:wallet>> support (**unavailable on masternodes**)
 
-The [`getaccountaddress` RPC](../api-ref/core-api-ref-remote-procedure-calls-wallet-deprecated.md#getaccountaddress) returns the current Dash address for receiving payments to this account. If the account doesn't exist, it creates both the account and a new address for receiving payment.  Once a payment has been received to an address, future calls to this RPC for the same account will return a different address.
+The [`getaccountaddress` RPC](../api/remote-procedure-calls-wallet-deprecated.md#getaccountaddress) returns the current Dash address for receiving payments to this account. If the account doesn't exist, it creates both the account and a new address for receiving payment.  Once a payment has been received to an address, future calls to this RPC for the same account will return a different address.
 
 *Parameter #1---an account name*
 
@@ -85,9 +85,9 @@ yNUQ6RzTpNj5GP5ebdRcusJ7K9JJKx6VvV
 
 *See also*
 
-* [GetNewAddress](../api-ref/core-api-ref-remote-procedure-calls-wallet.md#getnewaddress): returns a new Dash address for receiving payments. If an account is specified, payments received with the address will be credited to that account.
-* [GetRawChangeAddress](../api-ref/core-api-ref-remote-procedure-calls-wallet.md#getrawchangeaddress): returns a new Dash address for receiving change. This is for use with raw transactions, not normal use.
-* [GetAddressesByAccount](../api-ref/core-api-ref-remote-procedure-calls-wallet-deprecated.md#getaddressesbyaccount): returns a list of every address assigned to a particular account.
+* [GetNewAddress](../api/remote-procedure-calls-wallet.md#getnewaddress): returns a new Dash address for receiving payments. If an account is specified, payments received with the address will be credited to that account.
+* [GetRawChangeAddress](../api/remote-procedure-calls-wallet.md#getrawchangeaddress): returns a new Dash address for receiving change. This is for use with raw transactions, not normal use.
+* [GetAddressesByAccount](../api/remote-procedure-calls-wallet-deprecated.md#getaddressesbyaccount): returns a list of every address assigned to a particular account.
 
 ## GetAddressesByAccount
 
@@ -99,7 +99,7 @@ yNUQ6RzTpNj5GP5ebdRcusJ7K9JJKx6VvV
 >
 > Requires <<glossary:wallet>> support (**unavailable on masternodes**)
 
-The [`getaddressesbyaccount` RPC](../api-ref/core-api-ref-remote-procedure-calls-wallet-deprecated.md#getaddressesbyaccount) returns a list of every address assigned to a particular account.
+The [`getaddressesbyaccount` RPC](../api/remote-procedure-calls-wallet-deprecated.md#getaddressesbyaccount) returns a list of every address assigned to a particular account.
 
 *Parameter #1---the account name*
 
@@ -133,8 +133,8 @@ Result:
 
 *See also*
 
-* [GetAccount](../api-ref/core-api-ref-remote-procedure-calls-wallet-deprecated.md#getaccount): returns the name of the account associated with the given address.
-* [GetBalance](../api-ref/core-api-ref-remote-procedure-calls-wallet.md#getbalance): gets the balance in decimal dash across all accounts or for a particular account.
+* [GetAccount](../api/remote-procedure-calls-wallet-deprecated.md#getaccount): returns the name of the account associated with the given address.
+* [GetBalance](../api/remote-procedure-calls-wallet.md#getbalance): gets the balance in decimal dash across all accounts or for a particular account.
 
 ## SetAccount
 
@@ -146,7 +146,7 @@ Result:
 >
 > Requires <<glossary:wallet>> support (**unavailable on masternodes**)
 
-The [`setaccount` RPC](../api-ref/core-api-ref-remote-procedure-calls-wallet-deprecated.md#setaccount) puts the specified address in the given account.
+The [`setaccount` RPC](../api/remote-procedure-calls-wallet-deprecated.md#setaccount) puts the specified address in the given account.
 
 *Parameter #1---a dash address*
 
@@ -179,6 +179,6 @@ dash-cli -testnet setaccount \
 
 *See also*
 
-* [GetAccount](../api-ref/core-api-ref-remote-procedure-calls-wallet-deprecated.md#getaccount): returns the name of the account associated with the given address.
-* [GetAddressesByAccount](../api-ref/core-api-ref-remote-procedure-calls-wallet-deprecated.md#getaddressesbyaccount): returns a list of every address assigned to a particular account.
-* [SetLabel](../api-ref/core-api-ref-remote-procedure-calls-wallet.md#setlabel): sets the label associated with the given address.
+* [GetAccount](../api/remote-procedure-calls-wallet-deprecated.md#getaccount): returns the name of the account associated with the given address.
+* [GetAddressesByAccount](../api/remote-procedure-calls-wallet-deprecated.md#getaddressesbyaccount): returns a list of every address assigned to a particular account.
+* [SetLabel](../api/remote-procedure-calls-wallet.md#setlabel): sets the label associated with the given address.

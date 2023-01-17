@@ -18,7 +18,7 @@ The result above is also how the hash appears in the previous-header-hash part o
 0000000000000</b>ab0aaa377ca3f49b1545e2ae6b0667a08f42e72d8c24ae\
 237140e28f14f3bb7c6bcc6d536c890019edd83ccf</pre>
 
-However, Dash Core's RPCs use the byte-wise reverse for hashes, so if you want to get information about block 675,776 using the [`getblock` RPC](../api-ref/core-api-ref-remote-procedure-calls-blockchain.md#getblock), you need to reverse the requested hash:
+However, Dash Core's RPCs use the byte-wise reverse for hashes, so if you want to get information about block 675,776 using the [`getblock` RPC](../api/remote-procedure-calls-blockchain.md#getblock), you need to reverse the requested hash:
 
 ``` shell
 > dash-cli getblock \

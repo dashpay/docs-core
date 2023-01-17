@@ -1,6 +1,6 @@
 # Solo Mining
 
-As illustrated below, solo miners typically use `dashd` to get new <<glossary:transactions>> from the <<glossary:network>>. Their mining software periodically polls `dashd` for new transactions using the [`getblocktemplate` RPC](../api-ref/core-api-ref-remote-procedure-calls-mining.md#getblocktemplate), which provides the list of new transactions plus the <<glossary:public key>> to which the <<glossary:coinbase transaction>> should be sent.
+As illustrated below, solo miners typically use `dashd` to get new <<glossary:transactions>> from the <<glossary:network>>. Their mining software periodically polls `dashd` for new transactions using the [`getblocktemplate` RPC](../api/remote-procedure-calls-mining.md#getblocktemplate), which provides the list of new transactions plus the <<glossary:public key>> to which the <<glossary:coinbase transaction>> should be sent.
 
 ![Solo Bitcoin Mining](https://dash-docs.github.io/img/dev/en-solo-mining-overview.svg)
 

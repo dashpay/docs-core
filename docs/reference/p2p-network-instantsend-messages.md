@@ -1,14 +1,14 @@
 # InstantSend Messages
 
-The following network messages all help control the InstantSend feature of Dash. InstantSend uses the masternode network to lock transaction inputs and enable secure, instantaneous transactions. For additional details, refer to the Developer Guide [InstantSend section](../guide/core-guide-dash-features-instantsend.md).
+The following network messages all help control the InstantSend feature of Dash. InstantSend uses the masternode network to lock transaction inputs and enable secure, instantaneous transactions. For additional details, refer to the Developer Guide [InstantSend section](../guide/dash-features-instantsend.md).
 
 ## clsig
 
 *Added in protocol version 70214 of Dash Core*
 
-The [`clsig` message](../ref/core-ref-p2p-network-instantsend-messages.md#clsig) is used to indicate a successful ChainLock for the designated <<glossary:block height>>. The Chainlock ensures that no other <<glossary:blocks>> can replace the one with the indicated block hash. This determination is made by agreement of a <<glossary:Long-Living Masternode Quorum>> (LLMQ) which creates the BLS signature in the message.
+The [`clsig` message](../reference/p2p-network-instantsend-messages.md#clsig) is used to indicate a successful ChainLock for the designated <<glossary:block height>>. The Chainlock ensures that no other <<glossary:blocks>> can replace the one with the indicated block hash. This determination is made by agreement of a <<glossary:Long-Living Masternode Quorum>> (LLMQ) which creates the BLS signature in the message.
 
-Once a [`clsig` message](../ref/core-ref-p2p-network-instantsend-messages.md#clsig) is received, clients must reject any other blocks for the indicated block height as described in [DIP8 (ChainLocks)](https://github.com/dashpay/dips/blob/master/dip-0008.md). This increases security by preventing reorganization of a block with a ChainLock (and all blocks below it).
+Once a [`clsig` message](../reference/p2p-network-instantsend-messages.md#clsig) is received, clients must reject any other blocks for the indicated block height as described in [DIP8 (ChainLocks)](https://github.com/dashpay/dips/blob/master/dip-0008.md). This increases security by preventing reorganization of a block with a ChainLock (and all blocks below it).
 
 | Bytes | Name | Data type | Description |
 | --- | --- | --- | --- |
@@ -16,7 +16,7 @@ Once a [`clsig` message](../ref/core-ref-p2p-network-instantsend-messages.md#cls
 | 32 | blockHash | uint256 | Block hash
 | 96 | sig | CBLSSignature | LLMQ BLS signature
 
-The following annotated hexdump shows a [`clsig` message](../ref/core-ref-p2p-network-instantsend-messages.md#clsig). (The message header has been omitted.)
+The following annotated hexdump shows a [`clsig` message](../reference/p2p-network-instantsend-messages.md#clsig). (The message header has been omitted.)
 
 ``` text
 c1310100 ................................... Block Height: 78273
@@ -40,7 +40,7 @@ dcd5497d105932e609016dac075f02df
 >
 > The [`isdlock` message](#isdlock) with expanded features will eventually replace this message. Protocol version 70220 maintains backwards compatibility for older clients.
 
-The [`islock` message](../ref/core-ref-p2p-network-instantsend-messages.md#islock) is used to provide details of transactions that have been locked by LLMQ-based InstantSend. The message includes the details of all transaction <<glossary:inputs>> along with the transaction ID and the BLS <<glossary:signature>> of the <<glossary:LLMQ>> that approved the transaction lock.
+The [`islock` message](../reference/p2p-network-instantsend-messages.md#islock) is used to provide details of transactions that have been locked by LLMQ-based InstantSend. The message includes the details of all transaction <<glossary:inputs>> along with the transaction ID and the BLS <<glossary:signature>> of the <<glossary:LLMQ>> that approved the transaction lock.
 
 | Bytes | Name | Data type | Description |
 | --- | --- | --- | --- |
@@ -49,7 +49,7 @@ The [`islock` message](../ref/core-ref-p2p-network-instantsend-messages.md#isloc
 | 32 | txid | uint256 | TXID of the locked transaction |
 | 96 | sig | byte[] | LLMQ BLS Signature |
 
-The following annotated hexdump shows a [`islock` message](../ref/core-ref-p2p-network-instantsend-messages.md#islock). (The message header has been omitted.)
+The following annotated hexdump shows a [`islock` message](../reference/p2p-network-instantsend-messages.md#islock). (The message header has been omitted.)
 
 ``` text
 02 ......................................... Number of inputs: 2
@@ -81,7 +81,7 @@ a11e5e7930deccc3e11a931fc9524f06 ........... LLMQ BLS Signature (96 bytes)
 >
 > *Added in protocol version 70220 of Dash Core*
 
-The [`isdlock` message](../ref/core-ref-p2p-network-instantsend-messages.md#isdlock) is used to provide details of transactions that have been locked by InstantSend. The message includes all details present in the [`islock` message](#islock) along with additional version and cycle information introduced by [DIP22](https://github.com/dashpay/dips/blob/master/dip-0022.md).  This enables nodes to determine what quorum signed the message and validate the signature in the future after the quorum is no longer active. Additional details about the change are available in [DIP22 - Making InstantSend Deterministic using Quorum Cycles](https://github.com/dashpay/dips/blob/master/dip-0022.md).
+The [`isdlock` message](../reference/p2p-network-instantsend-messages.md#isdlock) is used to provide details of transactions that have been locked by InstantSend. The message includes all details present in the [`islock` message](#islock) along with additional version and cycle information introduced by [DIP22](https://github.com/dashpay/dips/blob/master/dip-0022.md).  This enables nodes to determine what quorum signed the message and validate the signature in the future after the quorum is no longer active. Additional details about the change are available in [DIP22 - Making InstantSend Deterministic using Quorum Cycles](https://github.com/dashpay/dips/blob/master/dip-0022.md).
 
 | Bytes | Name | Data type | Description |
 | --- | --- | --- | --- |
@@ -92,7 +92,7 @@ The [`isdlock` message](../ref/core-ref-p2p-network-instantsend-messages.md#isdl
 | 32 | cycleHash | uint256 | Block hash of first block of the cycle in which the quorum signing this islock is active |
 | 96 | sig | byte[] | LLMQ BLS Signature |
 
-The following annotated hexdump shows a [`isdlock` message](../ref/core-ref-p2p-network-instantsend-messages.md#isdlock). (The message header has been omitted.)
+The following annotated hexdump shows a [`isdlock` message](../reference/p2p-network-instantsend-messages.md#isdlock). (The message header has been omitted.)
 
 ``` text
 01 ......................................... Message version: 1

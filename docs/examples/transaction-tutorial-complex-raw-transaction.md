@@ -84,10 +84,10 @@ For our two inputs, we select two UTXOs by placing the txid and output index num
 
 >❗️ Private Key Warning
 >
-> **Warning:** Users should never manually manage private keys on mainnet. As dangerous as raw transactions are (see warnings above), making a mistake with a private key can be much worse---as in the case of a HD wallet [cross-generational key compromise](../guide/core-guide-wallets-wallet-files.md#hardened-keys). 
+> **Warning:** Users should never manually manage private keys on mainnet. As dangerous as raw transactions are (see warnings above), making a mistake with a private key can be much worse---as in the case of a HD wallet [cross-generational key compromise](../guide/wallets-wallet-files.md#hardened-keys). 
 **These examples are to help you learn, not for you to emulate on mainnet.**
 
-Use the [`dumpprivkey` RPC](../api-ref/core-api-ref-remote-procedure-calls-wallet.md#dumpprivkey) to get the <<glossary:private keys>> corresponding to the <<glossary:public keys>> used in the two UTXOs our inputs we will be spending.  We need the private keys so we can sign each of the inputs separately.
+Use the [`dumpprivkey` RPC](../api/remote-procedure-calls-wallet.md#dumpprivkey) to get the <<glossary:private keys>> corresponding to the <<glossary:public keys>> used in the two UTXOs our inputs we will be spending.  We need the private keys so we can sign each of the inputs separately.
 
 ``` bash
 > dash-cli -regtest dumpprivkey $UTXO1_ADDRESS
@@ -117,7 +117,7 @@ yesLaP5XFTaLZiWAo2zK8mFfUCtV8rRhKw
 
 ## 5. Create raw transaction
 
-Create the <<glossary:raw transaction>> using the [`createrawtransaction` RPC](../api-ref/core-api-ref-remote-procedure-calls-raw-transactions.md#createrawtransaction) much the same as before, except now we have two inputs and two outputs.
+Create the <<glossary:raw transaction>> using the [`createrawtransaction` RPC](../api/remote-procedure-calls-raw-transactions.md#createrawtransaction) much the same as before, except now we have two inputs and two outputs.
 
 ``` bash
 ## Outputs - inputs = transaction fee, so always double-check your math!
@@ -148,7 +148,7 @@ a56d596dea0000000000ffffffff30d100f7762956100a2396403c60e13e7a13\
 
 ## 6. Sign raw transaction
 
-Signing the raw transaction with [`signrawtransactionwithkey`](../api-ref/core-api-ref-remote-procedure-calls-raw-transactions.md#signrawtransactionwithkey) gets more complicated as we now have two arguments:
+Signing the raw transaction with [`signrawtransactionwithkey`](../api/remote-procedure-calls-raw-transactions.md#signrawtransactionwithkey) gets more complicated as we now have two arguments:
 
 1. The unsigned raw transaction.
 

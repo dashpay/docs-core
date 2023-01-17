@@ -12,22 +12,22 @@ Furthermore, a few additional changes are introduced to how discouraged addresse
 
 - Discouragement is not persisted over restarts.
 
-- There is no method to list discouraged addresses. They are not returned by the [`listbanned` RPC](../api-ref/core-api-ref-remote-procedure-calls-network.md#listbanned).
+- There is no method to list discouraged addresses. They are not returned by the [`listbanned` RPC](../api/remote-procedure-calls-network.md#listbanned).
 
-- Discouragement cannot be removed with the [`setban remove` RPC](../api-ref/core-api-ref-remote-procedure-calls-network.md#setban) command. If you need to remove a discouragement, you can remove all discouragements by stopping and restarting your node.
+- Discouragement cannot be removed with the [`setban remove` RPC](../api/remote-procedure-calls-network.md#setban) command. If you need to remove a discouragement, you can remove all discouragements by stopping and restarting your node.
 
  If a peer gets a banscore above the `-banscore=<n>` threshold (100 by default), they will be disconnected and discouraged.
 
 | Type | Misbehavior | Ban Score | Description |
 | ---- | ----------- | --------- | ----------- |
-| Net | GetBlockTxn Index Error | **100** | Peer relayed a [`getblocktxn` message](../ref/core-ref-p2p-network-data-messages.md#getblocktxn) with out-of-bound indices
-| Net | Bloom Filter Service | **100** | Bloom filter message received from peer that has bloom filter commands disabled by default (protocol version > 70201) (`filterload` message, [`filteradd` message](../ref/core-ref-p2p-network-control-messages.md#filteradd), or [`filterclear` message](../ref/core-ref-p2p-network-control-messages.md#filterclear))
+| Net | GetBlockTxn Index Error | **100** | Peer relayed a [`getblocktxn` message](../reference/p2p-network-data-messages.md#getblocktxn) with out-of-bound indices
+| Net | Bloom Filter Service | **100** | Bloom filter message received from peer that has bloom filter commands disabled by default (protocol version > 70201) (`filterload` message, [`filteradd` message](../reference/p2p-network-control-messages.md#filteradd), or [`filterclear` message](../reference/p2p-network-control-messages.md#filterclear))
 | Net | Block Rejected | 1 | Peer rejected the block it requested from us
-| Net | Duplicate Version | 1 | Duplicate [`version` message](../ref/core-ref-p2p-network-control-messages.md#version) received
+| Net | Duplicate Version | 1 | Duplicate [`version` message](../reference/p2p-network-control-messages.md#version) received
 | Net | Wrong Devnet | **100** | Peer responded with the wrong devnet version (`version` message)
 | Net | Wrong Devnet | 1 | Peer connected using the wrong devnet version (`version` message)
-| Net | No Version | 1 | Received a message prior to receiving a [`version` message](../ref/core-ref-p2p-network-control-messages.md#version)
-| Net | No Verack | 1 | After sending [`version` message](../ref/core-ref-p2p-network-control-messages.md#version), received a message other than a [`verack` message](../ref/core-ref-p2p-network-control-messages.md#verack) back first
+| Net | No Version | 1 | Received a message prior to receiving a [`version` message](../reference/p2p-network-control-messages.md#version)
+| Net | No Verack | 1 | After sending [`version` message](../reference/p2p-network-control-messages.md#version), received a message other than a [`verack` message](../reference/p2p-network-control-messages.md#verack) back first
 | Net | Address List Size | 20 | More than 1000 addresses received (`addr` message)
 | Net | Inventory List | 20 | More than `MAX_INV_SZ` (50000) inventories received (`inv` message)
 | Net | Get Data Size | 20 | More than `MAX_INV_SZ` (50000) inventories requested (`getdata` message)
@@ -38,7 +38,7 @@ Furthermore, a few additional changes are introduced to how discouraged addresse
 | Net | Header List Size | 20 | More than `MAX_HEADERS_RESULTS` (2000) headers received (`headers` message)
 | Net | Header List Sequence | 20 | Non-continous headers sequence received (`headers` message)
 | Net | Invalid Block | **Varies** | Invalid block header received from peer
-| Net | Bloom Filter Size | **100** | Maximum script element size (520) exceeded (`filterload` message or [`filteradd` message](../ref/core-ref-p2p-network-control-messages.md#filteradd))
+| Net | Bloom Filter Size | **100** | Maximum script element size (520) exceeded (`filterload` message or [`filteradd` message](../reference/p2p-network-control-messages.md#filteradd))
 | Net | MN List Diff | 1 | Failed to get masternode list diff (`getmnlistd` message)
 | Net | Unrequested MN List Diff | **100** | Peer provided an unrequested masternode list diff (`mnlistdiff` message)
 | InstantSend | Invalid Lock Message | **100** | Invalid TXID or inputs in lock message (`islock` message)
@@ -54,7 +54,7 @@ Furthermore, a few additional changes are introduced to how discouraged addresse
 | LLMQ DKG | Preverify Failed | **100** | Peer relayed a message that could not be pre-verified
 | LLMQ DKG | Signature  | **100** | Peer relayed a message with an invalid signature
 | LLMQ DKG | Full Verify Failed | **100** | Peer relayed a message that failed full verification
-| LLMQ Signing | Too Many Messages | **100** | Maximum message count exceed in [`qsigsesann` message](../ref/core-ref-p2p-network-quorum-messages.md#qsigsesann), [`qsigsinv` message](../ref/core-ref-p2p-network-quorum-messages.md#qsigsinv), [`qgetsigs` message](../ref/core-ref-p2p-network-quorum-messages.md#qgetsigs), or [`qbsigs` message](../ref/core-ref-p2p-network-quorum-messages.md#qbsigs)
+| LLMQ Signing | Too Many Messages | **100** | Maximum message count exceed in [`qsigsesann` message](../reference/p2p-network-quorum-messages.md#qsigsesann), [`qsigsinv` message](../reference/p2p-network-quorum-messages.md#qsigsinv), [`qgetsigs` message](../reference/p2p-network-quorum-messages.md#qgetsigs), or [`qbsigs` message](../reference/p2p-network-quorum-messages.md#qbsigs)
 | LLMQ Signing | Signature  | **100** | Peer relayed a message with an invalid recovered signature or signature share
 | Masternode Authentication | Duplicate Message | **100** | Only 1 message allowed (`mnauth` message)
 | Masternode Authentication | Invalid Services | **100** | Peer not advertising `NODE_NETWORK` or `NODE_BLOOM` services (`mnauth` message)
@@ -65,7 +65,7 @@ Furthermore, a few additional changes are introduced to how discouraged addresse
 | Governance | Sync | 20 | Requesting a governance sync too frequently (`govsync` message with empty hash)
 | Governance | Invalid Object | 20 | Peer relayed an invalid governance object (`govobj` message)
 | Governance | Invalid Vote | 20 | Peer relayed an invalid/invalid old vote(`govobjvote` message)
-| Governance | Unsupported Vote Signal | 20 | Vote signal outside the accepted range (see [`govobjvote` message](../ref/core-ref-p2p-network-governance-messages.md#govobjvote))
+| Governance | Unsupported Vote Signal | 20 | Vote signal outside the accepted range (see [`govobjvote` message](../reference/p2p-network-governance-messages.md#govobjvote))
 | CoinJoin | Signature  | 10 | Peer relayed a message with an invalid signature (`dsq` message)
 | Spork | Invalid Time | **100** | Peer relayed a spork with a timestamp too far in the future (`spork` message)
 | Spork | Signature  | **100** | Peer relayed a spork with an invalid signature (`spork` message)

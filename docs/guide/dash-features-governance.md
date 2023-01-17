@@ -4,51 +4,51 @@
 
 Dash Core synchronizes the governance system via the <<glossary:masternode>> <<glossary:network>> as the last stage of the Masternode sync process (following the sync of sporks, the Masternode list, and Masternode payments).
 
-The [`govsync` message](../ref/core-ref-p2p-network-governance-messages.md#govsync) initiates a sync of the governance system. Masternodes ignore this request if they are not fully synced.  
+The [`govsync` message](../reference/p2p-network-governance-messages.md#govsync) initiates a sync of the governance system. Masternodes ignore this request if they are not fully synced.  
 
 There are two distinct stages of governance sync:
 
-1. Initial request (object sync) - requests the governance objects only via a [`govsync` message](../ref/core-ref-p2p-network-governance-messages.md#govsync) sent with a hash of all zeros.  
+1. Initial request (object sync) - requests the governance objects only via a [`govsync` message](../reference/p2p-network-governance-messages.md#govsync) sent with a hash of all zeros.  
 
-2. Follow up request(s) (vote sync) - request governance object votes for a specific object via a [`govsync` message](../ref/core-ref-p2p-network-governance-messages.md#govsync) containing the hash of the object. One message is required for each object. Dash Core periodically (~ every 6 seconds) sends messages to connected nodes until all the governance objects have been synchronized.
+2. Follow up request(s) (vote sync) - request governance object votes for a specific object via a [`govsync` message](../reference/p2p-network-governance-messages.md#govsync) containing the hash of the object. One message is required for each object. Dash Core periodically (~ every 6 seconds) sends messages to connected nodes until all the governance objects have been synchronized.
 
 > 📘 Governance Object Sync Limitation
 >
 > Dash Core limits how frequently the first type of sync (object sync) can be requested. Frequent requests will result in the node being banned.
 
-Masternodes respond to the [`govsync` message](../ref/core-ref-p2p-network-governance-messages.md#govsync) with several items:
+Masternodes respond to the [`govsync` message](../reference/p2p-network-governance-messages.md#govsync) with several items:
 
 For Object Sync:
 
-* First, the Masternode sends a [`ssc` message](../ref/core-ref-p2p-network-masternode-messages.md#ssc) (Sync Status Count) for `govobj` objects. This message indicates how many <<glossary:inventory>> items will be sent.
+* First, the Masternode sends a [`ssc` message](../reference/p2p-network-masternode-messages.md#ssc) (Sync Status Count) for `govobj` objects. This message indicates how many <<glossary:inventory>> items will be sent.
 
-* Second, the Masternode sends an [`inv` message](../ref/core-ref-p2p-network-data-messages.md#inv) for the `govobj` and `govobjvote` objects.
+* Second, the Masternode sends an [`inv` message](../reference/p2p-network-data-messages.md#inv) for the `govobj` and `govobjvote` objects.
 
 For Vote Sync:
 
-* First, the Masternode sends a [`ssc` message](../ref/core-ref-p2p-network-masternode-messages.md#ssc) (Sync Status Count) for `govobjvote` objects. This message indicates how many inventory items will be sent.
+* First, the Masternode sends a [`ssc` message](../reference/p2p-network-masternode-messages.md#ssc) (Sync Status Count) for `govobjvote` objects. This message indicates how many inventory items will be sent.
 
-* Second, the Masternode sends an [`inv` message](../ref/core-ref-p2p-network-data-messages.md#inv) for the `govobjvote` object(s).
+* Second, the Masternode sends an [`inv` message](../reference/p2p-network-data-messages.md#inv) for the `govobjvote` object(s).
 
-Once the syncing <<glossary:node>> receives the counts and inventories, it may request any `govobj` and `govobjvote` objects from the masternode via a [`getdata` message](../ref/core-ref-p2p-network-data-messages.md#getdata).
+Once the syncing <<glossary:node>> receives the counts and inventories, it may request any `govobj` and `govobjvote` objects from the masternode via a [`getdata` message](../reference/p2p-network-data-messages.md#getdata).
 
 ### Governance Sync Data Flow
 
 | **Syncing Node Message** | **Direction**  | **Masternode Response**   | **Description** |
 | --- | --- | --- | --- |
 | **Initial request** | | | **Requests all governance objects (without votes)** |
-| [`govsync` message](../ref/core-ref-p2p-network-governance-messages.md#govsync)        | →              |                           | Syncing node initiates governance sync (hash set to all zeros)
-|                          | ←              | [`ssc` message](../ref/core-ref-p2p-network-masternode-messages.md#ssc) (govobj)    | Number of governance objects (0 or more)
-|                          | ←              | [`inv` message](../ref/core-ref-p2p-network-data-messages.md#inv) (govobj)    | Governance object inventories
-| [`getdata` message](../ref/core-ref-p2p-network-data-messages.md#getdata) (govobj) | →              |                           | (Optional) Syncing node requests govobj
-|                          | ←              | [`govobj` message](../ref/core-ref-p2p-network-governance-messages.md#govobj)          | (If requested) Governance object
+| [`govsync` message](../reference/p2p-network-governance-messages.md#govsync)        | →              |                           | Syncing node initiates governance sync (hash set to all zeros)
+|                          | ←              | [`ssc` message](../reference/p2p-network-masternode-messages.md#ssc) (govobj)    | Number of governance objects (0 or more)
+|                          | ←              | [`inv` message](../reference/p2p-network-data-messages.md#inv) (govobj)    | Governance object inventories
+| [`getdata` message](../reference/p2p-network-data-messages.md#getdata) (govobj) | →              |                           | (Optional) Syncing node requests govobj
+|                          | ←              | [`govobj` message](../reference/p2p-network-governance-messages.md#govobj)          | (If requested) Governance object
 | | | | |
 | **Follow up requests** | | | **Requests governance object (with votes)** |
-| [`govsync` message](../ref/core-ref-p2p-network-governance-messages.md#govsync)        | →              |                           | Syncing node requests governance sync for a specific governance object
-|                          | ←              | [`ssc` message](../ref/core-ref-p2p-network-masternode-messages.md#ssc) (govobjvote)| Number of governance object votes (0 or more)
-|                          | ←              | [`inv` message](../ref/core-ref-p2p-network-data-messages.md#inv) (govobjvote)| Governance object vote inventories
-| [`getdata` message](../ref/core-ref-p2p-network-data-messages.md#getdata) (govobjvote) | →              |                           | (Optional) Syncing node requests govobjvote
-|                          | ←              | [`govobjvote` message](../ref/core-ref-p2p-network-governance-messages.md#govobjvote)      | (If requested) Governance object vote
+| [`govsync` message](../reference/p2p-network-governance-messages.md#govsync)        | →              |                           | Syncing node requests governance sync for a specific governance object
+|                          | ←              | [`ssc` message](../reference/p2p-network-masternode-messages.md#ssc) (govobjvote)| Number of governance object votes (0 or more)
+|                          | ←              | [`inv` message](../reference/p2p-network-data-messages.md#inv) (govobjvote)| Governance object vote inventories
+| [`getdata` message](../reference/p2p-network-data-messages.md#getdata) (govobjvote) | →              |                           | (Optional) Syncing node requests govobjvote
+|                          | ←              | [`govobjvote` message](../reference/p2p-network-governance-messages.md#govobjvote)      | (If requested) Governance object vote
 
 ## Sentinel
 
@@ -59,7 +59,7 @@ governance sync, governance object pruning, and superblock management. The gover
 
 ### Sentinel Sync
 
-Sentinel issues a [`gobject list` RPC](../api-ref/core-api-ref-remote-procedure-calls-dash.md#gobject-list) command and updates its database with the results returned from dashd. When objects are removed from the network, they are purged from the Sentinel database.
+Sentinel issues a [`gobject list` RPC](../api/remote-procedure-calls-dash.md#gobject-list) command and updates its database with the results returned from dashd. When objects are removed from the network, they are purged from the Sentinel database.
 
 ### Sentinel Prune
 

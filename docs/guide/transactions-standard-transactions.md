@@ -34,7 +34,7 @@ In multisig pubkey scripts, called m-of-n, *m* is the *minimum* number of signat
 
 Because of an off-by-one error in the original Bitcoin implementation which must be preserved for compatibility, `OP_CHECKMULTISIG` consumes one more value from the stack than indicated by *m*, so the list of secp256k1 signatures in the signature script must be prefaced with an extra value (`OP_0`) which will be consumed but not used.
 
-The signature script must provide signatures in the same order as the corresponding public keys appear in the pubkey script or redeem script. See the description in [`OP_CHECKMULTISIG`](../ref/core-ref-transactions-opcodes.md) for details.
+The signature script must provide signatures in the same order as the corresponding public keys appear in the pubkey script or redeem script. See the description in [`OP_CHECKMULTISIG`](../reference/transactions-opcodes.md) for details.
 
 ```
 Pubkey script: <m> <A pubkey> [B pubkey] [C pubkey...] <n> OP_CHECKMULTISIG

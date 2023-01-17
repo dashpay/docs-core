@@ -10,4 +10,4 @@ A Type 1 deterministic <<glossary:wallet>> is the simpler of the two, which can 
 
 ![Overview Of Hierarchical Deterministic Key Derivation](https://dash-docs.github.io/img/dev/en-hd-overview.svg)
 
-For an overview of the <<glossary:HD wallet>>, please see the [developer guide section](../guide/core-guide-wallets.md).  For details, please see [BIP32](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki).
+For an overview of the <<glossary:HD wallet>>, please see the [developer guide section](../guide/wallets.md).  For details, please see [BIP32](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki).

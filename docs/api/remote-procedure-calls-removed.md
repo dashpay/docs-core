@@ -50,7 +50,7 @@ Result:
 
 *See also*
 
-* [SetTxFee](../api-ref/core-api-ref-remote-procedure-calls-wallet.md#settxfee): sets the transaction fee per kilobyte paid by transactions created by this wallet.
+* [SetTxFee](../api/remote-procedure-calls-wallet.md#settxfee): sets the transaction fee per kilobyte paid by transactions created by this wallet.
 
 ## GetPoolInfo
 
@@ -173,9 +173,9 @@ Result:
 
 *See also*
 
-* [GetReceivedByAddress](../api-ref/core-api-ref-remote-procedure-calls-wallet.md#getreceivedbyaddress): returns the total amount received by the specified address in transactions with the specified number of confirmations. It does not count coinbase transactions.
-* [GetAddressesByAccount](../api-ref/core-api-ref-remote-procedure-calls-wallet-deprecated.md#getaddressesbyaccount): returns a list of every address assigned to a particular account.
-* [ListAccounts](../api-ref/core-api-ref-remote-procedure-calls-removed.md#listaccounts): lists accounts and their balances.
+* [GetReceivedByAddress](../api/remote-procedure-calls-wallet.md#getreceivedbyaddress): returns the total amount received by the specified address in transactions with the specified number of confirmations. It does not count coinbase transactions.
+* [GetAddressesByAccount](../api/remote-procedure-calls-wallet-deprecated.md#getaddressesbyaccount): returns a list of every address assigned to a particular account.
+* [ListAccounts](../api/remote-procedure-calls-removed.md#listaccounts): lists accounts and their balances.
 
 ## KeePass
 
@@ -332,10 +332,10 @@ Result:
 
 *See also*
 
-* [GetAccount](../api-ref/core-api-ref-remote-procedure-calls-wallet-deprecated.md#getaccount): returns the name of the account associated with the given address.
-* [GetAddressesByAccount](../api-ref/core-api-ref-remote-procedure-calls-wallet-deprecated.md#getaddressesbyaccount): returns a list of every address assigned to a particular account.
-* [ListReceivedByAccount](../api-ref/core-api-ref-remote-procedure-calls-removed.md#listreceivedbyaccount): lists the total number of dash received by each account.
-* [ListReceivedByLabel](../api-ref/core-api-ref-remote-procedure-calls-wallet.md#listreceivedbylabel): lists the total number of dash received by each label.
+* [GetAccount](../api/remote-procedure-calls-wallet-deprecated.md#getaccount): returns the name of the account associated with the given address.
+* [GetAddressesByAccount](../api/remote-procedure-calls-wallet-deprecated.md#getaddressesbyaccount): returns a list of every address assigned to a particular account.
+* [ListReceivedByAccount](../api/remote-procedure-calls-removed.md#listreceivedbyaccount): lists the total number of dash received by each account.
+* [ListReceivedByLabel](../api/remote-procedure-calls-wallet.md#listreceivedbylabel): lists the total number of dash received by each label.
 
 ## ListReceivedByAccount
 
@@ -413,10 +413,10 @@ Result (edited to only show the first two results):
 
 *See also*
 
-* [ListReceivedByAddress](../api-ref/core-api-ref-remote-procedure-calls-wallet.md#listreceivedbyaddress): lists the total number of dash received by each address.
-* [ListReceivedByLabel](../api-ref/core-api-ref-remote-procedure-calls-wallet.md#listreceivedbylabel): lists the total number of dash received by each label.
-* [GetReceivedByAccount](../api-ref/core-api-ref-remote-procedure-calls-removed.md#getreceivedbyaccount): returns the total amount received by addresses in a particular account from transactions with the specified number of confirmations.  It does not count coinbase transactions.
-* [GetReceivedByAddress](../api-ref/core-api-ref-remote-procedure-calls-wallet.md#getreceivedbyaddress): returns the total amount received by the specified address in transactions with the specified number of confirmations. It does not count coinbase transactions.
+* [ListReceivedByAddress](../api/remote-procedure-calls-wallet.md#listreceivedbyaddress): lists the total number of dash received by each address.
+* [ListReceivedByLabel](../api/remote-procedure-calls-wallet.md#listreceivedbylabel): lists the total number of dash received by each label.
+* [GetReceivedByAccount](../api/remote-procedure-calls-removed.md#getreceivedbyaccount): returns the total amount received by addresses in a particular account from transactions with the specified number of confirmations.  It does not count coinbase transactions.
+* [GetReceivedByAddress](../api/remote-procedure-calls-wallet.md#getreceivedbyaddress): returns the total amount received by the specified address in transactions with the specified number of confirmations. It does not count coinbase transactions.
 
 ## Move
 
@@ -428,7 +428,7 @@ Result (edited to only show the first two results):
 >
 > Requires <<glossary:wallet>> support (**unavailable on masternodes**)
 
-The [`move` RPC](../api-ref/core-api-ref-remote-procedure-calls-wallet-deprecated.md#move) moves a specified amount from one account in your wallet to another using an off-block-chain transaction.
+The [`move` RPC](../api/remote-procedure-calls-wallet-deprecated.md#move) moves a specified amount from one account in your wallet to another using an off-block-chain transaction.
 
 > 🚧
 >
@@ -487,8 +487,8 @@ true
 
 *See also*
 
-* [ListAccounts](../api-ref/core-api-ref-remote-procedure-calls-removed.md#listaccounts): lists accounts and their balances.
-* [SendToAddress](../api-ref/core-api-ref-remote-procedure-calls-wallet.md#sendtoaddress): spends an amount to a given address.
+* [ListAccounts](../api/remote-procedure-calls-removed.md#listaccounts): lists accounts and their balances.
+* [SendToAddress](../api/remote-procedure-calls-wallet.md#sendtoaddress): spends an amount to a given address.
 
 ## SendFrom
 
@@ -524,11 +524,11 @@ Amount | number (dash) | Required<br>(exactly 1) | The amount to spend in dash. 
 
 Name | Type | Presence | Description
 --- | --- | --- | ---
-Confirmations | number (int) | Optional<br>(0 or 1) | The minimum number of confirmations an incoming transaction must have for its outputs to be credited to this account's balance. Outgoing transactions are always counted, as are move transactions made with the [`move` RPC](../api-ref/core-api-ref-remote-procedure-calls-removed.md#move). If an account doesn't have a balance high enough to pay for this transaction, the payment will be rejected.  Use `0` to spend unconfirmed incoming payments. Default is `1`
+Confirmations | number (int) | Optional<br>(0 or 1) | The minimum number of confirmations an incoming transaction must have for its outputs to be credited to this account's balance. Outgoing transactions are always counted, as are move transactions made with the [`move` RPC](../api/remote-procedure-calls-removed.md#move). If an account doesn't have a balance high enough to pay for this transaction, the payment will be rejected.  Use `0` to spend unconfirmed incoming payments. Default is `1`
 
 > 🚧 
 >
-> **Warning:** if account1 receives an unconfirmed payment and transfers it to account2 with the [`move` RPC](../api-ref/core-api-ref-remote-procedure-calls-wallet-deprecated.md#move), account2 will be able to spend those dash even if this parameter is set to `1` or higher.
+> **Warning:** if account1 receives an unconfirmed payment and transfers it to account2 with the [`move` RPC](../api/remote-procedure-calls-wallet-deprecated.md#move), account2 will be able to spend those dash even if this parameter is set to `1` or higher.
 
 *Parameter #5---whether to add the balance from transactions locked via InstantSend*
 
@@ -579,8 +579,8 @@ cd64b9d55c63bf247f2eca32f978e340622107b607a46c422dabcdc20c0571fe
 
 *See also*
 
-* [SendToAddress](../api-ref/core-api-ref-remote-procedure-calls-wallet.md#sendtoaddress): spends an amount to a given address.
-* [SendMany](../api-ref/core-api-ref-remote-procedure-calls-wallet.md#sendmany): creates and broadcasts a transaction which sends outputs to multiple addresses.
+* [SendToAddress](../api/remote-procedure-calls-wallet.md#sendtoaddress): spends an amount to a given address.
+* [SendMany](../api/remote-procedure-calls-wallet.md#sendmany): creates and broadcasts a transaction which sends outputs to multiple addresses.
 
 ## SignRawTransaction
 
@@ -619,7 +619,7 @@ Private Keys | array | Optional<br>(0 or 1) | An array holding private keys.  If
 
 Name | Type | Presence | Description
 --- | --- | --- | ---
-SigHash | string | Optional<br>(0 or 1) | The type of signature hash to use for all of the signatures performed.  (You must use separate calls to the [`signrawtransaction` RPC](../api-ref/core-api-ref-remote-procedure-calls-removed.md#signrawtransaction) if you want to use different signature hash types for different signatures.  The allowed values are: `ALL`, `NONE`, `SINGLE`, `ALL|ANYONECANPAY`, `NONE|ANYONECANPAY`, and `SINGLE|ANYONECANPAY`
+SigHash | string | Optional<br>(0 or 1) | The type of signature hash to use for all of the signatures performed.  (You must use separate calls to the [`signrawtransaction` RPC](../api/remote-procedure-calls-removed.md#signrawtransaction) if you want to use different signature hash types for different signatures.  The allowed values are: `ALL`, `NONE`, `SINGLE`, `ALL|ANYONECANPAY`, `NONE|ANYONECANPAY`, and `SINGLE|ANYONECANPAY`
 
 *Result---the transaction with any signatures made*
 
@@ -652,11 +652,11 @@ Result:
 
 *See also*
 
-* [CombineRawTransaction](../api-ref/core-api-ref-remote-procedure-calls-raw-transactions.md#combinerawtransaction): combine multiple partially signed transactions into one transaction.
-* [CreateRawTransaction](../api-ref/core-api-ref-remote-procedure-calls-raw-transactions.md#createrawtransaction): creates an unsigned serialized transaction that spends a previous output to a new output with a P2PKH or P2SH address. The transaction is not stored in the wallet or transmitted to the network.
-* [DecodeRawTransaction](../api-ref/core-api-ref-remote-procedure-calls-raw-transactions.md#decoderawtransaction): decodes a serialized transaction hex string into a JSON object describing the transaction.
-* [SendRawTransaction](../api-ref/core-api-ref-remote-procedure-calls-raw-transactions.md#sendrawtransaction): validates a transaction and broadcasts it to the peer-to-peer network.
-* [SignRawTransactionWithKey](../api-ref/core-api-ref-remote-procedure-calls-raw-transactions.md#signrawtransactionwithkey): signs inputs for a transaction in the serialized transaction format using private keys provided in the call.
+* [CombineRawTransaction](../api/remote-procedure-calls-raw-transactions.md#combinerawtransaction): combine multiple partially signed transactions into one transaction.
+* [CreateRawTransaction](../api/remote-procedure-calls-raw-transactions.md#createrawtransaction): creates an unsigned serialized transaction that spends a previous output to a new output with a P2PKH or P2SH address. The transaction is not stored in the wallet or transmitted to the network.
+* [DecodeRawTransaction](../api/remote-procedure-calls-raw-transactions.md#decoderawtransaction): decodes a serialized transaction hex string into a JSON object describing the transaction.
+* [SendRawTransaction](../api/remote-procedure-calls-raw-transactions.md#sendrawtransaction): validates a transaction and broadcasts it to the peer-to-peer network.
+* [SignRawTransactionWithKey](../api/remote-procedure-calls-raw-transactions.md#signrawtransactionwithkey): signs inputs for a transaction in the serialized transaction format using private keys provided in the call.
 
 ## Generate
 
@@ -704,6 +704,6 @@ Result:
 
 *See also*
 
-* [GenerateToAddress](../api-ref/core-api-ref-remote-procedure-calls-generating.md#generatetoaddress): mines blocks immediately to a specified address.
-* [GetBlockTemplate](../api-ref/core-api-ref-remote-procedure-calls-mining.md#getblocktemplate): gets a block template or proposal for use with mining software.
-* [GetMiningInfo](../api-ref/core-api-ref-remote-procedure-calls-mining.md#getmininginfo): returns various mining-related information.
+* [GenerateToAddress](../api/remote-procedure-calls-generating.md#generatetoaddress): mines blocks immediately to a specified address.
+* [GetBlockTemplate](../api/remote-procedure-calls-mining.md#getblocktemplate): gets a block template or proposal for use with mining software.
+* [GetMiningInfo](../api/remote-procedure-calls-mining.md#getmininginfo): returns various mining-related information.

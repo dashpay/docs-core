@@ -1,6 +1,6 @@
 # Transaction Broadcasting
 
-In order to send a <<glossary:transaction>> to a <<glossary:peer>>, an [`inv` message](../ref/core-ref-p2p-network-data-messages.md#inv) is sent. If a [`getdata` message](../ref/core-ref-p2p-network-data-messages.md#getdata) is received in reply, the transaction is sent using a [`tx` message](../ref/core-ref-p2p-network-data-messages.md#tx). If it is a valid transaction, the peer receiving the transaction also forwards the transaction to its peers.
+In order to send a <<glossary:transaction>> to a <<glossary:peer>>, an [`inv` message](../reference/p2p-network-data-messages.md#inv) is sent. If a [`getdata` message](../reference/p2p-network-data-messages.md#getdata) is received in reply, the transaction is sent using a [`tx` message](../reference/p2p-network-data-messages.md#tx). If it is a valid transaction, the peer receiving the transaction also forwards the transaction to its peers.
 
 > 📘 Block-only relay connections
 >

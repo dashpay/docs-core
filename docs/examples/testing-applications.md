@@ -42,9 +42,9 @@ Verify that we now have 500 dash available to spend.
 
 You can now use Dash Core RPCs prefixed with `dash-cli -regtest`.
 
-Regtest wallets and block chain state (chainstate) are saved in the `regtest` subdirectory of the Dash Core configuration directory. You can safely delete the `regtest` subdirectory and restart Dash Core to start a new regtest. (See the [Developer Examples Introduction](../examples/core-examples-introduction.md) for default configuration directory locations on various operating systems. **Always back up mainnet wallets before performing dangerous operations such as deleting**.)
+Regtest wallets and block chain state (chainstate) are saved in the `regtest` subdirectory of the Dash Core configuration directory. You can safely delete the `regtest` subdirectory and restart Dash Core to start a new regtest. (See the [Developer Examples Introduction](../examples/introduction.md) for default configuration directory locations on various operating systems. **Always back up mainnet wallets before performing dangerous operations such as deleting**.)
 
-The complete set of regtest-specific arguments can be found on the [`dashd` Arguments and  Commands page](../dash-core/dash-core-wallet-arguments-and-commands-dashd.md#regtest-options).
+The complete set of regtest-specific arguments can be found on the [`dashd` Arguments and  Commands page](../dashcore/wallet-arguments-and-commands-dashd.md#regtest-options).
 
 ## Devnet mode
 
@@ -52,7 +52,7 @@ The complete set of regtest-specific arguments can be found on the [`dashd` Argu
 
 Developer networks (devnets) have some aspects of testnet and some aspects of regtest. Unlike testnet, multiple independent devnets can be created and coexist without interference. Devnets can consist of nodes running on the same computer, on a small private network, or distributed across the internet.
 
-Each devnet is identified by a name which is hardened into a "devnet genesis" block that is automatically positioned at height 1. Validation rules ensure that a <<glossary:node>> from `devnet=test1` will not accept blocks from `devnet=test2`. This is done by checking the expected devnet <<glossary:genesis block>>. Also, the devnet name is put into the sub-version field of the [`version` message](../ref/core-ref-p2p-network-control-messages.md#version). If a node connects to the wrong <<glossary:network>>, it will immediately be disconnected. 
+Each devnet is identified by a name which is hardened into a "devnet genesis" block that is automatically positioned at height 1. Validation rules ensure that a <<glossary:node>> from `devnet=test1` will not accept blocks from `devnet=test2`. This is done by checking the expected devnet <<glossary:genesis block>>. Also, the devnet name is put into the sub-version field of the [`version` message](../reference/p2p-network-control-messages.md#version). If a node connects to the wrong <<glossary:network>>, it will immediately be disconnected. 
 
 The genesis block of the devnet is the same as the one from regtest. This starts the devnet with a very low <<glossary:difficulty>>, allowing quick generation of a sufficient balance to create a <<glossary:masternode>>.
 
@@ -82,11 +82,11 @@ highsubsidyblocks=500
 highsubsidyfactor=10
 ```
 
-The complete set of devnet-specific arguments can be found on the [`dashd` Arguments and  Commands page](../dash-core/dash-core-wallet-arguments-and-commands-dashd.md#devnet-options).
+The complete set of devnet-specific arguments can be found on the [`dashd` Arguments and  Commands page](../dashcore/wallet-arguments-and-commands-dashd.md#devnet-options).
 
 ### Management
 
-Devnet wallets and block chain state (chainstate) are saved in the `devnet-<name>` subdirectory of the Dash Core configuration directory. You can safely delete the `devnet-<name>` subdirectory and restart Dash Core to start a new devnet. (See the [Developer Examples Introduction](../examples/core-examples-introduction.md) for default configuration directory locations on various operating systems. **Always back up mainnet wallets before performing dangerous operations such as deleting.**)
+Devnet wallets and block chain state (chainstate) are saved in the `devnet-<name>` subdirectory of the Dash Core configuration directory. You can safely delete the `devnet-<name>` subdirectory and restart Dash Core to start a new devnet. (See the [Developer Examples Introduction](../examples/introduction.md) for default configuration directory locations on various operating systems. **Always back up mainnet wallets before performing dangerous operations such as deleting.**)
 
 An old devnet can be easily dropped and a new one started just by destroying all nodes and recreating them with a new devnet name. This works best in combination with an automated deployment using something like Ansible and Terraform. The [Dash Network Deploy](https://github.com/dashevo/dash-network-deploy) tool provides a way to do this.
 
@@ -104,7 +104,7 @@ Each network type has some unique characteristics to support development and tes
 
 > 📘 Using sporks
 >
-> To enable or disable sporks on a regtest or devnet, set `sporkaddr` and `sporkkey` in the `dash.conf` config file. Any valid Dash address / private key can be used. You can get an address using the [`getnewaddress` RPC](../api-ref/core-api-ref-remote-procedure-calls-wallet.md#getnewaddress) and retrieve its private key using the [`dumpprivkey` RPC](../api-ref/core-api-ref-remote-procedure-calls-wallet.md#dumpprivkey).
+> To enable or disable sporks on a regtest or devnet, set `sporkaddr` and `sporkkey` in the `dash.conf` config file. Any valid Dash address / private key can be used. You can get an address using the [`getnewaddress` RPC](../api/remote-procedure-calls-wallet.md#getnewaddress) and retrieve its private key using the [`dumpprivkey` RPC](../api/remote-procedure-calls-wallet.md#dumpprivkey).
 
 ### Mining characteristics
 

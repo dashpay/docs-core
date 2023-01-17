@@ -332,7 +332,7 @@ dashd [options]
 
 > 🚧 zapwallettxes
 >
-> Dash Core 18.1.0 removed the `-zapwallettxes` startup option and its functionality. This option was originally intended to allow for the fee bumping of transactions that did not signal RBF. This functionality has been superseded with the [abandon transaction capability](../api-ref/core-api-ref-remote-procedure-calls-wallet.md#abandontransaction) available via RPC/console or when right-clicking on unconfirmed transactions in Dash-Qt.
+> Dash Core 18.1.0 removed the `-zapwallettxes` startup option and its functionality. This option was originally intended to allow for the fee bumping of transactions that did not signal RBF. This functionality has been superseded with the [abandon transaction capability](../api/remote-procedure-calls-wallet.md#abandontransaction) available via RPC/console or when right-clicking on unconfirmed transactions in Dash-Qt.
 
 ```text
   -avoidpartialspends

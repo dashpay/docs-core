@@ -8,7 +8,7 @@
 
 *Added in Dash Core 18.1.0*
 
-The [`generateblock` RPC](../api-ref/core-api-ref-remote-procedure-calls-generating.md#generateblock) mines a block with a set of ordered transactions immediately to a specified address or [descriptor](https://github.com/dashpay/dash/blob/master/doc/descriptors.md) (before the RPC call returns).
+The [`generateblock` RPC](../api/remote-procedure-calls-generating.md#generateblock) mines a block with a set of ordered transactions immediately to a specified address or [descriptor](https://github.com/dashpay/dash/blob/master/doc/descriptors.md) (before the RPC call returns).
 
 *Parameter #1---an address or descriptor*
 
@@ -48,7 +48,7 @@ Result:
 
 * [GenerateToAddress](#generatetoaddress): mines blocks to a specified address.
 * [GenerateToDescriptor](#generatetodescriptor): mines blocks to a specified descriptor.
-* [GetMiningInfo](../api-ref/core-api-ref-remote-procedure-calls-mining.md#getmininginfo): returns various mining-related information.
+* [GetMiningInfo](../api/remote-procedure-calls-mining.md#getmininginfo): returns various mining-related information.
 
 ## GenerateToAddress
 
@@ -58,7 +58,7 @@ Result:
 
 *Added in Dash Core 0.12.3 / Bitcoin Core 0.13.0*
 
-The [`generatetoaddress` RPC](../api-ref/core-api-ref-remote-procedure-calls-generating.md#generatetoaddress) mines blocks immediately to a specified address.
+The [`generatetoaddress` RPC](../api/remote-procedure-calls-generating.md#generatetoaddress) mines blocks immediately to a specified address.
 
 *Parameter #1---the number of blocks to generate*
 
@@ -105,8 +105,8 @@ Result:
 
 *See also*
 
-* [GetMiningInfo](../api-ref/core-api-ref-remote-procedure-calls-mining.md#getmininginfo): returns various mining-related information.
-* [GetBlockTemplate](../api-ref/core-api-ref-remote-procedure-calls-mining.md#getblocktemplate): gets a block template or proposal for use with mining software.
+* [GetMiningInfo](../api/remote-procedure-calls-mining.md#getmininginfo): returns various mining-related information.
+* [GetBlockTemplate](../api/remote-procedure-calls-mining.md#getblocktemplate): gets a block template or proposal for use with mining software.
 
 ## GenerateToDescriptor
 
@@ -163,5 +163,5 @@ Result:
 
 * [GenerateBlock](#generateblock): mines a block with a set of ordered transactions immediately to a specified address or descriptor.
 * [GenerateToAddress](#generatetoaddress): mines blocks immediately to a specified address.
-* [GetMiningInfo](../api-ref/core-api-ref-remote-procedure-calls-mining.md#getmininginfo): returns various mining-related information.
-* [GetBlockTemplate](../api-ref/core-api-ref-remote-procedure-calls-mining.md#getblocktemplate): gets a block template or proposal for use with mining software.
+* [GetMiningInfo](../api/remote-procedure-calls-mining.md#getmininginfo): returns various mining-related information.
+* [GetBlockTemplate](../api/remote-procedure-calls-mining.md#getblocktemplate): gets a block template or proposal for use with mining software.

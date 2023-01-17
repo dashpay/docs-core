@@ -8,7 +8,7 @@ Open-source client libraries for the RPC interface are readily available in most
 
 > 📘 Dash Core Configuration
 >
-> The following subsections reference setting configuration values. See the [Examples Page](../examples/core-examples-introduction.md) for more information about setting Dash Core configuration values.
+> The following subsections reference setting configuration values. See the [Examples Page](../examples/introduction.md) for more information about setting Dash Core configuration values.
 
 ### Enabling RPC
 
@@ -74,13 +74,13 @@ As of Dash Core 0.17.0, an option is provided to add an RPC user that is restric
 The `platform-user` configuration value must be set to a previously configured [rpcauth user](#rpc-auth-security).
 
 Only the following RPCs are accessible to the restricted user:
-- [`getbestblockhash`](../api-ref/core-api-ref-remote-procedure-calls-blockchain.md#getbestblockhash)
-- [`getblockhash`](../api-ref/core-api-ref-remote-procedure-calls-blockchain.md#getblockhash)
-- [`getblockcount`](../api-ref/core-api-ref-remote-procedure-calls-blockchain.md#getblockcount)
-- [`getbestchainlock`](../api-ref/core-api-ref-remote-procedure-calls-blockchain.md#getbestchainlock)
-- [`quorum sign 4`](../api-ref/core-api-ref-remote-procedure-calls-evo.md#quorum-sign) - The restricted user can only request quorum signatures from the Platform quorum (LLMQ type 4)
-- [`quorum verify`](../api-ref/core-api-ref-remote-procedure-calls-evo.md#quorum-verify)
-- [`verifyislock`](../api-ref/core-api-ref-remote-procedure-calls-evo.md#verifyislock)
+- [`getbestblockhash`](../api/remote-procedure-calls-blockchain.md#getbestblockhash)
+- [`getblockhash`](../api/remote-procedure-calls-blockchain.md#getblockhash)
+- [`getblockcount`](../api/remote-procedure-calls-blockchain.md#getblockcount)
+- [`getbestchainlock`](../api/remote-procedure-calls-blockchain.md#getbestchainlock)
+- [`quorum sign 4`](../api/remote-procedure-calls-evo.md#quorum-sign) - The restricted user can only request quorum signatures from the Platform quorum (LLMQ type 4)
+- [`quorum verify`](../api/remote-procedure-calls-evo.md#quorum-verify)
+- [`verifyislock`](../api/remote-procedure-calls-evo.md#verifyislock)
 
 ### Default Connection Info
 
@@ -195,7 +195,7 @@ Continuing with the example above, the output from the `dash-cli` command would 
 
 ### RPCs with sub-commands
 
-Dash Core has a number of RPC requests that use sub-commands to group access to related data under one RPC method name. Examples of this include the [`gobject`](../api-ref/core-api-ref-remote-procedure-calls-dash.md#gobject), [`masternode`](../api-ref/core-api-ref-remote-procedure-calls-dash.md#masternode), [`protx`](../api-ref/core-api-ref-remote-procedure-calls-evo.md#protx), and [`quorum`](../api-ref/core-api-ref-remote-procedure-calls-evo.md#quorum) RPCs. If using cURL, the sub-commands should be included in the requests `params` field as shown here:
+Dash Core has a number of RPC requests that use sub-commands to group access to related data under one RPC method name. Examples of this include the [`gobject`](../api/remote-procedure-calls-dash.md#gobject), [`masternode`](../api/remote-procedure-calls-dash.md#masternode), [`protx`](../api/remote-procedure-calls-evo.md#protx), and [`quorum`](../api/remote-procedure-calls-evo.md#quorum) RPCs. If using cURL, the sub-commands should be included in the requests `params` field as shown here:
 [block:code]
 {
   "codes": [

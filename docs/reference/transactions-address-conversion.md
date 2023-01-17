@@ -4,7 +4,7 @@ The hashes used in P2PKH and <<glossary:P2SH outputs>> are commonly encoded as D
 
 ## Conversion Process
 
-First, get your hash.  For P2PKH, you RIPEMD-160(SHA256()) hash a ECDSA <<glossary:public key>> derived from your 256-bit ECDSA <<glossary:private key>> (random data). For P2SH, you RIPEMD-160(SHA256()) hash a <<glossary:redeem script>> serialized in the format used in <<glossary:raw transactions>> (described in a [following sub-section](../ref/core-ref-transactions-raw-transaction-format.md)).  Taking the resulting hash:
+First, get your hash.  For P2PKH, you RIPEMD-160(SHA256()) hash a ECDSA <<glossary:public key>> derived from your 256-bit ECDSA <<glossary:private key>> (random data). For P2SH, you RIPEMD-160(SHA256()) hash a <<glossary:redeem script>> serialized in the format used in <<glossary:raw transactions>> (described in a [following sub-section](../reference/transactions-raw-transaction-format.md)).  Taking the resulting hash:
 
 1. Add an <<glossary:address>> version byte in front of the hash.  The version bytes commonly used by Dash are:
 

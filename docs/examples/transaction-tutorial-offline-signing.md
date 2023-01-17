@@ -149,7 +149,7 @@ a9eea0ca9368d1c99c097279b8081f88ac00000000
 
 ## 4. Sign raw transaction
 
-Attempt to sign the <<glossary:raw transaction>> without any special arguments, the way we successfully signed the the raw transaction in the [Simple Raw Transaction subsection](core-examples-transaction-tutorial-simple-raw-transaction). If you've read the [Transaction section](../guide/core-guide-transactions.md) of the guide, you may know why the call fails and leaves the raw transaction hex unchanged.
+Attempt to sign the <<glossary:raw transaction>> without any special arguments, the way we successfully signed the the raw transaction in the [Simple Raw Transaction subsection](core-examples-transaction-tutorial-simple-raw-transaction). If you've read the [Transaction section](../guide/transactions.md) of the guide, you may know why the call fails and leaves the raw transaction hex unchanged.
 
 ![Old Transaction Data Required To Be Signed](https://dash-docs.github.io/img/dev/en-signing-output-to-spend.svg)
 

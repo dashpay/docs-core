@@ -1,6 +1,6 @@
 # Retrieving a MerkleBlock
 
-For the [`merkleblock` message](../ref/core-ref-p2p-network-data-messages.md#merkleblock) documentation on the reference page, an actual <<glossary:merkle block>> was retrieved from the <<glossary:network>> and manually processed.  This section walks through each step of the process, demonstrating basic network communication and merkle block processing.
+For the [`merkleblock` message](../reference/p2p-network-data-messages.md#merkleblock) documentation on the reference page, an actual <<glossary:merkle block>> was retrieved from the <<glossary:network>> and manually processed.  This section walks through each step of the process, demonstrating basic network communication and merkle block processing.
 [block:code]
 {
   "codes": [
@@ -24,14 +24,14 @@ To connect to the P2P <<glossary:network>>, the trivial Python function above wa
 }
 [/block]
 
-Peers on the network will not accept any requests until you send them a [`version` message](../ref/core-ref-p2p-network-control-messages.md#version). The receiving node will reply with their [`version` message](../ref/core-ref-p2p-network-control-messages.md#version) and a [`verack` message](../ref/core-ref-p2p-network-control-messages.md#verack).
+Peers on the network will not accept any requests until you send them a [`version` message](../reference/p2p-network-control-messages.md#version). The receiving node will reply with their [`version` message](../reference/p2p-network-control-messages.md#version) and a [`verack` message](../reference/p2p-network-control-messages.md#verack).
 
 ``` python
 sleep(1)
 send("verack", "")
 ```
 
-We're not going to validate their [`version` message](../ref/core-ref-p2p-network-control-messages.md#version) with this simple script, but we will sleep a short bit and send back our own [`verack` message](../ref/core-ref-p2p-network-control-messages.md#verack) as if we had accepted their [`version` message](../ref/core-ref-p2p-network-control-messages.md#version).
+We're not going to validate their [`version` message](../reference/p2p-network-control-messages.md#version) with this simple script, but we will sleep a short bit and send back our own [`verack` message](../reference/p2p-network-control-messages.md#verack) as if we had accepted their [`version` message](../reference/p2p-network-control-messages.md#version).
 
 ``` python
 send("filterload",
@@ -43,7 +43,7 @@ send("filterload",
 )
 ```
 
-We set a <<glossary:bloom filter>> with the [`filterload` message](../ref/core-ref-p2p-network-control-messages.md#filterload). This filter is described in the preceding sections.
+We set a <<glossary:bloom filter>> with the [`filterload` message](../reference/p2p-network-control-messages.md#filterload). This filter is described in the preceding sections.
 
 ``` python
 send("getdata",

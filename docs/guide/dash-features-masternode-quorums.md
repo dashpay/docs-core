@@ -18,7 +18,7 @@ The following table details the data flow of P2P messages exchanged during the d
 
 > 🚧 Minimum Masternode Protocol Version
 >
-> As of Dash Core 0.16.0, masternodes perform a [version check](https://github.com/dashpay/dash/pull/3390) on their quorum peers during DKG. Masternodes that do not meet the `MIN_MASTERNODE_PROTO_VERSION` (70223 in Dash Core 18.0) will begin receiving increases in [PoSe](../guide/core-guide-dash-features-proof-of-service.md) score once 60% of the masternodes on the network have upgraded to that version.
+> As of Dash Core 0.16.0, masternodes perform a [version check](https://github.com/dashpay/dash/pull/3390) on their quorum peers during DKG. Masternodes that do not meet the `MIN_MASTERNODE_PROTO_VERSION` (70223 in Dash Core 18.0) will begin receiving increases in [PoSe](../guide/dash-features-proof-of-service.md) score once 60% of the masternodes on the network have upgraded to that version.
 
 | **Masternode** | **Direction**  | **Peers**   | **Description** |
 | --- | :---: | --- | --- |
@@ -26,28 +26,28 @@ The following table details the data flow of P2P messages exchanged during the d
 | | | | Each quorum participant establishes connections to a set of quorum participants [as described in DIP6](https://github.com/dashpay/dips/blob/master/dip-0006.md#building-the-set-of-deterministic-connections) |
 | **[Contribution Phase](https://github.com/dashpay/dips/blob/master/dip-0006.md#2-contribution-phase)** | | | **Send quorum contributions (intra-quorum communication)** |
 |`inv` message (qcontrib)                        | → |                              | Masternode sends inventory for its quorum contribution _to other masternodes in the quorum_
-|                                                | ← | [`getdata` message](../ref/core-ref-p2p-network-data-messages.md#getdata) (qcontrib) | Peer(s) respond with request for quorum contribution
-| [`qcontrib` message](../ref/core-ref-p2p-network-quorum-messages.md#qcontrib)                             | → |                              | Masternode sends the requested quorum contribution
+|                                                | ← | [`getdata` message](../reference/p2p-network-data-messages.md#getdata) (qcontrib) | Peer(s) respond with request for quorum contribution
+| [`qcontrib` message](../reference/p2p-network-quorum-messages.md#qcontrib)                             | → |                              | Masternode sends the requested quorum contribution
 | **[Complaining Phase](https://github.com/dashpay/dips/blob/master/dip-0006.md#3-complaining-phase)** | | | **Send complaints for any peers with invalid or missing contributions (intra-quorum communication)** |
 |`inv` message (qcomplaint)                      | → |                              | Masternode sends inventory for any complaints _to other masternodes in the quorum_
-|                                                | ← | [`getdata` message](../ref/core-ref-p2p-network-data-messages.md#getdata) (qcomplaint) | Peer(s) respond with request for quorum complaints
-| [`qcomplaint` message](../ref/core-ref-p2p-network-quorum-messages.md#qcomplaint)                           | → |                              | Masternode sends the requested complaints
+|                                                | ← | [`getdata` message](../reference/p2p-network-data-messages.md#getdata) (qcomplaint) | Peer(s) respond with request for quorum complaints
+| [`qcomplaint` message](../reference/p2p-network-quorum-messages.md#qcomplaint)                           | → |                              | Masternode sends the requested complaints
 | **[Justification Phase](https://github.com/dashpay/dips/blob/master/dip-0006.md#4-justification-phase)** | | | **Send justification responses for any complaints against own contributions (intra-quorum communication)** |
 |`inv` message (qjustify)                        | → |                              | Masternode sends inventory for any justifications _to other masternodes in the quorum_
-|                                                | ← | [`getdata` message](../ref/core-ref-p2p-network-data-messages.md#getdata) (qjustify) | Peer(s) respond with request for quorum justifications
-| [`qjustify` message](../ref/core-ref-p2p-network-quorum-messages.md#qjustify)                             | → |                              | Masternode sends the requested justifications
+|                                                | ← | [`getdata` message](../reference/p2p-network-data-messages.md#getdata) (qjustify) | Peer(s) respond with request for quorum justifications
+| [`qjustify` message](../reference/p2p-network-quorum-messages.md#qjustify)                             | → |                              | Masternode sends the requested justifications
 | **[Commitment Phase](https://github.com/dashpay/dips/blob/master/dip-0006.md#5-commitment-phase)** | | | **Send premature commitment containing the quorum public key (intra-quorum communication)** |
 |`inv` message (qpcommit)                        | → |                              | Masternode sends inventory for its premature commitment _to other masternodes in the quorum_
-|                                                | ← | [`getdata` message](../ref/core-ref-p2p-network-data-messages.md#getdata) (qpcommit) | Peer(s) respond with request for quorum premature commitment
-| [`qpcommit` message](../ref/core-ref-p2p-network-quorum-messages.md#qpcommit)                             | → |                              | Masternode sends the requested premature commitment
+|                                                | ← | [`getdata` message](../reference/p2p-network-data-messages.md#getdata) (qpcommit) | Peer(s) respond with request for quorum premature commitment
+| [`qpcommit` message](../reference/p2p-network-quorum-messages.md#qpcommit)                             | → |                              | Masternode sends the requested premature commitment
 | **[Finalization Phase](https://github.com/dashpay/dips/blob/master/dip-0006.md#6-finalization-phase)** | | | **Send final commitment containing the quorum public key** |
 |`inv` message (qfcommit)                        | → |                              | Masternode sends inventory for its premature commitment **to all peers**
-|                                                | ← | [`getdata` message](../ref/core-ref-p2p-network-data-messages.md#getdata) (qfcommit) | Peer(s) respond with request for quorum final commitment
-| [`qfcommit` message](../ref/core-ref-p2p-network-quorum-messages.md#qfcommit)                             | → |                              | Masternode sends the requested final commitment
+|                                                | ← | [`getdata` message](../reference/p2p-network-data-messages.md#getdata) (qfcommit) | Peer(s) respond with request for quorum final commitment
+| [`qfcommit` message](../reference/p2p-network-quorum-messages.md#qfcommit)                             | → |                              | Masternode sends the requested final commitment
 
 ## LLMQ Signing Session
 
-The following table details the data flow of P2P messages exchanged during an LLMQ signing session. These sessions take advantage of BLS threshold signatures to enable quorums to sign arbitrary messages. For example, Dash Core 0.14 uses this capability to create the quorum signature found in the [`clsig` message](../ref/core-ref-p2p-network-instantsend-messages.md#clsig) that enables <<glossary:ChainLocks>>.
+The following table details the data flow of P2P messages exchanged during an LLMQ signing session. These sessions take advantage of BLS threshold signatures to enable quorums to sign arbitrary messages. For example, Dash Core 0.14 uses this capability to create the quorum signature found in the [`clsig` message](../reference/p2p-network-instantsend-messages.md#clsig) that enables <<glossary:ChainLocks>>.
 
 Please read [DIP7 LLMQ Signing Requests / Sessions](https://github.com/dashpay/dips/blob/master/dip-0007.md) for additional details.
 
@@ -56,13 +56,13 @@ Please read [DIP7 LLMQ Signing Requests / Sessions](https://github.com/dashpay/d
 | **Masternode** | **Direction**  | **Peers**   | **Description** |
 | --- | :---: | --- | --- |
 | **[Siging Request Phase](https://github.com/dashpay/dips/blob/master/dip-0007.md#signing-request)** | | | Request quorum signing of a message (e.g. InstantSend transaction input) (intra-quorum communication) |
-| [`qsigsesann` message](../ref/core-ref-p2p-network-quorum-messages.md#qsigsesann)                             | → |                              | Masternode sends a signing session announcement _to other masternodes in the quorum_
+| [`qsigsesann` message](../reference/p2p-network-quorum-messages.md#qsigsesann)                             | → |                              | Masternode sends a signing session announcement _to other masternodes in the quorum_
 | **[Share Propagation Phase](https://github.com/dashpay/dips/blob/master/dip-0007.md#propagating-signature-shares)** | | | Members exchange signature shares within the quorum (intra-quorum communication) |
-| [`qsigsinv` message](../ref/core-ref-p2p-network-quorum-messages.md#qsigsinv)                             | → |                              | Masternode sends one or more quorum signature share inventories _to other masternodes in the quorum_<br>_May occur multiple times in this phase_
-|                                                | ← | [`qgetsigs` message](../ref/core-ref-p2p-network-quorum-messages.md#qgetsigs) (qcontrib) | Peer(s) respond with request for signature shares<br>_May occur multiple times in this phase_
-| [`qbsigs` message](../ref/core-ref-p2p-network-quorum-messages.md#qbsigs)                             | → |                              | Masternode sends the requested batched signature share(s)<br>_May occur multiple times in this phase_
+| [`qsigsinv` message](../reference/p2p-network-quorum-messages.md#qsigsinv)                             | → |                              | Masternode sends one or more quorum signature share inventories _to other masternodes in the quorum_<br>_May occur multiple times in this phase_
+|                                                | ← | [`qgetsigs` message](../reference/p2p-network-quorum-messages.md#qgetsigs) (qcontrib) | Peer(s) respond with request for signature shares<br>_May occur multiple times in this phase_
+| [`qbsigs` message](../reference/p2p-network-quorum-messages.md#qbsigs)                             | → |                              | Masternode sends the requested batched signature share(s)<br>_May occur multiple times in this phase_
 | **[Threshold Signature Recovery Phase](https://github.com/dashpay/dips/blob/master/dip-0007.md#recovered-threshold-signatures)** | | | A recovered signature is created by a quorum member once valid signature shares from at least the threshold number of members have been received |
-| [`qsigrec` message](../ref/core-ref-p2p-network-quorum-messages.md#qsigrec)                             | → |                              | Masternode sends the quorum recovered signature **to all peers** (except those that have asked to be excluded via a [`qsendrecsigs` message](../ref/core-ref-p2p-network-quorum-messages.md#qsendrecsigs))
+| [`qsigrec` message](../reference/p2p-network-quorum-messages.md#qsigrec)                             | → |                              | Masternode sends the quorum recovered signature **to all peers** (except those that have asked to be excluded via a [`qsendrecsigs` message](../reference/p2p-network-quorum-messages.md#qsendrecsigs))
 
 Note the following timeouts defined by Dash Core related to signing sessions:
 

@@ -8,9 +8,9 @@ Note that almost none of the control messages are authenticated in any way, mean
 
 ## addr
 
-The `addr` (IP address) message relays connection information for peers on the network. Each peer which wants to accept incoming connections creates an [`addr` message](../ref/core-ref-p2p-network-control-messages.md#addr) providing its connection information and then sends that message to its peers unsolicited. Some of its peers send that information to their peers (also unsolicited), some of which further distribute it, allowing decentralized peer discovery for any program already on the network.
+The `addr` (IP address) message relays connection information for peers on the network. Each peer which wants to accept incoming connections creates an [`addr` message](../reference/p2p-network-control-messages.md#addr) providing its connection information and then sends that message to its peers unsolicited. Some of its peers send that information to their peers (also unsolicited), some of which further distribute it, allowing decentralized peer discovery for any program already on the network.
 
-An [`addr` message](../ref/core-ref-p2p-network-control-messages.md#addr) may also be sent in response to a [`getaddr` message](../ref/core-ref-p2p-network-control-messages.md#getaddr).
+An [`addr` message](../reference/p2p-network-control-messages.md#addr) may also be sent in response to a [`getaddr` message](../reference/p2p-network-control-messages.md#getaddr).
 
 | Bytes      | Name             | Data Type          | Description
 |------------|------------------|--------------------|----------------
@@ -21,12 +21,12 @@ Each encapsulated network IP address currently uses the following structure:
 
 | Bytes | Name       | Data Type | Description
 |-------|------------|-----------|---------------
-| 4     | time       | uint32    | *Added in protocol version 31402.* <br><br>A time in Unix epoch time format.  Nodes advertising their own IP address set this to the current time.  Nodes advertising IP addresses they've connected to set this to the last time they connected to that node.  Other nodes just relaying the IP address should not change the time.  Nodes can use the time field to avoid relaying old [`addr` messages](../ref/core-ref-p2p-network-control-messages.md#addr).  <br><br>Malicious nodes may change times or even set them in the future.
-| 8     | services   | uint64_t  | The services the node advertised in its [`version` message](../ref/core-ref-p2p-network-control-messages.md#version).
+| 4     | time       | uint32    | *Added in protocol version 31402.* <br><br>A time in Unix epoch time format.  Nodes advertising their own IP address set this to the current time.  Nodes advertising IP addresses they've connected to set this to the last time they connected to that node.  Other nodes just relaying the IP address should not change the time.  Nodes can use the time field to avoid relaying old [`addr` messages](../reference/p2p-network-control-messages.md#addr).  <br><br>Malicious nodes may change times or even set them in the future.
+| 8     | services   | uint64_t  | The services the node advertised in its [`version` message](../reference/p2p-network-control-messages.md#version).
 | 16    | IP address | char      | IPv6 address in **big endian byte order**. IPv4 addresses can be provided as [IPv4-mapped IPv6 addresses](http://en.wikipedia.org/wiki/IPv6#IPv4-mapped_IPv6_addresses)
 | 2     | port       | uint16_t  | Port number in **big endian byte order**.  Note that Dash Core will only connect to nodes with non-standard port numbers as a last resort for finding peers.  This is to prevent anyone from trying to use the network to disrupt non-Dash services that run on other ports.
 
-The following annotated hexdump shows part of an [`addr` message](../ref/core-ref-p2p-network-control-messages.md#addr). (The <<glossary:message header>> has been omitted and the actual IP address has been replaced with a [RFC5737](http://tools.ietf.org/html/rfc5737) reserved IP address.)
+The following annotated hexdump shows part of an [`addr` message](../reference/p2p-network-control-messages.md#addr). (The <<glossary:message header>> has been omitted and the actual IP address has been replaced with a [RFC5737](http://tools.ietf.org/html/rfc5737) reserved IP address.)
 
 ``` text
 fde803 ............................. Address count: 1000
@@ -50,7 +50,7 @@ Each encapsulated network IP address currently uses the following structure:
 | Bytes | Name       | Data Type | Description
 |-------|------------|-----------|---------------
 | 4     | time       | uint32_t    | A time in Unix epoch time format.  Nodes advertising their own IP address set this to the current time.  Nodes advertising IP addresses they've connected to set this to the last time they connected to that node.  Other nodes just relaying the IP address should not change the time.
-| Varies     | services   | compactSize uint  | The services the node advertised in its [`version` message](../ref/core-ref-p2p-network-control-messages.md#version).
+| Varies     | services   | compactSize uint  | The services the node advertised in its [`version` message](../reference/p2p-network-control-messages.md#version).
 | 1    | networkID | uint8_t      | Network identifier. An 8-bit value that specifies which network is addressed. Network ID types may be found in [BIP155](https://github.com/bitcoin/bips/blob/master/bip-0155.mediawiki#specification).
 | Varies | addr | Vector<uint8_t> | Network address. The interpretation depends on networkID.
 | 2     | port       | uint16_t  | Port number in **big endian byte order**.  Note that Dash Core will only connect to nodes with non-standard port numbers as a last resort for finding peers.  This is to prevent anyone from trying to use the network to disrupt non-Dash services that run on other ports.
@@ -78,18 +78,18 @@ Peer address details
 
 *Added in protocol version 70001 as described by BIP37.*
 
-The [`filteradd` message](../ref/core-ref-p2p-network-control-messages.md#filteradd) tells the receiving <<glossary:peer>> to add a single element to a previously-set <<glossary:bloom filter>>, such as a new <<glossary:public key>>. The element is sent directly to the receiving peer; the peer then uses the parameters set in the [`filterload` message](../ref/core-ref-p2p-network-control-messages.md#filterload) to add the element to the bloom filter.
+The [`filteradd` message](../reference/p2p-network-control-messages.md#filteradd) tells the receiving <<glossary:peer>> to add a single element to a previously-set <<glossary:bloom filter>>, such as a new <<glossary:public key>>. The element is sent directly to the receiving peer; the peer then uses the parameters set in the [`filterload` message](../reference/p2p-network-control-messages.md#filterload) to add the element to the bloom filter.
 
-Because the element is sent directly to the receiving peer, there is no obfuscation of the element and none of the plausible-deniability privacy provided by the bloom filter. Clients that want to maintain greater privacy should recalculate the bloom filter themselves and send a new [`filterload` message](../ref/core-ref-p2p-network-control-messages.md#filterload) with the recalculated bloom filter.
+Because the element is sent directly to the receiving peer, there is no obfuscation of the element and none of the plausible-deniability privacy provided by the bloom filter. Clients that want to maintain greater privacy should recalculate the bloom filter themselves and send a new [`filterload` message](../reference/p2p-network-control-messages.md#filterload) with the recalculated bloom filter.
 
 | Bytes    | Name          | Data Type        | Description
 |----------|---------------|------------------|-----------------
 | *Varies* | element bytes | compactSize uint | The number of bytes in the following element field.
 | *Varies* | element       | uint8_t[]        | The element to add to the current filter.  Maximum of 520 bytes, which is the maximum size of an element which can be pushed onto the stack in a pubkey or signature script.  Elements must be sent in the byte order they would use when appearing in a raw transaction; for example, hashes should be sent in internal byte order.
 
-Note: a [`filteradd` message](../ref/core-ref-p2p-network-control-messages.md#filteradd) will not be accepted unless a filter was previously set with the [`filterload` message](../ref/core-ref-p2p-network-control-messages.md#filterload).
+Note: a [`filteradd` message](../reference/p2p-network-control-messages.md#filteradd) will not be accepted unless a filter was previously set with the [`filterload` message](../reference/p2p-network-control-messages.md#filterload).
 
-The annotated hexdump below shows a [`filteradd` message](../ref/core-ref-p2p-network-control-messages.md#filteradd) adding a <<glossary:TXID>>. (The message header has been omitted.) This TXID appears in the same block used for the example hexdump in the [`merkleblock` message](../ref/core-ref-p2p-network-data-messages.md#merkleblock); if that [`merkleblock` message](../ref/core-ref-p2p-network-data-messages.md#merkleblock) is re-sent after sending this [`filteradd` message](../ref/core-ref-p2p-network-control-messages.md#filteradd), six hashes are returned instead of four.
+The annotated hexdump below shows a [`filteradd` message](../reference/p2p-network-control-messages.md#filteradd) adding a <<glossary:TXID>>. (The message header has been omitted.) This TXID appears in the same block used for the example hexdump in the [`merkleblock` message](../reference/p2p-network-data-messages.md#merkleblock); if that [`merkleblock` message](../reference/p2p-network-data-messages.md#merkleblock) is re-sent after sending this [`filteradd` message](../reference/p2p-network-control-messages.md#filteradd), six hashes are returned instead of four.
 
 ``` text
 20 ................................. Element bytes: 32
@@ -101,17 +101,17 @@ fdacf9b3eb077412e7a968d2e4f11b9a
 
 *Added in protocol version 70001 as described by BIP37.*
 
-The [`filterclear` message](../ref/core-ref-p2p-network-control-messages.md#filterclear) tells the receiving <<glossary:peer>> to remove a previously-set <<glossary:bloom filter>>.  This also undoes the effect of setting the relay field in the [`version` message](../ref/core-ref-p2p-network-control-messages.md#version) to 0, allowing unfiltered access to [`inv` messages](../ref/core-ref-p2p-network-data-messages.md#inv) announcing new transactions.
+The [`filterclear` message](../reference/p2p-network-control-messages.md#filterclear) tells the receiving <<glossary:peer>> to remove a previously-set <<glossary:bloom filter>>.  This also undoes the effect of setting the relay field in the [`version` message](../reference/p2p-network-control-messages.md#version) to 0, allowing unfiltered access to [`inv` messages](../reference/p2p-network-data-messages.md#inv) announcing new transactions.
 
-Dash Core does not require a [`filterclear` message](../ref/core-ref-p2p-network-control-messages.md#filterclear) before a replacement filter is loaded with `filterload`.  It also doesn't require a [`filterload` message](../ref/core-ref-p2p-network-control-messages.md#filterload) before a [`filterclear` message](../ref/core-ref-p2p-network-control-messages.md#filterclear).
+Dash Core does not require a [`filterclear` message](../reference/p2p-network-control-messages.md#filterclear) before a replacement filter is loaded with `filterload`.  It also doesn't require a [`filterload` message](../reference/p2p-network-control-messages.md#filterload) before a [`filterclear` message](../reference/p2p-network-control-messages.md#filterclear).
 
-There is no payload in a [`filterclear` message](../ref/core-ref-p2p-network-control-messages.md#filterclear).  See the [message header section](core-ref-p2p-network-message-headers) for an example of a message without a payload.
+There is no payload in a [`filterclear` message](../reference/p2p-network-control-messages.md#filterclear).  See the [message header section](core-ref-p2p-network-message-headers) for an example of a message without a payload.
 
 ## filterload
 
 *Added in protocol version 70001 as described by BIP37.*
 
-The [`filterload` message](../ref/core-ref-p2p-network-control-messages.md#filterload) tells the receiving <<glossary:peer>> to filter all relayed transactions and requested <<glossary:merkle blocks>> through the provided filter. This allows clients to receive transactions relevant to their <<glossary:wallet>> plus a configurable rate of false positive transactions which can provide plausible-deniability privacy.
+The [`filterload` message](../reference/p2p-network-control-messages.md#filterload) tells the receiving <<glossary:peer>> to filter all relayed transactions and requested <<glossary:merkle blocks>> through the provided filter. This allows clients to receive transactions relevant to their <<glossary:wallet>> plus a configurable rate of false positive transactions which can provide plausible-deniability privacy.
 
 | Bytes    | Name         | Data Type | Description
 |----------|--------------|-----------|---------------
@@ -121,7 +121,7 @@ The [`filterload` message](../ref/core-ref-p2p-network-control-messages.md#filte
 | 4        | nTweak       | uint32_t  | An arbitrary value to add to the seed value in the hash function used by the bloom filter.
 | 1        | nFlags       | uint8_t   | A set of flags that control how outpoints corresponding to a matched pubkey script are added to the filter. See the table in the Updating A Bloom Filter subsection below.
 
-The annotated hexdump below shows a [`filterload` message](../ref/core-ref-p2p-network-control-messages.md#filterload). (The message header has been omitted.)  For an example of how this payload was created, see the [filterload example](../examples/core-examples-p2p-network-creating-a-bloom-filter.md).
+The annotated hexdump below shows a [`filterload` message](../reference/p2p-network-control-messages.md#filterload). (The message header has been omitted.)  For an example of how this payload was created, see the [filterload example](../examples/p2p-network-creating-a-bloom-filter.md).
 
 ``` text
 02 ......... Filter bytes: 2
@@ -199,7 +199,7 @@ The following transaction elements are compared against bloom filters. All eleme
 
 As of  Dash Core 0.14.0, elements in the extra payload section of [DIP2](https://github.com/dashpay/dips/blob/master/dip-0002.md)-based <<glossary:special transactions>> are also compared against bloom filters.
 
-The following annotated hexdump of a transaction is from the [raw transaction format section](../ref/core-ref-transactions-raw-transaction-format.md); the elements which would be checked by the filter are emphasized in bold. Note that this transaction's TXID (**`01000000017b1eab[...]`**) would also be checked, and that the outpoint TXID and index number below would be checked as a single 36-byte element.
+The following annotated hexdump of a transaction is from the [raw transaction format section](../reference/transactions-raw-transaction-format.md); the elements which would be checked by the filter are emphasized in bold. Note that this transaction's TXID (**`01000000017b1eab[...]`**) would also be checked, and that the outpoint TXID and index number below would be checked as a single 36-byte element.
 
 <pre><code>01000000 ................................... Version
 
@@ -254,27 +254,27 @@ In addition, because the filter size stays the same even though additional eleme
 
 ## getaddr
 
-The [`getaddr` message](../ref/core-ref-p2p-network-control-messages.md#getaddr) requests an [`addr` message](../ref/core-ref-p2p-network-control-messages.md#addr) from the receiving <<glossary:node>>, preferably one with lots of IP addresses of other receiving nodes. The transmitting node can use those IP addresses to quickly update its database of available nodes rather than waiting for unsolicited [`addr` messages](../ref/core-ref-p2p-network-control-messages.md#addr) to arrive over time.
+The [`getaddr` message](../reference/p2p-network-control-messages.md#getaddr) requests an [`addr` message](../reference/p2p-network-control-messages.md#addr) from the receiving <<glossary:node>>, preferably one with lots of IP addresses of other receiving nodes. The transmitting node can use those IP addresses to quickly update its database of available nodes rather than waiting for unsolicited [`addr` messages](../reference/p2p-network-control-messages.md#addr) to arrive over time.
 
-There is no payload in a [`getaddr` message](../ref/core-ref-p2p-network-control-messages.md#getaddr).  See the [message header section](core-ref-p2p-network-message-headers) for an example of a message without a payload.
+There is no payload in a [`getaddr` message](../reference/p2p-network-control-messages.md#getaddr).  See the [message header section](core-ref-p2p-network-message-headers) for an example of a message without a payload.
 
 ## getsporks
 
-The [`getsporks` message](../ref/core-ref-p2p-network-control-messages.md#getsporks) requests [`spork` messages](../ref/core-ref-p2p-network-control-messages.md#spork) from the receiving node.
+The [`getsporks` message](../reference/p2p-network-control-messages.md#getsporks) requests [`spork` messages](../reference/p2p-network-control-messages.md#spork) from the receiving node.
 
-There is no payload in a [`getsporks` message](../ref/core-ref-p2p-network-control-messages.md#getsporks).  See the [message header section](core-ref-p2p-network-message-headers) for an example of a message without a payload.
+There is no payload in a [`getsporks` message](../reference/p2p-network-control-messages.md#getsporks).  See the [message header section](core-ref-p2p-network-message-headers) for an example of a message without a payload.
 
 ## ping
 
-The [`ping` message](../ref/core-ref-p2p-network-control-messages.md#ping) helps confirm that the receiving <<glossary:peer>> is still connected. If a TCP/IP error is encountered when sending the [`ping` message](../ref/core-ref-p2p-network-control-messages.md#ping) (such as a connection timeout), the transmitting node can assume that the receiving node is disconnected. The response to a [`ping` message](../ref/core-ref-p2p-network-control-messages.md#ping) is the [`pong` message](../ref/core-ref-p2p-network-control-messages.md#pong).
+The [`ping` message](../reference/p2p-network-control-messages.md#ping) helps confirm that the receiving <<glossary:peer>> is still connected. If a TCP/IP error is encountered when sending the [`ping` message](../reference/p2p-network-control-messages.md#ping) (such as a connection timeout), the transmitting node can assume that the receiving node is disconnected. The response to a [`ping` message](../reference/p2p-network-control-messages.md#ping) is the [`pong` message](../reference/p2p-network-control-messages.md#pong).
 
-Before protocol version 60000, the [`ping` message](../ref/core-ref-p2p-network-control-messages.md#ping) had no payload. As of protocol version 60001 and all later versions, the message includes a single field, the nonce.
+Before protocol version 60000, the [`ping` message](../reference/p2p-network-control-messages.md#ping) had no payload. As of protocol version 60001 and all later versions, the message includes a single field, the nonce.
 
 | Bytes | Name  | Data Type | Description
 |-------|-------|-----------|---------------
-| 8     | nonce | uint64_t  | *Added in protocol version 60001 as described by BIP31.* <br><br>Random nonce assigned to this [`ping` message](../ref/core-ref-p2p-network-control-messages.md#ping).  The responding [`pong` message](../ref/core-ref-p2p-network-control-messages.md#pong) will include this nonce to identify the [`ping` message](../ref/core-ref-p2p-network-control-messages.md#ping) to which it is replying.
+| 8     | nonce | uint64_t  | *Added in protocol version 60001 as described by BIP31.* <br><br>Random nonce assigned to this [`ping` message](../reference/p2p-network-control-messages.md#ping).  The responding [`pong` message](../reference/p2p-network-control-messages.md#pong) will include this nonce to identify the [`ping` message](../reference/p2p-network-control-messages.md#ping) to which it is replying.
 
-The annotated hexdump below shows a [`ping` message](../ref/core-ref-p2p-network-control-messages.md#ping). (The message header has been omitted.)
+The annotated hexdump below shows a [`ping` message](../reference/p2p-network-control-messages.md#ping). (The message header has been omitted.)
 
 ``` text
 0094102111e2af4d ... Nonce
@@ -284,17 +284,17 @@ The annotated hexdump below shows a [`ping` message](../ref/core-ref-p2p-network
 
 *Added in protocol version 60001 as described by BIP31.*
 
-The [`pong` message](../ref/core-ref-p2p-network-control-messages.md#pong) replies to a [`ping` message](../ref/core-ref-p2p-network-control-messages.md#ping), proving to the pinging <<glossary:node>> that the ponging node is still alive. Dash Core will, by default, disconnect from any clients which have not responded to a [`ping` message](../ref/core-ref-p2p-network-control-messages.md#ping) within 20 minutes.
+The [`pong` message](../reference/p2p-network-control-messages.md#pong) replies to a [`ping` message](../reference/p2p-network-control-messages.md#ping), proving to the pinging <<glossary:node>> that the ponging node is still alive. Dash Core will, by default, disconnect from any clients which have not responded to a [`ping` message](../reference/p2p-network-control-messages.md#ping) within 20 minutes.
 
-To allow nodes to keep track of latency, the [`pong` message](../ref/core-ref-p2p-network-control-messages.md#pong) sends back the same nonce received in the [`ping` message](../ref/core-ref-p2p-network-control-messages.md#ping) it is replying to.
+To allow nodes to keep track of latency, the [`pong` message](../reference/p2p-network-control-messages.md#pong) sends back the same nonce received in the [`ping` message](../reference/p2p-network-control-messages.md#ping) it is replying to.
 
-The format of the [`pong` message](../ref/core-ref-p2p-network-control-messages.md#pong) is identical to the [`ping` message](../ref/core-ref-p2p-network-control-messages.md#ping); only the message header differs.
+The format of the [`pong` message](../reference/p2p-network-control-messages.md#pong) is identical to the [`ping` message](../reference/p2p-network-control-messages.md#ping); only the message header differs.
 
 ## reject
 
 *Added in protocol version 70002 as described by BIP61.*
 
-The [`reject` message](../ref/core-ref-p2p-network-control-messages.md#reject) informs the receiving <<glossary:node>> that one of its previous messages has been rejected.
+The [`reject` message](../reference/p2p-network-control-messages.md#reject) informs the receiving <<glossary:node>> that one of its previous messages has been rejected.
 
 | Bytes    | Name          | Data Type        | Description
 |----------|---------------|------------------|--------------
@@ -303,36 +303,36 @@ The [`reject` message](../ref/core-ref-p2p-network-control-messages.md#reject) i
 | 1        | code          | char             | The reject message code.  See the table below.
 | *Varies* | reason bytes  | compactSize uint | The number of bytes in the following reason field.  May be 0x00 if a text reason isn't provided.
 | *Varies* | reason        | string           | The reason for the rejection in ASCII text.  This should not be displayed to the user; it is only for debugging purposes.
-| *Varies* | extra data    | *varies*         | Optional additional data provided with the rejection.  For example, most rejections of [`tx` messages](../ref/core-ref-p2p-network-data-messages.md#tx) or [`block` messages](../ref/core-ref-p2p-network-data-messages.md#block) include the hash of the rejected transaction or block header.  See the code table below.
+| *Varies* | extra data    | *varies*         | Optional additional data provided with the rejection.  For example, most rejections of [`tx` messages](../reference/p2p-network-data-messages.md#tx) or [`block` messages](../reference/p2p-network-data-messages.md#block) include the hash of the rejected transaction or block header.  See the code table below.
 
 The following table lists message reject codes.  Codes are tied to the type of message they reply to; for example there is a 0x10 reject code for transactions and a 0x10 reject code for blocks.
 
 | Code | In Reply To       | Extra Bytes | Extra Type | Description
 |------|-------------------|-------------|------------|----------------
-| 0x01 | *any message*     | 0           | N/A        | Message could not be decoded.  Be careful of [`reject` message](../ref/core-ref-p2p-network-control-messages.md#reject) feedback loops where two peers each don't understand each other's [`reject` messages](../ref/core-ref-p2p-network-control-messages.md#reject) and so keep sending them back and forth forever.
-| 0x10 | [`block` message](../ref/core-ref-p2p-network-data-messages.md#block)   | 32          | char[32]   | Block is invalid for some reason (invalid proof-of-work, invalid signature, etc).  Extra data may include the rejected block's header hash.
-| 0x10 | [`tx` message](../ref/core-ref-p2p-network-data-messages.md#tx)      | 32          | char[32]   | Transaction is invalid for some reason (invalid signature, output value greater than input, etc.).  Extra data may include the rejected transaction's TXID.
+| 0x01 | *any message*     | 0           | N/A        | Message could not be decoded.  Be careful of [`reject` message](../reference/p2p-network-control-messages.md#reject) feedback loops where two peers each don't understand each other's [`reject` messages](../reference/p2p-network-control-messages.md#reject) and so keep sending them back and forth forever.
+| 0x10 | [`block` message](../reference/p2p-network-data-messages.md#block)   | 32          | char[32]   | Block is invalid for some reason (invalid proof-of-work, invalid signature, etc).  Extra data may include the rejected block's header hash.
+| 0x10 | [`tx` message](../reference/p2p-network-data-messages.md#tx)      | 32          | char[32]   | Transaction is invalid for some reason (invalid signature, output value greater than input, etc.).  Extra data may include the rejected transaction's TXID.
 | 0x10 | `ix` message      | 32          | char[32]   | InstantSend transaction is invalid for some reason (invalid tx lock request, conflicting tx lock request, etc.).  Extra data may include the rejected transaction's TXID.
-| 0x11 | [`block` message](../ref/core-ref-p2p-network-data-messages.md#block)   | 32          | char[32]   | The block uses a version that is no longer supported.  Extra data may include the rejected block's header hash.
-| 0x11 | [`version` message](../ref/core-ref-p2p-network-control-messages.md#version) | 0           | N/A        | Connecting node is using a protocol version that the rejecting node considers obsolete and unsupported.
-| 0x11 | [`dsa` message](../ref/core-ref-p2p-network-privatesend-messages.md#dsa)     | 0           | N/A        | Connecting node is using a CoinJoin protocol version that the rejecting node considers obsolete and unsupported.
-| 0x11 | [`dsi` message](../ref/core-ref-p2p-network-privatesend-messages.md#dsi)     | 0           | N/A        | Connecting node is using a CoinJoin protocol version that the rejecting node considers obsolete and unsupported.
-| 0x11 | [`dsc` message](../ref/core-ref-p2p-network-privatesend-messages.md#dsc)     | 0           | N/A        | Connecting node is using a CoinJoin protocol version that the rejecting node considers obsolete and unsupported.
-| 0x11 | [`dsf` message](../ref/core-ref-p2p-network-privatesend-messages.md#dsf)     | 0           | N/A        | Connecting node is using a CoinJoin protocol version that the rejecting node considers obsolete and unsupported.
-| 0x11 | [`dsq` message](../ref/core-ref-p2p-network-privatesend-messages.md#dsq)     | 0           | N/A        | Connecting node is using a CoinJoin protocol version that the rejecting node considers obsolete and unsupported.
-| 0x11 | [`dssu` message](../ref/core-ref-p2p-network-privatesend-messages.md#dssu)    | 0           | N/A        | Connecting node is using a CoinJoin protocol version that the rejecting node considers obsolete and unsupported.
-| 0x11 | [`govsync` message](../ref/core-ref-p2p-network-governance-messages.md#govsync) | 0           | N/A        | Connecting node is using a governance protocol version that the rejecting node considers obsolete and unsupported.
-| 0x11 | [`govobj` message](../ref/core-ref-p2p-network-governance-messages.md#govobj)  | 0           | N/A        | Connecting node is using a governance protocol version that the rejecting node considers obsolete and unsupported.
-| 0x11 | [`govobjvote` message](../ref/core-ref-p2p-network-governance-messages.md#govobjvote) | 0           | N/A        | Connecting node is using a governance protocol version that the rejecting node considers obsolete and unsupported.
+| 0x11 | [`block` message](../reference/p2p-network-data-messages.md#block)   | 32          | char[32]   | The block uses a version that is no longer supported.  Extra data may include the rejected block's header hash.
+| 0x11 | [`version` message](../reference/p2p-network-control-messages.md#version) | 0           | N/A        | Connecting node is using a protocol version that the rejecting node considers obsolete and unsupported.
+| 0x11 | [`dsa` message](../reference/p2p-network-privatesend-messages.md#dsa)     | 0           | N/A        | Connecting node is using a CoinJoin protocol version that the rejecting node considers obsolete and unsupported.
+| 0x11 | [`dsi` message](../reference/p2p-network-privatesend-messages.md#dsi)     | 0           | N/A        | Connecting node is using a CoinJoin protocol version that the rejecting node considers obsolete and unsupported.
+| 0x11 | [`dsc` message](../reference/p2p-network-privatesend-messages.md#dsc)     | 0           | N/A        | Connecting node is using a CoinJoin protocol version that the rejecting node considers obsolete and unsupported.
+| 0x11 | [`dsf` message](../reference/p2p-network-privatesend-messages.md#dsf)     | 0           | N/A        | Connecting node is using a CoinJoin protocol version that the rejecting node considers obsolete and unsupported.
+| 0x11 | [`dsq` message](../reference/p2p-network-privatesend-messages.md#dsq)     | 0           | N/A        | Connecting node is using a CoinJoin protocol version that the rejecting node considers obsolete and unsupported.
+| 0x11 | [`dssu` message](../reference/p2p-network-privatesend-messages.md#dssu)    | 0           | N/A        | Connecting node is using a CoinJoin protocol version that the rejecting node considers obsolete and unsupported.
+| 0x11 | [`govsync` message](../reference/p2p-network-governance-messages.md#govsync) | 0           | N/A        | Connecting node is using a governance protocol version that the rejecting node considers obsolete and unsupported.
+| 0x11 | [`govobj` message](../reference/p2p-network-governance-messages.md#govobj)  | 0           | N/A        | Connecting node is using a governance protocol version that the rejecting node considers obsolete and unsupported.
+| 0x11 | [`govobjvote` message](../reference/p2p-network-governance-messages.md#govobjvote) | 0           | N/A        | Connecting node is using a governance protocol version that the rejecting node considers obsolete and unsupported.
 | 0x11 | `mnget` message   | 0           | N/A        | Connecting node is using a masternode payment protocol version that the rejecting node considers obsolete and unsupported.
 | 0x11 | `mnw` message     | 0           | N/A        | Connecting node is using a masternode payment protocol version that the rejecting node considers obsolete and unsupported.
 | 0x11 | `txlvote` message | 0           | N/A        | Connecting node is using an InstantSend protocol version that the rejecting node considers obsolete and unsupported.
-| 0x12 | [`tx` message](../ref/core-ref-p2p-network-data-messages.md#tx)      | 32          | char[32]   | Duplicate input spend (double spend): the rejected transaction spends the same input as a previously-received transaction.  Extra data may include the rejected transaction's TXID.
-| 0x12 | [`version` message](../ref/core-ref-p2p-network-control-messages.md#version) | 0           | N/A        | More than one [`version` message](../ref/core-ref-p2p-network-control-messages.md#version) received in this connection.
-| 0x40 | [`tx` message](../ref/core-ref-p2p-network-data-messages.md#tx)      | 32          | char[32]   | The transaction will not be mined or relayed because the rejecting node considers it non-standard---a transaction type or version unknown by the server.  Extra data may include the rejected transaction's TXID.
-| 0x41 | [`tx` message](../ref/core-ref-p2p-network-data-messages.md#tx)      | 32          | char[32]   | One or more output amounts are below the dust threshold.  Extra data may include the rejected transaction's TXID.
-| 0x42 | [`tx` message](../ref/core-ref-p2p-network-data-messages.md#tx)      |             | char[32]   | The transaction did not have a large enough fee or priority to be relayed or mined.  Extra data may include the rejected transaction's TXID.
-| 0x43 | [`block` message](../ref/core-ref-p2p-network-data-messages.md#block)   | 32          | char[32]   | The block belongs to a block chain which is not the same block chain as provided by a compiled-in checkpoint.  Extra data may include the rejected block's header hash.
+| 0x12 | [`tx` message](../reference/p2p-network-data-messages.md#tx)      | 32          | char[32]   | Duplicate input spend (double spend): the rejected transaction spends the same input as a previously-received transaction.  Extra data may include the rejected transaction's TXID.
+| 0x12 | [`version` message](../reference/p2p-network-control-messages.md#version) | 0           | N/A        | More than one [`version` message](../reference/p2p-network-control-messages.md#version) received in this connection.
+| 0x40 | [`tx` message](../reference/p2p-network-data-messages.md#tx)      | 32          | char[32]   | The transaction will not be mined or relayed because the rejecting node considers it non-standard---a transaction type or version unknown by the server.  Extra data may include the rejected transaction's TXID.
+| 0x41 | [`tx` message](../reference/p2p-network-data-messages.md#tx)      | 32          | char[32]   | One or more output amounts are below the dust threshold.  Extra data may include the rejected transaction's TXID.
+| 0x42 | [`tx` message](../reference/p2p-network-data-messages.md#tx)      |             | char[32]   | The transaction did not have a large enough fee or priority to be relayed or mined.  Extra data may include the rejected transaction's TXID.
+| 0x43 | [`block` message](../reference/p2p-network-data-messages.md#block)   | 32          | char[32]   | The block belongs to a block chain which is not the same block chain as provided by a compiled-in checkpoint.  Extra data may include the rejected block's header hash.
 
 Reject Codes
 
@@ -347,7 +347,7 @@ Reject Codes
 | 0x42 | Insufficient fee
 | 0x43 | Checkpoint
 
-The annotated hexdump below shows a [`reject` message](../ref/core-ref-p2p-network-control-messages.md#reject). (The message header has been omitted.)
+The annotated hexdump below shows a [`reject` message](../reference/p2p-network-control-messages.md#reject). (The message header has been omitted.)
 
 ``` text
 02 ................................. Number of bytes in message: 2
@@ -372,24 +372,24 @@ There is no payload in a `sendaddrv2` message. See the [message header section](
 
 *Added in protocol version 70209 of Dash Core as described by BIP152*
 
-The [`sendcmpct` message](../ref/core-ref-p2p-network-control-messages.md#sendcmpct) tells the receiving <<glossary:peer>> whether or not to announce new <<glossary:blocks>> using a [`cmpctblock` message](../ref/core-ref-p2p-network-data-messages.md#cmpctblock). It also sends the compact block protocol version it supports. The [`sendcmpct` message](../ref/core-ref-p2p-network-control-messages.md#sendcmpct) is defined as a message containing a 1-byte integer followed by a 8-byte integer. The first integer is interpreted as a boolean and should have a value of either 1 or 0. The second integer is be interpreted as a little-endian version number.
+The [`sendcmpct` message](../reference/p2p-network-control-messages.md#sendcmpct) tells the receiving <<glossary:peer>> whether or not to announce new <<glossary:blocks>> using a [`cmpctblock` message](../reference/p2p-network-data-messages.md#cmpctblock). It also sends the compact block protocol version it supports. The [`sendcmpct` message](../reference/p2p-network-control-messages.md#sendcmpct) is defined as a message containing a 1-byte integer followed by a 8-byte integer. The first integer is interpreted as a boolean and should have a value of either 1 or 0. The second integer is be interpreted as a little-endian version number.
 
-Upon receipt of a [`sendcmpct` message](../ref/core-ref-p2p-network-control-messages.md#sendcmpct) with the first and second integers set to 1, the <<glossary:node>> should announce new blocks by sending a [`cmpctblock` message](../ref/core-ref-p2p-network-data-messages.md#cmpctblock).
+Upon receipt of a [`sendcmpct` message](../reference/p2p-network-control-messages.md#sendcmpct) with the first and second integers set to 1, the <<glossary:node>> should announce new blocks by sending a [`cmpctblock` message](../reference/p2p-network-data-messages.md#cmpctblock).
 
-Upon receipt of a [`sendcmpct` message](../ref/core-ref-p2p-network-control-messages.md#sendcmpct) with the first integer set to 0, the node shouldn't announce new blocks by sending a [`cmpctblock` message](../ref/core-ref-p2p-network-data-messages.md#cmpctblock), but instead announce new blocks by sending invs or <<glossary:headers>>, as defined by [BIP130](https://github.com/bitcoin/bips/blob/master/bip-0130.mediawiki).
+Upon receipt of a [`sendcmpct` message](../reference/p2p-network-control-messages.md#sendcmpct) with the first integer set to 0, the node shouldn't announce new blocks by sending a [`cmpctblock` message](../reference/p2p-network-data-messages.md#cmpctblock), but instead announce new blocks by sending invs or <<glossary:headers>>, as defined by [BIP130](https://github.com/bitcoin/bips/blob/master/bip-0130.mediawiki).
 
-Upon receipt of a [`sendcmpct` message](../ref/core-ref-p2p-network-control-messages.md#sendcmpct) with the second integer set to something other than 1, nodes should treat the peer as if they had not received the message (as it indicates the peer will provide an unexpected encoding in [`cmpctblock` messages](../ref/core-ref-p2p-network-data-messages.md#cmpctblock), and/or other, messages). This allows future versions to send duplicate [`sendcmpct` messages](../ref/core-ref-p2p-network-control-messages.md#sendcmpct) with different versions as a part of a version handshake.
+Upon receipt of a [`sendcmpct` message](../reference/p2p-network-control-messages.md#sendcmpct) with the second integer set to something other than 1, nodes should treat the peer as if they had not received the message (as it indicates the peer will provide an unexpected encoding in [`cmpctblock` messages](../reference/p2p-network-data-messages.md#cmpctblock), and/or other, messages). This allows future versions to send duplicate [`sendcmpct` messages](../reference/p2p-network-control-messages.md#sendcmpct) with different versions as a part of a version handshake.
 
-Nodes should check for a protocol version of >= 70209 before sending [`sendcmpct` messages](../ref/core-ref-p2p-network-control-messages.md#sendcmpct). Nodes shouldn't send a request for a `MSG_CMPCT_BLOCK` object to a peer before having received a [`sendcmpct` message](../ref/core-ref-p2p-network-control-messages.md#sendcmpct) from that peer. Nodes shouldn't request a `MSG_CMPCT_BLOCK` object before having sent all [`sendcmpct` messages](../ref/core-ref-p2p-network-control-messages.md#sendcmpct) to that peer which they intend to send, as the peer cannot know what protocol version to use in the response.
+Nodes should check for a protocol version of >= 70209 before sending [`sendcmpct` messages](../reference/p2p-network-control-messages.md#sendcmpct). Nodes shouldn't send a request for a `MSG_CMPCT_BLOCK` object to a peer before having received a [`sendcmpct` message](../reference/p2p-network-control-messages.md#sendcmpct) from that peer. Nodes shouldn't request a `MSG_CMPCT_BLOCK` object before having sent all [`sendcmpct` messages](../reference/p2p-network-control-messages.md#sendcmpct) to that peer which they intend to send, as the peer cannot know what protocol version to use in the response.
 
-The structure of a [`sendcmpct` message](../ref/core-ref-p2p-network-control-messages.md#sendcmpct) is defined below.
+The structure of a [`sendcmpct` message](../reference/p2p-network-control-messages.md#sendcmpct) is defined below.
 
 | Bytes    | Name          | Data Type        | Description
 |----------|---------------|------------------|--------------
-| 1        | announce      | bool             | 0 - Announce blocks via [`headers` message](../ref/core-ref-p2p-network-data-messages.md#headers) or [`inv` message](../ref/core-ref-p2p-network-data-messages.md#inv)<br>1 - Announce blocks via [`cmpctblock` message](../ref/core-ref-p2p-network-data-messages.md#cmpctblock)
+| 1        | announce      | bool             | 0 - Announce blocks via [`headers` message](../reference/p2p-network-data-messages.md#headers) or [`inv` message](../reference/p2p-network-data-messages.md#inv)<br>1 - Announce blocks via [`cmpctblock` message](../reference/p2p-network-data-messages.md#cmpctblock)
 | 8        | version       | uint64_t         | The compact block protocol version number
 
-The annotated hexdump below shows a [`sendcmpct` message](../ref/core-ref-p2p-network-control-messages.md#sendcmpct). (The message header has been omitted.)
+The annotated hexdump below shows a [`sendcmpct` message](../reference/p2p-network-control-messages.md#sendcmpct). (The message header has been omitted.)
 
 ``` text
 01 ................................. Block announce type: Compact Blocks
@@ -400,13 +400,13 @@ The annotated hexdump below shows a [`sendcmpct` message](../ref/core-ref-p2p-ne
 
 *Added in protocol version 70214 of Dash Core*
 
-The [`senddsq` message](../ref/core-ref-p2p-network-control-messages.md#senddsq) is used to notify a <<glossary:peer>> whether or not to send [`dsq` messages](../ref/core-ref-p2p-network-privatesend-messages.md#dsq). This allows clients that are not interested in participating in CoinJoin processing (e.g. mobile <<glossary:wallet>>) to minimize data usage.
+The [`senddsq` message](../reference/p2p-network-control-messages.md#senddsq) is used to notify a <<glossary:peer>> whether or not to send [`dsq` messages](../reference/p2p-network-privatesend-messages.md#dsq). This allows clients that are not interested in participating in CoinJoin processing (e.g. mobile <<glossary:wallet>>) to minimize data usage.
 
 | Bytes | Name | Data type | Description |
 | --- | --- | --- | --- |
-| 1 | fSendDSQueue | bool | 0 - Notify peer to not send any [`dsq` messages](../ref/core-ref-p2p-network-privatesend-messages.md#dsq)<br>1 - Notify peer to send all [`dsq` messages](../ref/core-ref-p2p-network-privatesend-messages.md#dsq)
+| 1 | fSendDSQueue | bool | 0 - Notify peer to not send any [`dsq` messages](../reference/p2p-network-privatesend-messages.md#dsq)<br>1 - Notify peer to send all [`dsq` messages](../reference/p2p-network-privatesend-messages.md#dsq)
 
-The following annotated hexdump shows a [`senddsq` message](../ref/core-ref-p2p-network-control-messages.md#senddsq). (The message header has been omitted.)
+The following annotated hexdump shows a [`senddsq` message](../reference/p2p-network-control-messages.md#senddsq). (The message header has been omitted.)
 
 ``` text
 01 ................................. CoinJoin participation: Enabled (1)
@@ -414,25 +414,25 @@ The following annotated hexdump shows a [`senddsq` message](../ref/core-ref-p2p-
 
 ## sendheaders
 
-The [`sendheaders` message](../ref/core-ref-p2p-network-control-messages.md#sendheaders) tells the receiving <<glossary:peer>> to send new <<glossary:block>> announcements using a [`headers` message](../ref/core-ref-p2p-network-data-messages.md#headers) rather than an [`inv` message](../ref/core-ref-p2p-network-data-messages.md#inv).
+The [`sendheaders` message](../reference/p2p-network-control-messages.md#sendheaders) tells the receiving <<glossary:peer>> to send new <<glossary:block>> announcements using a [`headers` message](../reference/p2p-network-data-messages.md#headers) rather than an [`inv` message](../reference/p2p-network-data-messages.md#inv).
 
-There is no payload in a [`sendheaders` message](../ref/core-ref-p2p-network-control-messages.md#sendheaders).  See the [message header section](core-ref-p2p-network-message-headers) for an example of a message without a payload.
+There is no payload in a [`sendheaders` message](../reference/p2p-network-control-messages.md#sendheaders).  See the [message header section](core-ref-p2p-network-message-headers) for an example of a message without a payload.
 
 ## sendheaders2
 
 *Added in protocol version 70223 of Dash Core.*
 
-The [`sendheaders2` message](../ref/core-ref-p2p-network-control-messages.md#sendheaders2) tells the receiving <<glossary:peer>> to send new <<glossary:block>> announcements using a [`headers2` message](../ref/core-ref-p2p-network-data-messages.md#headers2) rather than an [`inv` message](../ref/core-ref-p2p-network-data-messages.md#inv).
+The [`sendheaders2` message](../reference/p2p-network-control-messages.md#sendheaders2) tells the receiving <<glossary:peer>> to send new <<glossary:block>> announcements using a [`headers2` message](../reference/p2p-network-data-messages.md#headers2) rather than an [`inv` message](../reference/p2p-network-data-messages.md#inv).
 
-There is no payload in a [`sendheaders2` message](../ref/core-ref-p2p-network-control-messages.md#sendheaders2).  See the [message header section](core-ref-p2p-network-message-headers) for an example of a message without a payload.
+There is no payload in a [`sendheaders2` message](../reference/p2p-network-control-messages.md#sendheaders2).  See the [message header section](core-ref-p2p-network-message-headers) for an example of a message without a payload.
 
 ## spork
 
 Sporks are a mechanism by which updated code is released to the network, but not immediately made active (or “enforced”). Enforcement of the updated code can be activated remotely. Should problems arise, the code can be deactivated in the same manner, without the need for a network-wide rollback or client update.
 
-A [`spork` message](../ref/core-ref-p2p-network-control-messages.md#spork) may be sent in response to a [`getsporks` message](../ref/core-ref-p2p-network-control-messages.md#getsporks).
+A [`spork` message](../reference/p2p-network-control-messages.md#spork) may be sent in response to a [`getsporks` message](../reference/p2p-network-control-messages.md#getsporks).
 
-The [`spork` message](../ref/core-ref-p2p-network-control-messages.md#spork) tells the receiving peer the status of the spork defined by the SporkID field. Upon receiving a <<glossary:spork>> message, the client must verify the <<glossary:signature>> before accepting the spork message as valid.
+The [`spork` message](../reference/p2p-network-control-messages.md#spork) tells the receiving peer the status of the spork defined by the SporkID field. Upon receiving a <<glossary:spork>> message, the client must verify the <<glossary:signature>> before accepting the spork message as valid.
 
 | Bytes | Name | Data type | Required | Description |
 | ---------- | ----------- | --------- | -------- | -------- |
@@ -450,8 +450,8 @@ The [`spork` message](../ref/core-ref-p2p-network-control-messages.md#spork) tel
 | 10008 | 9 | `SUPERBLOCKS_ENABLED` | Superblocks are enabled (10% of the block reward allocated to fund the dash treasury for funding approved proposals)
 | 10016 | 17 | `SPORK_17_QUORUM_DKG_`<br>`ENABLED` | Enable long-living masternode quorum (LLMQ) distributed key generation (DKG). When enabled, simple PoSe  scoring and banning is active as well.
 | 10018 | 19 | `SPORK_19_CHAINLOCKS_`<br>`ENABLED` | Enable LLMQ-based ChainLocks.
-| 10020 | 21 | `SPORK_21_QUORUM_ALL_`<br>`CONNECTED` | **_Added in Dash Core 0.16.0_**<br>Enable connections between all masternodes in a quorum to optimize the signature recovery process.<br>Note: Prior to Dash Core 0.17.0 this spork also enforced [PoSe requirements](../guide/core-guide-dash-features-proof-of-service.md#distributed-key-generation-participation-requirements) for masternodes to support a minimum protocol version and maintain open ports.
-| 10022 | 23 | `SPORK_23_QUORUM_POSE`<br>`CONNECTED` | **Added in Dash Core 0.17.0**<br>Enforce [PoSe requirements](../guide/core-guide-dash-features-proof-of-service.md#distributed-key-generation-participation-requirements) for masternodes to support a minimum protocol version and maintain open ports.
+| 10020 | 21 | `SPORK_21_QUORUM_ALL_`<br>`CONNECTED` | **_Added in Dash Core 0.16.0_**<br>Enable connections between all masternodes in a quorum to optimize the signature recovery process.<br>Note: Prior to Dash Core 0.17.0 this spork also enforced [PoSe requirements](../guide/dash-features-proof-of-service.md#distributed-key-generation-participation-requirements) for masternodes to support a minimum protocol version and maintain open ports.
+| 10022 | 23 | `SPORK_23_QUORUM_POSE`<br>`CONNECTED` | **Added in Dash Core 0.17.0**<br>Enforce [PoSe requirements](../guide/dash-features-proof-of-service.md#distributed-key-generation-participation-requirements) for masternodes to support a minimum protocol version and maintain open ports.
 
 > 📘 Spork 2 Values
 >
@@ -486,7 +486,7 @@ The following sporks were used in the past but are no longer necessary and have 
 | _10019_ | _20_ | `SPORK_20_INSTANTSEND_`<br>`LLMQ_BASED` | _Removed in Dash Core 0.16.0.<br>Enable LLMQ-based InstantSend._
 | _10021_ | _22_ | `SPORK_22_PS_MORE_`<br>`PARTICIPANTS` | _Removed in Dash Core 0.17.0_<br>_Increase the maximum number of participants in CoinJoin sessions._
 
-To verify `vchSig`, compare the hard-coded spork public key (`strSporkPubKey` from [`src/chainparams.cpp`](https://github.com/dashpay/dash/blob/eaf90b77177efbaf9cbed46e822f0d794f1a0ee5/src/chainparams.cpp#L158)) with the public key recovered from the [`spork` message](../ref/core-ref-p2p-network-control-messages.md#spork)'s hash and `vchSig` value (implementation details for Dash Core can be found in `CPubKey::RecoverCompact`). The hash is a double SHA-256 hash of:
+To verify `vchSig`, compare the hard-coded spork public key (`strSporkPubKey` from [`src/chainparams.cpp`](https://github.com/dashpay/dash/blob/eaf90b77177efbaf9cbed46e822f0d794f1a0ee5/src/chainparams.cpp#L158)) with the public key recovered from the [`spork` message](../reference/p2p-network-control-messages.md#spork)'s hash and `vchSig` value (implementation details for Dash Core can be found in `CPubKey::RecoverCompact`). The hash is a double SHA-256 hash of:
 
 * The spork magic message (`"DarkCoin Signed Message:\n"`)
 * nSporkID + nValue + nTimeSigned
@@ -498,7 +498,7 @@ To verify `vchSig`, compare the hard-coded spork public key (`strSporkPubKey` fr
 | RegTest | Undefined |
 | Devnets | 046f78dcf911fbd61910136f7f0f8d90578f68d0b3ac973b5040fb7afb50<br>1b5939f39b108b0569dca71488f5bbf498d92e4d1194f6f941307ffd95f7<br>5e76869f0e |
 
-The following annotated hexdump shows a [`spork` message](../ref/core-ref-p2p-network-control-messages.md#spork).
+The following annotated hexdump shows a [`spork` message](../reference/p2p-network-control-messages.md#spork).
 
 ``` text
 11270000 .................................... Spork ID: Spork 2 InstantSend enabled (10001)
@@ -516,19 +516,19 @@ d32020c827a89f8128a00acd210f4ea4
 
 ## verack
 
-The [`verack` message](../ref/core-ref-p2p-network-control-messages.md#verack) acknowledges a previously-received [`version` message](../ref/core-ref-p2p-network-control-messages.md#version), informing the connecting <<glossary:node>> that it can begin to send other messages. The [`verack` message](../ref/core-ref-p2p-network-control-messages.md#verack) has no payload; for an example of a message with no payload, see the [message headers section](core-ref-p2p-network-message-headers).
+The [`verack` message](../reference/p2p-network-control-messages.md#verack) acknowledges a previously-received [`version` message](../reference/p2p-network-control-messages.md#version), informing the connecting <<glossary:node>> that it can begin to send other messages. The [`verack` message](../reference/p2p-network-control-messages.md#verack) has no payload; for an example of a message with no payload, see the [message headers section](core-ref-p2p-network-message-headers).
 
 ## version
 
-The [`version` message](../ref/core-ref-p2p-network-control-messages.md#version) provides information about the transmitting <<glossary:node>> to the receiving node at the beginning of a connection. Until both <<glossary:peers>> have exchanged [`version` messages](../ref/core-ref-p2p-network-control-messages.md#version), no other messages will be accepted.
+The [`version` message](../reference/p2p-network-control-messages.md#version) provides information about the transmitting <<glossary:node>> to the receiving node at the beginning of a connection. Until both <<glossary:peers>> have exchanged [`version` messages](../reference/p2p-network-control-messages.md#version), no other messages will be accepted.
 
-If a [`version` message](../ref/core-ref-p2p-network-control-messages.md#version) is accepted, the receiving node should send a [`verack` message](../ref/core-ref-p2p-network-control-messages.md#verack)---but no node should send a [`verack` message](../ref/core-ref-p2p-network-control-messages.md#verack) before initializing its half of the connection by first sending a [`version` message](../ref/core-ref-p2p-network-control-messages.md#version).
+If a [`version` message](../reference/p2p-network-control-messages.md#version) is accepted, the receiving node should send a [`verack` message](../reference/p2p-network-control-messages.md#verack)---but no node should send a [`verack` message](../reference/p2p-network-control-messages.md#verack) before initializing its half of the connection by first sending a [`version` message](../reference/p2p-network-control-messages.md#version).
 
-Protocol version 70214 added a <<glossary:masternode>> authentication (challenge/response) system. Following the [`verack` message](../ref/core-ref-p2p-network-control-messages.md#verack), masternodes should send a [`mnauth` message](../ref/core-ref-p2p-network-masternode-messages.md#mnauth) that signs the `mnauth_challenge` with their BLS operator key.
+Protocol version 70214 added a <<glossary:masternode>> authentication (challenge/response) system. Following the [`verack` message](../reference/p2p-network-control-messages.md#verack), masternodes should send a [`mnauth` message](../reference/p2p-network-masternode-messages.md#mnauth) that signs the `mnauth_challenge` with their BLS operator key.
 
 | Bytes    | Name                  | Data<br>Type        | Required/<br>Optional                        | Description
 |----------|-----------------------|------------------|------------------------------------------|-------------
-| 4        | version               | int32_t          | Required                                 | The highest protocol version understood by the transmitting node.  See the [protocol version section](../ref/core-ref-p2p-network-protocol-versions.md).
+| 4        | version               | int32_t          | Required                                 | The highest protocol version understood by the transmitting node.  See the [protocol version section](../reference/p2p-network-protocol-versions.md).
 | 8        | services              | uint64_t         | Required                                 | The services supported by the transmitting node encoded as a bitfield.  See the list of service codes below.
 | 8        | timestamp             | int64_t          | Required                                 | The current Unix epoch time according to the transmitting node's clock.  Because nodes will reject blocks with timestamps more than two hours in the future, this field can help other nodes to determine that their clock is wrong.
 | 8        | addr_recv services    | uint64_t         | Required                                 | *Added in protocol version 106.* <br><br>The services supported by the receiving node as perceived by the transmitting node.  Same format as the 'services' field above. Dash Core will attempt to provide accurate information.
@@ -537,12 +537,12 @@ Protocol version 70214 added a <<glossary:masternode>> authentication (challenge
 | 8        | addr_trans services   | uint64_t         | Required                                 | The services supported by the transmitting node.  Should be identical to the 'services' field above.
 | 16       | addr_trans IP address | char             | Required                                 | The IPv6 address of the transmitting node in **big endian byte order**. IPv4 addresses can be provided as [IPv4-mapped IPv6 addresses](http://en.wikipedia.org/wiki/IPv6#IPv4-mapped_IPv6_addresses).  Set to ::ffff:127.0.0.1 if unknown.
 | 2        | addr_trans port       | uint16_t         | Required                                 | The port number of the transmitting node in **big endian byte order**.
-| 8        | nonce                 | uint64_t         | Required                                 | A random nonce which can help a node detect a connection to itself.  If the nonce is 0, the nonce field is ignored.  If the nonce is anything else, a node should terminate the connection on receipt of a [`version` message](../ref/core-ref-p2p-network-control-messages.md#version) with a nonce it previously sent.
+| 8        | nonce                 | uint64_t         | Required                                 | A random nonce which can help a node detect a connection to itself.  If the nonce is 0, the nonce field is ignored.  If the nonce is anything else, a node should terminate the connection on receipt of a [`version` message](../reference/p2p-network-control-messages.md#version) with a nonce it previously sent.
 | *Varies* | user_agent bytes      | compactSize uint | Required                                 | Number of bytes in following user\_agent field.  If 0x00, no user agent field is sent.
 | *Varies* | user_agent            | string           | Required if user_agent bytes > 0         | *Renamed in protocol version 60000.* <br><br>User agent as defined by BIP14. Previously called subVer.<br><br>Dash Core limits the length to 256 characters.
 | 4        | start_height          | int32_t          | Required                                 | The height of the transmitting node's best block chain or, in the case of an SPV client, best block header chain.
-| 1        | relay                 | bool             | Optional                                 | *Added in protocol version 70001 as described by BIP37.* <br><br>Transaction relay flag.  If 0x00, no [`inv` messages](../ref/core-ref-p2p-network-data-messages.md#inv) or [`tx` messages](../ref/core-ref-p2p-network-data-messages.md#tx) announcing new transactions should be sent to this client until it sends a [`filterload` message](../ref/core-ref-p2p-network-control-messages.md#filterload) or [`filterclear` message](../ref/core-ref-p2p-network-control-messages.md#filterclear).  If the relay field is not present or is set to 0x01, this node wants [`inv` messages](../ref/core-ref-p2p-network-data-messages.md#inv) and [`tx` messages](../ref/core-ref-p2p-network-data-messages.md#tx) announcing new transactions.
-| 32       | mnauth_<br>challenge  | uint256          | Optional                                 | *Added in protocol version 70214* <br><br>A challenge to be signed by the receiving masternode. The response is returned via a [`mnauth` message](../ref/core-ref-p2p-network-masternode-messages.md#mnauth) following the [`verack` message](../ref/core-ref-p2p-network-control-messages.md#verack).
+| 1        | relay                 | bool             | Optional                                 | *Added in protocol version 70001 as described by BIP37.* <br><br>Transaction relay flag.  If 0x00, no [`inv` messages](../reference/p2p-network-data-messages.md#inv) or [`tx` messages](../reference/p2p-network-data-messages.md#tx) announcing new transactions should be sent to this client until it sends a [`filterload` message](../reference/p2p-network-control-messages.md#filterload) or [`filterclear` message](../reference/p2p-network-control-messages.md#filterclear).  If the relay field is not present or is set to 0x01, this node wants [`inv` messages](../reference/p2p-network-data-messages.md#inv) and [`tx` messages](../reference/p2p-network-data-messages.md#tx) announcing new transactions.
+| 32       | mnauth_<br>challenge  | uint256          | Optional                                 | *Added in protocol version 70214* <br><br>A challenge to be signed by the receiving masternode. The response is returned via a [`mnauth` message](../reference/p2p-network-masternode-messages.md#mnauth) following the [`verack` message](../reference/p2p-network-control-messages.md#verack).
 
 The following service identifiers have been assigned.
 
@@ -555,7 +555,7 @@ The following service identifiers have been assigned.
 | 0x08 | `NODE_XTHIN` | This node supports Xtreme Thinblocks. *Dash Core does not support this service.*
 | 0x400 | `NODE_NETWORK_LIMITED` | This is the same as `NODE_NETWORK` with the limitation of only serving the last 288 blocks. *Not supported prior to Dash Core 0.16.0*
 
-The following annotated hexdump shows a [`version` message](../ref/core-ref-p2p-network-control-messages.md#version). (The message header has been omitted and the actual IP addresses have been replaced with [RFC5737](http://tools.ietf.org/html/rfc5737) reserved IP addresses.)
+The following annotated hexdump shows a [`version` message](../reference/p2p-network-control-messages.md#version). (The message header has been omitted and the actual IP addresses have been replaced with [RFC5737](http://tools.ietf.org/html/rfc5737) reserved IP addresses.)
 
 ``` text
 46120100 .................................... Protocol version: 70214

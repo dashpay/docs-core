@@ -28,7 +28,7 @@ In the <<glossary:signature script>> Alice puts her signature and a copy of the 
 OP_0 [A's signature] [B's or C's signature] [serialized redeem script]
 ```
 
-(Opcodes to push the signatures and redeem script onto the stack are not shown. `OP_0` is a workaround for an off-by-one error in the original implementation which must be preserved for compatibility.  Note that the signature script must provide signatures in the same order as the corresponding public keys appear in the redeem script.  See the description in [`OP_CHECKMULTISIG`](../ref/core-ref-transactions-opcodes.md) for details.)
+(Opcodes to push the signatures and redeem script onto the stack are not shown. `OP_0` is a workaround for an off-by-one error in the original implementation which must be preserved for compatibility.  Note that the signature script must provide signatures in the same order as the corresponding public keys appear in the redeem script.  See the description in [`OP_CHECKMULTISIG`](../reference/transactions-opcodes.md) for details.)
 
 When the transaction is broadcast to the <<glossary:network>>, each <<glossary:peer>> checks the signature script against the P2SH output Charlie previously paid, ensuring that the redeem script matches the redeem script hash previously provided. Then the redeem script is evaluated, with the two signatures being used as input data. Assuming the redeem script validates, the two transaction outputs show up in Bob's and Charlie's wallets as spendable balances.
 

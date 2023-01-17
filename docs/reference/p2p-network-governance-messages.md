@@ -4,11 +4,11 @@ The following <<glossary:network>> messages enable the Governance features built
 
 ![Overview Of P2P Protocol Governance Request And Reply Messages](https://dash-docs.github.io/img/dev/en-p2p-governance-messages.svg)
 
-For additional details, refer to the Developer Guide [Governance section](../guide/core-guide-dash-features-governance.md).
+For additional details, refer to the Developer Guide [Governance section](../guide/dash-features-governance.md).
 
 ## govobj
 
-The [`govobj` message](../ref/core-ref-p2p-network-governance-messages.md#govobj) contains a governance object that is generally a proposal, contract, or setting. <<glossary:Masternodes>> ignore this request if they are not fully synced.
+The [`govobj` message](../reference/p2p-network-governance-messages.md#govobj) contains a governance object that is generally a proposal, contract, or setting. <<glossary:Masternodes>> ignore this request if they are not fully synced.
 
 | Bytes | Name | Data type | Required | Description |
 | ---------- | ----------- | --------- | -------- | -------- |
@@ -29,7 +29,7 @@ Governance Object Types (defined by `src/governance-object.h`)
 | 1 | `GOVERNANCE_OBJECT_PROPOSAL` | Submitted proposal (requires a collateral transaction - 1 Dash)
 | 2 | `GOVERNANCE_OBJECT_TRIGGER`  | Masternode generated. Removed after activation/execution. Used for superblocks.
 
-The following annotated hexdump shows a [`govobj` message](../ref/core-ref-p2p-network-governance-messages.md#govobj) for a Proposal object. Notice the presence of a non-zero collateral hash, a masternodeOutPoint that is an empty Outpoint (hash of all zeros), and no vchSig. (The message header has been omitted.)
+The following annotated hexdump shows a [`govobj` message](../reference/p2p-network-governance-messages.md#govobj) for a Proposal object. Notice the presence of a non-zero collateral hash, a masternodeOutPoint that is an empty Outpoint (hash of all zeros), and no vchSig. (The message header has been omitted.)
 
 ``` text
 00000000000000000000000000000000
@@ -55,7 +55,7 @@ Masternode Unspent Outpoint
 | .................................... Masternode Signature (None required)
 ```
 
-The following annotated hexdump shows a [`govobj` message](../ref/core-ref-p2p-network-governance-messages.md#govobj) for a Trigger object. Notice the collateral hash of all zeros. (The message header has been omitted.)
+The following annotated hexdump shows a [`govobj` message](../reference/p2p-network-governance-messages.md#govobj) for a Trigger object. Notice the collateral hash of all zeros. (The message header has been omitted.)
 
 ``` text
 00000000000000000000000000000000
@@ -88,13 +88,13 @@ d289fca20905fd453620238a505582fa ..... Masternode BLS Signature
 
 ## govobjvote
 
-The [`govobjvote` message](../ref/core-ref-p2p-network-governance-messages.md#govobjvote) is used to indicate the voting status of a governance object.  Voting status is comprised of the vote outcome (how the <<glossary:masternode>> voted) and the vote signal (the network support status). A sufficient number of yes votes results in the proposed funding being payed out in the next <<glossary:superblock>> (assuming their are sufficient funds available in the budget).
+The [`govobjvote` message](../reference/p2p-network-governance-messages.md#govobjvote) is used to indicate the voting status of a governance object.  Voting status is comprised of the vote outcome (how the <<glossary:masternode>> voted) and the vote signal (the network support status). A sufficient number of yes votes results in the proposed funding being payed out in the next <<glossary:superblock>> (assuming their are sufficient funds available in the budget).
 
-The initial [`govobjvote` message](../ref/core-ref-p2p-network-governance-messages.md#govobjvote) is created by a masternode to vote on a governance object (proposal, etc.). When the masternode votes, it broadcasts the [`govobjvote` message](../ref/core-ref-p2p-network-governance-messages.md#govobjvote) to all its peers.
+The initial [`govobjvote` message](../reference/p2p-network-governance-messages.md#govobjvote) is created by a masternode to vote on a governance object (proposal, etc.). When the masternode votes, it broadcasts the [`govobjvote` message](../reference/p2p-network-governance-messages.md#govobjvote) to all its peers.
 
-When a <<glossary:node>> receives a valid, **new** [`govobjvote` message](../ref/core-ref-p2p-network-governance-messages.md#govobjvote), it relays the message to all its connected <<glossary:peers>> to propagate the vote.
+When a <<glossary:node>> receives a valid, **new** [`govobjvote` message](../reference/p2p-network-governance-messages.md#govobjvote), it relays the message to all its connected <<glossary:peers>> to propagate the vote.
 
-Additionally, nodes can request [`govobjvote` messages](../ref/core-ref-p2p-network-governance-messages.md#govobjvote) for specific governance objects via a [`govsync` message](../ref/core-ref-p2p-network-governance-messages.md#govsync). Masternodes ignore requests for votes if they are not fully synced.
+Additionally, nodes can request [`govobjvote` messages](../reference/p2p-network-governance-messages.md#govobjvote) for specific governance objects via a [`govsync` message](../reference/p2p-network-governance-messages.md#govsync). Masternodes ignore requests for votes if they are not fully synced.
 
 > 📘 Vote rate limiting
 >
@@ -121,7 +121,7 @@ Governance Object Vote Signals (defined by `src/governance-object.h`)
 | 3 | Delete   | Minimum network support has been reached saying this object should be deleted from the system entirely
 | 4 | Endorsed | Minimum network support has been reached flagging this object as endorsed by an elected representative body
 
-The following annotated hexdump shows a [`govobjvote` message](../ref/core-ref-p2p-network-governance-messages.md#govobjvote). (The message header has been omitted.)
+The following annotated hexdump shows a [`govobjvote` message](../reference/p2p-network-governance-messages.md#govobjvote). (The message header has been omitted.)
 
 ``` text
 Masternode Unspent Outpoint
@@ -146,25 +146,25 @@ d289fca20905fd453620238a505582fa ..... Masternode BLS Signature
 
 ## govsync
 
-The [`govsync` message](../ref/core-ref-p2p-network-governance-messages.md#govsync) is used to request syncing of governance objects (`govobj` message and [`govobjvote` message](../ref/core-ref-p2p-network-governance-messages.md#govobjvote)) with peers. <<glossary:Masternodes>> ignore this request if they are not fully synced.
+The [`govsync` message](../reference/p2p-network-governance-messages.md#govsync) is used to request syncing of governance objects (`govobj` message and [`govobjvote` message](../reference/p2p-network-governance-messages.md#govobjvote)) with peers. <<glossary:Masternodes>> ignore this request if they are not fully synced.
 
 This message responds in one of two ways depending on the request:
 
-1. Object Sync - When a masternode receives a [`govsync` message](../ref/core-ref-p2p-network-governance-messages.md#govsync) with a hash of all zeros, it responds with a [`ssc` message](../ref/core-ref-p2p-network-masternode-messages.md#ssc) for `govobj` objects. The masternode also sends an [`inv` message](../ref/core-ref-p2p-network-data-messages.md#inv) (MSG_GOVERNANCE_OBJECT - 0x17) for all valid `govobj` governance objects.
+1. Object Sync - When a masternode receives a [`govsync` message](../reference/p2p-network-governance-messages.md#govsync) with a hash of all zeros, it responds with a [`ssc` message](../reference/p2p-network-masternode-messages.md#ssc) for `govobj` objects. The masternode also sends an [`inv` message](../reference/p2p-network-data-messages.md#inv) (MSG_GOVERNANCE_OBJECT - 0x17) for all valid `govobj` governance objects.
 *Governance object votes are excluded in this type of response.*
 
-2. Vote Sync - When a masternode receives a [`govsync` message](../ref/core-ref-p2p-network-governance-messages.md#govsync) with a specific hash, it responds with an [`ssc` message](../ref/core-ref-p2p-network-masternode-messages.md#ssc) for `govobjvote` objects. The masternode also sends a `govobjvote` inventory messages (MSG_GOVERNANCE_OBJECT_VOTE - 0x18) for the object requested.
+2. Vote Sync - When a masternode receives a [`govsync` message](../reference/p2p-network-governance-messages.md#govsync) with a specific hash, it responds with an [`ssc` message](../reference/p2p-network-masternode-messages.md#ssc) for `govobjvote` objects. The masternode also sends a `govobjvote` inventory messages (MSG_GOVERNANCE_OBJECT_VOTE - 0x18) for the object requested.
 
 | Bytes | Name | Data type | Required | Description |
 | ---------- | ----------- | --------- | -------- | -------- |
 | 32 | nHash | uint256 | Required | Hash of governance object to request<br>Set to all zeros to request all objects (excludes votes)
-| # | filter | CBloomFilter | Required | Can be set to all zeros.<br>Only supported since [protocol version 70206](../ref/core-ref-p2p-network-protocol-versions.md)
+| # | filter | CBloomFilter | Required | Can be set to all zeros.<br>Only supported since [protocol version 70206](../reference/p2p-network-protocol-versions.md)
 
 > 📘 Object sync rate limiting
 >
 > Dash Core limits how frequently the first type of sync (object sync) can be requested. Frequent requests will result in the node being banned.
 
-The following annotated hexdump shows a [`govsync` message](../ref/core-ref-p2p-network-governance-messages.md#govsync). (The message header has been omitted.)
+The following annotated hexdump shows a [`govsync` message](../reference/p2p-network-governance-messages.md#govsync). (The message header has been omitted.)
 
 ``` text
 2e46ea5418e097a3dbcccbee3cf2a911

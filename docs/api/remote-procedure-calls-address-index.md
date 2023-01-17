@@ -6,7 +6,7 @@
 >
 > Requires <<glossary:wallet>> support (**unavailable on masternodes**) and `-addressindex` Dash Core command-line/configuration-file parameter to be enabled.
 
-The [`getaddressbalance` RPC](../api-ref/core-api-ref-remote-procedure-calls-address-index.md#getaddressbalance) returns the balance for address(es).
+The [`getaddressbalance` RPC](../api/remote-procedure-calls-address-index.md#getaddressbalance) returns the balance for address(es).
 
 *Parameter #1---an array of <<glossary:addresses>>*
 
@@ -46,8 +46,8 @@ Result:
 
 *See also*
 
-* [GetBalance](../api-ref/core-api-ref-remote-procedure-calls-wallet.md#getbalance): gets the balance in decimal dash across all accounts or for a particular account.
-* [GetUnconfirmedBalance](../api-ref/core-api-ref-remote-procedure-calls-wallet.md#getunconfirmedbalance): returns the wallet's total unconfirmed balance.
+* [GetBalance](../api/remote-procedure-calls-wallet.md#getbalance): gets the balance in decimal dash across all accounts or for a particular account.
+* [GetUnconfirmedBalance](../api/remote-procedure-calls-wallet.md#getunconfirmedbalance): returns the wallet's total unconfirmed balance.
 
 ## GetAddressDeltas
 
@@ -55,7 +55,7 @@ Result:
 >
 > Requires <<glossary:wallet>> support (**unavailable on masternodes**) and `-addressindex` Dash Core command-line/configuration-file parameter to be enabled.
 
-The [`getaddressdeltas` RPC](../api-ref/core-api-ref-remote-procedure-calls-address-index.md#getaddressdeltas) returns all changes for an address.
+The [`getaddressdeltas` RPC](../api/remote-procedure-calls-address-index.md#getaddressdeltas) returns all changes for an address.
 
 *Parameter #1---an array of addresses*
 
@@ -125,7 +125,7 @@ Result:
 >
 > Requires <<glossary:wallet>> support (**unavailable on masternodes**) and `-addressindex` Dash Core command-line/configuration-file parameter to be enabled.
 
-The [`getaddressmempool` RPC](../api-ref/core-api-ref-remote-procedure-calls-address-index.md#getaddressmempool) returns all mempool deltas for an address.
+The [`getaddressmempool` RPC](../api/remote-procedure-calls-address-index.md#getaddressmempool) returns all mempool deltas for an address.
 
 *Parameter #1---an array of addresses*
 
@@ -176,7 +176,7 @@ Result:
 >
 > Requires <<glossary:wallet>> support (**unavailable on masternodes**) and `-addressindex` Dash Core command-line/configuration-file parameter to be enabled.
 
-The [`getaddresstxids` RPC](../api-ref/core-api-ref-remote-procedure-calls-address-index.md#getaddresstxids) returns the txids for an address(es).
+The [`getaddresstxids` RPC](../api/remote-procedure-calls-address-index.md#getaddresstxids) returns the txids for an address(es).
 
 *Parameter #1---an array of addresses*
 
@@ -227,7 +227,7 @@ Result:
 >
 > Requires <<glossary:wallet>> support (**unavailable on masternodes**) and `-addressindex` Dash Core command-line/configuration-file parameter to be enabled.
 
-The [`getaddressutxos` RPC](../api-ref/core-api-ref-remote-procedure-calls-address-index.md#getaddressutxos) returns all unspent outputs for an address.
+The [`getaddressutxos` RPC](../api/remote-procedure-calls-address-index.md#getaddressutxos) returns all unspent outputs for an address.
 
 *Parameter #1---an array of addresses*
 

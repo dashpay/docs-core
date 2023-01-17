@@ -154,7 +154,7 @@ This compact description is further combined with slashes prefixed by *m* or *M*
 
 Wallets following the <<glossary:BIP32>> <<glossary:HD protocol>> only create hardened children of the master private key (*m*) to prevent a compromised child key from compromising the master key. As there are no normal children for the master keys, the master public key is not used in HD wallets. All other keys can have normal children, so the corresponding extended public keys may be used instead.
 
-The HD protocol also describes a serialization format for extended public keys and extended private keys.  For details, please see the [wallet section in the developer reference](../ref/core-ref-wallets.md) or [BIP32](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki) for the full HD protocol specification.
+The HD protocol also describes a serialization format for extended public keys and extended private keys.  For details, please see the [wallet section in the developer reference](../reference/wallets.md) or [BIP32](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki) for the full HD protocol specification.
 
 ### Storing Root Seeds
 

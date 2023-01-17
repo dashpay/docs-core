@@ -40,7 +40,7 @@ Although designed to be easily upgraded, the format of the inner serialized aler
 | 4        | minVer            | int32_t                   | This alert only applies to protocol versions greater than or equal to this version. Nodes running other protocol versions should still relay it.
 | 4        | maxVer            | int32_t                   | This alert only applies to protocol versions less than or equal to this version. Nodes running other protocol versions should still relay it.
 | *Varies* | user\_agent count | compactSize uint          | The number of user agent strings in the following setUser\_agent field.  May be zero.
-| *Varies* | setUser\_agent    | compactSize uint + string | If this field is empty, it has no effect on the alert.  If there is at least one entry is this field, this alert only applies to programs with a user agent that exactly matches one of the strings in this field.  Each entry in this field is a compactSize uint followed by a string---the uint indicates how many bytes are in the following string.  This field was originally called setSubVer; since BIP14, it applies to user agent strings as defined in the [`version` message](../ref/core-ref-p2p-network-control-messages.md#version).
+| *Varies* | setUser\_agent    | compactSize uint + string | If this field is empty, it has no effect on the alert.  If there is at least one entry is this field, this alert only applies to programs with a user agent that exactly matches one of the strings in this field.  Each entry in this field is a compactSize uint followed by a string---the uint indicates how many bytes are in the following string.  This field was originally called setSubVer; since BIP14, it applies to user agent strings as defined in the [`version` message](../reference/p2p-network-control-messages.md#version).
 | 4        | priority          | int32_t                   | Relative priority compared to other alerts.
 | *Varies* | comment bytes     | compactSize uint          | The number of bytes in the following comment field.  May be zero.
 | *Varies* | comment           | string                    | A comment on the alert that is not displayed.
@@ -91,7 +91,7 @@ c42c13810ffcae14995bb648340219e3
 >
 > Deprecated since 0.15.0
 
-The `ix` message (transaction lock request) has the same structure as the [`tx` message](../ref/core-ref-p2p-network-data-messages.md#tx). The masternode network responds with `txlvote` messages if the transaction inputs can be locked.
+The `ix` message (transaction lock request) has the same structure as the [`tx` message](../reference/p2p-network-data-messages.md#tx). The masternode network responds with `txlvote` messages if the transaction inputs can be locked.
 
 ## txlvote
 

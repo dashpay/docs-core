@@ -2,7 +2,7 @@
 
 ## AddNode
 
-The [`addnode` RPC](../api-ref/core-api-ref-remote-procedure-calls-network.md#addnode) attempts to add or remove a node from the addnode list, or to try a connection to a node once.
+The [`addnode` RPC](../api/remote-procedure-calls-network.md#addnode) attempts to add or remove a node from the addnode list, or to try a connection to a node once.
 
 *Parameter #1---hostname/IP address and port of node to add or remove*
 
@@ -34,13 +34,13 @@ Result (no output from `dash-cli` because result is set to `null`).
 
 *See also*
 
-* [GetAddedNodeInfo](../api-ref/core-api-ref-remote-procedure-calls-network.md#getaddednodeinfo): returns information about the given added node, or all added nodes (except onetry nodes). Only nodes which have been manually added using the [`addnode` RPC](../api-ref/core-api-ref-remote-procedure-calls-network.md#addnode) will have their information displayed.
+* [GetAddedNodeInfo](../api/remote-procedure-calls-network.md#getaddednodeinfo): returns information about the given added node, or all added nodes (except onetry nodes). Only nodes which have been manually added using the [`addnode` RPC](../api/remote-procedure-calls-network.md#addnode) will have their information displayed.
 
 ## ClearBanned
 
 *Added in Bitcoin Core 0.12.0*
 
-The [`clearbanned` RPC](../api-ref/core-api-ref-remote-procedure-calls-network.md#clearbanned) clears list of banned nodes.
+The [`clearbanned` RPC](../api/remote-procedure-calls-network.md#clearbanned) clears list of banned nodes.
 
 *Parameters: none*
 
@@ -62,14 +62,14 @@ Result (no output from `dash-cli` because result is set to `null`).
 
 *See also*
 
-* [ListBanned](../api-ref/core-api-ref-remote-procedure-calls-network.md#listbanned): lists all manually banned IPs/Subnets.
-* [SetBan](../api-ref/core-api-ref-remote-procedure-calls-network.md#setban): attempts add or remove a IP/Subnet from the banned list.
+* [ListBanned](../api/remote-procedure-calls-network.md#listbanned): lists all manually banned IPs/Subnets.
+* [SetBan](../api/remote-procedure-calls-network.md#setban): attempts add or remove a IP/Subnet from the banned list.
 
 ## DisconnectNode
 
 *Added in Bitcoin Core 0.12.0*
 
-The [`disconnectnode` RPC](../api-ref/core-api-ref-remote-procedure-calls-network.md#disconnectnode) immediately disconnects from a specified node.
+The [`disconnectnode` RPC](../api/remote-procedure-calls-network.md#disconnectnode) immediately disconnects from a specified node.
 
 *Parameter #1---hostname/IP address and port of node to disconnect*
 
@@ -109,12 +109,12 @@ Result (no output from `dash-cli` because result is set to `null`).
 
 *See also*
 
-* [AddNode](../api-ref/core-api-ref-remote-procedure-calls-network.md#addnode): attempts to add or remove a node from the addnode list, or to try a connection to a node once.
-* [GetAddedNodeInfo](../api-ref/core-api-ref-remote-procedure-calls-network.md#getaddednodeinfo): returns information about the given added node, or all added nodes (except onetry nodes). Only nodes which have been manually added using the [`addnode` RPC](../api-ref/core-api-ref-remote-procedure-calls-network.md#addnode) will have their information displayed.
+* [AddNode](../api/remote-procedure-calls-network.md#addnode): attempts to add or remove a node from the addnode list, or to try a connection to a node once.
+* [GetAddedNodeInfo](../api/remote-procedure-calls-network.md#getaddednodeinfo): returns information about the given added node, or all added nodes (except onetry nodes). Only nodes which have been manually added using the [`addnode` RPC](../api/remote-procedure-calls-network.md#addnode) will have their information displayed.
 
 ## GetAddedNodeInfo
 
-The [`getaddednodeinfo` RPC](../api-ref/core-api-ref-remote-procedure-calls-network.md#getaddednodeinfo) returns information about the given added node, or all added nodes (except onetry nodes). Only nodes which have been manually added using the [`addnode` RPC](../api-ref/core-api-ref-remote-procedure-calls-network.md#addnode) will have their information displayed.
+The [`getaddednodeinfo` RPC](../api/remote-procedure-calls-network.md#getaddednodeinfo) returns information about the given added node, or all added nodes (except onetry nodes). Only nodes which have been manually added using the [`addnode` RPC](../api/remote-procedure-calls-network.md#addnode) will have their information displayed.
 
 Prior to Dash Core 0.12.3, this dummy parameter was required for historical purposes but not used:
 
@@ -130,7 +130,7 @@ Beginning with Dash Core 0.12.3, this is the single (optional) parameter:
 
 Name | Type | Presence | Description
 --- | --- | --- | ---
-`node` | string | Optional<br>(0 or 1) | The node to get information about in the same `<IP address>:<port>` format as the [`addnode` RPC](../api-ref/core-api-ref-remote-procedure-calls-network.md#addnode).  If this parameter is not provided, information about all added nodes will be returned
+`node` | string | Optional<br>(0 or 1) | The node to get information about in the same `<IP address>:<port>` format as the [`addnode` RPC](../api/remote-procedure-calls-network.md#addnode).  If this parameter is not provided, information about all added nodes will be returned
 
 *Result---a list of added nodes*
 
@@ -138,7 +138,7 @@ Name | Type | Presence | Description
 --- | --- | --- | ---
 `result` | array | Required<br>(exactly 1) | An array containing objects describing each added node.  If no added nodes are present, the array will be empty.  Nodes added with `onetry` will not be returned
 →<br>Added Node | object | Optional<br>(0 or more) | An object containing details about a single added node
-→ →<br>`addednode` | string | Required<br>(exactly 1) | An added node in the same `<IP address>:<port>` format as used in the [`addnode` RPC](../api-ref/core-api-ref-remote-procedure-calls-network.md#addnode).
+→ →<br>`addednode` | string | Required<br>(exactly 1) | An added node in the same `<IP address>:<port>` format as used in the [`addnode` RPC](../api/remote-procedure-calls-network.md#addnode).
 → →<br>`connected` | bool | Optional<br>(0 or 1) | This will be set to `true` if the node is currently connected and `false` if it is not
 → →<br>`addresses` | array | Required<br>(exactly 1) | This will be an array of addresses belonging to the added node
 → → →<br>Address | object | Optional<br>(0 or more) | An object describing one of this node's addresses
@@ -170,12 +170,12 @@ Result (real hostname and IP address replaced with [RFC5737](http://tools.ietf.o
 
 *See also*
 
-* [AddNode](../api-ref/core-api-ref-remote-procedure-calls-network.md#addnode): attempts to add or remove a node from the addnode list, or to try a connection to a node once.
-* [GetPeerInfo](../api-ref/core-api-ref-remote-procedure-calls-network.md#getpeerinfo): returns data about each connected network node.
+* [AddNode](../api/remote-procedure-calls-network.md#addnode): attempts to add or remove a node from the addnode list, or to try a connection to a node once.
+* [GetPeerInfo](../api/remote-procedure-calls-network.md#getpeerinfo): returns data about each connected network node.
 
 ## GetConnectionCount
 
-The [`getconnectioncount` RPC](../api-ref/core-api-ref-remote-procedure-calls-network.md#getconnectioncount) returns the number of connections to other nodes.
+The [`getconnectioncount` RPC](../api/remote-procedure-calls-network.md#getconnectioncount) returns the number of connections to other nodes.
 
 *Parameters: none*
 
@@ -199,13 +199,13 @@ Result:
 
 *See also*
 
-* [GetNetTotals](../api-ref/core-api-ref-remote-procedure-calls-network.md#getnettotals): returns information about network traffic, including bytes in, bytes out, and the current time.
-* [GetPeerInfo](../api-ref/core-api-ref-remote-procedure-calls-network.md#getpeerinfo): returns data about each connected network node.
-* [GetNetworkInfo](../api-ref/core-api-ref-remote-procedure-calls-network.md#getnetworkinfo): returns information about the node's connection to the network.
+* [GetNetTotals](../api/remote-procedure-calls-network.md#getnettotals): returns information about network traffic, including bytes in, bytes out, and the current time.
+* [GetPeerInfo](../api/remote-procedure-calls-network.md#getpeerinfo): returns data about each connected network node.
+* [GetNetworkInfo](../api/remote-procedure-calls-network.md#getnetworkinfo): returns information about the node's connection to the network.
 
 ## GetNodeAddresses
 
-The [`getnodeaddresses` RPC](../api-ref/core-api-ref-remote-procedure-calls-network.md#getnodeaddresses) returns the known addresses which can potentially be used to find new nodes in the network.
+The [`getnodeaddresses` RPC](../api/remote-procedure-calls-network.md#getnodeaddresses) returns the known addresses which can potentially be used to find new nodes in the network.
 
 *Parameter #1---count*
 
@@ -244,7 +244,7 @@ Result:
 
 ## GetNetTotals
 
-The [`getnettotals` RPC](../api-ref/core-api-ref-remote-procedure-calls-network.md#getnettotals) returns information about network traffic, including bytes in, bytes out, and the current time.
+The [`getnettotals` RPC](../api/remote-procedure-calls-network.md#getnettotals) returns information about network traffic, including bytes in, bytes out, and the current time.
 
 *Parameters: none*
 
@@ -290,12 +290,12 @@ Result:
 
 *See also*
 
-* [GetNetworkInfo](../api-ref/core-api-ref-remote-procedure-calls-network.md#getnetworkinfo): returns information about the node's connection to the network.
-* [GetPeerInfo](../api-ref/core-api-ref-remote-procedure-calls-network.md#getpeerinfo): returns data about each connected network node.
+* [GetNetworkInfo](../api/remote-procedure-calls-network.md#getnetworkinfo): returns information about the node's connection to the network.
+* [GetPeerInfo](../api/remote-procedure-calls-network.md#getpeerinfo): returns data about each connected network node.
 
 ## GetNetworkInfo
 
-The [`getnetworkinfo` RPC](../api-ref/core-api-ref-remote-procedure-calls-network.md#getnetworkinfo) returns information about the node's connection to the network.
+The [`getnetworkinfo` RPC](../api/remote-procedure-calls-network.md#getnetworkinfo) returns information about the node's connection to the network.
 
 *Parameters: none*
 
@@ -306,14 +306,14 @@ Name | Type | Presence | Description
 `result` | object | Required<br>(exactly 1) | Information about this node's connection to the network
 →<br>`version` | number | Required<br>(exactly 1) | This node's version of Dash Core in its internal integer format.  For example, Dash Core 0.12.2 has the integer version number 120200
 →<br>`buildversion` | string | Required<br>(exactly 1) | The node's build version including RC info or commit as relevant
-→<br>`subversion` | string | Required<br>(exactly 1) | The user agent this node sends in its [`version` message](../ref/core-ref-p2p-network-control-messages.md#version)
-→<br>`protocolversion` | number (int) | Required<br>(exactly 1) | The protocol version number used by this node.  See the [protocol versions section](../ref/core-ref-p2p-network-protocol-versions.md) for more information
-→<br>`localservices` | string (hex) | Required<br>(exactly 1) | The services supported by this node as advertised in its [`version` message](../ref/core-ref-p2p-network-control-messages.md#version)
+→<br>`subversion` | string | Required<br>(exactly 1) | The user agent this node sends in its [`version` message](../reference/p2p-network-control-messages.md#version)
+→<br>`protocolversion` | number (int) | Required<br>(exactly 1) | The protocol version number used by this node.  See the [protocol versions section](../reference/p2p-network-protocol-versions.md) for more information
+→<br>`localservices` | string (hex) | Required<br>(exactly 1) | The services supported by this node as advertised in its [`version` message](../reference/p2p-network-control-messages.md#version)
 →<br>`localservicesnames` | array | Required<br>(exactly 1) | **Added in Dash Core 18.0.0**<br>An array of strings describing the services offered, in human-readable form.
 → →<br>SERVICE_NAME | string | Required<br>(exactly 1) | The service name.
-→<br>`localrelay` | bool | Required<br>(exactly 1) | *Added in Bitcoin Core 0.13.0*<br><br>The services supported by this node as advertised in its [`version` message](../ref/core-ref-p2p-network-control-messages.md#version)
+→<br>`localrelay` | bool | Required<br>(exactly 1) | *Added in Bitcoin Core 0.13.0*<br><br>The services supported by this node as advertised in its [`version` message](../reference/p2p-network-control-messages.md#version)
 →<br>`timeoffset` | number (int) | Required<br>(exactly 1) | The offset of the node's clock from the computer's clock (both in UTC) in seconds.  The offset may be up to 4200 seconds (70 minutes)
-→<br>`networkactive` | bool | Required<br>(exactly 1) | Set to `true` if P2P networking is enabled.  Set to `false` if P2P networking is disabled. Enabling/disabling done via [SetNetworkActive](../api-ref/core-api-ref-remote-procedure-calls-network.md#setnetworkactive)
+→<br>`networkactive` | bool | Required<br>(exactly 1) | Set to `true` if P2P networking is enabled.  Set to `false` if P2P networking is disabled. Enabling/disabling done via [SetNetworkActive](../api/remote-procedure-calls-network.md#setnetworkactive)
 →<br>`connections` | number (int) | Required<br>(exactly 1) | The total number of open connections (both outgoing and incoming) between this node and other nodes
 →<br>`inboundconnections` | number (int) | Required<br>(exactly 1) | **Added in Dash Core 18.0.0**<br><br>The number of inbound connections
 →<br>`outboundconnections` | number (int) | Required<br>(exactly 1) | **Added in Dash Core 18.0.0**<br><br>The number of outbound connections
@@ -332,9 +332,9 @@ Name | Type | Presence | Description
 →<br>`incrementalfee` | number (DASH) | Required<br>(exactly 1) | *Added in Dash Core 0.12.3*<br><br>The minimum fee increment for mempool limiting or BIP 125 replacement in DASH/kB
 →<br>`localaddresses` | array | Required<br>(exactly 1) | An array of objects each describing the local addresses this node believes it listens on
 → →<br>Address | object | Optional<br>(0 or more) | An object describing a particular address this node believes it listens on
-→ → →<br>`address` | string | Required<br>(exactly 1) | An IP address or .onion address this node believes it listens on.  This may be manually configured, auto detected, or based on [`version` messages](../ref/core-ref-p2p-network-control-messages.md#version) this node received from its peers
-→ → →<br>`port` | number (int) | Required<br>(exactly 1) | The port number this node believes it listens on for the associated `address`.  This may be manually configured, auto detected, or based on [`version` messages](../ref/core-ref-p2p-network-control-messages.md#version) this node received from its peers
-→ → →<br>`score` | number (int) | Required<br>(exactly 1) | The number of incoming connections during the uptime of this node that have used this `address` in their [`version` message](../ref/core-ref-p2p-network-control-messages.md#version)
+→ → →<br>`address` | string | Required<br>(exactly 1) | An IP address or .onion address this node believes it listens on.  This may be manually configured, auto detected, or based on [`version` messages](../reference/p2p-network-control-messages.md#version) this node received from its peers
+→ → →<br>`port` | number (int) | Required<br>(exactly 1) | The port number this node believes it listens on for the associated `address`.  This may be manually configured, auto detected, or based on [`version` messages](../reference/p2p-network-control-messages.md#version) this node received from its peers
+→ → →<br>`score` | number (int) | Required<br>(exactly 1) | The number of incoming connections during the uptime of this node that have used this `address` in their [`version` message](../reference/p2p-network-control-messages.md#version)
 →<br>`warnings` | string | Required<br>(exactly 1) | *Added in Bitcoin Core 0.11.0*<br><br>A plain-text description of any network warnings. If there are no warnings, an empty string will be returned.
 
 *Example from Dash Core 18.0.0*
@@ -410,13 +410,13 @@ Result (actual addresses have been replaced with [RFC5737](http://tools.ietf.org
 
 *See also*
 
-* [GetPeerInfo](../api-ref/core-api-ref-remote-procedure-calls-network.md#getpeerinfo): returns data about each connected network node.
-* [GetNetTotals](../api-ref/core-api-ref-remote-procedure-calls-network.md#getnettotals): returns information about network traffic, including bytes in, bytes out, and the current time.
-* [SetNetworkActive](../api-ref/core-api-ref-remote-procedure-calls-network.md#setnetworkactive): disables/enables all P2P network activity.
+* [GetPeerInfo](../api/remote-procedure-calls-network.md#getpeerinfo): returns data about each connected network node.
+* [GetNetTotals](../api/remote-procedure-calls-network.md#getnettotals): returns information about network traffic, including bytes in, bytes out, and the current time.
+* [SetNetworkActive](../api/remote-procedure-calls-network.md#setnetworkactive): disables/enables all P2P network activity.
 
 ## GetPeerInfo
 
-The [`getpeerinfo` RPC](../api-ref/core-api-ref-remote-procedure-calls-network.md#getpeerinfo) returns data about each connected network node.
+The [`getpeerinfo` RPC](../api/remote-procedure-calls-network.md#getpeerinfo) returns data about each connected network node.
 
 *Parameters: none*
 
@@ -431,7 +431,7 @@ Name | Type | Presence | Description
 → →<br>`addrlocal` | string | Optional<br>(0 or 1) | Our IP address and port number according to the remote node.  May be incorrect due to error or lying.  Most SPV nodes set this to `127.0.0.1:9999`
 → →<br>`mapped_as` | string | Optional<br>(0 or 1) | **Added in Dash Core 18.0.0**<br>The AS in the BGP route to the peer used for diversifying peer selection
 → →<br>`addrbind` | string | Optional<br>(0 or 1) | Bind address of the connection to the peer
-→ →<br>`services` | string (hex) | Required<br>(exactly 1) | The services advertised by the remote node in its [`version` message](../ref/core-ref-p2p-network-control-messages.md#version)
+→ →<br>`services` | string (hex) | Required<br>(exactly 1) | The services advertised by the remote node in its [`version` message](../reference/p2p-network-control-messages.md#version)
 → →<br>`servicesnames` | array | Required<br>(exactly 1) | **Added in Dash Core 18.0.0**<br>An array of strings describing the services offered, in human-readable form.
 → → →<br>SERVICE_NAME | string | Required<br>(exactly 1) | The service name if it is recognised.
 → →<br>`verified_proregtx_hash` | string (hex) | Optional<br>(0 or 1) | The ProRegTx of the masternode
@@ -442,18 +442,18 @@ Name | Type | Presence | Description
 → →<br>`bytesrecv` | number (int) | Required<br>(exactly 1) | The total number of bytes we've received from this node
 → →<br>`conntime` | number (int) | Required<br>(exactly 1) | The Unix epoch time when we connected to this node
 → →<br>`timeoffset` | number (int) | Required<br>(exactly 1) | *Added in Bitcoin Core 0.12.0*<br><br>The time offset in seconds
-→ →<br>`pingtime` | number (real) | Required<br>(exactly 1) | The number of seconds this node took to respond to our last P2P [`ping` message](../ref/core-ref-p2p-network-control-messages.md#ping)
+→ →<br>`pingtime` | number (real) | Required<br>(exactly 1) | The number of seconds this node took to respond to our last P2P [`ping` message](../reference/p2p-network-control-messages.md#ping)
 → →<br>`minping` | number (real) | Optional<br>(0 or 1) | *Updated in Bitcoin Core 0.13.0*<br><br>The minimum observed ping time (if any at all)
-→ →<br>`pingwait` | number (real) | Optional<br>(0 or 1) | The number of seconds we've been waiting for this node to respond to a P2P [`ping` message](../ref/core-ref-p2p-network-control-messages.md#ping).  Only shown if there's an outstanding [`ping` message](../ref/core-ref-p2p-network-control-messages.md#ping)
-→ →<br>`version` | number (int) | Required<br>(exactly 1) | The protocol version number used by this node.  See the [protocol versions section](../ref/core-ref-p2p-network-protocol-versions.md) for more information
-→ →<br>`subver` | string | Required<br>(exactly 1) | The user agent this node sends in its [`version` message](../ref/core-ref-p2p-network-control-messages.md#version).  This string will have been sanitized to prevent corrupting the JSON results.  May be an empty string
+→ →<br>`pingwait` | number (real) | Optional<br>(0 or 1) | The number of seconds we've been waiting for this node to respond to a P2P [`ping` message](../reference/p2p-network-control-messages.md#ping).  Only shown if there's an outstanding [`ping` message](../reference/p2p-network-control-messages.md#ping)
+→ →<br>`version` | number (int) | Required<br>(exactly 1) | The protocol version number used by this node.  See the [protocol versions section](../reference/p2p-network-protocol-versions.md) for more information
+→ →<br>`subver` | string | Required<br>(exactly 1) | The user agent this node sends in its [`version` message](../reference/p2p-network-control-messages.md#version).  This string will have been sanitized to prevent corrupting the JSON results.  May be an empty string
 → →<br>`inbound` | bool | Required<br>(exactly 1) | Set to `true` if this node connected to us (inbound); set to `false` if we connected to this node (outbound)
-→ →<br>`addnode` | bool | Required<br>(exactly 1) | Set to `true` if this node was added via the [`addnode` RPC](../api-ref/core-api-ref-remote-procedure-calls-network.md#addnode).
+→ →<br>`addnode` | bool | Required<br>(exactly 1) | Set to `true` if this node was added via the [`addnode` RPC](../api/remote-procedure-calls-network.md#addnode).
 → →<br>`masternode` | bool | Required<br>(exactly 1) | _Added in Dash Core 0.16.0_<br>Whether connection was due to masternode connection attempt
-→ →<br>`startingheight` | number (int) | Required<br>(exactly 1) | The height of the remote node's block chain when it connected to us as reported in its [`version` message](../ref/core-ref-p2p-network-control-messages.md#version)
+→ →<br>`startingheight` | number (int) | Required<br>(exactly 1) | The height of the remote node's block chain when it connected to us as reported in its [`version` message](../reference/p2p-network-control-messages.md#version)
 → →<br>`banscore` | number (int) | Required<br>(exactly 1) | The ban score we've assigned the node based on any misbehavior it's made.  By default, Dash Core disconnects when the ban score reaches `100`
-→ →<br>`synced_headers` | number (int) | Required<br>(exactly 1) | The highest-height header we have in common with this node based the last P2P [`headers` message](../ref/core-ref-p2p-network-data-messages.md#headers) it sent us.  If a [`headers` message](../ref/core-ref-p2p-network-data-messages.md#headers) has not been received, this will be set to `-1`
-→ →<br>`synced_blocks` | number (int) | Required<br>(exactly 1) | The highest-height block we have in common with this node based on P2P [`inv` messages](../ref/core-ref-p2p-network-data-messages.md#inv) this node sent us.  If no block [`inv` messages](../ref/core-ref-p2p-network-data-messages.md#inv) have been received from this node, this will be set to `-1`
+→ →<br>`synced_headers` | number (int) | Required<br>(exactly 1) | The highest-height header we have in common with this node based the last P2P [`headers` message](../reference/p2p-network-data-messages.md#headers) it sent us.  If a [`headers` message](../reference/p2p-network-data-messages.md#headers) has not been received, this will be set to `-1`
+→ →<br>`synced_blocks` | number (int) | Required<br>(exactly 1) | The highest-height block we have in common with this node based on P2P [`inv` messages](../reference/p2p-network-data-messages.md#inv) this node sent us.  If no block [`inv` messages](../reference/p2p-network-data-messages.md#inv) have been received from this node, this will be set to `-1`
 → →<br>`inflight` | array | Required<br>(exactly 1) | An array of blocks which have been requested from this peer.  May be empty
 → → →<br>Blocks | number (int) | Optional<br>(0 or more) | The height of a block being requested from the remote peer
   * → →<br>`whitelisted` | bool | Required<br>(exactly 1) | Set to `true` if the remote peer has been whitelisted; otherwise, set to `false`.  Whitelisted peers will not be banned if their ban score exceeds the maximum (100 by default).  By default, peers connecting from localhost are whitelisted
@@ -556,15 +556,15 @@ Result (edited to show only a single entry, with IP addresses changed to
 
 *See also*
 
-* [GetAddedNodeInfo](../api-ref/core-api-ref-remote-procedure-calls-network.md#getaddednodeinfo): returns information about the given added node, or all added nodes (except onetry nodes). Only nodes which have been manually added using the [`addnode` RPC](../api-ref/core-api-ref-remote-procedure-calls-network.md#addnode) will have their information displayed.
-* [GetNetTotals](../api-ref/core-api-ref-remote-procedure-calls-network.md#getnettotals): returns information about network traffic, including bytes in, bytes out, and the current time.
-* [GetNetworkInfo](../api-ref/core-api-ref-remote-procedure-calls-network.md#getnetworkinfo): returns information about the node's connection to the network.
+* [GetAddedNodeInfo](../api/remote-procedure-calls-network.md#getaddednodeinfo): returns information about the given added node, or all added nodes (except onetry nodes). Only nodes which have been manually added using the [`addnode` RPC](../api/remote-procedure-calls-network.md#addnode) will have their information displayed.
+* [GetNetTotals](../api/remote-procedure-calls-network.md#getnettotals): returns information about network traffic, including bytes in, bytes out, and the current time.
+* [GetNetworkInfo](../api/remote-procedure-calls-network.md#getnetworkinfo): returns information about the node's connection to the network.
 
 ## ListBanned
 
 *Added in Bitcoin Core 0.12.0*
 
-The [`listbanned` RPC](../api-ref/core-api-ref-remote-procedure-calls-network.md#listbanned) lists all **_manually banned_** IPs/Subnets.
+The [`listbanned` RPC](../api/remote-procedure-calls-network.md#listbanned) lists all **_manually banned_** IPs/Subnets.
 
 > 📘 Changes regarding misbehaving peers
 >
@@ -608,12 +608,12 @@ Result:
 
 *See also*
 
-* [SetBan](../api-ref/core-api-ref-remote-procedure-calls-network.md#setban): attempts add or remove a IP/Subnet from the banned list.
-* [ClearBanned](../api-ref/core-api-ref-remote-procedure-calls-network.md#clearbanned): clears list of banned nodes.
+* [SetBan](../api/remote-procedure-calls-network.md#setban): attempts add or remove a IP/Subnet from the banned list.
+* [ClearBanned](../api/remote-procedure-calls-network.md#clearbanned): clears list of banned nodes.
 
 ## Ping
 
-The [`ping` RPC](../api-ref/core-api-ref-remote-procedure-calls-network.md#ping) sends a P2P ping message to all connected nodes to measure ping time. Results are provided by the [`getpeerinfo` RPC](../api-ref/core-api-ref-remote-procedure-calls-network.md#getpeerinfo) pingtime and pingwait fields as decimal seconds. The P2P [`ping` message](../ref/core-ref-p2p-network-control-messages.md#ping) is handled in a queue with all other commands, so it measures processing backlog, not just network ping.
+The [`ping` RPC](../api/remote-procedure-calls-network.md#ping) sends a P2P ping message to all connected nodes to measure ping time. Results are provided by the [`getpeerinfo` RPC](../api/remote-procedure-calls-network.md#getpeerinfo) pingtime and pingwait fields as decimal seconds. The P2P [`ping` message](../reference/p2p-network-control-messages.md#ping) is handled in a queue with all other commands, so it measures processing backlog, not just network ping.
 
 *Parameters: none*
 
@@ -631,7 +631,7 @@ dash-cli -testnet ping
 
 (Success: no result printed.)
 
-Get the results using the [`getpeerinfo` RPC](../api-ref/core-api-ref-remote-procedure-calls-network.md#getpeerinfo):
+Get the results using the [`getpeerinfo` RPC](../api/remote-procedure-calls-network.md#getpeerinfo):
 
 ```bash
 dash-cli -testnet getpeerinfo | grep ping
@@ -652,14 +652,14 @@ Results:
 
 *See also*
 
-* [GetPeerInfo](../api-ref/core-api-ref-remote-procedure-calls-network.md#getpeerinfo): returns data about each connected network node.
-* [P2P Ping Message](../ref/core-ref-p2p-network-control-messages.md#ping)
+* [GetPeerInfo](../api/remote-procedure-calls-network.md#getpeerinfo): returns data about each connected network node.
+* [P2P Ping Message](../reference/p2p-network-control-messages.md#ping)
 
 ## SetBan
 
 *Added in Bitcoin Core 0.12.0*
 
-The [`setban` RPC](../api-ref/core-api-ref-remote-procedure-calls-network.md#setban) attempts add or remove a IP/Subnet from the banned list.
+The [`setban` RPC](../api/remote-procedure-calls-network.md#setban) attempts add or remove a IP/Subnet from the banned list.
 
 *Parameter #1---IP/Subnet of the node*
 
@@ -703,14 +703,14 @@ Result (no output from `dash-cli` because result is set to `null`).
 
 *See also*
 
-* [ListBanned](../api-ref/core-api-ref-remote-procedure-calls-network.md#listbanned): lists all manually banned IPs/Subnets.
-* [ClearBanned](../api-ref/core-api-ref-remote-procedure-calls-network.md#clearbanned): clears list of banned nodes.
+* [ListBanned](../api/remote-procedure-calls-network.md#listbanned): lists all manually banned IPs/Subnets.
+* [ClearBanned](../api/remote-procedure-calls-network.md#clearbanned): clears list of banned nodes.
 
 ## SetNetworkActive
 
 *Added in Bitcoin Core 0.14.0*
 
-The [`setnetworkactive` RPC](../api-ref/core-api-ref-remote-procedure-calls-network.md#setnetworkactive) disables/enables all P2P network activity.
+The [`setnetworkactive` RPC](../api/remote-procedure-calls-network.md#setnetworkactive) disables/enables all P2P network activity.
 
 *Parameter #1---whether to disable or enable all P2P network activity*
 
@@ -734,4 +734,4 @@ Result (no output from `dash-cli` because result is set to `null`).
 
 *See also*
 
-* [GetNetworkInfo](../api-ref/core-api-ref-remote-procedure-calls-network.md#getnetworkinfo): returns information about the node's connection to the network.
+* [GetNetworkInfo](../api/remote-procedure-calls-network.md#getnetworkinfo): returns information about the node's connection to the network.

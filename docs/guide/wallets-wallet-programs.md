@@ -28,7 +28,7 @@ To help protect against theft, many wallet programs offer users the option of en
 
 To increase security, private keys can be generated and stored by a separate wallet program operating in a more secure environment. These signing-only wallets work in conjunction with a networked wallet which interacts with the peer-to-peer network.
 
-Signing-only wallets programs typically use deterministic key creation (described in a [later subsection](../guide/core-guide-wallets-wallet-files.md#hierarchical-deterministic-key-creation)) to create parent private and public keys which can create child private and public keys.
+Signing-only wallets programs typically use deterministic key creation (described in a [later subsection](../guide/wallets-wallet-files.md#hierarchical-deterministic-key-creation)) to create parent private and public keys which can create child private and public keys.
 
 ![Signing-Only Wallets](https://dash-docs.github.io/img/dev/en-wallets-signing-only.svg)
 

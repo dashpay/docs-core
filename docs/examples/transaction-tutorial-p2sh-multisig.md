@@ -25,7 +25,7 @@ Recall from the Guide that the hashed public keys used in addresses obfuscate th
 
 ## 2. Get public key
 
-Use the [`getaddressinfo` RPC](../api-ref/core-api-ref-remote-procedure-calls-wallet.md#getaddressinfo) to display the full (unhashed) public key for the addresses.  This is the information which will actually be included in the multisig redeem script.  This is also the information you would give another person or device as part of creating a multisig output or P2SH multisig redeem script.
+Use the [`getaddressinfo` RPC](../api/remote-procedure-calls-wallet.md#getaddressinfo) to display the full (unhashed) public key for the addresses.  This is the information which will actually be included in the multisig redeem script.  This is also the information you would give another person or device as part of creating a multisig output or P2SH multisig redeem script.
 
 We save the address returned to a shell variable.
 
@@ -54,7 +54,7 @@ We save the address returned to a shell variable.
 
 ## 3. Create multisig address
 
-Use the [`createmultisig` RPC](../api-ref/core-api-ref-remote-procedure-calls-util.md#createmultisig) with two arguments, the number (*n*) of signatures required and a list of public keys. The P2SH address is returned along with the redeem script which must be provided when we spend duffs sent to the P2SH address.
+Use the [`createmultisig` RPC](../api/remote-procedure-calls-util.md#createmultisig) with two arguments, the number (*n*) of signatures required and a list of public keys. The P2SH address is returned along with the redeem script which must be provided when we spend duffs sent to the P2SH address.
 
 >❗️ Redeem Script
 >
@@ -62,7 +62,7 @@ Use the [`createmultisig` RPC](../api-ref/core-api-ref-remote-procedure-calls-ut
 >
 > If you lose the redeem script, you can recreate it by running the same command above, with the public keys listed in the same order. **However, if you lose both the redeem script and even one of the public keys, you will never be able to spend duffs sent to that P2SH address.**
 
-Neither the address nor the redeem script are stored in the wallet when you use `createmultisig`. To store them in the wallet, use the [`addmultisigaddress` RPC](../api-ref/core-api-ref-remote-procedure-calls-wallet.md#addmultisigaddress) instead.  If you add an address to the wallet, you should also make a new backup.
+Neither the address nor the redeem script are stored in the wallet when you use `createmultisig`. To store them in the wallet, use the [`addmultisigaddress` RPC](../api/remote-procedure-calls-wallet.md#addmultisigaddress) instead.  If you add an address to the wallet, you should also make a new backup.
 
 ``` bash
 > dash-cli -regtest createmultisig 2 '''
@@ -102,7 +102,7 @@ ddb2a2eb2402a9ae61d7db93a9a48c0747859d899e704b10f5b72145779f9c52
 
 ## 5. Get decoded transaction
 
-We use the [`getrawtransaction` RPC](../api-ref/core-api-ref-remote-procedure-calls-raw-transactions.md#getrawtransaction) with the optional second argument (*true*) to get the decoded transaction we just created with `sendtoaddress`. We choose one of the <<glossary:outputs>> (the multisig address one) to be our UTXO and get its <<glossary:output index>> number (vout) and <<glossary:pubkey script>> (scriptPubKey).
+We use the [`getrawtransaction` RPC](../api/remote-procedure-calls-raw-transactions.md#getrawtransaction) with the optional second argument (*true*) to get the decoded transaction we just created with `sendtoaddress`. We choose one of the <<glossary:outputs>> (the multisig address one) to be our UTXO and get its <<glossary:output index>> number (vout) and <<glossary:pubkey script>> (scriptPubKey).
 
 ``` bash
 > dash-cli -regtest getrawtransaction $UTXO_TXID 1
@@ -219,7 +219,7 @@ e38f25ead28817df7929c06fe847ee88ac00000000
 
 ## 8. Get private key
 
-We get the <<glossary:private keys>> for two of the <<glossary:public keys>> we used to create the transaction, the same way we got private keys in the [Complex Raw Transaction subsection](../examples/core-examples-transaction-tutorial-complex-raw-transaction.md). Recall that we created a 2-of-3 multisig pubkey script, so signatures from two private keys are needed.
+We get the <<glossary:private keys>> for two of the <<glossary:public keys>> we used to create the transaction, the same way we got private keys in the [Complex Raw Transaction subsection](../examples/transaction-tutorial-complex-raw-transaction.md). Recall that we created a 2-of-3 multisig pubkey script, so signatures from two private keys are needed.
 
 >❗️ Private Key Warning
 >
@@ -293,7 +293,7 @@ We make the first <<glossary:signature>>. The input argument (JSON object) takes
 
 ### 9b. Private Key 3
 
-The [`signrawtransactionwithkey`](../api-ref/core-api-ref-remote-procedure-calls-raw-transactions.md#signrawtransactionwithkey) call used here is nearly identical to the one used above.  The only difference is the private key used.  Now that the two required signatures have been provided, the transaction is marked as complete.
+The [`signrawtransactionwithkey`](../api/remote-procedure-calls-raw-transactions.md#signrawtransactionwithkey) call used here is nearly identical to the one used above.  The only difference is the private key used.  Now that the two required signatures have been provided, the transaction is marked as complete.
 
 ``` bash
 > dash-cli -regtest signrawtransactionwithkey $PARTLY_SIGNED_RAW_TX '''

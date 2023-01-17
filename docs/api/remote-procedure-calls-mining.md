@@ -2,7 +2,7 @@
 
 ## GetBlockTemplate
 
-The [`getblocktemplate` RPC](../api-ref/core-api-ref-remote-procedure-calls-mining.md#getblocktemplate) gets a block template or proposal for use with mining software. For more
+The [`getblocktemplate` RPC](../api/remote-procedure-calls-mining.md#getblocktemplate) gets a block template or proposal for use with mining software. For more
 information, please see the following resources:
 
 * [Bitcoin Wiki GetBlockTemplate](https://en.bitcoin.it/wiki/Getblocktemplate)
@@ -139,13 +139,13 @@ Result:
 
 *See also*
 
-* [GetMiningInfo](../api-ref/core-api-ref-remote-procedure-calls-mining.md#getmininginfo): returns various mining-related information.
-* [SubmitBlock](../api-ref/core-api-ref-remote-procedure-calls-mining.md#submitblock): accepts a block, verifies it is a valid addition to the block chain, and broadcasts it to the network. Extra parameters are ignored by Dash Core but may be used by mining pools or other programs.
-* [PrioritiseTransaction](../api-ref/core-api-ref-remote-procedure-calls-mining.md#prioritisetransaction): adds virtual priority or fee to a transaction, allowing it to be accepted into blocks mined by this node (or miners which use this node) with a lower priority or fee. (It can also remove virtual priority or fee, requiring the transaction have a higher priority or fee to be accepted into a locally-mined block.)
+* [GetMiningInfo](../api/remote-procedure-calls-mining.md#getmininginfo): returns various mining-related information.
+* [SubmitBlock](../api/remote-procedure-calls-mining.md#submitblock): accepts a block, verifies it is a valid addition to the block chain, and broadcasts it to the network. Extra parameters are ignored by Dash Core but may be used by mining pools or other programs.
+* [PrioritiseTransaction](../api/remote-procedure-calls-mining.md#prioritisetransaction): adds virtual priority or fee to a transaction, allowing it to be accepted into blocks mined by this node (or miners which use this node) with a lower priority or fee. (It can also remove virtual priority or fee, requiring the transaction have a higher priority or fee to be accepted into a locally-mined block.)
 
 ## GetMiningInfo
 
-The [`getmininginfo` RPC](../api-ref/core-api-ref-remote-procedure-calls-mining.md#getmininginfo) returns various mining-related information.
+The [`getmininginfo` RPC](../api/remote-procedure-calls-mining.md#getmininginfo) returns various mining-related information.
 
 *Parameters: none*
 
@@ -158,7 +158,7 @@ Name | Type | Presence | Description
 →<br>`currentblocksize` | number (int) | Optional<br>(0 or 1) | If generation was enabled since the last time this node was restarted, this is the size in bytes of the last block built by this node for header hash checking.
 →<br>`currentblocktx` | number (int) | Optional<br>(0 or 1) | If generation was enabled since the last time this node was restarted, this is the number of transactions in the last block built by this node for header hash checking. 
 →<br>`difficulty` | number (real) | Required<br>(exactly 1) | If generation was enabled since the last time this node was restarted, this is the difficulty of the highest-height block in the local best block chain.  Otherwise, this is the value `0`
-→<br>`networkhashps` | number (int) | Required<br>(exactly 1) | An estimate of the number of hashes per second the network is generating to maintain the current difficulty.  See the [`getnetworkhashps` RPC](../api-ref/core-api-ref-remote-procedure-calls-mining.md#getnetworkhashps) for configurable access to this data
+→<br>`networkhashps` | number (int) | Required<br>(exactly 1) | An estimate of the number of hashes per second the network is generating to maintain the current difficulty.  See the [`getnetworkhashps` RPC](../api/remote-procedure-calls-mining.md#getnetworkhashps) for configurable access to this data
 →<br>`pooledtx` | number (int) | Required<br>(exactly 1) | The number of transactions in the memory pool
 →<br>`chain` | string | Required<br>(exactly 1) | Set to `main` for mainnet, `test` for testnet, and `regtest` for regtest
 →<br>`warnings` | string | Required<br>(exactly 1) | *Added in Dash Core 0.16.0*<br><br>Any network or blockchain warnings
@@ -185,13 +185,13 @@ Result:
 
 *See also*
 
-* [GetMemPoolInfo](../api-ref/core-api-ref-remote-procedure-calls-blockchain.md#getmempoolinfo): returns information about the node's current transaction memory pool.
-* [GetRawMemPool](../api-ref/core-api-ref-remote-procedure-calls-blockchain.md#getrawmempool): returns all transaction identifiers (TXIDs) in the memory pool as a JSON array, or detailed information about each transaction in the memory pool as a JSON object.
-* [GetBlockTemplate](../api-ref/core-api-ref-remote-procedure-calls-mining.md#getblocktemplate): gets a block template or proposal for use with mining software.
+* [GetMemPoolInfo](../api/remote-procedure-calls-blockchain.md#getmempoolinfo): returns information about the node's current transaction memory pool.
+* [GetRawMemPool](../api/remote-procedure-calls-blockchain.md#getrawmempool): returns all transaction identifiers (TXIDs) in the memory pool as a JSON array, or detailed information about each transaction in the memory pool as a JSON object.
+* [GetBlockTemplate](../api/remote-procedure-calls-mining.md#getblocktemplate): gets a block template or proposal for use with mining software.
 
 ## GetNetworkHashPS
 
-The [`getnetworkhashps` RPC](../api-ref/core-api-ref-remote-procedure-calls-mining.md#getnetworkhashps) returns the estimated network hashes per second based on the last n blocks.
+The [`getnetworkhashps` RPC](../api/remote-procedure-calls-mining.md#getnetworkhashps) returns the estimated network hashes per second based on the last n blocks.
 
 *Parameter #1---number of blocks to average*
 
@@ -228,12 +228,12 @@ Result:
 
 *See also*
 
-* [GetDifficulty](../api-ref/core-api-ref-remote-procedure-calls-blockchain.md#getdifficulty): returns the proof-of-work difficulty as a multiple of the minimum difficulty.
-* [GetBlock](../api-ref/core-api-ref-remote-procedure-calls-blockchain.md#getblock): gets a block with a particular header hash from the local block database either as a JSON object or as a serialized block.
+* [GetDifficulty](../api/remote-procedure-calls-blockchain.md#getdifficulty): returns the proof-of-work difficulty as a multiple of the minimum difficulty.
+* [GetBlock](../api/remote-procedure-calls-blockchain.md#getblock): gets a block with a particular header hash from the local block database either as a JSON object or as a serialized block.
 
 ## PrioritiseTransaction
 
-The [`prioritisetransaction` RPC](../api-ref/core-api-ref-remote-procedure-calls-mining.md#prioritisetransaction) adds virtual priority or fee to a transaction, allowing it to be accepted into blocks mined by this node (or miners which use this node) with a lower priority or fee. (It can also remove virtual priority or fee, requiring the transaction have a higher priority or fee to be accepted into a locally-mined block.)
+The [`prioritisetransaction` RPC](../api/remote-procedure-calls-mining.md#prioritisetransaction) adds virtual priority or fee to a transaction, allowing it to be accepted into blocks mined by this node (or miners which use this node) with a lower priority or fee. (It can also remove virtual priority or fee, requiring the transaction have a higher priority or fee to be accepted into a locally-mined block.)
 
 *Parameter #1---the TXID of the transaction to modify*
 
@@ -269,12 +269,12 @@ true
 
 *See also*
 
-* [GetRawMemPool](../api-ref/core-api-ref-remote-procedure-calls-blockchain.md#getrawmempool): returns all transaction identifiers (TXIDs) in the memory pool as a JSON array, or detailed information about each transaction in the memory pool as a JSON object.
-* [GetBlockTemplate](../api-ref/core-api-ref-remote-procedure-calls-mining.md#getblocktemplate): gets a block template or proposal for use with mining software.
+* [GetRawMemPool](../api/remote-procedure-calls-blockchain.md#getrawmempool): returns all transaction identifiers (TXIDs) in the memory pool as a JSON array, or detailed information about each transaction in the memory pool as a JSON object.
+* [GetBlockTemplate](../api/remote-procedure-calls-mining.md#getblocktemplate): gets a block template or proposal for use with mining software.
 
 ## SubmitBlock
 
-The [`submitblock` RPC](../api-ref/core-api-ref-remote-procedure-calls-mining.md#submitblock) accepts a block, verifies it is a valid addition to the block chain, and broadcasts it to the network. Extra parameters are ignored by Dash Core but may be used by mining pools or other programs.
+The [`submitblock` RPC](../api/remote-procedure-calls-mining.md#submitblock) accepts a block, verifies it is a valid addition to the block chain, and broadcasts it to the network. Extra parameters are ignored by Dash Core but may be used by mining pools or other programs.
 
 *Parameter #1---the new block in serialized block format as hex*
 
@@ -326,11 +326,11 @@ duplicate
 
 *See also*
 
-* [GetBlockTemplate](../api-ref/core-api-ref-remote-procedure-calls-mining.md#getblocktemplate): gets a block template or proposal for use with mining software.
+* [GetBlockTemplate](../api/remote-procedure-calls-mining.md#getblocktemplate): gets a block template or proposal for use with mining software.
 
 ## SubmitHeader
 
-The [`submitheader` RPC](../api-ref/core-api-ref-remote-procedure-calls-mining.md#submitheader) decodes the given hexdata as a header and submits it as a candidate chain tip if valid. 
+The [`submitheader` RPC](../api/remote-procedure-calls-mining.md#submitheader) decodes the given hexdata as a header and submits it as a candidate chain tip if valid. 
 If invalid, it  throws.
 
 *Parameter #1---hexdata*

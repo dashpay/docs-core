@@ -5,7 +5,7 @@ Dash Core performs full <<glossary:masternode>> synchronization as required. The
 * Initial startup of Dash Core
 * More than 60 minutes have passed since the last activation
 * A failure occurred during the last sync attempt (after a 1 minute cooldown before sync restarts)
-* Issuing a [`mnsync reset` RPC](../api-ref/core-api-ref-remote-procedure-calls-dash.md#mnsync) command
+* Issuing a [`mnsync reset` RPC](../api/remote-procedure-calls-dash.md#mnsync) command
 
 ## Initial Masternode Sync
 
@@ -20,16 +20,16 @@ The following table details the data flow of P2P messages exchanged during initi
 | **Syncing Node Message** | **Direction**  | **Masternode Response**   | **Description** |
 | --- | :---: | --- | --- |
 | **1. Sporks** |   |  |  |
-| [`getsporks` message](../ref/core-ref-p2p-network-control-messages.md#getsporks)                            | → |                           | Syncing node requests sporks
-|                                                | ← | [`spork` message](../ref/core-ref-p2p-network-control-messages.md#spork)(s)        |
+| [`getsporks` message](../reference/p2p-network-control-messages.md#getsporks)                            | → |                           | Syncing node requests sporks
+|                                                | ← | [`spork` message](../reference/p2p-network-control-messages.md#spork)(s)        |
 | **2. Mempool** |   |  |  |
-| [`mempool` message](../ref/core-ref-p2p-network-data-messages.md#mempool)                            | → |                           | Syncing node requests mempool entries
-|                                                | ← | [`inv` message](../ref/core-ref-p2p-network-data-messages.md#inv)(s) | `inv` message(s) containing TXIDs of mempool transactions |
-| **3. Governance** |   |  | See [Governance sync](../guide/core-guide-dash-features-governance.md#synchronization) |
+| [`mempool` message](../reference/p2p-network-data-messages.md#mempool)                            | → |                           | Syncing node requests mempool entries
+|                                                | ← | [`inv` message](../reference/p2p-network-data-messages.md#inv)(s) | `inv` message(s) containing TXIDs of mempool transactions |
+| **3. Governance** |   |  | See [Governance sync](../guide/dash-features-governance.md#synchronization) |
 
 *Masternode Sync Status*
 
-There are several status values used to track masternode synchronization. They are used in both [`ssc` messages](../ref/core-ref-p2p-network-masternode-messages.md#ssc) and the [`mnsync` RPC](../api-ref/core-api-ref-remote-procedure-calls-dash.md#mnsync).
+There are several status values used to track masternode synchronization. They are used in both [`ssc` messages](../reference/p2p-network-masternode-messages.md#ssc) and the [`mnsync` RPC](../api/remote-procedure-calls-dash.md#mnsync).
 
 | **Value** | **Status**  | **Description** |
 | --- | --- | --- |
@@ -47,7 +47,7 @@ Once a masternode completes an initial full sync, continuing synchronization is 
 
 **Governance**
 
-After the initial governance synchronization, governance information is kept current by the [`govobj` messages](../ref/core-ref-p2p-network-governance-messages.md#govobj) and [`govobjvote` messages](../ref/core-ref-p2p-network-governance-messages.md#govobjvote) relayed on the <<glossary:network>>. Unsynchronized <<glossary:peers>> may send [`govsync` messages](../ref/core-ref-p2p-network-governance-messages.md#govsync) to request governance sync.
+After the initial governance synchronization, governance information is kept current by the [`govobj` messages](../reference/p2p-network-governance-messages.md#govobj) and [`govobjvote` messages](../reference/p2p-network-governance-messages.md#govobjvote) relayed on the <<glossary:network>>. Unsynchronized <<glossary:peers>> may send [`govsync` messages](../reference/p2p-network-governance-messages.md#govsync) to request governance sync.
 
 ## Masternode Sync Schedule
 
