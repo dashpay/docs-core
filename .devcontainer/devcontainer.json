@@ -39,6 +39,11 @@
 		"8080": {
 			"label": "Doc Preview"
 		}
+	},
+
+	// Configure command(s) to run after starting
+	"postStartCommand": {
+		"serve-doc-preview": "python -m http.server 8080 -d _build/html/"
 	}
 
 	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
