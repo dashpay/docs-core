@@ -19,7 +19,6 @@
 	"postCreateCommand": {
 		"install-requirements": "pip install -r requirements.txt",
 		"build-docs": "make html"
-		// "serve-docs": "python -m http.server 8080 -d _build/html/"
 	},
 
 	// Configure tool-specific properties.
