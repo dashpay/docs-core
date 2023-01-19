@@ -28,8 +28,16 @@
 				"README.md",
 				"index.md"
 			]
+		},
+		"vscode": {
+			"extensions": [
+				"lextudio.restructuredtext",
+				"trond-snekvik.simple-rst",
+				"DavidAnson.vscode-markdownlint",
+				"ZainChen.json"
+			]
 		}
-	},
+	}
 
 	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
 	// "remoteUser": "root"
