@@ -29,7 +29,8 @@
 				"lextudio.restructuredtext",
 				"trond-snekvik.simple-rst",
 				"DavidAnson.vscode-markdownlint",
-				"ZainChen.json"
+				"ZainChen.json",
+				"stkb.rewrap"
 			]
 		}
 	},
