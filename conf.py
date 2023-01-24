@@ -35,8 +35,13 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', 'README.md']
 # The master toctree document.
 master_doc = 'index'
 
+# -- Myst parser configuration -----------------------------------------------
 # Auto-generate header anchors for md headings
 myst_heading_anchors = 5
+
+# Enable colon_fence for better markdown compatibility
+# https://myst.tools/docs/mystjs/syntax-overview#directives
+myst_enable_extensions = ["colon_fence"]
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
