@@ -44,20 +44,77 @@ npm install zeromq@5
 ### 2. Subscribe to ZeroMQ Messages
 
 Create a file with the following contents. Then run it by typing `node <your-filename.js>` from the command line:
-[block:code]
-{
-  "codes": [
-    {
-      "code": "const zmq = require('zeromq');\nconst sock = zmq.socket('sub');\nconst zmqPort = 20009;\n\nsock.connect('tcp://127.0.0.1:' + zmqPort);\n\n// Subscribe to transaction notifications\nsock.subscribe('hashtx'); // Note: this will subscribe to hashtxlock also\n\n// Subscribe to InstantSend/ChainLock notifications\nsock.subscribe('hashchainlock');\nsock.subscribe('hashtxlock');\nsock.subscribe('rawchainlock'); // Note: this will subscribe to rawchainlocksig also\nsock.subscribe('rawtxlock'); // Note: this will subscribe to rawtxlocksig also\n\nconsole.log('Subscriber connected to port %d', zmqPort);\n\nsock.on('message', function(topic, message) {\n  console.log(\n    'Received',\n    topic.toString().toUpperCase(),\n    'containing:\\n',\n    message.toString('hex'),\n    '\\n'\n  );\n});",
-      "language": "javascript"
-    },
-    {
-      "code": "import binascii\nimport asyncio\nimport zmq\nimport zmq.asyncio\nimport signal\n\nport = 20009\n\nclass ZMQHandler():\n    def __init__(self):\n        self.loop = asyncio.get_event_loop()\n        self.zmqContext = zmq.asyncio.Context()\n\n        self.zmqSubSocket = self.zmqContext.socket(zmq.SUB)\n        self.zmqSubSocket.connect(\"tcp://127.0.0.1:%i\" % port)\n\n        # Subscribe to transaction notifications\n        self.zmqSubSocket.setsockopt_string(zmq.SUBSCRIBE, \"hashtx\")\n\n        # Subscribe to InstantSend/ChainLock notifications\n        self.zmqSubSocket.setsockopt_string(zmq.SUBSCRIBE, \"hashtxlock\")\n        self.zmqSubSocket.setsockopt_string(zmq.SUBSCRIBE, \"hashchainlock\")\n        self.zmqSubSocket.setsockopt_string(zmq.SUBSCRIBE, \"rawchainlock\")\n        self.zmqSubSocket.setsockopt_string(zmq.SUBSCRIBE, \"rawtxlock\")\n\n        print('Subscriber connected to port {}'.format(port))\n\n    @asyncio.coroutine\n    def handle(self) :\n        msg = yield from self.zmqSubSocket.recv_multipart()\n        topic = msg[0]\n        body = msg[1]\n        sequence = \"Unknown\"\n\n        print('Received {} containing:\\n{}\\n'.format(\n            topic.decode(\"utf-8\"), \n            binascii.hexlify(body).decode(\"utf-8\")))\n\n        # schedule ourselves to receive the next message\n        asyncio.ensure_future(self.handle())\n\n    def start(self):\n        self.loop.add_signal_handler(signal.SIGINT, self.stop)\n        self.loop.create_task(self.handle())\n        self.loop.run_forever()\n\n    def stop(self):\n        self.loop.stop()\n        self.zmqContext.destroy()\n\ndaemon = ZMQHandler()\ndaemon.start()",
-      "language": "python"
-    }
-  ]
-}
-[/block]
+
+::::{tab-set-code}
+
+```{code-block} javascript
+const zmq = require('zeromq');
+const sock = zmq.socket('sub');
+const zmqPort = 20009;
+sock.connect('tcp://127.0.0.1:' + zmqPort);
+// Subscribe to transaction notifications
+sock.subscribe('hashtx'); // Note: this will subscribe to hashtxlock also
+// Subscribe to InstantSend/ChainLock notifications
+sock.subscribe('hashchainlock');
+sock.subscribe('hashtxlock');
+sock.subscribe('rawchainlock'); // Note: this will subscribe to rawchainlocksig also
+sock.subscribe('rawtxlock'); // Note: this will subscribe to rawtxlocksig also
+console.log('Subscriber connected to port %d', zmqPort);
+sock.on('message', function(topic, message) {
+  console.log(
+    'Received',
+    topic.toString().toUpperCase(),
+    'containing:\n',
+    message.toString('hex'),
+    '\n'
+  );
+});
+```
+
+```{code-block} python
+import binascii
+import asyncio
+import zmq
+import zmq.asyncio
+import signal
+port = 20009
+class ZMQHandler():
+    def __init__(self):
+        self.loop = asyncio.get_event_loop()
+        self.zmqContext = zmq.asyncio.Context()
+        self.zmqSubSocket = self.zmqContext.socket(zmq.SUB)
+        self.zmqSubSocket.connect("tcp://127.0.0.1:%i" % port)
+        # Subscribe to transaction notifications
+        self.zmqSubSocket.setsockopt_string(zmq.SUBSCRIBE, "hashtx")
+        # Subscribe to InstantSend/ChainLock notifications
+        self.zmqSubSocket.setsockopt_string(zmq.SUBSCRIBE, "hashtxlock")
+        self.zmqSubSocket.setsockopt_string(zmq.SUBSCRIBE, "hashchainlock")
+        self.zmqSubSocket.setsockopt_string(zmq.SUBSCRIBE, "rawchainlock")
+        self.zmqSubSocket.setsockopt_string(zmq.SUBSCRIBE, "rawtxlock")
+        print('Subscriber connected to port {}'.format(port))
+    @asyncio.coroutine
+    def handle(self) :
+        msg = yield from self.zmqSubSocket.recv_multipart()
+        topic = msg[0]
+        body = msg[1]
+        sequence = "Unknown"
+        print('Received {} containing:\n{}\n'.format(
+            topic.decode("utf-8"), 
+            binascii.hexlify(body).decode("utf-8")))
+        # schedule ourselves to receive the next message
+        asyncio.ensure_future(self.handle())
+    def start(self):
+        self.loop.add_signal_handler(signal.SIGINT, self.stop)
+        self.loop.create_task(self.handle())
+        self.loop.run_forever()
+    def stop(self):
+        self.loop.stop()
+        self.zmqContext.destroy()
+daemon = ZMQHandler()
+daemon.start()
+```
+
+::::
 
 ## Example Response
 
