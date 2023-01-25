@@ -31,8 +31,8 @@ When retrieving transaction data via Dash Core RPCs (e.g. the [`getrawtransactio
 Version 1 and 2 Transaction Structure (prior to DIP2 activation in Dash Core v0.13.0):
 ``` json
 {
-  "txid": <string>,
-  "size": <int>,
+  "txid": "<string>",
+  "size": "<int>",
   "version": 2,
   "locktime": 0,
   "vin": [ ],
@@ -43,15 +43,15 @@ Version 1 and 2 Transaction Structure (prior to DIP2 activation in Dash Core v0.
 Version 3 Transaction Structure (Dash Core v0.13.0+ and activated [DIP2](https://github.com/dashpay/dips/blob/master/dip-0002.md)):
 ``` json
 {
-  "txid": <string>,
-  "size": <int>,
+  "txid": "<string>",
+  "size": "<int>",
   "version": 3,
-  "type": <int>,
+  "type": "<int>",
   "locktime": 0,
   "vin": [ ],
   "vout": [ ],
-  "extraPayloadSize": <variable int>,
-  "extraPayload": …
+  "extraPayloadSize": "<variable int>",
+  "extraPayload": "…"
 }
 ```
 
