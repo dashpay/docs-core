@@ -528,7 +528,7 @@ Confirmations | number (int) | Optional<br>(0 or 1) | The minimum number of conf
 
 > 🚧 
 >
-> **Warning:** if account1 receives an unconfirmed payment and transfers it to account2 with the [`move` RPC](../api/remote-procedure-calls-wallet-deprecated.md#move), account2 will be able to spend those dash even if this parameter is set to `1` or higher.
+> **Warning:** if account1 receives an unconfirmed payment and transfers it to account2 with the [`move` RPC](../api/remote-procedure-calls-removed.md#move), account2 will be able to spend those dash even if this parameter is set to `1` or higher.
 
 *Parameter #5---whether to add the balance from transactions locked via InstantSend*
 
