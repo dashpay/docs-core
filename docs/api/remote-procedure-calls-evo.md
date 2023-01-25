@@ -2762,7 +2762,8 @@ Result (truncated):
   "quorumSnapshotAtHMinusC": {
     "activeQuorumMembers": [
       true,
-      false,...
+      false,
+      // Content truncated
     ],
     "mnSkipListMode": 1,
     "mnSkipList": [
@@ -2775,7 +2776,8 @@ Result (truncated):
   "quorumSnapshotAtHMinus2C": {
     "activeQuorumMembers": [
       true,
-      true,...
+      true,
+      // Content truncated
     ],
     "mnSkipListMode": 1,
     "mnSkipList": [
@@ -2788,7 +2790,8 @@ Result (truncated):
   "quorumSnapshotAtHMinus3C": {
     "activeQuorumMembers": [
       true,
-      true,...
+      true,
+      // Content truncated
     ],
     "mnSkipListMode": 1,
     "mnSkipList": [
@@ -2812,7 +2815,8 @@ Result (truncated):
         "pubKeyOperator": "04bfadc894a7855412800db1941efc5284c0e19dd21512067e01bed98bfd939201e8bffd5de039177ef4ec15aa4c0bd5",
         "votingAddress": "yMPLoqwqfnsTdQTTzcmont2HRkQyUewram",
         "isValid": true
-      },...      
+      },
+      // Content truncated
     ],
     "deletedQuorums": [
     ],
@@ -2830,15 +2834,16 @@ Result (truncated):
         "quorumVvecHash": "a8719a7be6b82bd052c99bc89a8e1ad831a2d33b2440f5a1cfe66d4be1f6ee8e",
         "quorumSig": "022288b10b1d94457de8312a884d520cf50058675c7f527a50629e27fd191142be594101213402b56f7a7e0736f71b70046c92bc4ad81a08cfecd7f3dbdecaf7050479f0227099c74f0be5ef302dd626701a1359075187fe799033619f6c8bf9",
         "membersSig": "8ef10d202123e5fea80c8c0cd0ad8c4094b605cb977a1e3f9205f7f08fe1da2f1b4c2fa1dcc147ef55eee1bd24bd783513941ae485425400743edc3f2bceaa83b6424e3aa7d4578864a962a2a37066dac4c09ae4fde4569225edec3476b153eb"
-      },...
+      },
+      // Content truncated
     ],
     "merkleRootMNList": "d30d4053e91264e4b0649101a63e513320e295a046510b80ab787d9aa7acb1a0",
     "merkleRootQuorums": "1412d42c9f33cc7282f06b67534d29d0944018e9a7654a8190d4be626da25339"
   },
-  "mnListDiffH": {...},
-  "mnListDiffAtHMinusC": {...},
-  "mnListDiffAtHMinus2C": {...},
-  "mnListDiffAtHMinus3C": {...},
+  "mnListDiffH": {}, // Content truncated
+  "mnListDiffAtHMinusC": {}, // Content truncated
+  "mnListDiffAtHMinus2C": {}, // Content truncated
+  "mnListDiffAtHMinus3C": {}, // Content truncated
   "blockHashList": [
     "000000956145f9b48231bbb2a7acd54301823f5619854df4487879dff18f2d79",
     "0000002cc74d9300f5d8a5436cfaead69fd1aaf3d68a00e57bd89e878a76a841",
@@ -2849,7 +2854,8 @@ Result (truncated):
     {
       "activeQuorumMembers": [
         true,
-        true,...
+        true,
+        // Content truncated
       ],
       "mnSkipListMode": 1,
       "mnSkipList": [
@@ -2867,7 +2873,7 @@ Result (truncated):
       "cbTx": "03000500010000000000000000000000000000000000000000000000000000000000000000ffffffff0502c0060101ffffffff0200c817a8040000001976a914c0aa7affe002c1189d021ea819c2160f7100ef0288ac00ac23fc060000001976a914c0aa7affe002c1189d021ea819c2160f7100ef0288ac00000000460200c0060000a0b1aca79a7d78ab800b5146a095e22033513ea6019164b0e46412e953400dd3dc1437d53f3dcdb89ea5503743ea6ba4eba87c8fb2f47d8e12ea07acc1e39692",
       "deletedMNs": [
       ],
-      "mnList": [...],
+      "mnList": [], // Content truncated
       "deletedQuorums": [
       ],
       "newQuorums": [
@@ -2884,7 +2890,8 @@ Result (truncated):
           "quorumVvecHash": "670e3972eb4f0b42f944fd1c333808ae93d66748f9876e42e91fe503f5dab3b7",
           "quorumSig": "151ee55b5ad68308d0a16ac47b237a6434bf205d80ffe4cbc5a0b84a70401d863cab7137c40edce2a6b92cd09f07c9ac18fd66c45a7077369f9dfc100ea2e5b5a49549e933ce4dafa8a9cbdb718de945fb805a5eb0c3f02c7159a5db6549a4e8",
           "membersSig": "10745b04fa0c164e99b75ff8641c32282468daf928a393f8f98de58b24cffff0faab999b5ffebbb2d804aa6367ca52270ff669041175f6743af534127259b6984fbaae935bd6929e810acb1424b67e4a7af90c64bae477accc88a85ebf3d3891"
-        },...
+        },
+        // Content truncated
      ],
       "merkleRootMNList": "d30d4053e91264e4b0649101a63e513320e295a046510b80ab787d9aa7acb1a0",
       "merkleRootQuorums": "9296e3c1ac07ea128e7df4b28f7ca8eba46bea433750a59eb8cd3d3fd53714dc"
