@@ -89,6 +89,7 @@ find . -iname "*.md" -exec sed -i 's~](core-examples-introduction)~](\.\./exampl
 find . -iname "*.md" -exec sed -i 's~](core-examples-configuration-file)~](\.\./examples/configuration-file.md)~g' {} +
 find . -iname "*.md" -exec sed -i 's~](core-examples-p2p-network-parsing-a-merkleblock~](\.\./examples/p2p-network-parsing-a-merkleblock.md~g' {} +
 find . -iname "*.md" -exec sed -i 's~](core-examples-p2p-network-creating-a-bloom-filter~](\.\./examples/p2p-network-creating-a-bloom-filter.md~g' {} +
+find . -iname "*.md" -exec sed -i 's~](core-examples-p2p-network-evaluating-a-bloom-filter~](\.\./examples/p2p-network-evaluating-a-bloom-filter.md~g' {} +
 find . -iname "*.md" -exec sed -i 's~](core-examples-transaction-tutorial-simple-spending~](\.\./examples/transaction-tutorial-simple-spending.md~g' {} +
 find . -iname "*.md" -exec sed -i 's~](core-examples-transaction-tutorial#simple-raw-transaction~](\.\./examples/transaction-tutorial-simple-raw-transaction.md~g' {} +
 find . -iname "*.md" -exec sed -i 's~](core-examples-transaction-tutorial-simple-raw-transaction~](\.\./examples/transaction-tutorial-simple-raw-transaction.md~g' {} +
