@@ -22,7 +22,7 @@ A raw transaction has the following top-level format:
 | *Varies* | extra_payload size | compactSize uint | *Added by DIP2 in v0.13.0*<br><br>Variable number of bytes of extra payload for DIP2-based special transactions
 | *Varies* | extra_payload | blob               | *Added by DIP2 in v0.13.0*<br><br>Special transaction payload.
 
-A transaction may have multiple <<glossary:inputs>> and <<glossary:outputs>>, so the txIn and txOut structures may recur within a transaction. <<glossary:CompactSize unsigned integers>> are a form of variable-length integers; they are described in the [CompactSize section](../reference/transactions-compactsize-unsigned-integers).
+A transaction may have multiple <<glossary:inputs>> and <<glossary:outputs>>, so the txIn and txOut structures may recur within a transaction. <<glossary:CompactSize unsigned integers>> are a form of variable-length integers; they are described in the [CompactSize section](../reference/transactions-compactsize-unsigned-integers.md).
 
 ## JSON-RPC Responses
 

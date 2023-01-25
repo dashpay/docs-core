@@ -428,7 +428,7 @@ Result (edited to only show the first two results):
 >
 > Requires <<glossary:wallet>> support (**unavailable on masternodes**)
 
-The [`move` RPC](../api/remote-procedure-calls-wallet-deprecated.md#move) moves a specified amount from one account in your wallet to another using an off-block-chain transaction.
+The `move` RPC moves a specified amount from one account in your wallet to another using an off-block-chain transaction.
 
 > 🚧
 >

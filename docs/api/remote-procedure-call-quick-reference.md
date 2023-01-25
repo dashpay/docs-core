@@ -11,7 +11,7 @@ These RPCs are all Dash-specific and not found in Bitcoin Core
 * [GetAddressTxids](../api/remote-procedure-calls-address-index.md#getaddresstxids): returns the txids for an address(es).
 * [GetAddressUtxos](../api/remote-procedure-calls-address-index.md#getaddressutxos): returns all unspent outputs for an address.
 
-## [Block Chain RPCs](../api/remote-procedure-calls-blockchain.md)
+# [Blockchain RPCs](../api/remote-procedure-calls-blockchain.md)
 
 * [GetBestBlockHash](../api/remote-procedure-calls-blockchain.md#getbestblockhash): returns the header hash of the most recent block on the best block chain.
 * [DumpTxOutset](../api/remote-procedure-calls-blockchain.md#dumptxoutset): Write the serialized UTXO set to disk. **New in Dash Core 18.1.0**

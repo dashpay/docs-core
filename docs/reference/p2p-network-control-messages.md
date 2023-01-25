@@ -105,7 +105,7 @@ The [`filterclear` message](../reference/p2p-network-control-messages.md#filterc
 
 Dash Core does not require a [`filterclear` message](../reference/p2p-network-control-messages.md#filterclear) before a replacement filter is loaded with `filterload`.  It also doesn't require a [`filterload` message](../reference/p2p-network-control-messages.md#filterload) before a [`filterclear` message](../reference/p2p-network-control-messages.md#filterclear).
 
-There is no payload in a [`filterclear` message](../reference/p2p-network-control-messages.md#filterclear).  See the [message header section](../reference/p2p-network-message-headers) for an example of a message without a payload.
+There is no payload in a [`filterclear` message](../reference/p2p-network-control-messages.md#filterclear).  See the [message header section](../reference/p2p-network-message-headers.md) for an example of a message without a payload.
 
 ## filterload
 
@@ -256,13 +256,13 @@ In addition, because the filter size stays the same even though additional eleme
 
 The [`getaddr` message](../reference/p2p-network-control-messages.md#getaddr) requests an [`addr` message](../reference/p2p-network-control-messages.md#addr) from the receiving <<glossary:node>>, preferably one with lots of IP addresses of other receiving nodes. The transmitting node can use those IP addresses to quickly update its database of available nodes rather than waiting for unsolicited [`addr` messages](../reference/p2p-network-control-messages.md#addr) to arrive over time.
 
-There is no payload in a [`getaddr` message](../reference/p2p-network-control-messages.md#getaddr).  See the [message header section](../reference/p2p-network-message-headers) for an example of a message without a payload.
+There is no payload in a [`getaddr` message](../reference/p2p-network-control-messages.md#getaddr).  See the [message header section](../reference/p2p-network-message-headers.md) for an example of a message without a payload.
 
 ## getsporks
 
 The [`getsporks` message](../reference/p2p-network-control-messages.md#getsporks) requests [`spork` messages](../reference/p2p-network-control-messages.md#spork) from the receiving node.
 
-There is no payload in a [`getsporks` message](../reference/p2p-network-control-messages.md#getsporks).  See the [message header section](../reference/p2p-network-message-headers) for an example of a message without a payload.
+There is no payload in a [`getsporks` message](../reference/p2p-network-control-messages.md#getsporks).  See the [message header section](../reference/p2p-network-message-headers.md) for an example of a message without a payload.
 
 ## ping
 
@@ -366,7 +366,7 @@ The annotated hexdump below shows a [`reject` message](../reference/p2p-network-
 
 The `sendaddrv2` message signals support for receiving [`addrv2` messages](#addrv2) (defined in [BIP155](https://github.com/bitcoin/bips/blob/master/bip-0155.mediawiki)). It also implies that its sender can encode as `addrv2` and would send `addrv2` messages instead of [`addr` messages](#addr) to a peer that has signaled `addrv2` support by sending a `sendaddrv2` message.
 
-There is no payload in a `sendaddrv2` message. See the [message header section](../reference/p2p-network-message-headers) for an example of a message without a payload.
+There is no payload in a `sendaddrv2` message. See the [message header section](../reference/p2p-network-message-headers.md) for an example of a message without a payload.
 
 ## sendcmpct
 
@@ -416,7 +416,7 @@ The following annotated hexdump shows a [`senddsq` message](../reference/p2p-net
 
 The [`sendheaders` message](../reference/p2p-network-control-messages.md#sendheaders) tells the receiving <<glossary:peer>> to send new <<glossary:block>> announcements using a [`headers` message](../reference/p2p-network-data-messages.md#headers) rather than an [`inv` message](../reference/p2p-network-data-messages.md#inv).
 
-There is no payload in a [`sendheaders` message](../reference/p2p-network-control-messages.md#sendheaders).  See the [message header section](../reference/p2p-network-message-headers) for an example of a message without a payload.
+There is no payload in a [`sendheaders` message](../reference/p2p-network-control-messages.md#sendheaders).  See the [message header section](../reference/p2p-network-message-headers.md) for an example of a message without a payload.
 
 ## sendheaders2
 
@@ -424,7 +424,7 @@ There is no payload in a [`sendheaders` message](../reference/p2p-network-contro
 
 The [`sendheaders2` message](../reference/p2p-network-control-messages.md#sendheaders2) tells the receiving <<glossary:peer>> to send new <<glossary:block>> announcements using a [`headers2` message](../reference/p2p-network-data-messages.md#headers2) rather than an [`inv` message](../reference/p2p-network-data-messages.md#inv).
 
-There is no payload in a [`sendheaders2` message](../reference/p2p-network-control-messages.md#sendheaders2).  See the [message header section](../reference/p2p-network-message-headers) for an example of a message without a payload.
+There is no payload in a [`sendheaders2` message](../reference/p2p-network-control-messages.md#sendheaders2).  See the [message header section](../reference/p2p-network-message-headers.md) for an example of a message without a payload.
 
 ## spork
 
@@ -516,7 +516,7 @@ d32020c827a89f8128a00acd210f4ea4
 
 ## verack
 
-The [`verack` message](../reference/p2p-network-control-messages.md#verack) acknowledges a previously-received [`version` message](../reference/p2p-network-control-messages.md#version), informing the connecting <<glossary:node>> that it can begin to send other messages. The [`verack` message](../reference/p2p-network-control-messages.md#verack) has no payload; for an example of a message with no payload, see the [message headers section](../reference/p2p-network-message-headers).
+The [`verack` message](../reference/p2p-network-control-messages.md#verack) acknowledges a previously-received [`version` message](../reference/p2p-network-control-messages.md#version), informing the connecting <<glossary:node>> that it can begin to send other messages. The [`verack` message](../reference/p2p-network-control-messages.md#verack) has no payload; for an example of a message with no payload, see the [message headers section](../reference/p2p-network-message-headers.md).
 
 ## version
 

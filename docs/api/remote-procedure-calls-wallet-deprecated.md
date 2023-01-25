@@ -16,7 +16,6 @@
 
 The [`getaccount` RPC](../api/remote-procedure-calls-wallet-deprecated.md#getaccount) returns the name of the account associated with the given address.
 
-
 *Parameter #1---a Dash address*
 
 Name | Type | Presence | Description

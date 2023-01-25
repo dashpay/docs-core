@@ -40,7 +40,7 @@ Usage:
 
 ### dash-qt
 
-See [here](../dashcore/wallet-arguments-and-commands-dash-qt) for all option details.
+See [here](../dashcore/wallet-arguments-and-commands-dash-qt.md) for all option details.
 
 ```bash
 Usage:
@@ -61,7 +61,7 @@ Usage:
 
 ### dash-tx
 
-See [here](../dashcore/wallet-arguments-and-commands-dash-tx) for all option details.
+See [here](../dashcore/wallet-arguments-and-commands-dash-tx.md) for all option details.
 
 ```bash
 Usage:
@@ -75,7 +75,7 @@ Usage:
 >
 > Introduced in Dash Core 18.0.0
 
-See [here](../dashcore/wallet-arguments-and-commands-dash-wallet) for all option details.
+See [here](../dashcore/wallet-arguments-and-commands-dash-wallet.md) for all option details.
 
 ```bash
 Usage:

@@ -3,6 +3,9 @@
 Dash Core's mixing feature provides a way to improve privacy by performing non-custodial CoinJoin. For additional details, reference this [Official Documentation page](https://docs.dash.org/en/stable/introduction/features.html#privatesend).
 
 The following video provides an overview with a good introduction to the details:
+
+<iframe width="500" height="375" src="https://www.youtube-nocookie.com/embed/vgCId3wJc5Y?rel=0"></iframe>
+
 [block:embed]
 {
   "html": false,

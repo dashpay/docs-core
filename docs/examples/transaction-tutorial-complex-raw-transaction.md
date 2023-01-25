@@ -3,17 +3,11 @@
 In this example, we'll create a <<glossary:transaction>> with two <<glossary:inputs>> and two <<glossary:outputs>>.  We'll sign each of the inputs separately, as might happen if the two inputs belonged to different people who agreed to create a transaction together (such as a CoinJoin transaction).
 
 ## 1. List unspent outputs
-[block:code]
-{
-  "codes": [
-    {
-      "code": "> dash-cli -regtest listunspent",
-      "language": "shell",
-      "name": null
-    }
-  ]
-}
-[/block]
+
+```shell 
+> dash-cli -regtest listunspent
+```
+
 ``` json
 [
   {
@@ -220,7 +214,7 @@ To sign the second input, we repeat the process we used to sign the first input 
 }
 ```
 
-Clean up the shell variables used. Unlike previous subsections, we're not going to send this transaction to the connected node with `sendrawtransaction`. This will allow us to illustrate in the [Offline Signing subsection](../examples/transaction-tutorial-offline-signing) below how to spend a transaction which is not yet in the block chain or memory pool.
+Clean up the shell variables used. Unlike previous subsections, we're not going to send this transaction to the connected node with `sendrawtransaction`. This will allow us to illustrate in the [Offline Signing subsection](../examples/transaction-tutorial-offline-signing.md) below how to spend a transaction which is not yet in the block chain or memory pool.
 
 ``` bash
 > unset PARTLY_SIGNED_RAW_TX RAW_TX NEW_ADDRESS1 [...]

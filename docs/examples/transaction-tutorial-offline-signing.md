@@ -1,6 +1,6 @@
 # Offline Signing
 
-We will now spend the <<glossary:transaction>> created in the [Complex Raw Transaction subsection](../examples/transaction-tutorial-complex-raw-transaction) without sending it to the local <<glossary:node>> first. This is the same basic process used by <<glossary:wallet>> programs for offline signing---which generally means signing a transaction without access to the current UTXO set.
+We will now spend the <<glossary:transaction>> created in the [Complex Raw Transaction subsection](../examples/transaction-tutorial-complex-raw-transaction.md) without sending it to the local <<glossary:node>> first. This is the same basic process used by <<glossary:wallet>> programs for offline signing---which generally means signing a transaction without access to the current UTXO set.
 
 Offline signing is safe. However, in this example we will also be spending an <<glossary:output>> which is not part of the <<glossary:block chain>> because the transaction containing it has never been broadcast. That can be unsafe:
 
@@ -9,30 +9,29 @@ Offline signing is safe. However, in this example we will also be spending an <<
 > **Warning:** Transactions which spend outputs from unconfirmed transactions are vulnerable to transaction malleability. Be sure to read about transaction malleability and adopt good practices before spending unconfirmed transactions on mainnet.
 
 Put the previously signed (but not sent) transaction into a shell variable.
-[block:code]
-{
-  "codes": [
-    {
-      "code": "OLD_SIGNED_RAW_TX=0100000002843d61e81058f0e682313b9e6f45ce67464b41fd8bb0\\\nf84678135aa56d596dea00000000494830450221009f7f356c0cc2d3337b5f76dfc6de9f\\\n9be7c8c5ac2074cbeeba4815b90329602002207790f23361480e2a5a2d1fa6e293ccd5cd\\\n01279ad301176f091b84d6dd8e8f6501ffffffff30d100f7762956100a2396403c60e13e\\\n7a13520167acc6d38978ec33ada44cf8000000006a47304402207867e88e3fe2c926df29\\\n376d77eba81daf9f4a557344d4f02e9c7dcee96a51e4022076274c2365dc069e7ef797c9\\\n5c75ab6e01ca3757342f3e6f21a3d9d01086efb7012102ff9005f79aa4c22ac48fa93d9b\\\n7f40f321db1c13cd70cf08bdab3e23c8d19620ffffffff02f04c3ba40b0000001976a914\\\nec73fe6129b249617bb5f20c8760708055fb6fdb88ac00ca9a3b000000001976a914cb7a\\\n56b046479f8c247875d672d3e1aed18c33f488ac00000000",
-      "language": "shell"
-    }
-  ]
-}
-[/block]
+
+``` shell
+OLD_SIGNED_RAW_TX=0100000002843d61e81058f0e682313b9e6f45ce67464b41fd8bb0\
+f84678135aa56d596dea00000000494830450221009f7f356c0cc2d3337b5f76dfc6de9f\
+9be7c8c5ac2074cbeeba4815b90329602002207790f23361480e2a5a2d1fa6e293ccd5cd\
+01279ad301176f091b84d6dd8e8f6501ffffffff30d100f7762956100a2396403c60e13e\
+7a13520167acc6d38978ec33ada44cf8000000006a47304402207867e88e3fe2c926df29\
+376d77eba81daf9f4a557344d4f02e9c7dcee96a51e4022076274c2365dc069e7ef797c9\
+5c75ab6e01ca3757342f3e6f21a3d9d01086efb7012102ff9005f79aa4c22ac48fa93d9b\
+7f40f321db1c13cd70cf08bdab3e23c8d19620ffffffff02f04c3ba40b0000001976a914\
+ec73fe6129b249617bb5f20c8760708055fb6fdb88ac00ca9a3b000000001976a914cb7a\
+56b046479f8c247875d672d3e1aed18c33f488ac00000000
+``` 
+
 
 ## 1. Decode signed transaction
 
 Decode the signed <<glossary:raw transaction>> so we can get its <<glossary:TXID>>. Also, choose a specific one of its UTXOs to spend and save that UTXO's <<glossary:output index>> number (vout) and hex <<glossary:pubkey script>> (scriptPubKey) into shell variables.
-[block:code]
-{
-  "codes": [
-    {
-      "code": "dash-cli -regtest decoderawtransaction $OLD_SIGNED_RAW_TX",
-      "language": "shell"
-    }
-  ]
-}
-[/block]
+
+``` shell
+dash-cli -regtest decoderawtransaction $OLD_SIGNED_RAW_TX
+``` 
+
 ``` json
 {
   "txid": "5efd61cf24c9644d79646627c4d1e192e9b2a760a5c720db8f4a9f76cb781077",
@@ -149,7 +148,7 @@ a9eea0ca9368d1c99c097279b8081f88ac00000000
 
 ## 4. Sign raw transaction
 
-Attempt to sign the <<glossary:raw transaction>> without any special arguments, the way we successfully signed the the raw transaction in the [Simple Raw Transaction subsection](../examples/transaction-tutorial-simple-raw-transaction). If you've read the [Transaction section](../guide/transactions.md) of the guide, you may know why the call fails and leaves the raw transaction hex unchanged.
+Attempt to sign the <<glossary:raw transaction>> without any special arguments, the way we successfully signed the the raw transaction in the [Simple Raw Transaction subsection](../examples/transaction-tutorial-simple-raw-transaction.md). If you've read the [Transaction section](../guide/transactions.md) of the guide, you may know why the call fails and leaves the raw transaction hex unchanged.
 
 ![Old Transaction Data Required To Be Signed](https://dash-docs.github.io/img/dev/en-signing-output-to-spend.svg)
 

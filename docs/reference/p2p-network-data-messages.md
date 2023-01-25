@@ -568,7 +568,7 @@ The `inv` response to the [`mempool` message](../reference/p2p-network-data-mess
 
 * The [`mempool` message](../reference/p2p-network-data-messages.md#mempool) is not currently fully compatible with the [`filterload` message](../reference/p2p-network-control-messages.md#filterload)'s `BLOOM_UPDATE_ALL` and `BLOOM_UPDATE_P2PUBKEY_ONLY` flags. Mempool transactions are not sorted like in-block transactions, so a transaction (tx2) spending an <<glossary:output>> can appear before the transaction (tx1) containing that output, which means the automatic filter update mechanism won't operate until the second-appearing transaction (tx1) is seen---missing the first-appearing transaction (tx2). It has been proposed in [Bitcoin Core issue #2381](https://github.com/bitcoin/bitcoin/issues/2381) that the transactions should be sorted before being processed by the filter.
 
-There is no payload in a [`mempool` message](../reference/p2p-network-data-messages.md#mempool).  See the [message header section](../reference/p2p-network-message-headers) for an example of a message without a payload.
+There is no payload in a [`mempool` message](../reference/p2p-network-data-messages.md#mempool).  See the [message header section](../reference/p2p-network-message-headers.md) for an example of a message without a payload.
 
 ## merkleblock
 

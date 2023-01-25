@@ -2,7 +2,7 @@
 
 Transactions let users spend <<glossary:duffs>>. Each <<glossary:transaction>> is constructed out of several parts which enable both simple direct payments and complex transactions. This section will describe each part and demonstrate how to use them together to build complete transactions.
 
-To keep things simple, this section pretends coinbase transactions do not exist. Coinbase transactions can only be created by Dash miners and they're an exception to many of the rules listed below. Instead of pointing out the coinbase exception to each rule, we invite you to read about coinbase transactions in the <<glossary:block chain>> [section](../guide/block-chain) of this guide.
+To keep things simple, this section pretends coinbase transactions do not exist. Coinbase transactions can only be created by Dash miners and they're an exception to many of the rules listed below. Instead of pointing out the coinbase exception to each rule, we invite you to read about coinbase transactions in the <<glossary:block chain>> [section](../guide/block-chain.md) of this guide.
 
 ![The Parts Of A Transaction](https://dash-docs.github.io/img/dev/en-tx-overview.svg)
 

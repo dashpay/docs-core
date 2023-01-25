@@ -27,22 +27,9 @@ The block reward is divided into three parts: <<glossary:miner>>, <<glossary:mas
 | Miner | Varies | Payment for mining
 | Masternode | Varies | Payment for masternode services ([CoinJoin](../guide/dash-features-privatesend.md), [InstantSend](../guide/dash-features-instantsend.md), [Governance](https://docs.dash.org/en/stable/introduction/features.html#decentralized-governance), etc.)
 | Superblock | 10% | Payment for maintenance/expansion of the ecosystem (Core development, marketing, integration, etc.)
-[block:image]
-{
-  "images": [
-    {
-      "image": [
-        "https://files.readme.io/fa5bfbe-mining-banner-1.svg",
-        "mining-banner-1.svg",
-        217,
-        150,
-        "#ffffff"
-      ],
-      "sizing": "50"
-    }
-  ]
-}
-[/block]
+
+<img src="https://files.readme.io/fa5bfbe-mining-banner-1.svg" alt="Mining" style="width:50%;text-align:center;"/>
+
 #### Block Reward Reallocation
 
 Dash Core v0.16 included logic to gradually adjust the block reward allocation once the BIP-9 activation threshold was met. The reward reallocation was signaled via BIP-9 bit 5 and was activated at block 1374912 upon signalling by a sufficient number of blocks. 

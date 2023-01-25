@@ -6,7 +6,7 @@ Dash Core provides several network options designed to let developers test their
 
 When run with no arguments, all Dash Core programs default to Dash's main network (<<glossary:mainnet>>). However, for development, it's safer and cheaper to use Dash's test network (<<glossary:testnet>>) where the <<glossary:duffs>> spent have no real-world value. Testnet also relaxes some restrictions (such as standard transaction checks) so you can test functions which might currently be disabled by default on <<glossary:mainnet>>.
 
-To use testnet, use the argument `-testnet` with `dash-cli`, `dashd` or `dash-qt` or add `testnet=1` to your `dash.conf` file as [described earlier](../examples/configuration-file).  To get free duffs for testing, check the faucets listed below. Some are community supported and due to potentially frequent Testnet changes, one or more of them may be unavailable at a given time:
+To use testnet, use the argument `-testnet` with `dash-cli`, `dashd` or `dash-qt` or add `testnet=1` to your `dash.conf` file as [described earlier](../examples/configuration-file.md).  To get free duffs for testing, check the faucets listed below. Some are community supported and due to potentially frequent Testnet changes, one or more of them may be unavailable at a given time:
 
 * [Testnet Faucet - Dash Core Group](https://testnet-faucet.dash.org/)
 * [Testnet Faucet - Crowdnode.io](http://faucet.test.dash.crowdnode.io/)
@@ -17,7 +17,7 @@ Testnet is a public resource provided for free by Dash Core Group and members of
 
 For situations where interaction with random <<glossary:peers>> and <<glossary:blocks>> is unnecessary or unwanted, Dash Core's <<glossary:regression test mode>> (regtest mode) lets you instantly create a brand-new private <<glossary:block chain>> with the same basic rules as testnet---but one major difference: you choose when to create new blocks, so you have complete control over the environment.
 
-Many developers consider regtest mode the preferred way to develop new applications. The following example will let you create a regtest environment after you first [configure dashd](../examples/configuration-file).
+Many developers consider regtest mode the preferred way to develop new applications. The following example will let you create a regtest environment after you first [configure dashd](../examples/configuration-file.md).
 
 ``` bash
 > dashd -regtest -daemon
@@ -58,7 +58,7 @@ The genesis block of the devnet is the same as the one from regtest. This starts
 
 ### Configuration
 
-To use devnet, use the argument `-devnet=<name>` with `dash-cli`, `dashd`or `dash-qt` or add `devnet=<name>` to your `dash.conf` file as [described earlier](../examples/configuration-file).
+To use devnet, use the argument `-devnet=<name>` with `dash-cli`, `dashd`or `dash-qt` or add `devnet=<name>` to your `dash.conf` file as [described earlier](../examples/configuration-file.md).
 
 Devnets must be assigned both `-port` and `-rpcport` unless they are not listening (`-listen=0`). It is possible to run a devnet on a private (RFC1918) network by using the `-allowprivatenet=1` argument.
 
@@ -109,7 +109,7 @@ Each network type has some unique characteristics to support development and tes
 ### Mining characteristics
 
 | Network Type | Difficulty adjustment algorithm |
-|-|-|-|-|
+|-|-|
 | [Testnet](#testnet) | Mainnet algorithm, but [allows minimum difficulty blocks](https://github.com/dashpay/dash/blob/v0.17.0.3/src/pow.cpp#L142-L146) if no blocks are created for 5 minutes |
 | [Regtest](#regtest-mode) | Mines blocks at the [minimum difficulty level](https://github.com/dashpay/dash/blob/v0.17.0.3/src/chainparams.cpp#L925) |
 | [Devnet](#devnet-mode) | Mainnet algorithm after [4001 blocks](https://github.com/dashpay/dash/blob/v0.17.0.3/src/chainparams.cpp#L749) unless overridden by [devnet-specific options](#devnet-specific-options) |

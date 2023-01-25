@@ -196,16 +196,35 @@ Continuing with the example above, the output from the `dash-cli` command would 
 ### RPCs with sub-commands
 
 Dash Core has a number of RPC requests that use sub-commands to group access to related data under one RPC method name. Examples of this include the [`gobject`](../api/remote-procedure-calls-dash.md#gobject), [`masternode`](../api/remote-procedure-calls-dash.md#masternode), [`protx`](../api/remote-procedure-calls-evo.md#protx), and [`quorum`](../api/remote-procedure-calls-evo.md#quorum) RPCs. If using cURL, the sub-commands should be included in the requests `params` field as shown here:
-[block:code]
-{
-  "codes": [
-    {
-      "code": "curl --user 'my_username:my_secret_password' --data-binary '''\n  {\n      \"method\": \"gobject\",\n      \"params\": [\"list\", \"valid\", \"proposals\"],\n      \"id\": \"foo\"\n  }''' \\\n  --header 'Content-Type: text/plain;' localhost:9998",
-      "language": "shell"
-    }
-  ]
-}
-[/block]
+
+```shell 
+curl --user 'my_username:my_secret_password' --data-binary '''
+  {
+      "method": "gobject",
+      "params": ["list", "valid", "proposals"],
+      "id": "foo"
+  }''' \
+  --header 'Content-Type: text/plain;' localhost:9998
+```
+
+### Multi-wallet Support
+
+> 👍
+>
+> Introduced in Dash Core 18.0
+
+Since Dash Core 18.0 introduced the ability to have multiple wallets loaded at the same time, wallet-related RPCs require using the `-rpcwallet` option when more than one wallet file is loaded. This is to ensure the RPC command is executed using the correct wallet. Pass the filename of the wallet to be acted on using the following syntax is:
+
+```shell
+dash-cli -rpcwallet=<wallet-filename> <command>
+```
+
+To use the default wallet, use `""` for the wallet filename as shown in the example below:
+
+```shell
+dash-cli -rpcwallet="" getwalletinfo
+```
+
 ### Error Handling
 
 If there's an error processing a request, Dash Core sets the `result` field to `null` and provides information about the error in the  `error` field. For example, a request for the block hash at block height -1 would be met with the following response (again, whitespace added for clarity):
@@ -232,16 +251,24 @@ Block height out of range
 ### Batch Requests
 
 The RPC interface supports request batching as described in [version 2.0 of the JSON-RPC specification](http://www.jsonrpc.org/specification#batch). To initiate multiple RPC requests within a single HTTP request, a client can `POST` a JSON array filled with Request objects. The HTTP response data is then a JSON array filled with the corresponding Response objects. Depending on your usage pattern, request batching may provide significant performance gains. The `dash-cli` RPC client does not support batch requests.
-[block:code]
-{
-  "codes": [
+
+```shell 
+curl --user 'my_username:my_secret_password' --data-binary '''
+  [
     {
-      "code": "curl --user 'my_username:my_secret_password' --data-binary '''\n  [\n    {\n      \"method\": \"getblockhash\",\n      \"params\": [0],\n      \"id\": \"foo\"\n    },\n    {\n      \"method\": \"getblockhash\",\n      \"params\": [1],\n      \"id\": \"foo2\"\n    }\n  ]''' \\\n  --header 'Content-Type: text/plain;' localhost:9998",
-      "language": "shell"
+      "method": "getblockhash",
+      "params": [0],
+      "id": "foo"
+    },
+    {
+      "method": "getblockhash",
+      "params": [1],
+      "id": "foo2"
     }
-  ]
-}
-[/block]
+  ]''' \
+  --header 'Content-Type: text/plain;' localhost:9998
+```
+
 To keep this documentation compact and readable, the examples for each of the available RPC calls will be given as `dash-cli` commands:
 
 ```shell
