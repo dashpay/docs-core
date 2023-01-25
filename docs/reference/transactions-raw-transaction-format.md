@@ -97,7 +97,7 @@ Each non- <<glossary:coinbase>> <<glossary:input>> spends an outpoint from a pre
 |----------|------------------|----------------------|--------------
 | 36       | previous_output  | <<glossary:outpoint>>             | The previous outpoint being spent.  See description of outpoint below.
 | *Varies* | script bytes     | compactSize uint     | The number of bytes in the signature script.  Maximum is 10,000 bytes.
-| *Varies* | signature script | char[]               | A script-language script which satisfies the conditions placed in the outpoint's pubkey script.  Should only contain data pushes; see the [signature script modification warning](../reference/transactions-opcodes.md#signature_script_modification_warning).
+| *Varies* | signature script | char[]               | A script-language script which satisfies the conditions placed in the outpoint's pubkey script.  Should only contain data pushes; see the [signature script modification warning](../reference/transactions-opcodes.md#signature-script-modification).
 | 4        | sequence         | uint32_t             | Sequence number.  Default for Dash Core and almost all other programs is 0xffffffff.
 
 **<span id="outpoint"></span>**
@@ -173,7 +173,7 @@ The first transaction in a <<glossary:block>>, called the <<glossary:coinbase tr
 | *Varies* | coinbase script    | *None*               | The <<glossary:coinbase field>>: Arbitrary data not exceeding 100 bytes minus the (4) height bytes.  Miners commonly place an extra nonce in this field to update the block header merkle root during hashing.
 | 4        | sequence           | uint32_t             | Sequence number.
 
-Although the coinbase script is arbitrary data, if it includes the bytes used by any signature-checking operations such as [`OP_CHECKSIG`](../reference/transactions-opcodes.md#op_checksig), those signature checks will be counted as signature operations (sigops) towards the block's sigop limit.  To avoid this, you can prefix all data with the appropriate push operation.
+Although the coinbase script is arbitrary data, if it includes the bytes used by any signature-checking operations such as [`OP_CHECKSIG`](../reference/transactions-opcodes.md), those signature checks will be counted as signature operations (sigops) towards the block's sigop limit.  To avoid this, you can prefix all data with the appropriate push operation.
 
 An itemized <<glossary:coinbase transaction>>:
 
