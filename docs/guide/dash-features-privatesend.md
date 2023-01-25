@@ -4,19 +4,8 @@ Dash Core's mixing feature provides a way to improve privacy by performing non-c
 
 The following video provides an overview with a good introduction to the details:
 
-<iframe width="500" height="375" src="https://www.youtube-nocookie.com/embed/vgCId3wJc5Y?rel=0"></iframe>
+<iframe width="100%" height="350" src="https://www.youtube-nocookie.com/embed/vgCId3wJc5Y?rel=0" title="How Dash's 'PrivateSend' Works Under the Hood"></iframe>
 
-[block:embed]
-{
-  "html": false,
-  "url": "https://www.youtube-nocookie.com/embed/vgCId3wJc5Y?rel=0",
-  "title": "How Dash's 'PrivateSend' Works Under the Hood",
-  "favicon": "https://www.youtube-nocookie.com/favicon.ico",
-  "iframe": true,
-  "width": "100%",
-  "height": "350px"
-}
-[/block]
 ## Wallet Preparation
 
 The <<glossary:wallet>> completes two operations in this phase:
