@@ -12,6 +12,8 @@ Previous versions of Dash Core provided a feature which prevented transaction si
 
 Even today, setting all sequence numbers to 0xffffffff (the default in Dash Core) can still disable the time lock, so if you want to use locktime, at least one input must have a sequence number below the maximum. Since sequence numbers are not used by the network for any other purpose, setting any sequence number to zero is sufficient to enable locktime.
 
+## Locktime Parsing Rules
+
 <span id="locktime_parsing_rules">Locktime itself is an unsigned 4-byte integer which can be parsed two ways:</span>
 
 * If less than 500 million, locktime is parsed as a <<glossary:block height>>. The transaction can be added to any block which has this height or higher.

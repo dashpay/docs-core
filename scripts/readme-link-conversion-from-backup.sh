@@ -36,6 +36,7 @@ find . -iname "*.md" -exec sed -i 's~](core-guide-mining-block-prototypes#~](\.\
 find . -iname "*.md" -exec sed -i 's~](core-guide-transactions)~](\.\./guide/transactions.md)~g' {} +
 find . -iname "*.md" -exec sed -i 's~](core-guide-transactions-avoiding-key-reuse)~](\.\./guide/transactions-avoiding-key-reuse.md)~g' {} +
 find . -iname "*.md" -exec sed -i 's~](core-guide-transactions-locktime-and-sequence-number~](\.\./guide/transactions-locktime-and-sequence-number.md~g' {} +
+find . -iname "*.md" -exec sed -i 's~](core-guide-transactions-locktime-and-sequence-number#locktime_parsing_rules~](\.\./guide/transactions-locktime-and-sequence-number.md#locktime-parsing-rules~g' {} +
 find . -iname "*.md" -exec sed -i 's~](core-guide-transactions-transaction-malleability)~](\.\./guide/transactions-transaction-malleability.md)~g' {} +
 find . -iname "*.md" -exec sed -i 's~](core-guide-p2p-network-initial-block-download~](\.\./guide/p2p-network-initial-block-download.md~g' {} +
 find . -iname "*.md" -exec sed -i 's~](core-guide-wallets)~](\.\./guide/wallets.md)~g' {} +
