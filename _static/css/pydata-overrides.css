@@ -63,5 +63,11 @@ html[data-theme="light"] select{
   color: #000;
 }
 
-tbody tr:nth-child(odd) { background-color: #eeeeee; }
-tbody tr:nth-child(even) { background-color: #ffffff; }
+html[data-theme="light"] {
+  --table-bg-color-odd: #eeeeee;
+  --table-bg-color-even: #ffffff;
+}
+
+tbody tr:nth-child(odd) { background-color: var(--table-bg-color-odd); }
+tbody tr:nth-child(even) { background-color: var(--table-bg-color-even); }
+
