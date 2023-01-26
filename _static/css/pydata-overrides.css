@@ -47,15 +47,6 @@ p, a, li, ol {
     position: relative;
 }
 
-.sidebar-end-items__item:after {
-    content: "▼";
-    font-size: 1.1rem;
-    color: #008de4;
-    top: 17px;
-    right: 10px;
-    position: absolute;
-}
-
 select {
     width: 100%;
     padding: 10px;
