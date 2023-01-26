@@ -62,3 +62,6 @@ html[data-theme=dark] select {
 html[data-theme="light"] select{
   color: #000;
 }
+
+tbody tr:nth-child(odd) { background-color: #eeeeee; }
+tbody tr:nth-child(even) { background-color: #ffffff; }
