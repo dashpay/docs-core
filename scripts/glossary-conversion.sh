@@ -150,7 +150,7 @@ find . -iname "*.md" -exec perl -i -pe's~<<glossary:public keys>>~[public keys](
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:raw format>>~[raw format](../resources/glossary.md#raw-format)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:raw transaction>>~[raw transaction](../resources/glossary.md#raw-transaction)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:raw transactions>>~[raw transactions](../resources/glossary.md#raw-transaction)~g' {} +
-find . -iname "*.md" -exec perl -i -pe's~<<glossary:redeem script>>~[redeem script(../resources/glossary.md#redeem-script)~g' {} +
+find . -iname "*.md" -exec perl -i -pe's~<<glossary:redeem script>>~[redeem script](../resources/glossary.md#redeem-script)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:regression test mode>>~[regression test mode](../resources/glossary.md#regression-test-mode)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:root seed>>~[root seed](../resources/glossary.md#root-seed)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:RPC byte order>>~[RPC byte order](../resources/glossary.md#rpc-byte-order)~g' {} +
@@ -210,11 +210,11 @@ find . -iname "*.md" -exec perl -i -pe's~<<glossary:X11>>~[X11](../resources/glo
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:prefilledtransaction>>~[prefilledtransaction](../resources/glossary.md#prefilledtransaction)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:proper money handling>>~[proper money handling](../resources/glossary.md#proper money handling)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:v2 block>>~[v2 block](../resources/glossary.md#v2 block)~g' {} +
-find . -iname "*.md" -exec perl -i -pe's~<<glossary:child public key>>~[child public key](../resources/glossary.md#child public key)~g' {} +
-find . -iname "*.md" -exec perl -i -pe's~<<glossary:child private key>>~[child private key](../resources/glossary.md#child private key)~g' {} +
-find . -iname "*.md" -exec perl -i -pe's~<<glossary:parent public key>>~[parent public key](../resources/glossary.md#parent public key)~g' {} +
-find . -iname "*.md" -exec perl -i -pe's~<<glossary:parent private key>>~[parent private key](../resources/glossary.md#parent private key)~g' {} +
-find . -iname "*.md" -exec perl -i -pe's~<<glossary:extended public key>>~[extended public key](../resources/glossary.md#extended public key)~g' {} +
+find . -iname "*.md" -exec perl -i -pe's~<<glossary:child public key>>~[child public key](../resources/glossary.md#child-public-key)~g' {} +
+find . -iname "*.md" -exec perl -i -pe's~<<glossary:child private key>>~[child private key](../resources/glossary.md#child-private-key)~g' {} +
+find . -iname "*.md" -exec perl -i -pe's~<<glossary:parent public key>>~[parent public key](../resources/glossary.md#parent-public-key)~g' {} +
+find . -iname "*.md" -exec perl -i -pe's~<<glossary:parent private key>>~[parent private key](../resources/glossary.md#parent-private-key)~g' {} +
+find . -iname "*.md" -exec perl -i -pe's~<<glossary:extended public key>>~[extended public key](../resources/glossary.md#extended-public-key)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:MSG_TX>>~MSG_TX~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:MSG_BLOCK>>~MSG_BLOCK~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:MSG_FILTERED_BLOCK>>~MSG_FILTERED_BLOCK~g' {} +
