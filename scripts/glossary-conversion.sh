@@ -137,7 +137,7 @@ find . -iname "*.md" -exec perl -i -pe's~<<glossary:parent key>>~[parent key](..
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:payment protocol>>~[payment protocol](../resources/glossary.md#payment-protocol)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:peer>>~[peer](../resources/glossary.md#peer)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:peers>>~[peers](../resources/glossary.md#peer)~g' {} +
-find . -iname "*.md" -exec perl -i -pe's~<<glossary:point>>~[point](../resources/glossary.md#point-function)~g' {} +
+find . -iname "*.md" -exec perl -i -pe's~\`<<glossary:point>>\(\)\`~[point\(\)](../resources/glossary.md#point-function)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:point function>>~[point function](../resources/glossary.md#point-function)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:previous block header hash>>~[previous block header hash](../resources/glossary.md#previous-block-header-hash)~g' {} +
 find . -iname "*.md" -exec perl -i -pe's~<<glossary:PrivateSend>>~[PrivateSend](../resources/glossary.md#privatesend)~g' {} +
