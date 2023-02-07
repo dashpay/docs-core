@@ -64,8 +64,8 @@ html_sidebars = {
 
 html_theme_options = {
     "external_links": [
-        {"name": "User docs", "url": "https://docs.dash.org/"},
         {"name": "Platform docs", "url": "https://dashplatform.readme.io"},
+        {"name": "User docs", "url": "https://docs.dash.org/"},        
         {"name": "Dash.org", "url": "https://www.dash.org"},
     ],
     "use_edit_page_button": True,
