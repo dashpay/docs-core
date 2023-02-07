@@ -54,6 +54,14 @@ html_css_files = [
     'css/pydata-overrides.css',
 ]
 
+# Custom sidebar templates, must be a dictionary that maps document names
+# to template names.
+#
+html_sidebars = {
+    "index": ["sidebar-main.html"],
+    "**": ["sidebar-nav-bs"]
+}
+
 html_theme_options = {
     "external_links": [
         {"name": "User docs", "url": "https://docs.dash.org/"},
