@@ -16,7 +16,7 @@ If you start Dash Core using `dash-qt`, the RPC interface is disabled by default
 
 ### Basic Security
 
-The interface requires the user to provide a password for authenticating RPC requests. This password can be set either using the `rpcpassword` property in `dash.conf` or by supplying the `-rpcpassword` program argument. Optionally a username can be set using the `rpcuser` configuration value. 
+The interface requires the user to provide a password for authenticating RPC requests. This password can be set either using the `rpcpassword` property in `dash.conf` or by supplying the `-rpcpassword` program argument. Optionally a username can be set using the `rpcuser` configuration value.
 
 ### RPC-Auth Security
 
@@ -28,7 +28,7 @@ Alternatively, the authentication details can be provided using the `rpcauth` pr
 rpcauth=myuser:933fff1aaefa1fc5b3e981fd3ceacf03$f799757c0d36be8f1faa1dd3a01562b17ada82f2ff6c968c959103afda9e7c6f
 ```
 
-> 📘 
+> 📘
 >
 > The `rpcauth` option can be specified multiple times if multiple users are required.
 
@@ -45,8 +45,8 @@ Your password:
 
 The RPC whitelist system can limit certain RPC users to only have access to some RPC calls. The system is configured by specifying the following two parameters in the `dash.conf` file or by setting them as program arguments on the command line:
 
- - `rpcwhitelist`: set a whitelist to filter incoming RPC calls for a specific user. The field <whitelist> comes in the format: `<USERNAME>:<rpc 1>,<rpc 2>,...,<rpc n>`. If multiple whitelists are set for a given user, they are set-intersected. Default whitelist behavior is defined by `rpcwhitelistdefault`.
-- `rpcwhitelistdefault`: sets default behavior for RPC whitelisting. Unless `rpcwhitelistdefault` is set to `0`, if any `rpcwhitelist` is set, the RPC server acts as if all RPC users are subject to empty-unless-otherwise-specified whitelists. If `rpcwhitelistdefault` is set to `1` and no `rpcwhitelist` is set, the RPC server acts as if all RPC users are subject to empty whitelists.
+* `rpcwhitelist`: set a whitelist to filter incoming RPC calls for a specific user. The field <whitelist> comes in the format: `<USERNAME>:<rpc 1>,<rpc 2>,...,<rpc n>`. If multiple whitelists are set for a given user, they are set-intersected. Default whitelist behavior is defined by `rpcwhitelistdefault`.
+* `rpcwhitelistdefault`: sets default behavior for RPC whitelisting. Unless `rpcwhitelistdefault` is set to `0`, if any `rpcwhitelist` is set, the RPC server acts as if all RPC users are subject to empty-unless-otherwise-specified whitelists. If `rpcwhitelistdefault` is set to `1` and no `rpcwhitelist` is set, the RPC server acts as if all RPC users are subject to empty whitelists.
 
 Example configuration
 
@@ -65,7 +65,7 @@ In this example, user1 can only call `getnetworkinfo`, user2 can only call `getn
 
 ### Restricted Access Users
 
-> 🚧 
+> 🚧
 >
 > This feature is only available on masternodes
 
@@ -74,13 +74,13 @@ As of Dash Core 0.17.0, an option is provided to add an RPC user that is restric
 The `platform-user` configuration value must be set to a previously configured [rpcauth user](#rpc-auth-security).
 
 Only the following RPCs are accessible to the restricted user:
-- [`getbestblockhash`](../api/remote-procedure-calls-blockchain.md#getbestblockhash)
-- [`getblockhash`](../api/remote-procedure-calls-blockchain.md#getblockhash)
-- [`getblockcount`](../api/remote-procedure-calls-blockchain.md#getblockcount)
-- [`getbestchainlock`](../api/remote-procedure-calls-blockchain.md#getbestchainlock)
-- [`quorum sign 4`](../api/remote-procedure-calls-evo.md#quorum-sign) - The restricted user can only request quorum signatures from the Platform quorum (LLMQ type 4)
-- [`quorum verify`](../api/remote-procedure-calls-evo.md#quorum-verify)
-- [`verifyislock`](../api/remote-procedure-calls-evo.md#verifyislock)
+* [`getbestblockhash`](../api/remote-procedure-calls-blockchain.md#getbestblockhash)
+* [`getblockhash`](../api/remote-procedure-calls-blockchain.md#getblockhash)
+* [`getblockcount`](../api/remote-procedure-calls-blockchain.md#getblockcount)
+* [`getbestchainlock`](../api/remote-procedure-calls-blockchain.md#getbestchainlock)
+* [`quorum sign 4`](../api/remote-procedure-calls-evo.md#quorum-sign) - The restricted user can only request quorum signatures from the Platform quorum (LLMQ type 4)
+* [`quorum verify`](../api/remote-procedure-calls-evo.md#quorum-verify)
+* [`verifyislock`](../api/remote-procedure-calls-evo.md#verifyislock)
 
 ### Default Connection Info
 
@@ -88,7 +88,7 @@ The Dash Core RPC service listens for HTTP `POST` requests on port 9998 in [main
 
 ## Data Formats
 
-The format of the request body and response data is based on [version 1.0 of the JSON-RPC specification](http://json-rpc.org/wiki/specification). 
+The format of the request body and response data is based on [version 1.0 of the JSON-RPC specification](http://json-rpc.org/wiki/specification).
 
 ### Request Format
 
@@ -175,17 +175,17 @@ The HTTP response data for this request would be:
 }
 ```
 
-> 📘 
+> 📘
 >
 > Note: In order to minimize its size, the raw JSON response from Dash Core doesn't include any extraneous whitespace characters.
 
 Here whitespace has been added to make the object more readable. `dash-cli` also transforms the raw response to make it more human-readable. It:
 
-- Adds whitespace indentation to JSON objects
-- Expands escaped newline characters ("\n") into actual newlines
-- Returns only the value of the `result` field if there's no error
-- Strips the outer double-quotes around `result`s of type string
-- Returns only the `error` field if there's an error
+* Adds whitespace indentation to JSON objects
+* Expands escaped newline characters ("\n") into actual newlines
+* Returns only the value of the `result` field if there's no error
+* Strips the outer double-quotes around `result`s of type string
+* Returns only the `error` field if there's an error
 
 Continuing with the example above, the output from the `dash-cli` command would be simply:
 
@@ -197,7 +197,7 @@ Continuing with the example above, the output from the `dash-cli` command would 
 
 Dash Core has a number of RPC requests that use sub-commands to group access to related data under one RPC method name. Examples of this include the [`gobject`](../api/remote-procedure-calls-dash.md#gobject), [`masternode`](../api/remote-procedure-calls-dash.md#masternode), [`protx`](../api/remote-procedure-calls-evo.md#protx), and [`quorum`](../api/remote-procedure-calls-evo.md#quorum) RPCs. If using cURL, the sub-commands should be included in the requests `params` field as shown here:
 
-```shell 
+```shell
 curl --user 'my_username:my_secret_password' --data-binary '''
   {
       "method": "gobject",
@@ -252,7 +252,7 @@ Block height out of range
 
 The RPC interface supports request batching as described in [version 2.0 of the JSON-RPC specification](http://www.jsonrpc.org/specification#batch). To initiate multiple RPC requests within a single HTTP request, a client can `POST` a JSON array filled with Request objects. The HTTP response data is then a JSON array filled with the corresponding Response objects. Depending on your usage pattern, request batching may provide significant performance gains. The `dash-cli` RPC client does not support batch requests.
 
-```shell 
+```shell
 curl --user 'my_username:my_secret_password' --data-binary '''
   [
     {

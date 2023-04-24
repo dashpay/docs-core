@@ -71,7 +71,7 @@ Name | Type | Presence | Description
 → → →<br>`amount` | number | Required<br>(exactly 1) | Required amount to pay
 →<br>`superblocks_started` | boolean | Required<br>(exactly 1) | True if superblock payments started
 →<br>`superblocks_enabled` | boolean | Required<br>(exactly 1) | True if superblock payments enabled
-→<br>`coinbase_payload` | string | Required<br>(exactly 1) | _Added in Dash Core 0.13.0_<br><br>Coinbase transaction payload data encoded in hexadecimal
+→<br>`coinbase_payload` | string | Required<br>(exactly 1) | *Added in Dash Core 0.13.0*<br><br>Coinbase transaction payload data encoded in hexadecimal
 
 *Example from Dash Core 18.0.0*
 
@@ -156,7 +156,7 @@ Name | Type | Presence | Description
 `result` | object | Required<br>(exactly 1) | Various mining-related information
 →<br>`blocks` | number (int) | Required<br>(exactly 1) | The height of the highest block on the local best block chain
 →<br>`currentblocksize` | number (int) | Optional<br>(0 or 1) | If generation was enabled since the last time this node was restarted, this is the size in bytes of the last block built by this node for header hash checking.
-→<br>`currentblocktx` | number (int) | Optional<br>(0 or 1) | If generation was enabled since the last time this node was restarted, this is the number of transactions in the last block built by this node for header hash checking. 
+→<br>`currentblocktx` | number (int) | Optional<br>(0 or 1) | If generation was enabled since the last time this node was restarted, this is the number of transactions in the last block built by this node for header hash checking.
 →<br>`difficulty` | number (real) | Required<br>(exactly 1) | If generation was enabled since the last time this node was restarted, this is the difficulty of the highest-height block in the local best block chain.  Otherwise, this is the value `0`
 →<br>`networkhashps` | number (int) | Required<br>(exactly 1) | An estimate of the number of hashes per second the network is generating to maintain the current difficulty.  See the [`getnetworkhashps` RPC](../api/remote-procedure-calls-mining.md#getnetworkhashps) for configurable access to this data
 →<br>`pooledtx` | number (int) | Required<br>(exactly 1) | The number of transactions in the memory pool
@@ -330,7 +330,7 @@ duplicate
 
 ## SubmitHeader
 
-The [`submitheader` RPC](../api/remote-procedure-calls-mining.md#submitheader) decodes the given hexdata as a header and submits it as a candidate chain tip if valid. 
+The [`submitheader` RPC](../api/remote-procedure-calls-mining.md#submitheader) decodes the given hexdata as a header and submits it as a candidate chain tip if valid.
 If invalid, it  throws.
 
 *Parameter #1---hexdata*
@@ -352,7 +352,8 @@ dash-cli -testnet submitheader 0000002037f7981be497c71524bb9f7454d80b1448f46b6f9
 ```
 
 Result:
-```
+
+```text
 null
 ```
 

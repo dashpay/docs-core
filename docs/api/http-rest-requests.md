@@ -379,6 +379,7 @@ curl http://localhost:19998/rest/blockhashbyheight/1.hex
 ```
 
 Result:
+
 ```text
 0000047d24635e347be3aaaeb66c26be94901a2f962feccd4f95090191f208c1
 ```
@@ -390,6 +391,7 @@ curl http://localhost:19998/rest/blockhashbyheight/1.json
 ```
 
 Result:
+
 ```json
 {
   "blockhash": "0000047d24635e347be3aaaeb66c26be94901a2f962feccd4f95090191f208c1"

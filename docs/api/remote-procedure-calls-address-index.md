@@ -146,7 +146,7 @@ Name | Type | Presence | Description
 →→<br>`satoshis` | number | Required<br>(exactly 1) | The difference of duffs
 →→<br>`timestamp` | string | Required<br>(exactly 1) | The time the transaction entered the mempool (seconds)
 →→<br>`prevtxid` | string | Required<br>(exactly 1) | The previous txid (if spending)
-→→<br>`prevout` | string | Required<br>(exactly 1) | The previous transaction output index (if spending)    
+→→<br>`prevout` | string | Required<br>(exactly 1) | The previous transaction output index (if spending)
 
 *Example from Dash Core 0.12.2*
 
@@ -245,7 +245,7 @@ Name | Type | Presence | Description
 →→<br>`address` | string | Required<br>(exactly 1) | The base58check encoded address
 →→<br>`txid` | string | Required<br>(exactly 1) | The output txid
 →→<br>`outputIndex` | number | Required<br>(exactly 1) | The output index
-→→<br>`script` | string | Required<br>(exactly 1) | The script hex encoded    
+→→<br>`script` | string | Required<br>(exactly 1) | The script hex encoded
 →→<br>`satoshis` | number | Required<br>(exactly 1) | The number of duffs of the output
 →→<br>`height` | number | Required<br>(exactly 1) | The block height
 

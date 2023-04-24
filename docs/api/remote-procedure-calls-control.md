@@ -124,7 +124,6 @@ Result:
 
 *See also: none*
 
-
 ## Help
 
 The [`help` RPC](../api/remote-procedure-calls-control.md#help) lists all available public RPC commands, or gets help for the specified RPC.  Commands which are unavailable will not be listed, such as wallet RPCs if wallet support is disabled.
@@ -217,6 +216,7 @@ dash-cli -testnet logging '["llmq", "spork"]'
 ```
 
 Result:
+
 ```json
 {
   "net": 0,
@@ -260,6 +260,7 @@ dash-cli -testnet logging '[]' '["spork"]'
 ```
 
 Result:
+
 ```json
 {
   "net": 0,
@@ -345,6 +346,7 @@ dash-cli -testnet uptime
 ```
 
 Result:
+
 ```text
 5500
 ```
