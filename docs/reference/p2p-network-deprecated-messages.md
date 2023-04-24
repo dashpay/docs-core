@@ -101,7 +101,7 @@ The `ix` message (transaction lock request) has the same structure as the [`tx` 
 
 *Added in protocol version 70002 as described by BIP61.*
 
-The [`reject` message](../reference/p2p-network-control-messages.md#reject) informs the receiving [node](../resources/glossary.md#node) that one of its previous messages has been rejected.
+The [`reject` message](#reject) informs the receiving [node](../resources/glossary.md#node) that one of its previous messages has been rejected.
 
 | Bytes    | Name          | Data Type        | Description
 |----------|---------------|------------------|--------------
@@ -116,7 +116,7 @@ The following table lists message reject codes.  Codes are tied to the type of m
 
 | Code | In Reply To       | Extra Bytes | Extra Type | Description
 |------|-------------------|-------------|------------|----------------
-| 0x01 | *any message*     | 0           | N/A        | Message could not be decoded.  Be careful of [`reject` message](../reference/p2p-network-control-messages.md#reject) feedback loops where two peers each don't understand each other's [`reject` messages](../reference/p2p-network-control-messages.md#reject) and so keep sending them back and forth forever.
+| 0x01 | *any message*     | 0           | N/A        | Message could not be decoded.  Be careful of [`reject` message](#reject) feedback loops where two peers each don't understand each other's [`reject` messages](#reject) and so keep sending them back and forth forever.
 | 0x10 | [`block` message](../reference/p2p-network-data-messages.md#block)   | 32          | char[32]   | Block is invalid for some reason (invalid proof-of-work, invalid signature, etc).  Extra data may include the rejected block's header hash.
 | 0x10 | [`tx` message](../reference/p2p-network-data-messages.md#tx)      | 32          | char[32]   | Transaction is invalid for some reason (invalid signature, output value greater than input, etc.).  Extra data may include the rejected transaction's TXID.
 | 0x10 | `ix` message      | 32          | char[32]   | InstantSend transaction is invalid for some reason (invalid tx lock request, conflicting tx lock request, etc.).  Extra data may include the rejected transaction's TXID.
@@ -154,7 +154,7 @@ Reject Codes
 | 0x42 | Insufficient fee
 | 0x43 | Checkpoint
 
-The annotated hexdump below shows a [`reject` message](../reference/p2p-network-control-messages.md#reject). (The message header has been omitted.)
+The annotated hexdump below shows a [`reject` message](#reject). (The message header has been omitted.)
 
 ``` text
 02 ................................. Number of bytes in message: 2
