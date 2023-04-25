@@ -9,8 +9,6 @@ Usage:
   dash-wallet [options] <command>
 ```
 
-
-
 ### Options
 
 ```
@@ -24,8 +22,6 @@ Usage:
        Specify wallet name
 ```
 
-
-
 ### Debugging/Testing options
 
 ```
@@ -36,8 +32,6 @@ Usage:
        Send trace/debug info to console (default: 1 when no -debug is true, 0
        otherwise).
 ```
-
-
 
 ### Chain selection options
 
@@ -85,8 +79,6 @@ Usage:
   -testnet
        Use the test chain
 ```
-
-
 
 ### Commands
 

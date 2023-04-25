@@ -10,9 +10,7 @@ Usage:
   dash-tx [options] -create [commands]   Create hex-encoded dash transaction
 ```
 
-
-
-### Options:
+### Options
 
 ```
   -?
@@ -28,9 +26,7 @@ Usage:
        Output only the hex-encoded transaction id of the resultant transaction.
 ```
 
-
-
-### Chain selection options:
+### Chain selection options
 
 ```
   -devnet=<name>
@@ -77,9 +73,7 @@ Usage:
        Use the test chain
 ```
 
-
-
-### Commands:
+### Commands
 
 ```
   delin=N
@@ -123,9 +117,7 @@ Usage:
        objects.
 ```
 
-
-
-### Register Commands:
+### Register Commands
 
 ```
   load=NAME:FILENAME

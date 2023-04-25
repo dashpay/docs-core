@@ -8,13 +8,11 @@
 dashd [options]
 ```
 
-
-
 > 🚧 Debug Options
-> 
+>
 > The following sections show all available options including debug options that are not normally displayed. To see only regular options, run `dashd --help`.
 
-### Options:
+### Options
 
 ```text
   -?
@@ -144,9 +142,7 @@ dashd [options]
        Print version and exit
 ```
 
-
-
-### Connection options:
+### Connection options
 
 ```text
   -addnode=<ip>
@@ -302,9 +298,7 @@ dashd [options]
        -whitebind. Can be specified multiple times.
 ```
 
-
-
-### Indexing options:
+### Indexing options
 
 ```text
   -addressindex
@@ -332,12 +326,10 @@ dashd [options]
        call (default: 1)
 ```
 
-
-
-### Wallet options:
+### Wallet options
 
 > 🚧 zapwallettxes
-> 
+>
 > Dash Core 18.1.0 removed the `-zapwallettxes` startup option and its functionality. This option was originally intended to allow for the fee bumping of transactions that did not signal RBF. This functionality has been superseded with the [abandon transaction capability](../api/remote-procedure-calls-wallet.md#abandontransaction) available via RPC/console or when right-clicking on unconfirmed transactions in Dash-Qt.
 
 ```text
@@ -399,9 +391,7 @@ dashd [options]
        to invoke the command.
 ```
 
-
-
-### Wallet fee options:
+### Wallet fee options
 
 ```text
   -discardfee=<amt>
@@ -427,9 +417,7 @@ dashd [options]
        confirmation on average within n blocks (default: 6)
 ```
 
-
-
-### HD wallet options:
+### HD wallet options
 
 ```text
   -hdseed=<hex>
@@ -449,9 +437,7 @@ dashd [options]
        Only has effect during wallet creation/first start (default: 0)
 ```
 
-
-
-### CoinJoin options:
+### CoinJoin options
 
 ```
   -coinjoinamount=<n>
@@ -483,9 +469,7 @@ dashd [options]
        Enable use of CoinJoin for funds stored in this wallet (0-1, default: 0)
 ```
 
-
-
-### ZeroMQ notification options:
+### ZeroMQ notification options
 
 ```
   -zmqpubhashblock=<address>
@@ -619,9 +603,7 @@ dashd [options]
        mark (default: 1000)
 ```
 
-
-
-### Debugging/Testing options:
+### Debugging/Testing options
 
 ```
   -addrmantest
@@ -758,9 +740,7 @@ dashd [options]
        Watch and validate quorum communication (default: 0)
 ```
 
-
-
-### Chain selection options:
+### Chain selection options
 
 ```
   -budgetparams=<masternode>:<budget>:<superblock>
@@ -834,9 +814,7 @@ dashd [options]
        thresholdmin and falloffcoeff is optional.
 ```
 
-
-
-### Masternode options:
+### Masternode options
 
 ```
   -llmq-data-recovery=<n>
@@ -858,9 +836,7 @@ dashd [options]
        be used by Dash Platform, to the specified username.
 ```
 
-
-
-### Node relay options:
+### Node relay options
 
 ```
   -acceptnonstdtxn
@@ -902,9 +878,7 @@ dashd [options]
        relaying transactions (default: 1)
 ```
 
-
-
-### Block creation options:
+### Block creation options
 
 ```
   -blockmaxsize=<n>
@@ -918,9 +892,7 @@ dashd [options]
        Override block version to test forking scenarios
 ```
 
-
-
-### RPC server options:
+### RPC server options
 
 ```
   -rest
@@ -991,9 +963,7 @@ dashd [options]
        Accept command line and JSON-RPC commands
 ```
 
-
-
-### Statsd options:
+### Statsd options
 
 ```text
   -statsenabled
@@ -1016,12 +986,10 @@ dashd [options]
        Specify statsd port (default: 8125)
 ```
 
+### Wallet debugging/testing options
 
-
-### Wallet debugging/testing options:
-
-> 🚧 
-> 
+> 🚧
+>
 > These options are normally hidden and will only be shown if using the help debug option: `dashd --held -help-debug`
 
 ```text
@@ -1045,8 +1013,6 @@ dashd [options]
        Wallet will not create transactions that violate mempool chain limits
        (default: 0)
 ```
-
-
 
 ## Network Dependent Options
 
@@ -1092,8 +1058,6 @@ The following options can only be used for specific network types. These options
        Override the default PowTargetSpacing value in seconds (default: 2.5
        minutes, devnet-only)
 ```
-
-
 
 The quorum names used in these options are:
 

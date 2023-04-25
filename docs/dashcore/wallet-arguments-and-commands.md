@@ -33,7 +33,7 @@ The following sections provide details of the command line arguments for each of
 
 See [here](../dashcore/wallet-arguments-and-commands-dashd.md) for all option details.
 
-```bash 
+```bash
 Usage:
   dashd [options]                     Start Dash Core Daemon
 ```
