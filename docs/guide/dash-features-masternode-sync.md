@@ -33,8 +33,8 @@ There are several status values used to track masternode synchronization. They a
 
 | **Value** | **Status**  | **Description** |
 | --- | --- | --- |
-| _-1_  | _`MASTERNODE_SYNC_FAILED` _     | **Removed in Dash Core 0.16.0**<br>Synchronization failed |
-| _0_   | _`MASTERNODE_SYNC_INITIAL` _    | **Deprecated (merged with `MASTERNODE_SYNC_WAITING` in Dash Core 0.16.0)**<br>Synchronization just started, was reset recently, or is still in IBD |
+| *-1*  | _`MASTERNODE_SYNC_FAILED`_     | **Removed in Dash Core 0.16.0**<br>Synchronization failed |
+| *0*   | _`MASTERNODE_SYNC_INITIAL`_    | **Deprecated (merged with `MASTERNODE_SYNC_WAITING` in Dash Core 0.16.0)**<br>Synchronization just started, was reset recently, or is still in IBD |
 | 1   | `MASTERNODE_SYNC_BLOCKCHAIN` (previously `MASTERNODE_SYNC_WAITING`)  | **Renamed in Dash Core 0.16.0**<br>Synchronization pending - waiting after initial to check for more headers/blocks.  |
 | 4   | `MASTERNODE_SYNC_GOVERNANCE`  | Synchronizing governance objects  |
 | 999 | `MASTERNODE_SYNC_FINISHED`    | Synchronization finished |

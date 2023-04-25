@@ -34,9 +34,9 @@ The current PoSe scoring algorithm increases the PoSe score by 66% of the maximu
 
 For example, using the values from above with 5000 masternodes:
 
-- In the first 5000 block cycle, two DKG failures occur without the PoSe score exceeding the maximum. This happens since a sufficient number of blocks are mined prior to the second failure to drop the PoSe score below the threshold (`< 5000 - 3333`) that would result in banning.
+* In the first 5000 block cycle, two DKG failures occur without the PoSe score exceeding the maximum. This happens since a sufficient number of blocks are mined prior to the second failure to drop the PoSe score below the threshold (`< 5000 - 3333`) that would result in banning.
 
-- In the second 5000 block cycle, the second DKG failure occurs too close to the first and results in the PoSe score exceeding the maximum limit. This results in the masternode receiving a PoSe Ban.
+* In the second 5000 block cycle, the second DKG failure occurs too close to the first and results in the PoSe score exceeding the maximum limit. This results in the masternode receiving a PoSe Ban.
 
 | Payment Cycle | Block Number | Event | Score Change | PoSe Score | MN Status |
 | :---: | :--- | --- | :---: | :---: | :---: |

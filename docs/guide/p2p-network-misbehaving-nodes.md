@@ -8,13 +8,13 @@ Take note that for both types of broadcasting, mechanisms are in place to punish
 
 Furthermore, a few additional changes are introduced to how discouraged addresses are treated:
 
-- Discouraging an address does not time out automatically after 24 hours (or the `-bantime` setting). Depending on traffic from other peers, discouragement may time out at an indeterminate time.
+* Discouraging an address does not time out automatically after 24 hours (or the `-bantime` setting). Depending on traffic from other peers, discouragement may time out at an indeterminate time.
 
-- Discouragement is not persisted over restarts.
+* Discouragement is not persisted over restarts.
 
-- There is no method to list discouraged addresses. They are not returned by the [`listbanned` RPC](../api/remote-procedure-calls-network.md#listbanned).
+* There is no method to list discouraged addresses. They are not returned by the [`listbanned` RPC](../api/remote-procedure-calls-network.md#listbanned).
 
-- Discouragement cannot be removed with the [`setban remove` RPC](../api/remote-procedure-calls-network.md#setban) command. If you need to remove a discouragement, you can remove all discouragements by stopping and restarting your node.
+* Discouragement cannot be removed with the [`setban remove` RPC](../api/remote-procedure-calls-network.md#setban) command. If you need to remove a discouragement, you can remove all discouragements by stopping and restarting your node.
 
  If a peer gets a banscore above the `-banscore=<n>` threshold (100 by default), they will be disconnected and discouraged.
 

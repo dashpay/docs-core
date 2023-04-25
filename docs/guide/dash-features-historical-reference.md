@@ -6,7 +6,7 @@
 
 ## InstantSend (original)
 
-> 🚧 
+> 🚧
 >
 > **Please see [here for details of the current InstantSend design](../guide/dash-features-instantsend.md).**
 
@@ -14,12 +14,12 @@ Dash Core's InstantSend feature provides a way to lock transaction inputs and en
 
 The following video provides an overview with a good introduction to the details including the InstantSend vulnerability that was fixed in Dash Core 0.12.2. Some specific points in the video are listed here for quick reference:
 
- - 2:00 - InstantSend restrictions
- - 5:00 - Masternode quorum creation
- - 6:00 - Input locking
- - 7:45 - Quorum score calculation / Requirement for block confirmations
- - 9:00 - Description of Dash Core pre-0.12.2 InstantSend vulnerability
- - 13:00 - Description of vulnerability fix / Post Dash Core 0.12.2 operation
+* 2:00 - InstantSend restrictions
+* 5:00 - Masternode quorum creation
+* 6:00 - Input locking
+* 7:45 - Quorum score calculation / Requirement for block confirmations
+* 9:00 - Description of Dash Core pre-0.12.2 InstantSend vulnerability
+* 13:00 - Description of vulnerability fix / Post Dash Core 0.12.2 operation
 
 <iframe width="100%" height="350" src="https://www.youtube-nocookie.com/embed/n4PELomRiFY?rel=0;start=0" title="Matt Robertson - InstantSend - The Dash Conference"></iframe>
 

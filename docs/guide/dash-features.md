@@ -20,7 +20,7 @@ However, the Dash network has a second layer of network participants that provid
 >
 > New in Dash Core v19.0
 
-High-Performance Masternodes (HPMNs) are a new type of masternode created to host [Dash Platform](https://dashplatform.readme.io/docs/introduction-what-is-dash-platform) – a Web3 technology stack for building decentralized applications on the Dash network. The collateral required to own an HPMN is 4000 DASH, as opposed to 1000 DASH for regular masternodes. 
+High-Performance Masternodes (HPMNs) are a new type of masternode created to host [Dash Platform](https://dashplatform.readme.io/docs/introduction-what-is-dash-platform) – a Web3 technology stack for building decentralized applications on the Dash network. The collateral required to own an HPMN is 4000 DASH, as opposed to 1000 DASH for regular masternodes.
 
 HPMNs serve Platform along with Core, while regular masternodes only serve Core. The recommended specs for HPMNs are higher than those for regular masternodes. HPMNs will receive 100% of the fees generated from Platform and 37.5% of the masternode portion of Core block rewards. Regular MNs will receive the remaining 62.5% of the masternode portion of Core block rewards and 0% of Platform fees.
 

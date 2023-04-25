@@ -20,15 +20,15 @@ The introduction of the [Long-Living Masternode Quorum](../resources/glossary.md
 
 ## Management via Spork
 
-Spork 2 (`SPORK_2_INSTANTSEND_ENABLED`) is used to manage InstantSend. [Spork](../resources/glossary.md#spork) 2 enables or disables the entire InstantSend feature. As of Dash Core 0.17.0, it also can be used to limit locking to transactions found in blocks. 
+Spork 2 (`SPORK_2_INSTANTSEND_ENABLED`) is used to manage InstantSend. [Spork](../resources/glossary.md#spork) 2 enables or disables the entire InstantSend feature. As of Dash Core 0.17.0, it also can be used to limit locking to transactions found in blocks.
 
 In the event of a sustained overload of InstantSend, the spork can be set to a value of `1`. This mode enables a clean transition to fully disabling InstantSend without interfering with ChainLocks. In this mode masternodes will stop creating locks for new transactions when they enter the mempool and will only lock them once mined into a block. Once all existing locked transactions are mined into blocks, InstantSend can then be disabled by setting the spork value to `0` without disrupting ChainLocks.
 
 ## Mining Considerations
 
-Note: A transaction will __not__ be included in the block template (from the [`getblocktemplate` RPC](../api/remote-procedure-calls-mining.md#getblocktemplate)) unless it:
+Note: A transaction will **not** be included in the block template (from the [`getblocktemplate` RPC](../api/remote-procedure-calls-mining.md#getblocktemplate)) unless it:
 
- 1. Has been locked, or 
+ 1. Has been locked, or
  2. Has been in the mempool for >=10 minutes (`WAIT_FOR_ISLOCK_TIMEOUT`)
 
 A [miner](../resources/glossary.md#miner) may still include any transaction, but [blocks](../resources/glossary.md#block) containing only locked transactions (or ones older than the timeout) should achieve a ChainLock faster. This is desirable to miners since it prevents any blockchain reorganizations that might orphan their block.
