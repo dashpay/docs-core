@@ -68,6 +68,7 @@ html_theme_options = {
         {"name": "Platform docs", "url": "https://dashplatform.readme.io"},
         {"name": "User docs", "url": "https://docs.dash.org/"},        
         {"name": "Dash.org", "url": "https://www.dash.org"},
+        {"name": "Forum", "url": "https://www.dash.org/forum"},
     ],
     "use_edit_page_button": True,
     "github_url": "https://github.com/dashpay/docs-core",
