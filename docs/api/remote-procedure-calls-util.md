@@ -268,7 +268,7 @@ IBx8jxFjutPlcZcFdQPlA2n/B4yTrYhH43qYJURKRj7LWhSD0ERE/nnRLOnXi/gwULUcqfqOKqnqkSvu
 
 The [`validateaddress` RPC](../api/remote-procedure-calls-util.md#validateaddress) returns information about the given Dash address.
 
->❗️ 
+>❗️
 >
 > Breaking change(s) in Dash Core 18.0. See parameter and/or response information for details.
 
@@ -349,7 +349,7 @@ Result:
 * [GetNewAddress](../api/remote-procedure-calls-wallet.md#getnewaddress): returns a new Dash address for receiving payments. If an account is specified, payments received with the address will be credited to that account.
 * [GetAddressInfo](../api/remote-procedure-calls-wallet.md#getaddressinfo): returns information about the given Dash address.
 
-# VerifyMessage
+## VerifyMessage
 
 The [`verifymessage` RPC](../api/remote-procedure-calls-util.md#verifymessage) verifies a signed message.
 

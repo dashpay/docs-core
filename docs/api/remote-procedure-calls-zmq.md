@@ -2,8 +2,8 @@
 
 ## GetZmqNotifications
 
-> 👍 
-> 
+> 👍
+>
 > Added in Dash Core 0.17.0
 
 The [`getzmqnotifications` RPC](../api/remote-procedure-calls-blockchain.md#getblockchaininfo) returns information about the active ZeroMQ notifications.

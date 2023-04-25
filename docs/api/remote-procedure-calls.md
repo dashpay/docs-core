@@ -74,6 +74,7 @@ As of Dash Core 0.17.0, an option is provided to add an RPC user that is restric
 The `platform-user` configuration value must be set to a previously configured [rpcauth user](#rpc-auth-security).
 
 Only the following RPCs are accessible to the restricted user:
+
 * [`getbestblockhash`](../api/remote-procedure-calls-blockchain.md#getbestblockhash)
 * [`getblockhash`](../api/remote-procedure-calls-blockchain.md#getblockhash)
 * [`getblockcount`](../api/remote-procedure-calls-blockchain.md#getblockcount)

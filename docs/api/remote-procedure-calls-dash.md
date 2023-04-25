@@ -25,6 +25,7 @@ dash-cli -testnet getgovernanceinfo
 ```
 
 Result:
+
 ``` json
 {
   "governanceminquorum": 1,
@@ -41,6 +42,7 @@ Result:
 * [GObject](#gobject): provides a set of commands for managing governance objects and displaying information about them.
 
 **<span id="getprivatesendinfo"></span>**
+
 ## GetCoinJoinInfo
 
 The [`getcoinjoininfo` RPC](#getcoinjoininfo) returns an object containing an information about CoinJoin settings and state (previously named `getprivatesendinfo` prior to Dash Core 0.17.0).
@@ -58,8 +60,8 @@ The [`getcoinjoininfo` RPC](#getcoinjoininfo) returns an object containing an in
 | →<br>`max_rounds`        | number (int)          | Required<br>(exactly 1) | How many rounds to process                                                                           |
 | →<br>`max_amount`        | number (int)          | Required<br>(exactly 1) | How many DASH to keep processed                                                                      |
 | →<br>`max_denoms`        | number (int)          | Required<br>(exactly 1) | **Removed in Dash Core 0.16.0**<br>How many inputs of each denominated amount to create              |
-| →<br>`denoms_goal`       | number (int)          | Required<br>(exactly 1) | _Added in Dash Core 0.16.0_<br>How many inputs of each denominated amount to target                  |
-| →<br>`denoms_hardcap`    | number (int)          | Required<br>(exactly 1) | _Added in Dash Core 0.16.0_<br>Maximum limit of how many inputs of each denominated amount to create |
+| →<br>`denoms_goal`       | number (int)          | Required<br>(exactly 1) | *Added in Dash Core 0.16.0*<br>How many inputs of each denominated amount to target                  |
+| →<br>`denoms_hardcap`    | number (int)          | Required<br>(exactly 1) | *Added in Dash Core 0.16.0*<br>Maximum limit of how many inputs of each denominated amount to create |
 | →<br>`queue_size`        | number (int)          | Required<br>(exactly 1) | How many queues there are currently on the network                                                   |
 | →<br>`running`           | bool                  | Required<br>(exactly 1) | Whether CoinJoin is currently running                                                                |
 | →<br>`sessions`          | array of json objects | Required<br>(exactly 1) | Information about session(s)                                                                         |
@@ -90,6 +92,7 @@ dash-cli -testnet getcoinjoininfo
 ```
 
 Result:
+
 ``` json
 {
   "enabled": true,
@@ -128,7 +131,7 @@ The [`getsuperblockbudget` RPC](#getsuperblockbudget) returns the absolute maxim
 | ----- | ------------ | ----------------------- | -------------------- |
 | index | number (int) | Required<br>(exactly 1) | The superblock index |
 
-_Result---maximum sum of superblock payments_
+*Result---maximum sum of superblock payments*
 
 | Name     | Type         | Presence                | Description                                                      |
 | -------- | ------------ | ----------------------- | ---------------------------------------------------------------- |
@@ -141,6 +144,7 @@ dash-cli -testnet getsuperblockbudget 7392
 ```
 
 Result:
+
 ``` text
 367.20
 ```
@@ -155,7 +159,7 @@ The [`gobject` RPC](#gobject) provides a set of commands for managing governance
 
 ### GObject Check
 
-The `gobject check` RPC validates governance object data (_proposals only_).
+The `gobject check` RPC validates governance object data (*proposals only*).
 
 *Parameter #1---object data (hex)*
 
@@ -181,6 +185,7 @@ dash-cli -testnet gobject check 7b22656e645f65706f6368223a3135363034353730\
 ```
 
 Result:
+
 ``` json
 {
   "Object status": "OK"
@@ -199,7 +204,7 @@ The `gobject count` RPC returns the count of governance objects and votes.
 
 **Command Mode - `json`**
 
-_Result---count of governance objects and votes_
+*Result---count of governance objects and votes*
 
 | Name                 | Type   | Presence                | Description                             |
 | -------------------- | ------ | ----------------------- | --------------------------------------- |
@@ -218,6 +223,7 @@ dash-cli -testnet gobject count
 ```
 
 Result (wrapped):
+
 ``` json
 {
   "objects_total": 3,
@@ -231,7 +237,7 @@ Result (wrapped):
 
 **Command Mode - `all`**
 
-_Result---count of governance objects and votes_
+*Result---count of governance objects and votes*
 
 | Name     | Type   | Presence                | Description                               |
 | -------- | ------ | ----------------------- | ----------------------------------------- |
@@ -254,7 +260,7 @@ Votes: 9680
 
 The `gobject deserialize` RPC deserializes a governance object from a hex string to JSON.
 
-_Parameter #1---object data (hex)_
+*Parameter #1---object data (hex)*
 
 | Name       | Type         | Presence                | Description                           |
 | ---------- | ------------ | ----------------------- | ------------------------------------- |
@@ -266,20 +272,20 @@ The result output varies depending on the type of governance object being deseri
 
 **Result - Proposal**
 
-_Result---governance proposal object deserialized to JSON_
+*Result---governance proposal object deserialized to JSON*
 
 | Name                     | Type   | Presence                | Description                                                                                               |
 | ------------------------ | ------ | ----------------------- | --------------------------------------------------------------------------------------------------------- |
 | Result                   | object | Required<br>(exactly 1) | Array of governance objects                                                                               |
 | → →<br>`end_epoch`       | string | Required<br>(exactly 1) | Governance object info as string                                                                          |
 | → →<br>`name`            | string | Required<br>(exactly 1) | Proposal name                                                                                             |
-| → →<br>`payment_address` | string | Required<br>(exactly 1) | Proposal payment address.<br>**_Support for P2SH addresses (e.g. multisig) added in Dash Core v18.0.0._** |
+| → →<br>`payment_address` | string | Required<br>(exactly 1) | Proposal payment address.<br>***Support for P2SH addresses (e.g. multisig) added in Dash Core v18.0.0.*** |
 | → →<br>`payment_amount`  | string | Required<br>(exactly 1) | Proposal payment amount                                                                                   |
 | → →<br>`start_epoch`     | int    | Required<br>(exactly 1) | Proposal start                                                                                            |
 | → →<br>`type`            | int    | Required<br>(exactly 1) | Object type                                                                                               |
 | → →<br>`url`             | string | Required<br>(exactly 1) | Proposal URL                                                                                              |
 
-_Example from Dash Core 0.14.0_
+*Example from Dash Core 0.14.0*
 
 ``` bash
 dash-cli -testnet gobject deserialize 7b22656e645f65706f6368223a313536303435\
@@ -305,7 +311,7 @@ Result:
 
 **Result - Trigger**
 
-_Result---governance trigger object deserialized to JSON_
+*Result---governance trigger object deserialized to JSON*
 
 | Name                        | Type         | Presence                | Description                      |
 | --------------------------- | ------------ | ----------------------- | -------------------------------- |
@@ -316,7 +322,7 @@ _Result---governance trigger object deserialized to JSON_
 | → →<br>`proposal_hashes`    | string (hex) | Required<br>(exactly 1) | Proposal hashes                  |
 | → →<br>`type`               | int          | Required<br>(exactly 1) | Object type                      |
 
-_Example from Dash Core 0.14.0_
+*Example from Dash Core 0.14.0*
 
 ``` bash
 dash-cli -testnet gobject deserialize 7b226576656e745f626c6f636b5f68656967687\
@@ -329,6 +335,7 @@ e745f616d6f756e7473223a2022312e3335393631393331222c202270726f706f73616c5f6861\
 ```
 
 Result (wrapped):
+
 ``` json
 {
   "event_block_height": 119592,
@@ -343,19 +350,19 @@ Result (wrapped):
 
 The `gobject diff` RPC Lists governance objects differences since last diff.
 
-_Parameter #1---signal_
+*Parameter #1---signal*
 
 | Name     | Type   | Presence                | Description                                                                                                         |
 | -------- | ------ | ----------------------- | ------------------------------------------------------------------------------------------------------------------- |
-| `signal` | string | Optional<br>(exactly 1) | Type of governance object signal: <br>• `valid`<br>• `funding`<br>• `delete`<br>• `endorsed`<br>• `all` (_DEFAULT_) |
+| `signal` | string | Optional<br>(exactly 1) | Type of governance object signal: <br>• `valid`<br>• `funding`<br>• `delete`<br>• `endorsed`<br>• `all` (*DEFAULT*) |
 
-_Parameter #2---type_
+*Parameter #2---type*
 
 | Name   | Type   | Presence                | Description                                                                                |
 | ------ | ------ | ----------------------- | ------------------------------------------------------------------------------------------ |
-| `type` | string | Optional<br>(exactly 1) | Type of governance object signal: <br>• `proposals`<br>• `triggers`<br>• `all` (_DEFAULT_) |
+| `type` | string | Optional<br>(exactly 1) | Type of governance object signal: <br>• `proposals`<br>• `triggers`<br>• `all` (*DEFAULT*) |
 
-_Result---governance objects_
+*Result---governance objects*
 
 | Name                       | Type         | Presence                | Description                                                                                                                                                 |
 | -------------------------- | ------------ | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -379,13 +386,11 @@ _Result---governance objects_
 | →<br>`fCachedDelete`       | boolean      | Required<br>(exactly 1) | Minimum network support has been reached saying this object should be deleted from the system entirely                                                      |
 | →<br>`fCachedEndorsed`     | boolean      | Required<br>(exactly 1) | Minimum network support has been reached flagging this object as endorsed                                                                                   |
 
-_Example from Dash Core 0.12.2_
+*Example from Dash Core 0.12.2*
 
 ``` bash
 dash-cli -testnet gobject diff all all
 ```
-
-
 
 Result (truncated):
 
@@ -412,19 +417,17 @@ Result (truncated):
 }
 ```
 
-
-
 ### GObject Get
 
 The `gobject get` RPC returns a governance object by hash.
 
-_Parameter #1---object hash_
+*Parameter #1---object hash*
 
 | Name              | Type         | Presence                | Description                     |
 | ----------------- | ------------ | ----------------------- | ------------------------------- |
 | `governance-hash` | string (hex) | Required<br>(exactly 1) | The hash of a governance object |
 
-_Result---governance object details_
+*Result---governance object details*
 
 | Name                      | Type         | Presence                | Description                                                                                                                                                 |
 | ------------------------- | ------------ | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -462,14 +465,12 @@ _Result---governance object details_
 | →<br>`fCachedDelete`      | boolean      | Required<br>(exactly 1) | Minimum network support has been reached saying this object should be deleted from the system entirely                                                      |
 | →<br>`fCachedEndorsed`    | boolean      | Required<br>(exactly 1) | Minimum network support has been reached flagging this object as endorsed                                                                                   |
 
-_Example from Dash Core 0.12.2_
+*Example from Dash Core 0.12.2*
 
 ``` bash
 dash-cli -testnet gobject get \
-	42253a7bec554b97a65d2889e6cb9a1cf308b3d47a778c704bf9cdc1fe1bf6ff
+ 42253a7bec554b97a65d2889e6cb9a1cf308b3d47a778c704bf9cdc1fe1bf6ff
 ```
-
-
 
 Result (wrapped):
 
@@ -514,45 +515,41 @@ Result (wrapped):
 }
 ```
 
-
-
 ### GObject Getcurrentvotes
 
 The `gobject getcurrentvotes` RPC gets only current (tallying) votes for a governance object hash (does not include old votes).
 
-_Parameter #1---object hash_
+*Parameter #1---object hash*
 
 | Name              | Type         | Presence                | Description                     |
 | ----------------- | ------------ | ----------------------- | ------------------------------- |
 | `governance-hash` | string (hex) | Required<br>(exactly 1) | The hash of a governance object |
 
-_Parameter #2---transaction ID_
+*Parameter #2---transaction ID*
 
 | Name   | Type   | Presence             | Description                                      |
 | ------ | ------ | -------------------- | ------------------------------------------------ |
 | `txid` | string | Optional<br>(0 or 1) | The transaction ID of the masternode collateral. |
 
-_Parameter #3---output index_
+*Parameter #3---output index*
 
 | Name   | Type   | Presence             | Description                                                          |
 | ------ | ------ | -------------------- | -------------------------------------------------------------------- |
 | `vout` | string | Optional<br>(0 or 1) | Masternode collateral output index. This is required if txid present |
 
-_Result---votes for specified governance_
+*Result---votes for specified governance*
 
 | Name           | Type   | Presence                | Description                                                                                                             |
 | -------------- | ------ | ----------------------- | ----------------------------------------------------------------------------------------------------------------------- |
 | Result         | object | Required<br>(exactly 1) | The governance object votes                                                                                             |
 | →<br>Vote Info | string | Required<br>(1 or more) | Key: vote-hash<br><br>Value: vinMasternode, time, outcome, vote signal, and vote weight (1 vote / 1000 DASH collateral) |
 
-_Example from Dash Core 19.0.0_
+*Example from Dash Core 19.0.0*
 
 ``` bash
 dash-cli -testnet gobject getcurrentvotes 78941af577f639ac94440e4855a1ed8f\
   696f1506d1c0bed4f4b68f05be26d3ca
 ```
-
-
 
 Result (truncated):
 
@@ -566,25 +563,23 @@ Result (truncated):
 }
 ```
 
-
-
 ### GObject List
 
 The `gobject list` RPC Lists governance objects (can be filtered by signal and/or object type).
 
-_Parameter #1---signal_
+*Parameter #1---signal*
 
 | Name     | Type   | Presence                | Description                                                                                                         |
 | -------- | ------ | ----------------------- | ------------------------------------------------------------------------------------------------------------------- |
-| `signal` | string | Optional<br>(exactly 1) | Type of governance object signal: <br>• `valid`<br>• `funding`<br>• `delete`<br>• `endorsed`<br>• `all` (_DEFAULT_) |
+| `signal` | string | Optional<br>(exactly 1) | Type of governance object signal: <br>• `valid`<br>• `funding`<br>• `delete`<br>• `endorsed`<br>• `all` (*DEFAULT*) |
 
-_Parameter #2---type_
+*Parameter #2---type*
 
 | Name   | Type   | Presence                | Description                                                                                |
 | ------ | ------ | ----------------------- | ------------------------------------------------------------------------------------------ |
-| `type` | string | Optional<br>(exactly 1) | Type of governance object signal: <br>• `proposals`<br>• `triggers`<br>• `all` (_DEFAULT_) |
+| `type` | string | Optional<br>(exactly 1) | Type of governance object signal: <br>• `proposals`<br>• `triggers`<br>• `all` (*DEFAULT*) |
 
-_Result---governance objects_
+*Result---governance objects*
 
 | Name                       | Type         | Presence                | Description                                                                                                                                                 |
 | -------------------------- | ------------ | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -608,13 +603,11 @@ _Result---governance objects_
 | →<br>`fCachedDelete`       | boolean      | Required<br>(exactly 1) | Minimum network support has been reached saying this object should be deleted from the system entirely                                                      |
 | →<br>`fCachedEndorsed`     | boolean      | Required<br>(exactly 1) | Minimum network support has been reached flagging this object as endorsed                                                                                   |
 
-_Example from Dash Core 0.12.2_
+*Example from Dash Core 0.12.2*
 
 ``` bash
 dash-cli -testnet gobject list all proposals
 ```
-
-
 
 Result (truncated):
 
@@ -659,59 +652,57 @@ Result (truncated):
 }
 ```
 
-
-
 ### GObject Prepare
 
 The `gobject prepare` RPC prepares a governance object by signing and creating a collateral transaction.
 
-> 👍 
-> 
+> 👍
+>
 > Note: Dash Core v18.0.0 added support for directing proposal payouts to P2SH addresses such as multisig.
 
-_Parameter #1---parent hash_
+*Parameter #1---parent hash*
 
 | Name          | Type         | Presence                | Description                                                            |
 | ------------- | ------------ | ----------------------- | ---------------------------------------------------------------------- |
 | `parent-hash` | string (hex) | Required<br>(exactly 1) | Hash of the parent object. Usually the root node which has a hash of 0 |
 
-_Parameter #2---revision_
+*Parameter #2---revision*
 
 | Name       | Type | Presence                | Description            |
 | ---------- | ---- | ----------------------- | ---------------------- |
 | `revision` | int  | Required<br>(exactly 1) | Object revision number |
 
-_Parameter #3---time_
+*Parameter #3---time*
 
 | Name   | Type    | Presence                | Description                   |
 | ------ | ------- | ----------------------- | ----------------------------- |
 | `time` | int64_t | Required<br>(exactly 1) | Create time (Unix epoch time) |
 
-_Parameter #4---data_
+*Parameter #4---data*
 
 | Name       | Type         | Presence                | Description                                                                                                                                                                                                           |
 | ---------- | ------------ | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `data-hex` | string (hex) | Required<br>(exactly 1) | **Updated in Dash Core 0.14.0 to require all new proposals to use JSON serialization.**<br><br>Object data (JSON object with governance details). Additional details regarding this are provided in an example below. |
 
-_Parameter #5---use-IS_
+*Parameter #5---use-IS*
 
 | Name     | Type    | Presence             | Description                                     |
 | -------- | ------- | -------------------- | ----------------------------------------------- |
-| `use-IS` | boolean | Optional<br>(0 or 1) | _Deprecated and ignored since Dash Core 0.15.0_ |
+| `use-IS` | boolean | Optional<br>(0 or 1) | *Deprecated and ignored since Dash Core 0.15.0* |
 
-_Parameter #6---outputHash_
+*Parameter #6---outputHash*
 
 | Name         | Type         | Presence             | Description                                                                          |
 | ------------ | ------------ | -------------------- | ------------------------------------------------------------------------------------ |
-| `outputHash` | string (hex) | Optional<br>(0 or 1) | _Added in Dash Core 0.13.0_<br><br>The single output to submit the proposal fee from |
+| `outputHash` | string (hex) | Optional<br>(0 or 1) | *Added in Dash Core 0.13.0*<br><br>The single output to submit the proposal fee from |
 
-_Parameter #7---outputIndex_
+*Parameter #7---outputIndex*
 
 | Name          | Type    | Presence             | Description                                                                                              |
 | ------------- | ------- | -------------------- | -------------------------------------------------------------------------------------------------------- |
-| `outputIndex` | numeric | Optional<br>(0 or 1) | _Added in Dash Core 0.13.0_<br><br>The output index (required if the `outputHash` parameter is provided) |
+| `outputIndex` | numeric | Optional<br>(0 or 1) | *Added in Dash Core 0.13.0*<br><br>The output index (required if the `outputHash` parameter is provided) |
 
-_Result---collateral transaction ID_
+*Result---collateral transaction ID*
 
 | Name     | Type         | Presence                | Description                                   |
 | -------- | ------------ | ----------------------- | --------------------------------------------- |
@@ -735,15 +726,11 @@ An example of a proposal JSON object is shown here:
 }
 ```
 
-
-
 To serialize the object, first remove all spaces from the JSON object as shown below:
 
 ``` json
 {"end_epoch":1560457055,"name":"test","payment_address":"yd5KMREs3GLMe6mTJYr3YrH1juwNwrFCfB","payment_amount":5,"start_epoch":1560453490,"type":1,"url":"http://test.com"}
 ```
-
-
 
 Then convert the string to its hex equivalent as shown below. This is what will be used for the `data-hex` field of the `gobject prepare` command:
 
@@ -755,9 +742,7 @@ Then convert the string to its hex equivalent as shown below. This is what will 
 22687474703a2f2f746573742e636f6d227d
 ```
 
-
-
-_Example from Dash Core 0.14.0_
+*Example from Dash Core 0.14.0*
 
 ``` bash
 gobject prepare 0 1 1560449223 7b22656e645f65706f6368223a3135363034353730353\
@@ -767,31 +752,27 @@ b4d52457333474c4d65366d544a597233597248316a75774e777246436642222c227061796d6\
 c2274797065223a312c2275726c223a22687474703a2f2f746573742e636f6d227d
 ```
 
-
-
 Result (Collateral Transaction ID):
 
 ``` bash
 3fd758e7a5761bb07b2850b8ba432ef42c1ea80f0921d2eab0682697dda78262
 ```
 
+*See also:*
 
-
-_See also:_
-
-- [GObject List-Prepared](#gobject-list-prepared): returns a list of governance objects prepared by this wallet
+* [GObject List-Prepared](#gobject-list-prepared): returns a list of governance objects prepared by this wallet
 
 ### GObject List-Prepared
 
 The `gobject list-prepared` RPC returns a list of governance objects prepared by this wallet with [`gobject prepare`](#gobject-prepare) sorted by their creation time.
 
-_Parameter #1---count_
+*Parameter #1---count*
 
 | Name    | Type         | Presence             | Description                         |
 | ------- | ------------ | -------------------- | ----------------------------------- |
 | `count` | number (int) | Optional<br>(0 or 1) | Maximum number of objects to return |
 
-_Result---list of governance objects_
+*Result---list of governance objects*
 
 | Name                       | Type         | Presence                | Description                                                            |
 | -------------------------- | ------------ | ----------------------- | ---------------------------------------------------------------------- |
@@ -812,13 +793,11 @@ _Result---list of governance objects_
 | → → →<br>`url`             | string       | Required<br>(exactly 1) | Proposal URL                                                           |
 | → → →<br>`hex`             | string (hex) | Required<br>(exactly 1) | Governance object data as hex                                          |
 
-_Example from Dash Core 0.17.0_
+*Example from Dash Core 0.17.0*
 
 ``` bash
 gobject list-prepared
 ```
-
-
 
 Result (Collateral Transaction ID):
 
@@ -844,11 +823,9 @@ Result (Collateral Transaction ID):
 ]
 ```
 
+*See also:*
 
-
-_See also:_
-
-- [GObject Prepared](#gobject-prepare): prepares a governance object by signing and creating a collateral transaction
+* [GObject Prepared](#gobject-prepare): prepares a governance object by signing and creating a collateral transaction
 
 ### GObject Submit
 
@@ -857,43 +834,43 @@ The `gobject submit` RPC submits a governance object to network (objects must fi
 Note: Parameters 1-4 should be the same values as the ones used for `gobject
 prepare`.
 
-_Parameter #1---parent hash_
+*Parameter #1---parent hash*
 
 | Name          | Type         | Presence                | Description                                                            |
 | ------------- | ------------ | ----------------------- | ---------------------------------------------------------------------- |
 | `parent-hash` | string (hex) | Required<br>(exactly 1) | Hash of the parent object. Usually the root node which has a hash of 0 |
 
-_Parameter #2---revision_
+*Parameter #2---revision*
 
 | Name       | Type | Presence                | Description            |
 | ---------- | ---- | ----------------------- | ---------------------- |
 | `revision` | int  | Required<br>(exactly 1) | Object revision number |
 
-_Parameter #3---time_
+*Parameter #3---time*
 
 | Name   | Type    | Presence                | Description |
 | ------ | ------- | ----------------------- | ----------- |
 | `time` | int64_t | Required<br>(exactly 1) | Create time |
 
-_Parameter #4---data_
+*Parameter #4---data*
 
 | Name       | Type         | Presence                | Description                                                                                                                                                                                                                        |
 | ---------- | ------------ | ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `data-hex` | string (hex) | Required<br>(exactly 1) | **Updated in Dash Core 0.14.0 to require all new proposals to use JSON serialization.**<br><br>Object data (JSON object with governance details). See [GObject Prepare](#gobject-prepare) for additional details about this field. |
 
-_Parameter #5---fee transaction ID_
+*Parameter #5---fee transaction ID*
 
 | Name   | Type         | Presence                | Description                                                   |
 | ------ | ------------ | ----------------------- | ------------------------------------------------------------- |
 | `data` | string (hex) | Required<br>(exactly 1) | Fee transaction ID - required for all objects except triggers |
 
-_Result---governance object hash_
+*Result---governance object hash*
 
 | Name     | Type         | Presence                | Description            |
 | -------- | ------------ | ----------------------- | ---------------------- |
 | `result` | string (hex) | Required<br>(exactly 1) | Governance object hash |
 
-_Example from Dash Core 0.14.0_
+*Example from Dash Core 0.14.0*
 
 ``` bash
 dash-cli -testnet gobject submit 0 1 1560449223 7b22656e645f65706f6368223a3\
@@ -905,49 +882,45 @@ dash-cli -testnet gobject submit 0 1 1560449223 7b22656e645f65706f6368223a3\
 3fd758e7a5761bb07b2850b8ba432ef42c1ea80f0921d2eab0682697dda78262
 ```
 
-
-
 Result (Governance Object Hash):
 
 ``` bash
 e353b2ab5f7e7cb24b95e00e153ec2a6339249672f18b8e8e144aa711678710d
 ```
 
+*See also:*
 
-
-_See also:_
-
-- [GObject Prepared](#gobject-prepare): prepares a governance object by signing and creating a collateral transaction
+* [GObject Prepared](#gobject-prepare): prepares a governance object by signing and creating a collateral transaction
 
 ### GObject Vote-alias
 
 The `gobject vote-alias` RPC votes on a governance object by masternode alias (using masternode.conf setup).
 
-_Parameter #1---governance hash_
+*Parameter #1---governance hash*
 
 | Name              | Type         | Presence                | Description                   |
 | ----------------- | ------------ | ----------------------- | ----------------------------- |
 | `governance-hash` | string (hex) | Required<br>(exactly 1) | Hash of the governance object |
 
-_Parameter #2---vote signal_
+*Parameter #2---vote signal*
 
 | Name     | Type   | Presence                | Description                                  |
 | -------- | ------ | ----------------------- | -------------------------------------------- |
 | `signal` | string | Required<br>(exactly 1) | Vote signal: `funding`, `valid`, or `delete` |
 
-_Parameter #3---vote outcome_
+*Parameter #3---vote outcome*
 
 | Name      | Type   | Presence                | Description                             |
 | --------- | ------ | ----------------------- | --------------------------------------- |
 | `outcome` | string | Required<br>(exactly 1) | Vote outcome: `yes`, `no`, or `abstain` |
 
-_Parameter #4---masternode alias_
+*Parameter #4---masternode alias*
 
 | Name    | Type   | Presence                | Description                |
 | ------- | ------ | ----------------------- | -------------------------- |
 | `alias` | string | Required<br>(exactly 1) | Alias of voting masternode |
 
-_Result---votes for specified governance_
+*Result---votes for specified governance*
 
 | Name                    | Type   | Presence                | Description                               |
 | ----------------------- | ------ | ----------------------- | ----------------------------------------- |
@@ -957,15 +930,13 @@ _Result---votes for specified governance_
 | → →<br>Masternode Alias | object | Required<br>(1 or more) | Name of the masternode alias              |
 | → → →<br>`result`       | string | Required<br>(exactly 1) | Vote result                               |
 
-_Example from Dash Core 0.12.2_
+*Example from Dash Core 0.12.2*
 
 ``` bash
 dash-cli -testnet gobject vote-alias \
 0bf97bce78b3b642c36d4ca8e9265f8f66de8774c220221f57739c1956413e2b \
 funding yes MN01
 ```
-
-
 
 Result:
 
@@ -980,31 +951,29 @@ Result:
 }
 ```
 
-
-
 ### GObject Vote-conf
 
 The `gobject vote-conf` RPC votes on a governance object by masternode configured in dash.conf.
 
-_Parameter #1---governance hash_
+*Parameter #1---governance hash*
 
 | Name              | Type         | Presence                | Description                   |
 | ----------------- | ------------ | ----------------------- | ----------------------------- |
 | `governance-hash` | string (hex) | Required<br>(exactly 1) | Hash of the governance object |
 
-_Parameter #2---vote signal_
+*Parameter #2---vote signal*
 
 | Name     | Type   | Presence                | Description                                  |
 | -------- | ------ | ----------------------- | -------------------------------------------- |
 | `signal` | string | Required<br>(exactly 1) | Vote signal: `funding`, `valid`, or `delete` |
 
-_Parameter #3---vote outcome_
+*Parameter #3---vote outcome*
 
 | Name      | Type   | Presence                | Description                             |
 | --------- | ------ | ----------------------- | --------------------------------------- |
 | `outcome` | string | Required<br>(exactly 1) | Vote outcome: `yes`, `no`, or `abstain` |
 
-_Result---votes for specified governance_
+*Result---votes for specified governance*
 
 | Name               | Type   | Presence                | Description                               |
 | ------------------ | ------ | ----------------------- | ----------------------------------------- |
@@ -1014,14 +983,12 @@ _Result---votes for specified governance_
 | → →<br>`dash.conf` | object | Required<br>(1 or more) |                                           |
 | → → →<br>`result`  | string | Required<br>(exactly 1) | Vote result                               |
 
-_Example from Dash Core 0.12.2_
+*Example from Dash Core 0.12.2*
 
 ``` bash
 dash-cli -testnet gobject vote-conf \
 0bf97bce78b3b642c36d4ca8e9265f8f66de8774c220221f57739c1956413e2b funding yes
 ```
-
-
 
 ``` json
 {
@@ -1034,37 +1001,35 @@ dash-cli -testnet gobject vote-conf \
 }
 ```
 
-
-
 ### GObject Vote-many
 
 The `gobject vote-many` RPC votes on a governance object by all masternodes (using masternode.conf setup).
 
-_Parameter #1---governance hash_
+*Parameter #1---governance hash*
 
 | Name              | Type         | Presence                | Description                   |
 | ----------------- | ------------ | ----------------------- | ----------------------------- |
 | `governance-hash` | string (hex) | Required<br>(exactly 1) | Hash of the governance object |
 
-_Parameter #2---vote signal_
+*Parameter #2---vote signal*
 
 | Name     | Type   | Presence                | Description                                  |
 | -------- | ------ | ----------------------- | -------------------------------------------- |
 | `signal` | string | Required<br>(exactly 1) | Vote signal: `funding`, `valid`, or `delete` |
 
-_Parameter #3---vote outcome_
+*Parameter #3---vote outcome*
 
 | Name      | Type   | Presence                | Description                             |
 | --------- | ------ | ----------------------- | --------------------------------------- |
 | `outcome` | string | Required<br>(exactly 1) | Vote outcome: `yes`, `no`, or `abstain` |
 
-_Parameter #4---masternode alias_
+*Parameter #4---masternode alias*
 
 | Name    | Type   | Presence                | Description                |
 | ------- | ------ | ----------------------- | -------------------------- |
 | `alias` | string | Required<br>(exactly 1) | Alias of voting masternode |
 
-_Result---votes for specified governance_
+*Result---votes for specified governance*
 
 | Name                    | Type   | Presence                | Description                               |
 | ----------------------- | ------ | ----------------------- | ----------------------------------------- |
@@ -1074,14 +1039,12 @@ _Result---votes for specified governance_
 | → →<br>Masternode Alias | object | Required<br>(1 or more) | Name of the masternode alias              |
 | → → →<br>`result`       | string | Required<br>(exactly 1) | Vote result                               |
 
-_Example from Dash Core 0.12.2_
+*Example from Dash Core 0.12.2*
 
 ``` bash
 dash-cli -testnet gobject vote-many \
 0bf97bce78b3b642c36d4ca8e9265f8f66de8774c220221f57739c1956413e2b funding yes
 ```
-
-
 
 ``` json
 {
@@ -1094,12 +1057,10 @@ dash-cli -testnet gobject vote-many \
 }
 ```
 
+*See also:*
 
-
-_See also:_
-
-- [GetGovernanceInfo](#getgovernanceinfo): returns an object containing governance parameters.
-- [GetSuperblockBudget](#getsuperblockbudget): returns the absolute maximum sum of superblock payments allowed.
+* [GetGovernanceInfo](#getgovernanceinfo): returns an object containing governance parameters.
+* [GetSuperblockBudget](#getsuperblockbudget): returns the absolute maximum sum of superblock payments allowed.
 
 ## Masternode
 
@@ -1110,19 +1071,19 @@ The [`masternode` RPC](#masternode) provides a set of commands for managing mast
 The `masternode count` RPC prints the number of all known masternodes.
 
 > 🚧 Dash Core 0.17.0 change
-> 
+>
 > The previously deprecated `mode` parameter was removed in Dash Core 0.17.0. Information regarding the previous functionality is available in [an older version of the documentation](https://dashcore.readme.io/v0.16.0/docs/core-api-ref-remote-procedure-calls-dash#masternode-count).
 
-_Parameters: none_
+*Parameters: none*
 
-_Result---number of known masternodes_
+*Result---number of known masternodes*
 
 | Name             | Type   | Presence                | Description                                                            |
 | ---------------- | ------ | ----------------------- | ---------------------------------------------------------------------- |
 | `result`         | object | Required<br>(exactly 1) | Masternode count by mode                                               |
 | →<br>`total`     | int    | Required<br>(exactly 1) | Count of all masternodes                                               |
 | →<br>`enabled`   | int    | Required<br>(exactly 1) | Count of enabled masternodes                                           |
-| →<br>`detailed`  | object | Required<br>(exactly 1) | _Added in Dash Core 19.0_<br>Breakdown of regular masternodes and HPMN |
+| →<br>`detailed`  | object | Required<br>(exactly 1) | *Added in Dash Core 19.0*<br>Breakdown of regular masternodes and HPMN |
 | →→<br>`regular`  | object | Required<br>(exactly 1) | Breakdown of regular masternodes                                       |
 | →→→<br>`total`   | int    | Required<br>(exactly 1) | Number of total regular masternodes                                    |
 | →→→<br>`enabled` | int    | Required<br>(exactly 1) | Number of enabled regular masternodes                                  |
@@ -1130,13 +1091,11 @@ _Result---number of known masternodes_
 | →→→<br>`total`   | int    | Required<br>(exactly 1) | Number of total HPMN                                                   |
 | →→→<br>`enabled` | int    | Required<br>(exactly 1) | Number of enabled HPMN                                                 |
 
-_Example from Dash Core 19.0.0_
+*Example from Dash Core 19.0.0*
 
 ``` bash
 dash-cli -testnet masternode count
 ```
-
-
 
 Result:
 
@@ -1157,19 +1116,17 @@ Result:
 }
 ```
 
-
-
 ### Masternode Current
 
 > ❗️ Deprecated in Dash Core 0.17.0
-> 
+>
 > This RPC has been deprecated and will be removed in a future version of Dash Core
 
 The `masternode current` RPC prints info on current masternode winner to be paid the next block (calculated locally).
 
-_Parameters: none_
+*Parameters: none*
 
-_Result---current winning masternode info_
+*Result---current winning masternode info*
 
 | Name             | Type   | Presence                | Description                                             |
 | ---------------- | ------ | ----------------------- | ------------------------------------------------------- |
@@ -1180,13 +1137,11 @@ _Result---current winning masternode info_
 | →<br>`outpoint`  | string | Required<br>(exactly 1) | The masternode's outpoint                               |
 | →<br>`payee`     | string | Required<br>(exactly 1) | Payee address                                           |
 
-_Example from Dash Core 0.14.0_
+*Example from Dash Core 0.14.0*
 
 ``` bash
 dash-cli -testnet masternode current
 ```
-
-
 
 Result:
 
@@ -1200,8 +1155,6 @@ Result:
 }
 ```
 
-
-
 ### Masternode List
 
 The `masternode list` prints a list of all known masternodes.
@@ -1209,14 +1162,12 @@ The `masternode list` prints a list of all known masternodes.
 This RPC uses the same parameters and returns the same data as  
 [masternodelist](#masternodelist). Please reference it for full details.
 
-_Example from Dash Core 0.12.2_
+*Example from Dash Core 0.12.2*
 
 ``` bash
 dash-cli -testnet masternode list \
-	rank f6c83fd96bfaa47887c4587cceadeb9af6238a2c86fe36b883c4d7a6867eab0f
+ rank f6c83fd96bfaa47887c4587cceadeb9af6238a2c86fe36b883c4d7a6867eab0f
 ```
-
-
 
 Result:
 
@@ -1226,32 +1177,28 @@ Result:
 }
 ```
 
-
-
 ### Masternode Outputs
 
 The `masternode outputs` RPC prints masternode compatible outputs.
 
 > ❗️ Breaking change
-> 
+>
 > Dash Core 18.1.0 changed the response format from a JSON object (Key: TXID, Value: transaction index) to the current array representation
 
-_Parameters: none_
+*Parameters: none*
 
-_Result---masternode outputs_
+*Result---masternode outputs*
 
 | Name        | Type   | Presence                | Description                               |
 | ----------- | ------ | ----------------------- | ----------------------------------------- |
 | Result      | array  | Required<br>(exactly 1) | Masternode compatible outputs             |
 | →<br>Output | string | Required<br>(0 or more) | Masternode compatible output (TXID:Index) |
 
-_Example from Dash Core 18.1.0_
+*Example from Dash Core 18.1.0*
 
 ``` bash
 dash-cli -testnet masternode outputs
 ```
-
-
 
 Result:
 
@@ -1261,32 +1208,30 @@ Result:
 ]
 ```
 
-
-
 ### Masternode Payments
 
-> 👍 
-> 
+> 👍
+>
 > Added in Dash Core 0.17.0
 
 The `masternode payments` RPC prints an array of deterministic masternodes and their payments for the specified block.
 
 By default, payment information is returned for only the chain tip. More block winners can be requested via the optional `count` parameter.
 
-_Parameter #1---block hash_
+*Parameter #1---block hash*
 
 | Name       | Type         | Presence                | Description                                   |
 | ---------- | ------------ | ----------------------- | --------------------------------------------- |
 | Block Hash | string (hex) | Optional<br>(exactly 1) | The hash of the starting block (default: tip) |
 
-_Parameter #2---count_
+*Parameter #2---count*
 
 | Name  | Type         | Presence                | Description                                                                                                                                         |
 | ----- | ------------ | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Count | number (int) | Optional<br>(exactly 1) | The number of blocks to return (default: 1). Will return <count> previous blocks if <count> is negative. Both 1 and -1 correspond to the chain tip. |
 
 .  
-_Result---masternode payments_
+*Result---masternode payments*
 
 | Name                | Type             | Presence                | Description                                      |        |                         |               |
 | :------------------ | :--------------- | :---------------------- | :----------------------------------------------- | :----- | :---------------------- | :------------ |
@@ -1304,13 +1249,11 @@ _Result---masternode payments_
 | →→→→→→<br>`script`  | string           | Required<br>(exactly 1) | Payee scriptPubKey                               |        |                         |               |
 | →→→→→→<br>`amount`  | number (int)     | Required<br>(exactly 1) | Amount received by this payee                    |        |                         |               |
 
-_Example from Dash Core 0.17.0_
+*Example from Dash Core 0.17.0*
 
 ``` bash
 dash-cli -testnet masternode payments
 ```
-
-
 
 Result (block 407822):
 
@@ -1337,20 +1280,18 @@ Result (block 407822):
 ]
 ```
 
+*See also:*
 
-
-_See also:_
-
-- [Masternode Winner](#masternode-winner): prints info on the next masternode winner to vote for.
-- [Masternode Winners](#masternode-winners): prints the list of masternode winners.
+* [Masternode Winner](#masternode-winner): prints info on the next masternode winner to vote for.
+* [Masternode Winners](#masternode-winners): prints the list of masternode winners.
 
 ### Masternode Status
 
 The `masternode status` RPC prints masternode status information.
 
-_Parameters: none_
+*Parameters: none*
 
-_Result---masternode status info_
+*Result---masternode status info*
 
 | Name                           | Type         | Presence                | Description                                                                                                                                                                                       |
 | ------------------------------ | ------------ | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -1358,7 +1299,7 @@ _Result---masternode status info_
 | →<br>`outpoint`                | string       | Required<br>(exactly 1) | The masternode's outpoint                                                                                                                                                                         |
 | →<br>`service`                 | string       | Required<br>(exactly 1) | The IP address/port of the masternode                                                                                                                                                             |
 | →<br>`proTxHash`               | string (hex) | Optional<br>(0 or 1)    | The masternode's ProRegTx hash                                                                                                                                                                    |
-| →<br>`type`                    | string       | Required<br>(exactly 1) | _Added in Dash Core 19.0_<br>The type of masternode                                                                                                                                               |
+| →<br>`type`                    | string       | Required<br>(exactly 1) | *Added in Dash Core 19.0*<br>The type of masternode                                                                                                                                               |
 | →<br>`collateralHash`          | string (hex) | Optional<br>(0 or 1)    | The masternode's collateral hash                                                                                                                                                                  |
 | →<br>`collateralIndex`         | int          | Optional<br>(0 or 1)    | Index of the collateral                                                                                                                                                                           |
 | →<br>`dmnState`                | object       | Optional<br>(0 or 1)    | Deterministic Masternode State                                                                                                                                                                    |
@@ -1380,13 +1321,11 @@ _Result---masternode status info_
 | →<br>`state`                   | string       | Required<br>(exactly 1) | The masternode's state. Valid states are:<br>• `WAITING_FOR_PROTX`<br>• `POSE_BANNED`<br>• `REMOVED`<br>• `OPERATOR_KEY_CHANGED`<br>• `PROTX_IP_CHANGED`<br>• `READY`<br>• `ERROR`<br>• `UNKNOWN` |
 | →<br>`status`                  | string       | Required<br>(exactly 1) | The masternode's status (description based on current state)                                                                                                                                      |
 
-_Example from Dash Core 19.0.0_
+*Example from Dash Core 19.0.0*
 
 ``` bash
 dash-cli -testnet masternode status
 ```
-
-
 
 Result:
 
@@ -1420,19 +1359,17 @@ Result:
 }
 ```
 
-
-
 ### Masternode Winner
 
 > ❗️ Deprecated in Dash Core 0.17.0
-> 
+>
 > This RPC has been deprecated and will be removed in a future version of Dash Core
 
 The `masternode winner` RPC prints info on the next masternode winner to vote for.
 
-_Parameters: none_
+*Parameters: none*
 
-_Result---next masternode winner info_
+*Result---next masternode winner info*
 
 | Name             | Type   | Presence                | Description                                             |
 | ---------------- | ------ | ----------------------- | ------------------------------------------------------- |
@@ -1443,13 +1380,11 @@ _Result---next masternode winner info_
 | →<br>`outpoint`  | string | Required<br>(exactly 1) | The masternode's outpoint                               |
 | →<br>`payee`     | string | Required<br>(exactly 1) | Payee address                                           |
 
-_Example from Dash Core 0.14.0_
+*Example from Dash Core 0.14.0*
 
 ``` bash
 dash-cli -testnet masternode winner
 ```
-
-
 
 Result:
 
@@ -1463,12 +1398,10 @@ Result:
 }
 ```
 
+*See also:*
 
-
-_See also:_
-
-- [Masternode Payments](#masternode-payments): prints an array of deterministic masternodes and their payments for the specified block.
-- [Masternode Winners](#masternode-winners): prints the list of masternode winners.
+* [Masternode Payments](#masternode-payments): prints an array of deterministic masternodes and their payments for the specified block.
+* [Masternode Winners](#masternode-winners): prints the list of masternode winners.
 
 ### Masternode Winners
 
@@ -1476,32 +1409,30 @@ The `masternode winners` RPC prints the list of masternode winners.
 
 By default, the 10 previous block winners, the current block winner, and the next 20 block winners are displayed. More past block winners can be requested via the optional `count` parameter.
 
-_Parameter #1---count_
+*Parameter #1---count*
 
 | Name  | Type | Presence                | Description                                               |
 | ----- | ---- | ----------------------- | --------------------------------------------------------- |
 | Count | int  | Optional<br>(exactly 1) | Number of previous block winners to display (default: 10) |
 
-_Parameter #2---filter_
+*Parameter #2---filter*
 
 | Name   | Type   | Presence                | Description                  |
 | ------ | ------ | ----------------------- | ---------------------------- |
 | Filter | string | Optional<br>(exactly 1) | Payment address to filter by |
 
-_Result---masternode winners_
+*Result---masternode winners*
 
 | Name                   | Type   | Presence                | Description                                                                                                                                   |
 | ---------------------- | ------ | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
 | Result                 | object | Required<br>(exactly 1) | Winning masternode info                                                                                                                       |
 | →<br>Masternode Winner | int    | Required<br>(exactly 1) | Key: Block height<br>Value: payee address. As of Dash Core 0.17.0, all payees will be listed (e.g. both owner and operator where applicable). |
 
-_Example from Dash Core 0.17.0_
+*Example from Dash Core 0.17.0*
 
 ``` bash
 dash-cli -testnet masternode winners
 ```
-
-
 
 Result (current block - 37458):
 
@@ -1540,15 +1471,11 @@ Result (current block - 37458):
 }
 ```
 
-
-
 Get a filtered list of masternode winners
 
 ``` bash
 dash-cli -testnet masternode winners 150 "yTZ99"
 ```
-
-
 
 Result:
 
@@ -1561,25 +1488,23 @@ Result:
 }
 ```
 
+*See also:*
 
-
-_See also:_
-
-- [MasternodeList](#masternodelist): returns a list of masternodes in different modes.
-- [Masternode Payments](#masternode-payments): prints an array of deterministic masternodes and their payments for the specified block.
-- [Masternode Winner](#masternode-winner): prints info on the next masternode winner to vote for.
+* [MasternodeList](#masternodelist): returns a list of masternodes in different modes.
+* [Masternode Payments](#masternode-payments): prints an array of deterministic masternodes and their payments for the specified block.
+* [Masternode Winner](#masternode-winner): prints info on the next masternode winner to vote for.
 
 ## Masternodelist
 
 The [`masternodelist` RPC](#masternodelist) returns a list of masternodes in different modes.
 
-_Parameter #1---List mode_
+*Parameter #1---List mode*
 
 | Name   | Type   | Presence                                          | Description             |
 | ------ | ------ | ------------------------------------------------- | ----------------------- |
 | `mode` | string | Optional (exactly 1);<br>Required to use `filter` | The mode to run list in |
 
-_Mode Options (Default=json)_
+*Mode Options (Default=json)*
 
 | Mode             | Description                                                                                                        |
 | ---------------- | ------------------------------------------------------------------------------------------------------------------ |
@@ -1596,28 +1521,26 @@ _Mode Options (Default=json)_
 | `status`         | Print masternode status: ENABLED / POSE_BANNED (can be additionally filtered, partial match)                       |
 | `votingaddress`  | Print the masternode voting Dash address                                                                           |
 
-_Parameter #2---List filter_
+*Parameter #2---List filter*
 
 | Name     | Type   | Presence                | Description                                                                                                             |
 | -------- | ------ | ----------------------- | ----------------------------------------------------------------------------------------------------------------------- |
 | `filter` | string | Optional<br>(exactly 1) | Filter results. Partial match by outpoint by default in all modes, additional matches in some modes are also available. |
 
-_Result---the masternode list_
+*Result---the masternode list*
 
 | Name                 | Type        | Presence                | Description                                                                                   |
 | -------------------- | ----------- | ----------------------- | --------------------------------------------------------------------------------------------- |
 | `result`             | object/null | Required<br>(exactly 1) | Information about the masternode sync status                                                  |
 | →<br>Masternode Info | string      | Required<br>(1 or more) | The requested masternode info. Output varies based on selected `mode` and `filter` parameters |
 
-_Example from Dash Core 19.0.0_
+*Example from Dash Core 19.0.0*
 
 Get unfiltered Masternode list in default mode
 
 ``` bash
 dash-cli -testnet masternodelist
 ```
-
-
 
 Result (truncated):
 
@@ -1674,15 +1597,11 @@ Result (truncated):
 }
 ```
 
-
-
 Get a filtered Masternode list
 
 ``` bash
 dash-cli -testnet masternodelist full "NEW"
 ```
-
-
 
 Result:
 
@@ -1699,18 +1618,16 @@ Result:
 }
 ```
 
+*See also:*
 
-
-_See also:_
-
-- [Masternode](#masternode): provides a set of commands for managing masternodes and displaying information about them.
-- [MnSync](#mnsync): returns the sync status, updates to the next step or resets it entirely.
+* [Masternode](#masternode): provides a set of commands for managing masternodes and displaying information about them.
+* [MnSync](#mnsync): returns the sync status, updates to the next step or resets it entirely.
 
 ## MnSync
 
 The [`mnsync` RPC](#mnsync) returns the sync status, updates to the next step or resets it entirely.
 
-_Parameter #1---Command mode_
+*Parameter #1---Command mode*
 
 | Name   | Type   | Presence                | Description                                                                                                                          |
 | ------ | ------ | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
@@ -1718,7 +1635,7 @@ _Parameter #1---Command mode_
 
 **Command Mode - `status`**
 
-_Result---the sync status_
+*Result---the sync status*
 
 | Name                      | Type         | Presence                | Description                                                       |
 | ------------------------- | ------------ | ----------------------- | ----------------------------------------------------------------- |
@@ -1729,7 +1646,7 @@ _Result---the sync status_
 | →<br>`Attempt`            | number (int) | Required<br>(exactly 1) | The sync attempt number                                           |
 | →<br>`IsBlockchainSynced` | boolean      | Required<br>(exactly 1) | Blockchain sync status                                            |
 | →<br>`IsSynced`           | boolean      | Required<br>(exactly 1) | Masternode sync status                                            |
-| →<br>`IsFailed`           | boolean      | Required<br>(exactly 1) | _Removed in Dash Core 0.16.0_<br>Masternode list sync fail status |
+| →<br>`IsFailed`           | boolean      | Required<br>(exactly 1) | *Removed in Dash Core 0.16.0*<br>Masternode list sync fail status |
 
 Sync Assets
 
@@ -1741,15 +1658,13 @@ Sync Assets
 | -1      | MASTERNODE_SYNC_FAILED (removed in Dash Core 0.16.0)                                   |
 | 999     | MASTERNODE_SYNC_FINISHED                                                               |
 
-_Example from Dash Core 0.16.0_
+*Example from Dash Core 0.16.0*
 
 Get Masternode sync status
 
 ``` bash
 dash-cli -testnet mnsync status
 ```
-
-
 
 Result:
 
@@ -1764,23 +1679,19 @@ Result:
 }
 ```
 
-
-
 **Command Mode - `next`**
 
-_Result---next command return status_
+*Result---next command return status*
 
 | Name     | Type   | Presence                | Description           |
 | -------- | ------ | ----------------------- | --------------------- |
 | `result` | string | Required<br>(exactly 1) | Command return status |
 
-_Example from Dash Core 0.12.2_
+*Example from Dash Core 0.12.2*
 
 ``` bash
 dash-cli -testnet mnsync next
 ```
-
-
 
 Result:
 
@@ -1788,23 +1699,19 @@ Result:
 sync updated to MASTERNODE_SYNC_GOVERNANCE
 ```
 
-
-
 **Command Mode - `reset`**
 
-_Result---reset command return status_
+*Result---reset command return status*
 
 | Name     | Type   | Presence                | Description                                      |
 | -------- | ------ | ----------------------- | ------------------------------------------------ |
 | `result` | string | Required<br>(exactly 1) | Command return status:<br>`success` or `failure` |
 
-_Example from Dash Core 0.12.2_
+*Example from Dash Core 0.12.2*
 
 ``` bash
 dash-cli -testnet mnsync reset
 ```
-
-
 
 Result:
 
@@ -1812,12 +1719,10 @@ Result:
 success
 ```
 
+*See also:*
 
-
-_See also:_
-
-- [Masternode](#masternode): provides a set of commands for managing masternodes and displaying information about them.
-- [MasternodeList](#masternodelist): returns a list of masternodes in different modes.
+* [Masternode](#masternode): provides a set of commands for managing masternodes and displaying information about them.
+* [MasternodeList](#masternodelist): returns a list of masternodes in different modes.
 
 <span id="privatesend"></span>
 
@@ -1833,19 +1738,17 @@ The [`coinjoin` RPC](#coinjoin) controls the CoinJoin process (previously named 
 
 **Command Mode - `start`**
 
-_Result---start command return status_
+*Result---start command return status*
 
 | Name     | Type   | Presence                | Description           |
 | -------- | ------ | ----------------------- | --------------------- |
 | `result` | string | Required<br>(exactly 1) | Command return status |
 
-_Example from Dash Core 0.17.0_
+*Example from Dash Core 0.17.0*
 
 ``` bash
 dash-cli -testnet coinjoin start
 ```
-
-
 
 Result:
 
@@ -1853,23 +1756,19 @@ Result:
 Mixing started successfully
 ```
 
-
-
 **Command Mode - `stop`**
 
-_Result---stop command return status_
+*Result---stop command return status*
 
 | Name     | Type   | Presence                | Description           |
 | -------- | ------ | ----------------------- | --------------------- |
 | `result` | string | Required<br>(exactly 1) | Command return status |
 
-_Example from Dash Core 0.17.0_
+*Example from Dash Core 0.17.0*
 
 ``` bash
 dash-cli -testnet coinjoin stop
 ```
-
-
 
 Result:
 
@@ -1877,23 +1776,19 @@ Result:
 Mixing was stopped
 ```
 
-
-
 **Command Mode - `reset`**
 
-_Result---reset command return status_
+*Result---reset command return status*
 
 | Name     | Type   | Presence                | Description           |
 | -------- | ------ | ----------------------- | --------------------- |
 | `result` | string | Required<br>(exactly 1) | Command return status |
 
-_Example from Dash Core 0.17.0_
+*Example from Dash Core 0.17.0*
 
 ``` bash
 dash-cli -testnet coinjoin reset
 ```
-
-
 
 Result:
 
@@ -1901,21 +1796,19 @@ Result:
 Mixing was reset
 ```
 
-
-
-_See also: none_
+*See also: none*
 
 ## Spork
 
 The [`spork` RPC](#spork) shows information about the current state of sporks.
 
-> 🚧 
-> 
+> 🚧
+>
 > Dash Core 18.1 moved spork setting functionality into a dedicated RPC, [`sporkupdate`](#sporkupdate).
 
 To display the status of sporks, use the `show` or `active` syntax.
 
-_Parameter #1---Command mode_
+*Parameter #1---Command mode*
 
 | Name   | Type   | Presence                | Description                                                                                             |
 | ------ | ------ | ----------------------- | ------------------------------------------------------------------------------------------------------- |
@@ -1923,20 +1816,18 @@ _Parameter #1---Command mode_
 
 **Command Mode - `show`**
 
-_Result---spork values_
+*Result---spork values*
 
 | Name               | Type    | Presence                | Description                                    |
 | ------------------ | ------- | ----------------------- | ---------------------------------------------- |
 | `result`           | object  | Required<br>(exactly 1) | Object containing status                       |
 | →<br>`Spork Value` | int64_t | Required<br>(1 or more) | Spork value (epoch datetime to enable/disable) |
 
-_Example from Dash Core 18.1.0_
+*Example from Dash Core 18.1.0*
 
 ``` bash
 dash-cli -testnet spork show
 ```
-
-
 
 Result:
 
@@ -1952,18 +1843,16 @@ Result:
 }
 ```
 
-
-
 **Command Mode - `active`**
 
-_Result---spork active status_
+*Result---spork active status*
 
 | Name                           | Type   | Presence                | Description              |
 | ------------------------------ | ------ | ----------------------- | ------------------------ |
 | `result`                       | object | Required<br>(exactly 1) | Object containing status |
 | →<br>`Spork Activation Status` | bool   | Required<br>(1 or more) | Spork activation status  |
 
-_Example from Dash Core 18.1.0_
+*Example from Dash Core 18.1.0*
 
 ``` bash
 dash-cli -testnet spork active
@@ -1983,47 +1872,43 @@ Result:
 }
 ```
 
+*See also:*
 
-
-_See also:_
-
-- [Sporkupdate](#sporkupdate): updates the value of the provided spork.
+* [Sporkupdate](#sporkupdate): updates the value of the provided spork.
 
 ## Sporkupdate
 
 The [`sporkupdate` RPC](#sporkupdate) updates the value of the provided spork.
 
-> 📘 
-> 
+> 📘
+>
 > Signing spork update messages requires `-sporkkey` to be set via the command line or dash.conf file.
 
 To update the state of a spork activation, use the `<name> [value]` syntax.
 
-_Parameter #1---Spork name_
+*Parameter #1---Spork name*
 
 | Name   | Type   | Presence                | Description                     |
 | ------ | ------ | ----------------------- | ------------------------------- |
 | `name` | string | Required<br>(exactly 1) | The name of the spork to update |
 
-_Parameter #2---Spork value_
+*Parameter #2---Spork value*
 
 | Name    | Type | Presence                | Description                   |
 | ------- | ---- | ----------------------- | ----------------------------- |
 | `value` | int  | Required<br>(exactly 1) | The value to assign the spork |
 
-_Result---spork update status_
+*Result---spork update status*
 
 | Name     | Type   | Presence                | Description                         |
 | -------- | ------ | ----------------------- | ----------------------------------- |
 | `result` | string | Required<br>(exactly 1) | Update status (`success` or `null`) |
 
-_Example from Dash Core 18.1.0_
+*Example from Dash Core 18.1.0*
 
 ``` bash
 dash-cli -testnet spork SPORK_2_INSTANTSEND_ENABLED 0
 ```
-
-
 
 Result:
 
@@ -2031,53 +1916,51 @@ Result:
 null
 ```
 
+*See also:*
 
-
-_See also:_
-
-- [Spork](#spork): shows information about the current state of sporks.
+* [Spork](#spork): shows information about the current state of sporks.
 
 ## VoteRaw
 
 The [`voteraw` RPC](#voteraw) compiles and relays a governance vote with provided external signature instead of signing vote internally
 
-_Parameter #1---masternode collateral transaction hash_
+*Parameter #1---masternode collateral transaction hash*
 
 | Name                            | Type         | Presence                | Description                                   |
 | ------------------------------- | ------------ | ----------------------- | --------------------------------------------- |
 | `masternode-collateral-tx-hash` | string (hex) | Required<br>(exactly 1) | Hash of the masternode collateral transaction |
 
-_Parameter #2---masternode collateral transaction index_
+*Parameter #2---masternode collateral transaction index*
 
 | Name                             | Type   | Presence                | Description                                    |
 | -------------------------------- | ------ | ----------------------- | ---------------------------------------------- |
 | `masternode-collateral-tx-index` | string | Required<br>(exactly 1) | Index of the masternode collateral transaction |
 
-_Parameter #3---governance hash_
+*Parameter #3---governance hash*
 
 | Name              | Type         | Presence                | Description                   |
 | ----------------- | ------------ | ----------------------- | ----------------------------- |
 | `governance-hash` | string (hex) | Required<br>(exactly 1) | Hash of the governance object |
 
-_Parameter #4---vote signal_
+*Parameter #4---vote signal*
 
 | Name     | Type   | Presence                | Description                                  |
 | -------- | ------ | ----------------------- | -------------------------------------------- |
 | `signal` | string | Required<br>(exactly 1) | Vote signal: `funding`, `valid`, or `delete` |
 
-_Parameter #5---vote outcome_
+*Parameter #5---vote outcome*
 
 | Name      | Type   | Presence                | Description                             |
 | --------- | ------ | ----------------------- | --------------------------------------- |
 | `outcome` | string | Required<br>(exactly 1) | Vote outcome: `yes`, `no`, or `abstain` |
 
-_Parameter #6---time_
+*Parameter #6---time*
 
 | Name   | Type    | Presence                | Description |
 | ------ | ------- | ----------------------- | ----------- |
 | `time` | int64_t | Required<br>(exactly 1) | Create time |
 
-_Parameter #7---vote signature_
+*Parameter #7---vote signature*
 
 | Name       | Type            | Presence                | Description                                                                                                                                                                                                                                                                                                                                               |
 | ---------- | --------------- | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -2100,6 +1983,7 @@ H1jXKZQp1TZWBPW11E665OwmGBYV1038FohEr0au7zp+O5BCKmVDP/3rGq38ZMy3KOpwnBu6ehd6jlas
 ```
 
 Result:
+
 ``` bash
 Voted successfully
 ```
