@@ -46,9 +46,9 @@ The special transaction type is 1 and the extra payload consists of the followin
 | 1-9 | scriptPayoutSize | compactSize uint | Size of the Payee Script.
 | Variable | scriptPayout | Script | Payee script (p2pkh/p2sh)
 | 32 | inputsHash | uint256 | Hash of all the outpoints of the transaction inputs
-| 0 or 20 | platformNodeID | byte[] | **_Added by ProRegTx version 2 in Dash Core 19.0.0_**<br>Dash Platform P2P node ID, derived from P2P public key. Only present for masternode type 1.
-| 0 or 2 | platformP2PPort | uint_16 | **_Added by ProRegTx version 2 in Dash Core 19.0.0_**<br>TCP port of Dash Platform peer-to-peer communication between nodes (network byte order). Only present for masternode type 1.
-| 0 or 2 | platformHTTPPort | uint_16 | **_Added by ProRegTx version 2 in Dash Core 19.0.0_**<br>TCP port of Platform HTTP/API interface (network byte order). Only present for masternode type 1.
+| 0 or 20 | platformNodeID | byte[] | ***Added by ProRegTx version 2 in Dash Core 19.0.0***<br>Dash Platform P2P node ID, derived from P2P public key. Only present for masternode type 1.
+| 0 or 2 | platformP2PPort | uint_16 | ***Added by ProRegTx version 2 in Dash Core 19.0.0***<br>TCP port of Dash Platform peer-to-peer communication between nodes (network byte order). Only present for masternode type 1.
+| 0 or 2 | platformHTTPPort | uint_16 | ***Added by ProRegTx version 2 in Dash Core 19.0.0***<br>TCP port of Platform HTTP/API interface (network byte order). Only present for masternode type 1.
 | 1-9 | payloadSigSize |compactSize uint | Size of the Signature
 | Variable | payloadSig | vector | Signature of the hash of the ProTx fields. Signed with the key corresponding to the collateral outpoint in case the collateral is not part of the ProRegTx itself, empty otherwise.
 
@@ -263,16 +263,16 @@ The special transaction type used for ProUpServTx Transactions is 2 and the extr
 | Bytes | Name | Data type |  Description |
 | ---------- | ----------- | -------- | -------- |
 | 2 | version | uint_16 | ProUpServTx version number. Currently set to 1. Updated to 2 after Dash Core 19.0.0 hard fork.
-| 2 | type | uint_16 | **_Added by ProUpServTx version 2 in Dash Core 19.0.0_**<br>Masternode type
+| 2 | type | uint_16 | ***Added by ProUpServTx version 2 in Dash Core 19.0.0***<br>Masternode type
 | 32 | proTXHash | uint256 | The hash of the initial ProRegTx
 | 16 | ipAddress | byte[] | IPv6 address in network byte order. Only IPv4 mapped addresses are allowed (to be extended in the future)
 | 2 | port | uint_16 | Port (network byte order)
 | 1-9 | scriptOperator<br>PayoutSize | compactSize uint | Size of the Operator Payee Script.
 | Variable | scriptOperator<br>Payout | Script | Operator Payee script (p2pkh/p2sh)
 | 32 | inputsHash | uint256 | Hash of all the outpoints of the transaction inputs
-| 0 or 20 | platformNodeID | byte[] | **_Added by ProUpServTx version 2 in Dash Core 19.0.0_**<br>Dash Platform P2P node ID, derived from P2P public key. Only present for masternode type 1.
-| 0 or 2 | platformP2PPort | uint_16 | **_Added by ProUpServTx version 2 in Dash Core 19.0.0_**<br>TCP port of Dash Platform peer-to-peer communication between nodes (network byte order). Only present for masternode type 1.
-| 0 or 2 | platformHTTPPort | uint_16 | **_Added by ProUpServTx version 2 in Dash Core 19.0.0_**<br>TCP port of Platform HTTP/API interface (network byte order). Only present for masternode type 1.
+| 0 or 20 | platformNodeID | byte[] | ***Added by ProUpServTx version 2 in Dash Core 19.0.0***<br>Dash Platform P2P node ID, derived from P2P public key. Only present for masternode type 1.
+| 0 or 2 | platformP2PPort | uint_16 | ***Added by ProUpServTx version 2 in Dash Core 19.0.0***<br>TCP port of Dash Platform peer-to-peer communication between nodes (network byte order). Only present for masternode type 1.
+| 0 or 2 | platformHTTPPort | uint_16 | ***Added by ProUpServTx version 2 in Dash Core 19.0.0***<br>TCP port of Platform HTTP/API interface (network byte order). Only present for masternode type 1.
 | 1-9 | payloadSigSize |compactSize uint | Size of the Signature<br>**Note:** not present in BLS implementation
 | 96 | payloadSig | vector | BLS Signature of the hash of the ProUpServTx fields. Signed by the Operator.<br>**Note**:  serialization varies based on `version`:<br> - Version 1 - legacy BLS scheme<br> - Version 2 - basic BLS scheme
 

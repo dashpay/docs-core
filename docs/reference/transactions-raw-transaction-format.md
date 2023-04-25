@@ -29,6 +29,7 @@ A transaction may have multiple [inputs](../resources/glossary.md#input) and [ou
 When retrieving transaction data via Dash Core RPCs (e.g. the [`getrawtransaction` RPC](../api/remote-procedure-calls-raw-transactions.md#getrawtransaction)), the transaction data is returned in the following format.
 
 Version 1 and 2 Transaction Structure (prior to DIP2 activation in Dash Core v0.13.0):
+
 ``` json
 {
   "txid": "<string>",
@@ -41,6 +42,7 @@ Version 1 and 2 Transaction Structure (prior to DIP2 activation in Dash Core v0.
 ```
 
 Version 3 Transaction Structure (Dash Core v0.13.0+ and activated [DIP2](https://github.com/dashpay/dips/blob/master/dip-0002.md)):
+
 ``` json
 {
   "txid": "<string>",
@@ -89,6 +91,7 @@ The sample transaction below shows the response for a quorum commitment special 
 ```
 
 **<span id="txin"></span>**
+
 ## TxIn: A Transaction Input (Non-Coinbase)
 
 Each non- [coinbase](../resources/glossary.md#coinbase) [input](../resources/glossary.md#input) spends an outpoint from a previous transaction. (Coinbase inputs are described separately after the example section below.)
@@ -101,6 +104,7 @@ Each non- [coinbase](../resources/glossary.md#coinbase) [input](../resources/glo
 | 4        | sequence         | uint32_t             | Sequence number.  Default for Dash Core and almost all other programs is 0xffffffff.
 
 **<span id="outpoint"></span>**
+
 ## Outpoint: The Specific Part Of A Specific Output
 
 Because a single transaction can include multiple [outputs](../resources/glossary.md#output), the [outpoint](../resources/glossary.md#outpoint) structure includes both a [TXID](../resources/glossary.md#transaction-identifiers) and an output index number to refer to specific output.
@@ -111,6 +115,7 @@ Because a single transaction can include multiple [outputs](../resources/glossar
 | 4     | index | uint32_t  | The output index number of the specific output to spend from the transaction. The first output is 0x00000000.
 
 **<span id="txout"></span>**
+
 ## TxOut: A Transaction Output
 
 Each [output](../resources/glossary.md#output) spends a certain number of [duffs](../resources/glossary.md#duffs), placing them under control of anyone who can satisfy the provided [pubkey script](../resources/glossary.md#pubkey-script).
@@ -160,6 +165,7 @@ The sample raw transaction itemized below is the one created in the [Simple Raw 
 ```
 
 **<span id="coinbase"></span>**
+
 ## Coinbase Input: The Input Of The First Transaction In A Block
 
 The first transaction in a [block](../resources/glossary.md#block), called the [coinbase transaction](../resources/glossary.md#coinbase-transaction), must have exactly one input, called a [coinbase](../resources/glossary.md#coinbase). The coinbase [input](../resources/glossary.md#input) currently has the following format.

@@ -13,11 +13,13 @@ Under current [consensus rules](../resources/glossary.md#consensus-rules), a [bl
 The first transaction in a block must be a [coinbase transaction](../resources/glossary.md#coinbase-transaction) which should collect and spend any [transaction fee](../resources/glossary.md#transaction-fee) paid by transactions included in this block.
 
 ### Block Subsidy
+
 Until the coin limit (~18 million Dash) is hit, all blocks are entitled to receive a block subsidy of newly created Dash value. The newly created value should be spent in the coinbase transaction.
 
 The block subsidy declines by ~7.1% per year until all Dash is mined. Subsidy calculations are performed by the Dash Core [GetBlockSubsidy()](https://github.com/dashpay/dash/blob/v0.15.x/src/validation.cpp#L1012) function.
 
 ### Block Reward
+
 Together, the transaction fees and block subsidy are called the [block reward](../resources/glossary.md#block-reward). A coinbase transaction is invalid if it tries to spend more value than is available from the block reward.
 
 The block reward is divided into three parts: [miner](../resources/glossary.md#miner), [masternode](../resources/glossary.md#masternode), and [superblock](../resources/glossary.md#superblock). The miner and masternode portions add up to 90% of the block subsidy with the remaining 10% allocated to the governance system.
@@ -32,7 +34,7 @@ The block reward is divided into three parts: [miner](../resources/glossary.md#m
 
 #### Block Reward Reallocation
 
-Dash Core v0.16 included logic to gradually adjust the block reward allocation once the BIP-9 activation threshold was met. The reward reallocation was signaled via BIP-9 bit 5 and was activated at block 1374912 upon signalling by a sufficient number of blocks. 
+Dash Core v0.16 included logic to gradually adjust the block reward allocation once the BIP-9 activation threshold was met. The reward reallocation was signaled via BIP-9 bit 5 and was activated at block 1374912 upon signalling by a sufficient number of blocks.
 
 This reallocation will eventually result in miners receiving 40% of the non-governance block subsidy and masternodes receiving 60% of it rather than the 50/50 split that was used for several years.
 

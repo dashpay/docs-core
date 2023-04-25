@@ -8,7 +8,7 @@ The Developer Reference aims to provide technical details and API information to
 
 Questions about Dash development are best asked in one of the [Dash development communities](https://www.dash.org/community/). Errors or suggestions related to documentation can be submitted as via the "Suggest Edits" button on the top, right of each page.
 
-In the following documentation, some strings have been shortened or wrapped: 
+In the following documentation, some strings have been shortened or wrapped:
 "`[...]`" indicates extra data was removed, and lines ending in a single backslash "\\" are continued below.
 
 ## Not A Specification

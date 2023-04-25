@@ -4,7 +4,7 @@ This section describes the Dash P2P network protocol (but it is not a specificat
 
 All peer-to-peer communication occurs entirely over TCP.
 
-> 🚧 
+> 🚧
 >
 > Note: unless their description says otherwise, all multi-byte integers mentioned in this section are transmitted in little-endian order.
 

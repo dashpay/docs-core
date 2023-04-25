@@ -1,6 +1,7 @@
 # Protocol Versions
 
 ## Dash Protocol Versions
+
 The table below lists some notable versions of the P2P network protocol, with the most recent versions listed first.
 
 As of Dash Core 18.2.0, the most recent protocol version is 70224.

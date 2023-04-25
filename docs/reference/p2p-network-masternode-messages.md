@@ -38,7 +38,7 @@ The [`mnauth` message](../reference/p2p-network-masternode-messages.md#mnauth) i
 The [`mnauth` message](../reference/p2p-network-masternode-messages.md#mnauth) signs a challenge that was previously sent via a [`version` message](../reference/p2p-network-control-messages.md#version). The challenge is signed differently depending on if the connection is inbound or outbound.
 
 > 👍 Protocol Update
-> 
+>
 > As of protocol version 70218, when communicating with masternodes that have reported a version => `MIN_MASTERNODE_PROTO_VERSION`, the mnauth signature is created by signing a message incorporating both the `mnauth_challenge` and protocol `version` (from the [`version` message](../reference/p2p-network-control-messages.md#version)). Further details may be found in [Dash Core PR 3631](https://github.com/dashpay/dash/pull/3631).
 
 This is primarily used as a DoS protection mechanism to allow persistent connections between masternodes to remain open even if inbound connection limits are reached.

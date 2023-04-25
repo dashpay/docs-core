@@ -226,7 +226,7 @@ A potentially-short value used as a seed to generate the master private key and 
 
 ## High-Performance Masternode (HPMN)
 
-High-Performance Masternodes are a new type of [masternode](#masternode) created to host Dash Platform – a Web3 technology stack for building decentralized applications on the Dash network. The collateral required to own an HPMN is 4000 DASH, as opposed to 1000 DASH for regular masternodes. HPMNs serve Platform along with Core, while regular masternodes only serve Core. The recommended specs for HPMNs are higher than those for regular masternodes. 
+High-Performance Masternodes are a new type of [masternode](#masternode) created to host Dash Platform – a Web3 technology stack for building decentralized applications on the Dash network. The collateral required to own an HPMN is 4000 DASH, as opposed to 1000 DASH for regular masternodes. HPMNs serve Platform along with Core, while regular masternodes only serve Core. The recommended specs for HPMNs are higher than those for regular masternodes.
 
 ## Header
 

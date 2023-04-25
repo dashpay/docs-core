@@ -34,7 +34,6 @@ The currently-available type identifiers are:
 | 30               | MSG_ISLOCK                                   | The hash is an LLMQ-based InstantSend lock ([DIP10](https://github.com/dashpay/dips/blob/master/dip-0010.md)).<br>_Added in 0.14.0_
 | 31               | MSG_ISDLOCK                                   | The hash is an LLMQ-based deterministic InstantSend lock ([DIP22](https://github.com/dashpay/dips/blob/master/dip-0022.md)).<br>_Added in 18.0_
 
-
 **Deprecated Type Identifiers**
 
 The following type identifiers have been deprecated recently. To see type identifiers removed longer ago, please see the [previous version of documentation](https://dashcore.readme.io/v0.16.0/docs/core-ref-p2p-network-data-messages).
@@ -55,7 +54,7 @@ The [`block` message](../reference/p2p-network-data-messages.md#block) transmits
 
 ## blocktxn
 
-*Added in protocol version 70209 of Dash Core as described by BIP152*
+_Added in protocol version 70209 of Dash Core as described by BIP152_
 
 The [`blocktxn` message](../reference/p2p-network-data-messages.md#blocktxn) sends requested [block](../resources/glossary.md#block) [transactions](../resources/glossary.md#transaction) to a node which previously requested them with a [`getblocktxn` message](../reference/p2p-network-data-messages.md#getblocktxn). It is defined as a message containing a serialized `BlockTransactions` message.
 
@@ -74,7 +73,7 @@ The structure of `BlockTransactions` is defined below.
 |----------|----------------------|----------------------|----------|------------|
 | 32       | blockhash            | Binary blob          | The output from a double-SHA256 of the block header, as used elsewhere | The blockhash of the block which the transactions being provided are in
 | 1 or 3   | transactions<br>_length | CompactSize          | As used to encode array lengths elsewhere | The number of transactions provided
-| *Varies* | transactions         | List of transactions | As encoded in [`tx` messages](../reference/p2p-network-data-messages.md#tx) in response to `getdata MSG_TX` | The transactions provided
+| _Varies_ | transactions         | List of transactions | As encoded in [`tx` messages](../reference/p2p-network-data-messages.md#tx) in response to `getdata MSG_TX` | The transactions provided
 
 The following annotated hexdump shows a [`blocktxn` message](../reference/p2p-network-data-messages.md#blocktxn).  (The message header has been omitted.)
 
@@ -165,14 +164,13 @@ The [`cfilter` message](../reference/p2p-network-data-messages.md#cfilter)  is s
 | 1-5 | num_filter_bytes | CompactSize | A variable length integer representing the size of the filter in the following field
 | `num_filter_bytes` | filter_bytes |  []bytes | The  serialized compact filter for this block
 
-
 ## cmpctblock
 
-*Added in protocol version 70209 of Dash Core as described by BIP152*
+_Added in protocol version 70209 of Dash Core as described by BIP152_
 
 The [`cmpctblock` message](../reference/p2p-network-data-messages.md#cmpctblock) is a reply to a [`getdata` message](../reference/p2p-network-data-messages.md#getdata) which requested a [block](../resources/glossary.md#block) using the [inventory](../resources/glossary.md#inventory) type `MSG_CMPCT_BLOCK`. If the requested block was recently announced and is close to the tip of the best chain of the receiver and after having sent the requesting [peer](../resources/glossary.md#peer) a [`sendcmpct` message](../reference/p2p-network-control-messages.md#sendcmpct), nodes respond with a [`cmpctblock` message](../reference/p2p-network-data-messages.md#cmpctblock) containing data for the block.
 
-**If the requested block is too old, the node responds with a *full non-compact block***
+**If the requested block is too old, the node responds with a _full non-compact block_**
 
 Upon receipt of a [`cmpctblock` message](../reference/p2p-network-data-messages.md#cmpctblock), after sending a [`sendcmpct` message](../reference/p2p-network-control-messages.md#sendcmpct), nodes should calculate the short transaction ID for each [unconfirmed transaction](../resources/glossary.md#unconfirmed-transaction) they have available (i.e. in their mempool) and compare each to each short transaction ID in the [`cmpctblock` message](../reference/p2p-network-data-messages.md#cmpctblock). After finding already-available transactions, nodes which do not have all transactions available to reconstruct the full block should request the missing transactions using a [`getblocktxn` message](../reference/p2p-network-data-messages.md#getblocktxn).
 
@@ -183,7 +181,7 @@ The [`cmpctblock` message](../reference/p2p-network-data-messages.md#cmpctblock)
 | Bytes    | Name                 | Data Type            | Encoding | Description|
 |----------|----------------------|----------------------|----------|------------|
 | 1 or 3   | index                | CompactSize          | Compact Size, differentially encoded since the last PrefilledTransaction in a list | The index into the block at which this transaction is
-| *Varies* | tx                   | Transaction          | As encoded in [`tx` messages](../reference/p2p-network-data-messages.md#tx) sent in response to `getdata MSG_TX` | Transaction which is in the block at index `index`
+| _Varies_ | tx                   | Transaction          | As encoded in [`tx` messages](../reference/p2p-network-data-messages.md#tx) sent in response to `getdata MSG_TX` | Transaction which is in the block at index `index`
 
 The [`cmpctblock` message](../reference/p2p-network-data-messages.md#cmpctblock) is compromised of a serialized `HeaderAndShortIDs` structure which is defined below. A `HeaderAndShortIDs` structure is used to relay a block header, the short transactions IDs used for matching already-available transactions, and a select few transactions which we expect a peer may be missing.
 
@@ -192,9 +190,9 @@ The [`cmpctblock` message](../reference/p2p-network-data-messages.md#cmpctblock)
 | 80       | header               | Block header         | First 80 bytes of the block as defined by the encoding used by [`block` messages](../reference/p2p-network-data-messages.md#block) | The header of the block being provided
 | 8        | nonce                | uint64_t             | Little Endian | A nonce for use in short transaction ID calculations
 | 1 or 3   | shortids_<br>length  | CompactSize          | As used to encode array lengths elsewhere | The number of short transaction IDs in `shortids` (i.e. block tx count - `prefilledtxn`<br>`_length`)
-| *Varies* | shortids  | List of 6-byte integers | Little Endian | The short transaction IDs calculated from the transactions which were not provided explicitly in `prefilledtxn`
+| _Varies_ | shortids  | List of 6-byte integers | Little Endian | The short transaction IDs calculated from the transactions which were not provided explicitly in `prefilledtxn`
 | 1 or 3   | prefilledtxn<br>_length | CompactSize       | As used to encode array lengths elsewhere | The number of prefilled transactions in `prefilledtxn` (i.e. block tx count - `shortids`<br>`_length`)
-| *Varies* | prefilledtxn     | List of Prefilled<br>Transactions | As defined by `Prefilled`<br>`Transaction` definition below | Used to provide the coinbase transaction and a select few which we expect a peer may be missing
+| _Varies_ | prefilledtxn     | List of Prefilled<br>Transactions | As defined by `Prefilled`<br>`Transaction` definition below | Used to provide the coinbase transaction and a select few which we expect a peer may be missing
 
 ### **Short Transaction ID calculation**
 
@@ -269,8 +267,8 @@ If the receiving peer does not find a common header hash within the list, it wil
 | Bytes    | Name                 | Data Type        | Description
 |----------|----------------------|------------------|----------------
 | 4        | version              | uint32_t         | The protocol version number; the same as sent in the [`version` message](../reference/p2p-network-control-messages.md#version).
-| *Varies* | hash count           | compactSize uint | The number of header hashes provided not including the stop hash.  There is no limit except that the byte size of the entire message must be below the [`MAX_SIZE`](https://github.com/dashpay/dash/blob/v0.15.x/src/serialize.h#L29) limit; typically from 1 to 200 hashes are sent.
-| *Varies* | block header hashes  | char[32]         | One or more block header hashes (32 bytes each) in internal byte order.  Hashes should be provided in reverse order of block height, so highest-height hashes are listed first and lowest-height hashes are listed last.
+| _Varies_ | hash count           | compactSize uint | The number of header hashes provided not including the stop hash.  There is no limit except that the byte size of the entire message must be below the [`MAX_SIZE`](https://github.com/dashpay/dash/blob/v0.15.x/src/serialize.h#L29) limit; typically from 1 to 200 hashes are sent.
+| _Varies_ | block header hashes  | char[32]         | One or more block header hashes (32 bytes each) in internal byte order.  Hashes should be provided in reverse order of block height, so highest-height hashes are listed first and lowest-height hashes are listed last.
 | 32       | stop hash            | char[32]         | The header hash of the last header hash being requested; set to all zeroes to request an [`inv` message](../reference/p2p-network-data-messages.md#inv) with all subsequent header hashes (a maximum of 500 will be sent as a reply to this message; if you need more than 500, you will need to send another [`getblocks` message](../reference/p2p-network-data-messages.md#getblocks) with a higher-height header hash as the first entry in block header hash field).
 
 The following annotated hexdump shows a [`getblocks` message](../reference/p2p-network-data-messages.md#getblocks).  (The message header has been omitted.)
@@ -291,7 +289,7 @@ d39f608a7775b537729884d4e6633bb2
 
 ## getblocktxn
 
-*Added in protocol version 70209 of Dash Core as described by BIP152*
+_Added in protocol version 70209 of Dash Core as described by BIP152_
 
 The [`getblocktxn` message](../reference/p2p-network-data-messages.md#getblocktxn) requests a [`blocktxn` message](../reference/p2p-network-data-messages.md#blocktxn) for any transactions that it has not seen after a compact block is received. It is defined as a message containing a serialized `BlockTransactionsRequest` message. Upon receipt of a properly-formatted [`getblocktxn` message](../reference/p2p-network-data-messages.md#getblocktxn), [nodes](../resources/glossary.md#node) which recently provided the sender of such a message with a [`cmpctblock` message](../reference/p2p-network-data-messages.md#cmpctblock) for the block hash identified in this message must respond with either an appropriate [`blocktxn` message](../reference/p2p-network-data-messages.md#blocktxn), or a full block message.
 
@@ -302,8 +300,8 @@ The structure of `BlockTransactionsRequest` is defined below.
 | Bytes    | Name            | Data Type            | Description|
 |----------|-----------------|----------------------|----------|------|
 | 32       | blockhash       | Binary blob          | The output from a double-SHA256 of the block header, as used elsewhere | The blockhash of the block which the transactions being requested are in
-| *Varies* | indexes_length  | CompactSize uint     | As used to encode array lengths elsewhere | The number of transactions requested
-| *Varies* | indexes         | CompactSize uint[]   | Differentially encoded | Vector of compactSize containing the indexes of the transactions being requested in the block.
+| _Varies_ | indexes_length  | CompactSize uint     | As used to encode array lengths elsewhere | The number of transactions requested
+| _Varies_ | indexes         | CompactSize uint[]   | Differentially encoded | Vector of compactSize containing the indexes of the transactions being requested in the block.
 
 The following annotated hexdump shows a [`getblocktxn` message](../reference/p2p-network-data-messages.md#getblocktxn).  (The message header has been omitted.)
 
@@ -338,7 +336,6 @@ The [`getcfheaders` message](../reference/p2p-network-data-messages.md#getcfhead
 | 4 | start_height | uint32_t | The height of the first block in the requested range
 | 32 | stop_hash | uint256 | The hash of the last block in the requested range. Must be >= `start_height` and the difference between them must be less than 2000.
 
-
 ## getcfilters
 
 *Added in protocol version 70223 of Dash Core as described by [BIP 157](https://github.com/bitcoin/bips/blob/master/bip-0157.mediawiki).*
@@ -363,23 +360,22 @@ The format and maximum size limitations of the [`getdata` message](../reference/
 
 ## getheaders
 
-*Added in protocol version 70077.*
+_Added in protocol version 70077._
 
 The [`getheaders` message](../reference/p2p-network-data-messages.md#getheaders) requests a [`headers` message](../reference/p2p-network-data-messages.md#headers) that provides block headers starting from a particular point in the [block chain](../resources/glossary.md#block-chain). It allows a [peer](../resources/glossary.md#peer) which has been disconnected or started for the first time to get the [headers](../resources/glossary.md#header) it hasn’t seen yet.
 
 The [`getheaders` message](../reference/p2p-network-data-messages.md#getheaders) is nearly identical to the [`getblocks` message](../reference/p2p-network-data-messages.md#getblocks), with one minor difference: the `inv` reply to the [`getblocks` message](../reference/p2p-network-data-messages.md#getblocks) will include no more than 500 [block header](../resources/glossary.md#block-header) hashes; the `headers` reply to the [`getheaders` message](../reference/p2p-network-data-messages.md#getheaders) will include as many as 2,000 block headers.
 
-
 | Bytes    | Name                 | Data Type        | Description
 |----------|----------------------|------------------|----------------
 | 4        | version              | uint32_t         | The protocol version number; the same as sent in the [`version` message](../reference/p2p-network-control-messages.md#version).
-| *Varies* | hash count           | compactSize uint | The number of header hashes provided not including the stop hash.
-| *Varies* | block header hashes  | char[32]         | One or more block header hashes (32 bytes each) in internal byte order.  Hashes should be provided in reverse order of block height, so highest-height hashes are listed first and lowest-height hashes are listed last.
+| _Varies_ | hash count           | compactSize uint | The number of header hashes provided not including the stop hash.
+| _Varies_ | block header hashes  | char[32]         | One or more block header hashes (32 bytes each) in internal byte order.  Hashes should be provided in reverse order of block height, so highest-height hashes are listed first and lowest-height hashes are listed last.
 | 32       | stop hash            | char[32]         | The header hash of the last header hash being requested; set to all zeroes to request as many blocks as possible (2000).
 
 ## getheaders2
 
-*Added in protocol version 70223 of Dash Core.*
+_Added in protocol version 70223 of Dash Core._
 
 The [`getheaders2` message](../reference/p2p-network-data-messages.md#getheaders2) requests a [`headers2` message](../reference/p2p-network-data-messages.md#headers2) that provides block headers starting from a particular point in the [block chain](../resources/glossary.md#block-chain). It allows a [peer](../resources/glossary.md#peer) which has been disconnected or started for the first time to get the [headers](../resources/glossary.md#header) it hasn’t seen yet.
 
@@ -387,7 +383,7 @@ The [`getheaders2` message](../reference/p2p-network-data-messages.md#getheaders
 
 ## getmnlistd
 
-*Added in protocol version 70213*
+_Added in protocol version 70213_
 
 The [`getmnlistd` message](../reference/p2p-network-data-messages.md#getmnlistd) requests a [`mnlistdiff` message](../reference/p2p-network-data-messages.md#mnlistdiff) that provides either:
 
@@ -411,7 +407,7 @@ db3fe368976296fd3b6d73fdaf898cc0 ........... Block hash
 
 ## getqrinfo
 
-*Added in protocol version 70222 of Dash Core.*
+_Added in protocol version 70222 of Dash Core._
 
 The `getqrinfo` message requests a [`qrinfo` message](../reference/p2p-network-data-messages.md#qrinfo) that provides the information required to verify quorum details for quorums formed using the quorum rotation process.
 
@@ -445,17 +441,16 @@ d7b9d67da4a3016c62fcc37157032126
 00 ................................. Extra share: false
 ```
 
-
 ## headers
 
-*Added in protocol version 31800 (of Bitcoin).*
+_Added in protocol version 31800 (of Bitcoin)._
 
 The [`headers` message](../reference/p2p-network-data-messages.md#headers) sends block headers to a [node](../resources/glossary.md#node) which previously requested certain [headers](../resources/glossary.md#header) with a [`getheaders` message](../reference/p2p-network-data-messages.md#getheaders). A headers message can be empty.
 
 | Bytes    | Name    | Data Type        | Description
 |----------|---------|------------------|-----------------
-| *Varies* | count   | compactSize uint | Number of block headers up to a maximum of 2,000.  Note: headers-first sync assumes the sending node will send the maximum number of headers whenever possible.
-| *Varies* | headers | block_header     | Block headers: each 80-byte block header is in the format described in the [block headers section](../reference/block-chain-block-headers.md) with an additional 0x00 suffixed.  This 0x00 is called the transaction count, but because the headers message doesn't include any transactions, the transaction count is always zero.
+| _Varies_ | count   | compactSize uint | Number of block headers up to a maximum of 2,000.  Note: headers-first sync assumes the sending node will send the maximum number of headers whenever possible.
+| _Varies_ | headers | block_header     | Block headers: each 80-byte block header is in the format described in the [block headers section](../reference/block-chain-block-headers.md) with an additional 0x00 suffixed.  This 0x00 is called the transaction count, but because the headers message doesn't include any transactions, the transaction count is always zero.
 
 The following annotated hexdump shows a [`headers` message](../reference/p2p-network-data-messages.md#headers).  (The message header has been omitted.)
 
@@ -476,17 +471,16 @@ fe9f0864 ........................... Nonce
 
 ## headers2
 
-*Added in protocol version 70223 of Dash Core.*
+_Added in protocol version 70223 of Dash Core._
 
 The [`headers2` message](../reference/p2p-network-data-messages.md#headers2) sends compressed block headers to a [node](../resources/glossary.md#node) which previously requested certain [headers](../resources/glossary.md#header) with a [`getheaders2` message](../reference/p2p-network-data-messages.md#getheaders) or indicated it wants to receive them by signaling with a [`sendheaders2` message](../reference/p2p-network-control-messages.md#sendheaders2).
 
 | Bytes    | Name    | Data Type        | Description
 |----------|---------|------------------|-----------------
-| *Varies* | count   | compactSize uint | Number of block headers up to a maximum of 2,000.  Note: headers-first sync assumes the sending node will send the maximum number of headers whenever possible.
-| *Varies* | headers | block_header2     | Block headers in the [`block_header2`](https://github.com/thephez/dips/blob/compressed-headers/compressed-headers.md#block_header2-data-type) format<br>**Note**: the first header will always be uncompressed.
+| _Varies_ | count   | compactSize uint | Number of block headers up to a maximum of 2,000.  Note: headers-first sync assumes the sending node will send the maximum number of headers whenever possible.
+| _Varies_ | headers | block_header2     | Block headers in the [`block_header2`](https://github.com/thephez/dips/blob/compressed-headers/compressed-headers.md#block_header2-data-type) format<br>**Note**: the first header will always be uncompressed.
 
 The following annotated hexdump shows a [`headers2` message](../reference/p2p-network-data-messages.md#headers2).  (The message header has been omitted.)
-
 
 ``` text
 fdd007 ............................. Header count: 2000 (0x07d0)
@@ -533,8 +527,8 @@ The receiving peer can compare the inventories from an [`inv` message](../refere
 
 | Bytes    | Name      | Data Type             | Description
 |----------|-----------|-----------------------|-----------------
-| *Varies* | count     | compactSize uint      | The number of inventory entries.
-| *Varies* | inventory | inventory             | One or more inventory entries up to a maximum of 50,000 entries.
+| _Varies_ | count     | compactSize uint      | The number of inventory entries.
+| _Varies_ | inventory | inventory             | One or more inventory entries up to a maximum of 50,000 entries.
 
 The following annotated hexdump shows an [`inv` message](../reference/p2p-network-data-messages.md#inv) with two inventory entries.  (The message header has been omitted.)
 
@@ -552,7 +546,7 @@ ab17057f9ce4b50c2aef4fadf3729a2e ... Hash (txlvote)
 
 ## mempool
 
-*Added in protocol version 60002 (of Bitcoin).*
+_Added in protocol version 60002 (of Bitcoin)._
 
 The [`mempool` message](../reference/p2p-network-data-messages.md#mempool) requests the [TXIDs](../resources/glossary.md#transaction-identifiers) of transactions that the receiving [node](../resources/glossary.md#node) has verified as valid but which have not yet appeared in a [block](../resources/glossary.md#block). That is, transactions which are in the receiving node's memory pool. The response to the [`mempool` message](../reference/p2p-network-data-messages.md#mempool) is one or more [`inv` messages](../reference/p2p-network-data-messages.md#inv) containing the TXIDs in the usual [inventory](../resources/glossary.md#inventory) format.
 
@@ -572,7 +566,7 @@ There is no payload in a [`mempool` message](../reference/p2p-network-data-messa
 
 ## merkleblock
 
-*Added in protocol version 70001 as described by BIP37.*
+_Added in protocol version 70001 as described by BIP37._
 
 The [`merkleblock` message](../reference/p2p-network-data-messages.md#merkleblock) is a reply to a [`getdata` message](../reference/p2p-network-data-messages.md#getdata) which requested a [block](../resources/glossary.md#block) using the inventory type `MSG_MERKLEBLOCK`.  It is only part of the reply: if any matching transactions are found, they will be sent separately as [`tx` messages](../reference/p2p-network-data-messages.md#tx). As of Dash Core 0.17.0 [`islock` messages](../reference/p2p-network-instantsend-messages.md#islock) for matching transactions are sent if present.
 
@@ -580,17 +574,16 @@ The [`merkleblock` message](../reference/p2p-network-data-messages.md#merklebloc
 >
 > Note: `islock` messages are currently dropped once a ChainLock is present so in most cases they will not actually be provided in response to a merkleblock request. Future updates may modify this behavior.
 
-
 If a filter has been previously set with the [`filterload` message](../reference/p2p-network-control-messages.md#filterload), the [`merkleblock` message](../reference/p2p-network-data-messages.md#merkleblock) will contain the [TXIDs](../resources/glossary.md#transaction-identifiers) of any transactions in the requested block that matched the filter, as well as any parts of the block's [merkle tree](../resources/glossary.md#merkle-tree) necessary to connect those transactions to the block header's [merkle root](../resources/glossary.md#merkle-root). The message also contains a complete copy of the [block header](../resources/glossary.md#block-header) to allow the client to hash it and confirm its [proof of work](../resources/glossary.md#proof-of-work).
 
 | Bytes    | Name               | Data Type        | Description
 |----------|--------------------|------------------|----------------
 | 80       | block header       | block_header     | The block header in the format described in the [block header section](../reference/block-chain-block-headers.md).
 | 4        | transaction count  | uint32_t         | The number of transactions in the block (including ones that don't match the filter).
-| *Varies* | hash count         | compactSize uint | The number of hashes in the following field.
-| *Varies* | hashes             | char[32]         | One or more hashes of both transactions and merkle nodes in internal byte order.  Each hash is 32 bytes.
-| *Varies* | flag byte count    | compactSize uint | The number of flag bytes in the following field.
-| *Varies* | flags              | byte[]           | A sequence of bits packed eight in a byte with the least significant bit first.  May be padded to the nearest byte boundary but must not contain any more bits than that.  Used to assign the hashes to particular nodes in the merkle tree as described below.
+| _Varies_ | hash count         | compactSize uint | The number of hashes in the following field.
+| _Varies_ | hashes             | char[32]         | One or more hashes of both transactions and merkle nodes in internal byte order.  Each hash is 32 bytes.
+| _Varies_ | flag byte count    | compactSize uint | The number of flag bytes in the following field.
+| _Varies_ | flags              | byte[]           | A sequence of bits packed eight in a byte with the least significant bit first.  May be padded to the nearest byte boundary but must not contain any more bits than that.  Used to assign the hashes to particular nodes in the merkle tree as described below.
 
 The annotated hexdump below shows a [`merkleblock` message](../reference/p2p-network-data-messages.md#merkleblock) which corresponds to the examples below.  (The message header has been omitted.)
 
@@ -684,7 +677,7 @@ After you fully process the merkle root node according to the instructions in th
 
 ## mnlistdiff
 
-*Added in protocol version 70213*
+_Added in protocol version 70213_
 
 The [`mnlistdiff` message](../reference/p2p-network-data-messages.md#mnlistdiff) is a reply to a [`getmnlistd` message](../reference/p2p-network-data-messages.md#getmnlistd) which requested either a full [masternode](../resources/glossary.md#masternode) list or a diff for a range of [blocks](../resources/glossary.md#block).
 
@@ -702,10 +695,10 @@ The [`mnlistdiff` message](../reference/p2p-network-data-messages.md#mnlistdiff)
 | 1-9 | deletedMNsCount | compactSize uint | Required | Number of ProRegTx hashes which were deleted after baseBlockHash
 | variable | deletedMNs | vector | Required | A list of ProRegTx hashes for masternode which were deleted after `baseBlockHash`
 | variable | mnList | vector | Required | The list of Simplified Masternode List (SML) entries which were added or updated since `baseBlockHash`
-| 1-9 | deletedQuorums<br>Count | compactSize uint | Required | *Added in protocol version 70214*<br><br>Number of LLMQs which were deleted from the active set after `baseBlockHash` |
-| variable | deletedQuorums | (uint8_t+uint256)[] | Required | *Added in protocol version 70214*<br><br>A list of LLMQ type and quorum hashes for LLMQs which were deleted after `baseBlockHash` |
-| 1-9 | newQuorumsCount | compactSize uint | Required | *Added in protocol version 70214*<br><br>Number of new LLMQs which were added to the active set since `baseBlockHash` |
-| variable | newQuorums | qfcommit[] | Required | *Added in protocol version 70214*<br><br>The list of LLMQ commitments for the LLMQs which were added since `baseBlockHash` |
+| 1-9 | deletedQuorums<br>Count | compactSize uint | Required | _Added in protocol version 70214_<br><br>Number of LLMQs which were deleted from the active set after `baseBlockHash` |
+| variable | deletedQuorums | (uint8_t+uint256)[] | Required | _Added in protocol version 70214_<br><br>A list of LLMQ type and quorum hashes for LLMQs which were deleted after `baseBlockHash` |
+| 1-9 | newQuorumsCount | compactSize uint | Required | _Added in protocol version 70214_<br><br>Number of new LLMQs which were added to the active set since `baseBlockHash` |
+| variable | newQuorums | qfcommit[] | Required | _Added in protocol version 70214_<br><br>The list of LLMQ commitments for the LLMQs which were added since `baseBlockHash` |
 
 Simplified Masternode List (SML) Entry
 
@@ -795,7 +788,7 @@ Masternode List
 
 ## notfound
 
-*Added in protocol version 70001.*
+_Added in protocol version 70001._
 
 The [`notfound` message](../reference/p2p-network-data-messages.md#notfound) is a reply to a [`getdata` message](../reference/p2p-network-data-messages.md#getdata) which requested an object the receiving [node](../resources/glossary.md#node) does not have available for relay. (Nodes are not expected to relay historic transactions which are no longer in the memory pool or relay set. Nodes may also have pruned spent transactions from older [blocks](../resources/glossary.md#block), making them unable to send those blocks.)
 
@@ -803,7 +796,7 @@ The format and maximum size limitations of the [`notfound` message](../reference
 
 ## qrinfo
 
-*Added in protocol version 70222 of Dash Core.*
+_Added in protocol version 70222 of Dash Core._
 
 The `qrinfo` message sends quorum rotation information to a node which previously requested it with a [`getqrinfo` message](../reference/p2p-network-data-messages.md#getqrinfo).
 
@@ -814,8 +807,8 @@ Note: In the following fields, `c` refers to the quorum cycle length. This is sy
 | Varies | quorumSnapshot<br>AtHMinusC | CQuorumSnapshot | Required | Quorum snapshot for height `h-c`
 | Varies | quorumSnapshot<br>AtHMinus2C | CQuorumSnapshot | Required | Quorum snapshot for height `h-2c`
 | Varies | quorumSnapshot<br>AtHMinus3C | CQuorumSnapshot | Required | Quorum snapshot for height `h-3c`
-| Varies | mnListDiffTip | CSimplifiedMNListDiff<br>(see [`mnlistdiff`](#mnlistdiff)) | Required | Masternode list diff at height at the tip. 
-| Varies | mnListDiffH | CSimplifiedMNListDiff<br>(see [`mnlistdiff`](#mnlistdiff)) | Required | Masternode list diff at height `h`. 
+| Varies | mnListDiffTip | CSimplifiedMNListDiff<br>(see [`mnlistdiff`](#mnlistdiff)) | Required | Masternode list diff at height at the tip.
+| Varies | mnListDiffH | CSimplifiedMNListDiff<br>(see [`mnlistdiff`](#mnlistdiff)) | Required | Masternode list diff at height `h`.
 | Varies | mnListDiff<br>AtHMinusC | CSimplifiedMNListDiff<br>(see [`mnlistdiff`](#mnlistdiff)) | Required | Masternode list diff at height `h-c`
 | Varies | mnListDiff<br>AtHMinus2C | CSimplifiedMNListDiff<br>(see [`mnlistdiff`](#mnlistdiff)) | Required | Masternode list diff at height `h-2c`
 | Varies | mnListDiff<br>AtHMinus3C | CSimplifiedMNListDiff<br>(see [`mnlistdiff`](#mnlistdiff)) | Required | Masternode list diff at height `h-3c`
@@ -840,8 +833,6 @@ Note: All fields are required
 | (`activeQuorum`<br>`MembersSize`) + 7)/8 | activeQuorumMembers | cbitset |  The bitset of nodes already in quarters at the start of cycle at height n
 | 1-9 | mnSkipListSize | compactSize uint |  Number of elements in mnSkipList
 | 4 * `mnSkipListSize` | mnSkipList | int32_t[] | Skiplist at height n
-
-
 
 The following annotated hexdump shows a [`qrinfo` message](../reference/p2p-network-data-messages.md#qrinfo). (The message header has been omitted.)
 
@@ -920,7 +911,6 @@ Last quorum hash per index
 00 ......................................... Quorum snapshot list size: 0
 00 ......................................... Masternode list diff list size: 0
 ```
-
 
 ## tx
 

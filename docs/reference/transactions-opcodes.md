@@ -21,6 +21,7 @@ The [opcodes](../resources/glossary.md#opcode) used in the pubkey scripts of sta
 * `OP_HASH160` (0xa9) consumes the topmost item on the stack, computes the RIPEMD160(SHA256()) hash of that item, and pushes that hash onto the stack.
 
 **<span id="op_checksig"></span>**
+
 * `OP_CHECKSIG` (0xac) consumes a signature and a full public key, and pushes true onto the stack if the transaction data specified by the [SIGHASH flag](../resources/glossary.md#sighash-flag) was converted into the signature using the same [ECDSA private key](../resources/glossary.md#ecdsa-private-key) that generated the public key. Otherwise, it pushes false onto the stack.
 
 * `OP_CHECKMULTISIG` (0xae) consumes the value (n) at the top of the stack, consumes that many of the next stack levels (public keys), consumes the value (m) now at the top of the stack, and consumes that many of the next values (signatures) plus one extra value.
@@ -35,12 +36,11 @@ A complete list of Bitcoin opcodes can be found on the Bitcoin Wiki [Script Page
 
 ## Expanded Opcodes
 
-Several opcodes were disabled in the Bitcoin scripting system due to the discovery of a series of bugs in the early days of Bitcoin. [Dash Improvement Proposal 20](https://github.com/dashpay/dips/blob/master/dip-0020.md) reintroduced a number of these opcodes based on work done by Bitcoin Cash developers. Many of the disabled opcodes have been enabled and several of them re-designed to replace the original ones. 
+Several opcodes were disabled in the Bitcoin scripting system due to the discovery of a series of bugs in the early days of Bitcoin. [Dash Improvement Proposal 20](https://github.com/dashpay/dips/blob/master/dip-0020.md) reintroduced a number of these opcodes based on work done by Bitcoin Cash developers. Many of the disabled opcodes have been enabled and several of them re-designed to replace the original ones.
 
 > 👍 New Opcodes
-> 
+>
 > The following opcodes were added/reactivated in Dash Core 0.17.0 as described in [DIP 20](https://github.com/dashpay/dips/blob/master/dip-0020.md).
-
 
 * `OP_CAT` (0x7e) concatenates two byte arrays.
 
@@ -50,11 +50,11 @@ Several opcodes were disabled in the Bitcoin scripting system due to the discove
 
 * `OP_BIN2NUM` (0x81) Convert byte array `x` into numeric. *This opcode was disabled and named `OP_RIGHT` prior to Dash Core 0.17.0*.
 
-* `OP_AND` (0x84) Boolean _AND_ between each bit in the operands.
+* `OP_AND` (0x84) Boolean *AND* between each bit in the operands.
 
-* `OP_OR` (0x85) Boolean _OR_ between each bit in the operands.
+* `OP_OR` (0x85) Boolean *OR* between each bit in the operands.
 
-* `OP_XOR` (0x86) Boolean _EXCLUSIVE OR_ between each bit in the operands.
+* `OP_XOR` (0x86) Boolean *EXCLUSIVE OR* between each bit in the operands.
 
 * `OP_DIV` (0x96) Return the integer quotient of `a` and `b`. If the result would be a non-integer it is rounded towards zero. `a` and `b` are interpreted as numeric values.
 
