@@ -10,19 +10,19 @@ The [`bls` RPC](../api/remote-procedure-calls-evo.md#bls) provides a set of comm
 
 The `bls fromsecret` RPC parses a BLS secret key and returns the secret/public key pair.
 
-_Parameter #1---secret key_
+*Parameter #1---secret key*
 
 | Name     | Type         | Presence                | Description        |
 | -------- | ------------ | ----------------------- | ------------------ |
 | `secret` | string (hex) | Required<br>(exactly 1) | The BLS secret key |
 
-_Parameter #2---legacy_
+*Parameter #2---legacy*
 
 | Name     | Type    | Presence             | Description                                                                                            |
 | -------- | ------- | -------------------- | ------------------------------------------------------------------------------------------------------ |
 | `legacy` | boolean | Optional<br>(0 or 1) | Use the legacy BLS scheme (default=`true` prior to v19 hard fork; default=`false` after v19 hard fork) |
 
-_Result---the secret/public key pair_
+*Result---the secret/public key pair*
 
 | Name          | Type         | Presence                | Description                               |
 | ------------- | ------------ | ----------------------- | ----------------------------------------- |
@@ -31,7 +31,7 @@ _Result---the secret/public key pair_
 | →<br>`public` | string (hex) | Required<br>(exactly 1) | A BLS public key                          |
 | →<br>`scheme` | string       | Required<br>(exactly 1) | BLS scheme (valid schemes: legacy, basic) |
 
-_Example from Dash Core 19.0.0_
+*Example from Dash Core 19.0.0*
 
 ```bash
 dash-cli -testnet bls fromsecret 32c017a69fb03e0b8c1be270974570a350b043a685e9acbdc6493dbd9f8a7f1a
@@ -47,25 +47,25 @@ Result:
 }
 ```
 
-_See also_
+*See also*
 
-- [BLS Generate](#bls-generate)
+* [BLS Generate](#bls-generate)
 
 ### BLS Generate
 
 The `bls generate` RPC creates a new BLS secret/public key pair.
 
-> 📘 
-> 
+> 📘
+>
 > Note: Upon v19 hard fork activation, BLS keys are generated using the basic scheme by default.
 
-_Parameter #1---legacy_
+*Parameter #1---legacy*
 
 | Name     | Type    | Presence             | Description                                                                                            |
 | -------- | ------- | -------------------- | ------------------------------------------------------------------------------------------------------ |
 | `legacy` | boolean | Optional<br>(0 or 1) | Use the legacy BLS scheme (default=`true` prior to v19 hard fork; default=`false` after v19 hard fork) |
 
-_Result---a secret/public key pair_
+*Result---a secret/public key pair*
 
 | Name          | Type         | Presence                | Description                               |
 | ------------- | ------------ | ----------------------- | ----------------------------------------- |
@@ -74,7 +74,7 @@ _Result---a secret/public key pair_
 | →<br>`public` | string (hex) | Required<br>(exactly 1) | A BLS public key                          |
 | →<br>`scheme` | string       | Required<br>(exactly 1) | BLS scheme (valid schemes: legacy, basic) |
 
-_Example from Dash Core 19.0.0_ (post hard fork activation)
+*Example from Dash Core 19.0.0* (post hard fork activation)
 
 ```bash
 dash-cli -testnet bls generate
@@ -90,13 +90,13 @@ Result:
 }
 ```
 
-_See also_
+*See also*
 
-- [BLS FromSecret](#bls-fromsecret)
+* [BLS FromSecret](#bls-fromsecret)
 
 ## ProTx
 
-_Added in Dash Core 0.13.0_
+*Added in Dash Core 0.13.0*
 
 The [`protx` RPC](../api/remote-procedure-calls-evo.md#protx) provides a set of commands to execute ProTx related actions.
 
@@ -104,25 +104,25 @@ The [`protx` RPC](../api/remote-procedure-calls-evo.md#protx) provides a set of 
 
 The `protx diff` RPC calculates a diff and a proof between two masternode list.
 
-_Parameter #1---start block height_
+*Parameter #1---start block height*
 
 | Name        | Type         | Presence                | Description               |
 | ----------- | ------------ | ----------------------- | ------------------------- |
 | `baseBlock` | number (int) | Required<br>(Exactly 1) | The starting block height |
 
-_Parameter #2---end block height_
+*Parameter #2---end block height*
 
 | Name    | Type         | Presence                | Description             |
 | ------- | ------------ | ----------------------- | ----------------------- |
 | `block` | number (int) | Required<br>(Exactly 1) | The ending block height |
 
-_Parameter #3---extended fields_
+*Parameter #3---extended fields*
 
 | Name       | Type    | Presence             | Description                                                                                      |
 | ---------- | ------- | -------------------- | ------------------------------------------------------------------------------------------------ |
 | `extended` | boolean | Optional<br>(0 or 1) | **Added in Dash Core 18.1.0**<br>Show additional fields (e.g. `payoutAddress`) (default=`false`) |
 
-_Result---JSON provider registration transaction details_
+*Result---JSON provider registration transaction details*
 
 | Name                           | Type         | Presence                | Description                                                                                                                                      |
 | ------------------------------ | ------------ | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -154,17 +154,17 @@ _Result---JSON provider registration transaction details_
 | → →<br>`llmqType`              | number       | Required<br>(exactly 1) | The quorum type                                                                                                                                  |
 | → →<br>`quorumHash`            | string (hex) | Required<br>(exactly 1) | The hash of the quorum                                                                                                                           |
 | → →<br>`signersCount`          | number       | Required<br>(exactly 1) | The number of signers for the quorum                                                                                                             |
-| → →<br>`signers`               | string (hex) | Required<br>(exactly 1) | _Added in Dash Core 0.16.0_<br>Bitset representing the aggregated signers of this final commitment                                               |
+| → →<br>`signers`               | string (hex) | Required<br>(exactly 1) | *Added in Dash Core 0.16.0*<br>Bitset representing the aggregated signers of this final commitment                                               |
 | → →<br>`validMembersCount`     | number       | Required<br>(exactly 1) | The number of valid members in the quorum                                                                                                        |
-| → →<br>`validMembers`          | string (hex) | Required<br>(exactly 1) | _Added in Dash Core 0.16.0_<br>Bitset of valid members in this commitment                                                                        |
+| → →<br>`validMembers`          | string (hex) | Required<br>(exactly 1) | *Added in Dash Core 0.16.0*<br>Bitset of valid members in this commitment                                                                        |
 | → →<br>`quorumPublicKey`       | string (hex) | Required<br>(exactly 1) | The public key of the quorum                                                                                                                     |
-| → →<br>`quorumVvecHash`        | string (hex) | Required<br>(exactly 1) | _Added in Dash Core 0.16.0_<br>The SHA256 hash of the quorum verification vector                                                                 |
-| → →<br>`quorumSig`             | string (hex) | Required<br>(exactly 1) | _Added in Dash Core 0.16.0_<br>Recovered threshold signature                                                                                     |
-| → →<br>`membersSig`            | string (hex) | Required<br>(exactly 1) | _Added in Dash Core 0.16.0_<br>Aggregated BLS signatures from all included commitments                                                           |
+| → →<br>`quorumVvecHash`        | string (hex) | Required<br>(exactly 1) | *Added in Dash Core 0.16.0*<br>The SHA256 hash of the quorum verification vector                                                                 |
+| → →<br>`quorumSig`             | string (hex) | Required<br>(exactly 1) | *Added in Dash Core 0.16.0*<br>Recovered threshold signature                                                                                     |
+| → →<br>`membersSig`            | string (hex) | Required<br>(exactly 1) | *Added in Dash Core 0.16.0*<br>Aggregated BLS signatures from all included commitments                                                           |
 | →<br>`merkleRootMNList`        | string (hex) | Required<br>(exactly 1) | Merkle root of the masternode list                                                                                                               |
-| →<br>`merkleRootQuorums`       | string (hex) | Optional<br>(0 or 1)    | _Added in Coinbase Transaction version 2 (Dash Core 0.14.0)_<br>Merkle root of the masternode list.                                              |
+| →<br>`merkleRootQuorums`       | string (hex) | Optional<br>(0 or 1)    | *Added in Coinbase Transaction version 2 (Dash Core 0.14.0)*<br>Merkle root of the masternode list.                                              |
 
-_Example from Dash Core 19.0.0_
+*Example from Dash Core 19.0.0*
 
 ```bash
 dash-cli -testnet protx diff 854380 854390 true
@@ -264,9 +264,7 @@ Result (truncated):
 }
 ```
 
-
-
-_See also: none_
+*See also: none*
 
 ### ProTx Info
 
@@ -310,7 +308,7 @@ The `protx info` RPC returns detailed information about a deterministic masterno
 | → →<br>`lastOutboundSuccess`        | integer      | Required<br>(exactly 1) | Unix epoch time of the last successful outbound connection                                 |
 | → →<br>`lastOutboundSuccessElapsed` | integer      | Required<br>(exactly 1) | Elapsed time since last successful outbound attempt                                        |
 
-_Example from Dash Core 0.16.0_
+*Example from Dash Core 0.16.0*
 
 ```bash
 dash-cli -testnet protx info\
@@ -365,19 +363,19 @@ The `protx list` RPC returns a list of provider transactions.
 
 Lists all ProTxs in your wallet or on-chain, depending on the given type. If `type` is not specified, it defaults to `registered`. All types have the optional argument `detailed` which if set to `true` will result in a detailed list being returned. If set to `false`, only the hashes of the ProTx will be returned.
 
-_Parameter #1---type_
+*Parameter #1---type*
 
 | Name   | Type   | Presence             | Description                                                                                                                                                                                                                                          |
 | ------ | ------ | -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `type` | string | Optional<br>(0 or 1) | The type of ProTxs to list:<br>`registered` - all ProTxs registered at height<br>`valid` - all active/valid ProTxs at height<br>`wallet` - all ProTxs found in the current wallet<br><br>Height defaults to current chain-tip if one is not provided |
 
-_Parameter #2---detailed_
+*Parameter #2---detailed*
 
 | Name       | Type | Presence             | Description                                                                                                                  |
 | ---------- | ---- | -------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
 | `detailed` | bool | Optional<br>(0 or 1) | If set to `false` (default), only ProTx hashes are returned. If set to `true`, a detailed list of ProTx details is returned. |
 
-_Parameter #3---height_
+*Parameter #3---height*
 
 | Name     | Type         | Presence             | Description                                                |
 | -------- | ------------ | -------------------- | ---------------------------------------------------------- |
@@ -429,7 +427,7 @@ _Result (if `detailed` was `true`)---JSON provider registration transaction deta
 | → →<br>`lastOutboundSuccess`        | integer      | Required<br>(exactly 1) | Unix epoch time of the last successful outbound connection                                      |
 | → →<br>`lastOutboundSuccessElapsed` | integer      | Required<br>(exactly 1) | Elapsed time since last successful outbound attempt                                             |
 
-_Example from Dash Core 0.16.0_
+*Example from Dash Core 0.16.0*
 
 ```bash
 dash-cli -testnet protx list
@@ -514,61 +512,61 @@ Result:
 
 The `protx register` RPC creates a ProRegTx referencing an existing collateral and and sends it to the network.
 
-_Parameter #1---collateral address_
+*Parameter #1---collateral address*
 
 | Name             | Type         | Presence                | Description                     |
 | ---------------- | ------------ | ----------------------- | ------------------------------- |
 | `collateralHash` | string (hex) | Required<br>(exactly 1) | The collateral transaction hash |
 
-_Parameter #2---collateral index_
+*Parameter #2---collateral index*
 
 | Name              | Type         | Presence                | Description                             |
 | ----------------- | ------------ | ----------------------- | --------------------------------------- |
 | `collateralIndex` | string (hex) | Required<br>(exactly 1) | The collateral transaction output index |
 
-_Parameter #3---IP Address and port_
+*Parameter #3---IP Address and port*
 
 | Name        | Type   | Presence                | Description                                                                                                                             |
 | ----------- | ------ | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
 | `ipAndPort` | string | Required<br>(exactly 1) | IP and port in the form `IP:PORT`.<br>Must be unique on the network.<br>Can be set to `0`, which will require a ProUpServTx afterwards. |
 
-_Parameter #4---owner address_
+*Parameter #4---owner address*
 
 | Name           | Type   | Presence                | Description                                                                                                                                                                                                     |
 | -------------- | ------ | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `ownerAddress` | string | Required<br>(exactly 1) | The Dash address to use for payee updates and proposal voting. The corresponding private key does not have to be known by this wallet. The address must be unused and must differ from the `collateralAddress`. |
 
-_Parameter #5---operator public key_
+*Parameter #5---operator public key*
 
 | Name             | Type         | Presence                | Description                                                                                                                                            |
 | ---------------- | ------------ | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `operatorPubKey` | string (hex) | Required<br>(exactly 1) | The operator public key. The private key does not have to be known. It has to match the private key which is later used when operating the masternode. |
 
-_Parameter #6---voting address_
+*Parameter #6---voting address*
 
 | Name            | Type   | Presence                | Description                                                                                                                                                                                                         |
 | --------------- | ------ | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `votingAddress` | string | Required<br>(exactly 1) | The voting address. The private key does not have to be known by your wallet. It has to match the private key which is later used when voting on proposals. If set to an empty string, `ownerAddress` will be used. |
 
-_Parameter #7---operator reward_
+*Parameter #7---operator reward*
 
 | Name             | Type   | Presence                | Description                                                                                                                                              |
 | ---------------- | ------ | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `operatorReward` | number | Required<br>(exactly 1) | The fraction in % to share with the operator. The value must be between `0.00` and `100.00`.<br>**Note**: If non-zero, `ipAndPort` must be zero as well. |
 
-_Parameter #8---payout address_
+*Parameter #8---payout address*
 
 | Name            | Type   | Presence                | Description                                             |
 | --------------- | ------ | ----------------------- | ------------------------------------------------------- |
 | `payoutAddress` | string | Required<br>(exactly 1) | The Dash address to use for masternode reward payments. |
 
-_Parameter #9---fee source address_
+*Parameter #9---fee source address*
 
 | Name               | Type   | Presence             | Description                                                                                                                                                                                               |
 | ------------------ | ------ | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `feeSourceAddress` | string | Optional<br>(0 or 1) | If specified, the wallet will only use coins from this address to fund the ProTx. If not specified, `payoutAddress` will be used. The private key belonging to this address must be known in your wallet. |
 
-_Parameter #10---whether to submit to the network or not_
+*Parameter #10---whether to submit to the network or not*
 
 | Name     | Type | Presence             | Description                                                            |
 | -------- | ---- | -------------------- | ---------------------------------------------------------------------- |
@@ -580,7 +578,7 @@ _Result if `submit` is not set or set to `true`---provider registration transact
 | -------- | ------------ | ----------------------- | ------------------------------------------------- |
 | `result` | string (hex) | Required<br>(exactly 1) | Provider registration transaction (ProRegTx) hash |
 
-_Example from Dash Core 0.13.0_
+*Example from Dash Core 0.13.0*
 
 ```bash
 dash-cli -testnet protx register\
@@ -596,15 +594,13 @@ Result:
 61e6d780178d353940c4cb9b3073ac0c50792bbcf0b15c1750d2028b71e34929
 ```
 
-
-
 _Result if `submit` set to `false`---serialized and signed provider registration transaction_
 
 | Name     | Type         | Presence                | Description                                                        |
 | -------- | ------------ | ----------------------- | ------------------------------------------------------------------ |
 | `result` | string (hex) | Required<br>(exactly 1) | Serialized and signed provider registration transaction (ProRegTx) |
 
-_Example from Dash Core 0.17.0_
+*Example from Dash Core 0.17.0*
 
 ```bash
 dash-cli -testnet protx register\ 
@@ -635,68 +631,68 @@ ec66f97568727a9e5188acb3ccf680086ae11217236efcccd67b0b72e83c79a043d6c6d064378fdd
 ### ProTx Register Legacy
 
 > 📘 When to use
-> 
+>
 > After v19 hard fork activation, this command must be used if a legacy scheme BLS key is being used to register a masternode. In all other cases the [`protx register`RPC](#protx-register) should be used instead.
-> 
+>
 > Legacy scheme BLS keys are created if the [`bls generate` RPC](#bls-generate) is run prior to v19 hard fork activation OR if a legacy key is explicitly generated using the [`bls generate legacy` RPC](#bls-generate).
 
 The `protx register_legacy` RPC works similar to `protx register`, but parses the operator key using the legacy BLS scheme. The collateral is specified through `collateralHash` and `collateralIndex` and must be an unspent transaction output spendable by this wallet. It must also not be used by any other masternode. This RPC requires a wallet passphrase to be set with walletpassphrase call if wallet is encrypted.
 
-_Parameter #1---collateral hash_
+*Parameter #1---collateral hash*
 
 | Name             | Type         | Presence                | Description                     |
 | ---------------- | ------------ | ----------------------- | ------------------------------- |
 | `collateralHash` | string (hex) | Required<br>(exactly 1) | The collateral transaction hash |
 
-_Parameter #2---collateral index_
+*Parameter #2---collateral index*
 
 | Name              | Type         | Presence                | Description                             |
 | ----------------- | ------------ | ----------------------- | --------------------------------------- |
 | `collateralIndex` | string (hex) | Required<br>(exactly 1) | The collateral transaction output index |
 
-_Parameter #3---IP Address and port_
+*Parameter #3---IP Address and port*
 
 | Name        | Type   | Presence                | Description                                                                                                                             |
 | ----------- | ------ | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
 | `ipAndPort` | string | Required<br>(exactly 1) | IP and port in the form `IP:PORT`.<br>Must be unique on the network.<br>Can be set to `0`, which will require a ProUpServTx afterwards. |
 
-_Parameter #4---owner address_
+*Parameter #4---owner address*
 
 | Name           | Type   | Presence                | Description                                                                                                                                                                                                             |
 | -------------- | ------ | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `ownerAddress` | string | Required<br>(exactly 1) | The Dash address to use for payee updates and proposal voting. <br>The corresponding private key does not have to be known by this wallet. <br>The address must be unused and must differ from the `collateralAddress`. |
 
-_Parameter #5---operator public key_
+*Parameter #5---operator public key*
 
 | Name                       | Type         | Presence                | Description                                                                                                                                                                |
 | -------------------------- | ------------ | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `operatorPubKey_register ` | string (hex) | Required<br>(exactly 1) | The operator BLS public key. <br>The BLS private key does not have to be known. <br>It has to match the BLS private key which is later used when operating the masternode. |
+| `operatorPubKey_register` | string (hex) | Required<br>(exactly 1) | The operator BLS public key. <br>The BLS private key does not have to be known. <br>It has to match the BLS private key which is later used when operating the masternode. |
 
-_Parameter #6---voting address_
+*Parameter #6---voting address*
 
 | Name                     | Type   | Presence                | Description                                                                                                                                                                                                                   |
 | ------------------------ | ------ | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `votingAddress_register` | string | Required<br>(exactly 1) | The voting key address. <br>The private key does not have to be known by your wallet. <br>It has to match the private key which is later used when voting on proposals. If set to an empty string, ownerAddress will be used. |
 
-_Parameter #7---operator reward_
+*Parameter #7---operator reward*
 
 | Name             | Type   | Presence                | Description                                                                                      |
 | ---------------- | ------ | ----------------------- | ------------------------------------------------------------------------------------------------ |
 | `operatorReward` | number | Required<br>(exactly 1) | The fraction in % to share with the operator. <br>The value must be between `0.00` and `100.00`. |
 
-_Parameter #8---payout address_
+*Parameter #8---payout address*
 
 | Name                     | Type   | Presence                | Description                                             |
 | ------------------------ | ------ | ----------------------- | ------------------------------------------------------- |
 | `payoutAddress_register` | string | Required<br>(exactly 1) | The Dash address to use for masternode reward payments. |
 
-_Parameter #9---fee source address_
+*Parameter #9---fee source address*
 
 | Name               | Type   | Presence             | Description                                                                                                                                                                                                       |
 | ------------------ | ------ | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `feeSourceAddress` | string | Optional<br>(0 or 1) | If specified, the wallet will only use coins from this address to fund the ProTx.<br> If not specified, `payoutAddress` will be used. <br>The private key belonging to this address must be known in your wallet. |
 
-_Parameter #10---whether to submit to the network or not_
+*Parameter #10---whether to submit to the network or not*
 
 | Name     | Type | Presence             | Description                                                            |
 | -------- | ---- | -------------------- | ---------------------------------------------------------------------- |
@@ -708,7 +704,7 @@ _Result if `submit` is not set or set to `true`---provider registration transact
 | -------- | ------------ | ----------------------- | ------------------------------------------------- |
 | `result` | string (hex) | Required<br>(exactly 1) | Provider registration transaction (ProRegTx) hash |
 
-_Example from Dash Core 19.0.0_
+*Example from Dash Core 19.0.0*
 
 ```bash
 dash-cli -testnet protx register_legacy\
@@ -729,7 +725,7 @@ _Result if `submit` set to `false`---serialized and signed provider registration
 | -------- | ------------ | ----------------------- | ------------------------------------------------------------------ |
 | `result` | string (hex) | Required<br>(exactly 1) | Serialized and signed provider registration transaction (ProRegTx) |
 
-_Example from Dash Core 19.0.0_
+*Example from Dash Core 19.0.0*
 
 ```bash
 dash-cli -testnet protx register_legacy\
@@ -759,55 +755,55 @@ ec66f97568727a9e5188acb3ccf680086ae11217236efcccd67b0b72e83c79a043d6c6d064378fdd
 
 The `protx register_fund` RPC creates and funds a ProRegTx with the 1,000 DASH necessary for a masternode and then sends it to the network.
 
-_Parameter #1---collateral address_
+*Parameter #1---collateral address*
 
 | Name                | Type   | Presence                | Description                                |
 | ------------------- | ------ | ----------------------- | ------------------------------------------ |
 | `collateralAddress` | string | Required<br>(exactly 1) | The Dash address to send the collateral to |
 
-_Parameter #2---IP Address and port_
+*Parameter #2---IP Address and port*
 
 | Name        | Type   | Presence                | Description                                                                                                                             |
 | ----------- | ------ | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
 | `ipAndPort` | string | Required<br>(exactly 1) | IP and port in the form `IP:PORT`.<br>Must be unique on the network.<br>Can be set to `0`, which will require a ProUpServTx afterwards. |
 
-_Parameter #3---owner address_
+*Parameter #3---owner address*
 
 | Name           | Type   | Presence                | Description                                                                                                                                                                                                     |
 | -------------- | ------ | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `ownerAddress` | string | Required<br>(exactly 1) | The Dash address to use for payee updates and proposal voting. The corresponding private key does not have to be known by this wallet. The address must be unused and must differ from the `collateralAddress`. |
 
-_Parameter #4---operator public key_
+*Parameter #4---operator public key*
 
 | Name             | Type         | Presence                | Description                                                                                                                                            |
 | ---------------- | ------------ | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `operatorPubKey` | string (hex) | Required<br>(exactly 1) | The operator public key. The private key does not have to be known. It has to match the private key which is later used when operating the masternode. |
 
-_Parameter #5---voting address_
+*Parameter #5---voting address*
 
 | Name            | Type   | Presence                | Description                                                                                                                                                                                                         |
 | --------------- | ------ | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `votingAddress` | string | Required<br>(exactly 1) | The voting address. The private key does not have to be known by your wallet. It has to match the private key which is later used when voting on proposals. If set to an empty string, `ownerAddress` will be used. |
 
-_Parameter #6---operator reward_
+*Parameter #6---operator reward*
 
 | Name             | Type   | Presence                | Description                                                                                     |
 | ---------------- | ------ | ----------------------- | ----------------------------------------------------------------------------------------------- |
 | `operatorReward` | number | Required<br>(exactly 1) | The fraction in % to share with the operator.<br>The value must be between `0.00` and `100.00`. |
 
-_Parameter #7---payout address_
+*Parameter #7---payout address*
 
 | Name            | Type   | Presence                | Description                                             |
 | --------------- | ------ | ----------------------- | ------------------------------------------------------- |
 | `payoutAddress` | string | Required<br>(exactly 1) | The Dash address to use for masternode reward payments. |
 
-_Parameter #8---fund address_
+*Parameter #8---fund address*
 
 | Name          | Type   | Presence             | Description                                                                                                                                                                                               |
 | ------------- | ------ | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `fundAddress` | string | Optional<br>(0 or 1) | If specified, the wallet will only use coins from this address to fund the ProTx. If not specified, `payoutAddress` will be used. The private key belonging to this address must be known in your wallet. |
 
-_Parameter #9---whether to submit to the network or not_
+*Parameter #9---whether to submit to the network or not*
 
 | Name     | Type | Presence             | Description                                                            |
 | -------- | ---- | -------------------- | ---------------------------------------------------------------------- |
@@ -819,7 +815,7 @@ _Result if `submit` is not set or set to `true`---provider registration transact
 | -------- | ------------ | ----------------------- | ------------------------------------------------- |
 | `result` | string (hex) | Required<br>(exactly 1) | Provider registration transaction (ProRegTx) hash |
 
-_Example from Dash Core 0.13.0_
+*Example from Dash Core 0.13.0*
 
 ```bash
 dash-cli -testnet protx register_fund yakx4mMRptKhgfjedNzX5FGQq7kSSBF2e7\
@@ -834,15 +830,13 @@ Result:
 ba1b3330e16a0876b7a186e7ceb689f03ec646e611e91d7139de021bbf13afdd
 ```
 
-
-
 _Result if `submit` set to `false`---serialized and signed provider registration transaction_
 
 | Name     | Type         | Presence                | Description                                                        |
 | -------- | ------------ | ----------------------- | ------------------------------------------------------------------ |
 | `result` | string (hex) | Required<br>(exactly 1) | Serialized and signed provider registration transaction (ProRegTx) |
 
-_Example from Dash Core 0.17.0_
+*Example from Dash Core 0.17.0*
 
 ```bash
 dash-cli -testnet protx register_fund yNLuVTXJbjbxgrQX5LSMi7hV19We8hT2d6\ 
@@ -871,62 +865,62 @@ c207ebd525793ccb43f60ce34a5cd5f4011976a9145a375814e9caf5b8575a8221be246457e5c5c2
 ### ProTx Register Fund Legacy
 
 > 📘 When to use
-> 
+>
 > After v19 hard fork activation, this command must be used if a legacy scheme BLS key is being used to register a masternode. In all other cases the [`protx register_fund` RPC](#protx-register-fund) should be used instead.
-> 
+>
 > Legacy scheme BLS keys are created if the [`bls generate` RPC](#bls-generate) is run prior to v19 hard fork activation OR if a legacy key is explicitly generated using the [`bls generate legacy` RPC](#bls-generate).
 
 The `protx register_fund_legacy` RPC creates, funds, and sends a ProTx to the network. The resulting transaction will move 1000 DASH to the address specified by `collateralAddress` and will then function as the collateral of your masternode. A few of the limitations you see in the arguments are temporary and might be lifted after DIP3 is fully deployed.
 
-_Parameter #1---collateral address_
+*Parameter #1---collateral address*
 
 | Name                | Type   | Presence                | Description                                |
 | ------------------- | ------ | ----------------------- | ------------------------------------------ |
 | `collateralAddress` | string | Required<br>(exactly 1) | The Dash address to send the collateral to |
 
-_Parameter #2---IP Address and port_
+*Parameter #2---IP Address and port*
 
 | Name        | Type   | Presence                | Description                                                                                                                             |
 | ----------- | ------ | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
 | `ipAndPort` | string | Required<br>(exactly 1) | IP and port in the form `IP:PORT`.<br>Must be unique on the network.<br>Can be set to `0`, which will require a ProUpServTx afterwards. |
 
-_Parameter #3---owner address_
+*Parameter #3---owner address*
 
 | Name           | Type   | Presence                | Description                                                                                                                                                                                                     |
 | -------------- | ------ | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `ownerAddress` | string | Required<br>(exactly 1) | The Dash address to use for payee updates and proposal voting. The corresponding private key does not have to be known by this wallet. The address must be unused and must differ from the `collateralAddress`. |
 
-_Parameter #4---operator public key_
+*Parameter #4---operator public key*
 
 | Name                      | Type         | Presence                | Description                                                                                                                                                                |
 | ------------------------- | ------------ | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `operatorPubKey_register` | string (hex) | Required<br>(exactly 1) | The operator BLS public key. <br>The BLS private key does not have to be known. <br>It has to match the BLS private key which is later used when operating the masternode. |
 
-_Parameter #5---voting address_
+*Parameter #5---voting address*
 
 | Name            | Type   | Presence                | Description                                                                                                                                                                                                         |
 | --------------- | ------ | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `votingAddress` | string | Required<br>(exactly 1) | The voting address. The private key does not have to be known by your wallet. It has to match the private key which is later used when voting on proposals. If set to an empty string, `ownerAddress` will be used. |
 
-_Parameter #6---operator reward_
+*Parameter #6---operator reward*
 
 | Name             | Type   | Presence                | Description                                                                                     |
 | ---------------- | ------ | ----------------------- | ----------------------------------------------------------------------------------------------- |
 | `operatorReward` | number | Required<br>(exactly 1) | The fraction in % to share with the operator.<br>The value must be between `0.00` and `100.00`. |
 
-_Parameter #7---payout address_
+*Parameter #7---payout address*
 
 | Name                     | Type   | Presence                | Description                                             |
 | ------------------------ | ------ | ----------------------- | ------------------------------------------------------- |
 | `payoutAddress_register` | string | Required<br>(exactly 1) | The Dash address to use for masternode reward payments. |
 
-_Parameter #8---fund address_
+*Parameter #8---fund address*
 
 | Name          | Type   | Presence             | Description                                                                                                                                                                                               |
 | ------------- | ------ | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `fundAddress` | string | Optional<br>(0 or 1) | If specified, the wallet will only use coins from this address to fund the ProTx. If not specified, `payoutAddress` will be used. The private key belonging to this address must be known in your wallet. |
 
-_Parameter #9---whether to submit to the network or not_
+*Parameter #9---whether to submit to the network or not*
 
 | Name     | Type | Presence             | Description                                                            |
 | -------- | ---- | -------------------- | ---------------------------------------------------------------------- |
@@ -938,7 +932,7 @@ _Parameter #9---whether to submit to the network or not_
 | -------- | ------------ | ----------------------- | ------------------ |
 | `result` | string (hex) | Required<br>(exactly 1) | The transaction id |
 
-_Example from Dash Core 19.0.0_
+*Example from Dash Core 19.0.0*
 
 ```bash
 dash-cli -testnet protx register_fund_legacy yakx4mMRptKhgfjedNzX5FGQq7kSSBF2e7\
@@ -959,7 +953,7 @@ _Result if `submit` set to `false`---serialized and signed provider registration
 | -------- | ------------ | ----------------------- | ----------------------------------------- |
 | `result` | string (hex) | Required<br>(exactly 1) | The serialized signed ProTx in hex format |
 
-_Example from Dash Core 19.0.0_
+*Example from Dash Core 19.0.0*
 
 ```bash
 dash-cli -testnet protx register_fund_legacy yNLuVTXJbjbxgrQX5LSMi7hV19We8hT2d6\ 
@@ -989,61 +983,61 @@ c207ebd525793ccb43f60ce34a5cd5f4011976a9145a375814e9caf5b8575a8221be246457e5c5c2
 
 The `protx register_prepare` RPC creates an unsigned ProTx and a message that must be signed externally with the private key that corresponds to `collateralAddress` to prove collateral ownership. The prepared transaction will also contain inputs and outputs to cover fees. The ProTx must be passed to [`protx register_submit`](#protx-register-submit).
 
-_Parameter #1---collateral address_
+*Parameter #1---collateral address*
 
 | Name             | Type         | Presence                | Description                     |
 | ---------------- | ------------ | ----------------------- | ------------------------------- |
 | `collateralHash` | string (hex) | Required<br>(exactly 1) | The collateral transaction hash |
 
-_Parameter #2---collateral index_
+*Parameter #2---collateral index*
 
 | Name              | Type         | Presence                | Description                             |
 | ----------------- | ------------ | ----------------------- | --------------------------------------- |
 | `collateralIndex` | string (hex) | Required<br>(exactly 1) | The collateral transaction output index |
 
-_Parameter #3---IP Address and port_
+*Parameter #3---IP Address and port*
 
 | Name        | Type   | Presence                | Description                                                                                                                             |
 | ----------- | ------ | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
 | `ipAndPort` | string | Required<br>(exactly 1) | IP and port in the form 'IP:PORT'.<br>Must be unique on the network.<br>Can be set to '0', which will require a ProUpServTx afterwards. |
 
-_Parameter #4---owner address_
+*Parameter #4---owner address*
 
 | Name           | Type   | Presence                | Description                                                                                                                                                                                                     |
 | -------------- | ------ | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `ownerAddress` | string | Required<br>(exactly 1) | The Dash address to use for payee updates and proposal voting. The corresponding private key does not have to be known by this wallet. The address must be unused and must differ from the `collateralAddress`. |
 
-_Parameter #5---operator public key_
+*Parameter #5---operator public key*
 
 | Name             | Type         | Presence                | Description                                                                                                                                            |
 | ---------------- | ------------ | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `operatorPubKey` | string (hex) | Required<br>(exactly 1) | The operator public key. The private key does not have to be known. It has to match the private key which is later used when operating the masternode. |
 
-_Parameter #6---voting address_
+*Parameter #6---voting address*
 
 | Name            | Type   | Presence                | Description                                                                                                                                                                                                         |
 | --------------- | ------ | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `votingAddress` | string | Required<br>(exactly 1) | The voting address. The private key does not have to be known by your wallet. It has to match the private key which is later used when voting on proposals. If set to an empty string, `ownerAddress` will be used. |
 
-_Parameter #7---operator reward_
+*Parameter #7---operator reward*
 
 | Name             | Type   | Presence                | Description                                                                                     |
 | ---------------- | ------ | ----------------------- | ----------------------------------------------------------------------------------------------- |
 | `operatorReward` | number | Required<br>(exactly 1) | The fraction in % to share with the operator.<br>The value must be between '0.00' and '100.00'. |
 
-_Parameter #8---payout address_
+*Parameter #8---payout address*
 
 | Name            | Type   | Presence                | Description                                             |
 | --------------- | ------ | ----------------------- | ------------------------------------------------------- |
 | `payoutAddress` | string | Required<br>(exactly 1) | The Dash address to use for masternode reward payments. |
 
-_Parameter #9---fee source address_
+*Parameter #9---fee source address*
 
 | Name               | Type   | Presence             | Description                                                                                                                                                                                               |
 | ------------------ | ------ | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `feeSourceAddress` | string | Optional<br>(0 or 1) | If specified, the wallet will only use coins from this address to fund the ProTx. If not specified, `payoutAddress` will be used. The private key belonging to this address must be known in your wallet. |
 
-_Result---unsigned transaction and message to sign_
+*Result---unsigned transaction and message to sign*
 
 | Name                     | Type            | Presence                | Description                                                                                                                          |
 | ------------------------ | --------------- | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
@@ -1052,7 +1046,7 @@ _Result---unsigned transaction and message to sign_
 | →<br>`collateralAddress` | string          | Required<br>(exactly 1) | The collateral address                                                                                                               |
 | →<br>`signMessage`       | string (base64) | Required<br>(exactly 1) | The string message that needs to be signed with the collateral key.                                                                  |
 
-_Example from Dash Core 0.13.0_
+*Example from Dash Core 0.13.0*
 
 ```bash
 dash-cli -testnet protx register_prepare\
@@ -1075,68 +1069,68 @@ Result:
 ### ProTx Register Prepare Legacy
 
 > 📘 When to use
-> 
+>
 > After v19 hard fork activation, this command must be used if a legacy scheme BLS key is being used to register a masternode. In all other cases the [`protx register_prepare` RPC](#protx-register-prepare) should be used instead.
-> 
+>
 > Legacy scheme BLS keys are created if the [`bls generate` RPC](#bls-generate) is run prior to v19 hard fork activation OR if a legacy key is explicitly generated using the [`bls generate legacy` RPC](#bls-generate).
 
 The `protx register_prepare_legacy` RPC Creates an unsigned ProTx and a message that must be signed externally with the private key that corresponds to collateralAddress to prove collateral ownership. The prepared transaction will also contain inputs and outputs to cover fees.
 
-_Parameter #1---collateral address_
+*Parameter #1---collateral address*
 
 | Name             | Type         | Presence                | Description                     |
 | ---------------- | ------------ | ----------------------- | ------------------------------- |
 | `collateralHash` | string (hex) | Required<br>(exactly 1) | The collateral transaction hash |
 
-_Parameter #2---collateral index_
+*Parameter #2---collateral index*
 
 | Name              | Type         | Presence                | Description                             |
 | ----------------- | ------------ | ----------------------- | --------------------------------------- |
 | `collateralIndex` | string (hex) | Required<br>(exactly 1) | The collateral transaction output index |
 
-_Parameter #3---IP Address and port_
+*Parameter #3---IP Address and port*
 
 | Name        | Type   | Presence                | Description                                                                                                                             |
 | ----------- | ------ | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
 | `ipAndPort` | string | Required<br>(exactly 1) | IP and port in the form 'IP:PORT'.<br>Must be unique on the network.<br>Can be set to '0', which will require a ProUpServTx afterwards. |
 
-_Parameter #4---owner address_
+*Parameter #4---owner address*
 
 | Name           | Type   | Presence                | Description                                                                                                                                                                                                     |
 | -------------- | ------ | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `ownerAddress` | string | Required<br>(exactly 1) | The Dash address to use for payee updates and proposal voting. The corresponding private key does not have to be known by this wallet. The address must be unused and must differ from the `collateralAddress`. |
 
-_Parameter #5---operator public key_
+*Parameter #5---operator public key*
 
 | Name                      | Type         | Presence                | Description                                                                                                                                            |
 | ------------------------- | ------------ | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `operatorPubKey_register` | string (hex) | Required<br>(exactly 1) | The operator public key. The private key does not have to be known. It has to match the private key which is later used when operating the masternode. |
 
-_Parameter #6---voting address_
+*Parameter #6---voting address*
 
 | Name                     | Type   | Presence                | Description                                                                                                                                                                                                         |
 | ------------------------ | ------ | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `votingAddress_register` | string | Required<br>(exactly 1) | The voting address. The private key does not have to be known by your wallet. It has to match the private key which is later used when voting on proposals. If set to an empty string, `ownerAddress` will be used. |
 
-_Parameter #7---operator reward_
+*Parameter #7---operator reward*
 
 | Name             | Type   | Presence                | Description                                                                                     |
 | ---------------- | ------ | ----------------------- | ----------------------------------------------------------------------------------------------- |
 | `operatorReward` | number | Required<br>(exactly 1) | The fraction in % to share with the operator.<br>The value must be between '0.00' and '100.00'. |
 
-_Parameter #8---payout address_
+*Parameter #8---payout address*
 
 | Name                      | Type   | Presence                | Description                                             |
 | ------------------------- | ------ | ----------------------- | ------------------------------------------------------- |
-| ` payoutAddress_register` | string | Required<br>(exactly 1) | The Dash address to use for masternode reward payments. |
+| `payoutAddress_register` | string | Required<br>(exactly 1) | The Dash address to use for masternode reward payments. |
 
-_Parameter #9---fee source address_
+*Parameter #9---fee source address*
 
 | Name               | Type   | Presence             | Description                                                                                                                                                                                               |
 | ------------------ | ------ | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `feeSourceAddress` | string | Optional<br>(0 or 1) | If specified, the wallet will only use coins from this address to fund the ProTx. If not specified, `payoutAddress` will be used. The private key belonging to this address must be known in your wallet. |
 
-_Result---unsigned transaction and message to sign_
+*Result---unsigned transaction and message to sign*
 
 | Name                     | Type            | Presence                | Description                                                                                                                          |
 | ------------------------ | --------------- | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
@@ -1145,7 +1139,7 @@ _Result---unsigned transaction and message to sign_
 | →<br>`collateralAddress` | string          | Required<br>(exactly 1) | The collateral address                                                                                                               |
 | →<br>`signMessage`       | string (base64) | Required<br>(exactly 1) | The string message that needs to be signed with the collateral key.                                                                  |
 
-_Example from Dash Core 19.0.0_
+*Example from Dash Core 19.0.0*
 
 ```bash
 dash-cli -testnet protx register_prepare_legacy\ 
@@ -1169,79 +1163,79 @@ Result:
 
 The "protx register_hpmn" RPC functions similar to "protx register_fund_hpmn," but with an externally referenced collateral. The collateral is specified through "collateralHash" and "collateralIndex" and must be an unspent transaction output spendable by this wallet. It must also not be used by any other masternode. Requires wallet passphrase to be set with walletpassphrase call if wallet is encrypted.
 
-_Parameter #1---collateral address_
+*Parameter #1---collateral address*
 
 | Name             | Type         | Presence                | Description                     |
 | ---------------- | ------------ | ----------------------- | ------------------------------- |
 | `collateralHash` | string (hex) | Required<br>(exactly 1) | The collateral transaction hash |
 
-_Parameter #2---collateral index_
+*Parameter #2---collateral index*
 
 | Name              | Type         | Presence                | Description                             |
 | ----------------- | ------------ | ----------------------- | --------------------------------------- |
 | `collateralIndex` | string (hex) | Required<br>(exactly 1) | The collateral transaction output index |
 
-_Parameter #3---IP Address and port_
+*Parameter #3---IP Address and port*
 
 | Name        | Type   | Presence                | Description                                                                                                                             |
 | ----------- | ------ | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
 | `ipAndPort` | string | Required<br>(exactly 1) | IP and port in the form `IP:PORT`.<br>Must be unique on the network.<br>Can be set to `0`, which will require a ProUpServTx afterwards. |
 
-_Parameter #4---owner address_
+*Parameter #4---owner address*
 
 | Name           | Type   | Presence                | Description                                                                                                                                                                                                     |
 | -------------- | ------ | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `ownerAddress` | string | Required<br>(exactly 1) | The Dash address to use for payee updates and proposal voting. The corresponding private key does not have to be known by this wallet. The address must be unused and must differ from the `collateralAddress`. |
 
-_Parameter #5---operator public key_
+*Parameter #5---operator public key*
 
 | Name                      | Type         | Presence                | Description                                                                                                                                            |
 | ------------------------- | ------------ | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `operatorPubKey_register` | string (hex) | Required<br>(exactly 1) | The operator public key. The private key does not have to be known. It has to match the private key which is later used when operating the masternode. |
 
-_Parameter #6---voting address_
+*Parameter #6---voting address*
 
 | Name                     | Type   | Presence                | Description                                                                                                                                                                                                         |
 | ------------------------ | ------ | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `votingAddress_register` | string | Required<br>(exactly 1) | The voting address. The private key does not have to be known by your wallet. It has to match the private key which is later used when voting on proposals. If set to an empty string, `ownerAddress` will be used. |
 
-_Parameter #7---operator reward_
+*Parameter #7---operator reward*
 
 | Name             | Type   | Presence                | Description                                                                                                                                              |
 | ---------------- | ------ | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `operatorReward` | number | Required<br>(exactly 1) | The fraction in % to share with the operator. The value must be between `0.00` and `100.00`.<br>**Note**: If non-zero, `ipAndPort` must be zero as well. |
 
-_Parameter #8---payout address_
+*Parameter #8---payout address*
 
 | Name                     | Type   | Presence                | Description                                             |
 | ------------------------ | ------ | ----------------------- | ------------------------------------------------------- |
 | `payoutAddress_register` | string | Required<br>(exactly 1) | The Dash address to use for masternode reward payments. |
 
-_Parameter #9---platform node ID_
+*Parameter #9---platform node ID*
 
 | Name             | Type   | Presence                | Description                                        |
 | ---------------- | ------ | ----------------------- | -------------------------------------------------- |
 | `platformNodeID` | string | Required<br>(exactly 1) | Platform P2P node ID, derived from P2P public key. |
 
-_Parameter #10---platform p2p port_
+*Parameter #10---platform p2p port*
 
 | Name              | Type   | Presence                | Description                                                   |
 | ----------------- | ------ | ----------------------- | ------------------------------------------------------------- |
 | `platformP2PPort` | number | Required<br>(exactly 1) | TCP port of Platform HTTP/API interface (network byte order). |
 
-_Parameter #11---platform p2p port_
+*Parameter #11---platform p2p port*
 
 | Name              | Type   | Presence                | Description                                                                              |
 | ----------------- | ------ | ----------------------- | ---------------------------------------------------------------------------------------- |
 | `platformP2PPort` | number | Required<br>(exactly 1) | TCP port of Dash Platform peer-to-peer communication between nodes (network byte order). |
 
-_Parameter #12---fee source address_
+*Parameter #12---fee source address*
 
 | Name               | Type   | Presence             | Description                                                                                                                                                                                               |
 | ------------------ | ------ | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `feeSourceAddress` | string | Optional<br>(0 or 1) | If specified, the wallet will only use coins from this address to fund the ProTx. If not specified, `payoutAddress` will be used. The private key belonging to this address must be known in your wallet. |
 
-_Parameter #13---whether to submit to the network or not_
+*Parameter #13---whether to submit to the network or not*
 
 | Name     | Type | Presence             | Description                                                            |
 | -------- | ---- | -------------------- | ---------------------------------------------------------------------- |
@@ -1253,7 +1247,7 @@ _Result if `submit` is not set or set to `true`---provider registration transact
 | -------- | ------------ | ----------------------- | ------------------------------------------------- |
 | `result` | string (hex) | Required<br>(exactly 1) | Provider registration transaction (ProRegTx) hash |
 
-_Example from Dash Core 19.0.0_
+*Example from Dash Core 19.0.0*
 
 ```bash
 dash-cli -testnet protx register_hpmn
@@ -1278,7 +1272,7 @@ _Result if `submit` set to `false`---serialized and signed provider registration
 | -------- | ------------ | ----------------------- | ------------------------------------------------------------------ |
 | `result` | string (hex) | Required<br>(exactly 1) | Serialized and signed provider registration transaction (ProRegTx) |
 
-_Example from Dash Core 19.0.0_
+*Example from Dash Core 19.0.0*
 
 ```bash
 dash-cli -testnet protx register_hpmn\
@@ -1309,73 +1303,73 @@ ec66f97568727a9e5188acb3ccf680086ae11217236efcccd67b0b72e83c79a043d6c6d064378fdd
 
 The "protx register_fund_hpmn" RPC creates, funds, and sends a ProTx to the network. The resulting transaction will move 4000 Dash to the address specified by collateralAddress and will then function as the collateral of your HPMN. A few of the limitations you see in the arguments are temporary and might be lifted after DIP3 is fully deployed. Requires wallet passphrase to be set with walletpassphrase call if wallet is encrypted.
 
-_Parameter #1---collateral address_
+*Parameter #1---collateral address*
 
 | Name                | Type   | Presence                | Description                                |
 | ------------------- | ------ | ----------------------- | ------------------------------------------ |
 | `collateralAddress` | string | Required<br>(exactly 1) | The Dash address to send the collateral to |
 
-_Parameter #2---IP Address and port_
+*Parameter #2---IP Address and port*
 
 | Name        | Type   | Presence                | Description                                                                                                                             |
 | ----------- | ------ | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
 | `ipAndPort` | string | Required<br>(exactly 1) | IP and port in the form `IP:PORT`.<br>Must be unique on the network.<br>Can be set to `0`, which will require a ProUpServTx afterwards. |
 
-_Parameter #3---owner address_
+*Parameter #3---owner address*
 
 | Name           | Type   | Presence                | Description                                                                                                                                                                                                     |
 | -------------- | ------ | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `ownerAddress` | string | Required<br>(exactly 1) | The Dash address to use for payee updates and proposal voting. The corresponding private key does not have to be known by this wallet. The address must be unused and must differ from the `collateralAddress`. |
 
-_Parameter #4---operator public key register_
+*Parameter #4---operator public key register*
 
 | Name                       | Type         | Presence                | Description                                                                                                                                            |
 | -------------------------- | ------------ | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `operatorPubKey_register ` | string (hex) | Required<br>(exactly 1) | The operator public key. The private key does not have to be known. It has to match the private key which is later used when operating the masternode. |
+| `operatorPubKey_register` | string (hex) | Required<br>(exactly 1) | The operator public key. The private key does not have to be known. It has to match the private key which is later used when operating the masternode. |
 
-_Parameter #5---voting address register_
+*Parameter #5---voting address register*
 
 | Name                     | Type   | Presence                | Description                                                                                                                                                                                                         |
 | ------------------------ | ------ | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `votingAddress_register` | string | Required<br>(exactly 1) | The voting address. The private key does not have to be known by your wallet. It has to match the private key which is later used when voting on proposals. If set to an empty string, `ownerAddress` will be used. |
 
-_Parameter #6---operator reward_
+*Parameter #6---operator reward*
 
 | Name             | Type   | Presence                | Description                                                                                     |
 | ---------------- | ------ | ----------------------- | ----------------------------------------------------------------------------------------------- |
 | `operatorReward` | number | Required<br>(exactly 1) | The fraction in % to share with the operator.<br>The value must be between `0.00` and `100.00`. |
 
-_Parameter #7---payout address register_
+*Parameter #7---payout address register*
 
 | Name                     | Type   | Presence                | Description                                             |
 | ------------------------ | ------ | ----------------------- | ------------------------------------------------------- |
 | `payoutAddress_register` | string | Required<br>(exactly 1) | The Dash address to use for masternode reward payments. |
 
-_Parameter #8---platform node ID_
+*Parameter #8---platform node ID*
 
 | Name             | Type   | Presence                | Description                                        |
 | ---------------- | ------ | ----------------------- | -------------------------------------------------- |
 | `platformNodeID` | string | Required<br>(exactly 1) | Platform P2P node ID, derived from P2P public key. |
 
-_Parameter #9---platform p2p port_
+*Parameter #9---platform p2p port*
 
 | Name              | Type   | Presence                | Description                                                                              |
 | ----------------- | ------ | ----------------------- | ---------------------------------------------------------------------------------------- |
 | `platformP2PPort` | number | Required<br>(exactly 1) | TCP port of Dash Platform peer-to-peer communication between nodes (network byte order). |
 
-_Parameter #10---platform http port_
+*Parameter #10---platform http port*
 
 | Name               | Type   | Presence                | Description                                                   |
 | ------------------ | ------ | ----------------------- | ------------------------------------------------------------- |
 | `platformHTTPPort` | number | Required<br>(exactly 1) | TCP port of Platform HTTP/API interface (network byte order). |
 
-_Parameter #11---fund address_
+*Parameter #11---fund address*
 
 | Name          | Type   | Presence             | Description                                                                                                                                                                                               |
 | ------------- | ------ | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `fundAddress` | string | Optional<br>(0 or 1) | If specified, the wallet will only use coins from this address to fund the ProTx. If not specified, `payoutAddress` will be used. The private key belonging to this address must be known in your wallet. |
 
-_Parameter #12---whether to submit to the network or not_
+*Parameter #12---whether to submit to the network or not*
 
 | Name     | Type | Presence             | Description                                                            |
 | -------- | ---- | -------------------- | ---------------------------------------------------------------------- |
@@ -1387,7 +1381,7 @@ _Parameter #12---whether to submit to the network or not_
 | -------- | ------------ | ----------------------- | ------------------ |
 | `result` | string (hex) | Required<br>(exactly 1) | The transaction ID |
 
-_Example from Dash Core 19.0.0_
+*Example from Dash Core 19.0.0*
 
 ```bash
 dash-cli -testnet protx register_fund_hpmn yakx4mMRptKhgfjedNzX5FGQq7kSSBF2e7\
@@ -1409,7 +1403,7 @@ ba1b3330e16a0876b7a186e7ceb689f03ec646e611e91d7139de021bbf13afdd
 | -------- | ------------ | ----------------------- | ----------------------------------------- |
 | `result` | string (hex) | Required<br>(exactly 1) | The serialized signed ProTx in hex format |
 
-_Example from Dash Core 19.0.0_
+*Example from Dash Core 19.0.0*
 
 ```bash
 dash-cli -testnet protx register_fund_hpmn yakx4mMRptKhgfjedNzX5FGQq7kSSBF2e7\
@@ -1438,79 +1432,79 @@ c207ebd525793ccb43f60ce34a5cd5f4011976a9145a375814e9caf5b8575a8221be246457e5c5c2
 
 The "protx register_prepare_hpmn" RPC creates an unsigned ProTx and a message that must be signed externally with the private key that corresponds to collateralAddress to prove collateral ownership. The prepared transaction will also contain inputs and outputs to cover fees.
 
-_Parameter #1---collateral address_
+*Parameter #1---collateral address*
 
 | Name             | Type         | Presence                | Description                     |
 | ---------------- | ------------ | ----------------------- | ------------------------------- |
 | `collateralHash` | string (hex) | Required<br>(exactly 1) | The collateral transaction hash |
 
-_Parameter #2---collateral index_
+*Parameter #2---collateral index*
 
 | Name              | Type         | Presence                | Description                             |
 | ----------------- | ------------ | ----------------------- | --------------------------------------- |
 | `collateralIndex` | string (hex) | Required<br>(exactly 1) | The collateral transaction output index |
 
-_Parameter #3---IP Address and port_
+*Parameter #3---IP Address and port*
 
 | Name        | Type   | Presence                | Description                                                                                                                             |
 | ----------- | ------ | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
 | `ipAndPort` | string | Required<br>(exactly 1) | IP and port in the form 'IP:PORT'.<br>Must be unique on the network.<br>Can be set to '0', which will require a ProUpServTx afterwards. |
 
-_Parameter #4---owner address_
+*Parameter #4---owner address*
 
 | Name           | Type   | Presence                | Description                                                                                                                                                                                                     |
 | -------------- | ------ | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `ownerAddress` | string | Required<br>(exactly 1) | The Dash address to use for payee updates and proposal voting. The corresponding private key does not have to be known by this wallet. The address must be unused and must differ from the `collateralAddress`. |
 
-_Parameter #5---operator public key register_
+*Parameter #5---operator public key register*
 
 | Name                      | Type         | Presence                | Description                                                                                                                                            |
 | ------------------------- | ------------ | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `operatorPubKey_register` | string (hex) | Required<br>(exactly 1) | The operator public key. The private key does not have to be known. It has to match the private key which is later used when operating the masternode. |
 
-_Parameter #6---voting address register_
+*Parameter #6---voting address register*
 
 | Name                     | Type   | Presence                | Description                                                                                                                                                                                                         |
 | ------------------------ | ------ | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `votingAddress_register` | string | Required<br>(exactly 1) | The voting address. The private key does not have to be known by your wallet. It has to match the private key which is later used when voting on proposals. If set to an empty string, `ownerAddress` will be used. |
 
-_Parameter #7---operator reward_
+*Parameter #7---operator reward*
 
 | Name             | Type   | Presence                | Description                                                                                     |
 | ---------------- | ------ | ----------------------- | ----------------------------------------------------------------------------------------------- |
 | `operatorReward` | number | Required<br>(exactly 1) | The fraction in % to share with the operator.<br>The value must be between '0.00' and '100.00'. |
 
-_Parameter #8---payout address register_
+*Parameter #8---payout address register*
 
 | Name                     | Type   | Presence                | Description                                             |
 | ------------------------ | ------ | ----------------------- | ------------------------------------------------------- |
 | `payoutAddress_register` | string | Required<br>(exactly 1) | The Dash address to use for masternode reward payments. |
 
-_Parameter #9---platform node ID_
+*Parameter #9---platform node ID*
 
 | Name             | Type         | Presence                | Description                                        |
 | ---------------- | ------------ | ----------------------- | -------------------------------------------------- |
 | `platformNodeID` | string (hex) | Required<br>(exactly 1) | Platform P2P node ID, derived from P2P public key. |
 
-_Parameter #10---platform p2p port_
+*Parameter #10---platform p2p port*
 
 | Name              | Type    | Presence                | Description                                        |
 | ----------------- | ------- | ----------------------- | -------------------------------------------------- |
 | `platformP2PPort` | numeric | Required<br>(exactly 1) | Platform P2P node ID, derived from P2P public key. |
 
-_Parameter #11---platform http port_
+*Parameter #11---platform http port*
 
 | Name               | Type    | Presence                | Description                                                   |
 | ------------------ | ------- | ----------------------- | ------------------------------------------------------------- |
 | `platformHTTPPort` | numeric | Required<br>(exactly 1) | TCP port of Platform HTTP/API interface (network byte order). |
 
-_Parameter #12---fee source address_
+*Parameter #12---fee source address*
 
 | Name               | Type   | Presence             | Description                                                                                                                                                                                               |
 | ------------------ | ------ | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `feeSourceAddress` | string | Optional<br>(0 or 1) | If specified, the wallet will only use coins from this address to fund the ProTx. If not specified, `payoutAddress` will be used. The private key belonging to this address must be known in your wallet. |
 
-_Result---unsigned transaction and message to sign_
+*Result---unsigned transaction and message to sign*
 
 | Name                     | Type         | Presence                | Description                                                                                                                          |
 | ------------------------ | ------------ | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
@@ -1519,7 +1513,7 @@ _Result---unsigned transaction and message to sign_
 | →<br>`collateralAddress` | string       | Required<br>(exactly 1) | The collateral address                                                                                                               |
 | →<br>`signMessage`       | string (hex) | Required<br>(exactly 1) | The string message that needs to be signed with the collateral key.                                                                  |
 
-_Example from Dash Core 19.0.0_
+*Example from Dash Core 19.0.0*
 
 ```bash
 dash-cli -testnet protx register_prepare_hpmn\ 
@@ -1544,61 +1538,61 @@ Result:
 
 The "protx update_service_hpmn" RPC creates and sends a ProUpServTx to the network. This will update the IP address and the Platform fields of a HPMN. If this is done for a HPMN that got PoSe-banned, the ProUpServTx will also revive this HPMN.
 
-_Parameter #1---initial provider registration transaction hash_
+*Parameter #1---initial provider registration transaction hash*
 
 | Name        | Type         | Presence                | Description                                                   |
 | ----------- | ------------ | ----------------------- | ------------------------------------------------------------- |
 | `proTxHash` | string (hex) | Required<br>(exactly 1) | The hash of the provider transaction as hex in RPC byte order |
 
-_Parameter #2---IP Address and port_
+*Parameter #2---IP Address and port*
 
 | Name        | Type   | Presence                | Description                                                          |
 | ----------- | ------ | ----------------------- | -------------------------------------------------------------------- |
 | `ipAndPort` | string | Required<br>(exactly 1) | IP and port in the form 'IP:PORT'.<br>Must be unique on the network. |
 
-_Parameter #3---operator key_
+*Parameter #3---operator key*
 
 | Name          | Type         | Presence                | Description                                                                      |
 | ------------- | ------------ | ----------------------- | -------------------------------------------------------------------------------- |
 | `operatorKey` | string (hex) | Required<br>(exactly 1) | The operator BLS private key associated with the registered operator public key. |
 
-_Parameter #4---platform Node ID_
+*Parameter #4---platform Node ID*
 
 | Name             | Type   | Presence                | Description                                        |
 | ---------------- | ------ | ----------------------- | -------------------------------------------------- |
 | `platformNodeID` | string | Required<br>(exactly 1) | Platform P2P node ID, derived from P2P public key. |
 
-_Parameter #5---platform P2P Port_
+*Parameter #5---platform P2P Port*
 
 | Name              | Type    | Presence                | Description                                                                              |
 | ----------------- | ------- | ----------------------- | ---------------------------------------------------------------------------------------- |
 | `platformP2PPort` | numeric | Required<br>(exactly 1) | TCP port of Dash Platform peer-to-peer communication between nodes (network byte order). |
 
-_Parameter #6---platform HTTP Port_
+*Parameter #6---platform HTTP Port*
 
 | Name               | Type    | Presence                | Description                                                   |
 | ------------------ | ------- | ----------------------- | ------------------------------------------------------------- |
 | `platformHTTPPort` | numeric | Required<br>(exactly 1) | TCP port of Platform HTTP/API interface (network byte order). |
 
-_Parameter #7---operator payout address_
+*Parameter #7---operator payout address*
 
 | Name                    | Type   | Presence             | Description                                                                                                                                                                                         |
 | ----------------------- | ------ | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `operatorPayoutAddress` | string | Optional<br>(0 or 1) | The Dash address used for operator reward payments. Only allowed when the ProRegTx had a non-zero `operatorReward` value. If set to an empty string, the currently active payout address is reused. |
 
-_Parameter #8---fee source address_
+*Parameter #8---fee source address*
 
 | Name               | Type   | Presence             | Description                                                                                                                                                                                                       |
 | ------------------ | ------ | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `feeSourceAddress` | string | Optional<br>(0 or 1) | If specified, the wallet will only use coins from this address to fund the ProTx. If not specified, `operatorPayoutAddress` will be used. The private key belonging to this address must be known in your wallet. |
 
-_Result---provider update service transaction hash_
+*Result---provider update service transaction hash*
 
 | Name     | Type         | Presence                | Description                                            |
 | -------- | ------------ | ----------------------- | ------------------------------------------------------ |
 | `result` | string (hex) | Required<br>(exactly 1) | Provider update service transaction (ProUpServTx) hash |
 
-_Example from Dash Core 19.0.0_
+*Example from Dash Core 19.0.0*
 
 ```bash
 dash-cli -testnetprotx update_service_hpmn\
@@ -1618,25 +1612,25 @@ Result:
 
 The `protx register_submit` RPC combines the unsigned ProTx and a signature of the signMessage, signs all inputs which were added to cover fees and submits the resulting transaction to the network. Note: See [`protx register_prepare`](#protx-register-prepare) for more info about creating a ProTx and a message to sign.
 
-_Parameter #1---collateral address_
+*Parameter #1---collateral address*
 
 | Name | Type         | Presence                | Description                                                                         |
 | ---- | ------------ | ----------------------- | ----------------------------------------------------------------------------------- |
 | `tx` | string (hex) | Required<br>(exactly 1) | The serialized unsigned transaction previously returned by `protx register_prepare` |
 
-_Parameter #2---collateral index_
+*Parameter #2---collateral index*
 
 | Name  | Type            | Presence                | Description                                                             |
 | ----- | --------------- | ----------------------- | ----------------------------------------------------------------------- |
 | `sig` | string (base64) | Required<br>(exactly 1) | The signature signed with the collateral key. Must be in base64 format. |
 
-_Result---provider registration transaction hash_
+*Result---provider registration transaction hash*
 
 | Name     | Type         | Presence                | Description                                       |
 | -------- | ------------ | ----------------------- | ------------------------------------------------- |
 | `result` | string (hex) | Required<br>(exactly 1) | Provider registration transaction (ProRegTx) hash |
 
-_Example from Dash Core 0.13.0_
+*Example from Dash Core 0.13.0*
 
 ```bash
 dash-cli -testnet protx register_submit\
@@ -1664,37 +1658,37 @@ Result:
 
 The `protx revoke` RPC creates and sends a ProUpRevTx to the network.
 
-_Parameter #1---initial provider registration transaction hash_
+*Parameter #1---initial provider registration transaction hash*
 
 | Name        | Type         | Presence                | Description                                                   |
 | ----------- | ------------ | ----------------------- | ------------------------------------------------------------- |
 | `proTxHash` | string (hex) | Required<br>(exactly 1) | The hash of the provider transaction as hex in RPC byte order |
 
-_Parameter #2---operator private key_
+*Parameter #2---operator private key*
 
 | Name             | Type         | Presence                | Description                                                               |
 | ---------------- | ------------ | ----------------------- | ------------------------------------------------------------------------- |
 | `operatorPubKey` | string (hex) | Required<br>(exactly 1) | The operator private key belonging to the registered operator public key. |
 
-_Parameter #3---reason_
+*Parameter #3---reason*
 
 | Name     | Type   | Presence                | Description                |
 | -------- | ------ | ----------------------- | -------------------------- |
 | `reason` | number | Required<br>(exactly 1) | The reason for revocation. |
 
-_Parameter #4---fee source address_
+*Parameter #4---fee source address*
 
 | Name               | Type   | Presence             | Description                                                                                                                                                                                               |
 | ------------------ | ------ | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `feeSourceAddress` | string | Optional<br>(0 or 1) | If specified, the wallet will only use coins from this address to fund the ProTx. If not specified, `payoutAddress` will be used. The private key belonging to this address must be known in your wallet. |
 
-_Result---provider update revoke transaction hash_
+*Result---provider update revoke transaction hash*
 
 | Name     | Type         | Presence                | Description                                          |
 | -------- | ------------ | ----------------------- | ---------------------------------------------------- |
 | `result` | string (hex) | Required<br>(exactly 1) | Provider update revoke transaction (ProUpRevTx) hash |
 
-_Example from Dash Core 0.13.0_
+*Example from Dash Core 0.13.0*
 
 ```bash
 dash-cli -testnet protx revoke\
@@ -1711,48 +1705,48 @@ Result:
 ### ProTx Update Registrar
 
 > 🚧 Dash Core v19 hard fork
-> 
+>
 > Following the hard fork activation, masternodes registered prior to the hard fork must use the [`protx update_registrar_legacy` RPC](#protx-update-registrar-legacy) unless they have already updated to a basic scheme BLS key.
 
 The `protx update_registrar` RPC creates and sends a ProUpRegTx to the network.
 
-_Parameter #1---initial provider registration transaction hash_
+*Parameter #1---initial provider registration transaction hash*
 
 | Name        | Type         | Presence                | Description                                                   |
 | ----------- | ------------ | ----------------------- | ------------------------------------------------------------- |
 | `proTxHash` | string (hex) | Required<br>(exactly 1) | The hash of the provider transaction as hex in RPC byte order |
 
-_Parameter #2---operator public key_
+*Parameter #2---operator public key*
 
 | Name             | Type         | Presence                | Description                                                                                                                                                                                                                               |
 | ---------------- | ------------ | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `operatorPubKey` | string (hex) | Required<br>(exactly 1) | The operator public key. The private key does not have to be known. It has to match the private key which is later used when operating the masternode. If set to an empty string, the currently active operator BLS public key is reused. |
 
-_Parameter #3---voting address_
+*Parameter #3---voting address*
 
 | Name            | Type   | Presence                | Description                                                                                                                                                                                                                               |
 | --------------- | ------ | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `votingAddress` | string | Required<br>(exactly 1) | The voting address. The private key does not have to be known by your wallet. It has to match the private key which is later used when voting on proposals. If set to an empty string, the currently active voting key address is reused. |
 
-_Parameter #4---operator payout address_
+*Parameter #4---operator payout address*
 
 | Name            | Type   | Presence             | Description                                                                                                                       |
 | --------------- | ------ | -------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
 | `payoutAddress` | string | Optional<br>(0 or 1) | The Dash address to use for masternode reward payments. If set to an empty string, the currently active payout address is reused. |
 
-_Parameter #5---fee source address_
+*Parameter #5---fee source address*
 
 | Name               | Type   | Presence             | Description                                                                                                                                                                                               |
 | ------------------ | ------ | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `feeSourceAddress` | string | Optional<br>(0 or 1) | If specified, the wallet will only use coins from this address to fund the ProTx. If not specified, `payoutAddress` will be used. The private key belonging to this address must be known in your wallet. |
 
-_Result---provider update registrar transaction hash_
+*Result---provider update registrar transaction hash*
 
 | Name     | Type         | Presence                | Description                                             |
 | -------- | ------------ | ----------------------- | ------------------------------------------------------- |
 | `result` | string (hex) | Required<br>(exactly 1) | Provider update registrar transaction (ProUpRegTx) hash |
 
-_Example from Dash Core 0.13.0_
+*Example from Dash Core 0.13.0*
 
 ```bash
 dash-cli -testnet protx update_registrar\
@@ -1770,48 +1764,48 @@ Result:
 ### ProTx Update Registrar Legacy
 
 > 📘 When to use
-> 
+>
 > After v19 hard fork activation, this command must be used if a legacy scheme BLS key is being used to registrar update a masternode. This would include all masternodes registered prior to the hard fork that have not already updated to a new basic scheme BLS key.
 
 The `protx update_registrar_legacy` RPC creates and sends a ProUpRegTx to the network. This will update the operator key, voting key and payout address of the masternode specified by `proTxHash`. The owner key of the masternode must be known to your wallet. Requires wallet passphrase to be set with walletpassphrase call if wallet is encrypted.
 
-_Parameter #1---initial provider registration transaction hash_
+*Parameter #1---initial provider registration transaction hash*
 
 | Name        | Type         | Presence                | Description                                                   |
 | ----------- | ------------ | ----------------------- | ------------------------------------------------------------- |
 | `proTxHash` | string (hex) | Required<br>(exactly 1) | The hash of the provider transaction as hex in RPC byte order |
 
-_Parameter #2---operator public key_
+*Parameter #2---operator public key*
 
 | Name                    | Type         | Presence                | Description                                                                                                                                                                                                                               |
 | ----------------------- | ------------ | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `operatorPubKey_update` | string (hex) | Required<br>(exactly 1) | The operator public key. The private key does not have to be known. It has to match the private key which is later used when operating the masternode. If set to an empty string, the currently active operator BLS public key is reused. |
 
-_Parameter #3---voting address_
+*Parameter #3---voting address*
 
 | Name                   | Type   | Presence                | Description                                                                                                                                                                                                                                   |
 | ---------------------- | ------ | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `votingAddress_update` | string | Required<br>(exactly 1) | The voting key address. The private key does not have to be known by your wallet. It has to match the private key which is later used when voting on proposals. If set to an empty string, the currently active voting key address is reused. |
 
-_Parameter #4---operator payout address_
+*Parameter #4---operator payout address*
 
 | Name                   | Type   | Presence             | Description                                                                                                                       |
 | ---------------------- | ------ | -------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
 | `payoutAddress_update` | string | Optional<br>(0 or 1) | The Dash address to use for masternode reward payments. If set to an empty string, the currently active payout address is reused. |
 
-_Parameter #5---fee source address_
+*Parameter #5---fee source address*
 
 | Name               | Type   | Presence             | Description                                                                                                                                                                                                                |
 | ------------------ | ------ | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `feeSourceAddress` | string | Optional<br>(0 or 1) | If specified, the wallet will only use coins from this address to fund ProTx. If not specified, payoutAddress is the one that is going to be used. The private key belonging to this address must be known in your wallet. |
 
-_Result---provide transaction ID_
+*Result---provide transaction ID*
 
 | Name     | Type         | Presence                | Description            |
 | -------- | ------------ | ----------------------- | ---------------------- |
 | `result` | string (hex) | Required<br>(exactly 1) | Receive transaction ID |
 
-_Example from Dash Core 19.0.0_
+*Example from Dash Core 19.0.0*
 
 ```bash
 dash-cli -testnet protx update_registrar_legacy\
@@ -1830,43 +1824,43 @@ Result:
 
 The `protx update_service` RPC creates and sends a ProUpServTx to the network.
 
-_Parameter #1---initial provider registration transaction hash_
+*Parameter #1---initial provider registration transaction hash*
 
 | Name        | Type         | Presence                | Description                                                   |
 | ----------- | ------------ | ----------------------- | ------------------------------------------------------------- |
 | `proTxHash` | string (hex) | Required<br>(exactly 1) | The hash of the provider transaction as hex in RPC byte order |
 
-_Parameter #2---IP Address and port_
+*Parameter #2---IP Address and port*
 
 | Name        | Type   | Presence                | Description                                                          |
 | ----------- | ------ | ----------------------- | -------------------------------------------------------------------- |
 | `ipAndPort` | string | Required<br>(exactly 1) | IP and port in the form 'IP:PORT'.<br>Must be unique on the network. |
 
-_Parameter #3---operator key_
+*Parameter #3---operator key*
 
 | Name          | Type         | Presence                | Description                                                                      |
 | ------------- | ------------ | ----------------------- | -------------------------------------------------------------------------------- |
 | `operatorKey` | string (hex) | Required<br>(exactly 1) | The operator BLS private key associated with the registered operator public key. |
 
-_Parameter #4---operator payout address_
+*Parameter #4---operator payout address*
 
 | Name                    | Type   | Presence             | Description                                                                                                                                                                                         |
 | ----------------------- | ------ | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `operatorPayoutAddress` | string | Optional<br>(0 or 1) | The Dash address used for operator reward payments. Only allowed when the ProRegTx had a non-zero `operatorReward` value. If set to an empty string, the currently active payout address is reused. |
 
-_Parameter #5---fee source address_
+*Parameter #5---fee source address*
 
 | Name               | Type   | Presence             | Description                                                                                                                                                                                                       |
 | ------------------ | ------ | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `feeSourceAddress` | string | Optional<br>(0 or 1) | If specified, the wallet will only use coins from this address to fund the ProTx. If not specified, `operatorPayoutAddress` will be used. The private key belonging to this address must be known in your wallet. |
 
-_Result---provider update service transaction hash_
+*Result---provider update service transaction hash*
 
 | Name     | Type         | Presence                | Description                                            |
 | -------- | ------------ | ----------------------- | ------------------------------------------------------ |
 | `result` | string (hex) | Required<br>(exactly 1) | Provider update service transaction (ProUpServTx) hash |
 
-_Example from Dash Core 0.13.0_
+*Example from Dash Core 0.13.0*
 
 ```bash
 dash-cli -testnet protx update_service\
@@ -1883,7 +1877,7 @@ Result:
 
 ## Quorum
 
-_Added in Dash Core 0.14.0_
+*Added in Dash Core 0.14.0*
 
 The [`quorum` RPC](../api/remote-procedure-calls-evo.md#quorum) provides a set of commands for quorums (LLMQs).
 
@@ -1891,13 +1885,13 @@ The [`quorum` RPC](../api/remote-procedure-calls-evo.md#quorum) provides a set o
 
 The `quorum list` RPC displays a list of on-chain quorums.
 
-_Parameter #1---quorum count_
+*Parameter #1---quorum count*
 
 | Name    | Type   | Presence             | Description                                                                      |
 | ------- | ------ | -------------------- | -------------------------------------------------------------------------------- |
 | `count` | number | Optional<br>(0 or 1) | Number of quorums to list. Will list active quorums if `count` is not specified. |
 
-_Result---a list of quorums_
+*Result---a list of quorums*
 
 | Name               | Type         | Presence                | Description             |
 | ------------------ | ------------ | ----------------------- | ----------------------- |
@@ -1905,7 +1899,7 @@ _Result---a list of quorums_
 | →<br>Quorum        | array        | Required<br>(1 or more) | Array of quorum details |
 | → →<br>Quorum Hash | string (hex) | Optional<br>(0 or more) | A quorum hash           |
 
-_Example from Dash Core 0.14.0_
+*Example from Dash Core 0.14.0*
 
 ```bash
 dash-cli -testnet quorum list
@@ -1939,25 +1933,25 @@ Result:
 
 The `quorum info` RPC returns information about a specific quorum.
 
-_Parameter #1---LLMQ Type_
+*Parameter #1---LLMQ Type*
 
 | Name       | Type   | Presence                | Description                                                                                                                                                                               |
 | ---------- | ------ | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `llmqType` | number | Required<br>(exactly 1) | [Type of quorums](https://github.com/dashpay/dips/blob/master/dip-0006.md#current-llmq-types) to list:<br>`1` - LLMQ_50_60<br>`2` - LLMQ_400_60<br>`3` - LLMQ_400_85<br>`4` - LLMQ_100_67 |
 
-_Parameter #2---quorum hash_
+*Parameter #2---quorum hash*
 
 | Name         | Type         | Presence                | Description                  |
 | ------------ | ------------ | ----------------------- | ---------------------------- |
 | `quorumHash` | string (hex) | Required<br>(exactly 1) | The block hash of the quorum |
 
-_Parameter #3---secret key share_
+*Parameter #3---secret key share*
 
 | Name             | Type | Presence             | Description                                     |
 | ---------------- | ---- | -------------------- | ----------------------------------------------- |
 | `includeSkShare` | bool | Optional<br>(0 or 1) | Include the secret key share (default: `false`) |
 
-_Result---information about a quorum_
+*Result---information about a quorum*
 
 | Name                                  | Type         | Presence                | Description                                                                                                                                                                            |
 | ------------------------------------- | ------------ | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -1972,13 +1966,13 @@ _Result---information about a quorum_
 | → →<br>Member                         | object       | Required<br>(1 or more) | An object describing a particular member                                                                                                                                               |
 | → → →<br>`proTxHash`                  | string (hex) | Required<br>(exactly 1) | The masternode's Provider Registration transaction hash                                                                                                                                |
 | → → →<br>`service`                    | string       | Required<br>(exactly 1) | **Added in Dash Core 18.1.0**<br>The masternode's IP:Port                                                                                                                              |
-| → → →<br>`pubKeyOperator`             | string (hex) | Required<br>(exactly 1) | _Added in Dash Core 0.15.0_<br>The masternode's Operator public key                                                                                                                    |
+| → → →<br>`pubKeyOperator`             | string (hex) | Required<br>(exactly 1) | *Added in Dash Core 0.15.0*<br>The masternode's Operator public key                                                                                                                    |
 | → → →<br>`valid`                      | bool         | Required<br>(exactly 1) | Indicates if the member is valid                                                                                                                                                       |
 | → → →<br>`pubKeyShare`                | string       | Optional<br>(0 or 1)    | Member public key share                                                                                                                                                                |
 | →<br>`quorumPublicKey`                | string       | Required<br>(exactly 1) | Quorum public key                                                                                                                                                                      |
 | →<br>`secretKeyShare`                 | string       | Optional<br>(exactly 1) | Quorum secret key share                                                                                                                                                                |
 
-_Example from Dash Core 18.1.0_
+*Example from Dash Core 18.1.0*
 
 ```bash
 dash-cli -testnet quorum info 1 \
@@ -2020,17 +2014,17 @@ Result (truncated):
 
 The `quorum list` RPC displays the status of the current DKG process.
 
-> ❗️ 
-> 
+> ❗️
+>
 > Breaking change(s) in Dash Core 18.0. See parameter and/or response information for details.
 
-_Parameter #1---detail level_
+*Parameter #1---detail level*
 
 | Name           | Type   | Presence             | Description                                                                                                                                                                                                                                                      |
 | -------------- | ------ | -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `detail_level` | number | Optional<br>(0 or 1) | Detail level of output (default: 0):<br>`0` - Only show counts (_default_)<br>`1` - Show member indexes<br>`2` - Show member's ProTxHashes<br><br>_Note: Works only when Spork 17 is enabled and only displays details related to the node running the command._ |
+| `detail_level` | number | Optional<br>(0 or 1) | Detail level of output (default: 0):<br>`0` - Only show counts (*default*)<br>`1` - Show member indexes<br>`2` - Show member's ProTxHashes<br><br>*Note: Works only when Spork 17 is enabled and only displays details related to the node running the command.* |
 
-_Result (if detail level was 0 or omitted)---JSON DKG details_
+*Result (if detail level was 0 or omitted)---JSON DKG details*
 
 | Name                                      | Type             | Presence                | Description                                                                                                                                                                      |
 | ----------------------------------------- | ---------------- | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -2072,7 +2066,7 @@ _Result (if detail level was 0 or omitted)---JSON DKG details_
 | → → → →→<br>`outbound`                    | boolean          | Required<br>(exactly 1) | **Added in Dash Core 0.16.0**<br><br>Whether or not this is an outbound connection                                                                                               |
 | →<br>`minableCommitments`                 | object           | Required<br>(exactly 1) | Object containing minable commitments                                                                                                                                            |
 
-_Result (if detail level was 1)---JSON DKG details including member index_
+*Result (if detail level was 1)---JSON DKG details including member index*
 
 Note: detail level 1 includes all level 0 fields and expands the following fields.
 
@@ -2085,7 +2079,7 @@ Note: detail level 1 includes all level 0 fields and expands the following field
 | → → →<br>`receivedJustifications`       | array | Required<br>(exactly 1) | Array containing the member index for each justification received |
 | → → →<br>`receivedPrematureCommitments` | array | Required<br>(exactly 1) | Array containing the member index for each commitment received    |
 
-_Result (if detail level was 2)---JSON DKG details including member index and ProTx hash_
+*Result (if detail level was 2)---JSON DKG details including member index and ProTx hash*
 
 Note: detail level 2 includes all level 0 fields, adds the `allMembers` field, and expands several fields.
 
@@ -2117,7 +2111,7 @@ Note: detail level 2 includes all level 0 fields, adds the `allMembers` field, a
 | → → → → →<br>`proTxHash`                | string (hex) | Required<br>(exactly 1) | The hash of the quorum member's provider registration transaction as hex in RPC byte order                                            |
 | → → →<br>`allMembers`                   | array        | Required<br>(exactly 1) | Array containing the provider registration transaction hash for all quorum members                                                    |
 
-_Example from Dash Core 18.0.0_
+*Example from Dash Core 18.0.0*
 
 ```bash
 dash-cli -testnet quorum dkgstatus
@@ -2292,7 +2286,7 @@ Result (truncated):
 }
 ```
 
-_Example from Dash Core 18.0.0 (detail_level: 1)_
+*Example from Dash Core 18.0.0 (detail_level: 1)*
 
 ```bash
 dash-cli -testnet quorum dkgstatus 1
@@ -2435,7 +2429,7 @@ Result (truncated):
 
 ```
 
-_Example from Dash Core 18.0.0 (detail_level: 2)_
+*Example from Dash Core 18.0.0 (detail_level: 2)*
 
 ```bash
 dash-cli -testnet quorum dkgstatus 2
@@ -2709,35 +2703,35 @@ Result (truncated):
 
 The `quorum sign` RPC requests threshold-signing for a message.
 
-_Parameter #1---LLMQ Type_
+*Parameter #1---LLMQ Type*
 
 | Name       | Type   | Presence                | Description                                                                                                                                                                      |
 | ---------- | ------ | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `llmqType` | number | Required<br>(exactly 1) | [Type of quorum](https://github.com/dashpay/dips/blob/master/dip-0006.md#current-llmq-types):<br>`1` - LLMQ_50_60<br>`2` - LLMQ_400_60<br>`3` - LLMQ_400_85<br>`4` - LLMQ_100_67 |
 
-_Parameter #2---id_
+*Parameter #2---id*
 
 | Name | Type         | Presence                | Description                                                                                                                                                                                                                                                                                                                                           |
 | ---- | ------------ | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `id` | string (hex) | Required<br>(exactly 1) | Signing request ID. Signing request ids for ChainLocks and InstantSend are calculated as described in:<br> \* The [ChainLocks DIP](https://github.com/dashpay/dips/blob/master/dip-0008.md#signing-attempts)<br> \* The [LLMQ InstantSend DIP](https://github.com/dashpay/dips/blob/master/dip-0010.md#finalization-and-creation-of-islock-messages). |
 
-> 📘 
-> 
+> 📘
+>
 > For general signing requests, any 32 byte hex string can be provided as the request id. Note that if a quorum hash is not specified in parameter 4, a quorum will be selected automatically based in part on this value.
 
-_Parameter #3---message hash_
+*Parameter #3---message hash*
 
 | Name      | Type         | Presence                | Description                      |
 | --------- | ------------ | ----------------------- | -------------------------------- |
 | `msgHash` | string (hex) | Required<br>(exactly 1) | Hash of the message to be signed |
 
-_Parameter #4---quorum hash_
+*Parameter #4---quorum hash*
 
 | Name         | Type         | Presence             | Description           |
 | ------------ | ------------ | -------------------- | --------------------- |
 | `quorumHash` | string (hex) | Optional<br>(0 or 1) | The quorum identifier |
 
-_Parameter #5---submit_
+*Parameter #5---submit*
 
 | Name     | Type | Presence             | Description                                                                                                                                                                       |
 | -------- | ---- | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -2762,7 +2756,7 @@ _Result---(if submit = `false`) signature share JSON object_
 | →<br>`signHash`     | string (hex) | Required<br>(exactly 1) | Hash of `llmqType`, `quorumHash`, `id`, and `msgHash`                                                                                                                            |
 | →<br>`signature`    | string (hex) | Required<br>(exactly 1) | Signature share                                                                                                                                                                  |
 
-_Example from Dash Core 0.17.0_
+*Example from Dash Core 0.17.0*
 
 Submit signature share to network (default):
 
@@ -2778,7 +2772,7 @@ Result:
 false
 ```
 
-Return signature share object: 
+Return signature share object:
 
 ```bash
 dash-cli -testnet quorum sign 100 \
@@ -2801,30 +2795,29 @@ Result:
 }
 ```
 
-
 ### Quorum GetRecSig
 
 The `quorum getrecsig` RPC gets the recovered signature for a previous threshold-signing message request.
 
-_Parameter #1---LLMQ Type_
+*Parameter #1---LLMQ Type*
 
 | Name       | Type   | Presence                | Description                                                                                                                                                                      |
 | ---------- | ------ | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `llmqType` | number | Required<br>(exactly 1) | [Type of quorum](https://github.com/dashpay/dips/blob/master/dip-0006.md#current-llmq-types):<br>`1` - LLMQ_50_60<br>`2` - LLMQ_400_60<br>`3` - LLMQ_400_85<br>`4` - LLMQ_100_67 |
 
-_Parameter #2---id_
+*Parameter #2---id*
 
 | Name | Type         | Presence                | Description        |
 | ---- | ------------ | ----------------------- | ------------------ |
 | `id` | string (hex) | Required<br>(exactly 1) | Signing request ID |
 
-_Parameter #3---message hash_
+*Parameter #3---message hash*
 
 | Name      | Type         | Presence                | Description                      |
 | --------- | ------------ | ----------------------- | -------------------------------- |
 | `msgHash` | string (hex) | Required<br>(exactly 1) | Hash of the message to be signed |
 
-_Result---recovered signature_
+*Result---recovered signature*
 
 | Name              | Type         | Presence                | Description                                                                                                                                                                      |
 | ----------------- | ------------ | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -2836,7 +2829,7 @@ _Result---recovered signature_
 | →<br>`sig`        | string (hex) | Required<br>(exactly 1) | The recovered signature                                                                                                                                                          |
 | →<br>`hash`       | string (hex) | Required<br>(exactly 1) | The hash of the recovered signature                                                                                                                                              |
 
-_Example from Dash Core 0.14.0_
+*Example from Dash Core 0.14.0*
 
 ```bash
 dash-cli -testnet quorum getrecsig 1 \
@@ -2862,34 +2855,34 @@ Result:
 The `quorum hasrecsig` RPC checks for a recovered signature for a previous threshold-signing message request.
 
 > 🚧 Regtest Network Only
-> 
+>
 > Note: Used for RegTest testing only.
 
-_Parameter #1---LLMQ Type_
+*Parameter #1---LLMQ Type*
 
 | Name       | Type   | Presence                | Description                                                                                                                                                                      |
 | ---------- | ------ | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `llmqType` | number | Required<br>(exactly 1) | [Type of quorum](https://github.com/dashpay/dips/blob/master/dip-0006.md#current-llmq-types):<br>`1` - LLMQ_50_60<br>`2` - LLMQ_400_60<br>`3` - LLMQ_400_85<br>`4` - LLMQ_100_67 |
 
-_Parameter #2---id_
+*Parameter #2---id*
 
 | Name | Type         | Presence                | Description        |
 | ---- | ------------ | ----------------------- | ------------------ |
 | `id` | string (hex) | Required<br>(exactly 1) | Signing request ID |
 
-_Parameter #3---message hash_
+*Parameter #3---message hash*
 
 | Name      | Type         | Presence                | Description                      |
 | --------- | ------------ | ----------------------- | -------------------------------- |
 | `msgHash` | string (hex) | Required<br>(exactly 1) | Hash of the message to be signed |
 
-_Result---status_
+*Result---status*
 
 | Name   | Type | Presence                | Description                        |
 | ------ | ---- | ----------------------- | ---------------------------------- |
 | result | bool | Required<br>(exactly 1) | True or false depending on success |
 
-_Example from Dash Core 0.14.0_
+*Example from Dash Core 0.14.0*
 
 ```bash
 dash-cli -testnet quorum hasrecsig 1 \
@@ -2908,34 +2901,34 @@ true
 The `quorum isconflicting` RPC checks if there is a conflict for a threshold-signing message request.
 
 > 🚧 Regtest Network Only
-> 
+>
 > Note: Used for RegTest testing only.
 
-_Parameter #1---LLMQ Type_
+*Parameter #1---LLMQ Type*
 
 | Name       | Type   | Presence                | Description                                                                                                                                                                      |
 | ---------- | ------ | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `llmqType` | number | Required<br>(exactly 1) | [Type of quorum](https://github.com/dashpay/dips/blob/master/dip-0006.md#current-llmq-types):<br>`1` - LLMQ_50_60<br>`2` - LLMQ_400_60<br>`3` - LLMQ_400_85<br>`4` - LLMQ_100_67 |
 
-_Parameter #2---id_
+*Parameter #2---id*
 
 | Name | Type         | Presence                | Description        |
 | ---- | ------------ | ----------------------- | ------------------ |
 | `id` | string (hex) | Required<br>(exactly 1) | Signing request ID |
 
-_Parameter #3---message hash_
+*Parameter #3---message hash*
 
 | Name      | Type         | Presence                | Description                      |
 | --------- | ------------ | ----------------------- | -------------------------------- |
 | `msgHash` | string (hex) | Required<br>(exactly 1) | Hash of the message to be signed |
 
-_Result---status_
+*Result---status*
 
 | Name   | Type | Presence                | Description                        |
 | ------ | ---- | ----------------------- | ---------------------------------- |
 | result | bool | Required<br>(exactly 1) | True or false depending on success |
 
-_Example from Dash Core 0.14.0_
+*Example from Dash Core 0.14.0*
 
 ```bash
 dash-cli -testnet quorum isconflicting 1 \
@@ -2953,19 +2946,19 @@ false
 
 The [`quorum` RPC](../api/remote-procedure-calls-evo.md#quorum) checks which quorums the given masternode is a member of.
 
-_Parameter #1---proTxHash_
+*Parameter #1---proTxHash*
 
 | Name      | Type   | Presence                | Description                  |
 | --------- | ------ | ----------------------- | ---------------------------- |
 | proTxHash | string | Required<br>(exactly 1) | ProTxHash of the masternode. |
 
-_Parameter #2---scanQuorumsCount_
+*Parameter #2---scanQuorumsCount*
 
 | Name             | Type   | Presence | Description                                                                                                     |
 | ---------------- | ------ | -------- | --------------------------------------------------------------------------------------------------------------- |
 | scanQuorumsCount | number | Optional | Number of quorums to scan for. If not specified, the active quorum count for each specific quorum type is used. |
 
-_Result---list of quorums the masternode is a member of_
+*Result---list of quorums the masternode is a member of*
 
 | Name                     | Type             | Presence                | Description                                                                                  |
 | ------------------------ | ---------------- | ----------------------- | -------------------------------------------------------------------------------------------- |
@@ -2979,7 +2972,7 @@ _Result---list of quorums the masternode is a member of_
 | → →<br>`isValidMember`   | bool             | Required<br>(exactly 1) | Indicates if the member is valid                                                             |
 | → →<br>`memberIndex`     | number           | Required<br>(exactly 1) | Index of the member within the quorum                                                        |
 
-_Example from Dash Core 0.15.0_
+*Example from Dash Core 0.15.0*
 
 ```bash
 dash-cli -testnet quorum memberof 1 \
@@ -3002,19 +2995,19 @@ Result:
 ]
 ```
 
-_See also: none_
+*See also: none*
 
 ### Quorum ListExtended
 
 The `quorum listextended` RPC returns an extended list of on-chain quorums.
 
-_Parameter #1---height_
+*Parameter #1---height*
 
 | Name     | Type    | Presence             | Description                                                                     |
 | -------- | ------- | -------------------- | ------------------------------------------------------------------------------- |
 | `height` | numeric | Optional<br>(0 or 1) | The height index. Will list active quorums at tip if "height" is not specified. |
 
-_Result---list extended_
+*Result---list extended*
 
 | Name                      | Type             | Presence                | Description                                                     |
 | ------------------------- | ---------------- | ----------------------- | --------------------------------------------------------------- |
@@ -3027,7 +3020,7 @@ _Result---list extended_
 | →→→<br> `numValidMembers` | numeric          | Required<br>(exactly 1) | The total of valid members.                                     |
 | →→→<br> `healthRatio`     | numeric          | Required<br>(exactly 1) | The ratio of healthy members to quorum size. Range [0.0 - 1.0]. |
 
-_Example from Dash Core 18.2.0_
+*Example from Dash Core 18.2.0*
 
 ```bash
 dash-cli quorum listextended 1800330
@@ -3593,31 +3586,31 @@ Result:
 
 ```
 
-_See also: none_
+*See also: none*
 
 ### Quorum RotationInfo
 
 The `quorum rotationinfo` RPC returns  quorum rotation information. The response is a JSON representation of the data that would be returned in a [`qrinfo` message](../reference/p2p-network-data-messages.md#qrinfo).
 
-_Parameter #1---block request hash_
+*Parameter #1---block request hash*
 
 | Name               | Type         | Presence                | Description                   |
 | ------------------ | ------------ | ----------------------- | ----------------------------- |
 | `blockRequestHash` | string (hex) | Required<br>(exactly 1) | The block hash of the request |
 
-_Parameter #2---extra share_
+*Parameter #2---extra share*
 
 | Name         | Type | Presence             | Description                                                                                                           |
 | ------------ | ---- | -------------------- | --------------------------------------------------------------------------------------------------------------------- |
 | `extraShare` | bool | Optional<br>(0 or 1) | Request an extra share (default: false). This extra share would support validation against the previous set of LLMQs. |
 
-_Parameter #3---base block hashes number_
+*Parameter #3---base block hashes number*
 
 | Name               | Type         | Presence                | Description                |
 | ------------------ | ------------ | ----------------------- | -------------------------- |
 | `baseBlockHash...` | string (hex) | Optional<br>(0 or more) | Block hashes (default: "") |
 
-_Result---rotation info_
+*Result---rotation info*
 
 | Name                            | Type             | Presence                | Description                                                                                                |
 | ------------------------------- | ---------------- | ----------------------- | ---------------------------------------------------------------------------------------------------------- |
@@ -3635,7 +3628,7 @@ _Result---rotation info_
 | →<br>`quorumSnapshotList`       | array of objects | Required<br>(exactly 1) | Array of quorum snapshot list objects                                                                      |
 | →<br>`mnListDiffList`           | array of objects | Required<br>(exactly 1) | Array of masternode list diff objects                                                                      |
 
-_Example from Dash Core 18.0.0_
+*Example from Dash Core 18.0.0*
 
 ```bash
 dash-cli -testnet quorum rotationinfo 000001e1ef5f2e2bbc3de3b8b3c554e756ef2b7dcd1eb7552ff48fe319caff4b
@@ -3791,19 +3784,19 @@ Result (truncated):
 
 The `quorum selectquorum` RPC returns information about the quorum that would/should sign a request.
 
-_Parameter #1---LLMQ Type_
+*Parameter #1---LLMQ Type*
 
 | Name       | Type   | Presence                | Description                                                                                                                                                                               |
 | ---------- | ------ | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `llmqType` | number | Required<br>(exactly 1) | [Type of quorums](https://github.com/dashpay/dips/blob/master/dip-0006.md#current-llmq-types) to list:<br>`1` - LLMQ_50_60<br>`2` - LLMQ_400_60<br>`3` - LLMQ_400_85<br>`4` - LLMQ_100_67 |
 
-_Parameter #2---request id_
+*Parameter #2---request id*
 
 | Name | Type         | Presence                | Description    |
 | ---- | ------------ | ----------------------- | -------------- |
 | `id` | string (hex) | Required<br>(exactly 1) | The request ID |
 
-_Result---quorum hash and list of quorum members_
+*Result---quorum hash and list of quorum members*
 
 | Name                    | Type             | Presence                | Description                                                   |
 | ----------------------- | ---------------- | ----------------------- | ------------------------------------------------------------- |
@@ -3812,7 +3805,7 @@ _Result---quorum hash and list of quorum members_
 | →→<br>`recoveryMembers` | array            | Required<br>(exactly 1) | Array containing ProRegTx hashes                              |
 | →→→<br>ProRegTx Hash    | string (hex)     | Required<br>(exactly 1) | The hash of the provider transaction as hex in RPC byte order |
 
-_Example from Dash Core 0.16.0_
+*Example from Dash Core 0.16.0*
 
 ```bash
 dash-cli -testnet quorum selectquorum 1 \
@@ -3855,61 +3848,59 @@ Result:
 
 ```
 
-
-
-_See also: none_
+*See also: none*
 
 ### Quorum Verify
 
-> 👍 
-> 
+> 👍
+>
 > Added in Dash Core 0.17.0
 
 The `quorum verify` RPC tests if a quorum signature is valid for a request id and a message hash.
 
-_Parameter #1---LLMQ Type_
+*Parameter #1---LLMQ Type*
 
 | Name       | Type   | Presence                | Description                                                                                                                                                                      |
 | ---------- | ------ | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `llmqType` | number | Required<br>(exactly 1) | [Type of quorum](https://github.com/dashpay/dips/blob/master/dip-0006.md#current-llmq-types):<br>`1` - LLMQ_50_60<br>`2` - LLMQ_400_60<br>`3` - LLMQ_400_85<br>`4` - LLMQ_100_67 |
 
-_Parameter #2---id_
+*Parameter #2---id*
 
 | Name | Type         | Presence                | Description        |
 | ---- | ------------ | ----------------------- | ------------------ |
 | `id` | string (hex) | Required<br>(exactly 1) | Signing request ID |
 
-_Parameter #3---message hash_
+*Parameter #3---message hash*
 
 | Name      | Type         | Presence                | Description                      |
 | --------- | ------------ | ----------------------- | -------------------------------- |
 | `msgHash` | string (hex) | Required<br>(exactly 1) | Hash of the message to be signed |
 
-_Parameter #4---signature_
+*Parameter #4---signature*
 
 | Name        | Type         | Presence                | Description                |
 | ----------- | ------------ | ----------------------- | -------------------------- |
 | `signature` | string (hex) | Required<br>(exactly 1) | Quorum signature to verify |
 
-_Parameter #5---quorum hash_
+*Parameter #5---quorum hash*
 
 | Name         | Type         | Presence             | Description                                                                     |
 | ------------ | ------------ | -------------------- | ------------------------------------------------------------------------------- |
 | `quorumHash` | string (hex) | Optional<br>(0 or 1) | The quorum identifier. Set to `""` if you want to specify `signHeight` instead. |
 
-_Parameter #6---sign height_
+*Parameter #6---sign height*
 
 | Name         | Type   | Presence             | Description                                                                       |
 | ------------ | ------ | -------------------- | --------------------------------------------------------------------------------- |
 | `signHeight` | number | Optional<br>(0 or 1) | The height at which the message was signed. Only works when `quorumHash` is `""`. |
 
-_Result---status_
+*Result---status*
 
 | Name   | Type | Presence                | Description                                     |
 | ------ | ---- | ----------------------- | ----------------------------------------------- |
 | result | bool | Required<br>(exactly 1) | True or false depending on verification success |
 
-_Example from Dash Core 0.17.0_
+*Example from Dash Core 0.17.0*
 
 Verify the provided signature was valid:
 
@@ -3929,37 +3920,37 @@ true
 
 ## VerifyChainLock
 
-> 👍 
-> 
+> 👍
+>
 > Added in Dash Core 0.17.0
 
 The `verifychainlock` RPC tests if a quorum signature is valid for a ChainLock.
 
-_Parameter #1---block hash_
+*Parameter #1---block hash*
 
 | Name        | Type         | Presence                | Description                     |
 | ----------- | ------------ | ----------------------- | ------------------------------- |
 | `blockhash` | string (hex) | Required<br>(exactly 1) | The block hash of the ChainLock |
 
-_Parameter #2---signature_
+*Parameter #2---signature*
 
 | Name        | Type         | Presence                | Description                       |
 | ----------- | ------------ | ----------------------- | --------------------------------- |
 | `signature` | string (hex) | Required<br>(exactly 1) | The ChainLock signature to verify |
 
-_Parameter #3---block height_
+*Parameter #3---block height*
 
 | Name          | Type   | Presence             | Description                                                                                           |
 | ------------- | ------ | -------------------- | ----------------------------------------------------------------------------------------------------- |
 | `blockHeight` | number | Optional<br>(0 or 1) | The height of the ChainLock. There will be an internal lookup of `blockHash` if this is not provided. |
 
-_Result---status_
+*Result---status*
 
 | Name   | Type | Presence                | Description                                     |
 | ------ | ---- | ----------------------- | ----------------------------------------------- |
 | result | bool | Required<br>(exactly 1) | True or false depending on verification success |
 
-_Example from Dash Core 0.17.0_
+*Example from Dash Core 0.17.0*
 
 Verify the provided signature was valid:
 
@@ -3977,43 +3968,43 @@ true
 
 ## VerifyISLock
 
-> 👍 
-> 
+> 👍
+>
 > Added in Dash Core 0.17.0
 
 The `verifyislock` RPC tests if a quorum signature is valid for an InstantSend Lock.
 
-_Parameter #1---id_
+*Parameter #1---id*
 
 | Name | Type         | Presence                | Description        |
 | ---- | ------------ | ----------------------- | ------------------ |
 | `id` | string (hex) | Required<br>(exactly 1) | Signing request ID |
 
-_Parameter #2---transaction id_
+*Parameter #2---transaction id*
 
 | Name   | Type         | Presence                | Description               |
 | ------ | ------------ | ----------------------- | ------------------------- |
 | `txid` | string (hex) | Required<br>(exactly 1) | The transaction id (TXID) |
 
-_Parameter #3---signature_
+*Parameter #3---signature*
 
 | Name        | Type         | Presence                | Description                              |
 | ----------- | ------------ | ----------------------- | ---------------------------------------- |
 | `signature` | string (hex) | Required<br>(exactly 1) | The InstantSend Lock signature to verify |
 
-_Parameter #4---maximum height_
+*Parameter #4---maximum height*
 
 | Name        | Type   | Presence             | Description                               |
 | ----------- | ------ | -------------------- | ----------------------------------------- |
 | `maxHeight` | number | Optional<br>(0 or 1) | The maximum height to search quorums from |
 
-_Result---status_
+*Result---status*
 
 | Name   | Type | Presence                | Description                                     |
 | ------ | ---- | ----------------------- | ----------------------------------------------- |
 | result | bool | Required<br>(exactly 1) | True or false depending on verification success |
 
-_Example from Dash Core 0.17.0_
+*Example from Dash Core 0.17.0*
 
 Verify the provided signature was valid:
 

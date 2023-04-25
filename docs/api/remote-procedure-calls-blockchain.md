@@ -89,6 +89,7 @@ dash-cli -testnet getbestchainlock
 ```
 
 Result:
+
 ``` json
 {
   "blockhash": "00000c0e7a866e67444813858b976886d839aff28f56dc178c92ed1390c97f4e",
@@ -132,7 +133,7 @@ Name | Type | Presence | Description
 →<br>`size` | number (int) | Required<br>(exactly 1) | The size of this block in serialized block format, counted in bytes
 →<br>`height` | number (int) | Required<br>(exactly 1) | The height of this block on its block chain
 →<br>`version` | number (int) | Required<br>(exactly 1) | This block's version number.  See [block version numbers](../reference/block-chain-block-headers.md#block-versions)
-→<br>`versionHex` | string (hex) | Required<br>(exactly 1) | _Added in Bitcoin Core 0.13.0_<br><br>The block version formatted in hexadecimal
+→<br>`versionHex` | string (hex) | Required<br>(exactly 1) | *Added in Bitcoin Core 0.13.0*<br><br>The block version formatted in hexadecimal
 →<br>`merkleroot` | string (hex) | Required<br>(exactly 1) | The merkle root for this block, encoded as hex in RPC byte order
 →<br>`tx` | array | Required<br>(exactly 1) | An array containing the TXIDs of all transactions in this block.  The transactions appear in the array in the same order they appear in the serialized block
 → →<br>TXID | string (hex) | Required<br>(1 or more) | The TXID of a transaction in this block, encoded as hex in RPC byte order
@@ -152,8 +153,6 @@ Name | Type | Presence | Description
 →<br>`nextblockhash` | string (hex) | Optional<br>(0 or 1) | The hash of the next block on the best block chain, if known, encoded as hex in RPC byte order
 →<br>`chainlock` | bool | Required<br>(exactly 1) | *Added in Dash Core 0.14.0*<br><br>If set to `true`, this transaction is in a block that is locked (not susceptible to a chain re-org)
 
-
-
 *Result (if verbosity was `2`---a JSON block with full transaction details*
 
 Name | Type | Presence | Description
@@ -164,7 +163,7 @@ Name | Type | Presence | Description
 →<br>`size` | number (int) | Required<br>(exactly 1) | The size of this block in serialized block format, counted in bytes
 →<br>`height` | number (int) | Required<br>(exactly 1) | The height of this block on its block chain
 →<br>`version` | number (int) | Required<br>(exactly 1) | This block's version number.  See [block version numbers](../reference/block-chain-block-headers.md#block-versions)
-→<br>`versionHex` | string (hex) | Required<br>(exactly 1) | _Added in Bitcoin Core 0.13.0_<br><br>The block version formatted in hexadecimal
+→<br>`versionHex` | string (hex) | Required<br>(exactly 1) | *Added in Bitcoin Core 0.13.0*<br><br>The block version formatted in hexadecimal
 →<br>`merkleroot` | string (hex) | Required<br>(exactly 1) | The merkle root for this block, encoded as hex in RPC byte order
 →<br>`tx` | array | Required<br>(exactly 1) | An array containing the TXIDs of all transactions in this block.  The transactions appear in the array in the same order they appear in the serialized block
 → →<br>`txid` | string (hex) | Required<br>(exactly 1) | The transaction's TXID encoded as hex in RPC byte order
@@ -398,7 +397,7 @@ Name | Type | Presence | Description
 →<br>`difficulty` | number (real) | Required<br>(exactly 1) | The difficulty of the highest-height block in the best block chain
 →<br>`mediantime` | number (int) | Required<br>(exactly 1) | *Added in Bitcoin Core 0.12.0*<br><br>The median time of the 11 blocks before the most recent block on the blockchain.  Used for validating transaction locktime under BIP113
 →<br>`verificationprogress` | number (real) | Required<br>(exactly 1) | Estimate of what percentage of the block chain transactions have been verified so far, starting at 0.0 and increasing to 1.0 for fully verified.  May slightly exceed 1.0 when fully synced to account for transactions in the memory pool which have been verified before being included in a block
-→<br>`initialblockdownload` | boolean | Required<br>(exactly 1) | *Added in Dash Core 0.16.0*<br><br>An estimate of whether this node is in [Initial Block Download](../guide/p2p-network-initial-block-download.md) mode (_debug information_)
+→<br>`initialblockdownload` | boolean | Required<br>(exactly 1) | *Added in Dash Core 0.16.0*<br><br>An estimate of whether this node is in [Initial Block Download](../guide/p2p-network-initial-block-download.md) mode (*debug information*)
 →<br>`chainwork` | string (hex) | Required<br>(exactly 1) | The estimated number of block header hashes checked from the genesis block to this block, encoded as big-endian hex
 →<br>`size_on_disk` | number (int) | Required<br>(exactly 1) | *Added in Dash Core 0.16.0*<br><br>The estimated size of the block and undo files on disk
 →<br>`pruned` | bool | Required<br>(exactly 1) | *Added in Bitcoin Core 0.11.0*<br><br>Indicates if the blocks are subject to pruning
@@ -928,7 +927,7 @@ The [`getblockstats` RPC](../api/remote-procedure-calls-blockchain.md#getblockst
 >
 > Breaking change(s) in Dash Core 18.0. See parameter and/or response information for details.
 
-This RPC won't work for some heights if pruning is enabled. Since Dash Core 18.1, `-txindex` is no longer required and it works for all non-pruned blocks. 
+This RPC won't work for some heights if pruning is enabled. Since Dash Core 18.1, `-txindex` is no longer required and it works for all non-pruned blocks.
 
 *Parameter #1---hash_or_height*
 
@@ -990,6 +989,7 @@ dash-cli getblockstats 1000 '["minfeerate","avgfeerate"]'
 ```
 
 Result:
+
 ``` json
 {
   "avgfeerate": 0,
@@ -1082,6 +1082,7 @@ dash-cli -testnet getchaintxstats
 ```
 
 Result:
+
 ``` json
 {
   "time": 1634200935,
@@ -1613,12 +1614,13 @@ Name | Type | Presence | Description
 
 ``` bash
 dash-cli getmerkleblocks \
-	"2303028005802040100040000008008400048141010000f8400420800080025004000004130000000000000001" \
-	"00000000007e1432d2af52e8463278bf556b55cf5049262f25634557e2e91202"
-	2000
+  "2303028005802040100040000008008400048141010000f8400420800080025004000004130000000000000001" \
+  "00000000007e1432d2af52e8463278bf556b55cf5049262f25634557e2e91202"
+  2000
 ```
 
 Result (truncated):
+
 ``` json
 [
   "000000202c...aefc440107",
@@ -1692,6 +1694,7 @@ dash-cli -testnet getspecialtxes \
 ```
 
 Result:
+
 ``` json
 [
   "1572a15f56307e413afe3cb7ea0017a1a3fd6d89c6c5f258cc17b2888a8e7fff",
@@ -1708,6 +1711,7 @@ dash-cli -testnet getspecialtxes \
 ```
 
 Result:
+
 ``` json
 [
   "0300010001ea721d7420a9b58025894d08f9fecc73b7b87ed09277fa99dad5aa028ea357e1000000006b48304502210093c409672eed335f80630d7108c108d0b85ebe4d8be0758f8a3745f617c4b57302203175063605552c89f6de7f3dadc1773d5ef773b7cc0ccf98e6c5555ea75ba307012102b21d19fec95d9863c5b12fafeb60530e1cfc51d83f49ea9bca7192abb8b83e46feffffff01c4bb609a010000001976a9142efe9f9d3b36b133364d3cccbd27db75a0fbdcb788ac00000000fd120101000000000031567fbaf591ae9d2d0e9050bebce6a311cfd900616f851a3a630aa65e53f6940000000000000000000000000000ffffad3d1ee74a43c1ad3af209f75deaeb9216fc8339fd48d376f9b007ffa44583c9908f4aaca8dd97990c56043e475723f90940ef5fd7d493152540f25f58fb8c965ee5e1be4f850a661476c1ad3af209f75deaeb9216fc8339fd48d376f9b0e8031976a91454bbd7bd7c21553612d60ab16579e51efbcb135288acc281e8bf5a0dd22dfc9f1edeef9ef248f965a79210d997da37fb3e1dec76d1a4412096809bc005c860a0215cb008e3044b972688443b0b7a31ac5a04b728e63b1b5c5489e33dd666435f93c646523ad8a1d935a58957026749cbd0a9bf7e09a77388",
@@ -1723,6 +1727,7 @@ dash-cli -testnet getspecialtxes \
 ```
 
 Result:
+
 ``` json
 [
   {
@@ -2090,7 +2095,7 @@ Result:
 
 The [`savemempool` RPC](../api/remote-procedure-calls-blockchain.md#savemempool) dumps the mempool to disk.
 
-_Parameters: none_
+*Parameters: none*
 
 *Example from Dash Core 0.16.0*
 
