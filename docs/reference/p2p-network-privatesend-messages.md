@@ -2,7 +2,7 @@
 
 The following network messages all help control the CoinJoin features built into Dash and facilitated by the [masternode](../resources/glossary.md#masternode) network.
 
-Since the messages are all related to a single process, this diagram shows them sequentially numbered. The [`dssu` message](../reference/p2p-network-privatesend-messages.md#dssu) (not shown) is sent by the masternode in conjunction with some responses. For additional details, refer to the Developer Guide [CoinJoin section](../guide/dash-features-privatesend.md).
+Since the messages are all related to a single process, this diagram shows them sequentially numbered. The [`dssu` message](../reference/p2p-network-privatesend-messages.md#dssu) (not shown) is sent by the masternode in conjunction with some responses. For additional details, refer to the Developer Guide [CoinJoin section](../guide/dash-features-coinjoin.md).
 
 ![Overview Of P2P Protocol PrivateSend Request And Reply Messages](https://dash-docs.github.io/img/dev/en-p2p-privatesend-messages.svg)
 

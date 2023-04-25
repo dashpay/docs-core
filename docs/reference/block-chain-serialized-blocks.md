@@ -27,7 +27,7 @@ The block reward is divided into three parts: [miner](../resources/glossary.md#m
 | Payee | Subsidy | Description |
 | ----- | -------- | ----------- |
 | Miner | Varies | Payment for mining
-| Masternode | Varies | Payment for masternode services ([CoinJoin](../guide/dash-features-privatesend.md), [InstantSend](../guide/dash-features-instantsend.md), [Governance](https://docs.dash.org/en/stable/introduction/features.html#decentralized-governance), etc.)
+| Masternode | Varies | Payment for masternode services ([CoinJoin](../guide/dash-features-coinjoin.md), [InstantSend](../guide/dash-features-instantsend.md), [Governance](https://docs.dash.org/en/stable/introduction/features.html#decentralized-governance), etc.)
 | Superblock | 10% | Payment for maintenance/expansion of the ecosystem (Core development, marketing, integration, etc.)
 
 <img src="https://files.readme.io/fa5bfbe-mining-banner-1.svg" alt="Mining" style="width:50%;text-align:center;"/>

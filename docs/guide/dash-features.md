@@ -12,7 +12,7 @@ While Dash is based on Bitcoin and compatible with many key components of the Bi
 
 The most important differentiating feature of the Dash payments network is the concept of a masternode. On a traditional p2p network, nodes participate equally in the sharing of data and network resources.
 
-However, the Dash network has a second layer of network participants that provide enhanced functionality in exchange for compensation. This second layer of masternodes enables the industry-leading features described in this section - most notably: [InstantSend](../guide/dash-features-instantsend.md), [ChainLocks](../guide/dash-features-chainlocks.md), [CoinJoin](../guide/dash-features-privatesend.md), and [Governance](../guide/dash-features-governance.md).
+However, the Dash network has a second layer of network participants that provide enhanced functionality in exchange for compensation. This second layer of masternodes enables the industry-leading features described in this section - most notably: [InstantSend](../guide/dash-features-instantsend.md), [ChainLocks](../guide/dash-features-chainlocks.md), [CoinJoin](../guide/dash-features-coinjoin.md), and [Governance](../guide/dash-features-governance.md).
 
 #### High-Performance Masternodes
 
@@ -46,7 +46,7 @@ Disable governance mode is enable by setting `disablegovernance=1` in the `dash.
 >
 > Please use [disable governance](#disable-governance-mode) mode
 
-Lite mode provides a way to run Dash Core full nodes with Dash-specific functionality disabled. Masternodes **_cannot_** be run in lite mode since they are paid to provide the services that lite mode disables. Disabled items include: [InstantSend](../guide/dash-features-instantsend.md), [ChainLocks](../guide/dash-features-chainlocks.md), [CoinJoin](../guide/dash-features-privatesend.md), Masternode-related information, and [Governance](../guide/dash-features-governance.md) details.
+Lite mode provides a way to run Dash Core full nodes with Dash-specific functionality disabled. Masternodes **_cannot_** be run in lite mode since they are paid to provide the services that lite mode disables. Disabled items include: [InstantSend](../guide/dash-features-instantsend.md), [ChainLocks](../guide/dash-features-chainlocks.md), [CoinJoin](../guide/dash-features-coinjoin.md), Masternode-related information, and [Governance](../guide/dash-features-governance.md) details.
 
 >❗️ Lite mode effects
 >
@@ -60,7 +60,7 @@ Lite mode is enable by setting `litemode=1` in the `dash.conf` file or by runnin
 dash-features-instantsend
 dash-features-chainlocks
 dash-features-governance
-dash-features-privatesend
+dash-features-coinjoin
 dash-features-masternode-quorums
 dash-features-proof-of-service
 dash-features-masternode-payment
