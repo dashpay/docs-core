@@ -32,6 +32,7 @@ We save the address returned to a shell variable.
 ``` bash
 > dash-cli -regtest getaddressinfo $NEW_ADDRESS3
 ```
+
 ``` json
 {
   "address": "yLknHbtnjJRVWQr78aTfCPfNB42jfNkDWK",
@@ -47,6 +48,7 @@ We save the address returned to a shell variable.
 }
 
 ```
+
 ``` bash
 
 > NEW_ADDRESS3_PUBLIC_KEY=038007ef6fd812d73da054271b68a42dae0667[...]
@@ -58,7 +60,7 @@ Use the [`createmultisig` RPC](../api/remote-procedure-calls-util.md#createmulti
 
 >❗️ Redeem Script
 >
-> **Warning:** You must not lose the redeem script, especially if you don't have a record of which public keys you used to create the P2SH multisig address. You need the redeem script to spend any dash sent to the P2SH address. 
+> **Warning:** You must not lose the redeem script, especially if you don't have a record of which public keys you used to create the P2SH multisig address. You need the redeem script to spend any dash sent to the P2SH address.
 >
 > If you lose the redeem script, you can recreate it by running the same command above, with the public keys listed in the same order. **However, if you lose both the redeem script and even one of the public keys, you will never be able to spend duffs sent to that P2SH address.**
 
@@ -72,6 +74,7 @@ Neither the address nor the redeem script are stored in the wallet when you use 
       "'$NEW_ADDRESS3_PUBLIC_KEY'"
     ]'''
 ```
+
 ``` json
 {
   "address": "8meEZF54K7GxhHhdLCCeNwFQjHENv4CK86",
@@ -81,6 +84,7 @@ Neither the address nor the redeem script are stored in the wallet when you use 
                   8a42dae06672cff2a30b2814935537e5930ebf653ae"
 }
 ```
+
 ``` bash
 
 > P2SH_ADDRESS=8meEZF54K7GxhHhdLCCeNwFQjHENv4CK86
@@ -107,6 +111,7 @@ We use the [`getrawtransaction` RPC](../api/remote-procedure-calls-raw-transacti
 ``` bash
 > dash-cli -regtest getrawtransaction $UTXO_TXID 1
 ```
+
 ``` json
 {
   "hex": "010000000130d100f7762956100a2396403c60e13e7a13520167acc6d38978ec\
@@ -171,6 +176,7 @@ We use the [`getrawtransaction` RPC](../api/remote-procedure-calls-raw-transacti
   ]
 }
 ```
+
 ``` bash
 
 > UTXO_VOUT=0
@@ -256,6 +262,7 @@ We make the first [signature](../resources/glossary.md#signature). The input arg
     ]
     '''
 ```
+
 ``` json
 {
   "hex": "0100000001529c9f774521b7f5104b709e899d8547078ca4a993dbd761aea902\
@@ -286,6 +293,7 @@ We make the first [signature](../resources/glossary.md#signature). The input arg
   ]
 }
 ```
+
 ``` bash
 
 > PARTLY_SIGNED_RAW_TX=010000000175e1769813db8418fea17576694af1f[...]
@@ -310,6 +318,7 @@ The [`signrawtransactionwithkey`](../api/remote-procedure-calls-raw-transactions
     ]
     '''
 ```
+
 ``` json
 {
   "hex": "0100000001529c9f774521b7f5104b709e899d8547078ca4a993dbd761aea902\
@@ -326,6 +335,7 @@ The [`signrawtransactionwithkey`](../api/remote-procedure-calls-raw-transactions
   "complete": true
 }
 ```
+
 ``` bash
 
 > SIGNED_RAW_TX=0100000001529c9f774521b7f5104b709e899d8547078ca4[...]

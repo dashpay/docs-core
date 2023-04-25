@@ -31,7 +31,7 @@ def send(msg,payload):
         + payload_raw
     )
     sys.stdout.flush()
-``` 
+```
 
 To connect to the P2P [network](../resources/glossary.md#network), the trivial Python function above was developed to compute message headers and send payloads decoded from hex.
 
@@ -52,8 +52,7 @@ send("version",
     + "93050500" # ........................ Starting block height: 329107
     + "00" # .............................. Relay transactions: false
 )
-``` 
-
+```
 
 Peers on the network will not accept any requests until you send them a [`version` message](../reference/p2p-network-control-messages.md#version). The receiving node will reply with their [`version` message](../reference/p2p-network-control-messages.md#version) and a [`verack` message](../reference/p2p-network-control-messages.md#verack).
 

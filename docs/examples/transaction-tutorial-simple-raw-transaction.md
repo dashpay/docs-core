@@ -4,7 +4,7 @@ The [raw transaction RPCs](../api/remote-procedure-calls-raw-transactions.md) al
 
 This subsection covers one of the simplest possible raw transactions.
 
-> 📘 
+> 📘
 >
 > Note: the following steps pick up where the [Simple Spending Tutorial](../examples/transaction-tutorial-simple-spending.md) left off
 
@@ -12,7 +12,7 @@ This subsection covers one of the simplest possible raw transactions.
 
 Re-rerun `listunspent`. We now have three UTXOs: the two transactions we created before plus the [coinbase transaction](../resources/glossary.md#coinbase-transaction) from block #2. We save the [TXID](../resources/glossary.md#transaction-identifiers) and [output index](../resources/glossary.md#output-index) number (vout) of that [coinbase](../resources/glossary.md#coinbase) UTXO to shell variables.
 
-```shell 
+```shell
 dash-cli -regtest listunspent
 ```
 
@@ -64,7 +64,7 @@ dash-cli -regtest listunspent
 
 ## 2. Get new address
 
-```shell 
+```shell
 dash-cli -regtest getnewaddress
 ```
 
@@ -84,7 +84,7 @@ Using two arguments to the [`createrawtransaction` RPC](../api/remote-procedure-
 
 In this example, our input had 500.0000 DASH and our output (`$NEW_ADDRESS`) is being paid 499.9999 DASH, so the transaction will include a fee of 0.0001 DASH. If we had paid `$NEW_ADDRESS` only 100 DASH with no other changes to this transaction, the [transaction fee](../resources/glossary.md#transaction-fee) would be a whopping 400 DASH. See the [Complex Raw Transaction subsection](../examples/transaction-tutorial-complex-raw-transaction.md) below for how to create a transaction with multiple outputs so you can send the change back to yourself.
 
-```shell 
+```shell
 ## Outputs - inputs = transaction fee, so always double-check your math!
 dash-cli -regtest createrawtransaction ''' \
     [ \
@@ -111,7 +111,7 @@ dash-cli -regtest createrawtransaction ''' \
 
 Use the [`decoderawtransaction` RPC](../api/remote-procedure-calls-raw-transactions.md#decoderawtransaction) to see exactly what the transaction we just created does.
 
-```shell 
+```shell
 dash-cli -regtest decoderawtransaction $RAW_TX
 ```
 
@@ -156,7 +156,7 @@ dash-cli -regtest decoderawtransaction $RAW_TX
 
 Use the [`signrawtransactionwithwallet` RPC](../api/remote-procedure-calls-wallet.md#signrawtransactionwithwallet) to sign the transaction created by `createrawtransaction` and save the returned "hex" raw format signed transaction to a shell variable.
 
-```shell 
+```shell
 dash-cli -regtest signrawtransactionwithwallet $RAW_TX
 ```
 
@@ -171,6 +171,7 @@ dash-cli -regtest signrawtransactionwithwallet $RAW_TX
   "complete": true
 }
 ```
+
 ``` bash
 
 > SIGNED_RAW_TX=0100000001a8364935baa9ef11de59a7ee3d956934d75297[...]
@@ -182,7 +183,7 @@ Even though the transaction is now complete, the Dash Core [node](../resources/g
 
 Send the signed transaction to the connected node using the [`sendrawtransaction` RPC](../api/remote-procedure-calls-raw-transactions.md#sendrawtransaction). After accepting the transaction, the node would usually then broadcast it to other [peers](../resources/glossary.md#peer), but we're not currently connected to other peers because we started in [regression test mode](../resources/glossary.md#regression-test-mode).
 
-```shell 
+```shell
 dash-cli -regtest sendrawtransaction $SIGNED_RAW_TX
 ```
 
@@ -194,7 +195,7 @@ fa0f4105b0a2b2706d65581c5e6411d3970253c7f231944fa2f978b4a3d9010d
 
 Generate a block to confirm the transaction and then clear our shell variables.
 
-```shell 
+```shell
 dash-cli -regtest generate 1
 
 unset UTXO_TXID UTXO_VOUT NEW_ADDRESS RAW_TX SIGNED_RAW_TX

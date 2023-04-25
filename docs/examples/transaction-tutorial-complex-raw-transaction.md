@@ -4,7 +4,7 @@ In this example, we'll create a [transaction](../resources/glossary.md#transacti
 
 ## 1. List unspent outputs
 
-```shell 
+```shell
 > dash-cli -regtest listunspent
 ```
 
@@ -78,7 +78,7 @@ For our two inputs, we select two UTXOs by placing the txid and output index num
 
 >❗️ Private Key Warning
 >
-> **Warning:** Users should never manually manage private keys on mainnet. As dangerous as raw transactions are (see warnings above), making a mistake with a private key can be much worse---as in the case of a HD wallet [cross-generational key compromise](../guide/wallets-wallet-files.md#hardened-keys). 
+> **Warning:** Users should never manually manage private keys on mainnet. As dangerous as raw transactions are (see warnings above), making a mistake with a private key can be much worse---as in the case of a HD wallet [cross-generational key compromise](../guide/wallets-wallet-files.md#hardened-keys).
 **These examples are to help you learn, not for you to emulate on mainnet.**
 
 Use the [`dumpprivkey` RPC](../api/remote-procedure-calls-wallet.md#dumpprivkey) to get the [private keys](../resources/glossary.md#private-key) corresponding to the [public keys](../resources/glossary.md#public-key) used in the two UTXOs our inputs we will be spending.  We need the private keys so we can sign each of the inputs separately.
@@ -158,6 +158,7 @@ The result is a raw transaction with only one input signed; the fact that the tr
       "'$UTXO1_PRIVATE_KEY'"
     ]'''
 ```
+
 ``` json
 {
   "hex": "0100000002843d61e81058f0e682313b9e6f45ce67464b41fd8bb0\
@@ -181,6 +182,7 @@ The result is a raw transaction with only one input signed; the fact that the tr
   ]
 }
 ```
+
 ``` bash
 
 > PARTLY_SIGNED_RAW_TX=0100000002843d61e81058f0e682313b9e6f45ce6[...]
@@ -196,6 +198,7 @@ To sign the second input, we repeat the process we used to sign the first input 
       "'$UTXO2_PRIVATE_KEY'"
     ]'''
 ```
+
 ``` json
 {
   "hex": "0100000002843d61e81058f0e682313b9e6f45ce67464b41fd8bb0\

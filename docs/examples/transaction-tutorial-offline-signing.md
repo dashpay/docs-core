@@ -21,8 +21,7 @@ f84678135aa56d596dea00000000494830450221009f7f356c0cc2d3337b5f76dfc6de9f\
 7f40f321db1c13cd70cf08bdab3e23c8d19620ffffffff02f04c3ba40b0000001976a914\
 ec73fe6129b249617bb5f20c8760708055fb6fdb88ac00ca9a3b000000001976a914cb7a\
 56b046479f8c247875d672d3e1aed18c33f488ac00000000
-``` 
-
+```
 
 ## 1. Decode signed transaction
 
@@ -30,7 +29,7 @@ Decode the signed [raw transaction](../resources/glossary.md#raw-transaction) so
 
 ``` shell
 dash-cli -regtest decoderawtransaction $OLD_SIGNED_RAW_TX
-``` 
+```
 
 ``` json
 {
@@ -104,6 +103,7 @@ dash-cli -regtest decoderawtransaction $OLD_SIGNED_RAW_TX
   ]
 }
 ```
+
 ``` bash
 
 > UTXO_TXID=5efd61cf24c9644d79646627c4d1e192e9b2a760a5c720db8f4a9f76cb781077
@@ -158,7 +158,7 @@ In the other raw transaction subsections above, the previous [output](../resourc
 
 ### 4a. Without Pubkey Script
 
-> 🚧 
+> 🚧
 >
 > Note: This step demonstrates the error returned when an unknown output is referenced.
 
@@ -167,6 +167,7 @@ In this case, you're spending an [output](../resources/glossary.md#output) which
 ``` bash
 > dash-cli -regtest signrawtransactionwithwallet $RAW_TX
 ```
+
 ``` json
 {
   "hex": "0100000001771078cb769f4a8fdb20c7a560a7b2e992e1d1c4276664794d64c9\
@@ -202,6 +203,7 @@ This specific operation is typically what offline signing wallets do. The online
       }
     ]'''
 ```
+
 ``` json
 {
   "hex": "0100000001771078cb769f4a8fdb20c7a560a7b2e992e1d1c4276664794d64c9\
@@ -213,6 +215,7 @@ This specific operation is typically what offline signing wallets do. The online
   "complete": true
 }
 ```
+
 ``` bash
 
 > SIGNED_RAW_TX=0100000001771078cb769f4a8fdb20c7a560a7b2e992e1d1[...]
@@ -227,6 +230,7 @@ Attempt to broadcast the second transaction before we've broadcast the first tra
 ``` bash
 > dash-cli -regtest sendrawtransaction $SIGNED_RAW_TX
 ```
+
 ``` bash
 error code: -25
 error message:
@@ -253,6 +257,7 @@ We have once again not generated an additional block, so the transactions above 
 ``` bash
 > dash-cli -regtest getrawmempool
 ```
+
 ``` json
 [
   "f89deefb927fbd03c5acab194de2ba8f98ab160b9c4b3f57bde63073c4b5f060",
