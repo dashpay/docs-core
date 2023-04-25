@@ -62,8 +62,7 @@ _See also:_
 
 ## CombinePSBT
 
-The [`combinepsbt` RPC](../api/remote-procedure-calls-raw-transactions.md#combinepsbt) combines multiple partially-signed Dash transactions into one transaction. Implements the Combiner role. This should be used only with `createrawtransaction` and `fundrawtransaction`.  
-`createpsbt` and `walletcreatefundedpsbt` should be used for new applications.
+The [`combinepsbt` RPC](../api/remote-procedure-calls-raw-transactions.md#combinepsbt) combines multiple partially-signed Dash transactions into one transaction. Implements the Combiner role. This should be used only with `createrawtransaction` and `fundrawtransaction`. `createpsbt` and `walletcreatefundedpsbt` should be used for new applications.
 
 _Parameter #1---txs_
 
@@ -101,8 +100,7 @@ _See also:_
 
 The [`combinerawtransaction` RPC](../api/remote-procedure-calls-raw-transactions.md#combinerawtransaction) combine multiple partially signed transactions into one transaction.
 
-The combined transaction may be another partially signed transaction or a  
-fully signed transaction.
+The combined transaction may be another partially signed transaction or a fully signed transaction.
 
 _Parameter #1---txs_
 
@@ -1277,8 +1275,8 @@ _Parameter #3---unspent transaction output details_
 
 _Parameter #4---signature hash type_
 
-| Name    | Type   | Presence             | Description                                                                                                                                                                                                                                                                                                                                                |                      |                            |                |
-| :------ | :----- | :------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :------------------- | :------------------------- | :------------- |
+| Name    | Type   | Presence             | Description                                                                                                                                                                                                                                                                                                                                                |
+| :------ | :----- | :------------------- | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | SigHash | string | Optional<br>(0 or 1) | The type of signature hash to use for all of the signatures performed.  (You must use separate calls to the [`signrawtransaction` RPC](../api/remote-procedure-calls-raw-transactions.md#signrawtransactionwithkey) if you want to use different signature hash types for different signatures.  The allowed values are: `ALL`, `NONE`, `SINGLE`, `ALL \| ANYONECANPAY`,`NONE \| ANYONECANPAY`, and `SINGLE \| ANYONECANPAY` |
 
 _Result---the transaction with any signatures made_

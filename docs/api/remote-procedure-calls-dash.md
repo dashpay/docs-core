@@ -1233,21 +1233,22 @@ By default, payment information is returned for only the chain tip. More block w
 .  
 *Result---masternode payments*
 
-| Name                | Type             | Presence                | Description                                      |        |                         |               |
-| :------------------ | :--------------- | :---------------------- | :----------------------------------------------- | :----- | :---------------------- | :------------ |
-| Result              | array of objects | Required<br>(exactly 1) | List of masternode payment info                  |        |                         |               |
-| →<br>Block Payment  | object           | Optional<br>(0 or more) | Masternode payment info for a block              |        |                         |               |
-| →→<br>`height`      | number (int)     | Required<br>(exactly 1) | The height of the block                          |        |                         |               |
-| →→<br>`blockhash`   | number (int)     | Required<br>(exactly 1) | The hash of the block                            |        |                         |               |
-| →→<br>`amount`      | number (int)     | Required<br>(exactly 1) | Amount received in this block by all masternodes |        |                         |               |
-| →→<br>`masternodes` | array of objects | Required<br>(exactly 1) | Masternodes that received payments in this block |        |                         |               |
-| →→→<br>Masternode   | object           | Required<br>(1 or more) | Masternode info                                  |        |                         |               |
-| →→→→<br>`proTxHash` | string (hex)     | Required<br>(exactly 1) | The hash of the corresponding ProRegTx           |        |                         |               |
-| →→→→<br>`amount`    | number (int)     | Required<br>(exactly 1) | Amount received by this masternode               |        |                         |               |
-| →→→→<br>`payees`    | array of objects | Required<br>(exactly 1) | Payees who received a share of this payment      |        |                         |               |
-| →→→→→<br>Payee      | objects          | Required<br>(1 or more) | Payee info→→→→→<br>`address`                     | string | Required<br>(exactly 1) | Payee address |
-| →→→→→→<br>`script`  | string           | Required<br>(exactly 1) | Payee scriptPubKey                               |        |                         |               |
-| →→→→→→<br>`amount`  | number (int)     | Required<br>(exactly 1) | Amount received by this payee                    |        |                         |               |
+| Name                | Type             | Presence                | Description                                      |
+| :------------------ | :--------------- | :---------------------- | :----------------------------------------------- |
+| Result              | array of objects | Required<br>(exactly 1) | List of masternode payment info                  |
+| →<br>Block Payment  | object           | Optional<br>(0 or more) | Masternode payment info for a block              |
+| →→<br>`height`      | number (int)     | Required<br>(exactly 1) | The height of the block                          |
+| →→<br>`blockhash`   | number (int)     | Required<br>(exactly 1) | The hash of the block                            |
+| →→<br>`amount`      | number (int)     | Required<br>(exactly 1) | Amount received in this block by all masternodes |
+| →→<br>`masternodes` | array of objects | Required<br>(exactly 1) | Masternodes that received payments in this block |
+| →→→<br>Masternode   | object           | Required<br>(1 or more) | Masternode info                                  |
+| →→→→<br>`proTxHash` | string (hex)     | Required<br>(exactly 1) | The hash of the corresponding ProRegTx           |
+| →→→→<br>`amount`    | number (int)     | Required<br>(exactly 1) | Amount received by this masternode               |
+| →→→→<br>`payees`    | array of objects | Required<br>(exactly 1) | Payees who received a share of this payment      |
+| →→→→→<br>Payee      | objects          | Required<br>(1 or more) | Payee info                                       |
+| →→→→→→<br>`address` | string           | Required<br>(1 or more) | Payee address                                    |
+| →→→→→→<br>`script`  | string           | Required<br>(exactly 1) | Payee scriptPubKey                               |
+| →→→→→→<br>`amount`  | number (int)     | Required<br>(exactly 1) | Amount received by this payee                    |
 
 *Example from Dash Core 0.17.0*
 
