@@ -43,6 +43,11 @@ p, a, li, ol {
   font-family: 'Open Sans', sans-serif;
 } 
 
+p {
+  font-size: 0.95em;
+  line-height: 1.5;
+}
+
 .sidebar-end-items__item {
     position: relative;
 }
