@@ -1,3 +1,7 @@
+```{eval-rst}
+.. _examples-index:
+```
+
 # Introduction
 
 The following guide aims to provide examples to help you start building Dash-based applications. To make the best use of this document, you may want to install the current version of Dash Core, either from [source](https://github.com/dashpay/dash/) or from a [pre-compiled executable](https://www.dash.org/wallets/#wallets).

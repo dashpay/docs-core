@@ -1,3 +1,7 @@
+```{eval-rst}
+.. _api-rpc:
+```
+
 # Remote Procedure Calls
 
 ## Overview

@@ -1,3 +1,7 @@
+```{eval-rst}
+.. _resources-glossary:
+```
+
 # Glossary
 
 ## 51 percent attack

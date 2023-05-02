@@ -1,3 +1,7 @@
+```{eval-rst}
+.. _guide-index:
+```
+
 # Introduction
 
 The Developer Guide aims to provide the information you need to understand Dash and start building Dash-based applications, but it is not a specification. To make the best use of this documentation, you may want to install the current version of Dash Core, either from [source](https://github.com/dashpay/dash/) or from a [pre-compiled executable](https://www.dash.org/wallets/#wallets).

@@ -1,3 +1,7 @@
+```{eval-rst}
+.. _api-rpc-quick-reference:
+```
+
 # Quick Reference
 
 ## [Addressindex RPCs](../api/remote-procedure-calls-address-index.md)
