@@ -12,7 +12,7 @@ information](dashcore/wallet-arguments-and-commands.md) to help you start
 working with Dash as quickly as possible. Let's jump right in!
 
 ```{eval-rst}
-.. grid:: 1 3 3 3
+.. grid:: 1 2 3 3
 
     .. grid-item-card:: 🛠 Core Reference
         :margin: 2 2 auto auto
@@ -147,4 +147,16 @@ dashcore/wallet-configuration-file
 :hidden:
 
 resources/glossary
+```
+
+Questions about Dash development are best asked in one of the [Dash development
+communities](https://www.dash.org/community/). Errors or suggestions related to
+documentation can be submitted as via the "Suggest Edits" button on the top,
+right of each page.
+
+```{eval-rst}
+.. image:: https://raw.githubusercontent.com/dashpay/docs/master/img/businessplan.svg
+   :class: no-scaled-link
+   :align: center
+   :width: 90%
 ```

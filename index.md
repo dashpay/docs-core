@@ -62,3 +62,10 @@ Check out the `official Dash website <https://www.dash.org/>`__ to learn how
 
    docs/index
 ```
+
+```{eval-rst}
+.. image:: https://raw.githubusercontent.com/dashpay/docs/master/img/businessplan.svg
+   :class: no-scaled-link
+   :align: center
+   :width: 90%
+```
