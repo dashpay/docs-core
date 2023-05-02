@@ -4,9 +4,12 @@
 
 # Core docs
 
-Welcome to the Dash Core developer documentation. You'll find guides and
-documentation to help you start working with Dash Core as quickly as possible,
-as well as support if you get stuck. Let's jump right in!
+Welcome to the Dash Core developer documentation. You'll find sections for
+[reference information](reference/introduction.md), [API
+details](api/remote-procedure-call-quick-reference.md),
+[guides](guide/introduction.md), [examples](examples/introduction.md) and [Dash
+Core wallet information](dashcore/wallet-arguments-and-commands.md) to help you
+start working with Dash as quickly as possible. Let's jump right in!
 
 Questions about Dash development are best asked in one of the [Dash development
 communities](https://www.dash.org/community/). Errors or suggestions related to
