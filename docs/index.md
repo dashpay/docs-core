@@ -1,3 +1,7 @@
+```{eval-rst}
+.. _core-index:
+```
+
 # Core docs
 
 Welcome to the Dash Core developer documentation. You'll find guides and
