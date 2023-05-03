@@ -23,6 +23,7 @@ release = u'latest'
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 extensions = [
+  'hoverxref.extension',
   'myst_parser',
   'sphinx.ext.autodoc',
   'sphinx_copybutton',
@@ -34,6 +35,10 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', 'README.md', '.devcontai
 
 # The master toctree document.
 master_doc = 'index'
+
+hoverxref_role_types = {
+    'hoverxref': 'tooltip',
+}
 
 # -- Myst parser configuration -----------------------------------------------
 # Auto-generate header anchors for md headings
