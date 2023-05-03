@@ -25,13 +25,13 @@ Check out the `official Dash website <https://www.dash.org/>`__ to learn how
 
     .. grid-item-card:: 👤 User Docs
         :margin: 2 2 auto auto
-        :link-type: url
-        :link: https://docs.dash.org
+        :link-type: ref
+        :link: user:user-index
         
         Learn what Dash is and how it works. Topics include how to obtain and store Dash, the governance system, and masternode setup.
         
         +++
-        `Click to begin <https://docs.dash.org>`__
+        :ref:`Click to begin <user:user-index>`
 
     .. grid-item-card:: ⚙ Core Docs
         :margin: 2 2 auto auto
