@@ -28,6 +28,7 @@ extensions = [
   'sphinx.ext.autodoc',
   'sphinx_copybutton',
   'sphinx_design',
+  'sphinx.ext.intersphinx',
 ]
 
 templates_path = ['_templates']
@@ -47,6 +48,19 @@ myst_heading_anchors = 5
 # Enable colon_fence for better markdown compatibility
 # https://myst.tools/docs/mystjs/syntax-overview#directives
 myst_enable_extensions = ["colon_fence"]
+
+# -- intersphinx configuration -----------------------------------------------
+intersphinx_mapping = {
+    "user": ("https://docs.dash.org/en/stable/", None),
+}
+
+# We recommend adding the following config value.
+# Sphinx defaults to automatically resolve *unresolved* labels using all your Intersphinx mappings.
+# This behavior has unintended side-effects, namely that documentations local references can
+# suddenly resolve to an external location.
+# See also:
+# https://www.sphinx-doc.org/en/master/usage/extensions/intersphinx.html#confval-intersphinx_disabled_reftypes
+intersphinx_disabled_reftypes = ["*"]
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
