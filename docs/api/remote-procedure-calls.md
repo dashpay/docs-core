@@ -212,6 +212,10 @@ curl --user 'my_username:my_secret_password' --data-binary '''
   --header 'Content-Type: text/plain;' localhost:9998
 ```
 
+```{eval-rst}
+.. _api-rpc-multi-wallet-support:
+```
+
 ### Multi-wallet Support
 
 > 👍

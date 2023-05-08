@@ -1,3 +1,7 @@
+```{eval-rst}
+.. _dashcore-arguments-and-commands-dash-cli:
+```
+
 # dash-cli
 
 The `dash-cli` application provides a command-line option for accessing Dash Core RPCs.

@@ -1,3 +1,7 @@
+```{eval-rst}
+.. _dashcore-arguments-and-commands-dash-wallet:
+```
+
 # dash-wallet
 
 The `dash-wallet` application is an offline tool for creating and interacting with Dash Core wallet files. By default dash-wallet will act on wallets in the default mainnet wallet directory in the datadir. To change the target wallet, use the `-datadir`, `-wallet` and `-testnet`/`-regtest` arguments.

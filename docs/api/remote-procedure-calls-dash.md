@@ -652,6 +652,10 @@ Result (truncated):
 }
 ```
 
+```{eval-rst}
+.. _api-rpc-dash-gobject-prepare:
+```
+
 ### GObject Prepare
 
 The `gobject prepare` RPC prepares a governance object by signing and creating a collateral transaction.
@@ -826,6 +830,10 @@ Result (Collateral Transaction ID):
 *See also:*
 
 * [GObject Prepared](#gobject-prepare): prepares a governance object by signing and creating a collateral transaction
+
+```{eval-rst}
+.. _api-rpc-dash-gobject-submit:
+```
 
 ### GObject Submit
 

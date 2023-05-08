@@ -1,3 +1,7 @@
+```{eval-rst}
+.. _dashcore-arguments-and-commands-dash-tx:
+```
+
 # dash-tx
 
 The `dash-tx` application provides a command-line option for creating, parsing, or modifying transactions.

@@ -1,3 +1,7 @@
+```{eval-rst}
+.. _dashcore-arguments-and-commands-dashd:
+```
+
 # dashd
 
 ## Usage
