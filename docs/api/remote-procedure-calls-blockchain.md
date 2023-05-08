@@ -1128,6 +1128,10 @@ Result:
 * [GetNetworkHashPS](../api/remote-procedure-calls-mining.md#getnetworkhashps): returns the estimated network hashes per second based on the last n blocks.
 * [GetMiningInfo](../api/remote-procedure-calls-mining.md#getmininginfo): returns various mining-related information.
 
+```{eval-rst}
+.. _api-rpc-blockchain-getmempoolancestors:
+```
+
 ## GetMemPoolAncestors
 
 *Added in Dash Core 0.12.3*
@@ -1239,6 +1243,10 @@ Result:
 * [GetMemPoolDescendants](../api/remote-procedure-calls-blockchain.md#getmempooldescendants): returns all in-mempool descendants for a transaction in the mempool.
 * [GetRawMemPool](../api/remote-procedure-calls-blockchain.md#getrawmempool): returns all transaction identifiers (TXIDs) in the memory pool as a JSON array, or detailed information about each transaction in the memory pool as a JSON object.
 
+```{eval-rst}
+.. _api-rpc-blockchain-getmempooldescendants:
+```
+
 ## GetMemPoolDescendants
 
 *Added in Dash Core 0.12.3*
@@ -1349,6 +1357,10 @@ Result:
 
 * [GetMemPoolAncestors](../api/remote-procedure-calls-blockchain.md#getmempoolancestors): returns all in-mempool ancestors for a transaction in the mempool.
 * [GetRawMemPool](../api/remote-procedure-calls-blockchain.md#getrawmempool): returns all transaction identifiers (TXIDs) in the memory pool as a JSON array, or detailed information about each transaction in the memory pool as a JSON object.
+
+```{eval-rst}
+.. _api-rpc-blockchain-getmempoolentry:
+```
 
 ## GetMemPoolEntry
 
@@ -1474,6 +1486,10 @@ Result:
 * [GetBlockChainInfo](../api/remote-procedure-calls-blockchain.md#getblockchaininfo): provides information about the current state of the block chain.
 * [GetRawMemPool](../api/remote-procedure-calls-blockchain.md#getrawmempool): returns all transaction identifiers (TXIDs) in the memory pool as a JSON array, or detailed information about each transaction in the memory pool as a JSON object.
 * [GetTxOutSetInfo](../api/remote-procedure-calls-blockchain.md#gettxoutsetinfo): returns statistics about the confirmed unspent transaction output (UTXO) set. Note that this call may take some time and that it only counts outputs from confirmed transactions---it does not count outputs from the memory pool.
+
+```{eval-rst}
+.. _api-rpc-blockchain-getrawmempool:
+```
 
 ## GetRawMemPool
 

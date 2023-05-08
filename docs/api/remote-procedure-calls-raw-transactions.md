@@ -846,6 +846,10 @@ _See also_
 * [SendRawTransaction](../api/remote-procedure-calls-raw-transactions.md#sendrawtransaction): validates a transaction and broadcasts it to the peer-to-peer network.
 * [Serialized Transaction Format](../reference/transactions-raw-transaction-format.md)
 
+```{eval-rst}
+.. _api-rpc-raw-transactions-getrawtransaction:
+```
+
 ## GetRawTransaction
 
 The [`getrawtransaction` RPC](../api/remote-procedure-calls-raw-transactions.md#getrawtransaction) gets a hex-encoded serialized transaction or a JSON object describing the transaction. By default, Dash Core only stores complete transaction data for UTXOs and your own transactions, so the RPC may fail on historic transactions unless you use the non-default `txindex=1` in your Dash Core startup settings.

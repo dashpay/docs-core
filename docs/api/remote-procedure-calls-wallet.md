@@ -896,6 +896,10 @@ _See also_
 * [GetAddressesByLabel](../api/remote-procedure-calls-wallet.md#getaddressesbylabel): returns a list of every address assigned to a particular label.
 * [ListLabels](../api/remote-procedure-calls-wallet.md#listlabels): lists labels.
 
+```{eval-rst}
+.. _api-rpc-wallet-gettransaction:
+```
+
 ## GetTransaction
 
 > 📘
@@ -1855,6 +1859,10 @@ _See also_
 * [GetReceivedByAccount](../api/remote-procedure-calls-removed.md#getreceivedbyaccount): returns the total amount received by addresses in a particular account from transactions with the specified number of confirmations.  It does not count coinbase transactions.
 * [GetReceivedByAddress](../api/remote-procedure-calls-wallet.md#getreceivedbyaddress): returns the total amount received by the specified address in transactions with the specified number of confirmations. It does not count coinbase transactions.
 
+```{eval-rst}
+.. _api-rpc-wallet-listsinceblock:
+```
+
 ## ListSinceBlock
 
 > 📘
@@ -1987,6 +1995,10 @@ Result (edited to show only two payments):
 _See also_
 
 * [ListReceivedByAddress](../api/remote-procedure-calls-wallet.md#listreceivedbyaddress): lists the total number of dash received by each address.
+
+```{eval-rst}
+.. _api-rpc-wallet-listtransactions:
+```
 
 ## ListTransactions
 
