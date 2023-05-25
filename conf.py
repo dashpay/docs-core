@@ -130,3 +130,6 @@ html_context = {
     "github_version": "19.0.0",
     "doc_path": "",
 }
+
+def setup(app):
+    app.add_js_file('js/temp-header-fix.js')
