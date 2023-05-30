@@ -2,7 +2,7 @@
 
 The following [network](../resources/glossary.md#network) messages enable the Governance features built in to Dash. For additional details on the governance system, see this [Budget System page](https://docs.dash.org/en/stable/governance/index.html).
 
-![Overview Of P2P Protocol Governance Request And Reply Messages](https://raw.githubusercontent.com/dashpay/docs-core/main/img/dev/en-p2p-governance-messages.svg)
+![Overview Of P2P Protocol Governance Request And Reply Messages](../../img/dev/en-p2p-governance-messages.svg)
 
 For additional details, refer to the Developer Guide [Governance section](../guide/dash-features-governance.md).
 

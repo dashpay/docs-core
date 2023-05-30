@@ -2,7 +2,7 @@
 
 Any Dash [miner](../resources/glossary.md#miner) who successfully hashes a [block header](../resources/glossary.md#block-header) to a value below the [target threshold](../resources/glossary.md#target) can add the entire [block](../resources/glossary.md#block) to the [block chain](../resources/glossary.md#block-chain) (assuming the block is otherwise valid). These blocks are commonly addressed by their [block height](../resources/glossary.md#block-height)---the number of blocks between them and the first Dash block (block 0, most commonly known as the [genesis block](../resources/glossary.md#genesis-block)).
 
-![Common And Uncommon Block Chain Forks](https://raw.githubusercontent.com/dashpay/docs-core/main/img/dev/en-blockchain-fork.svg)
+![Common And Uncommon Block Chain Forks](../../img/dev/en-blockchain-fork.svg)
 
 Multiple blocks can all have the same block height, as is common when two or more miners each produce a block at roughly the same time. This creates an apparent [fork](../resources/glossary.md#fork) in the block chain, as shown in the illustration above.
 

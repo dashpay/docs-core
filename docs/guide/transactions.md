@@ -4,13 +4,13 @@ Transactions let users spend [duffs](../resources/glossary.md#duffs). Each [tran
 
 To keep things simple, this section pretends coinbase transactions do not exist. Coinbase transactions can only be created by Dash miners and they're an exception to many of the rules listed below. Instead of pointing out the coinbase exception to each rule, we invite you to read about coinbase transactions in the [block chain](../resources/glossary.md#block-chain) [section](../guide/block-chain.md) of this guide.
 
-![The Parts Of A Transaction](https://raw.githubusercontent.com/dashpay/docs-core/main/img/dev/en-tx-overview.svg)
+![The Parts Of A Transaction](../../img/dev/en-tx-overview.svg)
 
 The figure above shows the main parts of a Dash transaction. Each transaction has at least one [input](../resources/glossary.md#input) and one [output](../resources/glossary.md#output). Each [input](../resources/glossary.md#input) spends the duffs paid to a previous output. Each [output](../resources/glossary.md#output) then waits as an Unspent Transaction Output (UTXO) until a later input spends it. When your Dash wallet tells you that you have a 10,000 duff balance, it really means that you have 10,000 duffs waiting in one or more UTXOs.
 
 Each transaction is prefixed by a four-byte [transaction version number](../resources/glossary.md#transaction-version-number) which tells Dash [peers](../resources/glossary.md#peer) and miners which set of rules to use to validate it.  This lets developers create new rules for future transactions without invalidating previous transactions.
 
-![Spending An Output](https://raw.githubusercontent.com/dashpay/docs-core/main/img/dev/en-tx-overview-spending.svg)
+![Spending An Output](../../img/dev/en-tx-overview-spending.svg)
 
 An output has an implied [index](../resources/glossary.md#index) number based on its location in the transaction---the index of the first output is zero. The output also has an amount in duffs which it pays to a conditional [pubkey script](../resources/glossary.md#pubkey-script). Anyone who can satisfy the conditions of that pubkey script can spend up to the amount of duffs paid to it.
 
@@ -18,7 +18,7 @@ An input uses a transaction identifier ([TXID](../resources/glossary.md#transact
 
 The figures below help illustrate how these features are used by showing the workflow Alice uses to send Bob a transaction and which Bob later uses to spend that transaction. Both Alice and Bob will use the most common form of the standard Pay-To-Public-Key-Hash (P2PKH) transaction type. [P2PKH](../resources/glossary.md#pay-to-pubkey-hash) lets Alice spend duffs to a typical Dash [address](../resources/glossary.md#address), and then lets Bob further spend those duffs using a simple cryptographic key pair.
 
-![Creating A P2PKH Public Key Hash To Receive Payment](https://raw.githubusercontent.com/dashpay/docs-core/main/img/dev/en-creating-p2pkh-output.svg)
+![Creating A P2PKH Public Key Hash To Receive Payment](../../img/dev/en-creating-p2pkh-output.svg)
 
 Bob must first generate a private/public [key pair](../resources/glossary.md#key-pair) before Alice can create the first transaction. Dash uses the Elliptic Curve Digital Signature Algorithm (ECDSA) with the secp256k1 curve; secp256k1 [private keys](../resources/glossary.md#private-key) are 256 bits of random data. A copy of that data is deterministically transformed into an secp256k1 [public key](../resources/glossary.md#public-key). Because the transformation can be reliably repeated later, the public key does not need to be stored.
 
@@ -35,7 +35,7 @@ When, some time later, Bob decides to spend the UTXO, he must create an input wh
 
 Pubkey scripts and signature scripts combine secp256k1 pubkeys and [signatures](../resources/glossary.md#signature) with conditional logic, creating a programmable authorization mechanism.
 
-![Unlocking A P2PKH Output For Spending](https://raw.githubusercontent.com/dashpay/docs-core/main/img/dev/en-unlocking-p2pkh-output.svg)
+![Unlocking A P2PKH Output For Spending](../../img/dev/en-unlocking-p2pkh-output.svg)
 
 For a P2PKH-style output, Bob's signature script will contain the following two pieces of data:
 
@@ -45,7 +45,7 @@ For a P2PKH-style output, Bob's signature script will contain the following two 
 
 Bob's secp256k1 signature doesn't just prove Bob controls his private key; it also makes the non-signature-script parts of his transaction tamper-proof so Bob can safely broadcast them over the peer-to-peer network.
 
-![Some Things Signed When Spending An Output](https://raw.githubusercontent.com/dashpay/docs-core/main/img/dev/en-signing-output-to-spend.svg)
+![Some Things Signed When Spending An Output](../../img/dev/en-signing-output-to-spend.svg)
 
 As illustrated in the figure above, the data Bob signs includes the txid and output index of the previous transaction, the previous output's pubkey script, the pubkey script Bob creates which will let the next recipient spend this transaction's output, and the amount of duffs to spend to the next recipient. In essence, the entire transaction is signed except for any signature scripts, which hold the full public keys and secp256k1 signatures.
 

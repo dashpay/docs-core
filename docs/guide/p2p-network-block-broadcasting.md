@@ -32,7 +32,7 @@ Full nodes validate the received block and then advertise it to their peers usin
 
 Blocks-first nodes may download [orphan blocks](../resources/glossary.md#orphan-block)---blocks whose previous [block header](../resources/glossary.md#block-header) hash field refers to a block header this node hasn't seen yet. In other words, orphan blocks have no known parent (unlike [stale blocks](../resources/glossary.md#stale-block), which have known parents but which aren't part of the best [block chain](../resources/glossary.md#block-chain)).
 
-![Difference Between Orphan And Stale Blocks](https://raw.githubusercontent.com/dashpay/docs-core/main/img/dev/en-orphan-stale-definition.svg)
+![Difference Between Orphan And Stale Blocks](../../img/dev/en-orphan-stale-definition.svg)
 
 When a [blocks-first](../resources/glossary.md#blocks-first-sync) node downloads an orphan block, it will not validate it. Instead, it will send a [`getblocks` message](../reference/p2p-network-data-messages.md#getblocks) to the node which sent the orphan block; the broadcasting node will respond with an [`inv` message](../reference/p2p-network-data-messages.md#inv) containing [inventories](../resources/glossary.md#inventory) of any blocks the downloading node is missing (up to 500); the downloading node will request those blocks with a [`getdata` message](../reference/p2p-network-data-messages.md#getdata); and the broadcasting node will send those blocks with a [`block` message](../reference/p2p-network-data-messages.md#block). The downloading node will validate those blocks, and once the parent of the former orphan block has been validated, it will validate the former orphan block.
 

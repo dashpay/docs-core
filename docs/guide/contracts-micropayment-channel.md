@@ -6,7 +6,7 @@ Bob asks Alice for her [public key](../resources/glossary.md#public-key) and the
 
 The second transaction spends all of the first transaction's millidash (minus a transaction fee) back to Bob after a 24 hour delay enforced by locktime. This is the refund transaction. Bob can't sign the refund transaction by himself, so he gives it to Alice to sign, as shown in the illustration below.
 
-![Micropayment Channel Example](https://raw.githubusercontent.com/dashpay/docs-core/main/img/dev/en-micropayment-channel.svg)
+![Micropayment Channel Example](../../img/dev/en-micropayment-channel.svg)
 
 Alice checks that the refund transaction's locktime is 24 hours in the future, signs it, and gives a copy of it back to Bob. She then asks Bob for the bond transaction and checks that the refund transaction spends the output of the bond transaction. She can now broadcast the bond transaction to the network to ensure Bob has to wait for the time lock to expire before further spending his millidash. Bob hasn't actually spent anything so far, except possibly a small [transaction fee](../resources/glossary.md#transaction-fee), and he'll be able to broadcast the refund transaction in 24 hours for a full refund.
 

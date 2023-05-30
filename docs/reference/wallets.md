@@ -8,6 +8,6 @@ A Type 1 deterministic [wallet](../resources/glossary.md#wallet) is the simpler 
 
 ### Type 2: Hierarchical Deterministic (HD) Wallets
 
-![Overview Of Hierarchical Deterministic Key Derivation](https://raw.githubusercontent.com/dashpay/docs-core/main/img/dev/en-hd-overview.svg)
+![Overview Of Hierarchical Deterministic Key Derivation](../../img/dev/en-hd-overview.svg)
 
 For an overview of the [HD wallet](../resources/glossary.md#hd-wallet), please see the [developer guide section](../guide/wallets.md).  For details, please see [BIP32](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki).

@@ -50,7 +50,7 @@ Many implementations disallow the character '1' in the mini private key due to i
 
 Dash ECDSA public keys represent a point on a particular Elliptic Curve (EC) defined in secp256k1. In their traditional uncompressed form, public keys contain an identification byte, a 32-byte X coordinate, and a 32-byte Y coordinate. The extremely simplified illustration below shows such a point on the elliptic curve used by Dash, y<sup>2</sup>&nbsp;=&nbsp;x<sup>3</sup>&nbsp;+&nbsp;7, over a field of contiguous numbers.
 
-![Point On ECDSA Curve](https://raw.githubusercontent.com/dashpay/docs-core/main/img/dev/en-ecdsa-compressed-public-key.svg)
+![Point On ECDSA Curve](../../img/dev/en-ecdsa-compressed-public-key.svg)
 
 (Secp256k1 actually modulos coordinates by a large prime, which produces a field of non-contiguous integers and a significantly less clear plot, although the principles are the same.)
 
@@ -90,7 +90,7 @@ Whether creating child public keys or further-descended public keys, a predictab
 
 The HD protocol uses a single [root seed](../resources/glossary.md#root-seed) to create a hierarchy of child, grandchild, and other descended keys with unlinkable deterministically-generated integer values. Each child key also gets a deterministically-generated seed from its parent, called a [chain code](../resources/glossary.md#chain-code), so the compromising of one chain code doesn't necessarily compromise the integer sequence for the whole hierarchy, allowing the [master chain code](../resources/glossary.md#master-chain-code-and-private-key) to continue being useful even if, for example, a web-based public key distribution program gets hacked.
 
-![Overview Of Hierarchical Deterministic Key Derivation](https://raw.githubusercontent.com/dashpay/docs-core/main/img/dev/en-hd-overview.svg)
+![Overview Of Hierarchical Deterministic Key Derivation](../../img/dev/en-hd-overview.svg)
 
 As illustrated above, HD key derivation takes four inputs:
 
@@ -112,7 +112,7 @@ Specifying different index numbers will create different unlinkable child keys f
 
 Because creating child keys requires both a key and a chain code, the key and chain code together are called the [extended key](../resources/glossary.md#extended-key). An [extended private key](../resources/glossary.md#extended-private-key) and its corresponding [extended public key](../resources/glossary.md#extended-public-key) have the same chain code. The (top-level parent) [master private key](../resources/glossary.md#master-private-key) and master chain code are derived from random data, as illustrated below.
 
-![Creating A Root Extended Key Pair](https://raw.githubusercontent.com/dashpay/docs-core/main/img/dev/en-hd-root-keys.svg)
+![Creating A Root Extended Key Pair](../../img/dev/en-hd-root-keys.svg)
 
 A [root seed](../resources/glossary.md#root-seed) is created from either 128 bits, 256 bits, or 512 bits of random data. This root seed of as little as 128 bits is the the only data the user needs to backup in order to derive every key created by a particular wallet program using particular settings.
 
@@ -126,7 +126,7 @@ The root seed is hashed to create 512 bits of seemingly-random data, from which 
 
 Hardened extended keys fix a potential problem with normal extended keys. If an attacker gets a normal parent chain code and parent public key, he can brute-force all chain codes deriving from it. If the attacker also obtains a child, grandchild, or further-descended private key, he can use the chain code to generate all of the extended private keys descending from that private key, as shown in the grandchild and great-grandchild generations of the illustration below.
 
-![Cross-Generational Key Compromise](https://raw.githubusercontent.com/dashpay/docs-core/main/img/dev/en-hd-cross-generational-key-compromise.svg)
+![Cross-Generational Key Compromise](../../img/dev/en-hd-cross-generational-key-compromise.svg)
 
 Perhaps worse, the attacker can reverse the normal [child private key](../resources/glossary.md#child-private-key) derivation formula and subtract a [parent chain code](../resources/glossary.md#parent-chain-code) from a child private key to recover the [parent private key](../resources/glossary.md#parent-private-key), as shown in the child and parent generations of the illustration above.  This means an attacker who acquires an [extended public key](../resources/glossary.md#extended-public-key) and any private key descended from it can recover that public key's private key and all keys descended from it.
 
@@ -136,7 +136,7 @@ This can be fixed, with some tradeoffs, by replacing the the normal key derivati
 
 The normal key derivation formula, described in the section above, combines together the index number, the parent chain code, and the parent public key to create the child chain code and the integer value which is combined with the parent private key to create the child private key.
 
-![Creating Child Public Keys From An Extended Private Key](https://raw.githubusercontent.com/dashpay/docs-core/main/img/dev/en-hd-private-parent-to-private-child.svg)
+![Creating Child Public Keys From An Extended Private Key](../../img/dev/en-hd-private-parent-to-private-child.svg)
 
 The hardened formula, illustrated above, combines together the index number, the parent chain code, and the parent private key to create the data used to generate the child chain code and child private key. This formula makes it impossible to create child public keys without knowing the parent private key. In other words, parent extended public keys can't create hardened child public keys.
 
@@ -150,7 +150,7 @@ The HD protocol uses different index numbers to indicate whether a normal or har
 
 This compact description is further combined with slashes prefixed by *m* or *M* to indicate hierarchy and key type, with *m* being a private key and *M* being a public key. For example, m/0'/0/122' refers to the 123rd hardened private child (by index number) of the first normal child (by index) of the first hardened child (by index) of the master private key. The following hierarchy illustrates prime notation and hardened key firewalls.
 
-![Example HD Wallet Tree Using Prime Notation](https://raw.githubusercontent.com/dashpay/docs-core/main/img/dev/en-hd-tree.svg)
+![Example HD Wallet Tree Using Prime Notation](../../img/dev/en-hd-tree.svg)
 
 Wallets following the [BIP32](../resources/glossary.md#bip32) [HD protocol](../resources/glossary.md#bip32) only create hardened children of the master private key (*m*) to prevent a compromised child key from compromising the master key. As there are no normal children for the master keys, the master public key is not used in HD wallets. All other keys can have normal children, so the corresponding extended public keys may be used instead.
 

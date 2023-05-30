@@ -2,7 +2,7 @@
 
 The following network messages all request or provide data related to transactions and blocks.
 
-![Overview Of P2P Protocol Data Request And Reply Messages](https://raw.githubusercontent.com/dashpay/docs-core/main/img/dev/en-p2p-data-messages.svg)
+![Overview Of P2P Protocol Data Request And Reply Messages](../../img/dev/en-p2p-data-messages.svg)
 
 Many of the data messages use [inventories](../resources/glossary.md#inventory) as unique identifiers for [transactions](../resources/glossary.md#transaction) and [blocks](../resources/glossary.md#block).  Inventories have a simple 36-byte structure:
 
@@ -621,7 +621,7 @@ As seen in the annotated hexdump above, the [`merkleblock` message](../reference
 
 You can use the transaction count to construct an empty [merkle tree](../resources/glossary.md#merkle-tree). We'll call each entry in the tree a node; on the bottom are TXID nodes---the hashes for these nodes are [TXIDs](../resources/glossary.md#transaction-identifiers); the remaining nodes (including the [merkle root](../resources/glossary.md#merkle-root)) are non-TXID nodes---they may actually have the same hash as a TXID, but we treat them differently.
 
-![Example Of Parsing A MerkleBlock Message](https://raw.githubusercontent.com/dashpay/docs-core/main/img/dev/animated-en-merkleblock-parsing.gif)
+![Example Of Parsing A MerkleBlock Message](../../img/dev/animated-en-merkleblock-parsing.gif)
 
 Keep the hashes and flags in the order they appear in the [`merkleblock` message](../reference/p2p-network-data-messages.md#merkleblock). When we say "next flag" or "next hash", we mean the next flag or hash on the list, even if it's the first one we've used so far.
 
@@ -658,7 +658,7 @@ It's easier to understand how to create a [`merkleblock` message](../reference/p
 
 Create a complete merkle tree with [TXIDs](../resources/glossary.md#transaction-identifiers) on the bottom row and all the other hashes calculated up to the [merkle root](../resources/glossary.md#merkle-root) on the top row. For each transaction that matches the filter, track its TXID node and all of its ancestor nodes.
 
-![Example Of Creating A MerkleBlock Message](https://raw.githubusercontent.com/dashpay/docs-core/main/img/dev/animated-en-merkleblock-creation.gif)
+![Example Of Creating A MerkleBlock Message](../../img/dev/animated-en-merkleblock-creation.gif)
 
 Start processing the tree with the [merkle root](../resources/glossary.md#merkle-root) node. The table below describes how to process both TXID nodes and non-TXID nodes based on whether the node is a match, a match ancestor, or neither a match nor a match ancestor.
 

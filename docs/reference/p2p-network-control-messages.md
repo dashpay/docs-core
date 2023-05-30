@@ -2,7 +2,7 @@
 
 The following [network](../resources/glossary.md#network) messages all help control the connection between two [peers](../resources/glossary.md#peer) or allow them to advise each other about the rest of the network.
 
-![Overview Of P2P Protocol Control And Advisory Messages](https://raw.githubusercontent.com/dashpay/docs-core/main/img/dev/en-p2p-control-messages.svg)
+![Overview Of P2P Protocol Control And Advisory Messages](../../img/dev/en-p2p-control-messages.svg)
 
 Note that almost none of the control messages are authenticated in any way, meaning they can contain incorrect or intentionally harmful information.
 
@@ -237,7 +237,7 @@ The following annotated hexdump of a transaction is from the [raw transaction fo
 
 Clients will often want to track [inputs](../resources/glossary.md#input) that spend [outputs](../resources/glossary.md#output) (outpoints) relevant to their wallet, so the filterload field *nFlags* can be set to allow the filtering [node](../resources/glossary.md#node) to update the filter when a match is found. When the filtering node sees a [pubkey script](../resources/glossary.md#pubkey-script) that pays a pubkey, [address](../resources/glossary.md#address), or other data element matching the filter, the filtering node immediately updates the filter with the [outpoint](../resources/glossary.md#outpoint) corresponding to that pubkey script.
 
-![Automatically Updating Bloom Filters](https://raw.githubusercontent.com/dashpay/docs-core/main/img/dev/en-bloom-update.svg)
+![Automatically Updating Bloom Filters](../../img/dev/en-bloom-update.svg)
 
 If an input later spends that outpoint, the filter will match it, allowing the filtering node to tell the client that one of its transaction outputs has been spent.
 

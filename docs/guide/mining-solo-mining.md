@@ -2,7 +2,7 @@
 
 As illustrated below, solo miners typically use `dashd` to get new [transactions](../resources/glossary.md#transaction) from the [network](../resources/glossary.md#network). Their mining software periodically polls `dashd` for new transactions using the [`getblocktemplate` RPC](../api/remote-procedure-calls-mining.md#getblocktemplate), which provides the list of new transactions plus the [public key](../resources/glossary.md#public-key) to which the [coinbase transaction](../resources/glossary.md#coinbase-transaction) should be sent.
 
-![Solo Bitcoin Mining](https://raw.githubusercontent.com/dashpay/docs-core/main/img/dev/en-solo-mining-overview.svg)
+![Solo Bitcoin Mining](../../img/dev/en-solo-mining-overview.svg)
 
 The mining software constructs a block using the template (described below) and creates a [block header](../resources/glossary.md#block-header). It then sends the 80-byte block header to its mining hardware (an ASIC) along with a [target threshold](../resources/glossary.md#target) (difficulty setting). The mining hardware iterates through every possible value for the block header nonce and generates the corresponding hash.
 

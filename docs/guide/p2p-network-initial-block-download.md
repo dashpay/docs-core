@@ -10,17 +10,17 @@ Dash Core uses the IBD method any time the last block on its local best block ch
 
 Dash Core (up until version 0.12.0.x) uses a simple initial block download (IBD) method we'll call *blocks-first*. The goal is to download the blocks from the best block chain in sequence.
 
-![Overview Of Blocks-First Method](https://raw.githubusercontent.com/dashpay/docs-core/main/img/dev/en-blocks-first-flowchart.svg)
+![Overview Of Blocks-First Method](../../img/dev/en-blocks-first-flowchart.svg)
 
 The first time a node is started, it only has a single block in its local best block chain---the hardcoded genesis block (block 0).  This node chooses a remote [peer](../resources/glossary.md#peer), called the sync node, and sends it the [`getblocks` message](../reference/p2p-network-data-messages.md#getblocks) illustrated below.
 
-![First GetBlocks Message Sent During IBD](https://raw.githubusercontent.com/dashpay/docs-core/main/img/dev/en-ibd-getblocks.svg)
+![First GetBlocks Message Sent During IBD](../../img/dev/en-ibd-getblocks.svg)
 
 In the header hashes field of the [`getblocks` message](../reference/p2p-network-data-messages.md#getblocks), this new node sends the header hash of the only block it has, the genesis block (`b67a...0000` in [internal byte order](../resources/glossary.md#internal-byte-order)).  It also sets the stop hash field to all zeroes to request a maximum-size response.
 
 Upon receipt of the [`getblocks` message](../reference/p2p-network-data-messages.md#getblocks), the sync node takes the first (and only) header hash and searches its local best block chain for a block with that header hash. It finds that block 0 matches, so it replies with 500 block [inventories](../resources/glossary.md#inventory) (the maximum response to a [`getblocks` message](../reference/p2p-network-data-messages.md#getblocks)) starting from block 1. It sends these inventories in the [`inv` message](../reference/p2p-network-data-messages.md#inv) illustrated below.
 
-![First Inv Message Sent During IBD](https://raw.githubusercontent.com/dashpay/docs-core/main/img/dev/en-ibd-inv.svg)
+![First Inv Message Sent During IBD](../../img/dev/en-ibd-inv.svg)
 
 Inventories are unique identifiers for information on the [network](../resources/glossary.md#network). Each inventory contains a type field and the unique identifier for an instance of the object. For blocks, the unique identifier is a hash of the block's header.
 
@@ -28,17 +28,17 @@ The block inventories appear in the [`inv` message](../reference/p2p-network-dat
 
 The IBD node uses the received inventories to request 128 blocks from the sync node in the [`getdata` message](../reference/p2p-network-data-messages.md#getdata) illustrated below.
 
-![First GetData Message Sent During IBD](https://raw.githubusercontent.com/dashpay/docs-core/main/img/dev/en-ibd-getdata.svg)
+![First GetData Message Sent During IBD](../../img/dev/en-ibd-getdata.svg)
 
 It's important to [blocks-first](../resources/glossary.md#blocks-first-sync) nodes that the blocks be requested and sent in order because each block header references the header hash of the preceding block. That means the IBD node can't fully validate a block until its parent block has been received. Blocks that can't be validated because their parents haven't been received are called [orphan blocks](../resources/glossary.md#orphan-block); a subsection below describes them in more detail.
 
 Upon receipt of the [`getdata` message](../reference/p2p-network-data-messages.md#getdata), the sync node replies with each of the blocks requested. Each block is put into [serialized block](../resources/glossary.md#serialized-block) format and sent in a separate [`block` message](../reference/p2p-network-data-messages.md#block). The first [`block` message](../reference/p2p-network-data-messages.md#block) sent (for block 1) is illustrated below.
 
-![First Block Message Sent During IBD](https://raw.githubusercontent.com/dashpay/docs-core/main/img/dev/en-ibd-block.svg)
+![First Block Message Sent During IBD](../../img/dev/en-ibd-block.svg)
 
 The IBD node downloads each block, validates it, and then requests the next block it hasn't requested yet, maintaining a queue of up to 128 blocks to download. When it has requested every block for which it has an inventory, it sends another [`getblocks` message](../reference/p2p-network-data-messages.md#getblocks) to the sync node requesting the inventories of up to 500 more blocks.  This second [`getblocks` message](../reference/p2p-network-data-messages.md#getblocks) contains multiple header hashes as illustrated below:
 
-![Second GetBlocks Message Sent During IBD](https://raw.githubusercontent.com/dashpay/docs-core/main/img/dev/en-ibd-getblocks2.svg)
+![Second GetBlocks Message Sent During IBD](../../img/dev/en-ibd-getblocks2.svg)
 
 Upon receipt of the second [`getblocks` message](../reference/p2p-network-data-messages.md#getblocks), the sync node searches its local best block chain for a block that matches one of the header hashes in the message, trying each hash in the order they were received. If it finds a matching hash, it replies with 500 block inventories starting with the next block from that point. But if there is no matching hash (besides the stopping hash), it assumes the only block the two nodes have in common is block 0 and so it sends an `inv` starting with block 1 (the same [`inv` message](../reference/p2p-network-data-messages.md#inv) seen several illustrations above).
 
@@ -71,17 +71,17 @@ All of these problems are addressed in part or in full by the headers-first IBD 
 
 Dash Core 0.12.0+ uses an [initial block download](../resources/glossary.md#initial-block-download) (IBD) method called *[headers-first](../resources/glossary.md#headers-first-sync)*. The goal is to download the [headers](../resources/glossary.md#header) for the best [header chain](../resources/glossary.md#header-chain), partially validate them as best as possible, and then download the corresponding [blocks](../resources/glossary.md#block) in parallel.  This solves several problems with the older [blocks-first](../resources/glossary.md#blocks-first-sync) IBD method.
 
-![Overview Of Headers-First Method](https://raw.githubusercontent.com/dashpay/docs-core/main/img/dev/en-headers-first-flowchart.svg)
+![Overview Of Headers-First Method](../../img/dev/en-headers-first-flowchart.svg)
 
 The first time a node is started, it only has a single block in its local best [block chain](../resources/glossary.md#block-chain)---the hardcoded [genesis block](../resources/glossary.md#genesis-block) (block 0).  The node chooses a remote [peer](../resources/glossary.md#peer), which we'll call the sync node, and sends it the [`getheaders` message](../reference/p2p-network-data-messages.md#getheaders) illustrated below.
 
-![First getheaders message](https://raw.githubusercontent.com/dashpay/docs-core/main/img/dev/en-ibd-getheaders.svg)
+![First getheaders message](../../img/dev/en-ibd-getheaders.svg)
 
 In the header hashes field of the [`getheaders` message](../reference/p2p-network-data-messages.md#getheaders), the new node sends the header hash of the only block it has, the genesis block (`b67a...0000` in internal byte order).  It also sets the stop hash field to all zeroes to request a maximum-size response.
 
 Upon receipt of the [`getheaders` message](../reference/p2p-network-data-messages.md#getheaders), the sync node takes the first (and only) header hash and searches its local best block chain for a block with that header hash. It finds that block 0 matches, so it replies with 2,000 header (the maximum response) starting from block 1. It sends these header hashes in the [`headers` message](../reference/p2p-network-data-messages.md#headers) illustrated below.
 
-![First headers message](https://raw.githubusercontent.com/dashpay/docs-core/main/img/dev/en-ibd-headers.svg)
+![First headers message](../../img/dev/en-ibd-headers.svg)
 
 The [IBD](../resources/glossary.md#initial-block-download) [node](../resources/glossary.md#node) can partially validate these block headers by ensuring that all fields follow [consensus rules](../resources/glossary.md#consensus-rules) and that the hash of the header is below the [target threshold](../resources/glossary.md#target) according to the nBits field.  (Full validation still requires all transactions from the corresponding block.)
 
@@ -95,7 +95,7 @@ After the IBD node has partially validated the block headers, it can do two thin
 
     To spread the load between multiple peers, Dash Core will only request up to 16 blocks at a time from a single peer. Combined with its maximum of 8 outbound connections, this means Dash Core using headers-first will request a maximum of 128 blocks simultaneously during IBD (the same maximum number that blocks-first Dash Core requested from its sync node).
 
-![Simulated Headers-First Download Window](https://raw.githubusercontent.com/dashpay/docs-core/main/img/dev/en-headers-first-moving-window.svg)
+![Simulated Headers-First Download Window](../../img/dev/en-headers-first-moving-window.svg)
 
 Dash Core's headers-first mode uses a 1,024-block moving download window to maximize download speed. The lowest-height block in the window is the next block to be validated; if the block hasn't arrived by the time Dash Core is ready to validate it, Dash Core will wait a minimum of two more seconds for the stalling node to send the block. If the block still hasn't arrived, Dash Core will disconnect from the stalling node and attempt to connect to another node. For example, in the illustration above, Node A will be disconnected if it doesn't send block 3 within at least two seconds.
 

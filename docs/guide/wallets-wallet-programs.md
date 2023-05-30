@@ -14,7 +14,7 @@ This leaves us with three necessary, but separable, parts of a wallet system: a 
 
 The simplest wallet is a program which performs all three functions: it generates [private keys](../resources/glossary.md#private-key), derives the corresponding [public keys](../resources/glossary.md#public-key), helps distribute those public keys as necessary, monitors for outputs spent to those public keys, creates and signs transactions spending those outputs, and broadcasts the signed transactions.
 
-![Full-Service Wallets](https://raw.githubusercontent.com/dashpay/docs-core/main/img/dev/en-wallets-full-service.svg)
+![Full-Service Wallets](../../img/dev/en-wallets-full-service.svg)
 
 As of this writing, almost all popular wallets can be used as full-service wallets.
 
@@ -30,7 +30,7 @@ To increase security, private keys can be generated and stored by a separate wal
 
 Signing-only wallets programs typically use deterministic key creation (described in a [later subsection](../guide/wallets-wallet-files.md#hierarchical-deterministic-key-creation)) to create parent private and public keys which can create child private and public keys.
 
-![Signing-Only Wallets](https://raw.githubusercontent.com/dashpay/docs-core/main/img/dev/en-wallets-signing-only.svg)
+![Signing-Only Wallets](../../img/dev/en-wallets-signing-only.svg)
 
 When first run, the signing-only wallet creates a [parent private key](../resources/glossary.md#parent-private-key) and transfers the corresponding [parent public key](../resources/glossary.md#parent-public-key) to the networked wallet.
 
@@ -82,7 +82,7 @@ The primary disadvantage of hardware wallets is their hassle. Even though the ha
 
 Wallet programs which run in difficult-to-secure environments, such as webservers, can be designed to distribute public keys (including P2PKH or P2SH addresses) and nothing more.  There are two common ways to design these minimalist wallets:
 
-![Distributing-Only Wallets](https://raw.githubusercontent.com/dashpay/docs-core/main/img/dev/en-wallets-distributing-only.svg)
+![Distributing-Only Wallets](../../img/dev/en-wallets-distributing-only.svg)
 
 * Pre-populate a database with a number of public keys or addresses, and then distribute on request a pubkey script or address using one of the database entries. To [avoid key reuse](../guide/transactions-avoiding-key-reuse.md), webservers should keep track of used keys and never run out of public keys. This can be made easier by using parent public keys as suggested in the next method.
 

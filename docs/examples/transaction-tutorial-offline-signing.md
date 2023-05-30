@@ -150,7 +150,7 @@ a9eea0ca9368d1c99c097279b8081f88ac00000000
 
 Attempt to sign the [raw transaction](../resources/glossary.md#raw-transaction) without any special arguments, the way we successfully signed the the raw transaction in the [Simple Raw Transaction subsection](../examples/transaction-tutorial-simple-raw-transaction.md). If you've read the [Transaction section](../guide/transactions.md) of the guide, you may know why the call fails and leaves the raw transaction hex unchanged.
 
-![Old Transaction Data Required To Be Signed](https://raw.githubusercontent.com/dashpay/docs-core/main/img/dev/en-signing-output-to-spend.svg)
+![Old Transaction Data Required To Be Signed](../../img/dev/en-signing-output-to-spend.svg)
 
 As illustrated above, the data that gets signed includes the [TXID](../resources/glossary.md#transaction-identifiers) and vout from the previous transaction.  That information is included in the `createrawtransaction` raw transaction.  But the data that gets signed also includes the [pubkey script](../resources/glossary.md#pubkey-script) from the previous transaction, even though it doesn't appear in either the unsigned or signed transaction.
 

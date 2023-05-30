@@ -2,7 +2,7 @@
 
 Pool miners follow a similar workflow, illustrated below, which allows mining pool operators to pay miners based on their share of the work done. The mining pool gets new [transactions](../resources/glossary.md#transaction) from the network using `dashd`. Using one of the methods discussed later, each miner's mining software connects to the pool and requests the information it needs to construct block headers.
 
-![Pooled Bitcoin Mining](https://raw.githubusercontent.com/dashpay/docs-core/main/img/dev/en-pooled-mining-overview.svg)
+![Pooled Bitcoin Mining](../../img/dev/en-pooled-mining-overview.svg)
 
 In pooled mining, the mining pool sets the [target threshold](../resources/glossary.md#target) a few orders of magnitude higher (less difficult) than the network difficulty. This causes the mining hardware to return many block headers which don't hash to a value eligible for inclusion on the [block chain](../resources/glossary.md#block-chain) but which do hash below the pool's target, proving (on average) that the miner checked a percentage of the possible hash values.
 

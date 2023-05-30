@@ -13,7 +13,7 @@ The deterministic masternode lists introduced by [DIP3](https://github.com/dashp
 
 This diagram shows the order in which P2P messages are sent to perform masternode synchronization initially after startup.
 
-![Masternode Sync (Initial)](https://raw.githubusercontent.com/dashpay/docs-core/main/img/dev/en-masternode-sync-initial-dip3.svg)
+![Masternode Sync (Initial)](../../img/dev/en-masternode-sync-initial-dip3.svg)
 
 The following table details the data flow of P2P messages exchanged during initial masternode synchronization after the activation of [DIP3](https://github.com/dashpay/dips/blob/master/dip-0003.md) and [Spork](../resources/glossary.md#spork) 15.
 
@@ -43,7 +43,7 @@ There are several status values used to track masternode synchronization. They a
 
 Once a masternode completes an initial full sync, continuing synchronization is maintained by the exchange of P2P messages with other [nodes](../resources/glossary.md#node). This diagram shows an overview of the messages exchanged to keep governance objects synchronized between masternodes.
 
-![Masternode Sync (Ongoing)](https://raw.githubusercontent.com/dashpay/docs-core/main/img/dev/en-masternode-sync-ongoing.svg)
+![Masternode Sync (Ongoing)](../../img/dev/en-masternode-sync-ongoing.svg)
 
 **Governance**
 

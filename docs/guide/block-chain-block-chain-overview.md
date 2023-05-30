@@ -1,6 +1,6 @@
 # Blockchain Overview
 
-![Block Chain Overview](https://raw.githubusercontent.com/dashpay/docs-core/main/img/dev/en-blockchain-overview.svg)
+![Block Chain Overview](../../img/dev/en-blockchain-overview.svg)
 
 The illustration above shows a simplified version of a [block chain](../resources/glossary.md#block-chain). A [block](../resources/glossary.md#block) of one or more new transactions is collected into the [transaction](../resources/glossary.md#transaction) data part of a block. Copies of each transaction are hashed, and the hashes are then paired, hashed, paired again, and hashed again until a single hash remains, the [merkle root](../resources/glossary.md#merkle-root) of a [merkle tree](../resources/glossary.md#merkle-tree).
 
@@ -8,7 +8,7 @@ The merkle root is stored in the [block header](../resources/glossary.md#block-h
 
 Transactions are also chained together. Dash [wallet](../resources/glossary.md#wallet) software gives the impression that [duffs](../resources/glossary.md#duffs) are sent from and to wallets, but Dash value really moves from transaction to transaction. Each transaction spends the duffs previously received in one or more earlier transactions, so the input of one transaction is the output of a previous transaction.
 
-![Transaction Propagation](https://raw.githubusercontent.com/dashpay/docs-core/main/img/dev/en-transaction-propagation.svg)
+![Transaction Propagation](../../img/dev/en-transaction-propagation.svg)
 
 A single transaction can create multiple [outputs](../resources/glossary.md#output), as would be the case when sending to multiple [addresses](../resources/glossary.md#address), but each output of a particular transaction can only be used as an [input](../resources/glossary.md#input) once in the blockchain. Any subsequent reference is a forbidden double spend---an attempt to spend the same duffs twice.
 

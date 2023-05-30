@@ -8,11 +8,11 @@ To maintain [consensus](../resources/glossary.md#consensus), all full [nodes](..
 
 In the first case, rejection by non-upgraded nodes, mining software which gets [block chain](../resources/glossary.md#block-chain) data from those non-upgraded nodes refuses to build on the same chain as mining software getting data from upgraded nodes. This creates permanently divergent chains---one for non-upgraded nodes and one for upgraded nodes---called a [hard fork](../resources/glossary.md#hard-fork).
 
-![Hard Fork](https://raw.githubusercontent.com/dashpay/docs-core/main/img/dev/en-hard-fork.svg)
+![Hard Fork](../../img/dev/en-hard-fork.svg)
 
 In the second case, rejection by upgraded nodes, it's possible to keep the block chain from permanently diverging if upgraded nodes control a majority of the hash rate. That's because, in this case, non-upgraded nodes will accept as valid all the same blocks as upgraded nodes, so the upgraded nodes can build a stronger chain that the non-upgraded nodes will accept as the best valid block chain. This is called a [soft fork](../resources/glossary.md#soft-fork).
 
-![Soft Fork](https://raw.githubusercontent.com/dashpay/docs-core/main/img/dev/en-soft-fork.svg)
+![Soft Fork](../../img/dev/en-soft-fork.svg)
 
 Although a fork is an actual divergence in block chains, changes to the consensus rules are often described by their potential to create either a hard or soft fork. For example, "increasing the block size requires a hard fork." In this example, an actual block chain fork is not required---but it is a possible outcome.
 

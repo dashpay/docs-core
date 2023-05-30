@@ -2,7 +2,7 @@
 
 The following network messages enable the [masternode](../resources/glossary.md#masternode) features built in to Dash.
 
-![Overview Of P2P Protocol Masternode Request And Reply Messages](https://raw.githubusercontent.com/dashpay/docs-core/main/img/dev/en-p2p-masternode-messages.svg)
+![Overview Of P2P Protocol Masternode Request And Reply Messages](../../img/dev/en-p2p-masternode-messages.svg)
 
 For additional details, refer to the Developer Guide [Masternode Sync](../guide/dash-features-masternode-sync.md) and [Masternode Payment](../guide/dash-features-masternode-payment.md) sections.
 

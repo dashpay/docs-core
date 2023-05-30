@@ -16,7 +16,7 @@ The script language is a [Forth-like](https://en.wikipedia.org/wiki/Forth_%28pro
 
 To test whether the transaction is valid, signature script and pubkey script operations are executed one item at a time, starting with Bob's signature script and continuing to the end of Alice's pubkey script. The figure below shows the evaluation of a standard P2PKH pubkey script; below the figure is a description of the process.
 
-![P2PKH Stack Evaluation](https://raw.githubusercontent.com/dashpay/docs-core/main/img/dev/en-p2pkh-stack.svg)
+![P2PKH Stack Evaluation](../../img/dev/en-p2pkh-stack.svg)
 
 * The [signature](../resources/glossary.md#signature) (from Bob's signature script) is added (pushed) to an empty stack. Because it's just data, nothing is done except adding it to the stack. The [public key](../resources/glossary.md#public-key) (also from the signature script) is pushed on top of the signature.
 
