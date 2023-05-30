@@ -32,7 +32,7 @@ extensions = [
 ]
 
 templates_path = ['_templates']
-exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', 'README.md', '.devcontainer', 'scripts']
+exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', 'README.md', '.devcontainer', 'scripts', 'img/dev/gifs/README.md']
 
 # The master toctree document.
 master_doc = 'index'
