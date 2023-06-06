@@ -80,3 +80,10 @@ tbody tr:nth-child(even) { background-color: var(--table-bg-color-even); }
   vertical-align: middle;
 }
 
+.search-button__wrapper.show .search-button__search-container {
+  z-index: 1;
+}
+
+.search-button__wrapper.show .search-button__overlay {
+  z-index: 1;
+}
