@@ -86,5 +86,8 @@ sphinx search extension interface.
 .search-button__wrapper.show .search-button__search-container,
 .search-button__wrapper.show .search-button__overlay {
   z-index: 1;
-  display: none
+}
+
+.search-button__wrapper.show .search-button__overlay {
+  display: none;
 }
