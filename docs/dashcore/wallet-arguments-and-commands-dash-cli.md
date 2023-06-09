@@ -35,7 +35,7 @@ dash-cli [options] help <command>
 
 > 📘 RPC Details
 >
-> The list of RPCs can be found [here](../api/remote-procedure-call-quick-reference.md) with links to more detailed information. Using dash-cli, this information is available using the `dash-cli [options] help` and `dash-cli [options] help <command>` commands.
+> View [the list of RPCs](../api/remote-procedure-call-quick-reference.md) for more detailed information. Using dash-cli, this information is available using the `dash-cli [options] help` and `dash-cli [options] help <command>` commands.
 
 ### Options
 
