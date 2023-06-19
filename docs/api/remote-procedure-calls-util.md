@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Util RPCs
+  :description: A list of remote procedure calls in Dash that classify under Util RPCs.
+```
+
 # Util RPCs
 
 ## CreateMultiSig
