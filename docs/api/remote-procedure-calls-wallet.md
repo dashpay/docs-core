@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Wallet RPCs
+  :description: A list of remote procedure calls in Dash that classify under Wallet RPCs. 
+```
+
 # Wallet RPCs
 
 >❗️ Wallet Support
