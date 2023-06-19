@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: InstantSend Messages
+  :description: The network messages in this section play a role in controlling Dash's InstantSend feature, utilizing the masternode network for secure and fast transactions.
+```
+
 # InstantSend Messages
 
 The following network messages all help control the InstantSend feature of Dash. InstantSend uses the masternode network to lock transaction inputs and enable secure, instantaneous transactions. For additional details, refer to the Developer Guide [InstantSend section](../guide/dash-features-instantsend.md).
