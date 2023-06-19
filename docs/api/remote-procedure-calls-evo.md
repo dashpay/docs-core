@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Evo RPCs
+  :description: A list of remote procedure calls in Dash that classify under Evo RPCs.
+```
+
 # Evo RPCs
 
 ## BLS
