@@ -1,7 +1,7 @@
 ```{eval-rst}
 .. meta::
   :title: Raw Transaction Format
-  :description: Dash transactions are broadcast in a serialized raw format, which is hashed to create the TXID and merkle root, complying with the consensus rules..
+  :description: Dash transactions are broadcast in a serialized raw format, which is hashed to create the TXID and merkle root, complying with the consensus rules.
 ```
 
 # Raw Transaction Format
