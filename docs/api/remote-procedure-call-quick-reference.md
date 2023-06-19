@@ -1,5 +1,8 @@
 ```{eval-rst}
 .. _api-rpc-quick-reference:
+.. meta::
+  :title: Quick Reference
+  :description: A quick reference guide for all the RPCs in Dash.
 ```
 
 # Quick Reference
