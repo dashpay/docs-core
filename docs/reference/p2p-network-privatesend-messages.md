@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: CoinJoin Messages
+  :description: The network messages in this section all help control the CoinJoin features built into Dash and facilitated by the masternode network.
+```
+
 # CoinJoin Messages
 
 The following network messages all help control the CoinJoin features built into Dash and facilitated by the [masternode](../resources/glossary.md#masternode) network.
