@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Masternode Messages
+  :description: The following network messages enable the masternode features built in to Dash.
+```
+
 # Masternode Messages
 
 The following network messages enable the [masternode](../resources/glossary.md#masternode) features built in to Dash.
