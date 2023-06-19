@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Protocol Versions
+  :description: The table in this section lists some notable versions of the Dash P2P network protocol, with the most recent versions listed first.
+```
+
 # Protocol Versions
 
 ## Dash Protocol Versions
