@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Message Headers
+  :description: All network protocol messages utilize a standardized container format, comprising a required message header and an optional payload.
+```
+
 # Message Headers
 
 All messages in the network protocol use the same container format, which provides a required multi-field [message header](../resources/glossary.md#message-header) and an optional payload. The message header format is:
