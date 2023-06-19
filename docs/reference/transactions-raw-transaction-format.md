@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Raw Transaction Format
+  :description: Dash transactions are broadcast in a serialized raw format, which is hashed to create the TXID and merkle root, complying with the consensus rules..
+```
+
 # Raw Transaction Format
 
 Dash transactions are broadcast between [peers](../resources/glossary.md#peer) in a serialized byte format, called [raw format](../resources/glossary.md#raw-format). It is this form of a transaction which is SHA256(SHA256()) hashed to create the [TXID](../resources/glossary.md#transaction-identifiers) and, ultimately, the [merkle root](../resources/glossary.md#merkle-root) of a [block](../resources/glossary.md#block) containing the transaction---making the transaction format part of the [consensus rules](../resources/glossary.md#consensus-rules).
