@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Address Index RPCs
+  :description: A list of all the Address Index RPCs in Dash.
+```
+
 # Address Index RPCs
 
 ## GetAddressBalance
