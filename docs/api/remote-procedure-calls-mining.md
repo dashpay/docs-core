@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Mining RPCs
+  :description: A list of remote procedure calls for mining in Dash.
+```
+
 # Mining RPCs
 
 ## GetBlockTemplate
