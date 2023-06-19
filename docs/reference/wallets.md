@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Wallets
+  :description: Dash has two deterministic wallet formats – single chain wallets and hierarchical deterministic (HD) wallets.
+```
+
 # Wallets
 
 ## Deterministic Wallet Formats
