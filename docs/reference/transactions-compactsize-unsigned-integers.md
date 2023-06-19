@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: CompactSize Unsigned Integers
+  :description: CompactSize unsigned integers are used in the raw transaction format and peer-to-peer network messages.
+```
+
 # CompactSize Unsigned Integers
 
 The [raw transaction](../resources/glossary.md#raw-transaction) format and several peer-to-peer network messages use a type of variable-length integer to indicate the number of bytes in a following piece of data.
