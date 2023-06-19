@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Data Messages
+  :description: Network messages related to transactions and blocks utilize inventories as unique identifiers, which have a simple 36-byte structure.
+```
+
 # Data Messages
 
 The following network messages all request or provide data related to transactions and blocks.
