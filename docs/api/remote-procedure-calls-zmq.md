@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: ZeroMQ (ZMQ) RPCs
+  :description: A list of remote procedure calls in Dash that classify under ZeroMQ (ZMQ) RPCs. 
+```
+
 # ZeroMQ (ZMQ) RPCs
 
 ## GetZmqNotifications
