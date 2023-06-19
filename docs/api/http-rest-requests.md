@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Requests
+  :description: The commands mentioned here allows you to request specific information from the Dash network.
+```
+
 # Requests
 
 ## GET Block
