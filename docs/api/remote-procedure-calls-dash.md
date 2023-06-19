@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Dash RPCs
+  :description: A list of remote procedure calls that classify under Dash RPCs.
+```
+
 # Dash RPCs
 
 ## GetGovernanceInfo
