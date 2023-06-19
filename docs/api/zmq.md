@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: ZeroMQ (ZMQ) Notifications
+  :description: In Dash, ZeroMQ is a lightweight wrapper for TCP connections and inter-process communication, supporting various messaging patterns. 
+```
+
 # ZeroMQ (ZMQ) Notifications
 
 ## Overview
