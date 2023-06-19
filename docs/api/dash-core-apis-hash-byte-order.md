@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Hash Byte Order
+  :description: Dash Core RPCs accept and return the byte-wise reverse of computed SHA-256 hash values. Dash Core's RPCs use the byte-wise reverse for hashes.
+```
+
 # Hash Byte Order
 
 Dash Core RPCs accept and return the byte-wise reverse of computed SHA-256 hash values. For example, the Unix `sha256sum` command displays the SHA256(SHA256()) hash of mainnet block 300,000's header as:
