@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Address Conversion
+  :description: The hashes used in P2PKH and P2SH outputs are commonly encoded as Dash addresses. This is the procedure to encode those hashes and decode the addresses.
+```
+
 # Address Conversion
 
 The hashes used in P2PKH and [P2SH outputs](../resources/glossary.md#p2sh-output) are commonly encoded as Dash [addresses](../resources/glossary.md#address).  This is the procedure to encode those hashes and decode the addresses.
