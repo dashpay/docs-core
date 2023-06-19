@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Removed RPCs
+  :description: A list of RPCs removed from Dash.
+```
+
 # Removed RPCs
 
 ## EstimateFee
