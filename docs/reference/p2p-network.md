@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: P2P Networks
+  :description: This section provides an overview of the Dash P2P network protocol (not a specification).
+```
+
 # P2P Networks
 
 This section describes the Dash P2P network protocol (but it is not a specification). It does not describe the [BIP70 payment protocol](../resources/glossary.md#bip70-payment-protocol), the [GetBlockTemplate mining protocol](../guide/mining-block-prototypes.md#getblocktemplate-rpc), or any network protocol never implemented in an official version of Dash Core.
