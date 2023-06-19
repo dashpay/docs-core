@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Raw Transactions
+  :description: A list of remote procedure calls in Dash that classify under Raw Transactions.
+```
+
 # Raw Transactions
 
 ## AnalyzePSBT
