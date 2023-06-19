@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Governance Messages
+  :description: The network messages in this section facilitate the implementation of Dash's built-in Governance features.
+```
+
 # Governance Messages
 
 The following [network](../resources/glossary.md#network) messages enable the Governance features built in to Dash. For additional details on the governance system, see this [Budget System page](https://docs.dash.org/en/stable/governance/index.html).
