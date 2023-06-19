@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Opcodes
+  :description: Base Opcodes are used in the pubkey scripts of standard transactions.  DIP 20 also reintroduced a number of these opcodes based on work done by Bitcoin Cash developers.
+```
+
 # Opcodes
 
 ## Base Opcodes
