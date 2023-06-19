@@ -1,5 +1,8 @@
 ```{eval-rst}
 .. _ref-txs-special-txs:
+.. meta::
+  :title: Special Transactions
+  :description: The Special Transactions framework provides Dash the flexibility to expand beyond the financial uses of classical transactions.
 ```
 
 # Special Transactions
