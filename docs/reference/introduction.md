@@ -1,4 +1,5 @@
 ```{eval-rst}
+.. _reference-index:
 .. meta::
   :title: Dash Core Introduction
   :description: The Developer Reference provides technical details for building Dash-based applications. 
