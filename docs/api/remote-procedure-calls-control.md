@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Control RPCs
+  :description: A list of all the Control RPCs in Dash.
+```
+
 # Control RPCs
 
 ## Debug
