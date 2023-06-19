@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Blockchain RPCs
+  :description: A list of all the Blockchain RPCs in Dash.
+```
+
 # Blockchain RPCs
 
 ## GetBestBlockHash
