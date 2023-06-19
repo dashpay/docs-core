@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Quorum Messages
+  :description: The network messages in this section enable the long-living masternode quorum (LLMQ) features built in to Dash.
+```
+
 # Quorum Messages
 
 The following network messages enable the long-living masternode quorum ([LLMQ](../resources/glossary.md#long-living-masternode-quorum)) features built in to Dash.
