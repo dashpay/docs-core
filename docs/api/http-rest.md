@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: HTTP REST
+  :description: Dash Core provides an unauthenticated HTTP REST interface. The interface runs on the same port as the JSON-RPC interface, by default port 9998 for mainnet and port 19998 for testnet. 
+```
+
 # HTTP REST
 
 >❗️ Privacy
