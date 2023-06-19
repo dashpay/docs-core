@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Control Messages
+  :description: The network messages in this section will help control the connection between two peers or allow them to advise each other about the rest of the Dash network.
+```
+
 # Control Messages
 
 The following [network](../resources/glossary.md#network) messages all help control the connection between two [peers](../resources/glossary.md#peer) or allow them to advise each other about the rest of the network.
