@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Improvement Proposals
+  :description: A Dash Improvement Proposal (DIP) is a design document that outlines new features or provides information to the Dash community, similar to Bitcoin's BIPs.
+```
+
 # Improvement Proposals
 
 ## Dash (DIPs)
