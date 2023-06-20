@@ -1,7 +1,7 @@
 ```{eval-rst}
 .. meta::
   :title: Raw Transactions
-  :description: A list of remote procedure calls in Dash that classify under Raw Transactions.
+  :description: A list of remote procedure calls in Dash Core that are used to work with raw transactions and partially signed transactions (PSBT).
 ```
 
 # Raw Transactions
