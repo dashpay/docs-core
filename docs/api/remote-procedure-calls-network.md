@@ -1,7 +1,7 @@
 ```{eval-rst}
 .. meta::
   :title: Network RPCs
-  :description: A list of remote procedure calls in Dash that classify under Network RPCs.
+  :description: A list of all network connection related remote procedure calls in Dash Core.
 ```
 
 # Network RPCs
