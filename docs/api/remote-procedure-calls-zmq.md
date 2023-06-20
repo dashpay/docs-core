@@ -1,7 +1,7 @@
 ```{eval-rst}
 .. meta::
   :title: ZeroMQ (ZMQ) RPCs
-  :description: A list of remote procedure calls in Dash that classify under ZeroMQ (ZMQ) RPCs. 
+  :description: A list of remote procedure calls in Dash Core used to check ZeroMQ (ZMQ) settings. 
 ```
 
 # ZeroMQ (ZMQ) RPCs
