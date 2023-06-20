@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Non-Standard Transactions
+  :description: Non-Standard Transactions are those not adhering to specific network rules, hence not accepted by nodes running on default-settings.
+```
+
 # Non-Standard Transactions
 
 If you use anything besides a standard [pubkey script](../resources/glossary.md#pubkey-script) in an [output](../resources/glossary.md#output), [peers](../resources/glossary.md#peer) and miners using the default Dash Core settings will neither accept, broadcast, nor mine your [transaction](../resources/glossary.md#transaction). When you try to broadcast your transaction to a peer running the default settings, you will receive an error.

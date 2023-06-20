@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Dash Pool Mining
+  :description: A mining pool is a collective effort by miners to combine processing power, distribute rewards evenly based on work contributed, and increase chances of finding a block. 
+```
+
 # Pool Mining
 
 Pool miners follow a similar workflow, illustrated below, which allows mining pool operators to pay miners based on their share of the work done. The mining pool gets new [transactions](../resources/glossary.md#transaction) from the network using `dashd`. Using one of the methods discussed later, each miner's mining software connects to the pool and requests the information it needs to construct block headers.

@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Signature Hash Types
+  :description: Signature Hash Types are the options in the Dash protocol that define which parts of a transaction are protected by a signature, allowing signers to decide what parts of the transaction can be modified by others.
+```
+
 # Signature Hash Types
 
 `OP_CHECKSIG` extracts a non-stack argument from each [signature](../resources/glossary.md#signature) it evaluates, allowing the signer to decide which parts of the [transaction](../resources/glossary.md#transaction) to sign. Since the signature protects those parts of the transaction from modification, this lets signers selectively choose to let other people modify their transactions.

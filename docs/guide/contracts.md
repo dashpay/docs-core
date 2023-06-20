@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Dash Contracts
+  :description: Dash contracts are self-enforcing transactions within the decentralized Dash system, reducing reliance on external entities and minimizing financial risk.
+```
+
 # Contracts
 
 Contracts are [transactions](../resources/glossary.md#transaction) which use the decentralized Dash system to enforce financial agreements. Dash contracts can often be crafted to minimize dependency on outside agents, such as the court system, which significantly decreases the risk of dealing with unknown entities in financial transactions.

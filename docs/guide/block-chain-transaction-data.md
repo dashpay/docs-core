@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Transaction Data
+  :description: Every block must include one or more transactions. The first one of these transactions must be a coinbase transaction which should collect and spend the block reward.
+```
+
 # Transaction Data
 
 Every [block](../resources/glossary.md#block) must include one or more [transactions](../resources/glossary.md#transaction). The first one of these transactions must be a [coinbase transaction](../resources/glossary.md#coinbase-transaction), also called a generation transaction, which should collect and spend the [block reward](../resources/glossary.md#block-reward) (comprised of a block subsidy and any transaction fees paid by transactions included in this block).

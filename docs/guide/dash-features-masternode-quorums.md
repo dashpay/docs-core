@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Masternode Quorums
+  :description: Dash’s masternode quorums are used to facilitate the operation of masternode provided features in a decentralized, deterministic way. 
+```
+
 # Masternode Quorums
 
 Dash's [masternode](../resources/glossary.md#masternode) quorums are used to facilitate the operation of masternode provided features in a decentralized, deterministic way. The original quorums (used largely for [InstantSend](../resources/glossary.md#instantsend) and masternode payments) were ephemeral and used for a single purpose (e.g. voting on one specific InstantSend transaction).

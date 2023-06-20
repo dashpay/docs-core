@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Misbehaving Nodes
+  :description: Dash Core discourages peer nodes from sending false information by not immediately disconnecting but by prioritizing them for eviction, with no time-out or removal options.
+```
+
 # Misbehaving Nodes
 
 > 📘 Changes regarding misbehaving peers

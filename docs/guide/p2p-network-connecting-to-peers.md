@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Connecting to Peers
+  :description: Connecting to a peer is done by sending a version message, which contains your version number, block, and current time to the remote node.
+```
+
 # Connecting to Peers
 
 Connecting to a [peer](../resources/glossary.md#peer) is done by sending a [`version` message](../reference/p2p-network-control-messages.md#version), which contains your version number, block, and current time to the remote node. The remote node responds with its own [`version` message](../reference/p2p-network-control-messages.md#version). Then both nodes send a [`verack` message](../reference/p2p-network-control-messages.md#verack) to the other node to indicate the connection has been established.

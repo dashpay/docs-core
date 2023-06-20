@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: CoinJoin
+  :description: CoinJoin is Dash Core’s mixing feature which gives you consumer grade financial privacy by shuffling your Dash with other users. 
+```
+
 # CoinJoin
 
 Dash Core's mixing feature provides a way to improve privacy by performing non-custodial CoinJoin. For additional details, reference this [Official Documentation page](https://docs.dash.org/en/stable/introduction/features.html#privatesend).

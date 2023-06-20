@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Dash Wallet Files
+  :description: Dash wallets at their core are a collection of private keys. These collections are stored digitally in a file, or can even be physically stored on pieces of paper.
+```
+
 # Wallet Files
 
 Dash wallets at their core are a collection of [private keys](../resources/glossary.md#private-key). These collections are stored digitally in a file, or can even be physically stored on pieces of paper.

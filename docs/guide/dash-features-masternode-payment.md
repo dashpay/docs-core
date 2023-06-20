@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Masternode Payment
+  :description: Since DIP3, masternode reward payments in Dash Core are determined by on-chain masternode lists in each block. 
+```
+
 # Masternode Payment
 
 Since [DIP3](https://github.com/dashpay/dips/blob/master/dip-0003.md) (introduced in Dash Core 0.13.0), [masternode](../resources/glossary.md#masternode) reward payments are based on the deterministic masternode list information found on-chain in each [block](../resources/glossary.md#block). This results in a transparent, deterministic process that operates using the [algorithm described in DIP3](https://github.com/dashpay/dips/blob/master/dip-0003.md#masternode-rewards).

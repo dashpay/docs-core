@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Block Height and Forking
+  :description: In Dash, forks occur when multiple blocks of the same height are produced simultaneously, causing nodes to follow the longest chain. 
+```
+
 # Block Height and Forking
 
 Any Dash [miner](../resources/glossary.md#miner) who successfully hashes a [block header](../resources/glossary.md#block-header) to a value below the [target threshold](../resources/glossary.md#target) can add the entire [block](../resources/glossary.md#block) to the [block chain](../resources/glossary.md#block-chain) (assuming the block is otherwise valid). These blocks are commonly addressed by their [block height](../resources/glossary.md#block-height)---the number of blocks between them and the first Dash block (block 0, most commonly known as the [genesis block](../resources/glossary.md#genesis-block)).

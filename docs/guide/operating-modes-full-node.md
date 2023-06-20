@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Dash Full Node
+  :description: A 'full node' is a computer in Dash's peer-to-peer network which hosts and synchronises a copy of the entire Dash blockchain.  
+```
+
 # Full Node
 
 The first and most secure model is the one followed by Dash Core, also known as a “thick” or “full chain” client. This security model assures the validity of the [block chain](../resources/glossary.md#block-chain) by downloading and validating [blocks](../resources/glossary.md#block) from the [genesis block](../resources/glossary.md#genesis-block) all the way to the most recently discovered block. This is known as using the *height* of a particular block to verify the client’s view of the network.

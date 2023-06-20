@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Transaction Broadcasting
+  :description: Transaction broadcasting is the process where a transaction is sent to peer nodes in the Dash network for validation and further propagation.
+```
+
 # Transaction Broadcasting
 
 In order to send a [transaction](../resources/glossary.md#transaction) to a [peer](../resources/glossary.md#peer), an [`inv` message](../reference/p2p-network-data-messages.md#inv) is sent. If a [`getdata` message](../reference/p2p-network-data-messages.md#getdata) is received in reply, the transaction is sent using a [`tx` message](../reference/p2p-network-data-messages.md#tx). If it is a valid transaction, the peer receiving the transaction also forwards the transaction to its peers.

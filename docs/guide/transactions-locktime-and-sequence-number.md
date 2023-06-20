@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Locktime and Sequence Number
+  :description: Locktime specifies the earliest a transaction can be added to the blockchain, while Sequence Number can enable or disable this locktime.
+```
+
 # Locktime and Sequence Number
 
 One thing all signature hash types sign is the transaction's [locktime](../resources/glossary.md#locktime). (Called nLockTime in the Dash Core source code.) The locktime indicates the earliest time a [transaction](../resources/glossary.md#transaction) can be added to the [block chain](../resources/glossary.md#block-chain).

@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Dash Simplified Payment Verification (SPV)
+  :description: Simplified Payment Verification (SPV) is a method used by lightweight clients to verify transactions without downloading the entire blockchain.
+```
+
 # Simplified Payment Verification (SPV)
 
 An alternative approach detailed in the [original Bitcoin paper](https://bitcoin.org/en/bitcoin-paper) is a client that only downloads the [headers](../resources/glossary.md#header) of [blocks](../resources/glossary.md#block) during the initial syncing process and then requests [transactions](../resources/glossary.md#transaction) from full [nodes](../resources/glossary.md#node) as needed. This scales linearly with the height of the [block chain](../resources/glossary.md#block-chain) at only 80 bytes per block header, or up to 16.8MB per year, regardless of total block size.

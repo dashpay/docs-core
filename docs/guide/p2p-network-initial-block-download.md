@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Initial Block Download
+  :description: Initial block download (IBD) is the process where a full node downloads and validates all Dash blocks from the genesis block to the latest one to confirm transactions and recent blocks.
+```
+
 # Initial Block Download
 
 Before a full [node](../resources/glossary.md#node) can validate unconfirmed transactions and recently-mined [blocks](../resources/glossary.md#block), it must download and validate all blocks from block 1 (the block after the hardcoded [genesis block](../resources/glossary.md#genesis-block)) to the current tip of the best [block chain](../resources/glossary.md#block-chain). This is the [initial block download](../resources/glossary.md#initial-block-download) (IBD) or initial sync.

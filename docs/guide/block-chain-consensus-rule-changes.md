@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Consensus Rule Changes
+  :description: To preserve consensus, all Dash nodes validate blocks using the same conensus rules, which can occasionally be changed to add new features or prevent misuse.
+```
+
 # Consensus Rule Changes
 
 To maintain [consensus](../resources/glossary.md#consensus), all full [nodes](../resources/glossary.md#node) validate [blocks](../resources/glossary.md#block) using the same [consensus rules](../resources/glossary.md#consensus-rules). However, sometimes the consensus rules are changed to introduce new features or prevent network abuse. When the new rules are implemented, there will likely be a period of time when non-upgraded nodes follow the old rules and upgraded nodes follow the new rules, creating two possible ways consensus can break:

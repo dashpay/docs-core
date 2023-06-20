@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Standard Transactions
+  :description: Standard transactions in Dash are those that pass the IsStandard() test, meaning they adhere to certain safety and good network behavior rules.
+```
+
 # Standard Transactions
 
 After the discovery of several dangerous bugs in early versions of Bitcoin, a test was added which only accepted [transactions](../resources/glossary.md#transaction) from the [network](../resources/glossary.md#network) if their pubkey scripts and signature scripts matched a small set of believed-to-be-safe templates, and if the rest of the transaction didn't violate another small set of rules enforcing good network behavior. This is the `IsStandard()` test, and transactions which pass it are called standard transactions.

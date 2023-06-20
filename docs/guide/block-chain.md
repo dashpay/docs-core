@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Blockchain
+  :description: Dash's blockchain acts as a timestamped public ledger, safeguarding against double spending and transaction record alteration.
+```
+
 # Blockchain
 
 The blockchain provides Dash's public ledger, an ordered and timestamped record of transactions. This system is used to protect against double spending and modification of previous transaction records.

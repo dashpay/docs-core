@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Dash Mining
+  :description: Mining adds new blocks to the block chain, making transaction history hard to modify. Mining takes on two forms – Solo Mining and Pool Mining. 
+```
+
 # Mining
 
 Mining adds new [blocks](../resources/glossary.md#block) to the [block chain](../resources/glossary.md#block-chain), making transaction history hard to modify.  Mining today takes on two forms:

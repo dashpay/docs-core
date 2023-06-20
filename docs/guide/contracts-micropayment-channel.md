@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Micropayment Channel
+  :description: A micropayment channel allows two parties to exchange cryptocurrency off-chain, bypassing blockchain interactions.
+```
+
 # Micropayment Channel
 
 Alice also works part-time moderating forum posts for Bob. Every time someone posts to Bob's busy forum, Alice skims the post to make sure it isn't offensive or spam. Alas, Bob often forgets to pay her, so Alice demands to be paid immediately after each post she approves or rejects. Bob says he can't do that because hundreds of small payments will cost him thousands of [duffs](../resources/glossary.md#duffs) in transaction fees, so Alice suggests they use a micropayment channel.

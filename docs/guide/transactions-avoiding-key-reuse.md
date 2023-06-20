@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Avoiding Key Reuse
+  :description: Avoiding key reuse in Dash is the practice of using each public key only twice (to receive and spend a payment) to enhance financial privacy and security.
+```
+
 # Avoiding Key Reuse
 
 In a [transaction](../resources/glossary.md#transaction), the spender and receiver each reveal to each other all [public keys](../resources/glossary.md#public-key) or [addresses](../resources/glossary.md#address) used in the transaction. This allows either person to use the public [block chain](../resources/glossary.md#block-chain) to track past and future transactions involving the other person's same public keys or addresses.

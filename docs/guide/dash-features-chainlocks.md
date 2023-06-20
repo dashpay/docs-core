@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: ChainLocks
+  :description: Dash's ChainLock feature uses LLMQ Signing Requests/Sessions to secure transactions and prevent 51% mining attacks. 
+```
+
 # ChainLocks
 
 Dash's [ChainLock](../resources/glossary.md#chainlock) feature leverages [LLMQ](../resources/glossary.md#long-living-masternode-quorum) Signing Requests/Sessions to reduce uncertainty when receiving funds and remove the possibility of 51% mining attacks.

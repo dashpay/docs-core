@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Dash Wallet Programs
+  :description: Dash wallet programs consist of three essential components: public key distribution, transaction signing, and network interaction.
+```
+
 # Wallet Programs
 
 Permitting receiving and spending of [duffs](../resources/glossary.md#duffs) is the only essential feature of [wallet](../resources/glossary.md#wallet) software---but a particular wallet program doesn't need to do both things.  Two wallet programs can work together, one program distributing [public keys](../resources/glossary.md#public-key) in order to receive duffs and another program signing [transactions](../resources/glossary.md#transaction) spending those duffs.

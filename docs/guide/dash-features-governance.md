@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Governance
+  :description: Dash Core synchronizes the governance system via the masternode network as the last stage of the Masternode sync process. 
+```
+
 # Governance
 
 ## Synchronization

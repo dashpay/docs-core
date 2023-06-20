@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Dash Solo Mining
+  :description: Solo mining is an individual effort to generate blocks, allowing the miner to claim all rewards, resulting in larger but less frequent payments.. 
+```
+
 # Solo Mining
 
 As illustrated below, solo miners typically use `dashd` to get new [transactions](../resources/glossary.md#transaction) from the [network](../resources/glossary.md#network). Their mining software periodically polls `dashd` for new transactions using the [`getblocktemplate` RPC](../api/remote-procedure-calls-mining.md#getblocktemplate), which provides the list of new transactions plus the [public key](../resources/glossary.md#public-key) to which the [coinbase transaction](../resources/glossary.md#coinbase-transaction) should be sent.

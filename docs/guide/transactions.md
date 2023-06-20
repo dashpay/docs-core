@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Dash Transactions
+  :description: Transactions in Dash facilitate the transfer of duffs or DASH, allowing for either straightforward payments or more complex operations.
+```
+
 # Transactions
 
 Transactions let users spend [duffs](../resources/glossary.md#duffs). Each [transaction](../resources/glossary.md#transaction) is constructed out of several parts which enable both simple direct payments and complex transactions. This section will describe each part and demonstrate how to use them together to build complete transactions.

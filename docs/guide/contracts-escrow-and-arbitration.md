@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Escrow and Arbitration
+  :description: A transaction in which a spender and receiver place funds in an m-of-n multisig output so that neither can spend the funds until they’re both satisfied with some external outcome.
+```
+
 # Escrow and Arbitration
 
 Charlie-the-customer wants to buy a product from Bob-the-businessman, but neither of them trusts the other person, so they use a contract to help ensure Charlie gets his merchandise and Bob gets his payment.

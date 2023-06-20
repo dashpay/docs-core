@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Proof of Work
+  :description: Dash's proof of work relies on the unpredictability of cryptographic hashes, which generate a seemingly random number from any data, and any alteration in the data yields a new unpredictable number.
+```
+
 # Proof of Work
 
 The [block chain](../resources/glossary.md#block-chain) is collaboratively maintained by anonymous [peers](../resources/glossary.md#peer) on the [network](../resources/glossary.md#network), so Dash requires that each [block](../resources/glossary.md#block) prove a significant amount of work was invested in its creation to ensure that untrustworthy peers who want to modify past blocks have to work harder than honest peers who only want to add new blocks to the block chain.

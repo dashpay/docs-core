@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Dash Mining Block Prototypes
+  :description: Both solo and pool mining require mining software to gather information to build block headers, which is transmitted and utilized in a sequential manner. 
+```
+
 # Block Prototypes
 
 In both solo and pool mining, the mining software needs to get the information necessary to construct block headers. This subsection describes, in a linear way, how that information is transmitted and used. However, in actual implementations, parallel threads and queuing are used to keep ASIC hashers working at maximum capacity,

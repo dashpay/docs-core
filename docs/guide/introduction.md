@@ -1,5 +1,8 @@
 ```{eval-rst}
 .. _guide-index:
+.. meta::
+  :title: Dash Developer Guide  Introduction
+  :description: The Developer Guide aims to provide the information you need to understand Dash and start building Dash-based applications. 
 ```
 
 # Introduction

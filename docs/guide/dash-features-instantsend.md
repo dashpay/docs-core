@@ -1,5 +1,8 @@
 ```{eval-rst}
 .. _guide-features-instantsend:
+.. meta::
+  :title: InstantSend
+  :description: Dash Core’s InstantSend feature provides a way to lock transaction inputs and enable secure, instantaneous transactions. 
 ```
 
 # InstantSend

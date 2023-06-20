@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Transaction Fees and Change
+  :description: Transaction fees in Dash depend on transaction size and surplus from UTXOs is returned to the spender as a change output.
+```
+
 # Transaction Fees and Change
 
 Transactions pay fees based on the total byte size of the signed transaction. Fees per byte are calculated based on current demand for space in mined blocks with fees rising as demand increases.  The [transaction fee](../resources/glossary.md#transaction-fee) is given to the Dash miner, as explained in the [block chain section](../guide/block-chain.md), and so it is ultimately up to each [miner](../resources/glossary.md#miner) to choose the minimum transaction fee they will accept.

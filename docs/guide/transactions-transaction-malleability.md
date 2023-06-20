@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Transaction Malleability
+  :description: Transaction malleability refers to the possibility of altering a transaction's hash ID without invalidating the transaction itself.
+```
+
 # Transaction Malleability
 
 None of Dash's signature hash types protect the [signature script](../resources/glossary.md#signature-script), leaving the door open for a limited denial of service attack called transaction [malleability](../resources/glossary.md#malleability). The signature script contains the secp256k1 [signature](../resources/glossary.md#signature), which can't sign itself, allowing attackers to make non-functional modifications to a transaction without rendering it invalid. For example, an attacker can add some data to the signature script which will be dropped before the previous [pubkey script](../resources/glossary.md#pubkey-script) is processed.

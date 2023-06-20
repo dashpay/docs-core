@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Dash Block Broadcasting
+  :description: When a miner discovers a new block, it broadcasts the new block to its peers using either Unsolicited Block Push or Standard Block Relay.
+```
+
 # Block Broadcasting
 
 When a [miner](../resources/glossary.md#miner) discovers a new [block](../resources/glossary.md#block), it broadcasts the new block to its [peers](../resources/glossary.md#peer) using one of the following methods:

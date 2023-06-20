@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: P2PKH Script Validation
+  :description: In a Dash P2PKH transaction, a spender’s signature script contains an secp256k1 signature (sig) and full public key (pubkey). Checkout the full structure in this section.
+```
+
 # P2PKH Script Validation
 
 The validation procedure requires evaluation of the [signature script](../resources/glossary.md#signature-script) and [pubkey script](../resources/glossary.md#pubkey-script). In a [P2PKH](../resources/glossary.md#pay-to-pubkey-hash) [output](../resources/glossary.md#output), the pubkey script is:
