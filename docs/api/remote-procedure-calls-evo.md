@@ -1,7 +1,7 @@
 ```{eval-rst}
 .. meta::
   :title: Evo RPCs
-  :description: A list of remote procedure calls in Dash that classify under Evo RPCs.
+  :description: A list of all the Evolution-related remote procedure calls in Dash Core.
 ```
 
 # Evo RPCs
