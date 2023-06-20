@@ -1,7 +1,7 @@
 ```{eval-rst}
 .. meta::
   :title: Serialized Blocks
-  :description: Under current consensus rules, a valid block in Dash must have a serialized size of 2 MB or less. Block reward is divided among miners, masternodes, and the governance system.
+  :description: Describes the structure of serialized Dash blocks and how the block reward is divided among miners, masternodes, and the governance system.
 ```
 # Serialized Blocks
 
