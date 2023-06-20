@@ -41,7 +41,7 @@ The special transaction type is 1 and the extra payload consists of the followin
 
 | Bytes | Name | Data type |  Description |
 | ---------- | ----------- | -------- | -------- |
-| 2 | version | uint_16 | Provider transaction version number. Currently set to 1.  Updated to 2 after Dash Core 19.0.0 hard.
+| 2 | version | uint_16 | Provider transaction version number. Currently set to 1.  Updated to 2 after v19 hard fork.
 | 2 | type | uint_16 | Masternode type. Default set to 0.
 | 2 | mode | uint_16 | Masternode mode. Default set to 0.
 | 36 | collateralOutpoint | COutpoint | The collateral outpoint.<br>**Note:** The hash will be null if the collateral is part of this transaction, otherwise it will reference an existing collateral.

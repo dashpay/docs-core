@@ -4,11 +4,12 @@
 
 The table below lists some notable versions of the P2P network protocol, with the most recent versions listed first.
 
-As of Dash Core 19.0.0, the most recent protocol version is 70227.
+As of Dash Core 19.2.0, the most recent protocol version is 70228.
 
 | Version | Initial Release                    | Major Changes
 |---------|------------------------------------|--------------
-| 70227 | Dash Core 19.0.0 <br> (Apr 2023) | • Added Evolution masternode type (4000 DASH collateral)<br>• Removed [`reject` message](../reference/p2p-network-deprecated-messages.md#reject)
+| 70228 | Dash Core 19.2.0 <br> (Jun 2023) | • Store protx version in simplified masternode list entries and use to serialize/deserialize masternode BLS operator keys
+| 70227 | Dash Core 19.0.0 <br> (Apr 2023) | • [DIP 28](https://github.com/dashpay/dips/blob/master/dip-0028.md): Evolution masternodes (4000 DASH collateral)<br>• Removed [`reject` message](../reference/p2p-network-deprecated-messages.md#reject)
 | 70224 | Dash Core 18.2.0 <br> (Jan 2023) | • None (CoinJoin bugfix only)
 | 70223 (unchanged) | Dash Core 18.1.0 <br> (Oct 2022) | • [BIP 70](https://github.com/bitcoin/bips/blob/master/bip-0070.mediawiki) support removed (Bitcoin backport)<br>• Account API removed (previously deprecated)<br>• Auto-loading wallets<br>
 | 70223 | Dash Core 18.0.0 <br> (Aug 2022) | • [DIP 22](https://github.com/dashpay/dips/blob/master/dip-0022.md): Deterministic InstantSend<br>• Governance proposal fee reduction<br>• Multi-wallet GUI support<br>• [DIP 24](https://github.com/dashpay/dips/blob/master/dip-0024.md): LLMQ Rotation<br>

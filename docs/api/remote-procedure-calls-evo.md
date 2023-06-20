@@ -127,20 +127,21 @@ The `protx diff` RPC calculates a diff and a proof between two masternode list.
 | Name                           | Type         | Presence                | Description                                                                                                                                      |
 | ------------------------------ | ------------ | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `result`                       | array        | Required<br>(exactly 1) | An array of objects each containing a provider transaction, or JSON `null` if an error occurred                                                  |
+| →<br>`nVersion`                | number       | Required<br>(exactly 1) | **Added in Dash Core 19.0.0**<br>Simplified masternode list version returned                                                                     |
 | →<br>`baseBlockHash`           | string (hex) | Required<br>(exactly 1) | The hash of the base block as hex in RPC byte order                                                                                              |
 | →<br>`blockHash`               | string (hex) | Required<br>(exactly 1) | The hash of the ending block as hex in RPC byte order                                                                                            |
 | →<br>`cbTxMerkleTree`          | string (hex) | Required<br>(exactly 1) | The coinbase transaction merkle tree                                                                                                             |
 | →<br>`cbTx`                    | string (hex) | Required<br>(exactly 1) | The coinbase transaction                                                                                                                         |
 | →<br>`deletedMNs`              | array        | Required<br>(exactly 1) | An array of deleted masternode hashes                                                                                                            |
 | →<br>`mnlist`                  | array        | Required<br>(exactly 1) | An array of masternode details                                                                                                                   |
+| → →<br>`nVersion`              | number       | Required<br>(exactly 1) | **Added in Dash Core 19.0.0**<br>BLS version<br>`1` - Legacy BLS scheme<br>`2` - [Basic BLS scheme](https://github.com/dashpay/dash/issues/5001) |
+| → →<br>`nType`                 | number       | Required<br>(exactly 1) | **Added in Dash Core 19.0.0**<br>Type of masternode<br> `0` - Regular masternode<br>`1` - Evolution masternode                            |
 | → →<br>`proRegTxHash`          | string (hex) | Required<br>(exactly 1) | The hash of the initial provider registration transaction as hex in RPC byte order                                                               |
 | → →<br>`confirmedHash`         | string (hex) | Required<br>(exactly 1) | The hash of the block where the ProRegTx was mined                                                                                               |
 | → →<br>`service`               | string       | Required<br>(exactly 1) | The IP address/Port of the masternode                                                                                                            |
 | → →<br>`pubKeyOperator`        | string (hex) | Required<br>(exactly 1) | The operator public key                                                                                                                          |
 | → →<br>`votingAddress`         | string       | Required<br>(exactly 1) | The voting address                                                                                                                               |
 | → →<br>`isValid`               | bool         | Required<br>(exactly 1) | Set to `true` if masternode is valid                                                                                                             |
-| → →<br>`nVersion`              | number       | Required<br>(exactly 1) | **Added in Dash Core 19.0.0**<br>BLS version<br>`1` - Legacy BLS scheme<br>`2` - [Basic BLS scheme](https://github.com/dashpay/dash/issues/5001) |
-| → →<br>`nType`                 | number       | Required<br>(exactly 1) | **Added in Dash Core 19.0.0**<br>Type of masternode<br> `0` - Regular masternode<br>`1` - Evolution masternode                            |
 | → →<br>`platformHTTPPort`      | number       | Optional<br>(0 or 1)    | **Added in Dash Core 19.0.0**<br>TCP port of Platform HTTP/API interface (evonodes only)                                                            |
 | → →<br>`platformNodeID`        | string (hex) | Optional<br>(0 or 1)    | **Added in Dash Core 19.0.0**<br>Platform P2P node ID, derived from P2P public key (evonodes only)                                                  |
 | → →<br>`payoutAddress`         | string       | Optional<br>(0 or 1)    | **Added in Dash Core 18.1.0**<br>The owner's payout address. Only included if the `extended` parameter is set to `true`.                         |
@@ -164,103 +165,90 @@ The `protx diff` RPC calculates a diff and a proof between two masternode list.
 | →<br>`merkleRootMNList`        | string (hex) | Required<br>(exactly 1) | Merkle root of the masternode list                                                                                                               |
 | →<br>`merkleRootQuorums`       | string (hex) | Optional<br>(0 or 1)    | *Added in Coinbase Transaction version 2 (Dash Core 0.14.0)*<br>Merkle root of the masternode list.                                              |
 
-*Example from Dash Core 19.0.0*
+*Example from Dash Core 19.2.0*
 
 ```bash
-dash-cli -testnet protx diff 854380 854390 true
+dash-cli -testnet protx diff 100000 100500 true
 ```
 
 Result (truncated):
 
 ```json
 {
-  "baseBlockHash": "000000bbd091c891ad93e76aad4413be498d5eb6bfe03738ce58130fcc2e4bfe",
-  "blockHash": "0000033f0a531c5f686187642e5bf641f6c4bfbef6252703fd26d1514274e26f",
-  "cbTxMerkleTree": "0c000000051bb37f83934f01a0cf8aebc24e630f19c8835734a18f8fd6640e7e754f3f18faee9c205f91e7a44c1a3f9518e8b0aa07bfb5b3a33ba9cda12fa51d26c8f68f3487fd38e9066fdc751be97471bbb66e7eb566624436829a1c2240b5f6aac892e0805eb23a3105bd978b79091dffbf3c0938bc523019ec5d8e7978035ab05a4e85e7dab693a20cd5b53bbdc36a66d29ceff7a9430b092e040a195d0f254ce931cf021f00",
-  "cbTx": "03000500010000000000000000000000000000000000000000000000000000000000000000ffffffff060376090d0101ffffffff0286fbe127000000001976a914ce4867d9a7282726bc58092254c0f1f5fef4a77688ac48f9d23b000000001976a9147f95c0f808aff27883260bfaf9cfe2b84519a6b288ac0000000046020076090d002d89fdcf255ece6e5480dd007221776a6abc82a1fdf842234f243b267f22144d203376da9306858eebf9a40fc88e563cb048e53d7274ad6b17c7fa69cdd50952",
+  "nVersion": 1,
+  "baseBlockHash": "000000008650f09124958e7352f844f9c15705171ac38ee6668534c5c238b916",
+  "blockHash": "000000000bcc2322bbfa41dbae3bc56f1468c4773c355a41671595e3cc9fbe71",
+  "cbTxMerkleTree": "03000000039c07679a6b4ca6f2865a6f6c3a4f188f74a211be75146f32f134212da580468a097c57203dc8d46de9db73463ae7a68704d823dd05dd97075116e83914136b1bdf955363517189da760b89ac71957734c6389315b74e41a23ed35ae85b3784960107",
+  "cbTx": "03000500010000000000000000000000000000000000000000000000000000000000000000ffffffff4c03948801046c09df5c08fabe6d6d7804018887034cffffffff000000000000000000000000000000000000000000010000000000000057ffffd37c0100000d2f6e6f64655374726174756d2f000000000200240e43000000001976a914b7ce0ea9ce2010f58ba4aaa6caa76671c438e89088acf6230e43000000001976a9145889b4d255f6867504666d79e521be5cce30a4fd88ac00000000460200948801004cd4af41e87dedc9f93914689b6c8e90f20aa5ffb701dfcaabe716e682fd5fbd6aa200e13378d938ef435f1ce952594574ac956a6cd8ace46e6ba07a68161709",
   "deletedMNs": [
-    "a554045a49fb5e84a01af9e8bff2a3bf77846b27c36530a7552524f65164893a"
+    "e7d524e0b6b55bdba9721cc71f4e472eafbcaaa138c35899af3edfcad93eb6e2"
   ],
   "mnList": [
     {
-      "proRegTxHash": "f3eeb1461780dc6c62c5793df607e23f55153945b17ee029b3404dce7450ca84",
-      "confirmedHash": "00000045d877343952bdeaaa21f0cd9a09fe7ce96517d7469628d3e25a422a04",
-      "service": "34.221.196.103:19999",
-      "pubKeyOperator": "b0051db915bd86bd938746c14440b11ee3b2801cbc6d6c1c912e8b41ea5eb1d8f852abf220ae91ecdb6da094846c1ba8",
-      "votingAddress": "yS3ZAL7bXkbXvMi72A42HedrTvoCqchBVF",
-      "isValid": false,
-      "nVersion": 2,
+      "nVersion": 1,
       "nType": 0,
-      "payoutAddress": "yVXDAM73Tg6A44Bm3qduXsMCYxzuqBCT48"
-    },
-    {
-      "proRegTxHash": "41c4a6b724a0d25cb089ef946b7c1985a2815bc6a4e45f15bbcbd445b6d10b79",
-      "confirmedHash": "00000045d877343952bdeaaa21f0cd9a09fe7ce96517d7469628d3e25a422a04",
-      "service": "34.220.187.233:19999",
-      "pubKeyOperator": "87df25a28955c903cc19f836a4daa0842d203cfc0dc5ae9b57b8246a4787ee4c98ea3f2586203315d61f4e77b6c80dc5",
-      "votingAddress": "yY7czguTxTFL7Zwq3NgJWjwtNKDsBx3Fob",
-      "isValid": false,
-      "nVersion": 2,
-      "nType": 0,
-      "payoutAddress": "yVXDAM73Tg6A44Bm3qduXsMCYxzuqBCT48"
-    },
-    {
-      "proRegTxHash": "3979cfb79c4562e819aca69ffae2ea84b9b8f29bd89bdc68be67b88c6f31bf99",
-      "confirmedHash": "0000000000000000000000000000000000000000000000000000000000000000",
-      "service": "173.199.119.242:19999",
-      "pubKeyOperator": "a73d8c1e640d29e2257042a39bbbac8d867f69ae252e146884816b98ab0d0526ed4992d9cff22ef04878423f66583382",
-      "votingAddress": "yPLtHqBSP9M6Fw7fXMqHm6nSa2NRnjoxeo",
+      "proRegTxHash": "488910d2554fbc8f803011dd107b993b185ed6eeb7efef6dedfd74ec6656f58b",
+      "confirmedHash": "00000000031c08dad48934c9e2a0bf3dac307aa1b6106ed8aa4345b5423166cd",
+      "service": "51.38.80.34:19999",
+      "pubKeyOperator": "8b63fa3eb2ed4caba1fec3647bcec7a2886b5cde5b2cec6b5a60dc04193e959d21e96cbfa41388159450f244578de9a9",
+      "votingAddress": "yXRzKxTbQUGWCqYwXnMWw5SnNCPj19NBGZ",
       "isValid": true,
-      "nVersion": 2,
-      "nType": 1,
-      "platformHTTPPort": 22822,
-      "platformNodeID": "71b5c04007f6af71d99893478feb52df0f5a7701",
-      "payoutAddress": "ygRPwFLoC8WeW3ujqrskqHZiQvKpTHF6qv"
+      "payoutAddress": "yWPKEmx59zHRyyVFgC5xYXAZvGoaHCxTDE"
+    },
+    {
+      "nVersion": 1,
+      "nType": 0,
+      "proRegTxHash": "9dadb2198c6c3f7d9aef77493ee2f8f0513198bada377078a99a1128ffa1b2b0",
+      "confirmedHash": "00000000006fef47babe96126b70087c46defeb9527de07a52e417fe7fcd2fce",
+      "service": "34.83.230.157:19999",
+      "pubKeyOperator": "963984167b298d8d77b1be02e38e2493a75251cf9abecc7facee85512eabab7b05ffe053e8956d98ad4a3c20b77ade1e",
+      "votingAddress": "yW5QUL6GqNswhSdMnWjcyAZ871VKrdY4jS",
+      "isValid": true,
+      "payoutAddress": "yMvjw8sFTBZy72sgGVHHwisF1ETmhr9ngq"
     }
   ],
-  "nVersion": 2,
   "deletedQuorums": [
     {
       "llmqType": 1,
-      "quorumHash": "000000204cb6086ce482f5f64c6c065261c04cf9aea723a56aa457933e052390"
+      "quorumHash": "0000000004557649b0e4e3efddfab854ec08e26838cebc7eb42fff52d0602a06"
     },
     {
-      "llmqType": 4,
-      "quorumHash": "0000010203ca99f63415069d4d11a4fdbc2e62f73abcc55ce86e0fc07063ed3f"
+      "llmqType": 1,
+      "quorumHash": "00000000156618545aecc80d2dbb0385cc200a63137ddad75278ba3069ad2615"
     }
   ],
   "newQuorums": [
     {
-      "version": 3,
+      "version": 1,
       "llmqType": 1,
-      "quorumHash": "0000006c9019d33d73d077b9b44e307b21852d1731e7565d1c7612ae60efbf9c",
+      "quorumHash": "0000000006393472bb9a01853bcf86f62c3744a329f1ef7812b45f9ec68cf802",
       "quorumIndex": 0,
-      "signersCount": 46,
-      "signers": "ffdfbf7fffbf03",
-      "validMembersCount": 48,
-      "validMembers": "ffdfbfffffff03",
-      "quorumPublicKey": "8d0d6ee830f90723b7866a6d349555ff857a7bbccb272d227fe9452ea6b27dfdb3175545040ba55a97157737d6bd214b",
-      "quorumVvecHash": "3979e4295701ae3a6242df6fde227527c73220210cb98364111ebb19d9fc7bdd",
-      "quorumSig": "92fe70c0a188c8837b86efc2e39994b9456da78aa408a3e4864b4afb3ada80ab65158c528370e355cde598f741c281e40e59673ccee7ca793e8b99f6ad46f40d4dcb81ffc86faeb7c8d461091bde459688897ef1ce6fcb6f2c151a6614a97749",
-      "membersSig": "8d0a5afb42e6f9bce8bf3f644ff8f3e125e8cd0b4f78c4ad6b808e2a52a1c6d7b03e5052c4da868464d494a7305a040c09adf153a992131482a2f1ae2a6b5088839ef5d5dca501ff4412c4bd28f269058127d8ce6bf970cb11180e507b128334"
+      "signersCount": 49,
+      "signers": "fffffffeffff03",
+      "validMembersCount": 49,
+      "validMembers": "fffffffeffff03",
+      "quorumPublicKey": "8999f54dab1dd04cabdd70532b929ec69e4d252f3283eadce1defd4b6a9550a7b2bdb303261a1b39733ebc1c089dbb17",
+      "quorumVvecHash": "65fe94b2ea695ca03428b32f03bc22cbee5c61fb85b170c6f6aca42562244283",
+      "quorumSig": "0e925a8fcfd8722ff52a9feb9780ecfc1173a0715dfa17b6af9fd7a0abd2f13953e3111b2c92cbb7b892423a984dc8440ad5842d294b1e10b34361227922a3b24395495475cef16688e626074426003ceb48021560e22582010a0338947eec03",
+      "membersSig": "80266b6ae1eea601fc50e46e00fb9d56596230fee64673e42bd61e17ccf65d45973ab6f9a96cee4e3b6db69ce9d9e81205b3e8ee81fab42699ce54ec78f70667fa0571c8cf78b6c2ec991956c2e0e6553bbfcb4a92e8e5529238185c1765682f"
     },
     {
-      "version": 3,
-      "llmqType": 4,
-      "quorumHash": "0000006c9019d33d73d077b9b44e307b21852d1731e7565d1c7612ae60efbf9c",
+      "version": 1,
+      "llmqType": 1,
+      "quorumHash": "000000001cd753a7cdead3abaff75a6d6e009108e0b28c66b07042a940471706",
       "quorumIndex": 0,
-      "signersCount": 84,
-      "signers": "fffffffffdf7effffffff70000",
-      "validMembersCount": 85,
-      "validMembers": "fffffffffdffeffffffff70000",
-      "quorumPublicKey": "85b5ceda6935cbb24a13914a89639a53b2494773e4f956c085b9f6ccf77abdeae0a1d69d092c9f7928fd2d6aa9854944",
-      "quorumVvecHash": "19b6f47e1c2d337c1ad1528c44f9938fcb046a6127ded7da75449bc7ce30e31a",
-      "quorumSig": "b3943dfca1c53408cbcc3717ff330f5059a3d53badbe620e752aba20ade828ed29a411db547999011afebdafc73d9a500b254d778cc31935f2d00b23a418228bca9272a770f422bec015cf8ec13433a79f32c0fdeed9bcbb764b15863af91109",
-      "membersSig": "b291e99dd28aaa60183787f8c75107ff8fa02fae41e50cb026921534e4a54ee699a66bad3d9ecb9e893eb2a4fa8693111905a80c4a43cd1329f3e9a3a1066bf4069d7cd2e520407755898a93c8fe8394023f1a92ae207dbdf8fb0de6e160f521"
+      "signersCount": 50,
+      "signers": "ffffffffffff03",
+      "validMembersCount": 50,
+      "validMembers": "ffffffffffff03",
+      "quorumPublicKey": "8282dc910667713e033b75cf59b3d415ba0d8cfa38eda468bdf6da1f67a66f13eef9e2a5b5280dc215320a47d84dcd06",
+      "quorumVvecHash": "5e1f653b26dba9bb59ed0e6cb7dd1335df11801189cdf282e53585c6eeff75ef",
+      "quorumSig": "1234604b562c454896b369b54a3c5e0f98b55d4e67b35be171860cd100a35a70bfe3280c4d2f878cbd6ae0f8163fab0d19f63aab5f57fa645aa73fda9eb2ed77a24054ae0f8a46d2a93a2958cd8a96430fa7b63f3f891ef434ad55b7302ea611",
+      "membersSig": "9545aa8277d340d234a76855972599f029d9f0d8b76ebed65178d7e584eb12541dd2c59877b592dd658cd765ac3b68fd1932cd5089108db0f32aa83e6b242a857d7a8c76db1a4f107dc8df0ecd6aab9443ed073dd0c91d19fdaff57c7ee3d65b"
     }
   ],
-  "merkleRootMNList": "4d14227f263b244f2342f8fda182bc6a6a77217200dd80546ece5e25cffd892d",
-  "merkleRootQuorums": "5209d5cd69fac7176bad74723de548b03c568ec80fa4f9eb8e850693da763320"
+  "merkleRootMNList": "bd5ffd82e616e7abcadf01b7ffa50af2908e6c9b681439f9c9ed7de841afd44c",
+  "merkleRootQuorums": "091716687aa06b6ee4acd86c6a95ac74455952e91c5f43ef38d97833e100a26a"
 }
 ```
 
@@ -272,72 +260,79 @@ The `protx info` RPC returns detailed information about a deterministic masterno
 
 | Name                                | Type         | Presence                | Description                                                                                |
 | ----------------------------------- | ------------ | ----------------------- | ------------------------------------------------------------------------------------------ |
-| `result`                            | object       | Required<br>(exactly 1) | An JSON object containing a provider transaction, or JSON `null` if an error occurred      |
-| <br>Provider Transaction            | object/null  | Required<br>(exactly 1) | An object containing a provider transaction                                                |
-| →<br>`proTxHash`                    | string (hex) | Required<br>(exactly 1) | The hash of the provider transaction as hex in RPC byte order                              |
-| →<br>`collateralHash`               | string (hex) | Required<br>(exactly 1) | The hash of the collateral transaction as hex in RPC byte order                            |
-| →<br>`collateralIndex`              | number (int) | Required<br>(exactly 1) | The collateral index                                                                       |
-| → →<br>`collateralAddress`          | string       | Required<br>(exactly 1) | The collateral address                                                                     |
-| →<br>`operatorReward`               | number (int) | Required<br>(exactly 1) | The operator reward %                                                                      |
-| →<br>`state`                        | object/null  | Required<br>(exactly 1) | An object containing a provider transaction state                                          |
-| → →<br>`service`                    | string       | Required<br>(exactly 1) | The masternode's IP:Port                                                                   |
-| → →<br>`registeredHeight`           | number (int) | Required<br>(exactly 1) | The height where the masternode was registered                                             |
-| → →<br>`lastPaidHeight`             | number (int) | Required<br>(exactly 1) | The height where the masternode was last paid                                              |
-| → →<br>`PoSePenalty`                | number (int) | Required<br>(exactly 1) | The masternode's proof of service penalty                                                  |
-| → →<br>`PoSeRevivedHeight`          | number (int) | Required<br>(exactly 1) | The height where the masternode recovered from a proof of service ban                      |
-| → →<br>`PoSeBanHeight`              | number (int) | Required<br>(exactly 1) | The height where the masternode was banned for proof of service violations                 |
-| → →<br>`revocationReason`           | number (int) | Required<br>(exactly 1) | The reason for a ProUpRegTx revocation                                                     |
-| → →<br>`ownerAddress`               | string       | Required<br>(exactly 1) | The owner address                                                                          |
-| → →<br>`votingAddress`              | string       | Required<br>(exactly 1) | The voting address                                                                         |
-| → →<br>`payoutAddress`              | string       | Required<br>(exactly 1) | The owner's payout address                                                                 |
-| → →<br>`pubKeyOperator`             | string (hex) | Required<br>(exactly 1) | The operator public key                                                                    |
-| → →<br>`operatorPayoutAddress`      | string       | Required<br>(exactly 1) | The operator's payout address                                                              |
-| →<br>`confirmations`                | number (int) | Required<br>(exactly 1) | The number of confirmations this ProTx has                                                 |
-| →<br>`wallet`                       | object/null  | Required<br>(exactly 1) | An object containing a wallet details related to this ProTx                                |
-| → →<br>`hasOwnerKey`                | bool         | Required<br>(exactly 1) | The owner key is present in this wallet                                                    |
-| → →<br>`hasOperatorKey`             | bool         | Required<br>(exactly 1) | The operator key is present in this wallet                                                 |
-| → →<br>`hasVotingKey`               | bool         | Required<br>(exactly 1) | The voting key is present in this wallet                                                   |
-| → →<br>`ownsCollateral`             | bool         | Required<br>(exactly 1) | The collateral is owned by this wallet                                                     |
-| → →<br>`ownsPayeeScript`            | bool         | Required<br>(exactly 1) | The payee script is owned by this wallet                                                   |
-| → →<br>`ownsOperatorRewardScript`   | bool         | Required<br>(exactly 1) | The operator reward script is owned by this wallet                                         |
-| →<br>`metaInfo`                     | object/null  | Required<br>(exactly 1) | **Added in Dash Core 0.16.0**<br><br>An object containing a metainfo related to this ProTx |
-| → →<br>`lastDSQ`                    | string       | Required<br>(exactly 1) | The owner key is present in this wallet                                                    |
-| → →<br>`mixingTxCount`              | string       | Required<br>(exactly 1) | The operator key is present in this wallet                                                 |
-| → →<br>`lastOutboundAttempt`        | integer      | Required<br>(exactly 1) | Unix epoch time of the last outbound attempted                                             |
-| → →<br>`lastOutboundAttemptElapsed` | integer      | Required<br>(exactly 1) | Elapsed time since last outbound attempt                                                   |
-| → →<br>`lastOutboundSuccess`        | integer      | Required<br>(exactly 1) | Unix epoch time of the last successful outbound connection                                 |
-| → →<br>`lastOutboundSuccessElapsed` | integer      | Required<br>(exactly 1) | Elapsed time since last successful outbound attempt                                        |
+| `result`                            | object       | Required<br>(exactly 1) | A JSON object containing a provider transaction, or JSON `null` if an error occurred            |
+| <br>Provider Transaction            | object/null  | Required<br>(exactly 1) | An object containing a provider transaction                                                     |
+| →<br>`type`                         | string       | Required<br>(exactly 1) | **Added in Dash Core 19.0.0**<br>The type of masternode                                         |
+| →<br>`proTxHash`                    | string (hex) | Required<br>(exactly 1) | The hash of the provider transaction as hex in RPC byte order                                   |
+| →<br>`collateralHash`               | string (hex) | Required<br>(exactly 1) | The hash of the collateral transaction as hex in RPC byte order                                 |
+| →<br>`collateralIndex`              | number (int) | Required<br>(exactly 1) | The collateral index                                                                            |
+| → →<br>`collateralAddress`          | string       | Required<br>(exactly 1) | The collateral address                                                                          |
+| →<br>`operatorReward`               | number (int) | Required<br>(exactly 1) | The operator reward %                                                                           |
+| →<br>`state`                        | object/null  | Required<br>(exactly 1) | An object containing a provider transaction state                                               |
+| → →<br>`version`                    | number (int) | Required<br>(exactly 1) | **Added in Dash Core 19.2.0**<br>The version of the most recent ProRegTx or ProUpRegTx          |
+| → →<br>`service`                    | string       | Required<br>(exactly 1) | The masternode's IP:Port                                                                        |
+| → →<br>`registeredHeight`           | number (int) | Required<br>(exactly 1) | The height where the masternode was registered                                                  |
+| → →<br>`lastPaidHeight`             | number (int) | Required<br>(exactly 1) | The height where the masternode was last paid                                                   |
+| → →<br>`consecutivePayments`        | number (int) | Required<br>(exactly 1) | **Added in Dash Core 19.0.0**<br>The number of consecutive payments the masternode has received in the payment cycle |
+| → →<br>`PoSePenalty`                | number (int) | Required<br>(exactly 1) | The masternode's proof of service penalty                                                       |
+| → →<br>`PoSeRevivedHeight`          | number (int) | Required<br>(exactly 1) | The height where the masternode recovered from a proof of service ban                           |
+| → →<br>`PoSeBanHeight`              | number (int) | Required<br>(exactly 1) | The height where the masternode was banned for proof of service violations                      |
+| → →<br>`revocationReason`           | number (int) | Required<br>(exactly 1) | The reason for a ProUpRegTx revocation                                                          |
+| → →<br>`ownerAddress`               | string       | Required<br>(exactly 1) | The owner address                                                                               |
+| → →<br>`votingAddress`              | string       | Required<br>(exactly 1) | The voting address                                                                              |
+| → →<br>`payoutAddress`              | string       | Required<br>(exactly 1) | The owner's payout address                                                                      |
+| → →<br>`pubKeyOperator`             | string (hex) | Required<br>(exactly 1) | The operator public key                                                                         |
+| → →<br>`operatorPayoutAddress`      | string       | Required<br>(exactly 1) | The operator's payout address                                                                   |
+| →<br>`confirmations`                | number (int) | Required<br>(exactly 1) | The number of confirmations this ProTx has                                                      |
+| →<br>`wallet`                       | object/null  | Required<br>(exactly 1) | An object containing a wallet details related to this ProTx                                     |
+| → →<br>`hasOwnerKey`                | bool         | Required<br>(exactly 1) | The owner key is present in this wallet                                                         |
+| → →<br>`hasOperatorKey`             | bool         | Required<br>(exactly 1) | The operator key is present in this wallet                                                      |
+| → →<br>`hasVotingKey`               | bool         | Required<br>(exactly 1) | The voting key is present in this wallet                                                        |
+| → →<br>`ownsCollateral`             | bool         | Required<br>(exactly 1) | The collateral is owned by this wallet                                                          |
+| → →<br>`ownsPayeeScript`            | bool         | Required<br>(exactly 1) | The payee script is owned by this wallet                                                        |
+| → →<br>`ownsOperatorRewardScript`   | bool         | Required<br>(exactly 1) | The operator reward script is owned by this wallet                                              |
+| →<br>`metaInfo`                     | object/null  | Required<br>(exactly 1) | **Added in Dash Core 0.16.0**<br>An object containing a metainfo related to this ProTx      |
+| → →<br>`lastDSQ`                    | string       | Required<br>(exactly 1) | The owner key is present in this wallet                                                         |
+| → →<br>`mixingTxCount`              | string       | Required<br>(exactly 1) | The operator key is present in this wallet                                                      |
+| → →<br>`outboundAttemptCount`       | integer      | Required<br>(exactly 1) | **Added in Dash Core 19.2.0**<br>Number of outbound attempts                                                                     |
+| → →<br>`lastOutboundAttempt`        | integer      | Required<br>(exactly 1) | Unix epoch time of the last outbound attempted                                                  |
+| → →<br>`lastOutboundAttemptElapsed` | integer      | Required<br>(exactly 1) | Elapsed time since last outbound attempt                                                        |
+| → →<br>`lastOutboundSuccess`        | integer      | Required<br>(exactly 1) | Unix epoch time of the last successful outbound connection                                      |
+| → →<br>`lastOutboundSuccessElapsed` | integer      | Required<br>(exactly 1) | Elapsed time since last successful outbound attempt                                             |
 
-*Example from Dash Core 0.16.0*
+*Example from Dash Core 19.2.0*
 
 ```bash
 dash-cli -testnet protx info\
- c48a44a9493eae641bea36992bc8c27eaaa33adb1884960f55cd259608d26d2f
+ b43dadbd485e4d1e1d202ea5180f0ad4e8e7f05e97a7e566a764ed714356bd1f
 ```
 
 Result:
 
 ```json
 {
-  "proTxHash": "c48a44a9493eae641bea36992bc8c27eaaa33adb1884960f55cd259608d26d2f",
-  "collateralHash": "e3270ff48c4b802d56ee58d3d53777f7f9c289964e4df0842518075fc81345b1",
-  "collateralIndex": 3,
-  "collateralAddress": "yYpzTXjVx7A5uohsmW8sRy7TJp4tihVuZg",
+  "type": "Regular",
+  "proTxHash": "b43dadbd485e4d1e1d202ea5180f0ad4e8e7f05e97a7e566a764ed714356bd1f",
+  "collateralHash": "acc1127471fb4417e2ca6420948143c82dfdd3595d5cb4336e19356df4e5715c",
+  "collateralIndex": 1,
+  "collateralAddress": "yMitd7GcJRUF8AeWhT7nWB9bDoruWM7tRb",
   "operatorReward": 0,
   "state": {
-    "service": "173.61.30.231:19013",
-    "registeredHeight": 7090,
-    "lastPaidHeight": 134608,
-    "PoSePenalty": 334,
-    "PoSeRevivedHeight": 96516,
-    "PoSeBanHeight": 134819,
+    "version": 1,
+    "service": "47.111.181.207:20001",
+    "registeredHeight": 247288,
+    "lastPaidHeight": 0,
+    "consecutivePayments": 0,
+    "PoSePenalty": 369,
+    "PoSeRevivedHeight": -1,
+    "PoSeBanHeight": 247428,
     "revocationReason": 0,
-    "ownerAddress": "yTMDce5yEpiPqmgPrPmTj7yAmQPJERUSVy",
-    "votingAddress": "yTMDce5yEpiPqmgPrPmTj7yAmQPJERUSVy",
-    "payoutAddress": "yU3UdrmS6KpWwBDLQTkp1KjXePwWsMbYdj",
-    "pubKeyOperator": "8700add55a28ef22ec042a2f28e25fb4ef04b3024a7c56ad7eed4aebc736f312d18f355370dfb6a5fec9258f464b227e"
+    "ownerAddress": "yaMGQThTVPUf1LBqVqa1jMTtLW7ByVbN78",
+    "votingAddress": "yQ8oETtF1pRQfBP4iake2e5zyCCm85CAET",
+    "payoutAddress": "yZw2EYuVkTNUzUqd7mfXRNhCMReonL99tu",
+    "pubKeyOperator": "90c0e9ec9dc5f08b1d4d0211920fe5d96a225c555a4ba7dd7f6cb14e271c925f2fc72316a01282973f9ad9cf1e39e038"
   },
-  "confirmations": 292831,
+  "confirmations": 602825,
   "wallet": {
     "hasOwnerKey": false,
     "hasOperatorKey": false,
@@ -349,10 +344,11 @@ Result:
   "metaInfo": {
     "lastDSQ": 0,
     "mixingTxCount": 0,
+    "outboundAttemptCount": 0,
     "lastOutboundAttempt": 0,
-    "lastOutboundAttemptElapsed": 1588171300,
+    "lastOutboundAttemptElapsed": 1686685781,
     "lastOutboundSuccess": 0,
-    "lastOutboundSuccessElapsed": 1588171300
+    "lastOutboundSuccessElapsed": 1686685781
   }
 }
 ```
@@ -393,15 +389,18 @@ _Result (if `detailed` was `true`)---JSON provider registration transaction deta
 | ----------------------------------- | ------------ | ----------------------- | ----------------------------------------------------------------------------------------------- |
 | `result`                            | array        | Required<br>(exactly 1) | An array of objects each containing a provider transaction, or JSON `null` if an error occurred |
 | <br>Provider Transaction            | object/null  | Required<br>(exactly 1) | An object containing a provider transaction                                                     |
+| →<br>`type`                         | string       | Required<br>(exactly 1) | **Added in Dash Core 19.0.0**<br>The type of masternode                                         |
 | →<br>`proTxHash`                    | string (hex) | Required<br>(exactly 1) | The hash of the provider transaction as hex in RPC byte order                                   |
 | →<br>`collateralHash`               | string (hex) | Required<br>(exactly 1) | The hash of the collateral transaction as hex in RPC byte order                                 |
 | →<br>`collateralIndex`              | number (int) | Required<br>(exactly 1) | The collateral index                                                                            |
 | → →<br>`collateralAddress`          | string       | Required<br>(exactly 1) | The collateral address                                                                          |
 | →<br>`operatorReward`               | number (int) | Required<br>(exactly 1) | The operator reward %                                                                           |
 | →<br>`state`                        | object/null  | Required<br>(exactly 1) | An object containing a provider transaction state                                               |
+| → →<br>`version`                    | number (int) | Required<br>(exactly 1) | **Added in Dash Core 19.2.0**<br>The version of the most recent ProRegTx or ProUpRegTx                                           |
 | → →<br>`service`                    | string       | Required<br>(exactly 1) | The masternode's IP:Port                                                                        |
 | → →<br>`registeredHeight`           | number (int) | Required<br>(exactly 1) | The height where the masternode was registered                                                  |
 | → →<br>`lastPaidHeight`             | number (int) | Required<br>(exactly 1) | The height where the masternode was last paid                                                   |
+| → →<br>`consecutivePayments`        | number (int) | Required<br>(exactly 1) | **Added in Dash Core 19.0.0**<br>The number of consecutive payments the masternode has received in the payment cycle |
 | → →<br>`PoSePenalty`                | number (int) | Required<br>(exactly 1) | The masternode's proof of service penalty                                                       |
 | → →<br>`PoSeRevivedHeight`          | number (int) | Required<br>(exactly 1) | The height where the masternode recovered from a proof of service ban                           |
 | → →<br>`PoSeBanHeight`              | number (int) | Required<br>(exactly 1) | The height where the masternode was banned for proof of service violations                      |
@@ -419,15 +418,16 @@ _Result (if `detailed` was `true`)---JSON provider registration transaction deta
 | → →<br>`ownsCollateral`             | bool         | Required<br>(exactly 1) | The collateral is owned by this wallet                                                          |
 | → →<br>`ownsPayeeScript`            | bool         | Required<br>(exactly 1) | The payee script is owned by this wallet                                                        |
 | → →<br>`ownsOperatorRewardScript`   | bool         | Required<br>(exactly 1) | The operator reward script is owned by this wallet                                              |
-| →<br>`metaInfo`                     | object/null  | Required<br>(exactly 1) | **Added in Dash Core 0.16.0**<br><br>An object containing a metainfo related to this ProTx      |
+| →<br>`metaInfo`                     | object/null  | Required<br>(exactly 1) | **Added in Dash Core 0.16.0**<br>An object containing a metainfo related to this ProTx      |
 | → →<br>`lastDSQ`                    | string       | Required<br>(exactly 1) | The owner key is present in this wallet                                                         |
 | → →<br>`mixingTxCount`              | string       | Required<br>(exactly 1) | The operator key is present in this wallet                                                      |
+| → →<br>`outboundAttemptCount`       | integer      | Required<br>(exactly 1) | **Added in Dash Core 19.2.0**<br>Number of outbound attempts                                                                     |
 | → →<br>`lastOutboundAttempt`        | integer      | Required<br>(exactly 1) | Unix epoch time of the last outbound attempted                                                  |
 | → →<br>`lastOutboundAttemptElapsed` | integer      | Required<br>(exactly 1) | Elapsed time since last outbound attempt                                                        |
 | → →<br>`lastOutboundSuccess`        | integer      | Required<br>(exactly 1) | Unix epoch time of the last successful outbound connection                                      |
 | → →<br>`lastOutboundSuccessElapsed` | integer      | Required<br>(exactly 1) | Elapsed time since last successful outbound attempt                                             |
 
-*Example from Dash Core 0.16.0*
+*Example from Dash Core 19.2.0*
 
 ```bash
 dash-cli -testnet protx list
@@ -469,15 +469,17 @@ Result:
 ```json
 [
   {
+    "type": "Regular",
     "proTxHash": "c48a44a9493eae641bea36992bc8c27eaaa33adb1884960f55cd259608d26d2f",
     "collateralHash": "e3270ff48c4b802d56ee58d3d53777f7f9c289964e4df0842518075fc81345b1",
     "collateralIndex": 3,
-    "collateralAddress": "yYpzTXjVx7A5uohsmW8sRy7TJp4tihVuZg",
     "operatorReward": 0,
     "state": {
+      "version": 1,
       "service": "173.61.30.231:19013",
       "registeredHeight": 7090,
       "lastPaidHeight": 0,
+      "consecutivePayments": 0,
       "PoSePenalty": 0,
       "PoSeRevivedHeight": -1,
       "PoSeBanHeight": -1,
@@ -487,7 +489,7 @@ Result:
       "payoutAddress": "yU3UdrmS6KpWwBDLQTkp1KjXePwWsMbYdj",
       "pubKeyOperator": "8700add55a28ef22ec042a2f28e25fb4ef04b3024a7c56ad7eed4aebc736f312d18f355370dfb6a5fec9258f464b227e"
     },
-    "confirmations": 292830,
+    "confirmations": -1,
     "wallet": {
       "hasOwnerKey": false,
       "hasOperatorKey": false,
@@ -499,10 +501,11 @@ Result:
     "metaInfo": {
       "lastDSQ": 0,
       "mixingTxCount": 0,
+      "outboundAttemptCount": 0,
       "lastOutboundAttempt": 0,
-      "lastOutboundAttemptElapsed": 1588171141,
+      "lastOutboundAttemptElapsed": 1686684013,
       "lastOutboundSuccess": 0,
-      "lastOutboundSuccessElapsed": 1588171141
+      "lastOutboundSuccessElapsed": 1686684013
     }
   }
 ]

@@ -308,8 +308,8 @@ If the message indicates the queue is ready, the node responds with a [`dsi` mes
 | Bytes | Name | Data type | Required | Description |
 | ---------- | ----------- | --------- | -------- | -------- |
 | 4 | nDenom | int | Required | Denomination allowed in this session
-| 36 | masternodeOutPoint | outPoint | *Required | **\* Replaced by `proTxHash` beginning with protocol version 70226**<br>The unspent outpoint of the masternode (holding 1000 DASH) which is hosting this session
-| 32 | proTxHash | uint256 | Required | **Added in protocol version 70226.<br>Replaces `masternodeOutPoint`.**<br>The ProRegTx hash of the masternode which is hosting this session
+| 36 | masternodeOutPoint | outPoint | *Required | **\* Replaced by `proTxHash` following the v19 hard fork**<br>The unspent outpoint of the masternode (holding 1000 DASH) which is hosting this session
+| 32 | proTxHash | uint256 | Required | **Added in Dash Core 19.2.0.<br>Replaces `masternodeOutPoint`.**<br>The ProRegTx hash of the masternode which is hosting this session
 | 8 | nTime | int64_t | Required | Time this [`dsq` message](../reference/p2p-network-privatesend-messages.md#dsq) was created
 | 1 | fReady | bool | Required | Indicates if the pool is ready to be executed
 | 97 | vchSig | char[] | Required | BLS Signature of this message by masternode verifiable via pubKeyMasternode (Length (1 byte) + Signature (96 bytes))<br>**Note**: serialized using the basic BLS scheme after Dash 19.0 activation
@@ -487,8 +487,8 @@ The [`dstx` message](../reference/p2p-network-privatesend-messages.md#dstx) allo
 | Bytes | Name | Data type | Required | Description |
 | ---------- | ----------- | --------- | -------- | -------- |
 | # | tx | [`tx` message](../reference/p2p-network-data-messages.md#tx) | Required | The transaction
-| 36 | masternode<br>OutPoint | outPoint | *Required | **\* Replaced by `proTxHash` beginning with protocol version 70226**<br>The unspent outpoint of the masternode (holding 1000 DASH) which is signing the message
-| 32 | proTxHash | uint256 | Required | **Added in protocol version 70226.<br>Replaces `masternodeOutPoint`.**<br>The ProRegTx hash of the masternode which is signing the message
+| 36 | masternode<br>OutPoint | outPoint | *Required | **\* Replaced by `proTxHash` following the v19 hard fork**<br>The unspent outpoint of the masternode (holding 1000 DASH) which is signing the message
+| 32 | proTxHash | uint256 | Required | **Added in Dash Core 19.2.0.<br>Replaces `masternodeOutPoint`.**<br>The ProRegTx hash of the masternode which is signing the message
 | 97 | vchSig | char[] | Required | BLS Signature of this message by masternode verifiable via pubKeyMasternode (Length (1 byte) + Signature (96 bytes))<br>**Note**: serialized using the basic BLS scheme after Dash 19.0 activation
 | 8 | sigTime | int64_t | Require | Time this message was signed
 

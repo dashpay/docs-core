@@ -64,7 +64,7 @@ These RPCs are all Dash-specific and not found in Bitcoin Core
 * [GetCoinJoinInfo](../api/remote-procedure-calls-dash.md#getcoinjoininfo): returns an object containing an information about CoinJoin settings and state. _New in Dash Core 0.15.0_
 * [GetSuperblockBudget](../api/remote-procedure-calls-dash.md#getsuperblockbudget): returns the absolute maximum sum of superblock payments allowed.
 * [GObject](../api/remote-procedure-calls-dash.md#gobject): provides a set of commands for managing governance objects and displaying information about them. **Updated in Dash Core 19.0.0**
-* [Masternode](../api/remote-procedure-calls-dash.md#masternode): provides a set of commands for managing masternodes and displaying information about them. **Updated in Dash Core 19.0.0**
+* [Masternode](../api/remote-procedure-calls-dash.md#masternode): provides a set of commands for managing masternodes and displaying information about them. **Updated in Dash Core 19.2.0**
 * [MasternodeList](../api/remote-procedure-calls-dash.md#masternodelist): returns a list of masternodes in different modes. **Updated in Dash Core 19.0.0**
 * [MnSync](../api/remote-procedure-calls-dash.md#mnsync): returns the sync status, updates to the next step or resets it entirely. _Updated in Dash Core 0.14.0_
 * [CoinJoin](../api/remote-procedure-calls-dash.md#coinjoin): controls the CoinJoin process. _Updated in Dash Core 0.12.3_
@@ -75,7 +75,7 @@ These RPCs are all Dash-specific and not found in Bitcoin Core
 ## [Evolution RPCs](../api/remote-procedure-calls-evo.md)
 
 * [BLS](../api/remote-procedure-calls-evo.md#bls): provides a set of commands to execute BLS-related actions. **Updated in Dash Core 19.0.0**
-* [ProTx](../api/remote-procedure-calls-evo.md#protx): provides a set of commands to execute ProTx related actions. **Updated in Dash Core 19.0.0**
+* [ProTx](../api/remote-procedure-calls-evo.md#protx): provides a set of commands to execute ProTx related actions. **Updated in Dash Core 19.2.0**
 * [Quorum](../api/remote-procedure-calls-evo.md#quorum): provides a set of commands for quorums (LLMQs). **Updated in Dash Core 19.0.0**
 * [VerifyChainLock](../api/remote-procedure-calls-evo.md#verifychainlock): tests if a quorum signature is valid for a ChainLock. **_New in Dash Core 0.17.0_**
 * [VerifyISLock](../api/remote-procedure-calls-evo.md#verifyislock): tests if a quorum signature is valid for an InstantSend lock. **_New in Dash Core 0.17.0_**

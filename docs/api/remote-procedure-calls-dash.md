@@ -1312,6 +1312,7 @@ The `masternode status` RPC prints masternode status information.
 | →<br>`collateralHash`          | string (hex) | Optional<br>(0 or 1)    | The masternode's collateral hash                                                                                                                                                                  |
 | →<br>`collateralIndex`         | int          | Optional<br>(0 or 1)    | Index of the collateral                                                                                                                                                                           |
 | →<br>`dmnState`                | object       | Optional<br>(0 or 1)    | Deterministic Masternode State                                                                                                                                                                    |
+| → →<br>`version`               | int          | Required<br>(exactly 1) | **Added in Dash Core 19.2.0**<br>The version of the most recent ProRegTx or ProUpRegTx                                                                                                            |
 | → →<br>`service`               | string       | Required<br>(exactly 1) | The IP address/port of the masternode                                                                                                                                                             |
 | → →<br>`registeredHeight`      | int          | Required<br>(exactly 1) | Block height at which the masternode was registered                                                                                                                                               |
 | → →<br>`lastPaidHeight`        | int          | Required<br>(exactly 1) | Block height at which the masternode was last paid                                                                                                                                                |
@@ -1321,16 +1322,16 @@ The `masternode status` RPC prints masternode status information.
 | → →<br>`revocationReason`      | int          | Required<br>(exactly 1) | Reason code for of masternode operator key revocation                                                                                                                                             |
 | → →<br>`ownerAddress`          | string       | Required<br>(exactly 1) | The owner address                                                                                                                                                                                 |
 | → →<br>`votingAddress`         | string       | Required<br>(exactly 1) | The voting address                                                                                                                                                                                |
-| → →<br>`platformNodeId`        | string       | Optional<br>(0 or 1)    | **Added in Dash Core 19.0.0**<br>Platform P2P node ID, derived from P2P public key (evonodes only)                                                                                                   |
-| → →<br>`platformP2PPort`       | int          | Optional<br>(0 or 1)    | **Added in Dash Core 19.0.0**<br>Platform P2P port (evonodes only)                                                                                                                                   |
-| → →<br>`platformHTTPPort`      | int          | Optional<br>(0 or 1)    | **Added in Dash Core 19.0.0**<br>TCP port of Platform HTTP/API interface (evonodes only)                                                                                                             |
+| → →<br>`platformNodeId`        | string       | Optional<br>(0 or 1)    | **Added in Dash Core 19.0.0**<br>Platform P2P node ID, derived from P2P public key (evonodes only)                                                                                                |
+| → →<br>`platformP2PPort`       | int          | Optional<br>(0 or 1)    | **Added in Dash Core 19.0.0**<br>Platform P2P port (evonodes only)                                                                                                                                |
+| → →<br>`platformHTTPPort`      | int          | Optional<br>(0 or 1)    | **Added in Dash Core 19.0.0**<br>TCP port of Platform HTTP/API interface (evonodes only)                                                                                                          |
 | → →<br>`payoutAddress`         | string       | Required<br>(exactly 1) | The payout address                                                                                                                                                                                |
 | → →<br>`pubKeyOperator`        | string       | Required<br>(exactly 1) | The operator public key                                                                                                                                                                           |
 | → →<br>`operatorPayoutAddress` | string       | Optional<br>(0 or 1)    | The operator payout address                                                                                                                                                                       |
 | →<br>`state`                   | string       | Required<br>(exactly 1) | The masternode's state. Valid states are:<br>• `WAITING_FOR_PROTX`<br>• `POSE_BANNED`<br>• `REMOVED`<br>• `OPERATOR_KEY_CHANGED`<br>• `PROTX_IP_CHANGED`<br>• `READY`<br>• `ERROR`<br>• `UNKNOWN` |
 | →<br>`status`                  | string       | Required<br>(exactly 1) | The masternode's status (description based on current state)                                                                                                                                      |
 
-*Example from Dash Core 19.0.0*
+*Example from Dash Core 19.2.0*
 
 ``` bash
 dash-cli -testnet masternode status
@@ -1340,28 +1341,29 @@ Result:
 
 ``` json
 {
-  "outpoint": "01bb7dc587bb7306444eb5c8106b15a033b9c34c782d2fb46c4910552b59a067-1",
-  "service": "45.32.237.76:19999",
-  "proTxHash": "3979cfb79c4562e819aca69ffae2ea84b9b8f29bd89bdc68be67b88c6f31bf99",
+  "outpoint": "6ce8545e25d4f03aba1527062d9583ae01827c65b234bd979aca5954c6ae3a59-27",
+  "service": "34.214.48.68:19999",
+  "proTxHash": "9cb04f271ba050132c00cc5838fb69e77bc55b5689f9d2d850dc528935f8145c",
   "type": "HighPerformance",
-  "collateralHash": "01bb7dc587bb7306444eb5c8106b15a033b9c34c782d2fb46c4910552b59a067",
-  "collateralIndex": 1,
+  "collateralHash": "6ce8545e25d4f03aba1527062d9583ae01827c65b234bd979aca5954c6ae3a59",
+  "collateralIndex": 27,
   "dmnState": {
-    "service": "45.32.237.76:19999",
-    "registeredHeight": 854390,
-    "lastPaidHeight": 865943,
+    "version": 2,
+    "service": "34.214.48.68:19999",
+    "registeredHeight": 850334,
+    "lastPaidHeight": 852599,
     "consecutivePayments": 0,
     "PoSePenalty": 0,
-    "PoSeRevivedHeight": 854739,
+    "PoSeRevivedHeight": -1,
     "PoSeBanHeight": -1,
     "revocationReason": 0,
-    "ownerAddress": "yg1zQCne1gSVdJKwUy7LRB3X6tVd6hHiTF",
-    "votingAddress": "yiCk7DjwBbUGJuJofTA7eXU4hyybu123pD",
-    "platformNodeID": "71b5c04007f6af71d99893478feb52df0f5a7701",
-    "platformP2PPort": 22821,
-    "platformHTTPPort": 22822,
-    "payoutAddress": "ygRPwFLoC8WeW3ujqrskqHZiQvKpTHF6qv",
-    "pubKeyOperator": "a73d8c1e640d29e2257042a39bbbac8d867f69ae252e146884816b98ab0d0526ed4992d9cff22ef04878423f66583382"
+    "ownerAddress": "yeJdYWA1rNSKxxfo7mE2eBUj3ejBGUR6UB",
+    "votingAddress": "yeJdYWA1rNSKxxfo7mE2eBUj3ejBGUR6UB",
+    "platformNodeID": "62e960a3f6b650feed98a266b3ccdf6e363562cf",
+    "platformP2PPort": 36656,
+    "platformHTTPPort": 1443,
+    "payoutAddress": "yeRZBWYfeNE4yVUHV4ZLs83Ppn9aMRH57A",
+    "pubKeyOperator": "b6ee48c7a71a9d8e0813e68ca09846245fa155285f24a62b0ce9cb0102b1994ec58af8ba2a01c09363bdcc395d41f3df"
   },
   "state": "READY",
   "status": "Ready"
