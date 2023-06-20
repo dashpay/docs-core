@@ -1,7 +1,7 @@
 ```{eval-rst}
 .. meta::
   :title: Requests
-  :description: The commands mentioned here allows you to request specific information from the Dash network.
+  :description: Provides details about Dash Core HTTP REST API endpoints.
 ```
 
 # Requests
