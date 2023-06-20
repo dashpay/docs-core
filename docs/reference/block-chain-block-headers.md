@@ -1,7 +1,7 @@
 ```{eval-rst}
 .. meta::
-  :title: Block Headers
-  :description: Block headers are serialized and hashed as part of the proof-of-work algorithm in Dash's consensus rules. 
+  :title: Dash Block Headers
+  :description: Describes the structure of Dash block headers and provides related details on block versions, merkle trees, and mining difficulty.
 ```
 
 # Block Headers
