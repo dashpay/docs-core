@@ -1,7 +1,7 @@
 ```{eval-rst}
 .. meta::
   :title: Removed RPCs
-  :description: A list of RPCs removed from Dash.
+  :description: A list of RPCs that have recently been removed from Dash Core.
 ```
 
 # Removed RPCs
