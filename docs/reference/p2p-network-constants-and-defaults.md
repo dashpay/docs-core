@@ -1,7 +1,7 @@
 ```{eval-rst}
 .. meta::
-  :title: Constants and Defaults
-  :description: Dash Core's chainparams.cpp file contains constants and defaults, including port configuration and start strings for Dash network messages.
+  :title: Dash Core Constants and Defaults
+  :description: Details Dash network constants and defaults, including port configuration and start strings for Dash network messages.
 ```
 
 # Constants and Defaults
