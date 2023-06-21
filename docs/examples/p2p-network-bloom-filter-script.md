@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Bloom Filter Script
+  :description: Code which demonstrates the bloom filter script. 
+```
+
 # Bloom Filter Script
 
 Complete Python script demonstrating the [Creating](../examples/p2p-network-creating-a-bloom-filter.md)/[Evaluating](../examples/p2p-network-evaluating-a-bloom-filter.md) bloom filter examples (available [here](https://gist.github.com/dash-docs/5d63f095352a717f90d41a5e7fbbdac1#file-bloom_filter_example-py)):

@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Transaction Tutorial
+  :description: This section explains using Dash Core's RPC interface to create transactions with different attributes, a common task for Dash applications. 
+```
+
 # Transaction Tutorial
 
 Creating transactions is something most Dash applications do. This section describes how to use Dash Core's RPC interface to create transactions with various attributes.

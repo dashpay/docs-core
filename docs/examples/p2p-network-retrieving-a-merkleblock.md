@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Retrieving a MerkleBlock
+  :description: This section walks through each step of the process, demonstrating basic network communication and merkle block processing.
+```
+
 # Retrieving a MerkleBlock
 
 For the [`merkleblock` message](../reference/p2p-network-data-messages.md#merkleblock) documentation on the reference page, an actual [merkle block](../resources/glossary.md#merkle-block) was retrieved from the [network](../resources/glossary.md#network) and manually processed.  This section walks through each step of the process, demonstrating basic network communication and merkle block processing.

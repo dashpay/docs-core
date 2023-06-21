@@ -1,5 +1,8 @@
 ```{eval-rst}
 .. _examples-testing-applications:
+.. meta::
+  :title: Testing Applications
+  :description: Dash Core provides several network options designed to let developers test their applications with reduced risks and limitations.
 ```
 
 # Testing Applications

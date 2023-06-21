@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Creating a Bloom Filter
+  :description: In this section, we’ll use variable names that correspond to the field names in the filterload message documentation.
+```
+
 # Creating a Bloom Filter
 
 In this section, we'll use variable names that correspond to the field names in the [`filterload` message documentation](../reference/p2p-network-control-messages.md#filterload). Each code block precedes the paragraph describing it.

@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: P2SH Multisig
+  :description: In this subsection, we will create a P2SH multisig address, spend duffs to it, and then spend those duffs from it to another address.
+```
+
 # P2SH Multisig
 
 In this subsection, we will create a [P2SH multisig](../resources/glossary.md#p2sh-multisig) address, spend [duffs](../resources/glossary.md#duffs) to it, and then spend those duffs from it to another [address](../resources/glossary.md#address).

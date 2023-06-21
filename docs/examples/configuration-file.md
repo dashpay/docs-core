@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Configuration File
+  :description: The DashCore configuration file, dash.conf, stores settings for Dash programs, including the RPC password required for dashd and dash-cli.
+```
+
 # Configuration File
 
 All three programs get settings from `dash.conf` in the `DashCore` application directory:

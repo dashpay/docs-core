@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Parsing a MerkleBlock
+  :description: In this section we will parse a merkle block after having retrieved it from the network.
+```
+
 # Parsing a MerkleBlock
 
 In the section above, we retrieved a [merkle block](../resources/glossary.md#merkle-block) from the network; now we will parse it. Most of the [block header](../resources/glossary.md#block-header) has been omitted. For a more complete hexdump, see the example in the [`merkleblock` message section](../reference/p2p-network-data-messages.md#merkleblock).

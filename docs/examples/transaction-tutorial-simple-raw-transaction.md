@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Simple Raw Transaction
+  :description: Raw transaction RPCs enable custom transaction creation and delayed broadcastings.
+```
+
 # Simple Raw Transaction
 
 The [raw transaction RPCs](../api/remote-procedure-calls-raw-transactions.md) allow users to create custom [transactions](../resources/glossary.md#transaction) and delay broadcasting those transactions. However, mistakes made in [raw transactions](../resources/glossary.md#raw-transaction) may not be detected by Dash Core, and a number of raw transaction users have permanently lost large numbers of [duffs](../resources/glossary.md#duffs), so please be careful using raw transactions on [mainnet](../resources/glossary.md#mainnet).

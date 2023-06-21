@@ -1,5 +1,8 @@
 ```{eval-rst}
 .. _examples-index:
+.. meta::
+  :title: Dash Core Examples Introduction
+  :description: The following guide aims to provide examples to help you start building Dash-based applications. 
 ```
 
 # Introduction
