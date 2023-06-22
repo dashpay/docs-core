@@ -1,7 +1,7 @@
 ```{eval-rst}
 .. meta::
   :title: Creating a Bloom Filter
-  :description: In this section, we’ll use variable names that correspond to the field names in the filterload message documentation.
+  :description: Demonstrates how to create a bloom filter using Python and represent it in a filterload message.
 ```
 
 # Creating a Bloom Filter
