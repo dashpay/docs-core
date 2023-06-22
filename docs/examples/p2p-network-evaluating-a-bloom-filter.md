@@ -1,7 +1,7 @@
 ```{eval-rst}
 .. meta::
   :title: Evaluating a Bloom Filter
-  :description: Using a bloom filter for finding matching data involves checking if the calculated index bit is set in the existing filter during construction.
+  :description: Demonstrates how to check if a bloom filter finds any data matching the relevant criteria..
 ```
 
 # Evaluating a Bloom Filter
