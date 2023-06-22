@@ -1,7 +1,7 @@
 ```{eval-rst}
 .. meta::
   :title: Simple Raw Transaction
-  :description: Raw transaction RPCs enable custom transaction creation and delayed broadcastings.
+  :description: This example demonstrates using raw transaction RPCs to manually construct and send a simple transaction with a single output.
 ```
 
 # Simple Raw Transaction
