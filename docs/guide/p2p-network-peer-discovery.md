@@ -1,7 +1,7 @@
 ```{eval-rst}
 .. meta::
   :title: Peer Discovery
-  :description: Initial peer discovery in Dash Core involves querying hardcoded DNS seeds for IP addresses of active full nodes to establish connections.
+  :description: Initial peer discovery in Dash Core involves querying hardcoded DNS seeds, exchanging peer to peer messages, and using a list of hardcoded masternode IP IP addresses to establish connections.
 ```
 
 # Peer Discovery
