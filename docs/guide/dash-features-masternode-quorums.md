@@ -1,7 +1,7 @@
 ```{eval-rst}
 .. meta::
   :title: Masternode Quorums
-  :description: Dash’s masternode quorums are used to facilitate the operation of masternode provided features in a decentralized, deterministic way. 
+  :description: Dash’s masternode quorums enable masternode-provided features to work in a decentralized, deterministic way. 
 ```
 
 # Masternode Quorums
