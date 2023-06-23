@@ -1,7 +1,7 @@
 ```{eval-rst}
 .. meta::
   :title: Masternode Sync
-  :description: Dash Core performs full masternode synchronization as required. This section details the four conditions that initiate a start/restart the sync process. 
+  :description: Dash Core performs full masternode synchronization as required. This section details the four conditions that initiate a start/restart of the sync process. 
 ```
 
 # Masternode Sync
