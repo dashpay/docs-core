@@ -1,7 +1,7 @@
 ```{eval-rst}
 .. meta::
   :title: Dash Solo Mining
-  :description: Solo mining is an individual effort to generate blocks, allowing the miner to claim all rewards, resulting in larger but less frequent payments.. 
+  :description: Solo mining is an individual effort to generate blocks, allowing the miner to claim all rewards, resulting in larger but less frequent payments.
 ```
 
 # Solo Mining
