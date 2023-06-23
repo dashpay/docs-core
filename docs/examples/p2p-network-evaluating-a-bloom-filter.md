@@ -1,7 +1,7 @@
 ```{eval-rst}
 .. meta::
   :title: Evaluating a Bloom Filter
-  :description: Demonstrates how to check if a bloom filter finds any data matching the relevant criteria..
+  :description: Demonstrates how to check if a bloom filter finds any data matching the relevant criteria.
 ```
 
 # Evaluating a Bloom Filter
