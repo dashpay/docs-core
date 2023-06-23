@@ -1,7 +1,7 @@
 ```{eval-rst}
 .. meta::
   :title: Dash Features
-  :description: Dash offers instant transaction confirmation, double spend protection, anonymity, a self-governed model via incentivized full nodes (masternodes), and more. 
+  :description: Dash offers instant transaction confirmation, double spend protection, privacy, a self-governed model via incentivized full nodes (masternodes), and more. 
 ```
 
 # Dash Features
