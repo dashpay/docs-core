@@ -1,10 +1,8 @@
+# Proof of Service
 ```{eval-rst}
 .. meta::
   :title: Dash Proof of Service
   :description: The Proof of Service (PoSe) scoring system motivates masternodes to deliver network services, penalizing non-participation by increasing PoSe scores and eventually disqualifying them from payment eligibility. 
-```
-
-Proof of Service
 
 The Proof of Service (PoSe) scoring system helps incentivize [masternodes](../resources/glossary.md#masternode) to provide [network](../resources/glossary.md#network) services. Masternodes that neglect to participate receive an increased PoSe score which eventually results in them being excluded from masternode payment eligibility.
 
