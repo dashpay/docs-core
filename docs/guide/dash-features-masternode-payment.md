@@ -1,7 +1,7 @@
 ```{eval-rst}
 .. meta::
   :title: Masternode Payment
-  :description: Since DIP3, masternode reward payments in Dash Core are determined by on-chain masternode lists in each block. 
+  :description: Masternode reward payments in Dash are determined by on-chain masternode lists in each block. 
 ```
 
 # Masternode Payment
