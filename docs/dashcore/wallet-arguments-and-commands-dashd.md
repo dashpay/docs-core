@@ -1,5 +1,8 @@
 ```{eval-rst}
 .. _dashcore-arguments-and-commands-dashd:
+.. meta::
+  :title: dashd Arguments and Commnads
+  :description: The following section shows all available options for dashhd including debug options that are not normally displayed.
 ```
 
 # dashd

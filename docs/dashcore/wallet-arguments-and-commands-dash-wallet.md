@@ -1,5 +1,8 @@
 ```{eval-rst}
 .. _dashcore-arguments-and-commands-dash-wallet:
+.. meta::
+  :title: dash-wallet Arguments and Commnads
+  :description: The dash-wallet application is an offline tool for creating and interacting with Dash Core wallet files.
 ```
 
 # dash-wallet

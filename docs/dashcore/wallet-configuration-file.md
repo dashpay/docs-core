@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+  :title: Wallet Configuration File
+  :description: Configuration files needed to run dashd and dash-cli.
+```
+
 # Configuration Files
 
 ## dash.conf

@@ -1,5 +1,8 @@
 ```{eval-rst}
 .. _dashcore-arguments-and-commands-dash-tx:
+.. meta::
+  :title: dash-tx Wallet Arguments and Commnads
+  :description: Command-line options for creating, parsing, or modifying transactions via dash-tx.
 ```
 
 # dash-tx
