@@ -155,11 +155,11 @@ The `protx diff` RPC calculates a diff and a proof between two masternode list.
 | →<br>`deletedQuorums`          | array        | Required<br>(exactly 1) | An array of deleted quorums                                                                                                                      |
 | → →<br>`llmqType`              | number       | Required<br>(exactly 1) | The quorum type                                                                                                                                  |
 | → →<br>`quorumHash`            | string (hex) | Required<br>(exactly 1) | The hash of the quorum                                                                                                                           |
-| → →<br> `quorumIndex`          | number       | Required<br>(exactly 1) | **Added in Dash Core 18.0.0**<br>The index of the quorum                                                                                         |
 | →<br>`newQuorums`              | array        | Required<br>(exactly 1) | An array of new quorums                                                                                                                          |
 | → →<br>`version`               | number       | Required<br>(exactly 1) | The quorum version                                                                                                                               |
 | → →<br>`llmqType`              | number       | Required<br>(exactly 1) | The quorum type                                                                                                                                  |
 | → →<br>`quorumHash`            | string (hex) | Required<br>(exactly 1) | The hash of the quorum                                                                                                                           |
+| → →<br> `quorumIndex`          | number       | Required<br>(exactly 1) | **Added in Dash Core 18.0.0**<br>The index of the quorum                                                                                         |
 | → →<br>`signersCount`          | number       | Required<br>(exactly 1) | The number of signers for the quorum                                                                                                             |
 | → →<br>`signers`               | string (hex) | Required<br>(exactly 1) | *Added in Dash Core 0.16.0*<br>Bitset representing the aggregated signers of this final commitment                                               |
 | → →<br>`validMembersCount`     | number       | Required<br>(exactly 1) | The number of valid members in the quorum                                                                                                        |
@@ -170,6 +170,7 @@ The `protx diff` RPC calculates a diff and a proof between two masternode list.
 | → →<br>`membersSig`            | string (hex) | Required<br>(exactly 1) | *Added in Dash Core 0.16.0*<br>Aggregated BLS signatures from all included commitments                                                           |
 | →<br>`merkleRootMNList`        | string (hex) | Required<br>(exactly 1) | Merkle root of the masternode list                                                                                                               |
 | →<br>`merkleRootQuorums`       | string (hex) | Optional<br>(0 or 1)    | *Added in Coinbase Transaction version 2 (Dash Core 0.14.0)*<br>Merkle root of the masternode list.                                              |
+| →<br>`quorumsCLSigs`           | string (hex) | Optional<br>(0 or 1)    | **Added in Coinbase Transaction version 3 (Dash Core 20.0.0)**<br>ChainLock signature used to calculate members per quorum indexes (in `newQuorums`). Only present after v20 hard fork activation |
 
 *Example from Dash Core 19.2.0*
 
