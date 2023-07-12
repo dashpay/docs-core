@@ -134,3 +134,4 @@ html_context = {
 
 def setup(app):
     app.add_js_file('js/temp-header-fix.js')
+    app.add_js_file('js/pydata-search-close.js')
