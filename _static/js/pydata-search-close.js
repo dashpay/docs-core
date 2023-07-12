@@ -53,4 +53,7 @@ $(document).ready(function(){
   $(".search__cross").click(function(){
       toggleSearchField();
   });
+  $(".search__outer__wrapper search__backdrop").click(function(){
+    toggleSearchField();
+  });
 });
