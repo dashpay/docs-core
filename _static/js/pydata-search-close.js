@@ -139,7 +139,7 @@ $(document).ready(function(){
   $(".search-button__overlay").click(function(){
     // Currently hidden by CSS
     console.log("Close by search-button__overlay");
-    toggleSearchField();
+    hideSearchField();
   });
 });
 
