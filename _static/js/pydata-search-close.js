@@ -60,12 +60,14 @@ var addEventListenerForSearchKeyboard = () => {
     "keydown",
     (event) => {
       let input = findSearchInput();
+      console.log("keydown " + event.code);
       // toggle on Ctrl+k or ⌘+k
       // if ((event.ctrlKey || event.metaKey) && event.code == "KeyK") {
       //   event.preventDefault();
       //   toggleSearchField();
       // }
       // also allow Escape key to hide (but not show) the dynamic search field
+      console.log("Active element: " + document.activeElement);
       if (document.activeElement === input && event.code == "Escape") {
         console.log("Escape pressed");
         toggleSearchField();
