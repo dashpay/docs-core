@@ -53,6 +53,24 @@ var toggleSearchField = () => {
   }
 };
 
+
+/** Function to hide the search field */
+var hideSearchField = () => {
+  console.log("Entering hideSearchField");
+  
+  let input = findSearchInput();
+  let searchPopupWrapper = document.querySelector(".search-button__wrapper");
+  let hiddenInput = searchPopupWrapper.querySelector("input");
+  
+  if (input === hiddenInput) {
+    searchPopupWrapper.classList.remove("show");
+  }
+  
+  if (document.activeElement === input) {
+    input.blur();
+  }
+};
+
 /** Add an event listener for toggleSearchField() for Ctrl/Cmd + K */
 var addEventListenerForSearchKeyboard = () => {
   console.log("Adding event listeners");
@@ -68,9 +86,11 @@ var addEventListenerForSearchKeyboard = () => {
       // }
       // also allow Escape key to hide (but not show) the dynamic search field
       console.log("Active element: " + document.activeElement);
-      if (document.activeElement === input && event.code == "Escape") {
+      // if (document.activeElement === input && event.code == "Escape") {
+      if (event.code == "Escape") {        
         console.log("Escape pressed");
-        toggleSearchField();
+        // toggleSearchField();
+        hideSearchField();
       }
     },
     true
