@@ -3,6 +3,7 @@
  */
 /** Find any search forms on the page and return their input element */
 var findSearchInput = () => {
+  console.log("Finding search input");
   let forms = document.querySelectorAll("form.bd-search");
   if (!forms.length) {
     // no search form found
@@ -28,6 +29,7 @@ var findSearchInput = () => {
  * - If not, then a search field will pop up.
  */
 var toggleSearchField = () => {
+  console.log("Entering toggleSearchField");
   // Find the search input to highlight
   let input = findSearchInput();
 
@@ -50,6 +52,7 @@ var toggleSearchField = () => {
 
 /** Add an event listener for toggleSearchField() for Ctrl/Cmd + K */
 var addEventListenerForSearchKeyboard = () => {
+  console.log("Adding event listeners");
   window.addEventListener(
     "keydown",
     (event) => {
@@ -61,6 +64,7 @@ var addEventListenerForSearchKeyboard = () => {
       // }
       // also allow Escape key to hide (but not show) the dynamic search field
       if (document.activeElement === input && event.code == "Escape") {
+        console.log("Escape pressed");
         toggleSearchField();
       }
     },
@@ -99,9 +103,15 @@ var setupSearchButtons = () => {
 $(document).ready(function(){
   $(".search__cross").click(function(){
       toggleSearchField();
+      console.log("Close by 'X'");
   });
   $(".search__outer__wrapper search__backdrop").click(function(){
+    console.log("Close by search__outer");
     toggleSearchField();
+  });
+  $(".search-button__overlay").click(function(){
+    toggleSearchField();
+    console.log("Close by search-button__overlay");
   });
 });
 
