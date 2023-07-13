@@ -129,7 +129,8 @@ $(document).ready(function(){
   $(".search__cross").click(function(){
     // This is working
     console.log("Close by 'X'");
-    toggleSearchField();
+    // toggleSearchField();
+    hideSearchField();
   });
   $(".search__outer__wrapper search__backdrop").click(function(){
     console.log("Close by search__outer");
