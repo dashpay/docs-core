@@ -132,9 +132,9 @@ $(document).ready(function(){
     // toggleSearchField();
     hideSearchField();
   });
-  $(".search__outer__wrapper search__backdrop").click(function(){
+  $(".search__outer__wrapper.search__backdrop").click(function(){
     console.log("Close by search__outer");
-    toggleSearchField();
+    hideSearchField();
   });
   $(".search-button__overlay").click(function(){
     // Currently hidden by CSS
