@@ -48,6 +48,53 @@ var toggleSearchField = () => {
   }
 };
 
+/** Add an event listener for toggleSearchField() for Ctrl/Cmd + K */
+var addEventListenerForSearchKeyboard = () => {
+  window.addEventListener(
+    "keydown",
+    (event) => {
+      let input = findSearchInput();
+      // toggle on Ctrl+k or ⌘+k
+      // if ((event.ctrlKey || event.metaKey) && event.code == "KeyK") {
+      //   event.preventDefault();
+      //   toggleSearchField();
+      // }
+      // also allow Escape key to hide (but not show) the dynamic search field
+      if (document.activeElement === input && event.code == "Escape") {
+        toggleSearchField();
+      }
+    },
+    true
+  );
+};
+
+/** Change the search hint to `meta key` if we are a Mac */
+var changeSearchShortcutKey = () => {
+  let forms = document.querySelectorAll("form.bd-search");
+  var isMac = window.navigator.platform.toUpperCase().indexOf("MAC") >= 0;
+  if (isMac) {
+    forms.forEach(
+      (f) => (f.querySelector("kbd.kbd-shortcut__modifier").innerText = "⌘")
+    );
+  }
+};
+
+/** Activate callbacks for search button popup */
+var setupSearchButtons = () => {
+  changeSearchShortcutKey();
+  addEventListenerForSearchKeyboard();
+
+  // Add the search button trigger event callback
+  document.querySelectorAll(".search-button__button").forEach((btn) => {
+    btn.onclick = toggleSearchField;
+  });
+
+  // Add the search button overlay event callback
+  let overlay = document.querySelector(".search-button__overlay");
+  if (overlay) {
+    overlay.onclick = toggleSearchField;
+  }
+};
 
 $(document).ready(function(){
   $(".search__cross").click(function(){
@@ -57,3 +104,5 @@ $(document).ready(function(){
     toggleSearchField();
   });
 });
+
+$(setupSearchButtons);
