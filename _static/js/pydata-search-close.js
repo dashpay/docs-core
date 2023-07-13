@@ -1,3 +1,9 @@
+// Script to allow use of readthedocs-sphinx-search extension with the pydata
+// theme
+//
+// Based in part on:
+// https://github.com/pydata/pydata-sphinx-theme/blob/v0.13.3/src/pydata_sphinx_theme/assets/scripts/pydata-sphinx-theme.js#L167-L272
+
 /*******************************************************************************
  * Search
  */
