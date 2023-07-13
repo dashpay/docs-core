@@ -65,22 +65,13 @@ var hideSearchField = () => {
   }
 };
 
-/** Add an event listener for toggleSearchField() for Ctrl/Cmd + K */
+/** Add an event listener for hideSearchField() for Escape*/
 var addEventListenerForSearchKeyboard = () => {
   window.addEventListener(
     "keydown",
     (event) => {
-      let input = findSearchInput();
-      console.log("keydown " + event.code);
-      // toggle on Ctrl+k or ⌘+k
-      // if ((event.ctrlKey || event.metaKey) && event.code == "KeyK") {
-      //   event.preventDefault();
-      //   toggleSearchField();
-      // }
-      // also allow Escape key to hide (but not show) the dynamic search field
-      console.log("Active element: " + document.activeElement);
-      // if (document.activeElement === input && event.code == "Escape") {
-      if (event.code == "Escape") {        
+      // Allow Escape key to hide the search field
+      if (event.code == "Escape") {
         hideSearchField();
       }
     },
@@ -116,6 +107,7 @@ var setupSearchButtons = () => {
   }
 };
 
+// Custom code to manage closing the RtD search dialog properly
 $(document).ready(function(){
   $(".search__cross").click(function(){
     hideSearchField();
@@ -124,7 +116,8 @@ $(document).ready(function(){
     hideSearchField();
   });
   $(".search-button__overlay").click(function(){
-    // Currently hidden by CSS
+    // Shouldn't be necessary since it's currently hidden by CSS, but just in
+    // case
     console.log("Close by search-button__overlay");
     hideSearchField();
   });
