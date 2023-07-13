@@ -7,14 +7,17 @@ var findSearchInput = () => {
   let forms = document.querySelectorAll("form.bd-search");
   if (!forms.length) {
     // no search form found
+    console.log("No search form found")
     return;
   } else {
     var form;
     if (forms.length == 1) {
       // there is exactly one search form (persistent or hidden)
+      console.log("Found 1 form")
       form = forms[0];
     } else {
       // must be at least one persistent form, use the first persistent one
+      console.log("Found multiple forms")
       form = document.querySelector(
         "div:not(.search-button__search-container) > form.bd-search"
       );
@@ -102,16 +105,18 @@ var setupSearchButtons = () => {
 
 $(document).ready(function(){
   $(".search__cross").click(function(){
-      toggleSearchField();
-      console.log("Close by 'X'");
+    // This is working
+    console.log("Close by 'X'");
+    toggleSearchField();
   });
   $(".search__outer__wrapper search__backdrop").click(function(){
     console.log("Close by search__outer");
     toggleSearchField();
   });
   $(".search-button__overlay").click(function(){
-    toggleSearchField();
+    // Currently hidden by CSS
     console.log("Close by search-button__overlay");
+    toggleSearchField();
   });
 });
 
