@@ -3,21 +3,17 @@
  */
 /** Find any search forms on the page and return their input element */
 var findSearchInput = () => {
-  console.log("Finding search input");
   let forms = document.querySelectorAll("form.bd-search");
   if (!forms.length) {
     // no search form found
-    console.log("No search form found")
     return;
   } else {
     var form;
     if (forms.length == 1) {
       // there is exactly one search form (persistent or hidden)
-      console.log("Found 1 form")
       form = forms[0];
     } else {
       // must be at least one persistent form, use the first persistent one
-      console.log("Found multiple forms")
       form = document.querySelector(
         "div:not(.search-button__search-container) > form.bd-search"
       );
@@ -32,7 +28,6 @@ var findSearchInput = () => {
  * - If not, then a search field will pop up.
  */
 var toggleSearchField = () => {
-  console.log("Entering toggleSearchField");
   // Find the search input to highlight
   let input = findSearchInput();
 
@@ -56,8 +51,7 @@ var toggleSearchField = () => {
 
 /** Function to hide the search field */
 var hideSearchField = () => {
-  console.log("Entering hideSearchField");
-  
+ 
   let input = findSearchInput();
   let searchPopupWrapper = document.querySelector(".search-button__wrapper");
   let hiddenInput = searchPopupWrapper.querySelector("input");
@@ -73,7 +67,6 @@ var hideSearchField = () => {
 
 /** Add an event listener for toggleSearchField() for Ctrl/Cmd + K */
 var addEventListenerForSearchKeyboard = () => {
-  console.log("Adding event listeners");
   window.addEventListener(
     "keydown",
     (event) => {
@@ -88,8 +81,6 @@ var addEventListenerForSearchKeyboard = () => {
       console.log("Active element: " + document.activeElement);
       // if (document.activeElement === input && event.code == "Escape") {
       if (event.code == "Escape") {        
-        console.log("Escape pressed");
-        // toggleSearchField();
         hideSearchField();
       }
     },
@@ -127,13 +118,9 @@ var setupSearchButtons = () => {
 
 $(document).ready(function(){
   $(".search__cross").click(function(){
-    // This is working
-    console.log("Close by 'X'");
-    // toggleSearchField();
     hideSearchField();
   });
   $(".search__outer__wrapper.search__backdrop").click(function(){
-    console.log("Close by search__outer");
     hideSearchField();
   });
   $(".search-button__overlay").click(function(){
