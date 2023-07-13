@@ -92,19 +92,19 @@ var changeSearchShortcutKey = () => {
 
 /** Activate callbacks for search button popup */
 var setupSearchButtons = () => {
-  changeSearchShortcutKey();
+  // changeSearchShortcutKey();
   addEventListenerForSearchKeyboard();
 
-  // Add the search button trigger event callback
-  document.querySelectorAll(".search-button__button").forEach((btn) => {
-    btn.onclick = toggleSearchField;
-  });
+  // // Add the search button trigger event callback
+  // document.querySelectorAll(".search-button__button").forEach((btn) => {
+  //   btn.onclick = toggleSearchField;
+  // });
 
-  // Add the search button overlay event callback
-  let overlay = document.querySelector(".search-button__overlay");
-  if (overlay) {
-    overlay.onclick = toggleSearchField;
-  }
+  // // Add the search button overlay event callback
+  // let overlay = document.querySelector(".search-button__overlay");
+  // if (overlay) {
+  //   overlay.onclick = toggleSearchField;
+  // }
 };
 
 // Custom code to manage closing the RtD search dialog properly
