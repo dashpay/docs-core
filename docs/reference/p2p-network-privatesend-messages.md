@@ -362,7 +362,7 @@ Once the masternode receives and validates all [`dss` messages](../reference/p2p
 
 | Bytes | Name | Data type | Required | Description |
 | ---------- | ----------- | --------- | -------- | -------- |
-| # | inputs | txIn[] | Required | Signed inputs for the session
+| # | inputs | txIn[] | Required | Signed inputs for the session<br>**Note**: Inputs must be signed with the `SIGHASH_ALL | SIGHASH_ANYONECANPAY` signature type
 
 The following annotated hexdump shows a [`dss` message](../reference/p2p-network-privatesend-messages.md#dss). (The message header has been omitted.) Note that these will be the same transaction inputs that were supplied (unsiged) in the [`dsi` message](../reference/p2p-network-privatesend-messages.md#dsi).
 
