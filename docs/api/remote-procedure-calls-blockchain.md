@@ -107,6 +107,10 @@ Result:
 
 *See also: none*
 
+```{eval-rst}
+.. _api-rpc-blockchain-getblock:
+```
+
 ## GetBlock
 
 The [`getblock` RPC](../api/remote-procedure-calls-blockchain.md#getblock) gets a block with a particular header hash from the local block database either as a JSON object or as a serialized block.
@@ -685,6 +689,10 @@ Result:
 * [GetBlockHash](../api/remote-procedure-calls-blockchain.md#getblockhash): returns the header hash of a block at the given height in the local best block chain.
 * [GetBestBlockHash](../api/remote-procedure-calls-blockchain.md#getbestblockhash): returns the header hash of the most recent block on the best block chain.
 
+```{eval-rst}
+.. _api-rpc-blockchain-getblockheader:
+```
+
 ## GetBlockHeader
 
 *Added in Bitcoin Core 0.12.0*
@@ -790,6 +798,10 @@ Result:
 * [GetBlockHashes](../api/remote-procedure-calls-blockchain.md#getblockhashes): returns array of hashes of blocks within the timestamp range provided (requires `timestampindex` to be enabled).
 * [GetBlockHeaders](../api/remote-procedure-calls-blockchain.md#getblockheaders): returns an array of items with information about the requested number of blockheaders starting from the requested hash.
 * [GetBestBlockHash](../api/remote-procedure-calls-blockchain.md#getbestblockhash): returns the header hash of the most recent block on the best block chain.
+
+```{eval-rst}
+.. _api-rpc-blockchain-getblockheaders:
+```
 
 ## GetBlockHeaders
 
