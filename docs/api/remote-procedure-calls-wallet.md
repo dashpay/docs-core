@@ -3584,3 +3584,31 @@ _See also_
 * [DecodePSBT](../api/remote-procedure-calls-raw-transactions.md#decodepsbt): returns a JSON object representing the serialized, base64-encoded partially signed Dash transaction.
 * [FinalizePSBT](../api/remote-procedure-calls-raw-transactions.md#finalizepsbt): finalizes the inputs of a PSBT.
 * [WalletCreateFundedPSBT](../api/remote-procedure-calls-wallet.md#walletcreatefundedpsbt): creates and funds a transaction in the Partially Signed Transaction (PST) format.
+
+## WipeWalletTxes
+
+The [`wipewallettxes` RPC](../api/remote-procedure-calls-wallet.md#wipewallettxes) wipes all transaction from the wallet. Note: Use the [`rescanblockchain` RPC](../api/remote-procedure-calls-wallet.md#rescanblockchain) to initiate the scanning progress and recover wallet transactions.
+
+_Parameter #1---Keep confirmed txes_
+
+| Name   | Type   | Presence                | Description                   |
+| ------ | ------ | ----------------------- | ----------------------------- |
+| `keep_confirmed` | boolean | Optional<br>(0 or 1) | Do not wipe confirmed transactions (default=`false`) |
+
+_Result---`null` on success_
+
+| Name     | Type | Presence                | Description                                                         |
+| -------- | ---- | ----------------------- | ------------------------------------------------------------------- |
+| `result` | null | Required<br>(exactly 1) | JSON `null` when the transaction and all descendants were abandoned |
+
+_Example from Dash Core 20.0.0_
+
+Wipe all transactions from the wallet:
+
+```bash
+dash-cli -testnet wipewallettxes
+```
+
+_See also_
+
+* [RescanBlockchain](../api/remote-procedure-calls-wallet.md#rescanblockchain): rescans the local blockchain for wallet related transactions.
