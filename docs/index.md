@@ -148,9 +148,11 @@ dashcore/wallet-configuration-file
 
 resources/glossary
 Mainnet Block Explorer <https://insight.dashevo.org/insight/>
+Tokenview Mainnet DASH Explorer <https://dash.tokenview.io>
 Testnet Block Explorer <https://testnet-insight.dashevo.org/insight/>
 Testnet Faucet <http://faucet.testnet.networks.dash.org/>
 API Services <https://www.dash.org/providers-and-tools/#custody-and-api>
+Tokenview DASH API <https://services.tokenview.io>
 SDK Resources <https://docs.dash.org/en/stable/docs/user/developers/integration-sdks.html>
 Dash Whitepaper <https://docs.dash.org/en/stable/introduction/about.html#whitepaper>
 Bitcoin Whitepaper <https://bitcoin.org/bitcoin.pdf>
