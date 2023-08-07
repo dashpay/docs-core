@@ -410,36 +410,24 @@ Name | Type | Presence | Description
 →<br>`pruneheight` | number (int) | Optional<br>(0 or 1) | *Added in Bitcoin Core 0.11.0*<br><br>The lowest-height complete block stored if pruning is activated
 →<br>`automatic_pruning` | bool | Required<br>(exactly 1) | *Added in Dash Core 0.16.0*<br><br>Whether automatic pruning is enabled (only present if pruning is enabled)
 →<br>`prune_target_size` | number (int) | Optional<br>(0 or 1) | *Added in Dash Core 0.16.0*<br><br>The target size used by pruning (only present if automatic pruning is enabled)
-→<br>`softforks` | array | Required<br>(exactly 1) | *Added in Bitcoin Core 0.12.0*<br><br>An array of objects each describing a current or previous soft fork
-→ →<br>Softfork | object | Required<br>(0 or more) | A specific softfork
-→ → →<br>`id` | string | Required<br>(exactly 1) | The name of the softfork
-→ → →<br>`version` | numeric<br>(int) | Required<br>(exactly 1) | The block version used for the softfork
-→ → →<br>`enforce` | string : object | Optional<br>(0 or 1) | The progress toward enforcing the softfork rules for new-version blocks
-→ → → →<br>`status` | bool | Required<br>(exactly 1) | Indicates if the threshold was reached
-→ → → →<br>`found` | numeric<br>(int) | Optional<br>(0 or 1) | Number of blocks that support the softfork
-→ → → →<br>`required` | numeric<br>(int) | Optional<br>(0 or 1) | Number of blocks that are required to reach the threshold
-→ → → →<br>`window` | numeric<br>(int) | Optional<br>(0 or 1) | The maximum size of examined window of recent blocks
-→ → →<br>`reject` | object | Optional<br>(0 or 1) | The progress toward enforcing the softfork rules for new-version blocks
-→ → → →<br>`status` | bool | Optional<br>(0 or 1) | Indicates if the threshold was reached
-→ → → →<br>`found` | numeric<br>(int) | Optional<br>(0 or 1) | Number of blocks that support the softfork
-→ → → →<br>`required` | numeric<br>(int) | Optional<br>(0 or 1) | Number of blocks that are required to reach the threshold
-→ → → →<br>`window` | numeric<br>(int) | Optional<br>(0 or 1) | The maximum size of examined window of recent blocks
-→<br>`bip9_softforks` | object | Required<br>(exactly 1) | *Added in Bitcoin Core 0.12.1*<br><br>The status of BIP9 softforks in progress
-→ →<br>Name | string : object | Required<br>(0 or more) | A specific BIP9 softfork
-→ → →<br>`status` | string | Required<br>(exactly 1) | Set to one of the following reasons:<br>• `defined` if voting hasn't started yet<br>• `started` if the voting has started <br>• `locked_in` if the voting was successful but the softfork hasn't been activated yet<br>• `active` if the softfork was activated<br>• `failed` if the softfork has not receieved enough votes
-→ → →<br>`bit` | numeric<br>(int) | Optional<br>(0 or 1) | The bit (0-28) in the block version field used to signal this softfork.  Field is only shown when status is `started`
-→ → →<br>`startTime` | numeric<br>(int) | Required<br>(exactly 1) | The Unix epoch time when the softfork voting begins
-→ → →<br>`timeout` | numeric<br>(int) | Required<br>(exactly 1) | The Unix epoch time at which the deployment is considered failed if not yet locked in
-→ → →<br>`since` | numeric<br>(int) | Required<br>(exactly 1) | *Added in Bitcoin Core 0.14.0*<br><br>The height of the first block to which the status applies
+→<br>`softforks` | array | Required<br>(exactly 1) | **Revised significantly in Dash Core 20.0.0**<br><br>An array of objects each describing a current or previous soft fork
+→ →<br>Softfork | object | Required<br>(0 or more) | The name of a specific softfork
+→ → →<br>`type`          | string  | Required | One of "buried", "bip9"
+→ → →<br>`bip9`          | object  | Optional | Status of bip9 softforks (only for "bip9" type)
+→ → → →<br>`status`       | string  | Required | One of "defined", "started", "locked_in", "active", "failed"
+→ → → →<br>`bit`          | numeric | Optional | The bit (0-28) in the block version field used to signal this softfork (only for "started" status)
+→ → → →<br>`start_time`   | numeric | Required | The minimum median time past of a block at which the bit gains its meaning
+→ → → →<br>`timeout`      | numeric | Required | The median time past of a block at which the deployment is considered failed if not yet locked in
+→ → → →<br>`since`        | numeric | Required | Height of the first block to which the status applies
 → → →<br>`statistics` | string : object | Required<br>(exactly 1) | *Added in Dash Core 0.15.0*<br><br>Numeric statistics about BIP9 signaling for a softfork (only for \started\" status)"
 → → → →<br>`period` | numeric<br>(int) | Optional<br>(0 or 1) | *Added in Dash Core 0.15.0*<br><br>The length in blocks of the BIP9 signaling period.  Field is only shown when status is `started`
 → → → →<br>`threshold` | numeric<br>(int) | Optional<br>(0 or 1) | *Added in Dash Core 0.15.0*<br><br>The number of blocks with the version bit set required to activate the feature.  Field is only shown when status is `started`
 → → → →<br>`elapsed` | numeric<br>(int) | Optional<br>(0 or 1) | *Added in Dash Core 0.15.0*<br><br>The number of blocks elapsed since the beginning of the current period.  Field is only shown when status is `started`
 → → → →<br>`count` | numeric<br>(int) | Optional<br>(0 or 1) | *Added in Dash Core 0.15.0*<br><br>The number of blocks with the version bit set in the current period.  Field is only shown when status is `started`
 → → →<br>`possible` | bool | Optional<br>(0 or 1) | *Added in Bitcoin Core 0.11.0*<br><br>Returns false if there are not enough blocks left in this period to pass activation threshold.  Field is only shown when status is `started`
-→<br>`warnings` | bool | Optional<br>(0 or 1) | *Added in Dash Core 0.16.0*<br><br>Returns any network and blockchain warnings
+→<br>`warnings` | string | Optional<br>(0 or 1) | *Added in Dash Core 0.16.0*<br><br>Returns any network and blockchain warnings
 
-*Example from Dash Core 0.16.0*
+*Example from Dash Core 20.0.0*
 
 ``` bash
 dash-cli -testnet getblockchaininfo
@@ -450,72 +438,89 @@ Result:
 ``` json
 {
   "chain": "test",
-  "blocks": 292973,
-  "headers": 292973,
-  "bestblockhash": "0000020029bcac549a6e7b7e488d9ca8af518d4c0aae8073cd364c70ca29be6e",
-  "difficulty": 0.0002441371325370145,
-  "mediantime": 1586975225,
-  "verificationprogress": 0.9999983278651547,
+  "blocks": 879157,
+  "headers": 879157,
+  "bestblockhash": "000000a11e129e9bc62bcc38ef758b9172f3bafb8e812ed06916ee2b58dbaf12",
+  "difficulty": 0.004223033929131131,
+  "mediantime": 1690908233,
+  "verificationprogress": 0.9999999935243107,
   "initialblockdownload": false,
-  "chainwork": "00000000000000000000000000000000000000000000000001e6f68a064798f8",
-  "size_on_disk": 1186147401,
+  "chainwork": "00000000000000000000000000000000000000000000000002d68ce35ba5fe4c",
+  "size_on_disk": 3044171242,
   "pruned": false,
-  "softforks": [
-    {
-      "id": "bip34",
-      "version": 2,
-      "reject": {
-        "status": true
-      }
+  "softforks": {
+    "bip34": {
+      "type": "buried",
+      "active": true,
+      "height": 76
     },
-    {
-      "id": "bip66",
-      "version": 3,
-      "reject": {
-        "status": true
-      }
+    "bip66": {
+      "type": "buried",
+      "active": true,
+      "height": 2075
     },
-    {
-      "id": "bip65",
-      "version": 4,
-      "reject": {
-        "status": true
-      }
-    }
-  ],
-  "bip9_softforks": {
-    "csv": {
-      "status": "active",
-      "startTime": 1544655600,
-      "timeout": 1576191600,
-      "since": 8064
-    },
-    "dip0001": {
-      "status": "active",
-      "startTime": 1544655600,
-      "timeout": 1576191600,
-      "since": 4400
+    "bip65": {
+      "type": "buried",
+      "active": true,
+      "height": 2431
     },
     "bip147": {
-      "status": "active",
-      "startTime": 1544655600,
-      "timeout": 1576191600,
-      "since": 4300
+      "type": "buried",
+      "active": true,
+      "height": 4300
+    },
+    "csv": {
+      "type": "buried",
+      "active": true,
+      "height": 8064
+    },
+    "dip0001": {
+      "type": "buried",
+      "active": true,
+      "height": 5500
     },
     "dip0003": {
-      "status": "active",
-      "startTime": 1544655600,
-      "timeout": 1576191600,
-      "since": 7000
+      "type": "buried",
+      "active": true,
+      "height": 7000
     },
     "dip0008": {
-      "status": "active",
-      "startTime": 1553126400,
-      "timeout": 1584748800,
-      "since": 78800
+      "type": "buried",
+      "active": true,
+      "height": 78800
+    },
+    "dip0020": {
+      "type": "buried",
+      "active": true,
+      "height": 414100
+    },
+    "dip0024": {
+      "type": "buried",
+      "active": true,
+      "height": 769700
+    },
+    "realloc": {
+      "type": "buried",
+      "active": true,
+      "height": 387500
+    },
+    "v19": {
+      "type": "buried",
+      "active": true,
+      "height": 850100
+    },
+    "v20": {
+      "type": "bip9",
+      "bip9": {
+        "status": "defined",
+        "start_time": 19999999999,
+        "timeout": 999999999999,
+        "since": 0
+      },
+      "active": false
     }
   },
-  "warnings": "Warning: unknown new rules activated (versionbit 3)"
+  "warnings": "Warning: We do not appear to fully agree with our peers! You may need to upgrade, or other nodes may need to upgrade."
 }
 ```
 
@@ -1187,14 +1192,17 @@ Name | Type | Presence | Description
 →→→<br>`descendent` | number | Optional<br>(0 or 1) | **Added in Dash Core 0.17.0**<br>Modified fees (see above) of in-mempool descendants (including this one) in DASH
 → →<br>`depends` | array | Required<br>(exactly 1) | An array holding TXIDs of unconfirmed transactions this transaction depends upon (parent transactions).  Those transactions must be part of a block before this transaction can be added to a block, although all transactions may be included in the same block.  The array may be empty
 → → →<br>Depends TXID | string | Optional (0 or more) | The TXIDs of any unconfirmed transactions this transaction depends upon, encoded as hex in RPC byte order
+→ →<br>`spentby` | array | Required<br>(exactly 1) |  **Added in Dash Core 20.0.0**<br>An array of unconfirmed transactions spending outputs from this transaction
+→ → →<br>TXID | string | Optional (0 or more) | The TXIDs of any unconfirmed transactions spending from this transaction
+→ →<br>`unbroadcast` | bool | Required<br>(exactly 1) | **Added in Dash Core 20.0.0**<br>True if this transaction  is currently unbroadcast (initial broadcast not yet acknowledged by any peers)
+→ →<br>`instantlock` | bool | Required<br>(exactly 1) | Set to `true` if this transaction was locked via InstantSend
 
-*Examples from Dash Core 0.17.0*
+*Examples from Dash Core 20.0.0*
 
 The default (`false`):
 
 ``` bash
-dash-cli getmempoolancestors dc63e7f6929658feade06fec1eeaf43b\
-3160095d66a9b59f57e77e56c20241fc 
+dash-cli getmempoolancestors c32b5d5d94a6d151b69bfd25d77e5b538dffba2445b957c81fcf9df1b90f4ba1
 ```
 
 Result:
@@ -1208,38 +1216,38 @@ Result:
 Verbose output (`true`):
 
 ``` bash
-dash-cli getmempoolancestors dc63e7f6929658feade06fec1eeaf43b\
-3160095d66a9b59f57e77e56c20241fc true
+dash-cli getmempoolancestors c32b5d5d94a6d151b69bfd25d77e5b538dffba2445b957c81fcf9df1b90f4ba1 true
 ```
 
 Result:
 
 ``` json
 {
-  "d64eb30e5435e7a4564df9d06525a8ab48858fdaf111661d1e7874a72cebc132": {
+    "177826190c3fd38a93a381a9b5ad7d955c3f2cf886f7c6f0d58647fb868cf9f5": {
     "fees": {
-      "base": 0.00000374,
-      "modified": 0.00000374,
-      "ancestor": 0.00000374,
-      "descendant": 0.00000600
+      "base": 0.00000226,
+      "modified": 0.00000226,
+      "ancestor": 0.00000226,
+      "descendant": 0.00003226
     },
-    "size": 373,
-    "fee": 0.00000374,
-    "modifiedfee": 0.00000374,
-    "time": 1610552403,
-    "height": 425538,
-    "descendantcount": 2,
-    "descendantsize": 599,
-    "descendantfees": 600,
+    "vsize": 226,
+    "fee": 0.00000226,
+    "modifiedfee": 0.00000226,
+    "time": 1690318336,
+    "height": 1909978,
+    "descendantcount": 6,
+    "descendantsize": 1648,
+    "descendantfees": 3226,
     "ancestorcount": 1,
-    "ancestorsize": 373,
-    "ancestorfees": 374,
+    "ancestorsize": 226,
+    "ancestorfees": 226,
     "depends": [
     ],
     "spentby": [
-      "dc63e7f6929658feade06fec1eeaf43b3160095d66a9b59f57e77e56c20241fc"
+      "127cfa4cd892ad78b9c1227bebfef2bb5a8a06636b659a734c0a5787004934ca"
     ],
-    "instantlock": true
+    "instantlock": "true",
+    "unbroadcast": false
   }
 }
 ```
@@ -1302,59 +1310,62 @@ Name | Type | Presence | Description
 →→→<br>`descendent` | number | Optional<br>(0 or 1) | **Added in Dash Core 0.17.0**<br>Modified fees (see above) of in-mempool descendants (including this one) in DASH
 → →<br>`depends` | array | Required<br>(exactly 1) | An array holding TXIDs of unconfirmed transactions this transaction depends upon (parent transactions).  Those transactions must be part of a block before this transaction can be added to a block, although all transactions may be included in the same block.  The array may be empty
 → → →<br>Depends TXID | string | Optional (0 or more) | The TXIDs of any unconfirmed transactions this transaction depends upon, encoded as hex in RPC byte order
+→ →<br>`spentby` | array | Required<br>(exactly 1) |  **Added in Dash Core 20.0.0**<br>An array of unconfirmed transactions spending outputs from this transaction
+→ → →<br>TXID | string | Optional (0 or more) | The TXIDs of any unconfirmed transactions spending from this transaction
+→ →<br>`unbroadcast` | bool | Required<br>(exactly 1) | **Added in Dash Core 20.0.0**<br>True if this transaction  is currently unbroadcast (initial broadcast not yet acknowledged by any peers)
+→ →<br>`instantlock` | bool | Required<br>(exactly 1) | Set to `true` if this transaction was locked via InstantSend
 
-*Examples from Dash Core 0.17.0*
+*Examples from Dash Core 20.0.0*
 
 The default (`false`):
 
 ``` bash
-dash-cli getmempooldescendants d64eb30e5435e7a4564df9d06525a8ab\
-48858fdaf111661d1e7874a72cebc132
+dash-cli getmempooldescendants 414735b9b4da8232299b25510628e321ba7d2adfb042f7c6437ad3b0f7793b80
 ```
 
 Result:
 
 ``` json
 [
-  "dc63e7f6929658feade06fec1eeaf43b3160095d66a9b59f57e77e56c20241fc"
+  "94445715afd59a7ecc2fd6d62e42905194e91633e8f54b459f605fe0d780fe99"
 ]
 ```
 
 Verbose output (`true`):
 
 ``` bash
-dash-cli getmempooldescendants d64eb30e5435e7a4564df9d06525a8ab\
-48858fdaf111661d1e7874a72cebc132 true
+dash-cli getmempooldescendants 414735b9b4da8232299b25510628e321ba7d2adfb042f7c6437ad3b0f7793b80 true
 ```
 
 Result:
 
 ``` json
 {
-  "dc63e7f6929658feade06fec1eeaf43b3160095d66a9b59f57e77e56c20241fc": {
+  "94445715afd59a7ecc2fd6d62e42905194e91633e8f54b459f605fe0d780fe99": {
     "fees": {
-      "base": 0.00000226,
-      "modified": 0.00000226,
-      "ancestor": 0.00000600,
-      "descendant": 0.00000226
+      "base": 0.00000225,
+      "modified": 0.00000225,
+      "ancestor": 0.00000450,
+      "descendant": 0.00000225
     },
-    "size": 226,
-    "fee": 0.00000226,
-    "modifiedfee": 0.00000226,
-    "time": 1610552427,
-    "height": 425538,
+    "vsize": 225,
+    "fee": 0.00000225,
+    "modifiedfee": 0.00000225,
+    "time": 1690906537,
+    "height": 879144,
     "descendantcount": 1,
-    "descendantsize": 226,
-    "descendantfees": 226,
+    "descendantsize": 225,
+    "descendantfees": 225,
     "ancestorcount": 2,
-    "ancestorsize": 599,
-    "ancestorfees": 600,
+    "ancestorsize": 450,
+    "ancestorfees": 450,
     "depends": [
-      "d64eb30e5435e7a4564df9d06525a8ab48858fdaf111661d1e7874a72cebc132"
+      "414735b9b4da8232299b25510628e321ba7d2adfb042f7c6437ad3b0f7793b80"
     ],
     "spentby": [
     ],
-    "instantlock": true
+    "instantlock": "true",
+    "unbroadcast": false
   }
 }
 ```
@@ -1385,7 +1396,7 @@ TXID | string (hex) | Required<br>(exactly 1) | The TXID of a transaction in the
 Name | Type | Presence | Description
 --- | --- | --- | ---
 `result` | object | Required<br>(exactly 1) | A object containing transactions currently in the memory pool.  May be empty
-→<br>`size` | number (int) | Required<br>(exactly 1) | The size of the serialized transaction in bytes
+→<br>`vsize` | number (int) | Required<br>(exactly 1) | The virtual transaction size. This can be different from actual serialized size for high-sigop transactions.
 →<br>`fee` | number (bitcoins) | Required<br>(exactly 1) | **Deprecated in Dash Core 0.17.0**<br><br>The transaction fee paid by the transaction in decimal bitcoins
 →<br>`modifiedfee` | number (bitcoins) | Required<br>(exactly 1) | **Deprecated in Dash Core 0.17.0**<br><br>The transaction fee with fee deltas used for mining priority in decimal bitcoins
 →<br>`time` | number (int) | Required<br>(exactly 1) | The time the transaction entered the memory pool, Unix epoch time format
@@ -1403,13 +1414,15 @@ Name | Type | Presence | Description
 →→→<br>`descendent` | number | Optional<br>(0 or 1) | **Added in Dash Core 0.17.0**<br>Modified fees (see above) of in-mempool descendants (including this one) in DASH
 →<br>`depends` | array | Required<br>(exactly 1) | An array holding TXIDs of unconfirmed transactions this transaction depends upon (parent transactions).  Those transactions must be part of a block before this transaction can be added to a block, although all transactions may be included in the same block.  The array may be empty
 → →<br>Depends TXID | string | Optional (0 or more) | The TXIDs of any unconfirmed transactions this transaction depends upon, encoded as hex in RPC byte order
+→<br>`spentby` | array | Required<br>(exactly 1) |  **Added in Dash Core 20.0.0**<br>An array of unconfirmed transactions spending outputs from this transaction
+→ →<br>TXID | string | Optional (0 or more) | The TXIDs of any unconfirmed transactions spending from this transaction
+→<br>`unbroadcast` | bool | Required<br>(exactly 1) | **Added in Dash Core 20.0.0**<br>True if this transaction  is currently unbroadcast (initial broadcast not yet acknowledged by any peers)
 →<br>`instantlock` | bool | Required<br>(exactly 1) | True if this transaction was locked via InstantSend
 
-*Example from Dash Core 0.17.0*
+*Example from Dash Core 20.0.0*
 
 ``` bash
-dash-cli getmempoolentry  d64eb30e5435e7a4564df9d06525a8ab\
-48858fdaf111661d1e7874a72cebc132
+dash-cli getmempoolentry 33136ead40c8ad0019be7ab8d8e430c1e336fd6f7fcfe204096c0da28d9a6225
 ```
 
 Result:
@@ -1417,28 +1430,28 @@ Result:
 ``` json
 {
   "fees": {
-    "base": 0.00000374,
-    "modified": 0.00000374,
-    "ancestor": 0.00000374,
-    "descendant": 0.00000600
+    "base": 0.00009350,
+    "modified": 0.00009350,
+    "ancestor": 0.00009350,
+    "descendant": 0.00009350
   },
-  "size": 373,
-  "fee": 0.00000374,
-  "modifiedfee": 0.00000374,
-  "time": 1610552403,
-  "height": 425538,
-  "descendantcount": 2,
-  "descendantsize": 599,
-  "descendantfees": 600,
+  "vsize": 374,
+  "fee": 0.00009350,
+  "modifiedfee": 0.00009350,
+  "time": 1690317662,
+  "height": 1909971,
+  "descendantcount": 1,
+  "descendantsize": 374,
+  "descendantfees": 9350,
   "ancestorcount": 1,
-  "ancestorsize": 373,
-  "ancestorfees": 374,
+  "ancestorsize": 374,
+  "ancestorfees": 9350,
   "depends": [
   ],
   "spentby": [
-    "dc63e7f6929658feade06fec1eeaf43b3160095d66a9b59f57e77e56c20241fc"
   ],
-  "instantlock": true
+  "instantlock": "true",
+  "unbroadcast": false
 }
 ```
 
@@ -1464,10 +1477,12 @@ Name | Type | Presence | Description
 →<br>`usage` | number (int) | Required<br>(exactly 1) | *Added in Bitcoin Core 0.11.0*<br><br>Total memory usage for the mempool in bytes
 →<br>`maxmempool` | number (int) | Required<br>(exactly 1) | *Added in Bitcoin Core 0.12.0*<br><br>Maximum memory usage for the mempool in bytes
 →<br>`mempoolminfee` | number | Required<br>(exactly 1) | *Added in Bitcoin Core 0.12.0*<br><br>The lowest fee per kilobyte paid by any transaction in the memory pool
-→<br>`mempoolminfee` | number | Required<br>(exactly 1) | *Added in Dash Core 0.16.0*<br><br>The current minimum relay fee for transactions
+→<br>`mempoolminfee` | number | Required<br>(exactly 1) | *Added in Dash Core 0.16.0*<br><br>Minimum fee rate in DASH/kB for tx to be accepted. Is the maximum of minrelaytxfee and minimum mempool fee
+→<br>`minrelaytxfee` | number (int) | Required<br>(exactly 1) | *Added in Dash Core 20.0.0*<br><br>Current minimum relay fee for transactions
 →<br>`instantsendlocks` | number (int) | Required<br>(exactly 1) | *Added in Dash Core 0.15.0*<br><br>Number of InstantSend locked transactions not yet in a block
+→<br>`unbroadcastcount` | number (int) | Required<br>(exactly 1) | *Added in Dash Core 20.0.0*<br><br>Current number of transactions that haven't passed initial broadcast yet
 
-*Example from Dash Core 0.16.0*
+*Example from Dash Core 20.0.0*
 
 ``` bash
 dash-cli -testnet getmempoolinfo
@@ -1477,13 +1492,15 @@ Result:
 
 ``` json
 {
-  "size": 3,
-  "bytes": 1857,
-  "usage": 5536,
+  "loaded": true,
+  "size": 11,
+  "bytes": 10565,
+  "usage": 26560,
   "maxmempool": 300000000,
   "mempoolminfee": 0.00001000,
   "minrelaytxfee": 0.00001000,
-  "instantsendlocks": 2
+  "instantsendlocks": 11,
+  "unbroadcastcount": 0
 }
 ```
 
@@ -1540,9 +1557,10 @@ Name | Type | Presence | Description
 → → →<br>Depends TXID | string | Optional (0 or more) | The TXIDs of any unconfirmed transactions this transaction depends upon, encoded as hex in RPC byte order
 → →<br>`spentby` | array | Required<br>(exactly 1) | **Added in Dash Core 0.17.0**<br>An array of unconfirmed transactions spending outputs from this transaction
 → → →<br>TXID | string | Optional (0 or more) | The TXIDs of any unconfirmed transactions spending from this transaction
+→ →<br>`unbroadcast` | bool | Required<br>(exactly 1) | **Added in Dash Core 20.0.0**<br>True if this transaction  is currently unbroadcast (initial broadcast not yet acknowledged by any peers)
 → →<br>`instantlock` | bool | Required<br>(exactly 1) | *Added in Dash Core 0.12.3*<br><br>Set to `true` for locked InstantSend transactions (masternode quorum has locked the transaction inputs via `islock` message). Set to `false` if the masternodes have not approved the InstantSend transaction
 
-*Examples from Dash Core 0.17.0*
+*Examples from Dash Core 20.0.0*
 
 The default (`false`):
 
@@ -1554,7 +1572,26 @@ Result:
 
 ``` json
 [
-  "9bf373838dd68dfb7d670af15a7414fba400a7db91b7a0ac390b6f190daeb462"
+  "16f9a964f1bafbf2a745c2add0da31330b2ee521c2d411416d59c25343b9fb92",
+  "664e9ca96802ec014469e0d2c34cc7c7e49c4a5a72613614ee97ebd193104376",
+  "bbbfff097dff060a44622d6569c6f11d13ec29d3c204318ec2c2b8bf5b888487",
+  "9e6cd0b8feb804b796a6a74e12c45d93c1ea39d3fd205b463e26c70f7f2063e9",
+  "d541e8776b42ab9dc9a722bf38f99f0b38be0325193ebaf1576119e3dbc00a49",
+  "4d1d77c26cf1184ff26d27cbbc78f95eada99965920c6bceeb508194bb7217e2",
+  "e1eafdf61c1062a8e82fd6c42baa0a95f24b8f75fb81db94c4b9e41afc0405d2",
+  "f4696ff8a75a0235fe7c9062a895a6e364fd7b3941b41a66efa513176bf3cb21",
+  "8614e7a3f4208f69823f09e02c66a22813cac8de7bc05828c3847e39c6d8e323",
+  "b8c9eea215addedd8f162e6c4881dd74a14dbd05c820d5149e29990ee5b869dd",
+  "0a8ccaf37b2652b6ac400922be8cd4ea91267d19ec8e11e20f848d8e62bdef77",
+  "bc0b7a1d1ee9976652949ef014637d107e8154d00484c62fc3a69cc004367244",
+  "5446f81969179087b5b490d20b156d13a9d63d7a6d9f618ccda903722b0dab34",
+  "50caf79821d946b46db0bb64d0e9d354680ce2b94257d5c7a28a1f65fefde226",
+  "76e018d092d1cd8c4e2074ef6225e38f1d7cc5264980b0d1b5e484f944affa06",
+  "b86f0408ae8c3126da6458df0c64b1bf19c2f512b40e5811b3130c9fecbc316d",
+  "52d8e1ea95fcb1b9156ec7ff2ab82ae3e3040cf8328f86b4d96974990527cd90",
+  "43619b452edc8647cbfe740b55a0c8f9716f6bd6bb258b3c7cb6e0be204a57d3",
+  "a77d001facacf7d00b2721d246b6790c12018e6e89d6cd543478a84e63bb498a",
+  "e4a409ee2fbb94925bdea0fa5a3040550fa85063c6343fba3c7b88122fba365f"
 ]
 ```
 
@@ -1567,32 +1604,31 @@ dash-cli getrawmempool true
 Result:
 
 ``` json
-{
-  "9bf373838dd68dfb7d670af15a7414fba400a7db91b7a0ac390b6f190daeb462": {
+"0994e854166beb6f15630e7b5aba0ef0e57b2a7235957bcbb8000c09449e9eba": {
     "fees": {
-      "base": 0.00000374,
-      "modified": 0.00000374,
-      "ancestor": 0.00000374,
-      "descendant": 0.00000374
+      "base": 0.00000225,
+      "modified": 0.00000225,
+      "ancestor": 0.00000225,
+      "descendant": 0.00000225
     },
-    "size": 373,
-    "fee": 0.00000374,
-    "modifiedfee": 0.00000374,
-    "time": 1610551773,
-    "height": 425536,
+    "vsize": 225,
+    "fee": 0.00000225,
+    "modifiedfee": 0.00000225,
+    "time": 1690318205,
+    "height": 1909975,
     "descendantcount": 1,
-    "descendantsize": 373,
-    "descendantfees": 374,
+    "descendantsize": 225,
+    "descendantfees": 225,
     "ancestorcount": 1,
-    "ancestorsize": 373,
-    "ancestorfees": 374,
+    "ancestorsize": 225,
+    "ancestorfees": 225,
     "depends": [
     ],
     "spentby": [
     ],
-    "instantlock": true
+    "instantlock": "false",
+    "unbroadcast": false
   }
-}
 ```
 
 *See also*

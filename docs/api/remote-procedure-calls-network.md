@@ -466,6 +466,7 @@ The [`getpeerinfo` RPC](../api/remote-procedure-calls-network.md#getpeerinfo) re
 | → →<br>`id`                     | number (int)        | Required<br>(exactly 1) | The node's index number in the local node address database                                                                                                                                                                                                                           |
 | → →<br>`addr`                   | string              | Required<br>(exactly 1) | The IP address and port number used for the connection to the remote node                                                                                                                                                                                                            |
 | → →<br>`addrlocal`              | string              | Optional<br>(0 or 1)    | Our IP address and port number according to the remote node.  May be incorrect due to error or lying.  Most SPV nodes set this to `127.0.0.1:9999`                                                                                                                                   |
+| → →<br>`network`                | string              | Optional<br>(0 or 1)    | **Added in Dash Core 20.0.0**<br>The network being used (ipv4, ipv6, onion, not_publicly_routable)                                                                                                                    |
 | → →<br>`mapped_as`              | string              | Optional<br>(0 or 1)    | **Added in Dash Core 18.0.0**<br>The AS in the BGP route to the peer used for diversifying peer selection                                                                                                                                                                            |
 | → →<br>`addrbind`               | string              | Optional<br>(0 or 1)    | Bind address of the connection to the peer                                                                                                                                                                                                                                           |
 | → →<br>`services`               | string (hex)        | Required<br>(exactly 1) | The services advertised by the remote node in its [`version` message](../reference/p2p-network-control-messages.md#version)                                                                                                                                                                 |
@@ -511,81 +512,57 @@ Result (edited to show only a single entry, with IP addresses changed to
 
 ```json
 [
-  {
-    "id": 28,
-    "addr": "34.217.98.54:19999",
-    "addrlocal": "99.235.23.127:56865",
-    "addrbind": "10.0.0.111:56865",
-    "services": "0000000000000405",
+   {
+    "id": 1332,
+    "addr": "[2a00:1398:4:2a03:215:5dff:fed6:1032]:55788",
+    "addrbind": "[2406:9840:f:8a4:1c82:234d:617c:e875]:9999",
+    "addrlocal": "[2406:9840:f:8a4:1c82:234d:617c:e875]:9999",
+    "network": "ipv6",
+    "services": "0000000000000001",
     "servicesnames": [
-      "NETWORK",
-      "BLOOM",
-      "NETWORK_LIMITED"
+      "NETWORK"
     ],
     "relaytxes": true,
-    "lastsend": 1634805868,
-    "lastrecv": 1634805868,
-    "bytessent": 71058,
-    "bytesrecv": 115054,
-    "conntime": 1634801665,
-    "timeoffset": 0,
-    "pingtime": 0.092595,
-    "minping": 0.083287,
-    "version": 70219,
-    "subver": "/Dash Core:0.17.0.3/",
-    "inbound": false,
+    "lastsend": 1690400596,
+    "lastrecv": 1690400484,
+    "bytessent": 87759,
+    "bytesrecv": 3836,
+    "conntime": 1690393760,
+    "timeoffset": 4,
+    "pingtime": 0.289504,
+    "minping": 0.223147,
+    "version": 70215,
+    "subver": "/dsn.tm.kit.edu/dash:0.14.0.2/",
+    "inbound": true,
     "addnode": false,
     "masternode": false,
-    "startingheight": 598074,
+    "startingheight": -1,
     "banscore": 0,
-    "synced_headers": 598106,
-    "synced_blocks": 598106,
+    "synced_headers": -1,
+    "synced_blocks": -1,
     "inflight": [
     ],
     "whitelisted": false,
     "permissions": [
     ],
     "bytessent_per_msg": {
-      "addr": 110,
-      "dsq": 65280,
-      "getaddr": 24,
-      "getdata": 1045,
-      "getheaders": 1053,
-      "getsporks": 24,
-      "govsync": 66,
-      "headers": 717,
-      "inv": 341,
-      "mempool": 24,
-      "ping": 1024,
-      "pong": 1024,
-      "sendaddrv2": 24,
-      "sendcmpct": 66,
-      "senddsq": 25,
-      "sendheaders": 24,
-      "verack": 24,
-      "version": 163
-    },
-    "bytesrecv_per_msg": {
-      "addr": 11272,
-      "block": 3104,
-      "clsig": 780,
-      "cmpctblock": 10012,
-      "dsq": 79730,
-      "getheaders": 1053,
-      "headers": 754,
-      "inv": 2745,
-      "islock": 378,
-      "mnauth": 152,
-      "notfound": 305,
-      "ping": 1024,
-      "pong": 1024,
+      "addr": 29992,
+      "getheaders": 1085,
+      "inv": 52767,
+      "ping": 1824,
+      "pong": 1824,
       "sendcmpct": 33,
       "senddsq": 25,
       "sendheaders": 24,
-      "spork": 2420,
-      "ssc": 32,
       "verack": 24,
-      "version": 163
+      "version": 161
+    },
+    "bytesrecv_per_msg": {
+      "getaddr": 24,
+      "ping": 1824,
+      "pong": 1824,
+      "verack": 24,
+      "version": 140
     }
   }
 ]

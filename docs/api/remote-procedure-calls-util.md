@@ -34,8 +34,9 @@ Name | Type | Presence | Description
 `result` | object | Required<br>(exactly 1) | An object describing the multisig address
 →<br>`address` | string (base58) | Required<br>(exactly 1) | The P2SH address for this multisig redeem script
 →<br>`redeemScript` | string (hex) | Required<br>(exactly 1) | The multisig redeem script encoded as hex
+→<br>`descriptor` | string (hex) | Required<br>(exactly 1) | The descriptor for this multisig
 
-*Example from Dash Core 0.16.0*
+*Example from Dash Core 20.0.0*
 
 Creating a 1-of-2 P2SH multisig address by combining two full public keys:
 
@@ -53,7 +54,8 @@ Result:
 ``` json
 {
   "address": "8jYUv8hJcbSUPbwYmzp1XMPU6SXoic3hwi",
-  "redeemScript": "512103283a224c2c014d1d0ef82b00470b6b277d71e227c0e2394f9baade5d666e57d32102594523b004e82849a66b3da096b1e680bf2ed5f7d03a3443c027aa5777bb622352ae"
+  "redeemScript": "512103283a224c2c014d1d0ef82b00470b6b277d71e227c0e2394f9baade5d666e57d32102594523b004e82849a66b3da096b1e680bf2ed5f7d03a3443c027aa5777bb622352ae",
+  "descriptor": "sh(multi(1,03283a224c2c014d1d0ef82b00470b6b277d71e227c0e2394f9baade5d666e57d3,02594523b004e82849a66b3da096b1e680bf2ed5f7d03a3443c027aa5777bb6223))#x7tdvpdd"
 }
 ```
 

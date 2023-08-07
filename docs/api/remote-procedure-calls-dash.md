@@ -1528,6 +1528,7 @@ The [`masternodelist` RPC](#masternodelist) returns a list of masternodes in dif
 | `addr`           | Print IP address associated with a masternode (can be additionally filtered, partial match)                        |
 | `recent`         | Print info in JSON format for active and recently banned masternodes (can be additionally filtered, partial match) |
 | `full`           | Print info in format 'status payee lastpaidtime lastpaidblock IP' (can be additionally filtered, partial match)    |
+| `hpmn`           | Print info in JSON format for HPMNs only. **Added in Dash Core 20.0.0**                                            |
 | `info`           | Print info in format 'status payee IP' (can be additionally filtered, partial match)                               |
 | `json` (Default) | Print info in JSON format (can be additionally filtered, partial match)                                            |
 | `lastpaidblock`  | Print the last block height a node was paid on the network                                                         |
@@ -1551,7 +1552,7 @@ The [`masternodelist` RPC](#masternodelist) returns a list of masternodes in dif
 | `result`             | object/null | Required<br>(exactly 1) | Information about the masternode sync status                                                  |
 | →<br>Masternode Info | string      | Required<br>(1 or more) | The requested masternode info. Output varies based on selected `mode` and `filter` parameters |
 
-*Example from Dash Core 19.0.0*
+*Example from Dash Core 20.0.0*
 
 Get unfiltered Masternode list in default mode
 
@@ -1563,53 +1564,37 @@ Result (truncated):
 
 ``` json
 {
-  "4ee3ff5074723d995f4cb957a954587c6c637a42655ada8f4054037b28d1e7a8-113": {
-    "proTxHash": "b42fd6e07095c8b1c88ac52a22cd97d8ebb051ba7adf401896d8aebf04db1080",
-    "address": "34.220.134.30:19999",
-    "payee": "yVXDAM73Tg6A44Bm3qduXsMCYxzuqBCT48",
-    "status": "ENABLED",
-    "type": "Regular",
-    "pospenaltyscore": 0,
-    "consecutivePayments": 0,
-    "lastpaidtime": 1678282252,
-    "lastpaidblock": 849689,
-    "owneraddress": "ycpPVZe1GUggvDT7secTBUinDJjXz9jW8J",
-    "votingaddress": "ycpPVZe1GUggvDT7secTBUinDJjXz9jW8J",
-    "collateraladdress": "yjPDnWH27VsbTimu4qHTCeN1wUcXCWPdo8",
-    "pubkeyoperator": "888905cc3f99e76b3a1abf714a55978d9930c2abdc77a21bd809e452e8c47c35d38e318ec3118e1944cf1a4a8df907c1"
+  "ab3435c4974cffa8cf6e9a11d9a263c7efad367c4b22fcc75507c565027b51ecb1ba2a1602d9337eb3edb037d7c03b49"
   },
-  "e64ec51892dfc964d389323c56d71b8e46999f02e2f754645c6d952cc9514a2d-0": {
-    "proTxHash": "e64ec51892dfc964d389323c56d71b8e46999f02e2f754645c6d952cc9514a2d",
-    "address": "121.1.2.3:19999",
-    "payee": "yhz4PAcxNewHiEkfHNjqyupiKChBXMHjyp",
+  "482cf74e7a615086514c261a9454db358290f05c6243089a3961ffdf14256d29-0": {
+    "proTxHash": "9bc9b7a879c137114fd17b2af5c3825a6f78224cfac8afd7109e52f1b3a05bff",
+    "address": "[::]:0",
+    "payee": "Xdsbzw7a5wTCQYvCwLuQc7qnRuCcs7ehsK",
     "status": "POSE_BANNED",
-    "type": "HighPerformance",
-    "platformNodeID": "0000000000000000000000000000000000000001",
-    "platformP2PPort": 6667,
-    "platformHTTPPort": 6668,
-    "pospenaltyscore": 519,
+    "type": "Regular",
+    "pospenaltyscore": 4448,
     "consecutivePayments": 0,
-    "lastpaidtime": 1678244067,
-    "lastpaidblock": 849416,
-    "owneraddress": "yfsxR69EAbCQ6zxUp9zK6SDDqbKdwaJCwe",
-    "votingaddress": "yiY8ujF8miyDhU4xEi9uKUwpdDZG5jtgVz",
-    "collateraladdress": "yfR68WAPZbxujUJ8VWm7aZWKbTf3S4wDkJ",
-    "pubkeyoperator": "8c5303c64a07a9cf1fd3b711766d2d127380e623f6e6d48af3deece10ff938c9653544707d3e0616798773d32b806ba4"
+    "lastpaidtime": 1660888856,
+    "lastpaidblock": 1723759,
+    "owneraddress": "XfJtpuZxEAYUofWKsHA7KNYpCKNxY98Hm3",
+    "votingaddress": "Xh6M9FR9a8Wdb7aVvWeF8z9CxBAM9PgDbW",
+    "collateraladdress": "Xs1yGUqc53XddB4E9FkHNYXtum5CCoGvbt",
+    "pubkeyoperator": "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
   },
-  "4ee3ff5074723d995f4cb957a954587c6c637a42655ada8f4054037b28d1e7a8-16": {
-    "proTxHash": "6cca50b04c9816b07a8a831ebec34866f1f0fe836047890dce4f1c46f9e8a3c0",
-    "address": "54.188.69.89:19999",
-    "payee": "yVXDAM73Tg6A44Bm3qduXsMCYxzuqBCT48",
+  "a476f59677f43968ef22c12e250605e42b8ae6d0665fef1354c219ac1e3de82e-0": {
+    "proTxHash": "af7b52f2333fbb5605105b3efd094547c2f77d81ca06aa97b784414c4d1efbff",
+    "address": "100.24.78.251:9999",
+    "payee": "XnpE5Mwr8GsVujK2eWVVJh718Zeap5FHLj",
     "status": "ENABLED",
     "type": "Regular",
     "pospenaltyscore": 0,
     "consecutivePayments": 0,
-    "lastpaidtime": 1678280280,
-    "lastpaidblock": 849673,
-    "owneraddress": "yZtQj1WbugXh58e3FzJ7g2gyqsLprfvBjG",
-    "votingaddress": "yZtQj1WbugXh58e3FzJ7g2gyqsLprfvBjG",
-    "collateraladdress": "yPFfyrFzz8utxdRn7xgg7bHjQbXMXDvpvq",
-    "pubkeyoperator": "8ad4f577d067630f6fd15f4d2aefdb9456d648b71cb7253d47511acc81dd5ddb69a03c848322aa11e5242f66afde5a2a"
+    "lastpaidtime": 1689823121,
+    "lastpaidblock": 1906829,
+    "owneraddress": "Xx7xCzbkHJnqbuqBk1zzGeuwopZ9x5UZvu",
+    "votingaddress": "XkK53owYVX5Q2t8XPzkR4bzourNzgfkjts",
+    "collateraladdress": "Xu2B3bvC75NuiYvudvJPR1npDdguyN7aWV",
+    "pubkeyoperator": "8f8097c423ad5bccc3d631bf518a1f28ff60b31841e3c7b0d44e578f94d33b96b9fb485e1690b72608423f3e926ac8c7"
   }
 }
 ```
