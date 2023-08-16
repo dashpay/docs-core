@@ -689,7 +689,7 @@ The [`mnlistdiff` message](../reference/p2p-network-data-messages.md#mnlistdiff)
 
 | Bytes | Name | Data<br>type | Required | Description |
 | ---------- | ----------- | --------- | -------- | -------- |
-| 2 | version | uint16_t | Required | **_Updated in protocol version 70228_**<br>Version of the message (currently `1`). |
+| 2 | version | uint16_t | Required | **_Updated in protocol version 70229_**<br>Version of the message (currently `1`).<br>In protocol versions 70225 through 70228 this field was located between the `cbTx` and `deletedMNsCount` fields. |
 | 32 | baseBlockHash | uint256 | Required | Hash of a block the requester already has a valid masternode list of. Can be all-zero to indicate that a full masternode list is requested.
 | 32 | blockHash | uint256 | Required | Hash of the block for which the masternode list diff is requested
 | 4 | totalTransactions | uint32_t  | Required | Number of total transactions in `blockHash`
