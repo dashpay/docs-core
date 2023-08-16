@@ -41,7 +41,7 @@ The currently-available type identifiers are:
 
 **Deprecated Type Identifiers**
 
-The following type identifiers have been deprecated recently. To see type identifiers removed longer ago, please see the [previous version of documentation](https://dashcore.readme.io/v0.16.0/docs/core-ref-p2p-network-data-messages).
+The following type identifiers have been deprecated recently. To see type identifiers removed longer ago, please see the [previous version of documentation](https://docs.dash.org/projects/core/en/19.0.0/docs/reference/p2p-network-data-messages.html).
 
 | Type Identifier | Name                                                                          | Description
 |-----------------|-------------------------------------------------------------------------------|---------------
