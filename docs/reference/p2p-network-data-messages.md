@@ -705,6 +705,8 @@ The [`mnlistdiff` message](../reference/p2p-network-data-messages.md#mnlistdiff)
 | variable | deletedQuorums | (uint8_t+uint256)[] | Required | _Added in protocol version 70214_<br><br>A list of LLMQ type and quorum hashes for LLMQs which were deleted after `baseBlockHash` |
 | 1-9 | newQuorumsCount | compactSize uint | Required | _Added in protocol version 70214_<br><br>Number of new LLMQs which were added to the active set since `baseBlockHash` |
 | variable | newQuorums | qfcommit[] | Required | _Added in protocol version 70214_<br><br>The list of LLMQ commitments for the LLMQs which were added since `baseBlockHash` |
+|  1-9 | quorumsCLSigsCount | compactSize uint | Required | _Added in protocol version 70230_<br><br>Number of `quorumsCLSigs` elements |
+| variable | quorumsCLSigs | quorumsCLSigsObject[] | Required | _Added in protocol version 70230_<br><br>ChainLock signature used to calculate members per quorum indexes (in `newQuorums`) |
 
 Simplified Masternode List (SML) Entry
 
@@ -721,6 +723,14 @@ Simplified Masternode List (SML) Entry
 | 1 | isValid | bool | True if a masternode is not PoSe-banned
 | 0 or 2 | platformHTTPPort | uint_16 | TCP port of Platform HTTP/API interface (network byte order).<br>**Note**: Only present when mnlistdiff `version` is 2 and `type` is 1. |
 0 or 20 | platformNodeID | byte[] | Dash Platform P2P node ID, derived from P2P public key.<br>**Note**: Only present when mnlistdiff `version` is 2 and `type` is 1. |
+
+The content of `quorumsCLSigsObject`:
+
+| Bytes | Name | Data type | Description |
+| - | - | - | - |
+| 96 | signature | BLSSig | ChainLock signature |
+| 1-9 | indexSetCount | compactSize uint | Number of quorum indexes using the same `signature` for their member calculation |
+| uint16_t[] | indexSet | variable | Quorum indexes corresponding in `newQuorums` using `signature` for their member calculation |
 
 The following annotated hexdump shows a [`mnlistdiff` message](../reference/p2p-network-data-messages.md#mnlistdiff). (The message header has been omitted.)
 
