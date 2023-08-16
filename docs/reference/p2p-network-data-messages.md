@@ -24,7 +24,6 @@ The currently-available type identifiers are:
 | 1               | MSG_TX                                     | The hash is a TXID.
 | 2               | MSG_BLOCK                            | The hash is of a block header.
 | 3               | MSG_FILTERED_BLOCK | The hash is of a block header; identical to `MSG_BLOCK`. When used in a [`getdata` message](../reference/p2p-network-data-messages.md#getdata), this indicates the response should be a [`merkleblock` message](../reference/p2p-network-data-messages.md#merkleblock) rather than a [`block` message](../reference/p2p-network-data-messages.md#block) (but this only works if a bloom filter was previously configured).  **Only for use in [`getdata` messages](../reference/p2p-network-data-messages.md#getdata).**
-| 4               | MSG_LEGACY_TXLOCK_REQUEST | `MSG_TXLOCK_REQUEST` prior to Dash Core 0.15.0. The hash is an Instant Send transaction lock request. Transactions received this way are automatically converted to a standard [`tx` message](../reference/p2p-network-data-messages.md#tx) as of Dash Core 0.15.0.
 | 6               | MSG_SPORK                            | The hash is Spork ID.
 | 16              | MSG_DSTX                              | The hash is CoinJoin Broadcast TX.
 | 17               | MSG_GOVERNANCE_OBJECT                                     | The hash is a Governance Object.
@@ -46,7 +45,8 @@ The following type identifiers have been deprecated recently. To see type identi
 
 | Type Identifier | Name                                                                          | Description
 |-----------------|-------------------------------------------------------------------------------|---------------
-| 5               | MSG_TXLOCK_VOTE          | **Deprecated in 0.15.0**<br><br>The hash is an Instant Send transaction vote.
+| 4               | MSG_LEGACY_TXLOCK_REQUEST | **Deprecated in 20.0.0**<br><br>`MSG_TXLOCK_REQUEST` prior to Dash Core 0.15.0. The hash is an InstantSend transaction lock request. Transactions received this way are automatically converted to a standard [`tx` message](../reference/p2p-network-data-messages.md#tx) as of Dash Core 0.15.0.
+| 5               | MSG_TXLOCK_VOTE          | **Deprecated in 0.15.0**<br><br>The hash is an InstantSend transaction vote.
 
 Type identifier zero and type identifiers greater than those shown in the table above are reserved for future implementations. Dash Core ignores all inventories with one of these unknown types.
 
