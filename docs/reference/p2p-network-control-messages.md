@@ -499,7 +499,7 @@ The following service identifiers have been assigned.
 |-------|--------------|---------------
 | 0x00  | *Unnamed*    | This node is not a full node.  It may not be able to provide any data except for the transactions it originates.
 | 0x01  | `NODE_NETWORK` | This is a full node and can be asked for full blocks.  It should implement all protocol features available in its self-reported protocol version.
-| 0x02  | `NODE_GETUTXO` | This node is capable of responding to the getutxo protocol request. *Dash Core does not support this service.*
+| 0x02  | `NODE_GETUTXO` | **Removed in Dash Core 20.0.0**<br>This node is capable of responding to the getutxo protocol request.
 | 0x04  | `NODE_BLOOM` | This node is capable and willing to handle bloom-filtered connections.  Dash Core nodes used to support this by default, without advertising this bit, but no longer do as of protocol version 70201 (= NO_BLOOM_VERSION)
 | 0x08 | `NODE_XTHIN` | This node supports Xtreme Thinblocks. *Dash Core does not support this service.*
 | 0x400 | `NODE_NETWORK_LIMITED` | This is the same as `NODE_NETWORK` with the limitation of only serving the last 288 blocks. *Not supported prior to Dash Core 0.16.0*

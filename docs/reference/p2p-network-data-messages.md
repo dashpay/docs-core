@@ -24,7 +24,6 @@ The currently-available type identifiers are:
 | 1               | MSG_TX                                     | The hash is a TXID.
 | 2               | MSG_BLOCK                            | The hash is of a block header.
 | 3               | MSG_FILTERED_BLOCK | The hash is of a block header; identical to `MSG_BLOCK`. When used in a [`getdata` message](../reference/p2p-network-data-messages.md#getdata), this indicates the response should be a [`merkleblock` message](../reference/p2p-network-data-messages.md#merkleblock) rather than a [`block` message](../reference/p2p-network-data-messages.md#block) (but this only works if a bloom filter was previously configured).  **Only for use in [`getdata` messages](../reference/p2p-network-data-messages.md#getdata).**
-| 4               | MSG_LEGACY_TXLOCK_REQUEST | `MSG_TXLOCK_REQUEST` prior to Dash Core 0.15.0. The hash is an Instant Send transaction lock request. Transactions received this way are automatically converted to a standard [`tx` message](../reference/p2p-network-data-messages.md#tx) as of Dash Core 0.15.0.
 | 6               | MSG_SPORK                            | The hash is Spork ID.
 | 16              | MSG_DSTX                              | The hash is CoinJoin Broadcast TX.
 | 17               | MSG_GOVERNANCE_OBJECT                                     | The hash is a Governance Object.
@@ -42,11 +41,12 @@ The currently-available type identifiers are:
 
 **Deprecated Type Identifiers**
 
-The following type identifiers have been deprecated recently. To see type identifiers removed longer ago, please see the [previous version of documentation](https://dashcore.readme.io/v0.16.0/docs/core-ref-p2p-network-data-messages).
+The following type identifiers have been deprecated recently. To see type identifiers removed longer ago, please see the [previous version of documentation](https://docs.dash.org/projects/core/en/19.0.0/docs/reference/p2p-network-data-messages.html).
 
 | Type Identifier | Name                                                                          | Description
 |-----------------|-------------------------------------------------------------------------------|---------------
-| 5               | MSG_TXLOCK_VOTE          | **Deprecated in 0.15.0**<br><br>The hash is an Instant Send transaction vote.
+| 4               | MSG_LEGACY_TXLOCK_REQUEST | **Deprecated in 20.0.0**<br><br>`MSG_TXLOCK_REQUEST` prior to Dash Core 0.15.0. The hash is an InstantSend transaction lock request. Transactions received this way are automatically converted to a standard [`tx` message](../reference/p2p-network-data-messages.md#tx) as of Dash Core 0.15.0.
+| 5               | MSG_TXLOCK_VOTE          | **Deprecated in 0.15.0**<br><br>The hash is an InstantSend transaction vote.
 
 Type identifier zero and type identifiers greater than those shown in the table above are reserved for future implementations. Dash Core ignores all inventories with one of these unknown types.
 
@@ -689,7 +689,7 @@ The [`mnlistdiff` message](../reference/p2p-network-data-messages.md#mnlistdiff)
 
 | Bytes | Name | Data<br>type | Required | Description |
 | ---------- | ----------- | --------- | -------- | -------- |
-| 2 | version | uint16_t | Required | **_Updated in protocol version 70228_**<br>Version of the message (currently `1`). |
+| 2 | version | uint16_t | Required | **_Updated in protocol version 70229_**<br>Version of the message (currently `1`).<br>In protocol versions 70225 through 70228 this field was located between the `cbTx` and `deletedMNsCount` fields. |
 | 32 | baseBlockHash | uint256 | Required | Hash of a block the requester already has a valid masternode list of. Can be all-zero to indicate that a full masternode list is requested.
 | 32 | blockHash | uint256 | Required | Hash of the block for which the masternode list diff is requested
 | 4 | totalTransactions | uint32_t  | Required | Number of total transactions in `blockHash`
@@ -705,6 +705,8 @@ The [`mnlistdiff` message](../reference/p2p-network-data-messages.md#mnlistdiff)
 | variable | deletedQuorums | (uint8_t+uint256)[] | Required | _Added in protocol version 70214_<br><br>A list of LLMQ type and quorum hashes for LLMQs which were deleted after `baseBlockHash` |
 | 1-9 | newQuorumsCount | compactSize uint | Required | _Added in protocol version 70214_<br><br>Number of new LLMQs which were added to the active set since `baseBlockHash` |
 | variable | newQuorums | qfcommit[] | Required | _Added in protocol version 70214_<br><br>The list of LLMQ commitments for the LLMQs which were added since `baseBlockHash` |
+|  1-9 | quorumsCLSigsCount | compactSize uint | Required | _Added in protocol version 70230_<br><br>Number of `quorumsCLSigs` elements |
+| variable | quorumsCLSigs | quorumsCLSigsObject[] | Required | _Added in protocol version 70230_<br><br>ChainLock signature used to calculate members per quorum indexes (in `newQuorums`) |
 
 Simplified Masternode List (SML) Entry
 
@@ -721,6 +723,14 @@ Simplified Masternode List (SML) Entry
 | 1 | isValid | bool | True if a masternode is not PoSe-banned
 | 0 or 2 | platformHTTPPort | uint_16 | TCP port of Platform HTTP/API interface (network byte order).<br>**Note**: Only present when mnlistdiff `version` is 2 and `type` is 1. |
 0 or 20 | platformNodeID | byte[] | Dash Platform P2P node ID, derived from P2P public key.<br>**Note**: Only present when mnlistdiff `version` is 2 and `type` is 1. |
+
+The content of `quorumsCLSigsObject`:
+
+| Bytes | Name | Data type | Description |
+| - | - | - | - |
+| 96 | signature | BLSSig | ChainLock signature |
+| 1-9 | indexSetCount | compactSize uint | Number of quorum indexes using the same `signature` for their member calculation |
+| uint16_t[] | indexSet | variable | Quorum indexes corresponding in `newQuorums` using `signature` for their member calculation |
 
 The following annotated hexdump shows a [`mnlistdiff` message](../reference/p2p-network-data-messages.md#mnlistdiff). (The message header has been omitted.)
 
