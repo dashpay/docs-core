@@ -273,7 +273,7 @@ The `protx info` RPC returns detailed information about a deterministic masterno
 | →<br>`collateralHash`               | string (hex) | Required<br>(exactly 1) | The hash of the collateral transaction as hex in RPC byte order                                 |
 | →<br>`collateralIndex`              | number (int) | Required<br>(exactly 1) | The collateral index                                                                            |
 | → →<br>`collateralAddress`          | string       | Required<br>(exactly 1) | The collateral address                                                                          |
-| →<br>`operatorReward`               | number (int) | Required<br>(exactly 1) | The operator reward %                                                                           |
+| →<br>`operatorReward`               | number (float) | Required<br>(exactly 1) | The operator reward %. The value must be between `0.00` and `100.00`.                         |
 | →<br>`state`                        | object/null  | Required<br>(exactly 1) | An object containing a provider transaction state                                               |
 | → →<br>`version`                    | number (int) | Required<br>(exactly 1) | **Added in Dash Core 19.2.0**<br>The version of the most recent ProRegTx or ProUpRegTx          |
 | → →<br>`service`                    | string       | Required<br>(exactly 1) | The masternode's IP:Port                                                                        |
@@ -400,7 +400,7 @@ _Result (if `detailed` was `true`)---JSON provider registration transaction deta
 | →<br>`collateralHash`               | string (hex) | Required<br>(exactly 1) | The hash of the collateral transaction as hex in RPC byte order                                 |
 | →<br>`collateralIndex`              | number (int) | Required<br>(exactly 1) | The collateral index                                                                            |
 | → →<br>`collateralAddress`          | string       | Required<br>(exactly 1) | The collateral address                                                                          |
-| →<br>`operatorReward`               | number (int) | Required<br>(exactly 1) | The operator reward %                                                                           |
+| →<br>`operatorReward`               | number (float) | Required<br>(exactly 1) | The operator reward %. The value must be between `0.00` and `100.00`.                         |
 | →<br>`state`                        | object/null  | Required<br>(exactly 1) | An object containing a provider transaction state                                               |
 | → →<br>`version`                    | number (int) | Required<br>(exactly 1) | **Added in Dash Core 19.2.0**<br>The version of the most recent ProRegTx or ProUpRegTx                                           |
 | → →<br>`service`                    | string       | Required<br>(exactly 1) | The masternode's IP:Port                                                                        |
@@ -1032,7 +1032,7 @@ The `protx register_prepare` RPC creates an unsigned ProTx and a message that mu
 
 | Name             | Type   | Presence                | Description                                                                                     |
 | ---------------- | ------ | ----------------------- | ----------------------------------------------------------------------------------------------- |
-| `operatorReward` | number | Required<br>(exactly 1) | The fraction in % to share with the operator.<br>The value must be between '0.00' and '100.00'. |
+| `operatorReward` | number | Required<br>(exactly 1) | The fraction in % to share with the operator.<br>The value must be between `0.00` and `100.00`. |
 
 *Parameter #8---payout address*
 
@@ -1125,7 +1125,7 @@ The `protx register_prepare_legacy` RPC Creates an unsigned ProTx and a message 
 
 | Name             | Type   | Presence                | Description                                                                                     |
 | ---------------- | ------ | ----------------------- | ----------------------------------------------------------------------------------------------- |
-| `operatorReward` | number | Required<br>(exactly 1) | The fraction in % to share with the operator.<br>The value must be between '0.00' and '100.00'. |
+| `operatorReward` | number | Required<br>(exactly 1) | The fraction in % to share with the operator.<br>The value must be between `0.00` and `100.00`. |
 
 *Parameter #8---payout address*
 
@@ -1481,7 +1481,7 @@ The "protx register_prepare_hpmn" RPC creates an unsigned ProTx and a message th
 
 | Name             | Type   | Presence                | Description                                                                                     |
 | ---------------- | ------ | ----------------------- | ----------------------------------------------------------------------------------------------- |
-| `operatorReward` | number | Required<br>(exactly 1) | The fraction in % to share with the operator.<br>The value must be between '0.00' and '100.00'. |
+| `operatorReward` | number | Required<br>(exactly 1) | The fraction in % to share with the operator.<br>The value must be between `0.00` and `100.00`. |
 
 *Parameter #8---payout address register*
 
