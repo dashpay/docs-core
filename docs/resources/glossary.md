@@ -536,7 +536,7 @@ A value related to a public key which could only have reasonably been created by
 
 ## Sentinel
 
-An autonomous agent for persisting, processing and automating Dash governance objects and tasks, and for expanded functions in Dash Evolution.
+An autonomous agent for persisting, processing and automating Dash governance objects and tasks, and for expanded functions in Dash Evolution. **Note**: Sentinel was deprecated in Dash Core v20.0 when its functionality was integrated into Dash Core.
 
 ## Sequence number
 

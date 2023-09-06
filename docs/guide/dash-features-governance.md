@@ -58,6 +58,10 @@ Once the syncing [node](../resources/glossary.md#node) receives the counts and i
 
 ## Sentinel
 
+> 🚧 Sentinel Deprecation
+>
+> Sentinel was deprecated in Dash Core v20.0 when its functionality was integrated into Dash Core.
+
 [Sentinel](https://github.com/dashpay/sentinel/) is a Python application that connects to a masternode's local dashd instance to run as an autonomous agent for persisting, processing, and automating Dash 12.1+ governance objects and tasks. Sentinel abstracts some governance details away from Dash Core for easier extensibility of the governance system in the future. This will allow the integration between Evolution and Dash Core to proceed more smoothly and enable new governance object additions with minimal impact to Dash Core.
 
 Sentinel runs periodically and performs three main tasks as described below:
