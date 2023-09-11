@@ -27,12 +27,14 @@ The block subsidy declines by ~7.1% per year until all Dash is mined. Subsidy ca
 
 Together, the transaction fees and block subsidy are called the [block reward](../resources/glossary.md#block-reward). A coinbase transaction is invalid if it tries to spend more value than is available from the block reward.
 
-The block reward is divided into three parts: [miner](../resources/glossary.md#miner), [masternode](../resources/glossary.md#masternode), and [superblock](../resources/glossary.md#superblock). The miner and masternode portions add up to 90% of the block subsidy with the remaining 10% allocated to the governance system.
+The block reward is divided into three main parts: [miner](../resources/glossary.md#miner), [masternode](../resources/glossary.md#masternode), and [superblock](../resources/glossary.md#superblock). The miner and masternode portions add up to 90% of the block subsidy with the remaining 10% allocated to the governance system.
+
+Dash Core v20 further divides the masternode reward into Core (62.5%) and Platform (37.5%) portions. The Core portion continues to be paid out directly in the coinbase. The Platform portion is put into the Platform credit pool and then distributed by Platform to [evonodes](../resources/glossary.md#evolution-masternode-evonode) providing Platform services.
 
 | Payee | Subsidy | Description |
 | ----- | -------- | ----------- |
 | Miner | Varies | Payment for mining
-| Masternode | Varies | Payment for masternode services ([CoinJoin](../guide/dash-features-coinjoin.md), [InstantSend](../guide/dash-features-instantsend.md), [Governance](https://docs.dash.org/en/stable/introduction/features.html#decentralized-governance), etc.)
+| Masternode | Varies | Payment for masternode services including [CoinJoin](../guide/dash-features-coinjoin.md), [InstantSend](../guide/dash-features-instantsend.md), [Governance](https://docs.dash.org/en/stable/introduction/features.html#decentralized-governance), etc. (62.5%)<br>Payment for Platform services (37.5%)
 | Superblock | 10% | Payment for maintenance/expansion of the ecosystem (Core development, marketing, integration, etc.)
 
 <img src="https://files.readme.io/fa5bfbe-mining-banner-1.svg" alt="Mining" style="width:50%;text-align:center;"/>
