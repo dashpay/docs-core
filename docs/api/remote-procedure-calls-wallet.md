@@ -3228,7 +3228,7 @@ _Parameter #1---wallet name_
 
 | Name     | Type   | Presence                | Description                       |
 | -------- | ------ | ----------------------- | --------------------------------- |
-| Filename | string | Required<br>(exactly 1) | The name of the wallet to unload. |
+| Filename | string | Required<br>(exactly 1) | The name of the wallet to unload. If provided both here and in the RPC endpoint, the two must be identical. |
 
 _Parameter #2---load of startup_
 
