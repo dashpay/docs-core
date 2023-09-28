@@ -806,17 +806,18 @@ _Parameter #2---Additional options_
 
 Note: For backwards compatibility, passing in a `true` instead of an object will result in `{"includeWatching": true}`.
 
-| Name                           | Type               | Presence                | Description                                                                                                                                                                                                               |
-| ------------------------------ | ------------------ | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Options                        | Object             | Optional<br>(0 or 1)    | Additional options                                                                                                                                                                                                        |
+| Name                           | Type               | Presence                | Description|
+| ------------------------------ | ------------------ | ----------------------- | ---------- |
+| Options                        | Object             | Optional<br>(0 or 1)    | Additional options |
 | → <br>`changeAddress`          | string             | Optional<br>(0 or 1)    | The address to receive the change. If not set, the address is chosen from address pool                                                                                                                                    |
-| → <br>`changePosition`         | nummeric (int)     | Optional<br>(0 or 1)    | The index of the change output. If not set, the change position is randomly chosen                                                                                                                                        |
+| → <br>`changePosition`         | nummeric (int)     | Optional<br>(0 or 1)    | The index of the change output. If not set, the change position is randomly chosen |
 | `includeWatching`              | bool               | Optional<br>(0 or 1)    | Inputs from watch-only addresses are also considered. The default is `false` for non-watching-only wallets and `true` for watching-only wallets                                                                           |
-| → <br>`lockUnspent`            | bool               | Optional<br>(0 or 1)    | The selected outputs are locked after running the rpc call. The default is `false`                                                                                                                                        |
-| → <br>`reserveChangeKey`       | bool               | Optional<br>(0 or 1)    | **Removed in Dash Core 0.17.0**                                                                                                                                                                                           |
-| → <br>`feeRate`                | numeric (bitcoins) | Optional<br>(0 or 1)    | The specific feerate  you are willing to pay (BTC per KB). If not set, the wallet determines the fee                                                                                                                      |
+| → <br>`lockUnspent`            | bool               | Optional<br>(0 or 1)    | The selected outputs are locked after running the rpc call. The default is `false` |
+| → <br>`feeRate`                | numeric (bitcoins) | Optional<br>(0 or 1)    | The specific feerate  you are willing to pay (BTC per KB). If not set, the wallet determines the fee |
 | → <br>`subtractFeeFromOutputs` | array              | Optional<br>(0 or 1)    | A json array of integers. The fee will be equally deducted from the amount of each specified output. The outputs are specified by their zero-based index, before any change output is added.                              |
 | → →<br>Output index            | numeric (int)      | Optional<br>(0 or more) | A output index number (vout) from which the fee should be subtracted. If multiple vouts are provided, the total fee will be divided by the number of vouts listed and each vout will have that amount subtracted from it. |
+| → <br>`conf_target`            | numberic (int)     | Optional<br>(0 or 1)    | Confirmation target (in blocks), or fee rate (for DASH/kB or duff/B estimate modes) |
+| → <br>`estimate_mode`          | string             | Optional<br>(0 or 1)    | The fee estimate mode, must be one of (case insensitive):<br>`unset`<br>`economical`<br>`conservative`<br>`DASH/kB`<br>`duff/B` |
 
 _Result---information about the created transaction_
 
