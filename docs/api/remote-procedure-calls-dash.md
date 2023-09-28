@@ -965,56 +965,6 @@ Result:
 }
 ```
 
-### GObject Vote-conf
-
-The `gobject vote-conf` RPC votes on a governance object by masternode configured in dash.conf.
-
-*Parameter #1---governance hash*
-
-| Name              | Type         | Presence                | Description                   |
-| ----------------- | ------------ | ----------------------- | ----------------------------- |
-| `governance-hash` | string (hex) | Required<br>(exactly 1) | Hash of the governance object |
-
-*Parameter #2---vote signal*
-
-| Name     | Type   | Presence                | Description                                  |
-| -------- | ------ | ----------------------- | -------------------------------------------- |
-| `signal` | string | Required<br>(exactly 1) | Vote signal: `funding`, `valid`, or `delete` |
-
-*Parameter #3---vote outcome*
-
-| Name      | Type   | Presence                | Description                             |
-| --------- | ------ | ----------------------- | --------------------------------------- |
-| `outcome` | string | Required<br>(exactly 1) | Vote outcome: `yes`, `no`, or `abstain` |
-
-*Result---votes for specified governance*
-
-| Name               | Type   | Presence                | Description                               |
-| ------------------ | ------ | ----------------------- | ----------------------------------------- |
-| Result             | object | Required<br>(exactly 1) | The governance object votes               |
-| →<br>`overall`     | string | Required<br>(1 or more) | Reports number of vote successes/failures |
-| →<br>`detail`      | object | Required<br>(exactly 1) | Vote details                              |
-| → →<br>`dash.conf` | object | Required<br>(1 or more) |                                           |
-| → → →<br>`result`  | string | Required<br>(exactly 1) | Vote result                               |
-
-*Example from Dash Core 0.12.2*
-
-``` bash
-dash-cli -testnet gobject vote-conf \
-0bf97bce78b3b642c36d4ca8e9265f8f66de8774c220221f57739c1956413e2b funding yes
-```
-
-``` json
-{
-  "overall": "Voted successfully 1 time(s) and failed 0 time(s).",
-  "detail": {
-    "dash.conf": {
-      "result": "success"
-    }
-  }
-}
-```
-
 ### GObject Vote-many
 
 The `gobject vote-many` RPC votes on a governance object by all masternodes (using masternode.conf setup).

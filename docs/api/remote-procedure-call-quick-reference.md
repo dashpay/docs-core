@@ -229,6 +229,7 @@ These RPCs are all Dash-specific and not found in Bitcoin Core
 * [EstimateFee](../api/remote-procedure-calls-removed.md#estimatefee): **_was removed in Dash Core 0.17.0._**
 * [GetPoolInfo](../api/remote-procedure-calls-removed.md#getpoolinfo): returns an object containing pool related information. _Deprecated in 0.15.0_
 * [GetReceivedByAccount](../api/remote-procedure-calls-removed.md#getreceivedbyaccount): **was removed in Dash Core 18.0.0.**
+* [GObject vote-conf](../api/remote-procedure-calls-removed.md#gobject-vote-conf): **was removed in Dash Core 20.0.0**
 * [KeePass](../api/remote-procedure-calls-removed.md#keepass): **_was removed in Dash Core 18.0.0._**
 * [ListAccounts](../api/remote-procedure-calls-removed.md#listaccounts): **was removed in Dash Core 18.0.0.**
 * [ListReceivedByAccount](../api/remote-procedure-calls-removed.md#listreceivedbyaccount): **was removed in Dash Core 18.0.0.**
