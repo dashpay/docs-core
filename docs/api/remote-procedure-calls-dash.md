@@ -876,7 +876,7 @@ prepare`.
 
 | Name   | Type         | Presence                | Description                                                   |
 | ------ | ------------ | ----------------------- | ------------------------------------------------------------- |
-| `data` | string (hex) | Required<br>(exactly 1) | Fee transaction ID - required for all objects except triggers |
+| `data` | string (hex) | Required<br>(exactly 1) | **Updated in Dash Core 20.0.0 to remove support for trigger objects.**<br><br>Fee transaction ID - required for all objects |
 
 *Result---governance object hash*
 
