@@ -8,9 +8,7 @@
 
 ## EstimateFee
 
->❗️
->
-> **Warning:** **_Removed in Dash Core 0.17.0._**
+>❗️**Warning:** **_Removed in Dash Core 0.17.0._**
 
 The `estimatefee` RPC estimates the transaction fee per kilobyte that needs to be paid for a transaction to begin confirmation within a certain number of blocks.
 
@@ -129,9 +127,7 @@ _See also:_
 
 ## GetReceivedByAccount
 
->❗️
->
-> **Warning:** **_Removed in Dash Core 18.0.0_**
+>❗️**Warning:** **_Removed in Dash Core 18.0.0_**
 
 > 📘
 >
@@ -238,9 +234,7 @@ dash-cli -testnet gobject vote-conf \
 
 ## KeePass
 
->❗️
->
-> **Warning:** **_Removed in Dash Core 18.0.0_**
+>❗️**Warning:** **_Removed in Dash Core 18.0.0_**
 
 The `keepass` RPC provides commands for configuring and managing KeePass authentication
 
@@ -335,9 +329,7 @@ _See also: none_
 
 ## ListAccounts
 
->❗️
->
-> **Warning:** **_Removed in Dash Core 18.0.0_**
+>❗️**Warning:** **_Removed in Dash Core 18.0.0_**
 
 > 📘
 >
@@ -400,9 +392,7 @@ _See also_
 
 ## ListReceivedByAccount
 
->❗️
->
-> **Warning:** **_Removed in Dash Core 18.0.0_**
+>❗️**Warning:** **_Removed in Dash Core 18.0.0_**
 
 > 📘
 >
@@ -481,9 +471,7 @@ _See also_
 
 ## Move
 
->❗️
->
-> **Warning:** **_Removed in Dash Core 18.0.0_**
+>❗️**Warning:** **_Removed in Dash Core 18.0.0_**
 
 > 📘
 >
@@ -553,9 +541,7 @@ _See also_
 
 ## SendFrom
 
->❗️
->
-> **Warning:** **_Removed in Dash Core 18.0.0_**
+>❗️**Warning:** **_Removed in Dash Core 18.0.0_**
 
 > 📘
 >
@@ -645,9 +631,7 @@ _See also_
 
 ## SignRawTransaction
 
->❗️
->
-> **Warning:** **_Removed in Dash Core 18.0.0_**
+>❗️**Warning:** **_Removed in Dash Core 18.0.0_**
 
 The `signrawtransaction` RPC signs a transaction in the serialized transaction format using private keys stored in the wallet or provided in the call.
 
@@ -721,9 +705,7 @@ _See also_
 
 ## Generate
 
->❗️
->
-> **Warning:** **_Removed in Dash Core 18.1.0_**
+>❗️**Warning:** **_Removed in Dash Core 18.1.0_**
 
 The `generate` RPC mines blocks immediately (before the RPC call returns).
 
