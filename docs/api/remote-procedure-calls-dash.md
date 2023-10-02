@@ -14,17 +14,18 @@ The [`getgovernanceinfo` RPC](#getgovernanceinfo) returns an object containing g
 
 *Result---information about the governance system*
 
-| Name                            | Type         | Presence                | Description                                                                    |
-| ------------------------------- | ------------ | ----------------------- | ------------------------------------------------------------------------------ |
-| `result`                        | object       | Required<br>(exactly 1) | Information about the governance system                                        |
-| →<br>`governanceminquorum`      | number (int) | Required<br>(exactly 1) | The absolute minimum number of votes needed to trigger a governance action     |
+| Name                            | Type         | Presence                | Description |
+| ------------------------------- | ------------ | ----------------------- | ----------- |
+| `result`                        | object       | Required<br>(exactly 1) | Information about the governance system |
+| →<br>`governanceminquorum`      | number (int) | Required<br>(exactly 1) | The absolute minimum number of votes needed to trigger a governance action |
 | →<br>`proposalfee`              | number (int) | Required<br>(exactly 1) | The collateral transaction fee which must be paid to create a proposal in Dash |
-| →<br>`superblockcycle`          | number (int) | Required<br>(exactly 1) | The number of blocks between superblocks                                       |
-| →<br>`superblockmaturitywindow` | number (int) | Required<br>(exactly 1) | The superblock trigger creation window                                         |
-| →<br>`lastsuperblock`           | number (int) | Required<br>(exactly 1) | The block number of the last superblock                                        |
-| →<br>`nextsuperblock`           | number (int) | Required<br>(exactly 1) | The block number of the next superblock                                        |
+| →<br>`superblockcycle`          | number (int) | Required<br>(exactly 1) | The number of blocks between superblocks |
+| →<br>`superblockmaturitywindow` | number (int) | Required<br>(exactly 1) | The superblock trigger creation window |
+| →<br>`lastsuperblock`           | number (int) | Required<br>(exactly 1) | The block number of the last superblock |
+| →<br>`nextsuperblock`           | number (int) | Required<br>(exactly 1) | The block number of the next superblock |
+| →<br>`fundingthreshold`         | number (int) | Required<br>(exactly 1) | **Added in Dash Core 20.0.0**<br>The number of absolute yes votes required for a proposal to be passing |
 
-*Example from Dash Core 18.1.0*
+*Example from Dash Core 20.0.0*
 
 ``` bash
 dash-cli -testnet getgovernanceinfo
@@ -37,9 +38,10 @@ Result:
   "governanceminquorum": 1,
   "proposalfee": 1.00000000,
   "superblockcycle": 24,
-  "superblockmaturitywindow": 24,
-  "lastsuperblock": 827256,
-  "nextsuperblock": 827280
+  "superblockmaturitywindow": 8,
+  "lastsuperblock": 916632,
+  "nextsuperblock": 916656,
+  "fundingthreshold": 21
 }
 ```
 
