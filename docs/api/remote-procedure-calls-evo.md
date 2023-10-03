@@ -1391,8 +1391,6 @@ ec66f97568727a9e5188acb3ccf680086ae11217236efcccd67b0b72e83c79a043d6c6d064378fdd
 
 ### ProTx Register HPMN
 
-**Deprecated in Dash Core 20.0.0**
-
 > ❗️ Deprecated RPC
 >
 > The `protx *_hpmn` RPC commands were renamed in Dash Core 20.0.0 and can now be accessed as `protx *_evo` (e.g. `protx register_hpmn` is now `protx register_evo`).
@@ -1528,8 +1526,6 @@ c207ebd525793ccb43f60ce34a5cd5f4011976a9145a375814e9caf5b8575a8221be246457e5c5c2
 
 ### ProTx Register Fund HPMN
 
-**Deprecated in Dash Core 20.0.0**
-
 > ❗️ Deprecated RPC
 >
 > The `protx *_hpmn` RPC commands were renamed in Dash Core 20.0.0 and can now be accessed as `protx *_evo` (e.g. `protx register_hpmn` is now `protx register_evo`).
@@ -1642,8 +1638,6 @@ Result:
 
 ### ProTx Register Prepare HPMN
 
-**Deprecated in Dash Core 20.0.0**
-
 > ❗️ Deprecated RPC
 >
 > The `protx *_hpmn` RPC commands were renamed in Dash Core 20.0.0 and can now be accessed as `protx *_evo` (e.g. `protx register_hpmn` is now `protx register_evo`).
@@ -1723,8 +1717,6 @@ Result:
 ```
 
 ### ProTx Update Service HPMN
-
-**Deprecated in Dash Core 20.0.0**
 
 > ❗️ Deprecated RPC
 >
