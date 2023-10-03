@@ -152,6 +152,9 @@ Name | Type | Presence | Description
 → →<br>`height` | number (int) | Required<br>(exactly 1) | The height of this block on its block chain
 → →<br>`merkleRootMNList` | string (hex) | Required<br>(exactly 1) | The merkle root for the masternode list
 → →<br>`merkleRootQuorums` | string (hex) | Required<br>(exactly 1) | The merkle root for the quorum list
+→ →<br>`bestCLHeightDiff` | number (int) | Required<br>(exactly 1) | **Added in Dash Core 20.0.0**<br>The best ChainLock height difference
+→ →<br>`bestCLSignature` | string (hex) | Required<br>(exactly 1) | **Added in Dash Core 20.0.0**<br>The best ChainLock signature
+→ →<br>`creditPoolBalance` | number (real) | Required<br>(exactly 1) | **Added in Dash Core 20.0.0**<br>The balance of the credit pool
 →<br>`time` | number (int) | Required<br>(exactly 1) | The value of the *time* field in the block header, indicating approximately when the block was created
 →<br>`mediantime` | number (int) | Required<br>(exactly 1) | *Added in Bitcoin Core 0.12.0*<br><br>The median block time in Unix epoch time  
 →<br>`nonce` | number (int) | Required<br>(exactly 1) | The nonce which was successful at turning this particular block into one that could be added to the best block chain
@@ -215,6 +218,9 @@ Name | Type | Presence | Description
 → →<br>`height` | number (int) | Required<br>(exactly 1) | The height of this block on its block chain
 → →<br>`merkleRootMNList` | string (hex) | Required<br>(exactly 1) | The merkle root for the masternode list
 → →<br>`merkleRootQuorums` | string (hex) | Required<br>(exactly 1) | The merkle root for the quorum list
+→ →<br>`bestCLHeightDiff` | number (int) | Required<br>(exactly 1) | **Added in Dash Core 20.0.0**<br>The best ChainLock height difference
+→ →<br>`bestCLSignature` | string (hex) | Required<br>(exactly 1) | **Added in Dash Core 20.0.0**<br>The best ChainLock signature
+→ →<br>`creditPoolBalance` | number (real) | Required<br>(exactly 1) | **Added in Dash Core 20.0.0**<br>The balance of the credit pool
 →<br>`time` | number (int) | Required<br>(exactly 1) | The value of the *time* field in the block header, indicating approximately when the block was created
 →<br>`mediantime` | number (int) | Required<br>(exactly 1) | *Added in Bitcoin Core 0.12.0*<br><br>The median block time in Unix epoch time  
 →<br>`nonce` | number (int) | Required<br>(exactly 1) | The nonce which was successful at turning this particular block into one that could be added to the best block chain
@@ -226,7 +232,7 @@ Name | Type | Presence | Description
 →<br>`nextblockhash` | string (hex) | Optional<br>(0 or 1) | The hash of the next block on the best block chain, if known, encoded as hex in RPC byte order
 →<br>`chainlock` | bool | Required<br>(exactly 1) | *Added in Dash Core 0.14.0*<br><br>If set to `true`, this transaction is in a block that is locked (not susceptible to a chain re-org)
 
-*Example from Dash Core 0.16.0*
+*Example from Dash Core 20.0.0*
 
 Get a block in raw hex:
 
@@ -239,54 +245,59 @@ dash-cli -testnet getblock \
 Result (wrapped):
 
 ``` text
-00000020272e374a06c87a0ce0e6ee1a0754c98b9ec2493e7c0ac7ba41a07300\
-00000000568b3c4156090db4d8db5447762e95dd1d4c921c96801a9086720ded\
-85266325916cc05caa94001c5caf359501030005000100000000000000000000\
-00000000000000000000000000000000000000000000ffffffff2703ae50011a\
-4d696e656420627920416e74506f6f6c2021000b01201da9196f000000000700\
-0000ffffffff02809e4730000000001976a914cbd7bfcc50351180132b2c0698\
-cb90ad74c473c788ac809e4730000000001976a91488a060bc2dfe05780ae4dc\
-b6c98b12436c35a93988ac00000000460200ae50010078e5c08b39960887bf95\
-185c381bdb719e60b6925fa12af78a8824fade927387c757acb6bac63da84f92\
-45e20cfd5d830382ac634d434725ca6349ab5db920a3
+0000002039e4a40ee0776d9e3820161810199f15db1c8e05be6b947729367978\
+ae000000e318c8553524d7666b1f692dfba32f2b46cff851289a881c1c305671\
+1bb7b08071381c65faec011e0390000001030005000100000000000000000000\
+00000000000000000000000000000000000000000000ffffffff060326ff0d01\
+01ffffffff0397f4e127000000001976a914c69a0bda7daaae481be8def95e5f\
+347a1d00a4b488ac94196f1600000000016a4dd56325000000001976a91464f2\
+b2b84f62d68a2cd7f7f5fb2b5aa75ef716d788ac00000000af030026ff0d0073\
+9f69d98c43d95c201a42cae33abd9762429c6b598c5989cd4c0c0bf81a3a821f\
+136139da5605a50f47aab22ff8f36de83f8c47f2667ce9483d39d50d39254700\
+a07b05ce98acc08f3dfc81592f183f9772008dedd06e30892039e1a4bc0ebb0c\
+d1791205294d00754f29de459360983605f4c367bfc2bac0b38bb264f60add06\
+2dc7e172f77b20a8a060b9a58b76b31fddeb8f96411d0c8c19848422903769b3\
+fc834c91ad050000
 ```
 
 Get the same block in JSON:
 
 ``` bash
 dash-cli -testnet getblock \
-            00000000007b0fb99e36713cf08012482478ee496e6dcb4007ad2e806306e62b
+            000000e344040c68d19552dcf22114961a6d441cd840d61821e2d18a6ba5f565
 ```
 
 Result:
 
 ``` json
 {
-  "hash": "00000000007b0fb99e36713cf08012482478ee496e6dcb4007ad2e806306e62b",
-  "confirmations": 212898,
-  "size": 310,
-  "height": 86190,
+  "hash": "000000e344040c68d19552dcf22114961a6d441cd840d61821e2d18a6ba5f565",
+  "confirmations": 1,
+  "size": 392,
+  "height": 917286,
   "version": 536870912,
   "versionHex": "20000000",
-  "merkleroot": "25632685ed0d7286901a80961c924c1ddd952e764754dbd8b40d0956413c8b56",
+  "merkleroot": "80b0b71b7156301c1c889a2851f8cf462b2fa3fb2d691f6b66d7243555c818e3",
   "tx": [
-    "25632685ed0d7286901a80961c924c1ddd952e764754dbd8b40d0956413c8b56"
+    "80b0b71b7156301c1c889a2851f8cf462b2fa3fb2d691f6b66d7243555c818e3"
   ],
   "cbTx": {
-    "version": 2,
-    "height": 86190,
-    "merkleRootMNList": "877392defa24888af72aa15f92b6609e71db1b385c1895bf870896398bc0e578",
-    "merkleRootQuorums": "a320b95dab4963ca2547434d63ac8203835dfd0ce245924fa83dc6bab6ac57c7"
+    "version": 3,
+    "height": 917286,
+    "merkleRootMNList": "823a1af80b0c4ccd89598c596b9c426297bd3ae3ca421a205cd9438cd9699f73",
+    "merkleRootQuorums": "4725390dd5393d48e97c66f2478c3fe86df3f82fb2aa470fa50556da3961131f",
+    "bestCLHeightDiff": 0,
+    "bestCLSignature": "a07b05ce98acc08f3dfc81592f183f9772008dedd06e30892039e1a4bc0ebb0cd1791205294d00754f29de459360983605f4c367bfc2bac0b38bb264f60add062dc7e172f77b20a8a060b9a58b76b31fddeb8f96411d0c8c19848422903769b3",
+    "creditPoolBalance": 62430.25191932
   },
-  "time": 1556114577,
-  "mediantime": 1556113720,
-  "nonce": 2503323484,
-  "bits": "1c0094aa",
-  "difficulty": 440.8261075201009,
-  "chainwork": "0000000000000000000000000000000000000000000000000045ab6f9403a8e7",
+  "time": 1696348273,
+  "mediantime": 1696347803,
+  "nonce": 36867,
+  "bits": "1e01ecfa",
+  "difficulty": 0.00202846304931776,
+  "chainwork": "00000000000000000000000000000000000000000000000002d68d4d626cf7da",
   "nTx": 1,
-  "previousblockhash": "000000000073a041bac70a7c3e49c29e8bc954071aeee6e00c7ac8064a372e27",
-  "nextblockhash": "00000000001c6c962639a1aad4cd069f315560a824d489418dc1f26b50a58aed",
+  "previousblockhash": "000000ae7879362977946bbe058e1cdb159f1910181620389e6d77e00ea4e439",
   "chainlock": true
 }
 ```
@@ -295,91 +306,107 @@ Get the same block in JSON with transaction details:
 
 ``` bash
 dash-cli -testnet getblock \
-            00000000007b0fb99e36713cf08012482478ee496e6dcb4007ad2e806306e62b 2
+            000000e344040c68d19552dcf22114961a6d441cd840d61821e2d18a6ba5f565 2
 ```
 
 Result:
 
 ``` json
 {
-  "hash": "00000000007b0fb99e36713cf08012482478ee496e6dcb4007ad2e806306e62b",
-  "confirmations": 212899,
-  "size": 310,
-  "height": 86190,
+  "hash": "000000e344040c68d19552dcf22114961a6d441cd840d61821e2d18a6ba5f565",
+  "confirmations": 2,
+  "size": 392,
+  "height": 917286,
   "version": 536870912,
   "versionHex": "20000000",
-  "merkleroot": "25632685ed0d7286901a80961c924c1ddd952e764754dbd8b40d0956413c8b56",
+  "merkleroot": "80b0b71b7156301c1c889a2851f8cf462b2fa3fb2d691f6b66d7243555c818e3",
   "tx": [
     {
-      "txid": "25632685ed0d7286901a80961c924c1ddd952e764754dbd8b40d0956413c8b56",
+      "txid": "80b0b71b7156301c1c889a2851f8cf462b2fa3fb2d691f6b66d7243555c818e3",
       "version": 3,
       "type": 5,
-      "size": 229,
+      "size": 311,
       "locktime": 0,
       "vin": [
         {
-          "coinbase": "03ae50011a4d696e656420627920416e74506f6f6c2021000b01201da9196f0000000007000000",
+          "coinbase": "0326ff0d0101",
           "sequence": 4294967295
         }
       ],
       "vout": [
         {
-          "value": 8.10000000,
-          "valueSat": 810000000,
+          "value": 6.69119639,
+          "valueSat": 669119639,
           "n": 0,
           "scriptPubKey": {
-            "asm": "OP_DUP OP_HASH160 cbd7bfcc50351180132b2c0698cb90ad74c473c7 OP_EQUALVERIFY OP_CHECKSIG",
-            "hex": "76a914cbd7bfcc50351180132b2c0698cb90ad74c473c788ac",
+            "asm": "OP_DUP OP_HASH160 c69a0bda7daaae481be8def95e5f347a1d00a4b4 OP_EQUALVERIFY OP_CHECKSIG",
+            "hex": "76a914c69a0bda7daaae481be8def95e5f347a1d00a4b488ac",
             "reqSigs": 1,
             "type": "pubkeyhash",
             "addresses": [
-              "yeuGUfPMrbEqAS2Pw1wonYgEPbM4LAA9LK"
+              "yeRZBWYfeNE4yVUHV4ZLs83Ppn9aMRH57A"
             ]
           }
         },
         {
-          "value": 8.10000000,
-          "valueSat": 810000000,
+          "value": 3.76379796,
+          "valueSat": 376379796,
           "n": 1,
           "scriptPubKey": {
-            "asm": "OP_DUP OP_HASH160 88a060bc2dfe05780ae4dcb6c98b12436c35a939 OP_EQUALVERIFY OP_CHECKSIG",
-            "hex": "76a91488a060bc2dfe05780ae4dcb6c98b12436c35a93988ac",
+            "asm": "OP_RETURN",
+            "hex": "6a",
+            "type": "nulldata"
+          }
+        },
+        {
+          "value": 6.27299661,
+          "valueSat": 627299661,
+          "n": 2,
+          "scriptPubKey": {
+            "asm": "OP_DUP OP_HASH160 64f2b2b84f62d68a2cd7f7f5fb2b5aa75ef716d7 OP_EQUALVERIFY OP_CHECKSIG",
+            "hex": "76a91464f2b2b84f62d68a2cd7f7f5fb2b5aa75ef716d788ac",
             "reqSigs": 1,
             "type": "pubkeyhash",
             "addresses": [
-              "yYmrsYP3XYMZr1cGtha3QzmuNB1C7CfyhV"
+              "yVXDAM73Tg6A44Bm3qduXsMCYxzuqBCT48"
             ]
           }
         }
       ],
-      "extraPayloadSize": 70,
-      "extraPayload": "0200ae50010078e5c08b39960887bf95185c381bdb719e60b6925fa12af78a8824fade927387c757acb6bac63da84f9245e20cfd5d830382ac634d434725ca6349ab5db920a3",
+      "extraPayloadSize": 175,
+      "extraPayload": "030026ff0d00739f69d98c43d95c201a42cae33abd9762429c6b598c5989cd4c0c0bf81a3a821f136139da5605a50f47aab22ff8f36de83f8c47f2667ce9483d39d50d39254700a07b05ce98acc08f3dfc81592f183f9772008dedd06e30892039e1a4bc0ebb0cd1791205294d00754f29de459360983605f4c367bfc2bac0b38bb264f60add062dc7e172f77b20a8a060b9a58b76b31fddeb8f96411d0c8c19848422903769b3fc834c91ad050000",
       "cbTx": {
-        "version": 2,
-        "height": 86190,
-        "merkleRootMNList": "877392defa24888af72aa15f92b6609e71db1b385c1895bf870896398bc0e578",
-        "merkleRootQuorums": "a320b95dab4963ca2547434d63ac8203835dfd0ce245924fa83dc6bab6ac57c7"
+        "version": 3,
+        "height": 917286,
+        "merkleRootMNList": "823a1af80b0c4ccd89598c596b9c426297bd3ae3ca421a205cd9438cd9699f73",
+        "merkleRootQuorums": "4725390dd5393d48e97c66f2478c3fe86df3f82fb2aa470fa50556da3961131f",
+        "bestCLHeightDiff": 0,
+        "bestCLSignature": "a07b05ce98acc08f3dfc81592f183f9772008dedd06e30892039e1a4bc0ebb0cd1791205294d00754f29de459360983605f4c367bfc2bac0b38bb264f60add062dc7e172f77b20a8a060b9a58b76b31fddeb8f96411d0c8c19848422903769b3",
+        "creditPoolBalance": 62430.25191932
       },
-      "hex": "03000500010000000000000000000000000000000000000000000000000000000000000000ffffffff2703ae50011a4d696e656420627920416e74506f6f6c2021000b01201da9196f0000000007000000ffffffff02809e4730000000001976a914cbd7bfcc50351180132b2c0698cb90ad74c473c788ac809e4730000000001976a91488a060bc2dfe05780ae4dcb6c98b12436c35a93988ac00000000460200ae50010078e5c08b39960887bf95185c381bdb719e60b6925fa12af78a8824fade927387c757acb6bac63da84f9245e20cfd5d830382ac634d434725ca6349ab5db920a3",
+      "hex": "03000500010000000000000000000000000000000000000000000000000000000000000000ffffffff060326ff0d0101ffffffff0397f4e127000000001976a914c69a0bda7daaae481be8def95e5f347a1d00a4b488ac94196f1600000000016a4dd56325000000001976a91464f2b2b84f62d68a2cd7f7f5fb2b5aa75ef716d788ac00000000af030026ff0d00739f69d98c43d95c201a42cae33abd9762429c6b598c5989cd4c0c0bf81a3a821f136139da5605a50f47aab22ff8f36de83f8c47f2667ce9483d39d50d39254700a07b05ce98acc08f3dfc81592f183f9772008dedd06e30892039e1a4bc0ebb0cd1791205294d00754f29de459360983605f4c367bfc2bac0b38bb264f60add062dc7e172f77b20a8a060b9a58b76b31fddeb8f96411d0c8c19848422903769b3fc834c91ad050000",
       "instantlock": true,
       "instantlock_internal": false
     }
   ],
   "cbTx": {
-    "version": 2,
-    "height": 86190,
-    "merkleRootMNList": "877392defa24888af72aa15f92b6609e71db1b385c1895bf870896398bc0e578",
-    "merkleRootQuorums": "a320b95dab4963ca2547434d63ac8203835dfd0ce245924fa83dc6bab6ac57c7"
+    "version": 3,
+    "height": 917286,
+    "merkleRootMNList": "823a1af80b0c4ccd89598c596b9c426297bd3ae3ca421a205cd9438cd9699f73",
+    "merkleRootQuorums": "4725390dd5393d48e97c66f2478c3fe86df3f82fb2aa470fa50556da3961131f",
+    "bestCLHeightDiff": 0,
+    "bestCLSignature": "a07b05ce98acc08f3dfc81592f183f9772008dedd06e30892039e1a4bc0ebb0cd1791205294d00754f29de459360983605f4c367bfc2bac0b38bb264f60add062dc7e172f77b20a8a060b9a58b76b31fddeb8f96411d0c8c19848422903769b3",
+    "creditPoolBalance": 62430.25191932
   },
-  "time": 1556114577,
-  "mediantime": 1556113720,
-  "nonce": 2503323484,
-  "bits": "1c0094aa",
-  "difficulty": 440.8261075201009,
-  "chainwork": "0000000000000000000000000000000000000000000000000045ab6f9403a8e7",
+  "time": 1696348273,
+  "mediantime": 1696347803,
+  "nonce": 36867,
+  "bits": "1e01ecfa",
+  "difficulty": 0.00202846304931776,
+  "chainwork": "00000000000000000000000000000000000000000000000002d68d4d626cf7da",
   "nTx": 1,
-  "previousblockhash": "000000000073a041bac70a7c3e49c29e8bc954071aeee6e00c7ac8064a372e27",
-  "nextblockhash": "00000000001c6c962639a1aad4cd069f315560a824d489418dc1f26b50a58aed",
+  "previousblockhash": "000000ae7879362977946bbe058e1cdb159f1910181620389e6d77e00ea4e439",
+  "nextblockhash": "000001045ef47d29483b8021b1cafe2deddac22bf8d2fb13aed80524a4ffa30c",
   "chainlock": true
 }
 ```
