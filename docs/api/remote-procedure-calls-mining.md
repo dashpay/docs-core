@@ -51,7 +51,7 @@ Name | Type | Presence | Description
 →<br>`coinbaseaux` | object | Required<br>(exactly 1) | A object containing data that should be included in the coinbase scriptSig content
 → →<br>~~Flags~~ | ~~string~~ | ~~Required<br>(0 or more)~~ | **Removed in Dash Core 18.0.0**
 →<br>`coinbasevalue` | number | Required<br>(exactly 1) | The maximum allowable input to coinbase transaction, including the generation award and transaction fees (in duffs)
-→<br>`coinbasetxn` | object | Required<br>(exactly 1) | Information for the coinbase transaction)
+→<br>~~`coinbasetxn`~~ | ~~object~~ | ~~Required<br>(exactly 1)~~ | **Removed in Dash Core 20.0.0**
 →<br>`target` | string | Required<br>(exactly 1) | The hash target
 →<br>`mintime` | number | Required<br>(exactly 1) | The minimum timestamp appropriate for next block time in seconds since epoch
 →<br>`mutable` | array (string) | Required<br>(exactly 1) | The list of ways the block template may be changed
