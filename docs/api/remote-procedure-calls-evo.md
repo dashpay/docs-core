@@ -386,9 +386,9 @@ Lists all ProTxs in your wallet or on-chain, depending on the given type. If `ty
 
 *Parameter #1---type*
 
-| Name   | Type   | Presence             | Description                                                                                                                                                                                                                                          |
-| ------ | ------ | -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `type` | string | Optional<br>(0 or 1) | The type of ProTxs to list:<br>`registered` - all ProTxs registered at height<br>`valid` - all active/valid ProTxs at height<br>`hpmn` - List only ProTxs corresponding to HPMNs at the given chain height<br>`wallet` - all ProTxs found in the current wallet<br><br>Height defaults to current chain-tip if one is not provided |
+| Name   | Type   | Presence             | Description |
+| ------ | ------ | -------------------- | ----------- |
+| `type` | string | Optional<br>(0 or 1) | The type of ProTxs to list:<br>`registered` - all ProTxs registered at height<br>`valid` - all active/valid ProTxs at height<br>`evo` - List only ProTxs corresponding to evonodes at the given chain height<br>`wallet` - all ProTxs found in the current wallet<br><br>Height defaults to current chain-tip if one is not provided |
 
 *Parameter #2---detailed*
 
