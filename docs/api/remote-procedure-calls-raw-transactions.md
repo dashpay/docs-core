@@ -1147,6 +1147,49 @@ _See also_
 * [GetSpecialTxes](../api/remote-procedure-calls-blockchain.md#getspecialtxes): returns an array of special transactions found in the specified block
 * [GetTransaction](../api/remote-procedure-calls-wallet.md#gettransaction): gets detailed information about an in-wallet transaction.
 
+## GetTxChainlocks
+
+The [`gettxchainlocks` RPC](../api/remote-procedure-calls-raw-transactions.md#gettxchainlocks) returns the block height each transaction was mined at and whether it is ChainLocked or not.
+
+_Parameter #1---Transaction IDs_
+
+| Name   | Type   | Presence                | Description |
+| ------ | ------ | ----------------------- | ----------- |
+| `txids` | array  | Required<br>(exactly 1) | A JSON array of up to 100 transaction IDs |
+| → Transaction ID | string | Required<br>(1 to 100) | A transaction hash |
+
+_Result---transaction information_
+
+| Name                 | Type         | Presence                | Description                                                                                            |
+| -------------------- | ------------ | ----------------------- | ------------------------------------------------------------------------------------------------------ |
+| `result`             | array        | Required<br>(exactly 1) | An array of objects providing transaction information for each transaction ID in the input array. |
+| →<br>Transaction info | object      | Optional<br>(0 or more) | An object containting transaction details |
+| →<br>`height`        | number       | Required<br>(exactly 1) | Height of the block containing the transaction |
+| →<br>`chainlock`     | bool         | Required<br>(exactly 1) | ChainLock status for the block containing the transaction |
+
+_Example from Dash Core 20.0.0_
+
+```bash
+dash-cli -testnet gettxchainlocks "[\"5aa787033352f815e6cd9d59733903362c80f6725f7427200e335502dd7d8b10\", \"77363fbcabce942f339cfac1e2ddd8fd6eaa641c53facf925ce87aeefaa9baad\"]"
+```
+
+Result:
+
+```json
+[
+  {
+    "height": 917009,
+    "chainlock": true
+  },
+  {
+    "height": 916003,
+    "chainlock": true
+  }
+]
+```
+
+*See also: none*
+
 ## JoinPSBTs
 
 The [`joinpsbts` RPC](../api/remote-procedure-calls-raw-transactions.md#joinpsbts) joins multiple distinct PSBTs with different inputs and outputs into one PSBT with inputs and outputs from all of the PSBTs. No input in any of the PSBTs can be in more than one of the PSBTs.
