@@ -24,6 +24,7 @@ The [`getgovernanceinfo` RPC](#getgovernanceinfo) returns an object containing g
 | →<br>`lastsuperblock`           | number (int) | Required<br>(exactly 1) | The block number of the last superblock |
 | →<br>`nextsuperblock`           | number (int) | Required<br>(exactly 1) | The block number of the next superblock |
 | →<br>`fundingthreshold`         | number (int) | Required<br>(exactly 1) | **Added in Dash Core 20.0.0**<br>The number of absolute yes votes required for a proposal to be passing |
+| →<br>`governancebudget`         | number (real) | Required<br>(exactly 1) | **Added in Dash Core 20.0.0**<br>The governance budget for the next superblock in DASH |
 
 *Example from Dash Core 20.0.0*
 
@@ -41,7 +42,8 @@ Result:
   "superblockmaturitywindow": 8,
   "lastsuperblock": 916632,
   "nextsuperblock": 916656,
-  "fundingthreshold": 21
+  "fundingthreshold": 21,
+  "governancebudget": 44.60797584
 }
 ```
 
