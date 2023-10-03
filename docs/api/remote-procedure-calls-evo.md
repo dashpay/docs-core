@@ -1249,9 +1249,9 @@ Result:
 }
 ```
 
-### ProTx Register HPMN
+### ProTx Register Evo
 
-The "protx register_hpmn" RPC functions similar to "protx register_fund_hpmn," but with an externally referenced collateral. The collateral is specified through "collateralHash" and "collateralIndex" and must be an unspent transaction output spendable by this wallet. It must also not be used by any other masternode. Requires wallet passphrase to be set with walletpassphrase call if wallet is encrypted.
+The `protx register_evo` RPC functions similar to `protx register_fund_evo`, but with an externally referenced collateral. The collateral is specified through `collateralHash` and `collateralIndex` and must be an unspent transaction output spendable by this wallet. It must also not be used by any other masternode. Requires the wallet passphrase to be provide with the [`walletpassphrase` RPC](../api/remote-procedure-calls-wallet.md#walletpassphrase) if the wallet is encrypted.
 
 *Parameter #1---collateral address*
 
@@ -1337,10 +1337,10 @@ _Result if `submit` is not set or set to `true`---provider registration transact
 | -------- | ------------ | ----------------------- | ------------------------------------------------- |
 | `result` | string (hex) | Required<br>(exactly 1) | Provider registration transaction (ProRegTx) hash |
 
-*Example from Dash Core 19.0.0*
+*Example from Dash Core 20.0.0*
 
 ```bash
-dash-cli -testnet protx register_hpmn
+dash-cli -testnet protx register_evo
  8b2eab3413abb6e04d17d1defe2b71039ba6b6f72ea1e5dab29bb10e7b745948\ 
 1 2.3.4.5:2345\ 
 yNLuVTXJbjbxgrQX5LSMi7hV19We8hT2d6\ 
@@ -1362,10 +1362,10 @@ _Result if `submit` set to `false`---serialized and signed provider registration
 | -------- | ------------ | ----------------------- | ------------------------------------------------------------------ |
 | `result` | string (hex) | Required<br>(exactly 1) | Serialized and signed provider registration transaction (ProRegTx) |
 
-*Example from Dash Core 19.0.0*
+*Example from Dash Core 20.0.0*
 
 ```bash
-dash-cli -testnet protx register_hpmn\
+dash-cli -testnet protx register_evo\
  8b2eab3413abb6e04d17d1defe2b71039ba6b6f72ea1e5dab29bb10e7b745948 1\
  2.3.4.5:2345 yNLuVTXJbjbxgrQX5LSMi7hV19We8hT2d6\
  88d719278eef605d9c19037366910b59bc28d437de4a8db4d76fda6d6985dbdf10404fb9bb5cd0e8c22f4a914a6c5566\
@@ -1389,9 +1389,17 @@ ec66f97568727a9e5188acb3ccf680086ae11217236efcccd67b0b72e83c79a043d6c6d064378fdd
 47d9401e0a569a5488728e09542d0545ab56f8249a4b21e03445fa411e
 ```
 
-### ProTx Register Fund HPMN
+### ProTx Register HPMN
 
-The "protx register_fund_hpmn" RPC creates, funds, and sends a ProTx to the network. The resulting transaction will move 4000 Dash to the address specified by collateralAddress and will then function as the collateral of your evonode. A few of the limitations you see in the arguments are temporary and might be lifted after DIP3 is fully deployed. Requires wallet passphrase to be set with walletpassphrase call if wallet is encrypted.
+**Deprecated in Dash Core 20.0.0**
+
+> ❗️ Deprecated RPC
+>
+> The `protx *_hpmn` RPC commands were renamed in Dash Core 20.0.0 and can now be accessed as `protx *_evo` (e.g. `protx register_hpmn` is now `protx register_evo`).
+
+### ProTx Register Fund Evo
+
+The `protx register_fund_evo` RPC creates, funds, and sends a ProTx to the network. The resulting transaction will move 4000 Dash to the address specified by `collateralAddress` and will then function as the collateral of your evonode. A few of the limitations you see in the arguments are temporary and might be lifted after DIP3 is fully deployed. Requires the wallet passphrase to be provide with the [`walletpassphrase` RPC](../api/remote-procedure-calls-wallet.md#walletpassphrase) if the wallet is encrypted.
 
 *Parameter #1---collateral address*
 
@@ -1471,10 +1479,10 @@ The "protx register_fund_hpmn" RPC creates, funds, and sends a ProTx to the netw
 | -------- | ------------ | ----------------------- | ------------------ |
 | `result` | string (hex) | Required<br>(exactly 1) | The transaction ID |
 
-*Example from Dash Core 19.0.0*
+*Example from Dash Core 20.0.0*
 
 ```bash
-dash-cli -testnet protx register_fund_hpmn yakx4mMRptKhgfjedNzX5FGQq7kSSBF2e7\
+dash-cli -testnet protx register_fund_evo yakx4mMRptKhgfjedNzX5FGQq7kSSBF2e7\
  3.4.5.6:3456 yX2cDS4kcJ4LK4uq9Hd4TG7kURV3sGLZrw\ 
  0e02146e9c34cfbcb3f3037574a1abb35525e2ca0c3c6901dbf82ac591e30218d1711223b7ca956edf39f3d984d06d51\
  yX2cDS4kcJ4LK4uq9Hd4TG7kURV3sGLZrw 5 yakx4mMRptKhgfjedNzX5FGQq7kSSBF2e7\
@@ -1493,10 +1501,10 @@ ba1b3330e16a0876b7a186e7ceb689f03ec646e611e91d7139de021bbf13afdd
 | -------- | ------------ | ----------------------- | ----------------------------------------- |
 | `result` | string (hex) | Required<br>(exactly 1) | The serialized signed ProTx in hex format |
 
-*Example from Dash Core 19.0.0*
+*Example from Dash Core 20.0.0*
 
 ```bash
-dash-cli -testnet protx register_fund_hpmn yakx4mMRptKhgfjedNzX5FGQq7kSSBF2e7\
+dash-cli -testnet protx register_fund_evo yakx4mMRptKhgfjedNzX5FGQq7kSSBF2e7\
  3.4.5.6:3456 yX2cDS4kcJ4LK4uq9Hd4TG7kURV3sGLZrw\
  0e02146e9c34cfbcb3f3037574a1abb35525e2ca0c3c6901dbf82ac591e30218d1711223b7ca956edf39f3d984d06d51\
  yX2cDS4kcJ4LK4uq9Hd4TG7kURV3sGLZrw 5 yakx4mMRptKhgfjedNzX5FGQq7kSSBF2e7\ f2dbd9b0a1f541a7c44d34a58674d0262f5feca5 22821 22822 0
@@ -1518,9 +1526,17 @@ c207ebd525793ccb43f60ce34a5cd5f4011976a9145a375814e9caf5b8575a8221be246457e5c5c2
 8d88ac45084a0f63d6f06767c941ffd5af4ed17ea0e28afa481e46b2bdbadbd8446c8c00\
 ```
 
-### ProTx Register Prepare HPMN
+### ProTx Register Fund HPMN
 
-The "protx register_prepare_hpmn" RPC creates an unsigned ProTx and a message that must be signed externally with the private key that corresponds to collateralAddress to prove collateral ownership. The prepared transaction will also contain inputs and outputs to cover fees.
+**Deprecated in Dash Core 20.0.0**
+
+> ❗️ Deprecated RPC
+>
+> The `protx *_hpmn` RPC commands were renamed in Dash Core 20.0.0 and can now be accessed as `protx *_evo` (e.g. `protx register_hpmn` is now `protx register_evo`).
+
+### ProTx Register Prepare Evo
+
+The `protx register_prepare_evo` RPC creates an unsigned ProTx and a message that must be signed externally with the private key that corresponds to `collateralAddress` to prove collateral ownership. The prepared transaction will also contain inputs and outputs to cover fees.
 
 *Parameter #1---collateral address*
 
@@ -1603,10 +1619,10 @@ The "protx register_prepare_hpmn" RPC creates an unsigned ProTx and a message th
 | →<br>`collateralAddress` | string       | Required<br>(exactly 1) | The collateral address                                                                                                               |
 | →<br>`signMessage`       | string (hex) | Required<br>(exactly 1) | The string message that needs to be signed with the collateral key.                                                                  |
 
-*Example from Dash Core 19.0.0*
+*Example from Dash Core 20.0.0*
 
 ```bash
-dash-cli -testnet protx register_prepare_hpmn\ 
+dash-cli -testnet protx register_prepare_evo\ 
  df41e398bb245e973340d434d386f431dbd69735a575721b0b6833856e7d31ec\ 
  1  9.8.7.6:9876 yemjhGQ99V5ayJMjoyGGPtxteahii6G1Jz\ 
  06849865d01e4f73a6d5a025117e48f50b897e14235800501c8bfb8a6365cc8dbf5ddb67a3635d0f1dcc7d46a7ee280c\ 
@@ -1624,9 +1640,17 @@ Result:
 }
 ```
 
-### ProTx Update Service HPMN
+### ProTx Register Prepare HPMN
 
-The "protx update_service_hpmn" RPC creates and sends a ProUpServTx to the network. This will update the IP address and the Platform fields of an evonode. If this is done for an evonode that was PoSe-banned, the ProUpServTx will also revive this evonode.
+**Deprecated in Dash Core 20.0.0**
+
+> ❗️ Deprecated RPC
+>
+> The `protx *_hpmn` RPC commands were renamed in Dash Core 20.0.0 and can now be accessed as `protx *_evo` (e.g. `protx register_hpmn` is now `protx register_evo`).
+
+### ProTx Update Service Evo
+
+The `protx update_service_evo` RPC creates and sends a ProUpServTx to the network. This will update the IP address and the Platform fields of an evonode. If this is done for an evonode that was PoSe-banned, the ProUpServTx will also revive this evonode.
 
 *Parameter #1---initial provider registration transaction hash*
 
@@ -1682,10 +1706,10 @@ The "protx update_service_hpmn" RPC creates and sends a ProUpServTx to the netwo
 | -------- | ------------ | ----------------------- | ------------------------------------------------------ |
 | `result` | string (hex) | Required<br>(exactly 1) | Provider update service transaction (ProUpServTx) hash |
 
-*Example from Dash Core 19.0.0*
+*Example from Dash Core 20.0.0*
 
 ```bash
-dash-cli -testnetprotx update_service_hpmn\
+dash-cli -testnetprotx update_service_evo\
  ba1b3330e16a0876b7a186e7ceb689f03ec646e611e91d7139de021bbf13afdd\
  4.3.2.1:4321\
  4da7e1ea30fb9e55c73ad23df0b9d3d34342acb24facf4b19420e1a26ae272d1\ 
@@ -1697,6 +1721,14 @@ Result:
 ```bash
 5b6cfa1bdd3c8b7e0b9550b9c4e809381f81a410bc7f241d3879dd736fd51270
 ```
+
+### ProTx Update Service HPMN
+
+**Deprecated in Dash Core 20.0.0**
+
+> ❗️ Deprecated RPC
+>
+> The `protx *_hpmn` RPC commands were renamed in Dash Core 20.0.0 and can now be accessed as `protx *_evo` (e.g. `protx register_hpmn` is now `protx register_evo`).
 
 ### ProTx Register Submit
 
