@@ -49,9 +49,8 @@ Name | Type | Presence | Description
 → → →<br>`fee` | number | Required<br>(exactly 1) | The difference in value between transaction inputs and outputs (in duffs). For coinbase transactions, this is a negative number of the total collected block fees (ie., not including the block subsidy); if key is not present, fee is unknown and clients MUST NOT assume there isn't one
 → → →<br>`sigops` | number | Required<br>(exactly 1) | Total SigOps. If not present, the count is unknown (clients MUST NOT assume there aren't any)
 →<br>`coinbaseaux` | object | Required<br>(exactly 1) | A object containing data that should be included in the coinbase scriptSig content
-→ →<br>~~Flags~~ | ~~string~~ | ~~Required<br>(0 or more)~~ | **Removed in Dash Core 18.0.0**
 →<br>`coinbasevalue` | number | Required<br>(exactly 1) | The maximum allowable input to coinbase transaction, including the generation award and transaction fees (in duffs)
-→<br>~~`coinbasetxn`~~ | ~~object~~ | ~~Required<br>(exactly 1)~~ | **Removed in Dash Core 20.0.0**
+→<br>`coinbasetxn` | object | Required<br>(exactly 1) | **Removed in Dash Core 20.0.0**
 →<br>`target` | string | Required<br>(exactly 1) | The hash target
 →<br>`mintime` | number | Required<br>(exactly 1) | The minimum timestamp appropriate for next block time in seconds since epoch
 →<br>`mutable` | array (string) | Required<br>(exactly 1) | The list of ways the block template may be changed
