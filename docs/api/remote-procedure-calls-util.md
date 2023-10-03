@@ -228,6 +228,48 @@ Result:
 
 * [ScanTxOutset](../api/remote-procedure-calls-wallet.md#scantxoutset): signs a message with the private key of an address.
 
+## GetIndexInfo
+
+*Added in Dash Core 20.0.0*
+
+The [`getindexinfo` RPC](../api/remote-procedure-calls-util.md#getindexinfo) returns the status of one or all available indices currently running in the node.
+
+*Parameter #1---the index name*
+
+Name | Type | Presence | Description
+--- | --- | --- | ---
+`index_name` | string | Optional<br>(0 or 1) | Filter results for an index with a specific name
+
+*Result---the index info*
+
+Name | Type | Presence | Description
+--- | --- | --- | ---
+`result` | object | Required<br>(exactly 1) | Information about the descriptor
+→<br>`name` | string | Required<br>(exactly 1) | The descriptor in canonical form, without private keys
+→ →<br>`synced` | string | Required<br>(exactly 1) | The checksum for the input descriptor
+→ →<br>`best_block_height` | bool | Required<br>(exactly 1) | Whether the descriptor is ranged
+
+*Example from Dash Core 20.0.0*
+
+Get index information:
+
+``` bash
+dash-cli getindexinfo
+```
+
+Result:
+
+``` json
+{
+  "txindex": {
+    "synced": true,
+    "best_block_height": 917241
+  }
+}
+```
+
+*See also: none*
+
 ## SignMessageWithPrivKey
 
 *Added in Dash Core 0.12.3 / Bitcoin Core 0.13.0*

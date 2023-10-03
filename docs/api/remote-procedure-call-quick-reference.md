@@ -141,6 +141,7 @@ These RPCs are all Dash-specific and not found in Bitcoin Core
 * [DeriveAddresses](../api/remote-procedure-calls-util.md#deriveaddresses): derives one or more addresses corresponding to an output descriptor. _Updated in Dash Core 18.1.0_
 * [EstimateSmartFee](../api/remote-procedure-calls-util.md#estimatesmartfee): estimates the transaction fee per kilobyte that needs to be paid for a transaction to begin confirmation within a certain number of blocks and returns the number of blocks for which the estimate is valid. _Updated in Dash Core 0.15.0_
 * [GetDescriptorInfo](../api/remote-procedure-calls-util.md#getdescriptorinfo): analyses a descriptor. _New in Dash Core 18.0.0_
+* [GetIndexInfo](../api/remote-procedure-calls-util.md#getindexinfo): returns the status of one or all available indices currently running in the node. **New in Dash Core 20.0.0**
 * [SignMessageWithPrivKey](../api/remote-procedure-calls-util.md#signmessagewithprivkey): signs a message with a given private key.  _New in Dash Core 0.12.3_
 * [ValidateAddress](../api/remote-procedure-calls-util.md#validateaddress): returns information about the given Dash address. _Updated in Dash Core 0.17.0_
 * [VerifyMessage](../api/remote-procedure-calls-util.md#verifymessage): verifies a signed message.
