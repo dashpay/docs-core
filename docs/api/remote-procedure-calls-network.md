@@ -595,7 +595,6 @@ The [`listbanned` RPC](../api/remote-procedure-calls-network.md#listbanned) list
 | → →<br>`address`        | string          | Required<br>(exactly 1)     | The IP/Subnet of the entry                                                                                                                                                                                                           |
 | → →<br>`banned_until`   | number<br>(int) | Required<br>(exactly 1)     | The Unix epoch time when the entry was added to the ban list                                                                                                                                                                         |
 | → →<br>`ban_created`    | number<br>(int) | Required<br>(exactly 1)     | The Unix epoch time until the IP/Subnet is banned                                                                                                                                                                                    |
-| → →<br>~~`ban_reason`~~ | ~~string~~      | ~~Required<br>(exactly 1)~~ | **Removed in Dash Core 18.1.0**<br>~~Set to one of the following reasons:<br>• `node misbehaving` if the node was banned by the client because of DoS violations<br>• `manually added` if the node was manually banned by the user~~ |
 
 *Examples from Dash Core 18.1.0*
 
