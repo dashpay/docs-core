@@ -130,49 +130,51 @@ The `protx diff` RPC calculates a diff and a proof between two masternode list.
 
 *Result---JSON provider registration transaction details*
 
-| Name                           | Type         | Presence                | Description                                                                                                                                      |
-| ------------------------------ | ------------ | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `result`                       | array        | Required<br>(exactly 1) | An array of objects each containing a provider transaction, or JSON `null` if an error occurred                                                  |
-| →<br>`nVersion`                | number       | Required<br>(exactly 1) | **Added in Dash Core 19.0.0**<br>Simplified masternode list version returned                                                                     |
-| →<br>`baseBlockHash`           | string (hex) | Required<br>(exactly 1) | The hash of the base block as hex in RPC byte order                                                                                              |
-| →<br>`blockHash`               | string (hex) | Required<br>(exactly 1) | The hash of the ending block as hex in RPC byte order                                                                                            |
-| →<br>`cbTxMerkleTree`          | string (hex) | Required<br>(exactly 1) | The coinbase transaction merkle tree                                                                                                             |
-| →<br>`cbTx`                    | string (hex) | Required<br>(exactly 1) | The coinbase transaction                                                                                                                         |
-| →<br>`deletedMNs`              | array        | Required<br>(exactly 1) | An array of deleted masternode hashes                                                                                                            |
-| →<br>`mnlist`                  | array        | Required<br>(exactly 1) | An array of masternode details                                                                                                                   |
+| Name                           | Type         | Presence                | Description |
+| ------------------------------ | ------------ | ----------------------- | ----------- |
+| `result`                       | array        | Required<br>(exactly 1) | An array of objects each containing a provider transaction, or JSON `null` if an error occurred |
+| →<br>`nVersion`                | number       | Required<br>(exactly 1) | **Added in Dash Core 19.0.0**<br>Simplified masternode list version returned |
+| →<br>`baseBlockHash`           | string (hex) | Required<br>(exactly 1) | The hash of the base block as hex in RPC byte order |
+| →<br>`blockHash`               | string (hex) | Required<br>(exactly 1) | The hash of the ending block as hex in RPC byte order |
+| →<br>`cbTxMerkleTree`          | string (hex) | Required<br>(exactly 1) | The coinbase transaction merkle tree |
+| →<br>`cbTx`                    | string (hex) | Required<br>(exactly 1) | The coinbase transaction |
+| →<br>`deletedMNs`              | array        | Required<br>(exactly 1) | An array of deleted masternode hashes |
+| →<br>`mnlist`                  | array        | Required<br>(exactly 1) | An array of masternode details |
 | → →<br>`nVersion`              | number       | Required<br>(exactly 1) | **Added in Dash Core 19.0.0**<br>BLS version<br>`1` - Legacy BLS scheme<br>`2` - [Basic BLS scheme](https://github.com/dashpay/dash/issues/5001) |
-| → →<br>`nType`                 | number       | Required<br>(exactly 1) | **Added in Dash Core 19.0.0**<br>Type of masternode<br> `0` - Regular masternode<br>`1` - Evolution masternode                            |
-| → →<br>`proRegTxHash`          | string (hex) | Required<br>(exactly 1) | The hash of the initial provider registration transaction as hex in RPC byte order                                                               |
-| → →<br>`confirmedHash`         | string (hex) | Required<br>(exactly 1) | The hash of the block where the ProRegTx was mined                                                                                               |
-| → →<br>`service`               | string       | Required<br>(exactly 1) | The IP address/Port of the masternode                                                                                                            |
-| → →<br>`pubKeyOperator`        | string (hex) | Required<br>(exactly 1) | The operator public key                                                                                                                          |
-| → →<br>`votingAddress`         | string       | Required<br>(exactly 1) | The voting address                                                                                                                               |
-| → →<br>`isValid`               | bool         | Required<br>(exactly 1) | Set to `true` if masternode is valid                                                                                                             |
-| → →<br>`platformHTTPPort`      | number       | Optional<br>(0 or 1)    | **Added in Dash Core 19.0.0**<br>TCP port of Platform HTTP/API interface (evonodes only)                                                            |
-| → →<br>`platformNodeID`        | string (hex) | Optional<br>(0 or 1)    | **Added in Dash Core 19.0.0**<br>Platform P2P node ID, derived from P2P public key (evonodes only)                                                  |
-| → →<br>`payoutAddress`         | string       | Optional<br>(0 or 1)    | **Added in Dash Core 18.1.0**<br>The owner's payout address. Only included if the `extended` parameter is set to `true`.                         |
-| → →<br>`operatorPayoutAddress` | string       | Required<br>(exactly 1) | **Added in Dash Core 18.1.0**<br>The operator's payout address.  Only included if the `extended` parameter is set to `true`.                     |
-| →<br>`deletedQuorums`          | array        | Required<br>(exactly 1) | An array of deleted quorums                                                                                                                      |
-| → →<br>`llmqType`              | number       | Required<br>(exactly 1) | The quorum type                                                                                                                                  |
-| → →<br>`quorumHash`            | string (hex) | Required<br>(exactly 1) | The hash of the quorum                                                                                                                           |
-| →<br>`newQuorums`              | array        | Required<br>(exactly 1) | An array of new quorums                                                                                                                          |
-| → →<br>`version`               | number       | Required<br>(exactly 1) | The quorum version                                                                                                                               |
-| → →<br>`llmqType`              | number       | Required<br>(exactly 1) | The quorum type                                                                                                                                  |
-| → →<br>`quorumHash`            | string (hex) | Required<br>(exactly 1) | The hash of the quorum                                                                                                                           |
-| → →<br> `quorumIndex`          | number       | Required<br>(exactly 1) | **Added in Dash Core 18.0.0**<br>The index of the quorum                                                                                         |
-| → →<br>`signersCount`          | number       | Required<br>(exactly 1) | The number of signers for the quorum                                                                                                             |
-| → →<br>`signers`               | string (hex) | Required<br>(exactly 1) | *Added in Dash Core 0.16.0*<br>Bitset representing the aggregated signers of this final commitment                                               |
-| → →<br>`validMembersCount`     | number       | Required<br>(exactly 1) | The number of valid members in the quorum                                                                                                        |
-| → →<br>`validMembers`          | string (hex) | Required<br>(exactly 1) | *Added in Dash Core 0.16.0*<br>Bitset of valid members in this commitment                                                                        |
-| → →<br>`quorumPublicKey`       | string (hex) | Required<br>(exactly 1) | The public key of the quorum                                                                                                                     |
-| → →<br>`quorumVvecHash`        | string (hex) | Required<br>(exactly 1) | *Added in Dash Core 0.16.0*<br>The SHA256 hash of the quorum verification vector                                                                 |
-| → →<br>`quorumSig`             | string (hex) | Required<br>(exactly 1) | *Added in Dash Core 0.16.0*<br>Recovered threshold signature                                                                                     |
-| → →<br>`membersSig`            | string (hex) | Required<br>(exactly 1) | *Added in Dash Core 0.16.0*<br>Aggregated BLS signatures from all included commitments                                                           |
-| →<br>`merkleRootMNList`        | string (hex) | Required<br>(exactly 1) | Merkle root of the masternode list                                                                                                               |
-| →<br>`merkleRootQuorums`       | string (hex) | Optional<br>(0 or 1)    | *Added in Coinbase Transaction version 2 (Dash Core 0.14.0)*<br>Merkle root of the masternode list.                                              |
-| →<br>`quorumsCLSigs`           | string (hex) | Optional<br>(0 or 1)    | **Added in Coinbase Transaction version 3 (Dash Core 20.0.0)**<br>ChainLock signature used to calculate members per quorum indexes (in `newQuorums`). Only present after v20 hard fork activation |
+| → →<br>`nType`                 | number       | Required<br>(exactly 1) | **Added in Dash Core 19.0.0**<br>Type of masternode<br> `0` - Regular masternode<br>`1` - Evolution masternode |
+| → →<br>`proRegTxHash`          | string (hex) | Required<br>(exactly 1) | The hash of the initial provider registration transaction as hex in RPC byte order |
+| → →<br>`confirmedHash`         | string (hex) | Required<br>(exactly 1) | The hash of the block where the ProRegTx was mined |
+| → →<br>`service`               | string       | Required<br>(exactly 1) | The IP address/Port of the masternode |
+| → →<br>`pubKeyOperator`        | string (hex) | Required<br>(exactly 1) | The operator public key |
+| → →<br>`votingAddress`         | string       | Required<br>(exactly 1) | The voting address |
+| → →<br>`isValid`               | bool         | Required<br>(exactly 1) | Set to `true` if masternode is valid |
+| → →<br>`platformHTTPPort`      | number       | Optional<br>(0 or 1)    | **Added in Dash Core 19.0.0**<br>TCP port of Platform HTTP/API interface (evonodes only) |
+| → →<br>`platformNodeID`        | string (hex) | Optional<br>(0 or 1)    | **Added in Dash Core 19.0.0**<br>Platform P2P node ID, derived from P2P public key (evonodes only) |
+| → →<br>`payoutAddress`         | string       | Optional<br>(0 or 1)    | **Added in Dash Core 18.1.0**<br>The owner's payout address. Only included if the `extended` parameter is set to `true`. |
+| → →<br>`operatorPayoutAddress` | string       | Required<br>(exactly 1) | **Added in Dash Core 18.1.0**<br>The operator's payout address.  Only included if the `extended` parameter is set to `true`. |
+| →<br>`deletedQuorums`          | array        | Required<br>(exactly 1) | An array of deleted quorums |
+| → →<br>`llmqType`              | number       | Required<br>(exactly 1) | The quorum type |
+| → →<br>`quorumHash`            | string (hex) | Required<br>(exactly 1) | The hash of the quorum |
+| →<br>`newQuorums`              | array        | Required<br>(exactly 1) | An array of new quorums |
+| → →<br>`version`               | number       | Required<br>(exactly 1) | The quorum version |
+| → →<br>`llmqType`              | number       | Required<br>(exactly 1) | The quorum type |
+| → →<br>`quorumHash`            | string (hex) | Required<br>(exactly 1) | The hash of the quorum |
+| → →<br> `quorumIndex`          | number       | Required<br>(exactly 1) | **Added in Dash Core 18.0.0**<br>The index of the quorum |
+| → →<br>`signersCount`          | number       | Required<br>(exactly 1) | The number of signers for the quorum |
+| → →<br>`signers`               | string (hex) | Required<br>(exactly 1) | *Added in Dash Core 0.16.0*<br>Bitset representing the aggregated signers of this final commitment |
+| → →<br>`validMembersCount`     | number       | Required<br>(exactly 1) | The number of valid members in the quorum |
+| → →<br>`validMembers`          | string (hex) | Required<br>(exactly 1) | *Added in Dash Core 0.16.0*<br>Bitset of valid members in this commitment |
+| → →<br>`quorumPublicKey`       | string (hex) | Required<br>(exactly 1) | The public key of the quorum |
+| → →<br>`quorumVvecHash`        | string (hex) | Required<br>(exactly 1) | *Added in Dash Core 0.16.0*<br>The SHA256 hash of the quorum verification vector |
+| → →<br>`quorumSig`             | string (hex) | Required<br>(exactly 1) | *Added in Dash Core 0.16.0*<br>Recovered threshold signature |
+| → →<br>`membersSig`            | string (hex) | Required<br>(exactly 1) | *Added in Dash Core 0.16.0*<br>Aggregated BLS signatures from all included commitments |
+| →<br>`merkleRootMNList`        | string (hex) | Required<br>(exactly 1) | Merkle root of the masternode list |
+| →<br>`merkleRootQuorums`       | string (hex) | Optional<br>(0 or 1)    | *Added in Coinbase Transaction version 2 (Dash Core 0.14.0)*<br>Merkle root of the masternode list. |
+| →<br>`quorumsCLSigs`           | array        | Optional<br>(0 or 1)    | **Added in Coinbase Transaction version 3 (Dash Core 20.0.0)**<br>An array of objects containing ChainLock signature details. Only present after v20 hard fork activation. |
+| → →<br>ChainLock signature     | object       | Optional<br>(0 or more) | Key: ChainLock signature<br>Value: array of quorum indexes |
+| → → →<br>Quorum index          | number       | Required<br>(1 or more) | Quorum index indicating a `newQuorums` entry that used this ChainLock signature for their member calculation |
 
-*Example from Dash Core 19.2.0*
+*Example from Dash Core 20.0.0*
 
 ```bash
 dash-cli -testnet protx diff 100000 100500 true
@@ -255,7 +257,23 @@ Result (truncated):
     }
   ],
   "merkleRootMNList": "bd5ffd82e616e7abcadf01b7ffa50af2908e6c9b681439f9c9ed7de841afd44c",
-  "merkleRootQuorums": "091716687aa06b6ee4acd86c6a95ac74455952e91c5f43ef38d97833e100a26a"
+  "merkleRootQuorums": "091716687aa06b6ee4acd86c6a95ac74455952e91c5f43ef38d97833e100a26a",
+  "quorumsCLSigs": [
+    {
+      "82492bd4bcd9cd24b89011f11368e06d79942579cfa957fad51429553a45d9990cc10e8b475f59d5b29cedb7598edd300ccb43614f4c15055ea8b172d0dad174f6e8ea83814d7cd2dd528ec7a882e941e909763f70b1065bcdce384be559c31b": [
+        6,
+        30,
+        86
+      ]
+    },
+    {
+      "aa3759de99561b451f24d95945674ae8e73ceb0dcd9ce303228599993080e20f0add1a99e24e241bc905e66eb6155c4e07adbbf2232f476495aabb48e6761af3e07f6660c2607e54dc2efaee38934f714aeff9199a818fd2dcc043edbb7d429b": [
+        13,
+        37,
+        93
+      ]
+    }
+  ]
 }
 ```
 
