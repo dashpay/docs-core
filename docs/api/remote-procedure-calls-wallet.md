@@ -1758,7 +1758,6 @@ _Result---addresses, account names, balances, and minimum confirmations_
 | →<br>Address               | object          | Optional<br>(0 or more) | An object describing an address                                                                                                                                                                                                      |
 | → →<br>`involvesWatchonly` | bool            | Optional<br>(0 or 1)    | Set to `true` if this address is a watch-only address which has received a spendable payment (that is, a payment with at least the specified number of confirmations and which is not an immature coinbase).  Otherwise not returned |
 | → →<br>`address`           | string (base58) | Required<br>(exactly 1) | The address being described encoded in base58check                                                                                                                                                                                   |
-| → →<br>`account`           | string          | Required<br>(exactly 1) | _Deprecated: will be removed in a later version of Dash Core_<br><br>The account the address belongs to.  May be the default account, an empty string (\\")"                                                                         |
 | → →<br>`amount`            | number (dash)   | Required<br>(exactly 1) | The total amount the address has received in dash                                                                                                                                                                                    |
 | → →<br>`confirmations`     | number (int)    | Required<br>(exactly 1) | The number of confirmations of the latest transaction to the address.  May be `0` for unconfirmed                                                                                                                                    |
 | → →<br>`label`             | string          | Required<br>(exactly 1) | The account the address belongs to.  May be the default account, an empty string (\\")"                                                                                                                                              |
@@ -1780,7 +1779,6 @@ Result (edit to show only two entries):
 [
   {
     "address": "yV3ZTfwyfUmpspncMSitiwzh7EvqSGrqZA",
-    "account": "",
     "amount": 1000.00000000,
     "confirmations": 26779,
     "label": "",
@@ -1791,7 +1789,6 @@ Result (edit to show only two entries):
   {
     "involvesWatchonly" : true,
     "address": "yfoR9uM3rcDfUc7AEfUNm5BjVYGFw7uQ9w",
-    "account": "Watching",
     "amount": 1877.78476068,
     "confirmations": 26876,
     "label": "Watching",
