@@ -1074,7 +1074,7 @@ _Result---information about the wallet_
 | →<br>`keypoolsize_hd_internal` | number (int)     | Optional<br>(0 or 1)    | How many new keys are pre-generated for internal use (used for change outputs, only appears if the wallet is using this feature, otherwise external keys are used) |
 | →<br>`keys_left`               | number (int)     | Required<br>(exactly 1) | The number of unused keys left since the last automatic backup |
 | →<br>`unlocked_until`          | number (int)     | Optional<br>(0 or 1)    | Only returned if the wallet was encrypted with the [`encryptwallet` RPC](../api/remote-procedure-calls-wallet.md#encryptwallet). A Unix epoch date when the wallet will be locked, or `0` if the wallet is currently locked |
-| →<br>`paytxfee`                | number (int)     | Required<br>(exactly 1) | The transaction fee configuration, set in DASH/kB |
+| →<br>`paytxfee`                | number (float)   | Required<br>(exactly 1) | The transaction fee configuration, set in DASH/kB |
 | →<br>`hdchainid`               | string (hash)    | Optional<br>(0 or 1)    | The ID of the HD chain |
 | →<br>`hdaccountcount`          | number (int)     | Optional<br>(0 or 1)    | How many accounts of the HD chain are in this wallet |
 | →<br>`hdaccounts`              | array of objects | Optional<br>(0 or 1)    | Array of JSON objects containing account info |
