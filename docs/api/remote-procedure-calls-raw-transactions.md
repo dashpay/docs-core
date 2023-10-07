@@ -758,8 +758,8 @@ _Result---psbt_
 
 | Name           | Type         | Presence                | Description                                                      |
 | -------------- | ------------ | ----------------------- | ---------------------------------------------------------------- |
-| → <br>psbt     | string       | Required<br>(Exactly 1) | The base64-encoded partially signed transaction if not extracted |
-| → <br>hex      | string (hex) | Required<br>(Exactly 1) | The hex-encoded network transaction if extracted                 |
+| → <br>psbt     | string       | Optional<br>(0 or 1)    | The base64-encoded partially signed transaction if not extracted (present if `complete` is `false`)|
+| → <br>hex      | string (hex) | Optional<br>(0 or 1)    | The hex-encoded network transaction if extracted (present if `complete` is `true`)                |
 | → <br>complete | bool         | Required<br>(Exactly 1) | If the transaction has a complete set of signatures              |
 
 _Example from Dash Core 18.0.0_
