@@ -458,7 +458,7 @@ _Result---returns information about the address_
 | →<br>`ismine`              | bool             | Required<br>(exactly 1) | Set to `true` if the address belongs to the wallet; set to false if it does not.  Only returned if wallet support enabled |
 | →<br>`iswatchonly`         | bool             | Required<br>(exactly 1) | Set to `true` if the address is watch-only.  Otherwise set to `false`.  Only returned if address is in the wallet |
 | →<br>`solvable`            | bool             | Required<br>(exactly 1) | Whether we know how to spend coins sent to this address, ignoring the possible lack of private keys |
-| →<br>`desc`                | bool             | Optional<br>(0 or 1)    | A descriptor for spending coins sent to this address (only when solvable) |
+| →<br>`desc`                | string           | Optional<br>(0 or 1)    | A descriptor for spending coins sent to this address (only present when `solvable` is `true`) |
 | →<br>`isscript`            | bool             | Required<br>(exactly 1) | Set to `true` if a P2SH address; otherwise set to `false`.  Only returned if the address is in the wallet |
 | →<br>`ischange`            | bool             | Required<br>(exactly 1) | Set to `true` if the address was used for change output. |
 | →<br>`script`              | string           | Optional<br>(0 or 1)    | Only returned for P2SH addresses belonging to this wallet. This is the type of script:<br>• `pubkey` for a P2PK script inside P2SH<br>• `pubkeyhash` for a P2PKH script inside P2SH<br>• `multisig` for a multisig script inside P2SH<br>• `nonstandard` for unknown scripts |
