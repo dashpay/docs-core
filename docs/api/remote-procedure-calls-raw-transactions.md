@@ -1391,7 +1391,7 @@ _Result---mempool acceptance test results_
 | `result`             | array        | Required<br>(exactly 1) | The result of the mempool acceptance test for each raw transaction in the input array.                 |
 | →<br>`txid`          | string (hex) | Required<br>(exactly 1) | The TXID of the transaction the output appeared in.  The TXID must be encoded in hex in RPC byte order |
 | →<br>`allowed`       | bool         | Required<br>(exactly 1) | If the mempool allows this tx to be inserted                                                           |
-| →<br>`reject-reason` | string       | Required<br>(exactly 1) | A rejection string that is only present when 'allowed' is false.                                       |
+| →<br>`reject-reason` | string       | Optional<br>(0 or 1)    | A rejection string that is only present when 'allowed' is false.                                       |
 
 _Example from Dash Core 18.0.0_
 
