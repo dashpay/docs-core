@@ -42,6 +42,48 @@ Result (no output from `dash-cli` because result is set to `null`).
 
 * [GetAddedNodeInfo](../api/remote-procedure-calls-network.md#getaddednodeinfo): returns information about the given added node, or all added nodes (except onetry nodes). Only nodes which have been manually added using the [`addnode` RPC](../api/remote-procedure-calls-network.md#addnode) will have their information displayed.
 
+## AddPeerAddress
+
+The [`addpeeraddress` RPC](../api/remote-procedure-calls-network.md#addpeeraddress) adds the address
+of a potential peer to the address manager. **This RPC is for testing only.**
+
+*Parameter #1---IP address of node to add*
+
+| Name | Type | Presence | Description |
+| ---- | ---- | -------- | ----------- |
+| `address` | string | Required<br>(exactly 1) | The IP address of the peer |
+
+*Parameter #2---port of the node to add*
+
+| Name | Type | Presence | Description |
+| ---- | ---- | -------- | ----------- |
+| `port` | number | Required<br>(exactly 1) | The port of the peer |
+
+*Result---a list of added nodes*
+
+| Name | Type | Presence | Description |
+| ---- | ---- | -------- | ----------- |
+| `result`          | object | Required<br>(exactly 1) | An object describing if the address was successfully added |
+| →<br>`success`    | bool   | Required<br>(exactly 1) | Whether the peer address was successfully added to the address manager |
+
+*Example from Dash Core 20.0.0*
+
+Try connecting to the following node.
+
+```bash
+dash-cli addpeeraddress "1.2.3.4" 9999
+```
+
+Result:
+
+```json
+{
+  "success": true
+}
+```
+
+*See also: none*
+
 ## ClearBanned
 
 *Added in Bitcoin Core 0.12.0*
