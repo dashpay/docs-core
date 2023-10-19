@@ -5,7 +5,9 @@
 ```
 # Serialized Blocks
 
-Under current [consensus rules](../resources/glossary.md#consensus-rules), a [block](../resources/glossary.md#block) is not valid unless its serialized size is less than or equal to 2 MB. All fields described below are counted towards the serialized size.
+Under current [consensus rules](../resources/glossary.md#consensus-rules), a
+[block](../resources/glossary.md#block) is not valid unless its serialized size is less than or
+equal to 2 MB. All fields described below are counted towards the serialized size.
 
 | Bytes    | Name         | Data Type        | Description |
 | - | - | - | - |
@@ -15,13 +17,20 @@ Under current [consensus rules](../resources/glossary.md#consensus-rules), a [bl
 
 ## Coinbase
 
-The first transaction in a block must be a [coinbase transaction](../resources/glossary.md#coinbase-transaction) which should collect and spend any [transaction fee](../resources/glossary.md#transaction-fee) paid by transactions included in this block.
+The first transaction in a block must be a [coinbase
+transaction](../resources/glossary.md#coinbase-transaction) which should collect and spend any
+[transaction fee](../resources/glossary.md#transaction-fee) paid by transactions included in this
+block.
 
 ### Block Subsidy
 
-Until the coin limit (~18 million Dash) is hit, all blocks are entitled to receive a block subsidy of newly created Dash value. The newly created value should be spent in the coinbase transaction.
+Until the coin limit (~18 million Dash) is hit, all blocks are entitled to receive a block subsidy
+of newly created Dash value. The newly created value should be spent in the coinbase transaction.
 
-The block subsidy declines by ~7.1% per year until all Dash is mined. Subsidy calculations are performed by the Dash Core [GetBlockSubsidy()](https://github.com/dashpay/dash/blob/v19.x/src/validation.cpp#L1010) function.
+The block subsidy declines by ~7.1% per year until all Dash is mined. Subsidy calculations are
+performed by the Dash Core
+[GetBlockSubsidy()](https://github.com/dashpay/dash/blob/v19.x/src/validation.cpp#L1010) function.
+
 #### Treasury expansion
 
 In September of 2023, the Dash network approved a
@@ -37,11 +46,19 @@ for the governance system budget, and 60% for masternodes.
 
 ### Block Reward
 
-Together, the transaction fees and block subsidy are called the [block reward](../resources/glossary.md#block-reward). A coinbase transaction is invalid if it tries to spend more value than is available from the block reward.
+Together, the transaction fees and block subsidy are called the [block
+reward](../resources/glossary.md#block-reward). A coinbase transaction is invalid if it tries to
+spend more value than is available from the block reward.
 
-The block reward is divided into three main parts: [miner](../resources/glossary.md#miner), [masternode](../resources/glossary.md#masternode), and [superblock](../resources/glossary.md#superblock). The miner and masternode portions add up to 90% of the block subsidy with the remaining 10% allocated to the governance system.
+The block reward is divided into three main parts: [miner](../resources/glossary.md#miner),
+[masternode](../resources/glossary.md#masternode), and
+[superblock](../resources/glossary.md#superblock). The miner and masternode portions add up to 90%
+of the block subsidy with the remaining 10% allocated to the governance system.
 
-Dash Core v20 further divides the masternode reward into Core (62.5%) and Platform (37.5%) portions. The Core portion continues to be paid out directly in the coinbase. The Platform portion is put into the Platform credit pool and then distributed by Platform to [evonodes](../resources/glossary.md#evolution-masternode-evonode) providing Platform services.
+Dash Core v20 further divides the masternode reward into Core (62.5%) and Platform (37.5%) portions.
+The Core portion continues to be paid out directly in the coinbase. The Platform portion is put into
+the Platform credit pool and then distributed by Platform to
+[evonodes](../resources/glossary.md#evolution-masternode-evonode) providing Platform services.
 
 | Payee | Subsidy | Description |
 | ----- | -------- | ----------- |
@@ -59,13 +76,18 @@ Dash Core v20 further divides the masternode reward into Core (62.5%) and Platfo
 > expansion](#treasury-expansion) approved by the network in 2023. Once the related hard fork in
 > Dash Core 20.0.0 occurs, the process described below will no longer be active.
 
-Dash Core v0.16 included logic to gradually adjust the block reward allocation once the BIP-9 activation threshold was met. The reward reallocation was signaled via BIP-9 bit 5 and was activated at block 1374912 upon signalling by a sufficient number of blocks.
+Dash Core v0.16 included logic to gradually adjust the block reward allocation once the BIP-9
+activation threshold was met. The reward reallocation was signaled via BIP-9 bit 5 and was activated
+at block 1374912 upon signalling by a sufficient number of blocks.
 
-This reallocation will eventually result in miners receiving 40% of the non-governance block subsidy and masternodes receiving 60% of it rather than the 50/50 split that was used for several years.
+This reallocation will eventually result in miners receiving 40% of the non-governance block subsidy
+and masternodes receiving 60% of it rather than the 50/50 split that was used for several years.
 
 **Reward reallocation changes**
 
-Reward reallocation changes began at the first superblock following activation (block 1379128) and then occur every three superblock cycles (approximately once per quarter) until the reallocation is complete.
+Reward reallocation changes began at the first superblock following activation (block 1379128) and
+then occur every three superblock cycles (approximately once per quarter) until the reallocation is
+complete.
 
 | Quarter | Block     | Miner % | Masternode % | Change \(%\) |
 | :-: | :-: | :-: | :-: | :-:
