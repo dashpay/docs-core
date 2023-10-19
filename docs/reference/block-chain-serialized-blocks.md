@@ -3,6 +3,7 @@
   :title: Serialized Blocks
   :description: Describes the structure of serialized Dash blocks and how the block reward is divided among miners, masternodes, and the governance system.
 ```
+
 # Serialized Blocks
 
 Under current [consensus rules](../resources/glossary.md#consensus-rules), a
