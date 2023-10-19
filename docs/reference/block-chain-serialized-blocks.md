@@ -21,7 +21,7 @@ The first transaction in a block must be a [coinbase transaction](../resources/g
 
 Until the coin limit (~18 million Dash) is hit, all blocks are entitled to receive a block subsidy of newly created Dash value. The newly created value should be spent in the coinbase transaction.
 
-The block subsidy declines by ~7.1% per year until all Dash is mined. Subsidy calculations are performed by the Dash Core [GetBlockSubsidy()](https://github.com/dashpay/dash/blob/v0.15.x/src/validation.cpp#L1012) function.
+The block subsidy declines by ~7.1% per year until all Dash is mined. Subsidy calculations are performed by the Dash Core [GetBlockSubsidy()](https://github.com/dashpay/dash/blob/v19.x/src/validation.cpp#L1010) function.
 #### Treasury expansion
 
 In September of 2023, the Dash network approved a
