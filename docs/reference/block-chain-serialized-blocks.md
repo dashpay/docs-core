@@ -22,6 +22,18 @@ The first transaction in a block must be a [coinbase transaction](../resources/g
 Until the coin limit (~18 million Dash) is hit, all blocks are entitled to receive a block subsidy of newly created Dash value. The newly created value should be spent in the coinbase transaction.
 
 The block subsidy declines by ~7.1% per year until all Dash is mined. Subsidy calculations are performed by the Dash Core [GetBlockSubsidy()](https://github.com/dashpay/dash/blob/v0.15.x/src/validation.cpp#L1012) function.
+#### Treasury expansion
+
+In September of 2023, the Dash network approved a
+[proposal](https://www.dashcentral.org/p/TREASURY-REALLOCATION-60-20-20) to double the governance
+budget by modifying the block subsidy allocation. The new allocation designates 20% for miners, 20%
+for the governance system budget, and 60% for masternodes.
+
+| Subsidy allocation | Purpose |
+|-|-|
+| 20% | Mining reward |
+| 20% | Governance budget |
+| 60% | Masternode reward |
 
 ### Block Reward
 
@@ -40,6 +52,12 @@ Dash Core v20 further divides the masternode reward into Core (62.5%) and Platfo
 <img src="https://files.readme.io/fa5bfbe-mining-banner-1.svg" alt="Mining" style="width:50%;text-align:center;"/>
 
 #### Block Reward Reallocation
+
+> 🚧 **Superseded in Dash Core 20**
+>
+> This block reward reallocation process was superseded by the [treasury
+> expansion](#treasury-expansion) approved by the network in 2023. Once the related hard fork in
+> Dash Core 20.0.0 occurs, the process described below will no longer be active.
 
 Dash Core v0.16 included logic to gradually adjust the block reward allocation once the BIP-9 activation threshold was met. The reward reallocation was signaled via BIP-9 bit 5 and was activated at block 1374912 upon signalling by a sufficient number of blocks.
 
