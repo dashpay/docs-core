@@ -616,7 +616,7 @@ Four defined bytes which start every message in the Dash P2P protocol to allow s
 
 ## Superblock
 
-Special blocks that pay out funded budget proposals approved by masternode votes via the decentralized governance system. Superblocks are issued monthly and have a coinbase that can be much larger than normal. The superblock value is provided by the 10% of block rewards set aside for superblock payouts.
+Special blocks that pay out funded budget proposals approved by masternode votes via the decentralized governance system. Superblocks are issued monthly and have a coinbase that can be much larger than normal. The superblock value is provided by the [portion of block subsidy](../reference/block-chain-serialized-blocks.md#block-reward) set aside for superblock payouts.
 
 ## Target
 

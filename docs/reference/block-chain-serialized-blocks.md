@@ -37,7 +37,8 @@ performed by the Dash Core
 In September of 2023, the Dash network approved a
 [proposal](https://www.dashcentral.org/p/TREASURY-REALLOCATION-60-20-20) to double the governance
 budget by modifying the block subsidy allocation. The new allocation designates 20% for miners, 20%
-for the governance system budget, and 60% for masternodes.
+for the governance system budget, and 60% for masternodes. The expansion will go into effect upon
+activation of the Dash Core v20 hard fork.
 
 | Subsidy allocation | Purpose |
 |-|-|
@@ -54,11 +55,11 @@ spend more value than is available from the block reward.
 The block reward is divided into three main parts: [miner](../resources/glossary.md#miner),
 [masternode](../resources/glossary.md#masternode), and
 [superblock](../resources/glossary.md#superblock). The miner and masternode portions add up to 90%
-of the block subsidy with the remaining 10% allocated to the governance system.
+of the block subsidy with the remainder allocated to the governance system.
 
-Dash Core v20 further divides the masternode reward into Core (62.5%) and Platform (37.5%) portions.
-The Core portion continues to be paid out directly in the coinbase. The Platform portion is put into
-the Platform credit pool and then distributed by Platform to
+Once Dash Platform is released, Dash Core will  further divides the masternode reward into Core
+(62.5%) and Platform (37.5%) portions. The Core portion will be paid out directly in the coinbase.
+The Platform portion will go into the Platform credit pool and then distributed by Platform to
 [evonodes](../resources/glossary.md#evolution-masternode-evonode) providing Platform services.
 
 | Payee | Subsidy | Description |
