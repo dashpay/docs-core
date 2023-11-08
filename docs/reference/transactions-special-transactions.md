@@ -700,7 +700,7 @@ Version History
 | 2 | 70214 | 0.14.0 | Enabled by activation of [DIP8](https://github.com/dashpay/dips/blob/master/dip-0008.md)
 | 3 | 70230 | 20.0.0 | Enabled by activation of [DIP29](https://github.com/dashpay/dips/blob/master/dip-0029.md)
 
-The following annotated hexdump shows a CbTx transaction.
+The following annotated hexdump shows a CbTx transaction (v3).
 
 An itemized coinbase transaction:
 
@@ -713,39 +713,48 @@ An itemized coinbase transaction:
 | 00000000000000000000000000000000 ......... Previous outpoint TXID
 | ffffffff ................................. Previous outpoint index
 |
-| 4c ....................................... Bytes in coinbase: 76
+| 06 ....................................... Bytes in coinbase: 6
 | |
 | | 03 ..................................... Bytes in height
-| | | 393d01 ............................... Height: 81209
+| | | 64df0d ............................... Height: 909156
 | |
-| | 04b9...6d2f ............................ Arbitrary data (truncated)
-| 00000000 ................................. Sequence
+| | 0101 ................................... Arbitrary data
+| ffffffff ................................. Sequence
 
 02 ......................................... Output count
 | Transaction Output 1
-| | 40230e4300000000 ....................... Duffs (11.25 DASH)
-| | 1976a914b7ce0ea9ce2010f58ba4aaa6
-| | caa76671c438e89088ac ................... Script
+| | ec846e0400000000 ....................... Duffs (0.74351852 DASH)
+| | 1976a914c69a0bda7daaae481be8def9
+| | 5e5f347a1d00a4b488ac ................... Script
 |
 | Transaction Output 2
-| | 40230e4300000000 ....................... Duffs (11.25 DASH)
-| | 1976a91405ea03a6c9dfa67e1837b3c1
-| | 4965ba3cb53bce7288ac ................... P2PKH script
+| | c48e4b0d00000000 ....................... Duffs (2.23055556 DASH)
+| | 1976a914c69a0bda7daaae481be8def9
+| | 5e5f347a1d00a4b488ac ................... P2PKH script
 
 00000000 ................................... Locktime
 
-46 ......................................... Extra payload size (38)
+af ......................................... Extra payload size (175)
 
 Coinbase Transaction Payload
-| 0200 ..................................... Version (2)
+| 0300 ..................................... Version (3)
 |
-| 393d0100 ................................. Block height: 81209
+| 64df0d00 ................................. Block height: 909156
 |
-| e2dd012c5b0b1753cef0e32f978917ef
-| e7a484c5080b31b4e3f966ccc0e0f8dd ......... MN List merkle root
+| c6c78eb3e36acab63b6e6694530a18ee
+| 49fbacaee9ccf3f40a243c38a9a935fc ......... MN List merkle root
 |
-| 2ef709f55fa42cb53d29d75dad77d212
-| fb0bd72a47ecfe0e8aa6f660fb96396e ......... Active LLMQ merkle root
+| ebb785522e0736257fd1655feb0f5a3f
+| 4c978e216dec3a07bc4554fe9d14e39b ......... Active LLMQ merkle root
+|
+| 00a269a7 ................................. Best ChainLock height diff
+|
+| 696d8284e4a4f005bcbfc840b53e3145
+| 23864f726e183fdef5c9ed6319eb98ac
+| 2f398e45859ad4f28cf8ff5dab12ec5f
+| 4d315a1821b622c983fa387347607dce
+| e338c813f78bcacd4cbf756a40bf61bb
+| 5e9a2e5b508a5a51f3d7d069f0c8599f ......... ChainLock BLS signature
 ```
 
 ### Example CbTx
