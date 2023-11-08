@@ -441,7 +441,7 @@ Name | Type | Presence | Description
 →<br>`pruneheight` | number (int) | Optional<br>(0 or 1) | *Added in Bitcoin Core 0.11.0*<br><br>The lowest-height complete block stored if pruning is activated
 →<br>`automatic_pruning` | bool | Required<br>(exactly 1) | *Added in Dash Core 0.16.0*<br><br>Whether automatic pruning is enabled (only present if pruning is enabled)
 →<br>`prune_target_size` | number (int) | Optional<br>(0 or 1) | *Added in Dash Core 0.16.0*<br><br>The target size used by pruning (only present if automatic pruning is enabled)
-→<br>`softforks` | array | Required<br>(exactly 1) | **Revised significantly in Dash Core 20.0.0**<br><br>An array of objects each describing a current or previous soft fork
+→<br>`softforks` | object | Required<br>(exactly 1) | **Revised significantly in Dash Core 20.0.0**<br><br>An object with each key describing a current or previous soft fork
 → →<br>Softfork | object | Required<br>(0 or more) | The name of a specific softfork
 → → →<br>`type`          | string  | Required | One of "buried", "bip9"
 → → →<br>`bip9`          | object  | Optional | Status of bip9 softforks (only for "bip9" type)
