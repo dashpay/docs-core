@@ -469,15 +469,15 @@ Result:
 ``` json
 {
   "chain": "test",
-  "blocks": 879157,
-  "headers": 879157,
-  "bestblockhash": "000000a11e129e9bc62bcc38ef758b9172f3bafb8e812ed06916ee2b58dbaf12",
-  "difficulty": 0.004223033929131131,
-  "mediantime": 1690908233,
-  "verificationprogress": 0.9999999935243107,
+  "blocks": 909212,
+  "headers": 909212,
+  "bestblockhash": "000000fa6235878f4832ee98a0eeae72e9a2e8a23c6e9e7bbc1c966da93722ed",
+  "difficulty": 0.001513319148212956,
+  "mediantime": 1699469488,
+  "verificationprogress": 0.9999999545580981,
   "initialblockdownload": false,
-  "chainwork": "00000000000000000000000000000000000000000000000002d68ce35ba5fe4c",
-  "size_on_disk": 3044171242,
+  "chainwork": "00000000000000000000000000000000000000000000000002d68d2b803ae248",
+  "size_on_disk": 3141277729,
   "pruned": false,
   "softforks": {
     "bip34": {
@@ -543,9 +543,22 @@ Result:
     "v20": {
       "type": "bip9",
       "bip9": {
+        "status": "active",
+        "start_time": 1693526400,
+        "timeout": 9223372036854775807,
+        "ehf": -1,
+        "since": 905100
+      },
+      "height": 905100,
+      "active": true
+    },
+    "mn_rr": {
+      "type": "bip9",
+      "bip9": {
         "status": "defined",
-        "start_time": 19999999999,
-        "timeout": 999999999999,
+        "start_time": 1693526400,
+        "timeout": 9223372036854775807,
+        "ehf": 0,
         "since": 0
       },
       "active": false
