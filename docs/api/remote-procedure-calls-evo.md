@@ -4013,18 +4013,19 @@ The `verifyislock` RPC tests if a quorum signature is valid for an InstantSend L
 | ------ | ---- | ----------------------- | ----------------------------------------------- |
 | result | bool | Required<br>(exactly 1) | True or false depending on verification success |
 
-*Example from Dash Core 0.17.0*
+*Example from Dash Core 20.0.0*
 
 Verify the provided signature was valid:
 
 ```bash
 dash-cli -testnet verifyislock \
-  "d0b1a9c70fdfff6bf7f6cbe3d1fe33a4ca44ceb17059b6381a4ac25d9c9b6495" \
-  "8b5174d0e95b5642ebec23c3fe8f0bbf8f6993502f4210322871bba0e818ff3b"
+  "e5affbbb07084f15ff86bc5043978360a22c8bbacc10a09b973da2cfc32a0115" \
+  "17e3d624ca71f06d91e35c01b0933ec7a34fd18a3700c4c3cbc947b59e91c6b2" \
+  "b36f68abbb15be1948b0b55d392420b9fcc208361037f6dbbb7552f1fda9bae50800df265b037273f8ad310f0ec3af011166ba61002ac30dececee4e46d4e28de8553515cfdfa40fd04e7e3bf4932049f8b670e908b7b9a2bb69d5c1c59dd7f4"
 ```
 
 Result:
 
 ```json
-false
+true
 ```
