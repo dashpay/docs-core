@@ -761,96 +761,77 @@ Coinbase Transaction Payload
 
 ```Text Raw Transaction hex
 03000500010000000000000000000000000000000000000000000000000000000000000000ffffffff
-12027d1b0e2f5032506f6f6c2d74444153482fffffffff0403155b96010000001976a9144f79c383bc
-5d3e9d4d81b98f87337cedfa78953688ac40c3609a010000001976a914255c0d7c93c12c801140d4e3
-287d2f40d4ff42dd88ac3dae0504000000001976a914badadfdebaa6d015a0299f23fbc1fcbdd72ba9
-6f88ac00000000000000002a6a2883bdbfb92d3848bca649767bf4f1f2994a66026a938d8963486647
-03e730bbce0000000001000000000000002601007d1b00000000000000000000000000000000000000
-000000000000000000000000000000
+060364df0d0101ffffffff02ec846e04000000001976a914c69a0bda7daaae481be8def95e5f347a1d
+00a4b488acc48e4b0d000000001976a914c69a0bda7daaae481be8def95e5f347a1d00a4b488ac0000
+0000af030064df0d00c6c78eb3e36acab63b6e6694530a18ee49fbacaee9ccf3f40a243c38a9a935fc
+ebb785522e0736257fd1655feb0f5a3f4c978e216dec3a07bc4554fe9d14e39b00a269a7696d8284e4
+a4f005bcbfc840b53e314523864f726e183fdef5c9ed6319eb98ac2f398e45859ad4f28cf8ff5dab12
+ec5f4d315a1821b622c983fa387347607dcee338c813f78bcacd4cbf756a40bf61bb5e9a2e5b508a5a
+51f3d7d069f0c8599f8c01000000
 ```
 
 The JSON representation of a raw transaction can be obtained with the [`getrawtransaction` RPC](../api/remote-procedure-calls-raw-transactions.md#getrawtransaction) or the [`decoderawtransaction` RPC](../api/remote-procedure-calls-raw-transactions.md#decoderawtransaction).
 
 ```json JSON Representation
 {
-  "txid": "13c97f347a78eb3c200e224d074207043e419feef46a447b4065add9da90068d",
+  "txid": "46b9a08e934872bb5d54833f3b665853ced210703628bb9e9ff520b062482911",
   "version": 3,
   "type": 5,
-  "size": 261,
+  "size": 301,
   "locktime": 0,
   "vin": [
     {
-      "coinbase": "027d1b0e2f5032506f6f6c2d74444153482f",
+      "coinbase": "0364df0d0101",
       "sequence": 4294967295
     }
   ],
   "vout": [
     {
-      "value": 68.17518851,
-      "valueSat": 6817518851,
+      "value": 0.74351852,
+      "valueSat": 74351852,
       "n": 0,
       "scriptPubKey": {
-        "asm": "OP_DUP OP_HASH160 4f79c383bc5d3e9d4d81b98f87337cedfa789536 OP_EQUALVERIFY OP_CHECKSIG",
-        "hex": "76a9144f79c383bc5d3e9d4d81b98f87337cedfa78953688ac",
+        "asm": "OP_DUP OP_HASH160 c69a0bda7daaae481be8def95e5f347a1d00a4b4 OP_EQUALVERIFY OP_CHECKSIG",
+        "hex": "76a914c69a0bda7daaae481be8def95e5f347a1d00a4b488ac",
         "reqSigs": 1,
         "type": "pubkeyhash",
         "addresses": [
-          "yTZg6eePKxbJZyoaC93bVrTUq5vjhFrbst"
+          "yeRZBWYfeNE4yVUHV4ZLs83Ppn9aMRH57A"
         ]
       }
     },
     {
-      "value": 68.85000000,
-      "valueSat": 6885000000,
+      "value": 2.23055556,
+      "valueSat": 223055556,
       "n": 1,
       "scriptPubKey": {
-        "asm": "OP_DUP OP_HASH160 255c0d7c93c12c801140d4e3287d2f40d4ff42dd OP_EQUALVERIFY OP_CHECKSIG",
-        "hex": "76a914255c0d7c93c12c801140d4e3287d2f40d4ff42dd88ac",
+        "asm": "OP_DUP OP_HASH160 c69a0bda7daaae481be8def95e5f347a1d00a4b4 OP_EQUALVERIFY OP_CHECKSIG",
+        "hex": "76a914c69a0bda7daaae481be8def95e5f347a1d00a4b488ac",
         "reqSigs": 1,
         "type": "pubkeyhash",
         "addresses": [
-          "yPiz8EUxbmddJ8x2bvpqytQpVRfu5CL4xQ"
+          "yeRZBWYfeNE4yVUHV4ZLs83Ppn9aMRH57A"
         ]
-      }
-    },
-    {
-      "value": 0.67481149,
-      "valueSat": 67481149,
-      "n": 2,
-      "scriptPubKey": {
-        "asm": "OP_DUP OP_HASH160 badadfdebaa6d015a0299f23fbc1fcbdd72ba96f OP_EQUALVERIFY OP_CHECKSIG",
-        "hex": "76a914badadfdebaa6d015a0299f23fbc1fcbdd72ba96f88ac",
-        "reqSigs": 1,
-        "type": "pubkeyhash",
-        "addresses": [
-          "ydMSjYqwv4xTossPJ1xndTxwS1Hho9DmuM"
-        ]
-      }
-    },
-    {
-      "value": 0.00000000,
-      "valueSat": 0,
-      "n": 3,
-      "scriptPubKey": {
-        "asm": "OP_RETURN 83bdbfb92d3848bca649767bf4f1f2994a66026a938d896348664703e730bbce0000000001000000",
-        "hex": "6a2883bdbfb92d3848bca649767bf4f1f2994a66026a938d896348664703e730bbce0000000001000000",
-        "type": "nulldata"
       }
     }
   ],
-  "extraPayloadSize": 38,
-  "extraPayload": "01007d1b00000000000000000000000000000000000000000000000000000000000000000000",
+  "extraPayloadSize": 175,
+  "extraPayload": "030064df0d00c6c78eb3e36acab63b6e6694530a18ee49fbacaee9ccf3f40a243c38a9a935fcebb785522e0736257fd1655feb0f5a3f4c978e216dec3a07bc4554fe9d14e39b00a269a7696d8284e4a4f005bcbfc840b53e314523864f726e183fdef5c9ed6319eb98ac2f398e45859ad4f28cf8ff5dab12ec5f4d315a1821b622c983fa387347607dcee338c813f78bcacd4cbf756a40bf61bb5e9a2e5b508a5a51f3d7d069f0c8599f8c01000000",
   "cbTx": {
-    "version": 1,
-    "height": 7037,
-    "merkleRootMNList": "0000000000000000000000000000000000000000000000000000000000000000"
+    "version": 3,
+    "height": 909156,
+    "merkleRootMNList": "fc35a9a9383c240af4f3cce9aeacfb49ee180a5394666e3bb6ca6ae3b38ec7c6",
+    "merkleRootQuorums": "9be3149dfe5445bc073aec6d218e974c3f5a0feb5f65d17f2536072e5285b7eb",
+    "bestCLHeightDiff": 0,
+    "bestCLSignature": "a269a7696d8284e4a4f005bcbfc840b53e314523864f726e183fdef5c9ed6319eb98ac2f398e45859ad4f28cf8ff5dab12ec5f4d315a1821b622c983fa387347607dcee338c813f78bcacd4cbf756a40bf61bb5e9a2e5b508a5a51f3d7d069f0",
+    "creditPoolBalance": 66.54220744
   },
-  "hex": "03000500010000000000000000000000000000000000000000000000000000000000000000ffffffff12027d1b0e2f5032506f6f6c2d74444153482fffffffff0403155b96010000001976a9144f79c383bc5d3e9d4d81b98f87337cedfa78953688ac40c3609a010000001976a914255c0d7c93c12c801140d4e3287d2f40d4ff42dd88ac3dae0504000000001976a914badadfdebaa6d015a0299f23fbc1fcbdd72ba96f88ac00000000000000002a6a2883bdbfb92d3848bca649767bf4f1f2994a66026a938d896348664703e730bbce0000000001000000000000002601007d1b00000000000000000000000000000000000000000000000000000000000000000000",
-  "blockhash": "0000002b387c0a1610bfc87b74e5de3b5a6bd851c0ed50ed2e8dd741da50cea0",
-  "height": 7037,
-  "confirmations": 851586,
-  "time": 1545091336,
-  "blocktime": 1545091336,
+  "hex": "03000500010000000000000000000000000000000000000000000000000000000000000000ffffffff060364df0d0101ffffffff02ec846e04000000001976a914c69a0bda7daaae481be8def95e5f347a1d00a4b488acc48e4b0d000000001976a914c69a0bda7daaae481be8def95e5f347a1d00a4b488ac00000000af030064df0d00c6c78eb3e36acab63b6e6694530a18ee49fbacaee9ccf3f40a243c38a9a935fcebb785522e0736257fd1655feb0f5a3f4c978e216dec3a07bc4554fe9d14e39b00a269a7696d8284e4a4f005bcbfc840b53e314523864f726e183fdef5c9ed6319eb98ac2f398e45859ad4f28cf8ff5dab12ec5f4d315a1821b622c983fa387347607dcee338c813f78bcacd4cbf756a40bf61bb5e9a2e5b508a5a51f3d7d069f0c8599f8c01000000",
+  "blockhash": "0000009adf7b4733d573dd341d5d6e5cc64d82d09fc8fed0e733df09b688c331",
+  "height": 909156,
+  "confirmations": 1,
+  "time": 1699462128,
+  "blocktime": 1699462128,
   "instantlock": true,
   "instantlock_internal": false,
   "chainlock": true
