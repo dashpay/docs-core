@@ -1017,7 +1017,7 @@ The `mnhfsignal` message contains:
 
 | Bytes | Name | Data type | Description |
 |-|-|-|-|
-| 1 | versionBit | uint8_t | The version bits associated with the hard fork |
+| 1 | versionBit | uint8_t | The version bit associated with the hard fork |
 | 32 | quorumHash | uint256 | Hash of the quorum signing this message |
 | 96 | sig | CBLSSig | BLS signature on `version` by a public key associated with the quorum referenced by `quorumHash` |
 
