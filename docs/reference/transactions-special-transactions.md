@@ -689,7 +689,7 @@ The special transaction type used for CbTx Transactions is 5 and the extra paylo
 | 4 | height | uint32_t | Height of the block
 | 32 | merkleRootMNList | uint256 | Merkle root of the masternode list
 | 32 | merkleRootQuorums | uint256 | *Added by CbTx version 2 in v0.14.0*<br><br>Merkle root of currently active LLMQs
-| 4 | bestCLHeightDiff | compactSize uint | ***Added by CbTx version 3 in v20.0.0***<br><br>Number of blocks between the current block and the last known block with a ChainLock
+| 1-9 | bestCLHeightDiff | compactSize uint | ***Added by CbTx version 3 in v20.0.0***<br><br>Number of blocks between the current block and the last known block with a ChainLock
 | 96 | bestCLSignature | CBLSSignature | ***Added by CbTx version 3 in Dash Core 20.0.0***<br>Best ChainLock signature known by the miner
 | 8 | creditPoolBalance | int64_t | ***Added by CbTx version 3 in Dash Core v20.0.0***<br>Balance in the Platform credit pool
 
