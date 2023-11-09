@@ -695,11 +695,11 @@ The special transaction type used for CbTx Transactions is 5 and the extra paylo
 
 Version History
 
-| CbTx Version | First Supported Protocol Version | Dash Core Version |  Notes |
+| CbTx<br>Version | First Supported<br>Protocol Version | Dash Core<br>Version |  Notes |
 | ---------- | ----------- | -------- | -------- |
-| 1 | 70213 | 0.13.0 | Enabled by activation of [DIP3](https://github.com/dashpay/dips/blob/master/dip-0003.md)
-| 2 | 70214 | 0.14.0 | Enabled by activation of [DIP8](https://github.com/dashpay/dips/blob/master/dip-0008.md)
-| 3 | 70230 | 20.0.0 | Enabled by activation of [DIP29](https://github.com/dashpay/dips/blob/master/dip-0029.md)
+| 1 | 70213 | 0.13.0 | Enabled by [DIP3](https://github.com/dashpay/dips/blob/master/dip-0003.md) activation
+| 2 | 70214 | 0.14.0 | Enabled by [DIP8](https://github.com/dashpay/dips/blob/master/dip-0008.md) activation
+| 3 | 70230 | 20.0.0 | Enabled by [DIP29](https://github.com/dashpay/dips/blob/master/dip-0029.md) activation
 
 The following annotated hexdump shows a CbTx transaction (v3).
 
