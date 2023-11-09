@@ -689,8 +689,9 @@ The special transaction type used for CbTx Transactions is 5 and the extra paylo
 | 4 | height | uint32_t | Height of the block
 | 32 | merkleRootMNList | uint256 | Merkle root of the masternode list
 | 32 | merkleRootQuorums | uint256 | *Added by CbTx version 2 in v0.14.0*<br><br>Merkle root of currently active LLMQs
-| 4 | bestCLHeightDiff | uint32_t | ***Added by CbTx version 3 in v20.0.0***<br><br>Number of blocks between the current block and the last known block with a ChainLock
+| 4 | bestCLHeightDiff | compactSize uint | ***Added by CbTx version 3 in v20.0.0***<br><br>Number of blocks between the current block and the last known block with a ChainLock
 | 96 | bestCLSignature | CBLSSignature | ***Added by CbTx version 3 in Dash Core 20.0.0***<br>Best ChainLock signature known by the miner
+| 8 | creditPoolBalance | int64_t | ***Added by CbTx version 3 in Dash Core v20.0.0***<br>Balance in the Platform credit pool
 
 Version History
 
@@ -747,14 +748,16 @@ Coinbase Transaction Payload
 | ebb785522e0736257fd1655feb0f5a3f
 | 4c978e216dec3a07bc4554fe9d14e39b ......... Active LLMQ merkle root
 |
-| 00a269a7 ................................. Best ChainLock height diff
+| 00 ....................................... Best ChainLock height diff
 |
-| 696d8284e4a4f005bcbfc840b53e3145
-| 23864f726e183fdef5c9ed6319eb98ac
-| 2f398e45859ad4f28cf8ff5dab12ec5f
-| 4d315a1821b622c983fa387347607dce
-| e338c813f78bcacd4cbf756a40bf61bb
-| 5e9a2e5b508a5a51f3d7d069f0c8599f ......... ChainLock BLS signature
+| a269a7696d8284e4a4f005bcbfc840b5
+| 3e314523864f726e183fdef5c9ed6319
+| eb98ac2f398e45859ad4f28cf8ff5dab
+| 12ec5f4d315a1821b622c983fa387347
+| 607dcee338c813f78bcacd4cbf756a40
+| bf61bb5e9a2e5b508a5a51f3d7d069f0 ......... ChainLock BLS signature
+|
+| c8599f8c01000000 ......................... Credit pool balance (66.54220744 DASH)
 ```
 
 ### Example CbTx
