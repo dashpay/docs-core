@@ -474,15 +474,15 @@ Result:
 ``` json
 {
   "chain": "test",
-  "blocks": 909212,
-  "headers": 909212,
-  "bestblockhash": "000000fa6235878f4832ee98a0eeae72e9a2e8a23c6e9e7bbc1c966da93722ed",
-  "difficulty": 0.001513319148212956,
-  "mediantime": 1699469488,
-  "verificationprogress": 0.9999999545580981,
+  "blocks": 912298,
+  "headers": 912298,
+  "bestblockhash": "00000019c3087281f7e4b627815eb391b3b5e11e4d0add0ccb500796407f6237",
+  "difficulty": 0.001804136142120174,
+  "mediantime": 1699903044,
+  "verificationprogress": 0.9999998639160379,
   "initialblockdownload": false,
-  "chainwork": "00000000000000000000000000000000000000000000000002d68d2b803ae248",
-  "size_on_disk": 3141277729,
+  "chainwork": "00000000000000000000000000000000000000000000000002d68d309978e4c0",
+  "size_on_disk": 3147926239,
   "pruned": false,
   "softforks": {
     "bip34": {
@@ -551,7 +551,7 @@ Result:
         "status": "active",
         "start_time": 1693526400,
         "timeout": 9223372036854775807,
-        "ehf": -1,
+        "ehf": false,
         "since": 905100
       },
       "height": 905100,
@@ -563,7 +563,7 @@ Result:
         "status": "defined",
         "start_time": 1693526400,
         "timeout": 9223372036854775807,
-        "ehf": 0,
+        "ehf": true,
         "since": 0
       },
       "active": false
