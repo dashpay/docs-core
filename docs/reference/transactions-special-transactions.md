@@ -991,7 +991,7 @@ The JSON representation of a raw transaction can be obtained with the [`getrawtr
 
 ## MnHfTx
 
-*Added in protocol version 70222 of Dash Core as described by [DIP23](https://github.com/dashpay/dips/blob/master/dip-0023.md)*
+*Fully implemented in protocol version 70230 of Dash Core as described by [DIP23](https://github.com/dashpay/dips/blob/master/dip-0023.md)*
 
 > 🚧 Note
 >
@@ -999,16 +999,20 @@ The JSON representation of a raw transaction can be obtained with the [`getrawtr
 
 The Masternode Hard Fork Signal (MnHfTx) special transaction adds the masternode hard fork signal produced by an LLMQ_400_85 quorum to the chain. Since this special transaction pays no fees, it is mandatory by consensus rules to ensure that miners include it. This can be done by any miner in any block, but it should only be included once.
 
-> 📘 Partial implementation in Dash Core 18.0
->
-> Dash Core 18.0 only added the special transaction [to prepare for the full implementation](https://github.com/dashpay/dash/issues/4533) of [DIP23](https://github.com/dashpay/dips/blob/master/dip-0023.md) in a future release. The `mnhfsignal` P2P message referenced below is not included in Dash Core 18.0.
-
-The special transaction type used for Quorum Commitment Transactions is 7 and the extra payload consists of the following data:
+The special transaction type used for Masternode Hard Fork Signal Transactions is 7 and the extra payload consists of the following data:
 
 | Bytes | Name | Data type |  Description |
 | ---------- | ----------- | -------- | -------- |
-| 2 | version | uint_16 | Quorum Commitment version number. Currently set to 1.
-| Variable | commitment | mnhfsignal | The payload of the `mnhfsignal` message (defined in [DIP23](https://github.com/dashpay/dips/blob/master/dip-0023.md#new-system) but not yet implemented)
+| 1 | version | uint_8 | Special transaction version number. Currently set to 1. Please note that this is not the same as the versionBit field of the `mnhfsignal` message.
+| 129 | commitment | mnhfsignal | The payload of the `mnhfsignal` message defined in [DIP23](https://github.com/dashpay/dips/blob/master/dip-0023.md#new-system)
+
+The `mnhfsignal` message contains:
+
+| Bytes | Name | Data type | Description |
+|-|-|-|-|
+| 1 | versionBit | uint8_t | The version bit associated with the hard fork |
+| 32 | quorumHash | uint256 | Hash of the quorum signing this message |
+| 96 | sig | CBLSSig | BLS signature on `version` by a public key associated with the quorum referenced by `quorumHash` |
 
 The following annotated hexdump shows a MnHfTx transaction.
 
