@@ -441,7 +441,7 @@ Name | Type | Presence | Description
 →<br>`pruneheight` | number (int) | Optional<br>(0 or 1) | *Added in Bitcoin Core 0.11.0*<br><br>The lowest-height complete block stored if pruning is activated
 →<br>`automatic_pruning` | bool | Required<br>(exactly 1) | *Added in Dash Core 0.16.0*<br><br>Whether automatic pruning is enabled (only present if pruning is enabled)
 →<br>`prune_target_size` | number (int) | Optional<br>(0 or 1) | *Added in Dash Core 0.16.0*<br><br>The target size used by pruning (only present if automatic pruning is enabled)
-→<br>`softforks` | array | Required<br>(exactly 1) | **Revised significantly in Dash Core 20.0.0**<br><br>An array of objects each describing a current or previous soft fork
+→<br>`softforks` | object | Required<br>(exactly 1) | **Revised significantly in Dash Core 20.0.0**<br><br>An object with each key describing a current or previous soft fork
 → →<br>Softfork | object | Required<br>(0 or more) | The name of a specific softfork
 → → →<br>`type`          | string  | Required | One of "buried", "bip9"
 → → →<br>`bip9`          | object  | Optional | Status of bip9 softforks (only for "bip9" type)
@@ -450,12 +450,17 @@ Name | Type | Presence | Description
 → → → →<br>`start_time`   | numeric | Required | The minimum median time past of a block at which the bit gains its meaning
 → → → →<br>`timeout`      | numeric | Required | The median time past of a block at which the deployment is considered failed if not yet locked in
 → → → →<br>`since`        | numeric | Required | Height of the first block to which the status applies
-→ → →<br>`statistics` | string : object | Required<br>(exactly 1) | *Added in Dash Core 0.15.0*<br><br>Numeric statistics about BIP9 signaling for a softfork (only for \started\" status)"
-→ → → →<br>`period` | numeric<br>(int) | Optional<br>(0 or 1) | *Added in Dash Core 0.15.0*<br><br>The length in blocks of the BIP9 signaling period.  Field is only shown when status is `started`
-→ → → →<br>`threshold` | numeric<br>(int) | Optional<br>(0 or 1) | *Added in Dash Core 0.15.0*<br><br>The number of blocks with the version bit set required to activate the feature.  Field is only shown when status is `started`
-→ → → →<br>`elapsed` | numeric<br>(int) | Optional<br>(0 or 1) | *Added in Dash Core 0.15.0*<br><br>The number of blocks elapsed since the beginning of the current period.  Field is only shown when status is `started`
-→ → → →<br>`count` | numeric<br>(int) | Optional<br>(0 or 1) | *Added in Dash Core 0.15.0*<br><br>The number of blocks with the version bit set in the current period.  Field is only shown when status is `started`
-→ → →<br>`possible` | bool | Optional<br>(0 or 1) | *Added in Bitcoin Core 0.11.0*<br><br>Returns false if there are not enough blocks left in this period to pass activation threshold.  Field is only shown when status is `started`
+→ → → →<br>`activation_height` | numeric | Optional | Expected activation height for this softfork (only for "locked_in" `status`)
+→ → → →<br>`ehf`          | bool | Required | `true` for EHF activated hard forks
+→ → → →<br>`ehf_height`   | numeric | Optional | The minimum height at which miner's signals for the deployment matter. Below this height miner signaling cannot trigger hard fork lock-in. Not returned if `ehf` is `false` or if the minimum height is not known yet.
+→ → → →<br>`statistics` | string : object | Required<br>(exactly 1) | *Added in Dash Core 0.15.0*<br><br>Numeric statistics about BIP9 signaling for a softfork (only for \started\" status)"
+→ → → → →<br>`period` | numeric<br>(int) | Optional<br>(0 or 1) | *Added in Dash Core 0.15.0*<br><br>The length in blocks of the BIP9 signaling period.  Field is only shown when status is `started`
+→ → → → →<br>`threshold` | numeric<br>(int) | Optional<br>(0 or 1) | *Added in Dash Core 0.15.0*<br><br>The number of blocks with the version bit set required to activate the feature.  Field is only shown when status is `started`
+→ → → → →<br>`elapsed` | numeric<br>(int) | Optional<br>(0 or 1) | *Added in Dash Core 0.15.0*<br><br>The number of blocks elapsed since the beginning of the current period.  Field is only shown when status is `started`
+→ → → → →<br>`count` | numeric<br>(int) | Optional<br>(0 or 1) | *Added in Dash Core 0.15.0*<br><br>The number of blocks with the version bit set in the current period.  Field is only shown when status is `started`
+→ → → → →<br>`possible` | bool | Optional<br>(0 or 1) | *Added in Bitcoin Core 0.11.0*<br><br>Returns false if there are not enough blocks left in this period to pass activation threshold.  Field is only shown when status is `started`
+→ → →<br>`height` | numeric | Optional | Height of the first block at which the rules are or will be enforced (only for "buried" type, or "bip9" type with "active" status)
+→ → →<br>`active` | boolean | Required | True if the rules are enforced for the mempool and the next block
 →<br>`warnings` | string | Optional<br>(0 or 1) | *Added in Dash Core 0.16.0*<br><br>Returns any network and blockchain warnings
 
 *Example from Dash Core 20.0.0*
@@ -469,15 +474,15 @@ Result:
 ``` json
 {
   "chain": "test",
-  "blocks": 879157,
-  "headers": 879157,
-  "bestblockhash": "000000a11e129e9bc62bcc38ef758b9172f3bafb8e812ed06916ee2b58dbaf12",
-  "difficulty": 0.004223033929131131,
-  "mediantime": 1690908233,
-  "verificationprogress": 0.9999999935243107,
+  "blocks": 912298,
+  "headers": 912298,
+  "bestblockhash": "00000019c3087281f7e4b627815eb391b3b5e11e4d0add0ccb500796407f6237",
+  "difficulty": 0.001804136142120174,
+  "mediantime": 1699903044,
+  "verificationprogress": 0.9999998639160379,
   "initialblockdownload": false,
-  "chainwork": "00000000000000000000000000000000000000000000000002d68ce35ba5fe4c",
-  "size_on_disk": 3044171242,
+  "chainwork": "00000000000000000000000000000000000000000000000002d68d309978e4c0",
+  "size_on_disk": 3147926239,
   "pruned": false,
   "softforks": {
     "bip34": {
@@ -543,9 +548,22 @@ Result:
     "v20": {
       "type": "bip9",
       "bip9": {
+        "status": "active",
+        "start_time": 1693526400,
+        "timeout": 9223372036854775807,
+        "ehf": false,
+        "since": 905100
+      },
+      "height": 905100,
+      "active": true
+    },
+    "mn_rr": {
+      "type": "bip9",
+      "bip9": {
         "status": "defined",
-        "start_time": 19999999999,
-        "timeout": 999999999999,
+        "start_time": 1693526400,
+        "timeout": 9223372036854775807,
+        "ehf": true,
         "since": 0
       },
       "active": false
