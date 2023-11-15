@@ -257,6 +257,7 @@ The *nFlags* field has three allowed values:
 
 In addition, because the filter size stays the same even though additional elements are being added to it, the false positive rate increases. Each false positive can result in another element being added to the filter, creating a feedback loop that can (after a certain point) make the filter useless. For this reason, clients using automatic filter updates need to monitor the actual false positive rate and send a new filter when the rate gets too high.
 
+
 ## getaddr
 
 The [`getaddr` message](../reference/p2p-network-control-messages.md#getaddr) requests an [`addr` message](../reference/p2p-network-control-messages.md#addr) from the receiving [node](../resources/glossary.md#node), preferably one with lots of IP addresses of other receiving nodes. The transmitting node can use those IP addresses to quickly update its database of available nodes rather than waiting for unsolicited [`addr` messages](../reference/p2p-network-control-messages.md#addr) to arrive over time.
