@@ -64,11 +64,11 @@ The Platform portion will go into the Platform credit pool and then distributed 
 
 The following table details how the block subsidy and fees are allocated between miners, masternodes, and the governance system.
 
-| Payee | Subsidy | Core fees | Platform fees | Description |
-| ----- | :-----: | :-------: | :---------: | -|
-| Miner | 20% | 25% | - |Payment for mining
-| Masternode | 60% | 75% | 100% | Payment for masternode services including [CoinJoin](../guide/dash-features-coinjoin.md), [InstantSend](../guide/dash-features-instantsend.md), [Governance](https://docs.dash.org/en/stable/introduction/features.html#decentralized-governance), etc. (62.5%)<br>Payment for Platform services (37.5%)
-| Superblock | 20% | - | - | Payment for maintenance/expansion of the ecosystem (Core development, marketing, integration, etc.)
+| Payee | Block subsidy | Transaction fees | Description |
+| ----- | :-----: | :-------: | -|
+| Superblock | 20% | - | Payment for maintenance/expansion of the ecosystem (Core development, marketing, integration, etc.)
+| Miner | 20% | 25% | Payment for mining
+| Masternode | 60% | 75% | Payment for masternode services including [CoinJoin](../guide/dash-features-coinjoin.md), [InstantSend](../guide/dash-features-instantsend.md), [Governance](https://docs.dash.org/en/stable/introduction/features.html#decentralized-governance), etc.
 
 <img src="https://files.readme.io/fa5bfbe-mining-banner-1.svg" alt="Mining" style="width:50%;text-align:center;"/>
 
