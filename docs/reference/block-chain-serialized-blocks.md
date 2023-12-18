@@ -37,8 +37,8 @@ performed by the Dash Core
 In September of 2023, the Dash network approved a
 [proposal](https://www.dashcentral.org/p/TREASURY-REALLOCATION-60-20-20) to double the governance
 budget by modifying the block subsidy allocation. The new allocation designates 20% for miners, 20%
-for the governance system budget, and 60% for masternodes. The expansion will go into effect upon
-activation of the Dash Core v20 hard fork.
+for the governance system budget, and 60% for masternodes. The expansion went into effect when
+the Dash Core v20 hard fork activated in December 2023.
 
 | Subsidy allocation | Purpose |
 |-|-|
@@ -77,8 +77,8 @@ The following table details how the block subsidy and fees are allocated between
 > 🚧 **Superseded in Dash Core 20**
 >
 > This block reward reallocation process was superseded by the [treasury
-> expansion](#treasury-expansion) approved by the network in 2023. Once the related hard fork in
-> Dash Core 20.0.0 occurs, the process described below will no longer be active.
+> expansion](#treasury-expansion) that was approved by the network in 2023 and subsequently
+> activated by the v20 hard fork at block 1987776.
 
 Dash Core v0.16 included logic to gradually adjust the block reward allocation once the BIP-9
 activation threshold was met. The reward reallocation was signaled via BIP-9 bit 5 and was activated
@@ -90,8 +90,8 @@ and masternodes receiving 60% of it rather than the 50/50 split that was used fo
 **Reward reallocation changes**
 
 Reward reallocation changes began at the first superblock following activation (block 1379128) and
-then occur every three superblock cycles (approximately once per quarter) until the reallocation is
-complete.
+then occurred every three superblock cycles (approximately once per quarter) until the [treasury
+expansion](#treasury-expansion) hard fork went into effect.
 
 | Quarter | Block     | Miner % | Masternode % | Change \(%\) |
 | :-: | :-: | :-: | :-: | :-:
@@ -109,9 +109,12 @@ complete.
 | Q2 2023 | 1,877,608      | 42.3   | 57.7       | 0.50%     |
 | Q3 2023 | 1,927,456      | 41.8   | 58.2        | 0.50%       |
 | ***Q4 2023*** | ***1,977,304***      | ***41.5***   | ***58.5***        | ***0.30%***       |
-| Q1 2024  | 2,027,152      | 41.2   | 58.8        | 0.30%       |
-| Q2 2024 | 2,077,000     | 40.9   | 59.1        | 0.30%       |
-| Q3 2024 | 2,126,848      | 40.6   | 59.4        | 0.30%      |
-| Q4 2024 | 2,176,696      | 40.3   | 59.7        | 0.30%       |
-| Q1 2025  | 2,226,544     | 40.1   | 59.9        | 0.20%       |
-| Q2 2025 | 2,276,392     | 40      | 60           | 0.10%       |
+| Q1 2024 *  | 2,027,152      | 41.2   | 58.8        | 0.30%       |
+| Q2 2024 * | 2,077,000     | 40.9   | 59.1        | 0.30%       |
+| Q3 2024 * | 2,126,848      | 40.6   | 59.4        | 0.30%      |
+| Q4 2024 * | 2,176,696      | 40.3   | 59.7        | 0.30%       |
+| Q1 2025 *  | 2,226,544     | 40.1   | 59.9        | 0.20%       |
+| Q2 2025 * | 2,276,392     | 40      | 60           | 0.10%       |
+
+\* The 2024 and 2025 changes were superseded by the [treasury
+expansion](#treasury-expansion) activated by hard fork in December 2023.
