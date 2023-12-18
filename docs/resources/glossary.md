@@ -46,7 +46,11 @@ The number of blocks preceding a particular block on a block chain. For example,
 
 ## Block reward
 
-The amount that miners may claim as a reward for creating a block. Equal to the sum of the block subsidy (newly available duffs) plus the transactions fees paid by transactions included in the block.
+The amount that miners may claim as a reward for creating a block. Equal to the sum of the [block subsidy](#block-subsidy) (newly available duffs) plus the transactions fees paid by transactions included in the block.
+
+## Block subsidy
+
+The amount of new Dash created in each block. It comprises the non-fee part of the [block reward](#block-reward).
 
 ## Block size limit
 
@@ -668,7 +672,7 @@ An Unspent Transaction Output (UTXO) that can be spent as an input in a new tran
 
 ## User Activated Soft Fork
 
-A Soft Fork activated by flag day or node enforcement instead of miner signalling.
+A Soft Fork activated by flag day or node enforcement instead of miner signaling.
 
 ## Wallet
 
