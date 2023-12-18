@@ -714,127 +714,130 @@ An itemized coinbase transaction:
 | 00000000000000000000000000000000 ......... Previous outpoint TXID
 | ffffffff ................................. Previous outpoint index
 |
-| 06 ....................................... Bytes in coinbase: 6
+| 27 ....................................... Bytes in coinbase: 39
 | |
 | | 03 ..................................... Bytes in height
-| | | 64df0d ............................... Height: 909156
+| | | da5c1e ............................... Height: 1989850
 | |
-| | 0101 ................................... Arbitrary data
-| ffffffff ................................. Sequence
+| | 04d04580650800007588782d01000fe4
+| | b883e5bda9e7a59ee4bb99e9b1bc04f09f909f . Arbitrary data
+| 88f581b8 ................................. Sequence
 
 02 ......................................... Output count
-| Transaction Output 1
-| | ec846e0400000000 ....................... Duffs (0.74351852 DASH)
-| | 1976a914c69a0bda7daaae481be8def9
-| | 5e5f347a1d00a4b488ac ................... Script
+| Transaction Output
+| | 53640f0300000000 ....................... Duffs (0.51340371 DASH)
+| | 1976a9147c086eada12bdb10a265c16c
+| | 08a7ae87366bd48188ac ................... Script
 |
 | Transaction Output 2
-| | c48e4b0d00000000 ....................... Duffs (2.23055556 DASH)
-| | 1976a914c69a0bda7daaae481be8def9
-| | 5e5f347a1d00a4b488ac ................... P2PKH script
+| | f82c2e0900000000 ....................... Duffs (1.54021112 DASH)
+| | 1976a91453dc8bffae84a3851ab9fe29
+| | 6417da85d5e7185888ac ................... P2PKH script
 
-00000000 ................................... Locktime
+a0f04c20 ................................... Locktime
 
 af ......................................... Extra payload size (175)
 
 Coinbase Transaction Payload
 | 0300 ..................................... Version (3)
 |
-| 64df0d00 ................................. Block height: 909156
+| da5c1e00 ................................. Block height: 1989850
 |
-| c6c78eb3e36acab63b6e6694530a18ee
-| 49fbacaee9ccf3f40a243c38a9a935fc ......... MN List merkle root
+| 54e04067fa61cef61f1e91b0d52c21b2
+| 8cdc69cc9d0383f0bb88ba0129b973e2 ......... MN List merkle root
 |
-| ebb785522e0736257fd1655feb0f5a3f
-| 4c978e216dec3a07bc4554fe9d14e39b ......... Active LLMQ merkle root
+| f67e47d5580e70c7e77af8b1a6670669
+| c7424b896ab3d44d349a4988e9a8328d ......... Active LLMQ merkle root
 |
 | 00 ....................................... Best ChainLock height diff
 |
-| a269a7696d8284e4a4f005bcbfc840b5
-| 3e314523864f726e183fdef5c9ed6319
-| eb98ac2f398e45859ad4f28cf8ff5dab
-| 12ec5f4d315a1821b622c983fa387347
-| 607dcee338c813f78bcacd4cbf756a40
-| bf61bb5e9a2e5b508a5a51f3d7d069f0 ......... ChainLock BLS signature
+| b22fef542f5c630e4f2a67ad56d30cf2
+| a3dac55848abcd2bac30bf780318792b
+| cdf32f7729443846c9fdc57050a131cd
+| 12c0e54a16f6265e900f459e3b9dd434
+| 21a0bc3f61efd49ce752e440e5131a8d
+| 2758a280ad883b8eb902c49ee5b878b3 ......... ChainLock BLS signature
 |
-| c8599f8c01000000 ......................... Credit pool balance (66.54220744 DASH)
+| 0000000000000000 ......................... Credit pool balance (0.0 DASH)
 ```
 
 ### Example CbTx
 
 ```Text Raw Transaction hex
 03000500010000000000000000000000000000000000000000000000000000000000000000ffffffff
-060364df0d0101ffffffff02ec846e04000000001976a914c69a0bda7daaae481be8def95e5f347a1d
-00a4b488acc48e4b0d000000001976a914c69a0bda7daaae481be8def95e5f347a1d00a4b488ac0000
-0000af030064df0d00c6c78eb3e36acab63b6e6694530a18ee49fbacaee9ccf3f40a243c38a9a935fc
-ebb785522e0736257fd1655feb0f5a3f4c978e216dec3a07bc4554fe9d14e39b00a269a7696d8284e4
-a4f005bcbfc840b53e314523864f726e183fdef5c9ed6319eb98ac2f398e45859ad4f28cf8ff5dab12
-ec5f4d315a1821b622c983fa387347607dcee338c813f78bcacd4cbf756a40bf61bb5e9a2e5b508a5a
-51f3d7d069f0c8599f8c01000000
+03000500010000000000000000000000000000000000000000000000000000000000000000ffffffff
+2703da5c1e04d04580650800007588782d01000fe4b883e5bda9e7a59ee4bb99e9b1bc04f09f909f88
+f581b80253640f03000000001976a9147c086eada12bdb10a265c16c08a7ae87366bd48188acf82c2e
+09000000001976a91453dc8bffae84a3851ab9fe296417da85d5e7185888aca0f04c20af0300da5c1e
+0054e04067fa61cef61f1e91b0d52c21b28cdc69cc9d0383f0bb88ba0129b973e2f67e47d5580e70c7
+e77af8b1a6670669c7424b896ab3d44d349a4988e9a8328d00b22fef542f5c630e4f2a67ad56d30cf2
+a3dac55848abcd2bac30bf780318792bcdf32f7729443846c9fdc57050a131cd12c0e54a16f6265e90
+0f459e3b9dd43421a0bc3f61efd49ce752e440e5131a8d2758a280ad883b8eb902c49ee5b878b30000
+000000000000
 ```
 
 The JSON representation of a raw transaction can be obtained with the [`getrawtransaction` RPC](../api/remote-procedure-calls-raw-transactions.md#getrawtransaction) or the [`decoderawtransaction` RPC](../api/remote-procedure-calls-raw-transactions.md#decoderawtransaction).
 
 ```json JSON Representation
 {
-  "txid": "46b9a08e934872bb5d54833f3b665853ced210703628bb9e9ff520b062482911",
+  "txid": "c550cae3f65d396a2f517a7220c7851cc3dc065e20141dadf9f19676348730f2",
   "version": 3,
   "type": 5,
-  "size": 301,
-  "locktime": 0,
+  "size": 334,
+  "locktime": 541913248,
   "vin": [
     {
-      "coinbase": "0364df0d0101",
-      "sequence": 4294967295
+      "coinbase": "03da5c1e04d04580650800007588782d01000fe4b883e5bda9e7a59ee4bb99e9b1bc04f09f909f",
+      "sequence": 3095524744
     }
   ],
   "vout": [
     {
-      "value": 0.74351852,
-      "valueSat": 74351852,
+      "value": 0.51340371,
+      "valueSat": 51340371,
       "n": 0,
       "scriptPubKey": {
-        "asm": "OP_DUP OP_HASH160 c69a0bda7daaae481be8def95e5f347a1d00a4b4 OP_EQUALVERIFY OP_CHECKSIG",
-        "hex": "76a914c69a0bda7daaae481be8def95e5f347a1d00a4b488ac",
+        "asm": "OP_DUP OP_HASH160 7c086eada12bdb10a265c16c08a7ae87366bd481 OP_EQUALVERIFY OP_CHECKSIG",
+        "hex": "76a9147c086eada12bdb10a265c16c08a7ae87366bd48188ac",
         "reqSigs": 1,
         "type": "pubkeyhash",
         "addresses": [
-          "yeRZBWYfeNE4yVUHV4ZLs83Ppn9aMRH57A"
+          "XmzfivrzYQ7B7oBMZKwPRdhjB1iNvX71XZ"
         ]
       }
     },
     {
-      "value": 2.23055556,
-      "valueSat": 223055556,
+      "value": 1.54021112,
+      "valueSat": 154021112,
       "n": 1,
       "scriptPubKey": {
-        "asm": "OP_DUP OP_HASH160 c69a0bda7daaae481be8def95e5f347a1d00a4b4 OP_EQUALVERIFY OP_CHECKSIG",
-        "hex": "76a914c69a0bda7daaae481be8def95e5f347a1d00a4b488ac",
+        "asm": "OP_DUP OP_HASH160 53dc8bffae84a3851ab9fe296417da85d5e71858 OP_EQUALVERIFY OP_CHECKSIG",
+        "hex": "76a91453dc8bffae84a3851ab9fe296417da85d5e7185888ac",
         "reqSigs": 1,
         "type": "pubkeyhash",
         "addresses": [
-          "yeRZBWYfeNE4yVUHV4ZLs83Ppn9aMRH57A"
+          "XiLG83Jj8reHt7YH4H4JQ16q7c2q78KCSz"
         ]
       }
     }
   ],
   "extraPayloadSize": 175,
-  "extraPayload": "030064df0d00c6c78eb3e36acab63b6e6694530a18ee49fbacaee9ccf3f40a243c38a9a935fcebb785522e0736257fd1655feb0f5a3f4c978e216dec3a07bc4554fe9d14e39b00a269a7696d8284e4a4f005bcbfc840b53e314523864f726e183fdef5c9ed6319eb98ac2f398e45859ad4f28cf8ff5dab12ec5f4d315a1821b622c983fa387347607dcee338c813f78bcacd4cbf756a40bf61bb5e9a2e5b508a5a51f3d7d069f0c8599f8c01000000",
+  "extraPayload": "0300da5c1e0054e04067fa61cef61f1e91b0d52c21b28cdc69cc9d0383f0bb88ba0129b973e2f67e47d5580e70c7e77af8b1a6670669c7424b896ab3d44d349a4988e9a8328d00b22fef542f5c630e4f2a67ad56d30cf2a3dac55848abcd2bac30bf780318792bcdf32f7729443846c9fdc57050a131cd12c0e54a16f6265e900f459e3b9dd43421a0bc3f61efd49ce752e440e5131a8d2758a280ad883b8eb902c49ee5b878b30000000000000000",
   "cbTx": {
     "version": 3,
-    "height": 909156,
-    "merkleRootMNList": "fc35a9a9383c240af4f3cce9aeacfb49ee180a5394666e3bb6ca6ae3b38ec7c6",
-    "merkleRootQuorums": "9be3149dfe5445bc073aec6d218e974c3f5a0feb5f65d17f2536072e5285b7eb",
+    "height": 1989850,
+    "merkleRootMNList": "e273b92901ba88bbf083039dcc69dc8cb2212cd5b0911e1ff6ce61fa6740e054",
+    "merkleRootQuorums": "8d32a8e988499a344dd4b36a894b42c7690667a6b1f87ae7c7700e58d5477ef6",
     "bestCLHeightDiff": 0,
-    "bestCLSignature": "a269a7696d8284e4a4f005bcbfc840b53e314523864f726e183fdef5c9ed6319eb98ac2f398e45859ad4f28cf8ff5dab12ec5f4d315a1821b622c983fa387347607dcee338c813f78bcacd4cbf756a40bf61bb5e9a2e5b508a5a51f3d7d069f0",
-    "creditPoolBalance": 66.54220744
+    "bestCLSignature": "b22fef542f5c630e4f2a67ad56d30cf2a3dac55848abcd2bac30bf780318792bcdf32f7729443846c9fdc57050a131cd12c0e54a16f6265e900f459e3b9dd43421a0bc3f61efd49ce752e440e5131a8d2758a280ad883b8eb902c49ee5b878b3",
+    "creditPoolBalance": 0.00000000
   },
-  "hex": "03000500010000000000000000000000000000000000000000000000000000000000000000ffffffff060364df0d0101ffffffff02ec846e04000000001976a914c69a0bda7daaae481be8def95e5f347a1d00a4b488acc48e4b0d000000001976a914c69a0bda7daaae481be8def95e5f347a1d00a4b488ac00000000af030064df0d00c6c78eb3e36acab63b6e6694530a18ee49fbacaee9ccf3f40a243c38a9a935fcebb785522e0736257fd1655feb0f5a3f4c978e216dec3a07bc4554fe9d14e39b00a269a7696d8284e4a4f005bcbfc840b53e314523864f726e183fdef5c9ed6319eb98ac2f398e45859ad4f28cf8ff5dab12ec5f4d315a1821b622c983fa387347607dcee338c813f78bcacd4cbf756a40bf61bb5e9a2e5b508a5a51f3d7d069f0c8599f8c01000000",
-  "blockhash": "0000009adf7b4733d573dd341d5d6e5cc64d82d09fc8fed0e733df09b688c331",
-  "height": 909156,
-  "confirmations": 1,
-  "time": 1699462128,
-  "blocktime": 1699462128,
+  "hex": "03000500010000000000000000000000000000000000000000000000000000000000000000ffffffff2703da5c1e04d04580650800007588782d01000fe4b883e5bda9e7a59ee4bb99e9b1bc04f09f909f88f581b80253640f03000000001976a9147c086eada12bdb10a265c16c08a7ae87366bd48188acf82c2e09000000001976a91453dc8bffae84a3851ab9fe296417da85d5e7185888aca0f04c20af0300da5c1e0054e04067fa61cef61f1e91b0d52c21b28cdc69cc9d0383f0bb88ba0129b973e2f67e47d5580e70c7e77af8b1a6670669c7424b896ab3d44d349a4988e9a8328d00b22fef542f5c630e4f2a67ad56d30cf2a3dac55848abcd2bac30bf780318792bcdf32f7729443846c9fdc57050a131cd12c0e54a16f6265e900f459e3b9dd43421a0bc3f61efd49ce752e440e5131a8d2758a280ad883b8eb902c49ee5b878b30000000000000000",
+  "blockhash": "0000000000000025033c275e59b2b6beda724cf5ab49a96e001d080b68d00279",
+  "height": 1989850,
+  "confirmations": 135,
+  "time": 1702905296,
+  "blocktime": 1702905296,
   "instantlock": true,
   "instantlock_internal": false,
   "chainlock": true
