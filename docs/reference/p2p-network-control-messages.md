@@ -505,7 +505,7 @@ The following service identifiers have been assigned.
 | 0x04  | `NODE_BLOOM` | This node is capable and willing to handle bloom-filtered connections.  Dash Core nodes used to support this by default, without advertising this bit, but no longer do as of protocol version 70201 (= NO_BLOOM_VERSION)
 | 0x08 | `NODE_XTHIN` | **Dash Core does not support this service**<br>This node supports Xtreme Thinblocks.
 | 0x40 | `NODE_COMPACT_FILTERS` | This node supports basic block filter requests. See [BIP157](https://github.com/bitcoin/bips/blob/master/bip-0157.mediawiki) and [BIP158](https://github.com/bitcoin/bips/blob/master/bip-0158.mediawiki) for details on how this is implemented.
-| 0x400 | `NODE_NETWORK_LIMITED` | This is the same as `NODE_NETWORK` with the limitation of only serving the last 288 blocks. See [BIP159]((https://github.com/bitcoin/bips/blob/master/bip-0159.mediawiki)) for details on how this is implemented. *Not supported prior to Dash Core 0.16.0*
+| 0x400 | `NODE_NETWORK_LIMITED` | This is the same as `NODE_NETWORK` with the limitation of only serving the last 288 blocks. See [BIP159](https://github.com/bitcoin/bips/blob/master/bip-0159.mediawiki) for details on how this is implemented. *Not supported prior to Dash Core 0.16.0*
 
 The following annotated hexdump shows a [`version` message](../reference/p2p-network-control-messages.md#version). (The message header has been omitted and the actual IP addresses have been replaced with [RFC5737](http://tools.ietf.org/html/rfc5737) reserved IP addresses.)
 

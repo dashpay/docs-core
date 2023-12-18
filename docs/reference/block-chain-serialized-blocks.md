@@ -57,7 +57,7 @@ The block reward is divided into three main parts: [miner](../resources/glossary
 [superblock](../resources/glossary.md#superblock). The miner and masternode portions add up to 80%
 of the block subsidy with the remainder allocated to the governance system.
 
-Once Dash Platform is released, Dash Core will  further divides the masternode reward into Core
+Once Dash Platform is released, Dash Core will further divides the masternode reward into Core
 (62.5%) and Platform (37.5%) portions. The Core portion will be paid out directly in the coinbase.
 The Platform portion will go into the Platform credit pool and then distributed by Platform to
 [evonodes](../resources/glossary.md#evolution-masternode-evonode) providing Platform services.
@@ -82,7 +82,7 @@ The following table details how the block subsidy and fees are allocated between
 
 Dash Core v0.16 included logic to gradually adjust the block reward allocation once the BIP-9
 activation threshold was met. The reward reallocation was signaled via BIP-9 bit 5 and was activated
-at block 1374912 upon signalling by a sufficient number of blocks.
+at block 1374912 upon signaling by a sufficient number of blocks.
 
 This reallocation will eventually result in miners receiving 40% of the non-governance block subsidy
 and masternodes receiving 60% of it rather than the 50/50 split that was used for several years.
