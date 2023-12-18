@@ -402,7 +402,7 @@ sporks section](#removed-sporks) for a list of previously removed sporks.
 | :----------: | :----------: | ----------- | ----------- |
 | 10001 | 2 | `INSTANTSEND_ENABLED` | *Updated in Dash Core 0.17.0*<br>Turns InstantSend on and off network wide. Also determines if new mempool transactions should be locked or not.
 | 10002 | 3 | `INSTANTSEND_BLOCK_`<br>`FILTERING` | Turns on and off InstantSend block filtering
-| 10008 | 9 | `SUPERBLOCKS_ENABLED` | Superblocks are enabled (10% of the block reward allocated to fund the dash treasury for funding approved proposals)
+| 10008 | 9 | `SUPERBLOCKS_ENABLED` | Superblocks are enabled (20% of the block subsidy is allocated to the Dash treasury for funding approved proposals)
 | 10016 | 17 | `SPORK_17_QUORUM_DKG_`<br>`ENABLED` | Enable long-living masternode quorum (LLMQ) distributed key generation (DKG). When enabled, simple PoSe  scoring and banning is active as well.
 | 10018 | 19 | `SPORK_19_CHAINLOCKS_`<br>`ENABLED` | ***Updated in Dash Core 19.2.0***<br>Enable LLMQ-based ChainLocks.
 | 10020 | 21 | `SPORK_21_QUORUM_ALL_`<br>`CONNECTED` | *Added in Dash Core 0.16.0*<br>Enable connections between all masternodes in a quorum to optimize the signature recovery process.<br>Note: Prior to Dash Core 0.17.0 this spork also enforced [PoSe requirements](../guide/dash-features-proof-of-service.md#distributed-key-generation-participation-requirements) for masternodes to support a minimum protocol version and maintain open ports.

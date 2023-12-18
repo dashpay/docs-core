@@ -54,7 +54,7 @@ spend more value than is available from the block reward.
 
 The block reward is divided into three main parts: [miner](../resources/glossary.md#miner),
 [masternode](../resources/glossary.md#masternode), and
-[superblock](../resources/glossary.md#superblock). The miner and masternode portions add up to 90%
+[superblock](../resources/glossary.md#superblock). The miner and masternode portions add up to 80%
 of the block subsidy with the remainder allocated to the governance system.
 
 Once Dash Platform is released, Dash Core will  further divides the masternode reward into Core
@@ -62,11 +62,13 @@ Once Dash Platform is released, Dash Core will  further divides the masternode r
 The Platform portion will go into the Platform credit pool and then distributed by Platform to
 [evonodes](../resources/glossary.md#evolution-masternode-evonode) providing Platform services.
 
-| Payee | Subsidy | Description |
-| ----- | -------- | ----------- |
-| Miner | Varies | Payment for mining
-| Masternode | Varies | Payment for masternode services including [CoinJoin](../guide/dash-features-coinjoin.md), [InstantSend](../guide/dash-features-instantsend.md), [Governance](https://docs.dash.org/en/stable/introduction/features.html#decentralized-governance), etc. (62.5%)<br>Payment for Platform services (37.5%)
-| Superblock | 10% | Payment for maintenance/expansion of the ecosystem (Core development, marketing, integration, etc.)
+The following table details how the block subsidy and fees are allocated between miners, masternodes, and the governance system.
+
+| Payee | Subsidy | Core fees | Platform fees | Description |
+| ----- | :-----: | :-------: | :---------: | -|
+| Miner | 20% | 25% | - |Payment for mining
+| Masternode | 60% | 75% | 100% | Payment for masternode services including [CoinJoin](../guide/dash-features-coinjoin.md), [InstantSend](../guide/dash-features-instantsend.md), [Governance](https://docs.dash.org/en/stable/introduction/features.html#decentralized-governance), etc. (62.5%)<br>Payment for Platform services (37.5%)
+| Superblock | 20% | - | - | Payment for maintenance/expansion of the ecosystem (Core development, marketing, integration, etc.)
 
 <img src="https://files.readme.io/fa5bfbe-mining-banner-1.svg" alt="Mining" style="width:50%;text-align:center;"/>
 
