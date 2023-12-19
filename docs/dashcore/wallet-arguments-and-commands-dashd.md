@@ -33,9 +33,9 @@ dashd [options]
        If this block is in the chain assume that it and its ancestors are valid
        and potentially skip their script verification (0 to verify all,
        default:
-       00000000000000261bdbe99c01fcba992e577efa6cc41aae564b8ca9f112b2a3,
+       000000000000000c8b7a3bdcd8b9f516462122314529c8342244c685a4c899bf,
        testnet:
-       0000005c35514190ef3c38d322f69412553dc7e1107ed5f92adc2935b90acc51)
+       0000020c5e0f86f385cbf8e90210de9a9fd63633f01433bf47a6b3227a2851fd)
 
   -blockfilterindex=<type>
        Maintain an index of compact filters by block (default: 0, values:
@@ -59,6 +59,13 @@ dashd [options]
        and rebroadcast of any transactions from inbound peers is
        disabled, unless the peer has the 'forcerelay' permission. RPC
        transactions are not affected. (default: 0)
+
+  -chainlocknotify=<cmd>
+       Execute command when the best chainlock changes (%s in cmd is replaced
+       by chainlocked block hash)
+
+  -coinstatsindex
+       Maintain coinstats index used by the gettxoutset RPC (default: 0)
 
   -conf=<file>
        Specify path to read-only configuration file. Relative paths will be
@@ -105,9 +112,9 @@ dashd [options]
 
   -minimumchainwork=<hex>
        Minimum work assumed to exist on a valid chain in hex (default:
-       0000000000000000000000000000000000000000000082094584a23266cbb5f8,
+       000000000000000000000000000000000000000000008d970bc6cda0b02b30fc,
        testnet:
-       00000000000000000000000000000000000000000000000002d68cb6c090031f)
+       00000000000000000000000000000000000000000000000002d68d24632e300f)
 
   -par=<n>
        Set the number of script verification threads (-16 to 15, 0 = auto, <0 =
@@ -125,11 +132,12 @@ dashd [options]
        blocks. This allows the pruneblockchain RPC to be called to
        delete specific blocks, and enables automatic pruning of old
        blocks if a target size in MiB is provided. This mode is
-       incompatible with -txindex, -rescan and -disablegovernance=false.
-       Warning: Reverting this setting requires re-downloading the
-       entire blockchain. (default: 0 = disable pruning blocks, 1 =
-       allow manual pruning via RPC, >945 = automatically prune block
-       files to stay under the specified target size in MiB)
+       incompatible with -txindex, -coinstatsindex, -rescan and
+       -disablegovernance=false. Warning: Reverting this setting
+       requires re-downloading the entire blockchain. (default: 0 =
+       disable pruning blocks, 1 = allow manual pruning via RPC, >945 =
+       automatically prune block files to stay under the specified
+       target size in MiB)
 
   -settings=<file>
        Specify path to dynamic settings data file. Can be disabled with
@@ -173,9 +181,12 @@ dashd [options]
        Default duration (in seconds) of manually configured bans (default:
        86400)
 
-  -bind=<addr>
-       Bind to given address and always listen on it. Use [host]:port notation
-       for IPv6
+  -bind=<addr>[:<port>][=onion]
+       Bind to given address and always listen on it (default: 0.0.0.0). Use
+       [host]:port notation for IPv6. Append =onion to tag any incoming
+       connections to that address and port as incoming Tor connections
+       (default: 127.0.0.1:9996=onion, testnet: 127.0.0.1:19996=onion,
+       regtest: 127.0.0.1:19896=onion)
 
   -connect=<ip>
        Connect only to the specified node; -noconnect disables automatic
@@ -200,11 +211,23 @@ dashd [options]
   -forcednsseed
        Always query for peer addresses via DNS lookup (default: 0)
 
+  -i2pacceptincoming
+       If set and -i2psam is also set then incoming I2P connections are
+       accepted via the SAM proxy. If this is not set but -i2psam is set
+       then only outgoing connections will be made to the I2P network.
+       Ignored if -i2psam is not set. Listening for incoming I2P
+       connections is done through the SAM proxy, not by binding to a
+       local address and port (default: 1)
+
+  -i2psam=<ip:port>
+       I2P SAM proxy to reach I2P peers and accept I2P connections (default:
+       none)
+
   -listen
        Accept connections from outside (default: 1 if no -proxy or -connect)
 
   -listenonion
-       Automatically create Tor hidden service (default: 1)
+       Automatically create Tor onion service (default: 1)
 
   -maxconnections=<n>
        Maintain at most <n> connections to peers (temporary service connections
@@ -222,21 +245,25 @@ dashd [options]
        amount. (default: 4200 seconds)
 
   -maxuploadtarget=<n>
-       Tries to keep outbound traffic under the given target (in MiB per 24h),
-       0 = no limit (default: 0)
+       Tries to keep outbound traffic under the given target (in MiB per 24h).
+       Limit does not apply to peers with 'download' permission. 0 = no
+       limit (default: 0)
 
   -natpmp
        Use NAT-PMP to map the listening port (default: 0)
 
   -onion=<ip:port>
-       Use separate SOCKS5 proxy to reach peers via Tor hidden services, set
+       Use separate SOCKS5 proxy to reach peers via Tor onion services, set
        -noonion to disable (default: -proxy)
 
   -onlynet=<net>
-       Make outgoing connections only through network <net> (ipv4, ipv6 or
-       onion). Incoming connections are not affected by this option.
-       This option can be specified multiple times to allow multiple
-       networks.
+       Make outgoing connections only through network <net> (ipv4, ipv6, onion,
+       i2p). Incoming connections are not affected by this option. This
+       option can be specified multiple times to allow multiple
+       networks. Warning: if it is used with non-onion networks and the
+       -onion or -proxy option is set, then outbound onion connections
+       will still be made; use -noonion or -onion=0 to disable outbound
+       onion connections in this case.
 
   -peerblockfilters
        Serve compact block filters to peers per BIP 157 (default: 0)
@@ -254,8 +281,9 @@ dashd [options]
        Relay non-P2SH multisig (default: 1)
 
   -port=<port>
-       Listen for connections on <port> (default: 9999, testnet: 19999,
-       regtest: 19899)
+       Listen for connections on <port>. Nodes not using the default ports
+       (default: 9999, testnet: 19999, regtest: 19899) are unlikely to
+       get incoming connections. Not relevant for I2P (see doc/i2p.md).
 
   -proxy=<ip:port>
        Connect through SOCKS5 proxy, set -noproxy to disable (default:
@@ -289,20 +317,24 @@ dashd [options]
        Use UPnP to map the listening port (default: 0)
 
   -whitebind=<[permissions@]addr>
-       Bind to given address and whitelist peers connecting to it. Use
-       [host]:port notation for IPv6. Allowed permissions are
-       bloomfilter (allow requesting BIP37 filtered blocks and
-       transactions), noban (do not ban for misbehavior), forcerelay
-       (relay transactions that are already in the mempool; implies
-       relay), relay (relay even in -blocksonly mode), and mempool
-       (allow requesting BIP35 mempool contents). Specify multiple
-       permissions separated by commas (default: noban,mempool,relay).
-       Can be specified multiple times.
+       Bind to the given address and add permission flags to the peers
+       connecting to it. Use [host]:port notation for IPv6. Allowed
+       permissions: bloomfilter (allow requesting BIP37 filtered blocks
+       and transactions), noban (do not ban for misbehavior; implies
+       download), forcerelay (relay transactions that are already in the
+       mempool; implies relay), relay (relay even in -blocksonly mode),
+       mempool (allow requesting BIP35 mempool contents), download
+       (allow getheaders during IBD, no disconnect after maxuploadtarget
+       limit), addr (responses to GETADDR avoid hitting the cache and
+       contain random records with the most up-to-date info). Specify
+       multiple permissions separated by commas (default:
+       download,noban,mempool,relay). Can be specified multiple times.
 
   -whitelist=<[permissions@]IP address or network>
-       Whitelist peers connecting from the given IP address (e.g. 1.2.3.4) or
-       CIDR notated network(e.g. 1.2.3.0/24). Uses same permissions as
-       -whitebind. Can be specified multiple times.
+       Add permission flags to the peers connecting from the given IP address
+       (e.g. 1.2.3.4) or CIDR-notated network (e.g. 1.2.3.0/24). Uses
+       the same permissions as -whitebind. Can be specified multiple
+       times.
 ```
 
 ### Indexing options
@@ -341,12 +373,14 @@ dashd [options]
 
 ```text
   -avoidpartialspends
-       Group outputs by address, selecting all or none, instead of selecting on
-       a per-output basis. Privacy is improved as an address is only
-       used once (unless someone sends to it after spending from it),
-       but may result in slightly higher fees as suboptimal coin
-       selection may result due to the added limitation (default: 0
-       (always enabled for wallets with "avoid_reuse" enabled))
+       Group outputs by address, selecting many (possibly all) or none, instead
+       of selecting on a per-output basis. Privacy is improved as
+       addresses are mostly swept with fewer transactions and outputs
+       are aggregated in clean change addresses. It may result in higher
+       fees due to less optimal coin selection caused by this added
+       limitation and possibly a larger-than-necessary number of inputs
+       being used. Always enabled for wallets with "avoid_reuse"
+       enabled, otherwise default: 0.
 
   -createwalletbackups=<n>
        Number of automatic wallet backups (default: 10)
@@ -356,7 +390,10 @@ dashd [options]
 
   -instantsendnotify=<cmd>
        Execute command when a wallet InstantSend transaction is successfully
-       locked (%s in cmd is replaced by TxID)
+       locked. %s in cmd is replaced by TxID and %w is replaced by
+       wallet name. %w is not currently implemented on Windows. On
+       systems where %w is supported, it should NOT be quoted because
+       this would break shell escaping used to invoke the command.
 
   -keypool=<n>
        Set key pool size to <n> (default: 1000). Warning: Smaller sizes may
@@ -410,7 +447,8 @@ dashd [options]
 
   -fallbackfee=<amt>
        A fee rate (in DASH/kB) that will be used when fee estimation has
-       insufficient data (default: 0.00001)
+       insufficient data. 0 to entirely disable the fallbackfee feature.
+       (default: 0.00001)
 
   -mintxfee=<amt>
        Fees (in DASH/kB) smaller than this are considered zero fee for
@@ -435,6 +473,11 @@ dashd [options]
        User defined mnemonic for HD wallet (bip39). Only has effect during
        wallet creation/first start (default: randomly generated)
 
+  -mnemonicbits=<n>
+       User defined mnemonic security for HD wallet in bits (BIP39). Only has
+       effect during wallet creation/first start (allowed values: 128,
+       160, 192, 224, 256; default: 128)
+
   -mnemonicpassphrase=<text>
        User defined mnemonic passphrase for HD wallet (BIP39). Only has effect
        during wallet creation/first start (default: empty string)
@@ -446,7 +489,7 @@ dashd [options]
 
 ### CoinJoin options
 
-```
+```text
   -coinjoinamount=<n>
        Target CoinJoin balance (2-21000000, default: 1000)
 
@@ -478,7 +521,7 @@ dashd [options]
 
 ### ZeroMQ notification options
 
-```
+```text
   -zmqpubhashblock=<address>
        Enable publish hash block in <address>
 
@@ -749,9 +792,13 @@ dashd [options]
 
 ### Chain selection options
 
-```
+```text
   -budgetparams=<masternode>:<budget>:<superblock>
        Override masternode, budget and superblock start heights (regtest-only)
+
+  -chain=<chain>
+       Use the chain <chain> (default: main). Allowed values: main, test,
+       regtest
 
   -devnet=<name>
        Use devnet chain with provided name
@@ -764,7 +811,8 @@ dashd [options]
 
   -highsubsidyblocks=<n>
        The number of blocks with a higher than normal subsidy to mine at the
-       start of a chain (default: 0, devnet-only)
+       start of a chain. Block after that height will have fixed subsidy
+       base. (default: 0, devnet-only)
 
   -highsubsidyfactor=<n>
        The factor to multiply the normal block subsidy by while in the
@@ -772,7 +820,8 @@ dashd [options]
 
   -llmqchainlocks=<quorum name>
        Override the default LLMQ type used for ChainLocks. Allows using
-       ChainLocks with smaller LLMQs. (default: llmq_50_60, devnet-only)
+       ChainLocks with smaller LLMQs. (default: llmq_devnet,
+       devnet-only)
 
   -llmqdevnetparams=<size>:<threshold>
        Override the default LLMQ size for the LLMQ_DEVNET quorum (default: 3:2,
@@ -780,16 +829,28 @@ dashd [options]
 
   -llmqinstantsend=<quorum name>
        Override the default LLMQ type used for InstantSend. Allows using
-       InstantSend with smaller LLMQs. (default: llmq_50_60,
+       InstantSend with smaller LLMQs. (default: llmq_devnet,
        devnet-only)
 
   -llmqinstantsenddip0024=<quorum name>
        Override the default LLMQ type used for InstantSendDIP0024. (default:
-       llmq_60_75, devnet-only)
+       llmq_devnet_dip0024, devnet-only)
+
+  -llmqmnhf=<quorum name>
+       Override the default LLMQ type used for EHF. (default: llmq_devnet,
+       devnet-only)
 
   -llmqplatform=<quorum name>
-       Override the default LLMQ type used for Platform. (default: llmq_100_67,
-       devnet-only)
+       Override the default LLMQ type used for Platform. (default:
+       llmq_devnet_platform, devnet-only)
+
+  -llmqtestinstantsend=<quorum name>
+       Override the default LLMQ type used for InstantSend. Used mainly to test
+       Platform. (default: llmq_test_instantsend, regtest-only)
+
+  -llmqtestinstantsenddip0024=<quorum name>
+       Override the default LLMQ type used for InstantSendDIP0024. Used mainly
+       to test Platform. (default: llmq_test_dip0024, regtest-only)
 
   -llmqtestinstantsendparams=<size>:<threshold>
        Override the default LLMQ size for the LLMQ_TEST_INSTANTSEND quorums
@@ -810,20 +871,20 @@ dashd [options]
   -regtest
        Enter regression test mode, which uses a special chain in which blocks
        can be solved instantly. This is intended for regression testing
-       tools and app development.
+       tools and app development. Equivalent to -chain=regtest
 
   -testnet
-       Use the test chain
+       Use the test chain. Equivalent to -chain=test
 
-  -vbparams=<deployment>:<start>:<end>(:<window>:<threshold/thresholdstart>(:<thresholdmin>:<falloffcoeff>))
+  -vbparams=<deployment>:<start>:<end>(:<window>:<threshold/thresholdstart>(:<thresholdmin>:<falloffcoeff>:<mnactivation>))
        Use given start/end times for specified version bits deployment
        (regtest-only). Specifying window, threshold/thresholdstart,
-       thresholdmin and falloffcoeff is optional.
+       thresholdmin, falloffcoeff and mnactivation is optional.
 ```
 
 ### Masternode options
 
-```
+```text
   -llmq-data-recovery=<n>
        Enable automated quorum data recovery (default: 1)
 
@@ -845,7 +906,7 @@ dashd [options]
 
 ### Node relay options
 
-```
+```text
   -acceptnonstdtxn
        Relay and mine "non-standard" transactions (testnet/regtest only;
        default: 1)
@@ -887,7 +948,7 @@ dashd [options]
 
 ### Block creation options
 
-```
+```text
   -blockmaxsize=<n>
        Set maximum block size in bytes (default: 2000000)
 
@@ -901,7 +962,7 @@ dashd [options]
 
 ### RPC server options
 
-```
+```text
   -rest
        Accept public REST requests (default: 0)
 
@@ -1030,7 +1091,8 @@ The following options can only be used for specific network types. These options
 ```text
   -highsubsidyblocks=<n>
        The number of blocks with a higher than normal subsidy to mine at the
-       start of a chain (default: 0, devnet-only)
+       start of a chain. Block after that height will have fixed subsidy
+       base. (default: 0, devnet-only)
 
   -highsubsidyfactor=<n>
        The factor to multiply the normal block subsidy by while in the
@@ -1038,7 +1100,8 @@ The following options can only be used for specific network types. These options
 
   -llmqchainlocks=<quorum name>
        Override the default LLMQ type used for ChainLocks. Allows using
-       ChainLocks with smaller LLMQs. (default: llmq_50_60, devnet-only)
+       ChainLocks with smaller LLMQs. (default: llmq_devnet,
+       devnet-only)
 
   -llmqdevnetparams=<size>:<threshold>
        Override the default LLMQ size for the LLMQ_DEVNET quorum (default: 3:2,
@@ -1046,16 +1109,20 @@ The following options can only be used for specific network types. These options
 
   -llmqinstantsend=<quorum name>
        Override the default LLMQ type used for InstantSend. Allows using
-       InstantSend with smaller LLMQs. (default: llmq_50_60,
+       InstantSend with smaller LLMQs. (default: llmq_devnet,
        devnet-only)
 
   -llmqinstantsenddip0024=<quorum name>
        Override the default LLMQ type used for InstantSendDIP0024. (default:
-       llmq_60_75, devnet-only)
+       llmq_devnet_dip0024, devnet-only)
+
+  -llmqmnhf=<quorum name>
+       Override the default LLMQ type used for EHF. (default: llmq_devnet,
+       devnet-only)
 
   -llmqplatform=<quorum name>
-       Override the default LLMQ type used for Platform. (default: llmq_100_67,
-       devnet-only)
+       Override the default LLMQ type used for Platform. (default:
+       llmq_devnet_platform, devnet-only)
 
   -minimumdifficultyblocks=<n>
        The number of blocks that can be mined with the minimum difficulty at
@@ -1075,6 +1142,7 @@ The quorum names used in these options are:
 |     3     | llmq400_85            |
 |     4     | llmq100_67            |
 |     5     | llmq60_75             |
+|     6     | llmq25_67             |
 |    100    | llmq_test             |
 |    101    | llmq_devnet           |
 |    102    | llmq_test_v17         |
@@ -1088,15 +1156,17 @@ Refer to [this table in DIP-6 - LLMQs](https://github.com/dashpay/dips/blob/mast
 
 ### Regtest Options
 
-```
+```text
   -budgetparams=<masternode>:<budget>:<superblock>
        Override masternode, budget and superblock start heights (regtest-only)
 
-  -dip3params=<activation>:<enforcement>
-       Override DIP3 activation and enforcement heights (regtest-only)
+  -llmqtestinstantsend=<quorum name>
+       Override the default LLMQ type used for InstantSend. Used mainly to test
+       Platform. (default: llmq_test_instantsend, regtest-only)
 
-  -dip8params=<activation>
-       Override DIP8 activation height (regtest-only)
+  -llmqtestinstantsenddip0024=<quorum name>
+       Override the default LLMQ type used for InstantSendDIP0024. Used mainly
+       to test Platform. (default: llmq_test_dip0024, regtest-only)
 
   -llmqtestinstantsendparams=<size>:<threshold>
        Override the default LLMQ size for the LLMQ_TEST_INSTANTSEND quorums
@@ -1106,8 +1176,8 @@ Refer to [this table in DIP-6 - LLMQs](https://github.com/dashpay/dips/blob/mast
        Override the default LLMQ size for the LLMQ_TEST quorum (default: 3:2,
        regtest-only)
 
-  -vbparams=<deployment>:<start>:<end>(:<window>:<threshold/thresholdstart>(:<thresholdmin>:<falloffcoeff>))
+  -vbparams=<deployment>:<start>:<end>(:<window>:<threshold/thresholdstart>(:<thresholdmin>:<falloffcoeff>:<mnactivation>))
        Use given start/end times for specified version bits deployment
        (regtest-only). Specifying window, threshold/thresholdstart,
-       thresholdmin and falloffcoeff is optional.
+       thresholdmin, falloffcoeff and mnactivation is optional.
 ```
