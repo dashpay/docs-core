@@ -18,12 +18,15 @@ Usage:
 
 ### Options
 
-```
+```text
   -?
        Print this help message and exit
 
   -datadir=<dir>
        Specify data directory
+
+  -version
+       Print version and exit
 
   -wallet=<wallet-name>
        Specify wallet name
@@ -31,7 +34,7 @@ Usage:
 
 ### Debugging/Testing options
 
-```
+```text
   -debug=<category>
        Output debugging information (default: 0).
 
@@ -42,13 +45,18 @@ Usage:
 
 ### Chain selection options
 
-```
+```text
+  -chain=<chain>
+       Use the chain <chain> (default: main). Allowed values: main, test,
+       regtest
+
   -devnet=<name>
        Use devnet chain with provided name
 
   -highsubsidyblocks=<n>
        The number of blocks with a higher than normal subsidy to mine at the
-       start of a chain (default: 0, devnet-only)
+       start of a chain. Block after that height will have fixed subsidy
+       base. (default: 0, devnet-only)
 
   -highsubsidyfactor=<n>
        The factor to multiply the normal block subsidy by while in the
@@ -56,7 +64,8 @@ Usage:
 
   -llmqchainlocks=<quorum name>
        Override the default LLMQ type used for ChainLocks. Allows using
-       ChainLocks with smaller LLMQs. (default: llmq_50_60, devnet-only)
+       ChainLocks with smaller LLMQs. (default: llmq_devnet,
+       devnet-only)
 
   -llmqdevnetparams=<size>:<threshold>
        Override the default LLMQ size for the LLMQ_DEVNET quorum (default: 3:2,
@@ -64,16 +73,20 @@ Usage:
 
   -llmqinstantsend=<quorum name>
        Override the default LLMQ type used for InstantSend. Allows using
-       InstantSend with smaller LLMQs. (default: llmq_50_60,
+       InstantSend with smaller LLMQs. (default: llmq_devnet,
        devnet-only)
 
   -llmqinstantsenddip0024=<quorum name>
        Override the default LLMQ type used for InstantSendDIP0024. (default:
-       llmq_60_75, devnet-only)
+       llmq_devnet_dip0024, devnet-only)
+
+  -llmqmnhf=<quorum name>
+       Override the default LLMQ type used for EHF. (default: llmq_devnet,
+       devnet-only)
 
   -llmqplatform=<quorum name>
-       Override the default LLMQ type used for Platform. (default: llmq_100_67,
-       devnet-only)
+       Override the default LLMQ type used for Platform. (default:
+       llmq_devnet_platform, devnet-only)
 
   -minimumdifficultyblocks=<n>
        The number of blocks that can be mined with the minimum difficulty at
@@ -84,12 +97,12 @@ Usage:
        minutes, devnet-only)
 
   -testnet
-       Use the test chain
+       Use the test chain. Equivalent to -chain=test
 ```
 
 ### Commands
 
-```
+```text
   create
        Create new wallet file
 
@@ -97,5 +110,9 @@ Usage:
        Get wallet info
 
   salvage
-       Attempt to recover private keys from a corrupt wallet
+       Attempt to recover private keys from a corrupt wallet. Warning:
+       'salvage' is experimental.
+
+  wipetxes
+       Wipe all transactions from a wallet
 ```
