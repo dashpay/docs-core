@@ -53,6 +53,14 @@ dash-cli [options] help <command>
   -datadir=<dir>
        Specify data directory
 
+  -generate
+       Generate blocks immediately, equivalent to RPC generatenewaddress
+       followed by RPC generatetoaddress. Optional positional integer
+       arguments are number of blocks to generate (default: 1) and
+       maximum iterations to try (default: 1000000), equivalent to RPC
+       generatetoaddress nblocks and maxtries arguments. Example:
+       dash-cli -generate 4 1000
+
   -getinfo
        Get general information from the remote server. Note that unlike
        server-side RPC calls, the results of -getinfo is the result of
@@ -62,6 +70,12 @@ dash-cli [options] help <command>
 
   -named
        Pass named instead of positional arguments (default: false)
+
+  -netinfo
+       Get network peer connection information from the remote server. An
+       optional integer argument from 0 to 4 can be passed for different
+       peers listings (default: 0). Pass "help" for detailed help
+       documentation.
 
   -rpcclienttimeout=<n>
        Timeout in seconds during HTTP requests, or 0 for no timeout. (default:
@@ -117,12 +131,17 @@ dash-cli [options] help <command>
 ### Chain selection options
 
 ```text
+  -chain=<chain>
+       Use the chain <chain> (default: main). Allowed values: main, test,
+       regtest
+
   -devnet=<name>
        Use devnet chain with provided name
 
   -highsubsidyblocks=<n>
        The number of blocks with a higher than normal subsidy to mine at the
-       start of a chain (default: 0, devnet-only)
+       start of a chain. Block after that height will have fixed subsidy
+       base. (default: 0, devnet-only)
 
   -highsubsidyfactor=<n>
        The factor to multiply the normal block subsidy by while in the
@@ -130,7 +149,8 @@ dash-cli [options] help <command>
 
   -llmqchainlocks=<quorum name>
        Override the default LLMQ type used for ChainLocks. Allows using
-       ChainLocks with smaller LLMQs. (default: llmq_50_60, devnet-only)
+       ChainLocks with smaller LLMQs. (default: llmq_devnet,
+       devnet-only)
 
   -llmqdevnetparams=<size>:<threshold>
        Override the default LLMQ size for the LLMQ_DEVNET quorum (default: 3:2,
@@ -138,16 +158,20 @@ dash-cli [options] help <command>
 
   -llmqinstantsend=<quorum name>
        Override the default LLMQ type used for InstantSend. Allows using
-       InstantSend with smaller LLMQs. (default: llmq_50_60,
+       InstantSend with smaller LLMQs. (default: llmq_devnet,
        devnet-only)
 
   -llmqinstantsenddip0024=<quorum name>
        Override the default LLMQ type used for InstantSendDIP0024. (default:
-       llmq_60_75, devnet-only)
+       llmq_devnet_dip0024, devnet-only)
+
+  -llmqmnhf=<quorum name>
+       Override the default LLMQ type used for EHF. (default: llmq_devnet,
+       devnet-only)
 
   -llmqplatform=<quorum name>
-       Override the default LLMQ type used for Platform. (default: llmq_100_67,
-       devnet-only)
+       Override the default LLMQ type used for Platform. (default:
+       llmq_devnet_platform, devnet-only)
 
   -minimumdifficultyblocks=<n>
        The number of blocks that can be mined with the minimum difficulty at
@@ -158,5 +182,5 @@ dash-cli [options] help <command>
        minutes, devnet-only)
 
   -testnet
-       Use the test chain
+       Use the test chain. Equivalent to -chain=test
 ```
