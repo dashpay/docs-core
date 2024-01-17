@@ -19,7 +19,7 @@ if not os.path.exists('_external_repo'):
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = 'Dash Core'
-copyright = '2023, Dash Core Group, Inc'
+copyright = '2024, Dash Core Group, Inc'
 author = 'thephez'
 
 # The version info for the project you're documenting, acts as replacement for
