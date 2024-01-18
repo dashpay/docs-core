@@ -314,8 +314,7 @@ If the message indicates the queue is ready, the node responds with a [`dsi` mes
 | Bytes | Name | Data type | Required | Description |
 | ---------- | ----------- | --------- | -------- | -------- |
 | 4 | nDenom | int | Required | Denomination allowed in this session
-| 36 | masternodeOutPoint | outPoint | *Required | **\* Replaced by `proTxHash` following the v19 hard fork**<br>The unspent outpoint of the masternode (holding 1000 DASH) which is hosting this session
-| 32 | proTxHash | uint256 | Required | **Added in Dash Core 19.2.0.<br>Replaces `masternodeOutPoint`.**<br>The ProRegTx hash of the masternode which is hosting this session
+| 32 | proTxHash | uint256 | Required | The ProRegTx hash of the masternode which is hosting this session<br>**Replaced `masternodeOutPoint` in Dash Core 19.2.0.**
 | 8 | nTime | int64_t | Required | Time this [`dsq` message](../reference/p2p-network-privatesend-messages.md#dsq) was created
 | 1 | fReady | bool | Required | Indicates if the pool is ready to be executed
 | 97 | vchSig | char[] | Required | BLS Signature of this message by masternode verifiable via pubKeyMasternode (Length (1 byte) + Signature (96 bytes))<br>**Note**: serialized using the basic BLS scheme after Dash 19.0 activation
@@ -335,23 +334,20 @@ The following annotated hexdump shows a [`dsq` message](../reference/p2p-network
 ``` text
 01000000 ............................. Denomination: 10 Dash (1)
 
-Masternode Outpoint
-| a383a2489aedccfab4bb41368d1c8ee3
-| 10d9ee90cb3d181880ce4e0cdb36ecb7
-| 0f000000 ........................... Outpoint index number: 15
+d28018e798ccbd797d0b2fc33513d64d
+60d55c92f4b35f46db169332dae95f4d ..... Protx Hash
 
-10b4235c00000000 ..................... Create Time: 2018-12-26 17:02:08 UTC
+c93aa96500000000 ..................... Create Time: 2024-01-18 14:50:49 UTC
 
 00 ................................... Ready: 0
 
 60 ................................... Signature length: 96
-
-0409a1349869a02e90e6e1f6d92bf995
-27a72542fed987f6d2719596973d89e6
-74605a3585b1335650f1555f7576061d
-110fb72b3308e378ac8e8fbebeeffdb4
-9b2a6562ad965bb3c3fd3f8e68483fdb
-0d1401e2264071a74fc01d51e943ce9f ..... Masternode BLS Signature
+a5d5ff37b8763059a464ec07a07f3e6a
+1a53c6a327446badb054b507cf642e3f
+956f0f758f80fd7a80416420c64ca015
+11a9bb25490279844aecdae745d3dca0
+12be868b6a15b25145d77bc8f5e2425b
+e292e183a5a45310e12af6640ac621f1 ..... Masternode BLS Signature
 ```
 
 ## dss
