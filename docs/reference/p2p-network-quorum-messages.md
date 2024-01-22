@@ -498,6 +498,43 @@ f33100bfba8f60342fd3a0cac17af370
 5ee9bc60d59b3aad2eea15dea15d8093 ........... Quorum Aggregate BLS Sig
 ```
 
+The following annotated hexdump shows a *version 3* [`qfcommit` message](../reference/p2p-network-quorum-messages.md#qfcommit). (The message header has been omitted.)
+
+``` text
+0300 ....................................... Message Version: 3
+01 ......................................... LLMQ Type: 1 (LLMQ_50_60)
+
+05beb3edd9207ede3a42a15bbd04d597
+744f6f9db9b9a68a025c7e5637000000 ........... Quorum Hash
+
+32 ......................................... Signer bitvector size: 50
+ffffffffffff03 ............................. Signers
+
+32 ......................................... Valid member bitvector size: 50
+ffffffffffff03 ............................. Valid members
+
+91e6dfd0d8f33e4306afe0483d7649cc
+68b5346f5c658206269083d49d2f1db7
+8eedd22eecf748404a1fe12e24f074e1 ........... Quorum BLS Public Key
+
+bc7da59621015e70e31310982e66acfe
+25468daede7142234e7f3bf3b3297b21 ........... Quorum Verification Vector Hash
+
+99f4d8af79cf99ba49c8c9295cbc0827
+b2b6611a905dc347eec9ecbe6ec6ec64
+c167ca252f2fc0ff772394c696c58f0c
+0e00c4f556ab528e07d06d2e57391fd1
+0c57e0521e43f8dfcfc8448665d41eba
+7c103b915506476672b531b9ceca266f ........... Quorum BLS Recovered Threshold Sig
+
+8f7bb2a10d4cbf6fe7c6cfc1ec52817f
+97f025ba9c4c52ac4cfa02ba1c28f3aa
+fb83c2f4b246f730b5e4aac36e9479d5
+0d72db9055dbdc9e2c27dee6f876be66
+928abbdf636d1405c59a5e35d4775049
+97f0e3b5acd2c53448deaaf61fed9343 ........... Quorum Aggregate BLS Sig
+```
+
 ## Signing Sessions
 
 The following network messages enable the long living masternode quorum (LLMQ) message signing sessions described in [DIP7](https://github.com/dashpay/dips/blob/master/dip-0007.md).
