@@ -422,45 +422,6 @@ It is possible to receive multiple valid final commitments for the same DKG sess
 
 More information can be found in the [Finalization phase section of DIP6](https://github.com/dashpay/dips/blob/master/dip-0006.md#6-finalization-phase).
 
-The following annotated hexdump shows a *version 2* [`qfcommit` message](../reference/p2p-network-quorum-messages.md#qfcommit). (The message header has been omitted.)
-
-``` text
-0200 ....................................... Message Version: 2
-65 ......................................... LLMQ Type: 101 (LLMQ_DEVNET)
-
-d3b0d23936c7c2f1d3fff8a8b92212af
-511defff89d255e85a4ef8cdfb010000 ........... Quorum Hash
-
-0100 ....................................... Quorum Index (1) **Added in v2 messages**
-
-08 ......................................... Signer bitvector size: 8
-fb ......................................... Signers
-
-08 ......................................... Valid member bitvector size: 8
-fb ......................................... Valid members
-
-165b0f73242d61f89b4eb7d36e25fb01
-808d94c1a2e7c74cd7f6b3fc8e384642
-0da3459f6c0e5a4fc021f4ce9125a10c ........... Quorum BLS Public Key
-
-83846dbe1e0b71ce7011c321810fd7ba
-00768b84bb4c0c6b2ad25dee02c34eed ........... Quorum Verification Vector Hash
-
-14710c202aaae8d3a825afc19a7ea1f9
-be2b567a0423d8cd8c72354e4daa02c4
-65d2e591218a6608722eb40eba322e2a
-0090860548d3b8613a644ed71a4795e3
-37aae3251fe0e077ccaab7432c564e39
-cc427677fd92189c0b41d6f306581577 ........... Quorum BLS Recovered Threshold Sig
-
-9250b9a40b7e0f4773715540256ab99f
-8854970a0fe3313997bac10cef0a5b9f
-f33100bfba8f60342fd3a0cac17af370
-11a7594d8391b6ca1e3b987c5ed1e9d0
-7cb35789e1ab4c340902ae99bce94879
-5ee9bc60d59b3aad2eea15dea15d8093 ........... Quorum Aggregate BLS Sig
-```
-
 The following annotated hexdump shows a *version 3* [`qfcommit` message](../reference/p2p-network-quorum-messages.md#qfcommit). (The message header has been omitted.)
 
 ``` text
@@ -496,6 +457,48 @@ fb83c2f4b246f730b5e4aac36e9479d5
 0d72db9055dbdc9e2c27dee6f876be66
 928abbdf636d1405c59a5e35d4775049
 97f0e3b5acd2c53448deaaf61fed9343 ........... Quorum Aggregate BLS Sig
+```
+
+The following annotated hexdump shows the structure of a *version 4* [`qfcommit`
+message](../reference/p2p-network-quorum-messages.md#qfcommit). (The message header has been
+omitted.) Note that this is not an actual message from a real network so the BLS and signature data
+cannot be verified.
+
+``` text
+0400 ....................................... Message Version: 4
+65 ......................................... LLMQ Type: 101 (LLMQ_DEVNET)
+
+d3b0d23936c7c2f1d3fff8a8b92212af
+511defff89d255e85a4ef8cdfb010000 ........... Quorum Hash
+
+0100 ....................................... Quorum Index (1)
+
+08 ......................................... Signer bitvector size: 8
+fb ......................................... Signers
+
+08 ......................................... Valid member bitvector size: 8
+fb ......................................... Valid members
+
+165b0f73242d61f89b4eb7d36e25fb01
+808d94c1a2e7c74cd7f6b3fc8e384642
+0da3459f6c0e5a4fc021f4ce9125a10c ........... Quorum BLS Public Key
+
+83846dbe1e0b71ce7011c321810fd7ba
+00768b84bb4c0c6b2ad25dee02c34eed ........... Quorum Verification Vector Hash
+
+14710c202aaae8d3a825afc19a7ea1f9
+be2b567a0423d8cd8c72354e4daa02c4
+65d2e591218a6608722eb40eba322e2a
+0090860548d3b8613a644ed71a4795e3
+37aae3251fe0e077ccaab7432c564e39
+cc427677fd92189c0b41d6f306581577 ........... Quorum BLS Recovered Threshold Sig
+
+9250b9a40b7e0f4773715540256ab99f
+8854970a0fe3313997bac10cef0a5b9f
+f33100bfba8f60342fd3a0cac17af370
+11a7594d8391b6ca1e3b987c5ed1e9d0
+7cb35789e1ab4c340902ae99bce94879
+5ee9bc60d59b3aad2eea15dea15d8093 ........... Quorum Aggregate BLS Sig
 ```
 
 ## Signing Sessions
