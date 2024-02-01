@@ -1150,7 +1150,7 @@ _See also_
 
 ## GetRawTransactionMulti
 
-The [`getrawtransactionmulti` RPC](../api/remote-procedure-calls-raw-transactions.md#getrawtransactionmulti) gets hex-encoded serialized transactions or a JSON object describing the transactions. This RPC returns the same type of information as the [`getrawtransaction` RPC](../api/remote-procedure-calls-raw-transactions.md#getrawtransactionmulti).
+The [`getrawtransactionmulti` RPC](../api/remote-procedure-calls-raw-transactions.md#getrawtransactionmulti) gets hex-encoded serialized transactions or a JSON object describing the transactions. This RPC returns the same type of information as the [`getrawtransaction` RPC](../api/remote-procedure-calls-raw-transactions.md#getrawtransaction).
 
 _Parameter #1---block hashes and transaction hash list_
 
@@ -1177,14 +1177,14 @@ _Result (if verbose=`false`)---the serialized transactions_
 | Name     | Type         | Presence                | Description |
 | -------- | ------------ | ----------------------- | ----------- |
 | `result` | object | Required<br>(exactly 1) | If the transaction was found, this will be an object containing the serialized transaction encoded as hex. |
-|→<br>TXID / Raw tx | string:string | Required<br>(1 or more) | A key/value pair with the transaction ID (key) and raw transaction data (value). See the [`getrawtransaction` RPC](../api/remote-procedure-calls-raw-transactions.md#getrawtransactionmulti) for an example of the hex transaction data. |
+|→<br>TXID / Raw tx | string:string | Required<br>(1 or more) | A key/value pair with the transaction ID (key) and raw transaction data (value). See the [`getrawtransaction` RPC](../api/remote-procedure-calls-raw-transactions.md#getrawtransaction) for an example of the hex transaction data. |
 
 _Result (if verbose=`true`)---the decoded transactions_
 
 | Name                        | Type           | Presence                | Description |
 | --------------------------- | -------------- | ----------------------- | ----------- |
 | `result`                    | object         | Required<br>(exactly 1) | If the transaction was found, this will be an object describing it |
-|→<br>TXID / Decoded tx | string:string | Required<br>(1 or more) | A key/value pair with the transaction ID (key) and decoded transaction data represented in JSON (value). See the [`getrawtransaction` RPC](../api/remote-procedure-calls-raw-transactions.md#getrawtransactionmulti) for an example of the decoded transaction data. |
+|→<br>TXID / Decoded tx | string:string | Required<br>(1 or more) | A key/value pair with the transaction ID (key) and decoded transaction data represented in JSON (value). See the [`getrawtransaction` RPC](../api/remote-procedure-calls-raw-transactions.md#getrawtransaction) for an example of the decoded transaction data. |
 
 _Examples from Dash Core 20.1.0_
 
