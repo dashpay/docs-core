@@ -2124,6 +2124,39 @@ Result (truncated):
 }
 ```
 
+### Quorum DKGInfo
+
+> 👍
+>
+> Added in Dash Core 20.1.0
+
+The `quorum dkginfo` RPC returns information about active and upcoming DKG sessions.
+
+*Parameters: none*
+
+*Result---information about DKG*
+
+| Name                                  | Type         | Presence                | Description |
+| ------------------------------------- | ------------ | ----------------------- | ----------- |
+| `result`                              | object       | Required<br>(exactly 1) | Quorum info |
+| →<br>`active_dkgs` | number | Required<br>(exactly 1) | Total number of active DKG sessions this node is participating in currently
+| →<br>`next_dkg`    | number | Required<br>(exactly 1) | The number of blocks until the next potential DKG session |
+
+*Example from Dash Core 20.1.0*
+
+```bash
+dash-cli -testnet quorum dkginfo
+```
+
+Result (truncated):
+
+```json
+{
+  "active_dkgs": 0,
+  "next_dkg": 10
+}
+```
+
 ### Quorum DKGStatus
 
 The `quorum list` RPC displays the status of the current DKG process.
