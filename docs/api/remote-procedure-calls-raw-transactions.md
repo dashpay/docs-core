@@ -893,11 +893,19 @@ _Result (if transaction not found)---`null`_
 | -------- | ---- | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `result` | null | Required<br>(exactly 1) | If the transaction wasn't found, the result will be JSON `null`.  This can occur because the transaction doesn't exist in the block chain or memory pool, or because it isn't part of the transaction index.  See the Dash Core `-help` entry for `-txindex` |
 
+```{eval-rst}
+.. _rpc-raw-txs-getrawtx-hex:
+```
+
 _Result (if verbose=`false`)---the serialized transaction_
 
 | Name     | Type         | Presence                | Description                                                                          |
 | -------- | ------------ | ----------------------- | ------------------------------------------------------------------------------------ |
 | `result` | string (hex) | Required<br>(exactly 1) | If the transaction was found, this will be the serialized transaction encoded as hex |
+
+```{eval-rst}
+.. _rpc-raw-txs-getrawtx-decoded:
+```
 
 _Result (if verbose=`true`)---the decoded transaction_
 
@@ -1177,14 +1185,14 @@ _Result (if verbose=`false`)---the serialized transactions_
 | Name     | Type         | Presence                | Description |
 | -------- | ------------ | ----------------------- | ----------- |
 | `result` | object | Required<br>(exactly 1) | If the transaction was found, this will be an object containing the serialized transaction encoded as hex. |
-|→<br>TXID / Raw tx | string:string | Required<br>(1 or more) | A key/value pair with the transaction ID (key) and raw transaction data (value). See the [`getrawtransaction` RPC](../api/remote-procedure-calls-raw-transactions.md#getrawtransaction) for an example of the hex transaction data. |
+|→<br>TXID / Raw tx | string:string | Required<br>(1 or more) | A key/value pair with the transaction ID (key) and raw transaction data (value). See the [`getrawtransaction` RPC](../api/remote-procedure-calls-raw-transactions.md#rpc-raw-txs-getrawtx-hex) for an example of the hex transaction data. |
 
 _Result (if verbose=`true`)---the decoded transactions_
 
 | Name                        | Type           | Presence                | Description |
 | --------------------------- | -------------- | ----------------------- | ----------- |
 | `result`                    | object         | Required<br>(exactly 1) | If the transaction was found, this will be an object describing it |
-|→<br>TXID / Decoded tx | string:string | Required<br>(1 or more) | A key/value pair with the transaction ID (key) and decoded transaction data represented in JSON (value). See the [`getrawtransaction` RPC](../api/remote-procedure-calls-raw-transactions.md#getrawtransaction) for an example of the decoded transaction data. |
+|→<br>TXID / Decoded tx | string:string | Required<br>(1 or more) | A key/value pair with the transaction ID (key) and decoded transaction data represented in JSON (value). See the [`getrawtransaction` RPC](../api/remote-procedure-calls-raw-transactions.md#rpc-raw-txs-getrawtx-decoded) for an example of the decoded transaction data. |
 
 _Examples from Dash Core 20.1.0_
 
