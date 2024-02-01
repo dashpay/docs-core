@@ -1144,6 +1144,68 @@ Result:
 
 _See also_
 
+* [GetRawTransactionMulti](../api/remote-procedure-calls-raw-transactions.md#getrawtransactionmulti): gets hex-encoded serialized transactions or a JSON object describing the transactions.
+* [GetSpecialTxes](../api/remote-procedure-calls-blockchain.md#getspecialtxes): returns an array of special transactions found in the specified block
+* [GetTransaction](../api/remote-procedure-calls-wallet.md#gettransaction): gets detailed information about an in-wallet transaction.
+
+## GetRawTransactionMulti
+
+The [`getrawtransactionmulti` RPC](../api/remote-procedure-calls-raw-transactions.md#getrawtransactionmulti) gets hex-encoded serialized transactions or a JSON object describing the transactions. This RPC returns the same type of information as the [`getrawtransaction` RPC](../api/remote-procedure-calls-raw-transactions.md#getrawtransactionmulti).
+
+_Parameter #1---block hashes and transaction hash list_
+
+| Name | Type         | Presence                | Description |
+| ---- | ------------ | ----------------------- | ----------- |
+| Transactions | object | Required<br>(exactly 1) | A JSON object with block hashes as keys and lists of transaction hashes as values (no more than 100 in total) |
+|→<br>Block Hash | array | Required<br>(1 or more) | The block hash and the list of transaction ids to fetch |
+|→ →<br>Transaction ID | string | Required<br>(1 or more) | A transaction ID |
+
+_Parameter #2---whether to get the serialized or decoded transaction_
+
+| Name    | Type | Presence             | Description |
+| ------- | ---- | -------------------- | ----------- |
+| Verbose | bool | Optional<br>(0 or 1) | Set to `false` (the default) to return the serialized transaction as hex.  Set to `true` to return a decoded transaction in JSON. |
+
+_Result (if transactions not found)---`null`_
+
+| Name     | Type | Presence                | Description |
+| -------- | ---- | ----------------------- | ----------- |
+| `result` | null | Required<br>(exactly 1) | If no transactions were found, the result will be JSON `null`.  This can occur because the transactions don't exist in the block chain or memory pool, or because it isn't part of the transaction index.  See the Dash Core `-help` entry for `-txindex` |
+
+_Result (if verbose=`false`)---the serialized transactions_
+
+| Name     | Type         | Presence                | Description |
+| -------- | ------------ | ----------------------- | ----------- |
+| `result` | object | Required<br>(exactly 1) | If the transaction was found, this will be an object containing the serialized transaction encoded as hex. |
+|→<br>TXID / Raw tx | string:string | Required<br>(1 or more) | A key/value pair with the transaction ID (key) and raw transaction data (value). See the [`getrawtransaction` RPC](../api/remote-procedure-calls-raw-transactions.md#getrawtransactionmulti) for an example of the hex transaction data. |
+
+_Result (if verbose=`true`)---the decoded transactions_
+
+| Name                        | Type           | Presence                | Description |
+| --------------------------- | -------------- | ----------------------- | ----------- |
+| `result`                    | object         | Required<br>(exactly 1) | If the transaction was found, this will be an object describing it |
+|→<br>TXID / Decoded tx | string:string | Required<br>(1 or more) | A key/value pair with the transaction ID (key) and decoded transaction data represented in JSON (value). See the [`getrawtransaction` RPC](../api/remote-procedure-calls-raw-transactions.md#getrawtransactionmulti) for an example of the decoded transaction data. |
+
+_Examples from Dash Core 20.1.0_
+
+Transactions in serialized transaction format:
+
+```bash
+dash-cli getrawtransactionmulti '{"0000014b04deb0fe0884d3ca81a6239016c2a4838cd4b34494858630e457c62c": ["0667ab03bebb827057fcd55285d68dc10f30ef07dd04d1468c9f25888c22333c", "5c278dd4ca54b9c14789357f0311bcbf1b6d3182bcc76d229cb15cfbe6255ed0"]}' false
+```
+
+Result:
+
+```json
+{
+  "0667ab03bebb827057fcd55285d68dc10f30ef07dd04d1468c9f25888c22333c": "03000500010000000000000000000000000000000000000000000000000000000000000000ffffffff060373ad0e0101ffffffff0283706e04000000001976a914c69a0bda7daaae481be8def95e5f347a1d00a4b488ac89514b0d000000001976a91464f2b2b84f62d68a2cd7f7f5fb2b5aa75ef716d788ac00000000af030073ad0e00c63f1ca6d2a0570754d3851f70fae6215fa7741b3d4fd1d988e35add12b22827731b17f8cc2324ca927164dc67064a73aed41a19f418b05dcd57415a627ed9b90081a911644ec88204526c31b16666ba3f514caaaef72ce5bbaa4babb19f35bdd4ef1c7adefd414879f5805526fb9b9cd01566dc35d9599ed58e679373666e938ea0214c14368673f4e5b9766686b6d147ec567c4cd004766a0fa8f2280ab5494e9eca329808000000",
+  "5c278dd4ca54b9c14789357f0311bcbf1b6d3182bcc76d229cb15cfbe6255ed0": "03000600000000000000fd4901010073ad0e00030001d0c2ab39e1fddbcdee48d2c2c2e807586603d6ff1b31189e46b95849eb00000032ffffffffffff0332ffffffffffff03a1f0b0ce837010f234e3b5906ac171adf25b46fb535e7de4831128c19dc9939a71039d227e355a9b47d7612dd0a3a3d51c588284eb43a9ba7b4f62589db5a16ae1b50305a16093fe5a7c8d9c6ab35e4e97021398ecabbf90ab1199e9c649c8abe65af1a77de449980720775ec2efda5cb1b0e23a002f32a2825f02b070c627e90220bb30a37dd4072ffebffeaa81ba5ca2335137a76da711c86b11666b7e8794846caf4170f9bb99b31f9837408f9f13a5b548cda8a6bf6c980f0351584079b5e4c710123217e7876c4bd2f935b6f098306cd75c07231780cd68e27e97283e37180372cd266ebba1e0c514bd6c304ae58c71c9b1653f4df6bc33553fa22adde4429cbc3ecb9eda76bd4d256eabbb98d4"
+}
+```
+
+_See also_
+
+* [GetRawTransaction](../api/remote-procedure-calls-raw-transactions.md#getrawtransaction): gets a hex-encoded serialized transaction or a JSON object describing the transaction.
 * [GetSpecialTxes](../api/remote-procedure-calls-blockchain.md#getspecialtxes): returns an array of special transactions found in the specified block
 * [GetTransaction](../api/remote-procedure-calls-wallet.md#gettransaction): gets detailed information about an in-wallet transaction.
 
