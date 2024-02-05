@@ -861,16 +861,11 @@ _See also:_
 
 The [`getassetunlockstatuses` RPC](../api/remote-procedure-calls-raw-transactions.md#getassetunlockstatuses) returns the status of the provided Asset Unlock indexes at the tip of the chain or at a particular block height if specified.
 
-_Parameter #1---indexes_
+_Parameters_
 
 | Name    | Type  | Presence | Description |
 | ------- | ----- | -------- | ----------- |
-| indexes | array | Required | An array of Asset Unlock indexes (no more than 100). Each element is a numeric Asset Unlock index. |
-
-_Parameter #2---height_
-
-| Name   | Type    | Presence          | Description |
-| ------ | ------- | ----------------- | ----------- |
+| Indexes | array | Required | An array of Asset Unlock indexes (no more than 100). Each element is a numeric Asset Unlock index. |
 | height | numeric | Optional (0 or 1) | The maximum block height to check. If not specified, the chain's tip is used. |
 
 _Result---Status of the Asset Unlock indexes_
