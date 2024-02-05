@@ -854,6 +854,58 @@ _See also_
 * [Serialized Transaction Format](../reference/transactions-raw-transaction-format.md)
 
 ```{eval-rst}
+.. _api-rpc-raw-transactions-getassetunlockstatuses:
+```
+
+## GetAssetUnlockStatuses
+
+The [`getassetunlockstatuses` RPC](../api/remote-procedure-calls-raw-transactions.md#getassetunlockstatuses) returns the status of the provided Asset Unlock indexes at the tip of the chain or at a particular block height if specified.
+
+_Parameter #1---indexes_
+
+| Name    | Type  | Presence | Description |
+| ------- | ----- | -------- | ----------- |
+| indexes | array | Required | An array of Asset Unlock indexes (no more than 100). Each element is a numeric Asset Unlock index. |
+
+_Parameter #2---height_
+
+| Name   | Type    | Presence          | Description |
+| ------ | ------- | ----------------- | ----------- |
+| height | numeric | Optional (0 or 1) | The maximum block height to check. If not specified, the chain's tip is used. |
+
+_Result---Status of the Asset Unlock indexes_
+
+| Name   | Type  | Presence                | Description |
+| ------ | ----- | ----------------------- | ----------- |
+| Result | array | Required (Exactly 1)    | An array with the status of each Asset Unlock index. Each element in the array is a JSON object containing the index and its status. |
+| → Index data | object | Required<br>(1 or more) | Details for an Asset Unlock index |
+| → → <br>index | numeric | Required<br>(Exactly 1) | The Asset Unlock index |
+| → → <br>status | string | Required<br>(Exactly 1) | Status of the Asset Unlock index. The possible outcomes per each index are:<br>- `chainlocked`: If the Asset Unlock index is mined on a ChainLocked block or up to the given block height.<br>- `mined`: If no ChainLock information is available for the mined Asset Unlock index.<br>- `mempooled`: If the Asset Unlock index is in the mempool.<br>- `unknown`: If none of the above are valid.<br>Note: If a specific block height is passed on request, then only `chainlocked` and `unknown` outcomes are possible. |
+
+_Example from Dash Core 20.1.0_
+
+```bash
+dash-cli getassetunlockstatuses '["1", "2"]'
+```
+
+Result:
+
+```json
+[
+  {
+    "index": 1,
+    "status": "chainlocked"
+  },
+  {
+    "index": 2,
+    "status": "mempooled"
+  }
+]
+```
+
+_See also: none_
+
+```{eval-rst}
 .. _api-rpc-raw-transactions-getrawtransaction:
 ```
 
