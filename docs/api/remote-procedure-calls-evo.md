@@ -4065,6 +4065,38 @@ Result:
 true
 ```
 
+## SubmitChainlock
+
+The [`submitchainlock` RPC](../api/remote-procedure-calls-evo.md#submitchainlock) is used to submit a ChainLock signature if the node does not yet have it.
+
+*Parameters*
+
+| Name      | Type   | Presence | Description |
+| --------- | ------ | -------- | ----------- |
+| blockHash | string | Required | The block hash of the ChainLock |
+| signature | string | Required | The signature of the ChainLock |
+| blockHeight | numeric | Required | The height of the ChainLock |
+
+*Result---The height of the current best ChainLock*
+
+| Name   | Type    | Presence                | Description |
+| ------ | ------- | ----------------------- | ----------- |
+| Result | numeric | Required (Exactly 1)    | The height of the current best ChainLock. If an error occurs, `-1` is returned. |
+
+*Example from Dash Core 20.1.0*
+
+```bash
+dash-cli submitchainlock "000000f7e552718cf326024ba0b0110695300b730873de1942a4106b665fc034" "3045022100a59e3b0f..." 964445
+```
+
+Result:
+
+```text
+964445
+```
+
+*See also: none*
+
 ## VerifyChainLock
 
 > 👍
