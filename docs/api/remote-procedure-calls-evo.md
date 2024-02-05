@@ -126,7 +126,7 @@ The `protx diff` RPC calculates a diff and a proof between two masternode list.
 
 | Name       | Type    | Presence             | Description                                                                                      |
 | ---------- | ------- | -------------------- | ------------------------------------------------------------------------------------------------ |
-| `extended` | boolean | Optional<br>(0 or 1) | _Added in Dash Core 18.1.0_<br>Show additional fields (e.g. `payoutAddress`) (default=`false`) |
+| `extended` | boolean | Optional<br>(0 or 1) | *Added in Dash Core 18.1.0*<br>Show additional fields (e.g. `payoutAddress`) (default=`false`) |
 
 *Result---JSON provider registration transaction details*
 
@@ -150,8 +150,8 @@ The `protx diff` RPC calculates a diff and a proof between two masternode list.
 | → →<br>`isValid`               | bool         | Required<br>(exactly 1) | Set to `true` if masternode is valid |
 | → →<br>`platformHTTPPort`      | number       | Optional<br>(0 or 1)    | **Added in Dash Core 19.0.0**<br>TCP port of Platform HTTP/API interface (evonodes only) |
 | → →<br>`platformNodeID`        | string (hex) | Optional<br>(0 or 1)    | **Added in Dash Core 19.0.0**<br>Platform P2P node ID, derived from P2P public key (evonodes only) |
-| → →<br>`payoutAddress`         | string       | Optional<br>(0 or 1)    | _Added in Dash Core 18.1.0_<br>The owner's payout address. Only included if the `extended` parameter is set to `true`. |
-| → →<br>`operatorPayoutAddress` | string       | Required<br>(exactly 1) | _Added in Dash Core 18.1.0_<br>The operator's payout address.  Only included if the `extended` parameter is set to `true`. |
+| → →<br>`payoutAddress`         | string       | Optional<br>(0 or 1)    | *Added in Dash Core 18.1.0*<br>The owner's payout address. Only included if the `extended` parameter is set to `true`. |
+| → →<br>`operatorPayoutAddress` | string       | Required<br>(exactly 1) | *Added in Dash Core 18.1.0*<br>The operator's payout address.  Only included if the `extended` parameter is set to `true`. |
 | →<br>`deletedQuorums`          | array        | Required<br>(exactly 1) | An array of deleted quorums |
 | → →<br>`llmqType`              | number       | Required<br>(exactly 1) | The quorum type |
 | → →<br>`quorumHash`            | string (hex) | Required<br>(exactly 1) | The hash of the quorum |
@@ -159,7 +159,7 @@ The `protx diff` RPC calculates a diff and a proof between two masternode list.
 | → →<br>`version`               | number       | Required<br>(exactly 1) | The quorum version |
 | → →<br>`llmqType`              | number       | Required<br>(exactly 1) | The quorum type |
 | → →<br>`quorumHash`            | string (hex) | Required<br>(exactly 1) | The hash of the quorum |
-| → →<br> `quorumIndex`          | number       | Required<br>(exactly 1) | _Added in Dash Core 18.0.0_<br>The index of the quorum |
+| → →<br> `quorumIndex`          | number       | Required<br>(exactly 1) | *Added in Dash Core 18.0.0*<br>The index of the quorum |
 | → →<br>`signersCount`          | number       | Required<br>(exactly 1) | The number of signers for the quorum |
 | → →<br>`signers`               | string (hex) | Required<br>(exactly 1) | *Added in Dash Core 0.16.0*<br>Bitset representing the aggregated signers of this final commitment |
 | → →<br>`validMembersCount`     | number       | Required<br>(exactly 1) | The number of valid members in the quorum |
@@ -316,7 +316,7 @@ The `protx info` RPC returns detailed information about a deterministic masterno
 | → →<br>`ownsCollateral`             | bool         | Required<br>(exactly 1) | The collateral is owned by this wallet                                                          |
 | → →<br>`ownsPayeeScript`            | bool         | Required<br>(exactly 1) | The payee script is owned by this wallet                                                        |
 | → →<br>`ownsOperatorRewardScript`   | bool         | Required<br>(exactly 1) | The operator reward script is owned by this wallet                                              |
-| →<br>`metaInfo`                     | object/null  | Required<br>(exactly 1) | _Added in Dash Core 0.16.0_<br>An object containing a metainfo related to this ProTx      |
+| →<br>`metaInfo`                     | object/null  | Required<br>(exactly 1) | *Added in Dash Core 0.16.0*<br>An object containing a metainfo related to this ProTx      |
 | → →<br>`lastDSQ`                    | string       | Required<br>(exactly 1) | The owner key is present in this wallet                                                         |
 | → →<br>`mixingTxCount`              | string       | Required<br>(exactly 1) | The operator key is present in this wallet                                                      |
 | → →<br>`outboundAttemptCount`       | integer      | Required<br>(exactly 1) | **Added in Dash Core 19.2.0**<br>Number of outbound attempts                                                                     |
@@ -402,13 +402,13 @@ Lists all ProTxs in your wallet or on-chain, depending on the given type. If `ty
 | -------- | ------------ | -------------------- | ---------------------------------------------------------- |
 | `height` | number (int) | Optional<br>(0 or 1) | List ProTxs from this height (default: current chain tip). |
 
-_Result (if `detailed` was `false`)---provider registration transaction hash_
+*Result (if `detailed` was `false`)---provider registration transaction hash*
 
 | Name     | Type                | Presence                | Description                                  |
 | -------- | ------------------- | ----------------------- | -------------------------------------------- |
 | `result` | string (hex): array | Required<br>(exactly 1) | Array of provider transaction (ProTx) hashes |
 
-_Result (if `detailed` was `true`)---JSON provider registration transaction details_
+*Result (if `detailed` was `true`)---JSON provider registration transaction details*
 
 | Name                                | Type         | Presence                | Description                                                                                     |
 | ----------------------------------- | ------------ | ----------------------- | ----------------------------------------------------------------------------------------------- |
@@ -443,7 +443,7 @@ _Result (if `detailed` was `true`)---JSON provider registration transaction deta
 | → →<br>`ownsCollateral`             | bool         | Required<br>(exactly 1) | The collateral is owned by this wallet                                                          |
 | → →<br>`ownsPayeeScript`            | bool         | Required<br>(exactly 1) | The payee script is owned by this wallet                                                        |
 | → →<br>`ownsOperatorRewardScript`   | bool         | Required<br>(exactly 1) | The operator reward script is owned by this wallet                                              |
-| →<br>`metaInfo`                     | object/null  | Required<br>(exactly 1) | _Added in Dash Core 0.16.0_<br>An object containing a metainfo related to this ProTx      |
+| →<br>`metaInfo`                     | object/null  | Required<br>(exactly 1) | *Added in Dash Core 0.16.0*<br>An object containing a metainfo related to this ProTx      |
 | → →<br>`lastDSQ`                    | string       | Required<br>(exactly 1) | The owner key is present in this wallet                                                         |
 | → →<br>`mixingTxCount`              | string       | Required<br>(exactly 1) | The operator key is present in this wallet                                                      |
 | → →<br>`outboundAttemptCount`       | integer      | Required<br>(exactly 1) | **Added in Dash Core 19.2.0**<br>Number of outbound attempts                                                                     |
@@ -662,7 +662,7 @@ The `protx register` RPC creates a ProRegTx referencing an existing collateral a
 | -------- | ---- | -------------------- | ---------------------------------------------------------------------- |
 | `submit` | bool | Optional<br>(0 or 1) | If `true` (default), the resulting transaction is sent to the network. |
 
-_Result if `submit` is not set or set to `true`---provider registration transaction hash_
+*Result if `submit` is not set or set to `true`---provider registration transaction hash*
 
 | Name     | Type         | Presence                | Description                                       |
 | -------- | ------------ | ----------------------- | ------------------------------------------------- |
@@ -684,7 +684,7 @@ Result:
 61e6d780178d353940c4cb9b3073ac0c50792bbcf0b15c1750d2028b71e34929
 ```
 
-_Result if `submit` set to `false`---serialized and signed provider registration transaction_
+*Result if `submit` set to `false`---serialized and signed provider registration transaction*
 
 | Name     | Type         | Presence                | Description                                                        |
 | -------- | ------------ | ----------------------- | ------------------------------------------------------------------ |
@@ -788,7 +788,7 @@ The `protx register_legacy` RPC works similar to `protx register`, but parses th
 | -------- | ---- | -------------------- | ---------------------------------------------------------------------- |
 | `submit` | bool | Optional<br>(0 or 1) | If `true` (default), the resulting transaction is sent to the network. |
 
-_Result if `submit` is not set or set to `true`---provider registration transaction hash_
+*Result if `submit` is not set or set to `true`---provider registration transaction hash*
 
 | Name     | Type         | Presence                | Description                                       |
 | -------- | ------------ | ----------------------- | ------------------------------------------------- |
@@ -809,7 +809,7 @@ Result:
 61e6d780178d353940c4cb9b3073ac0c50792bbcf0b15c1750d2028b71e34929
 ```
 
-_Result if `submit` set to `false`---serialized and signed provider registration transaction_
+*Result if `submit` set to `false`---serialized and signed provider registration transaction*
 
 | Name     | Type         | Presence                | Description                                                        |
 | -------- | ------------ | ----------------------- | ------------------------------------------------------------------ |
@@ -899,7 +899,7 @@ The `protx register_fund` RPC creates and funds a ProRegTx with the 1,000 DASH n
 | -------- | ---- | -------------------- | ---------------------------------------------------------------------- |
 | `submit` | bool | Optional<br>(0 or 1) | If `true` (default), the resulting transaction is sent to the network. |
 
-_Result if `submit` is not set or set to `true`---provider registration transaction hash_
+*Result if `submit` is not set or set to `true`---provider registration transaction hash*
 
 | Name     | Type         | Presence                | Description                                       |
 | -------- | ------------ | ----------------------- | ------------------------------------------------- |
@@ -920,7 +920,7 @@ Result:
 ba1b3330e16a0876b7a186e7ceb689f03ec646e611e91d7139de021bbf13afdd
 ```
 
-_Result if `submit` set to `false`---serialized and signed provider registration transaction_
+*Result if `submit` set to `false`---serialized and signed provider registration transaction*
 
 | Name     | Type         | Presence                | Description                                                        |
 | -------- | ------------ | ----------------------- | ------------------------------------------------------------------ |
@@ -1037,7 +1037,7 @@ Result:
 ba1b3330e16a0876b7a186e7ceb689f03ec646e611e91d7139de021bbf13afdd
 ```
 
-_Result if `submit` set to `false`---serialized and signed provider registration transaction_
+*Result if `submit` set to `false`---serialized and signed provider registration transaction*
 
 | Name     | Type         | Presence                | Description                               |
 | -------- | ------------ | ----------------------- | ----------------------------------------- |
@@ -1331,7 +1331,7 @@ The `protx register_evo` RPC functions similar to `protx register_fund_evo`, but
 | -------- | ---- | -------------------- | ---------------------------------------------------------------------- |
 | `submit` | bool | Optional<br>(0 or 1) | If `true` (default), the resulting transaction is sent to the network. |
 
-_Result if `submit` is not set or set to `true`---provider registration transaction hash_
+*Result if `submit` is not set or set to `true`---provider registration transaction hash*
 
 | Name     | Type         | Presence                | Description                                       |
 | -------- | ------------ | ----------------------- | ------------------------------------------------- |
@@ -1356,7 +1356,7 @@ Result:
 61e6d780178d353940c4cb9b3073ac0c50792bbcf0b15c1750d2028b71e34929
 ```
 
-_Result if `submit` set to `false`---serialized and signed provider registration transaction_
+*Result if `submit` set to `false`---serialized and signed provider registration transaction*
 
 | Name     | Type         | Presence                | Description                                                        |
 | -------- | ------------ | ----------------------- | ------------------------------------------------------------------ |
@@ -2073,13 +2073,13 @@ The `quorum info` RPC returns information about a specific quorum.
 | →<br>`height`                         | number       | Required<br>(exactly 1) | Block height of the quorum                                                                                                                                                             |
 | →<br>`type`                           | string       | Required<br>(exactly 1) | Type of LLMQ                                                                                                                                                                           |
 | →<br>`quorumHash`                     | string (hex) | Required<br>(exactly 1) | The hash of the quorum                                                                                                                                                                 |
-| →<br>`quorumIndex`                    | number       | Required<br>(exactly 1) | _Added in Dash Core 18.0.0_<br>The index of the quorum                                                                                                                               |
+| →<br>`quorumIndex`                    | number       | Required<br>(exactly 1) | *Added in Dash Core 18.0.0*<br>The index of the quorum                                                                                                                               |
 | →<br>`minedBlock`                     | string (hex) | Required<br>(exactly 1) | The hash of the block that established the quorum                                                                                                                                      |
 | →<br>`previousConsecutiveDKGFailures` | number       | Optional<br>(0 or 1)    | **Added in Dash Core 19.0**<br>The number of previous consecutive DKG failures for the corresponding `quorumIndex` before the currently active one. Only present for rotating quorums. |
 | →<br>`members`                        | array        | Required<br>(exactly 1) | An array containing quorum member details                                                                                                                                              |
 | → →<br>Member                         | object       | Required<br>(1 or more) | An object describing a particular member                                                                                                                                               |
 | → → →<br>`proTxHash`                  | string (hex) | Required<br>(exactly 1) | The masternode's Provider Registration transaction hash                                                                                                                                |
-| → → →<br>`service`                    | string       | Required<br>(exactly 1) | _Added in Dash Core 18.1.0_<br>The masternode's IP:Port                                                                                                                              |
+| → → →<br>`service`                    | string       | Required<br>(exactly 1) | *Added in Dash Core 18.1.0*<br>The masternode's IP:Port                                                                                                                              |
 | → → →<br>`pubKeyOperator`             | string (hex) | Required<br>(exactly 1) | *Added in Dash Core 0.15.0*<br>The masternode's Operator public key                                                                                                                    |
 | → → →<br>`valid`                      | bool         | Required<br>(exactly 1) | Indicates if the member is valid                                                                                                                                                       |
 | → → →<br>`pubKeyShare`                | string       | Optional<br>(0 or 1)    | Member public key share                                                                                                                                                                |
@@ -2180,8 +2180,8 @@ The `quorum list` RPC displays the status of the current DKG process.
 | →<br>`timeStr`                            | string           | Required<br>(exactly 1) | The UTC time as a string                                                                                                                                                         |
 | →<br>`session`                            | array of objects | Required<br>(exactly 1) | Array of objects containing DKG Session information                                                                                                                              |
 | → →<br>Session                            | object           | Required<br>(exactly 1) | DKG session object                                                                                                                                                               |
-| → → →<br>`llmqType`                       | string           | Required<br>(exactly 1) | _Added in Dash Core 18.0.0_<br>[Quorum type name](https://github.com/dashpay/dips/blob/master/dip-0006/llmq-types.md)                                                          |
-| → → →<br>`quorumIndex`                    | number           | Required<br>(exactly 1) | _Added in Dash Core 18.0.0_<br>The index of the quorum                                                                                                                         |
+| → → →<br>`llmqType`                       | string           | Required<br>(exactly 1) | *Added in Dash Core 18.0.0*<br>[Quorum type name](https://github.com/dashpay/dips/blob/master/dip-0006/llmq-types.md)                                                          |
+| → → →<br>`quorumIndex`                    | number           | Required<br>(exactly 1) | *Added in Dash Core 18.0.0*<br>The index of the quorum                                                                                                                         |
 | → → →<br>`status`                         | object           | Required<br>(exactly 1) | DKG session status information                                                                                                                                                   |
 | → → → →<br>`llmqType`                     | number           | Required<br>(exactly 1) | [Type of quorum](https://github.com/dashpay/dips/blob/master/dip-0006.md#current-llmq-types):<br>`1` - LLMQ_50_60<br>`2` - LLMQ_400_60<br>`3` - LLMQ_400_85<br>`4` - LLMQ_100_67 |
 | → → → →<br>`quorumHash`                   | string (hex)     | Required<br>(exactly 1) | The block hash of the quorum                                                                                                                                                     |
@@ -2199,18 +2199,18 @@ The `quorum list` RPC displays the status of the current DKG process.
 | → → → →<br>`receivedJustifications`       | number           | Required<br>(exactly 1) | Number of justifications received                                                                                                                                                |
 | → → → →<br>`receivedPrematureCommitments` | number           | Required<br>(exactly 1) | Number of premature commitments received                                                                                                                                         |
 | →<br>`quorumConnections`                  | array of objects | Required<br>(exactly 1) | **Modified in Dash Core 18.0.0**<br>Array of objects containing quorum connection information                                                                                    |
-| → →<br>Quorum type                        | object           | Required<br>(exactly 1) | _Added in Dash Core 18.0.0_<br>An object describing connection information for a quorum index and type                                                                         |
-| → → →<br>`llmqType`                       | string           | Required<br>(exactly 1) | _Added in Dash Core 18.0.0_<br>[Quorum type name](https://github.com/dashpay/dips/blob/master/dip-0006/llmq-types.md)                                                          |
-| → → →<br>`quorumIndex`                    | number           | Required<br>(exactly 1) | _Added in Dash Core 18.0.0_<br>The index of the quorum                                                                                                                         |
-| → → →<br>`pQuorumBaseBlockIndex`          | number           | Required<br>(exactly 1) | _Added in Dash Core 18.0.0_<br>The height of the quorum's base block                                                                                                           |
+| → →<br>Quorum type                        | object           | Required<br>(exactly 1) | *Added in Dash Core 18.0.0*<br>An object describing connection information for a quorum index and type                                                                         |
+| → → →<br>`llmqType`                       | string           | Required<br>(exactly 1) | *Added in Dash Core 18.0.0*<br>[Quorum type name](https://github.com/dashpay/dips/blob/master/dip-0006/llmq-types.md)                                                          |
+| → → →<br>`quorumIndex`                    | number           | Required<br>(exactly 1) | *Added in Dash Core 18.0.0*<br>The index of the quorum                                                                                                                         |
+| → → →<br>`pQuorumBaseBlockIndex`          | number           | Required<br>(exactly 1) | *Added in Dash Core 18.0.0*<br>The height of the quorum's base block                                                                                                           |
 | → → → <br>`quorumHash`                    | string (hex)     | Required<br>(exactly 1) | The block hash of the quorum                                                                                                                                                     |
-| → → →<br>`pindexTip`                      | number           | Required<br>(exactly 1) | _Added in Dash Core 18.0.0_<br>The height of the quorum's index tip                                                                                                            |
+| → → →<br>`pindexTip`                      | number           | Required<br>(exactly 1) | *Added in Dash Core 18.0.0*<br>The height of the quorum's index tip                                                                                                            |
 | → → →<br>`quorumConnections`              | array of objects | Required<br>(exactly 1) | Array of objects containing quorum connection information                                                                                                                        |
-| → → → →<br>Connection                     | object           | Required<br>(exactly 1) | _Added in Dash Core 0.16.0_<br><br>An object describing a quorum connection                                                                                                    |
-| → → → →→<br>`proTxHash`                   | string (hex)     | Required<br>(exactly 1) | _Added in Dash Core 0.16.0_<br><br>The hash of the quorum member's provider registration transaction as hex in RPC byte order                                                  |
-| → → → →→<br>`connected`                   | boolean          | Required<br>(exactly 1) | _Added in Dash Core 0.16.0_<br><br>Whether or not the connection is active                                                                                                     |
-| → → → →→<br>`address`                     | string           | Optional<br>(exactly 1) | _Added in Dash Core 0.16.0_<br><br>Address                                                                                                                                     |
-| → → → →→<br>`outbound`                    | boolean          | Required<br>(exactly 1) | _Added in Dash Core 0.16.0_<br><br>Whether or not this is an outbound connection                                                                                               |
+| → → → →<br>Connection                     | object           | Required<br>(exactly 1) | *Added in Dash Core 0.16.0*<br><br>An object describing a quorum connection                                                                                                    |
+| → → → →→<br>`proTxHash`                   | string (hex)     | Required<br>(exactly 1) | *Added in Dash Core 0.16.0*<br><br>The hash of the quorum member's provider registration transaction as hex in RPC byte order                                                  |
+| → → → →→<br>`connected`                   | boolean          | Required<br>(exactly 1) | *Added in Dash Core 0.16.0*<br><br>Whether or not the connection is active                                                                                                     |
+| → → → →→<br>`address`                     | string           | Optional<br>(exactly 1) | *Added in Dash Core 0.16.0*<br><br>Address                                                                                                                                     |
+| → → → →→<br>`outbound`                    | boolean          | Required<br>(exactly 1) | *Added in Dash Core 0.16.0*<br><br>Whether or not this is an outbound connection                                                                                               |
 | →<br>`minableCommitments`                 | object           | Required<br>(exactly 1) | Object containing minable commitments                                                                                                                                            |
 
 *Result (if detail level was 1)---JSON DKG details including member index*
@@ -2882,15 +2882,15 @@ The `quorum sign` RPC requests threshold-signing for a message.
 
 | Name     | Type | Presence             | Description                                                                                                                                                                       |
 | -------- | ---- | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `submit` | bool | Optional<br>(0 or 1) | _Added in Dash Core 0.17.0_<br><br>Submits the signature share to the network if this is `true` (default). Returns an object containing the signature share if this is `false`. |
+| `submit` | bool | Optional<br>(0 or 1) | *Added in Dash Core 0.17.0*<br><br>Submits the signature share to the network if this is `true` (default). Returns an object containing the signature share if this is `false`. |
 
-_Result---(if submit = `true`) status_
+*Result---(if submit = `true`) status*
 
 | Name   | Type | Presence                | Description                        |
 | ------ | ---- | ----------------------- | ---------------------------------- |
 | result | bool | Required<br>(exactly 1) | True or false depending on success |
 
-_Result---(if submit = `false`) signature share JSON object_
+*Result---(if submit = `false`) signature share JSON object*
 
 | Name                | Type         | Presence                | Description                                                                                                                                                                      |
 | ------------------- | ------------ | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
