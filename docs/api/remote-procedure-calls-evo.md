@@ -535,6 +535,7 @@ Result:
   }
 ]
 ```
+
 ### ProTx List Diff
 
 The `protx listdiff` RPC calculates a full MN list diff between two masternode lists.
@@ -550,6 +551,8 @@ The `protx listdiff` RPC calculates a full MN list diff between two masternode l
 | Name    | Type    | Presence             | Description            |
 | ------- | ------- | -------------------- | -----------------------|
 | `block` | numeric | Required (exactly 1) | The ending block height|
+
+*Example from Dash Core*
 
 ```bash
 dash-cli -testnet protx listdiff 7100 7135
