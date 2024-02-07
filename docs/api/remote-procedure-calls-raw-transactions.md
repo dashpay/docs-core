@@ -1212,7 +1212,7 @@ _Parameter #1---block hashes and transaction hash list_
 | Name | Type         | Presence                | Description |
 | ---- | ------------ | ----------------------- | ----------- |
 | Transactions | object | Required<br>(exactly 1) | A JSON object with block hashes as keys and lists of transaction hashes as values (no more than 100 in total) |
-|→<br>Block Hash | array | Required<br>(1 or more) | The block hash and the list of transaction ids to fetch |
+|→<br>Block Hash | array | Required<br>(1 or more) | The block hash and the list of transaction ids to fetch. Note: if a block hash of `0` is provided, mempool transactions will be returned. |
 |→ →<br>Transaction ID | string | Required<br>(1 or more) | A transaction ID |
 
 _Parameter #2---whether to get the serialized or decoded transaction_
@@ -1246,7 +1246,7 @@ _Examples from Dash Core 20.1.0_
 Transactions in serialized transaction format:
 
 ```bash
-dash-cli getrawtransactionmulti '{"0000014b04deb0fe0884d3ca81a6239016c2a4838cd4b34494858630e457c62c": ["0667ab03bebb827057fcd55285d68dc10f30ef07dd04d1468c9f25888c22333c", "5c278dd4ca54b9c14789357f0311bcbf1b6d3182bcc76d229cb15cfbe6255ed0"]}' false
+dash-cli -testnet getrawtransactionmulti '{"0000014b04deb0fe0884d3ca81a6239016c2a4838cd4b34494858630e457c62c": ["0667ab03bebb827057fcd55285d68dc10f30ef07dd04d1468c9f25888c22333c", "5c278dd4ca54b9c14789357f0311bcbf1b6d3182bcc76d229cb15cfbe6255ed0"]}' false
 ```
 
 Result:
