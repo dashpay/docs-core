@@ -27,7 +27,8 @@ Classical (financial) transactions have a `type` of 0 while special transactions
 | 0.13.0  | 3          | 5       | [CbTx](#cbtx)               | Masternode List Merkle Proof             | hex     | compactSize uint |
 | 0.13.0  | 3          | 6       | [QcTx](#qctx)               | Long-Living Masternode Quorum Commitment | hex     | compactSize uint |
 | 18.0.0  | 3          | 7       | [MnHfTx](#mnhftx)           | Masternode hard fork signal              | hex     | compactSize uint |
-| 21.0.0  | 3          | 8       | [Asset Lock](#asset-lock)   | Asset Lock Transaction                   | hex     | compactSize uint |
+| 21.0.0  | 3          | 8       | [AssetLockTx](#assetlocktx)   | Asset Lock Transaction                   | hex     | compactSize uint |
+| 21.0.0  | 3          | 9       | [AssetUnlocktx](#assetunlocktx)   | Asset Unlock Transaction                   | hex     | compactSize uint |
 
 ```{eval-rst}
 .. _ref-txs-proregtx:
@@ -1164,3 +1165,111 @@ The JSON representation of a raw transaction can be obtained with the [`getrawtr
     ]
   }
 }
+```
+
+```{eval-rst}
+.. _ref-txs-assetunlocktx:
+```
+
+## AssetUnlockTx
+
+> 🚧 Note
+>
+> This special transaction has no inputs
+
+The Asset Unlock transaction is a DIP2-based special transaction that enables Platform credits to be withdrawn back to Dash.
+
+The special transaction type used for asset unlock transactions is 9 and the extra payload consists of the following data:
+
+| Bytes | Name | Data type | Description |
+|-|-|-|-|
+| 1 | version | uint8_t | Asset unlock payload version number |
+| 8 | index | uint64_t | The index of the transaction |
+| 4 | fee | uint32_t | The transaction fee in duffs that should be awarded to the miner |
+| 4 | requestedHeight | uint32_t | The payment chain block height known by platform at the moment of the withdrawal signing |
+| 32 | quorumHash | uint256 | Hash of the quorum signing this message |
+| 96 | quorumSig | CBLSSig | BLS signature for the entire transaction by a public key associated with the quorum referenced by `quorumHash` |
+
+The following annotated hexdump shows an asset unlock transaction.
+
+``` text
+0300 ....................................... Version (3)
+0900 ....................................... Type (9 - Asset Unlock)
+
+00 ......................................... Number of inputs
+
+01 ......................................... Number of outputs
+| Transaction Output 1
+| | 90cff40500000000 ....................... Duffs (0.99930000 DASH)
+| | 23 ..................................... Bytes in script: 35
+| | 2103d2c317552f5617f534065b9693fd4d7
+| | a8925daacdb9d44e908f9ffb0d285ea61ac .... Script
+
+00000000 ................................... Locktime
+
+91 ......................................... Extra payload size (145)
+
+Asset Unlock Payload
+| 01 ....................................... Version (1)
+|
+| 6500000000000000 ......................... Index: 101
+| 70110100 ................................. Fee: 70000
+| db040000 ................................. Requested height: 1243
+|
+| 6f0f4a04d9a37a8c7791e90428d596d0
+| caf5dc85292537ff92ffd361300c3101 ......... Quorum hash
+|
+| a533b35ae1d7685c6c795b7344963d48
+| 589d536a1c2b22e6a580b46439adaaf8
+| 51b4243b48be81d508ef3ff622bcba26
+| 030b5bf8aa404dd3b5876727f4112a9d
+| af99f27d250059679ae5abd30bc3029d
+| eeeb7267c1fa6204f6976a3a7a2512ea ......... Quorum Signature
+```
+
+### Example AssetUnlockTx
+
+```Text Raw Transaction hex
+03000900000190cff40500000000232103d2c317552f5617f534065b9693fd4d7a8925daacd
+b9d44e908f9ffb0d285ea61ac000000009101650000000000000070110100db0400006f0f4a
+04d9a37a8c7791e90428d596d0caf5dc85292537ff92ffd361300c3101a533b35ae1d7685c6
+c795b7344963d48589d536a1c2b22e6a580b46439adaaf851b4243b48be81d508ef3ff622bc
+ba26030b5bf8aa404dd3b5876727f4112a9daf99f27d250059679ae5abd30bc3029deeeb726
+7c1fa6204f6976a3a7a2512ea
+```
+
+The JSON representation of a raw transaction can be obtained with the [`getrawtransaction` RPC](../api/remote-procedure-calls-raw-transactions.md#getrawtransaction) or the [`decoderawtransaction` RPC](../api/remote-procedure-calls-raw-transactions.md#decoderawtransaction).
+
+```json JSON Representation
+{
+  "txid": "fb1b419b2b909f2ddb7fabee91d8e1aa7bb8e7114c83712ff20ba1859ec57b30",
+  "version": 3,
+  "type": 9,
+  "size": 200,
+  "locktime": 0,
+  "vin": [
+  ],
+  "vout": [
+    {
+      "value": 0.99930000,
+      "valueSat": 99930000,
+      "n": 0,
+      "scriptPubKey": {
+        "asm": "03d2c317552f5617f534065b9693fd4d7a8925daacdb9d44e908f9ffb0d285ea61 OP_CHECKSIG",
+        "hex": "2103d2c317552f5617f534065b9693fd4d7a8925daacdb9d44e908f9ffb0d285ea61ac",
+        "type": "pubkey"
+      }
+    }
+  ],
+  "extraPayloadSize": 145,
+  "extraPayload": "01650000000000000070110100db0400006f0f4a04d9a37a8c7791e90428d596d0caf5dc85292537ff92ffd361300c3101a533b35ae1d7685c6c795b7344963d48589d536a1c2b22e6a580b46439adaaf851b4243b48be81d508ef3ff622bcba26030b5bf8aa404dd3b5876727f4112a9daf99f27d250059679ae5abd30bc3029deeeb7267c1fa6204f6976a3a7a2512ea",
+  "assetUnlockTx": {
+    "version": 1,
+    "index": 101,
+    "fee": 70000,
+    "requestedHeight": 1243,
+    "quorumHash": "01310c3061d3ff92ff37252985dcf5cad096d52804e991778c7aa3d9044a0f6f",
+    "quorumSig": "a533b35ae1d7685c6c795b7344963d48589d536a1c2b22e6a580b46439adaaf851b4243b48be81d508ef3ff622bcba26030b5bf8aa404dd3b5876727f4112a9daf99f27d250059679ae5abd30bc3029deeeb7267c1fa6204f6976a3a7a2512ea"
+  }
+}
+```
