@@ -27,6 +27,7 @@ Classical (financial) transactions have a `type` of 0 while special transactions
 | 0.13.0  | 3          | 5       | [CbTx](#cbtx)               | Masternode List Merkle Proof             | hex     | compactSize uint |
 | 0.13.0  | 3          | 6       | [QcTx](#qctx)               | Long-Living Masternode Quorum Commitment | hex     | compactSize uint |
 | 18.0.0  | 3          | 7       | [MnHfTx](#mnhftx)           | Masternode hard fork signal              | hex     | compactSize uint |
+| 21.0.0  | 3          | 8       | [Asset Lock](#asset-lock)   | Asset Lock Transaction                   | hex     | compactSize uint |
 
 ```{eval-rst}
 .. _ref-txs-proregtx:
@@ -1026,3 +1027,140 @@ An itemized masternode hard fork signal transaction:
 0700 ....................................... Type (7 - Masternode Hard Fork Signal)
 <Add example mnhfsignal when available>
 ```
+
+```{eval-rst}
+.. _ref-txs-special-txs-asset-lock:
+```
+
+## Asset Lock
+
+The Asset Lock transaction is a DIP2-based special transaction that gives Platform the information to assign credits to identities.
+
+The special transaction type used for asset lock transactions is 8 and the extra payload consists of the following data:
+
+| Bytes | Name | Data type | Description |
+|-|-|-|-|
+| 1 | version | uint8_t | Asset lock payload version number |
+| 1 | count | uint8_t | Number of accounts funded by this asset lock |
+| Variable | credit_outputs | vector<TxOut> | The hash of the public key used to claim credits on Dash Platform, as well as the amount of Dash in duffs transferred into credits for this hash |
+
+The following annotated hexdump shows an asset lock transaction.
+
+``` text
+0300 ....................................... Version (3)
+0800 ....................................... Type (8 - Asset Lock)
+
+01 ......................................... Number of inputs
+| eecf4e8f1ffd3a3a4e5033d618231fd0
+| 5e5f08c1a727aac420f9a26db9bf39eb ......... Previous outpoint TXID
+| 01000000 ................................. Previous outpoint index (1)
+|
+| 6a ....................................... Bytes in script: 106
+|
+| 473044022026f169570532332f857cb6
+| 4a0b7d9c0837d6f031633e1d6c395d7c
+| 03b799460302207eba4c4575a66803ce
+| cf50b61ff5f2efc2bd4e61dff00d9d48
+| 47aa3d8b1a5e550121036cd0b73d304b
+| acc80fa747d254fbc5f0bf944dd8c8b9
+| 25cd161bb499b790d08d03 ................... Signature script
+|
+| 00000000 ................................. Sequence
+
+02 ......................................... Number of outputs
+| Transaction Output 1
+| | 317dd0be03000000 ....................... Duffs (160.86236465 DASH)
+| | 23 ..................................... Bytes in script: 35
+| | 21022ca85dba11c4e5a6da3a00e73a08765
+| | 319a5d66c2f6434b288494337b0c9ed2dac .... Script
+|
+| Transaction Output 2
+| | 6df29c3b00000000 ....................... Duffs (10.00141421 DASH)
+| | 02 ..................................... Bytes in script: 2
+| | 6a00 ................................... Script (OP_RETURN)
+
+00000000 ................................... Locktime
+
+46 ......................................... Extra payload size (70)
+
+Asset Lock Payload
+| 01 ....................................... Version (1)
+|
+| 02 ....................................... Count: 2
+|
+| Credit Output 1
+| | 00e1f50500000000 ....................... Duffs (100000000 DASH)
+| | 1976a9147c75beb097957cc095
+| | 37b615dde9ea6807719cdf88ac ............. Script
+|
+| Credit Output 2
+| | 6d11a73500000000 ....................... Duffs (900141421 DASH)
+| | 1976a9147c75beb097957cc095
+| | 37b615dde9ea6807719cdf88ac ............. Script
+```
+
+### Example Asset Lock Transaction
+
+```Text Raw Transaction hex
+0300080001eecf4e8f1ffd3a3a4e5033d618231fd05e5f08c1a727aac420f9a26db9bf39eb0
+10000006a473044022026f169570532332f857cb64a0b7d9c0837d6f031633e1d6c395d7c03
+b799460302207eba4c4575a66803cecf50b61ff5f2efc2bd4e61dff00d9d4847aa3d8b1a5e5
+50121036cd0b73d304bacc80fa747d254fbc5f0bf944dd8c8b925cd161bb499b790d08d0000
+000002317dd0be030000002321022ca85dba11c4e5a6da3a00e73a08765319a5d66c2f6434b
+288494337b0c9ed2dac6df29c3b00000000026a000000000046010200e1f505000000001976
+a9147c75beb097957cc09537b615dde9ea6807719cdf88ac6d11a735000000001976a9147c7
+5beb097957cc09537b615dde9ea6807719cdf88ac
+```
+
+The JSON representation of a raw transaction can be obtained with the [`getrawtransaction` RPC](../api/remote-procedure-calls-raw-transactions.md#getrawtransaction) or the [`decoderawtransaction` RPC](../api/remote-procedure-calls-raw-transactions.md#decoderawtransaction).
+
+```json JSON Representation
+{
+  "txid": "fdb0e981c3febc6c2c032e6f51e6f063bfc6aaa9bd238985a442c93bd376fd57",
+  "version": 3,
+  "type": 8,
+  "size": 283,
+  "locktime": 0,
+  "vin": [
+    {
+      "txid": "eb39bfb96da2f920c4aa27a7c1085f5ed01f2318d633504e3a3afd1f8f4ecfee",
+      "vout": 1,
+      "scriptSig": {
+        "asm": "3044022026f169570532332f857cb64a0b7d9c0837d6f031633e1d6c395d7c03b799460302207eba4c4575a66803cecf50b61ff5f2efc2bd4e61dff00d9d4847aa3d8b1a5e55[ALL] 036cd0b73d304bacc80fa747d254fbc5f0bf944dd8c8b925cd161bb499b790d08d",
+        "hex": "473044022026f169570532332f857cb64a0b7d9c0837d6f031633e1d6c395d7c03b799460302207eba4c4575a66803cecf50b61ff5f2efc2bd4e61dff00d9d4847aa3d8b1a5e550121036cd0b73d304bacc80fa747d254fbc5f0bf944dd8c8b925cd161bb499b790d08d"
+      },
+      "sequence": 0
+    }
+  ],
+  "vout": [
+    {
+      "value": 160.86236465,
+      "valueSat": 16086236465,
+      "n": 0,
+      "scriptPubKey": {
+        "asm": "022ca85dba11c4e5a6da3a00e73a08765319a5d66c2f6434b288494337b0c9ed2d OP_CHECKSIG",
+        "hex": "21022ca85dba11c4e5a6da3a00e73a08765319a5d66c2f6434b288494337b0c9ed2dac",
+        "type": "pubkey"
+      }
+    },
+    {
+      "value": 10.00141421,
+      "valueSat": 1000141421,
+      "n": 1,
+      "scriptPubKey": {
+        "asm": "OP_RETURN 0",
+        "hex": "6a00",
+        "type": "nulldata"
+      }
+    }
+  ],
+  "extraPayloadSize": 70,
+  "extraPayload": "010200e1f505000000001976a9147c75beb097957cc09537b615dde9ea6807719cdf88ac6d11a735000000001976a9147c75beb097957cc09537b615dde9ea6807719cdf88ac",
+  "assetLockTx": {
+    "version": 1,
+    "creditOutputs": [
+      "CTxOut(nValue=1.00000000, scriptPubKey=76a9147c75beb097957cc09537b615)",
+      "CTxOut(nValue=9.00141421, scriptPubKey=76a9147c75beb097957cc09537b615)"
+    ]
+  }
+}
