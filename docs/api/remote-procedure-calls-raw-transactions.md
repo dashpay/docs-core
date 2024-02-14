@@ -1266,7 +1266,7 @@ _See also:_
 
 ## GetTxChainlocks
 
-The [`gettxchainlocks` RPC](../api/remote-procedure-calls-raw-transactions.md#gettxchainlocks) returns the block height each transaction was mined at and whether it is ChainLocked or not.
+The [`gettxchainlocks` RPC](../api/remote-procedure-calls-raw-transactions.md#gettxchainlocks) returns the block height each transaction was mined at and indicates whether it is in the mempool, ChainLocked, or neither.
 
 _Parameter #1---Transaction IDs_
 
@@ -1281,13 +1281,14 @@ _Result---transaction information_
 | -------------------- | ------------ | ----------------------- | ------------------------------------------------------------------------------------------------------ |
 | `result`             | array        | Required<br>(exactly 1) | An array of objects providing transaction information for each transaction ID in the input array. |
 | →<br>Transaction info | object      | Optional<br>(0 or more) | An object containting transaction details |
-| →<br>`height`        | number       | Required<br>(exactly 1) | Height of the block containing the transaction |
+| →<br>`height`        | number       | Required<br>(exactly 1) | Height of the block containing the transaction (-1 if the transaction is not in a block) |
 | →<br>`chainlock`     | bool         | Required<br>(exactly 1) | ChainLock status for the block containing the transaction |
+| →<br>`mempool`       | bool         | Required<br>(exactly 1) | **Added in Dash Core 20.1.0**<br><br>Mempool status for the transaction |
 
-_Example from Dash Core 20.0.0_
+_Example from Dash Core 20.1.0_
 
 ```bash
-dash-cli -testnet gettxchainlocks "[\"5aa787033352f815e6cd9d59733903362c80f6725f7427200e335502dd7d8b10\", \"77363fbcabce942f339cfac1e2ddd8fd6eaa641c53facf925ce87aeefaa9baad\"]"
+dash-cli -testnet gettxchainlocks "[\"d743b1ab2ff390bcc60b4672c293d95909989ca402fdea487f582b22da051ce8\", \"dd7a41e421c4f522353a8f91f077e15a1325518e60812d0c6c9995c1d61ab60e\"]"
 ```
 
 Result:
@@ -1295,12 +1296,14 @@ Result:
 ```json
 [
   {
-    "height": 917009,
-    "chainlock": true
+    "height": 957527,
+    "chainlock": true,
+    "mempool": false
   },
   {
-    "height": 916003,
-    "chainlock": true
+    "height": -1,
+    "chainlock": false,
+    "mempool": true
   }
 ]
 ```
