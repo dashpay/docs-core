@@ -1030,12 +1030,12 @@ An itemized masternode hard fork signal transaction:
 ```
 
 ```{eval-rst}
-.. _ref-txs-special-txs-asset-lock:
+.. _ref-txs-assetlocktx:
 ```
 
-## Asset Lock
+## AssetLockTx
 
-The Asset Lock transaction is a DIP2-based special transaction that gives Platform the information to assign credits to identities.
+The Asset Lock transaction is a DIP2-based special transaction that gives Platform the information to assign credits to [identities](inv:platform:std#explanations-identity).
 
 The special transaction type used for asset lock transactions is 8 and the extra payload consists of the following data:
 
