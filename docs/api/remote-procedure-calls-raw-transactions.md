@@ -1277,13 +1277,13 @@ _Parameter #1---Transaction IDs_
 
 _Result---transaction information_
 
-| Name                 | Type         | Presence                | Description                                                                                            |
-| -------------------- | ------------ | ----------------------- | ------------------------------------------------------------------------------------------------------ |
-| `result`             | array        | Required<br>(exactly 1) | An array of objects providing transaction information for each transaction ID in the input array. |
-| →<br>Transaction info | object      | Optional<br>(0 or more) | An object containting transaction details |
-| →<br>`height`        | number       | Required<br>(exactly 1) | Height of the block containing the transaction (-1 if the transaction is not in a block) |
-| →<br>`chainlock`     | bool         | Required<br>(exactly 1) | ChainLock status for the block containing the transaction |
-| →<br>`mempool`       | bool         | Required<br>(exactly 1) | **Added in Dash Core 20.1.0**<br><br>Mempool status for the transaction |
+| Name                 | Type         | Presence                | Description |
+| -------------------- | ------- | ----------------------- | ----------- |
+| `result`             | array   | Required<br>(exactly 1) | An array of objects providing transaction information for each transaction ID in the input array. |
+| →<br>Transaction info | object | Optional<br>(0 or more) | An object containting transaction details |
+| →<br>`height`        | number  | Required<br>(exactly 1) | Height of the block containing the transaction (-1 if the transaction is not in a block) |
+| →<br>`chainlock`     | bool    | Required<br>(exactly 1) | ChainLock status for the block containing the transaction |
+| →<br>`mempool`       | bool    | Required<br>(exactly 1) | **Added in Dash Core 20.1.0**<br><br>Mempool status for the transaction |
 
 _Example from Dash Core 20.1.0_
 
