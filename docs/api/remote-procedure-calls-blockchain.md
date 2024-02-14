@@ -432,6 +432,7 @@ Name | Type | Presence | Description
 →<br>`headers` | number (int) | Required<br>(exactly 1) | The number of validated headers in the local best headers chain.  For a new node with just the hardcoded genesis block, this will be zero.  This number may be higher than the number of *blocks*
 →<br>`bestblockhash` | string (hex) | Required<br>(exactly 1) | The hash of the header of the highest validated block in the best block chain, encoded as hex in RPC byte order.  This is identical to the string returned by the [`getbestblockhash` RPC](../api/remote-procedure-calls-blockchain.md#getbestblockhash)
 →<br>`difficulty` | number (real) | Required<br>(exactly 1) | The difficulty of the highest-height block in the best block chain
+→<br>`time` | number (int) | Required<br>(exactly 1) | **Added in Dash Core 20.1.0**<br><br>The block time expressed in UNIX epoch time
 →<br>`mediantime` | number (int) | Required<br>(exactly 1) | *Added in Bitcoin Core 0.12.0*<br><br>The median time of the 11 blocks before the most recent block on the blockchain.  Used for validating transaction locktime under BIP113
 →<br>`verificationprogress` | number (real) | Required<br>(exactly 1) | Estimate of what percentage of the block chain transactions have been verified so far, starting at 0.0 and increasing to 1.0 for fully verified.  May slightly exceed 1.0 when fully synced to account for transactions in the memory pool which have been verified before being included in a block
 →<br>`initialblockdownload` | boolean | Required<br>(exactly 1) | *Added in Dash Core 0.16.0*<br><br>An estimate of whether this node is in [Initial Block Download](../guide/p2p-network-initial-block-download.md) mode (*debug information*)
@@ -474,15 +475,16 @@ Result:
 ``` json
 {
   "chain": "test",
-  "blocks": 912298,
-  "headers": 912298,
-  "bestblockhash": "00000019c3087281f7e4b627815eb391b3b5e11e4d0add0ccb500796407f6237",
-  "difficulty": 0.001804136142120174,
-  "mediantime": 1699903044,
-  "verificationprogress": 0.9999998639160379,
+  "blocks": 970215,
+  "headers": 970215,
+  "bestblockhash": "00000024551f6c642b8706d2a96ae7b6c4ab31cfa99c0269bd087439d1fbdbfc",
+  "difficulty": 0.002453668038089944,
+  "time": 1707935097,
+  "mediantime": 1707933667,
+  "verificationprogress": 0.9999998477422257,
   "initialblockdownload": false,
-  "chainwork": "00000000000000000000000000000000000000000000000002d68d309978e4c0",
-  "size_on_disk": 3147926239,
+  "chainwork": "00000000000000000000000000000000000000000000000002ee3023737c1531",
+  "size_on_disk": 3303091896,
   "pruned": false,
   "softforks": {
     "bip34": {
@@ -569,7 +571,7 @@ Result:
       "active": false
     }
   },
-  "warnings": "Warning: We do not appear to fully agree with our peers! You may need to upgrade, or other nodes may need to upgrade."
+  "warnings": "Make sure to encrypt your wallet and delete all non-encrypted backups after you have verified that the wallet works!"
 }
 ```
 
