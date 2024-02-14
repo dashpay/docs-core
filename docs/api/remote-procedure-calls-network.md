@@ -516,8 +516,11 @@ The [`getpeerinfo` RPC](../api/remote-procedure-calls-network.md#getpeerinfo) re
 | → → →<br>SERVICE_NAME           | string              | Required<br>(exactly 1) | The service name if it is recognised.                                                                                                                                                                                                                                                |
 | → →<br>`verified_proregtx_hash` | string (hex)        | Optional<br>(0 or 1)    | The ProRegTx of the masternode                                                                                                                                                                                                                                                       |
 | → →<br>`verified_pubkey_hash`   | string (hex)        | Optional<br>(0 or 1)    | The hashed operator public key of the masternode                                                                                                                                                                                                                                     |
+| `relaytxes`          | bool         | Required<br>(exactly 1) | Whether peer has asked us to relay transactions to it. |
 | → →<br>`lastsend`               | number (int)        | Required<br>(exactly 1) | The Unix epoch time when we last successfully sent data to the TCP socket for this node                                                                                                                                                                                              |
 | → →<br>`lastrecv`               | number (int)        | Required<br>(exactly 1) | The Unix epoch time when we last received data from this node                                                                                                                                                                                                                        |
+| `last_transaction`   | number (int) | Required<br>(exactly 1) | **Added in Dash Core 20.1.0**<br>The UNIX epoch time of the last valid transaction received from this peer. |
+| `last_block`         | number (int) | Required<br>(exactly 1) | **Added in Dash Core 20.1.0**<br>The UNIX epoch time of the last block received from this peer. |
 | → →<br>`bytessent`              | number (int)        | Required<br>(exactly 1) | The total number of bytes we've sent to this node                                                                                                                                                                                                                                    |
 | → →<br>`bytesrecv`              | number (int)        | Required<br>(exactly 1) | The total number of bytes we've received from this node                                                                                                                                                                                                                              |
 | → →<br>`conntime`               | number (int)        | Required<br>(exactly 1) | The Unix epoch time when we connected to this node                                                                                                                                                                                                                                   |
@@ -542,8 +545,9 @@ The [`getpeerinfo` RPC](../api/remote-procedure-calls-network.md#getpeerinfo) re
 | → → →<br>Message Type           | number (int)        | Required<br>(1 or more) | Total sent bytes aggregated by message type. One field for every used message type                                                                                                                                                                                                   |
 | → →<br>`bytesrecv_per_msg`      | string : <br>object | Required<br>(exactly 1) | *Added in Bitcoin Core 0.13.0*<br><br>Information about total received bytes aggregated by message type                                                                                                                                                                              |
 | → → →<br>Message Type           | number (int)        | Required<br>(1 or more) | Total received bytes aggregated by message type. One field for every used message type                                                                                                                                                                                               |
+| `connection_type`    | string       | Required<br>(exactly 1) | **Added in Dash Core 20.1.0**<br>Type of connection:<br>outbound-full-relay, block-relay-only, inbound, manual, addr-fetch, feeler.<br>Describes how the connection was established.<br>**Note: This output is subject to change in future releases as connection behaviors are refined.** |
 
-*Example from Dash Core 18.0.0*
+*Example from Dash Core 20.1.0*
 
 ```bash
 dash-cli -testnet getpeerinfo
@@ -554,60 +558,82 @@ Result (edited to show only a single entry, with IP addresses changed to
 
 ```json
 [
-   {
-    "id": 1332,
-    "addr": "[2a00:1398:4:2a03:215:5dff:fed6:1032]:55788",
-    "addrbind": "[2406:9840:f:8a4:1c82:234d:617c:e875]:9999",
-    "addrlocal": "[2406:9840:f:8a4:1c82:234d:617c:e875]:9999",
-    "network": "ipv6",
-    "services": "0000000000000001",
+  {
+    "id": 0,
+    "addr": "198.51.100.1:19999",
+    "addrbind": "192.0.2.1:34896",
+    "addrlocal": "203.0.113.1:34896",
+    "network": "ipv4",
+    "services": "0000000000000c05",
     "servicesnames": [
-      "NETWORK"
+      "NETWORK",
+      "BLOOM",
+      "NETWORK_LIMITED",
+      "HEADERS_COMPRESSED"
     ],
-    "relaytxes": true,
-    "lastsend": 1690400596,
-    "lastrecv": 1690400484,
-    "bytessent": 87759,
-    "bytesrecv": 3836,
-    "conntime": 1690393760,
-    "timeoffset": 4,
-    "pingtime": 0.289504,
-    "minping": 0.223147,
-    "version": 70215,
-    "subver": "/dsn.tm.kit.edu/dash:0.14.0.2/",
-    "inbound": true,
+    "relaytxes": false,
+    "lastsend": 1707941906,
+    "lastrecv": 1707941902,
+    "last_transaction": 0,
+    "last_block": 1707934590,
+    "bytessent": 240367,
+    "bytesrecv": 252966,
+    "conntime": 1707934579,
+    "timeoffset": 0,
+    "pingtime": 0.09482599999999999,
+    "minping": 0.093489,
+    "version": 70230,
+    "subver": "/Dash Core:20.0.2/",
+    "inbound": false,
     "addnode": false,
     "masternode": false,
-    "startingheight": -1,
+    "startingheight": 970213,
     "banscore": 0,
-    "synced_headers": -1,
-    "synced_blocks": -1,
+    "synced_headers": 970268,
+    "synced_blocks": 970268,
     "inflight": [
     ],
     "whitelisted": false,
     "permissions": [
     ],
     "bytessent_per_msg": {
-      "addr": 29992,
-      "getheaders": 1085,
-      "inv": 52767,
-      "ping": 1824,
-      "pong": 1824,
+      "dsq": 151226,
+      "getdata": 10361,
+      "getheaders2": 1053,
+      "getsporks": 24,
+      "govsync": 69618,
+      "headers2": 3180,
+      "inv": 671,
+      "ping": 1984,
+      "pong": 1984,
+      "sendaddrv2": 24,
       "sendcmpct": 33,
-      "senddsq": 25,
-      "sendheaders": 24,
+      "sendheaders2": 24,
       "verack": 24,
       "version": 161
     },
     "bytesrecv_per_msg": {
-      "getaddr": 24,
-      "ping": 1824,
-      "pong": 1824,
+      "addrv2": 40,
+      "block": 209737,
+      "clsig": 624,
+      "getheaders2": 1053,
+      "headers2": 27918,
+      "inv": 4427,
+      "mnauth": 152,
+      "ping": 1984,
+      "pong": 1984,
+      "sendaddrv2": 24,
+      "sendcmpct": 33,
+      "senddsq": 25,
+      "sendheaders2": 24,
+      "spork": 2420,
+      "ssc": 2336,
       "verack": 24,
-      "version": 140
-    }
+      "version": 161
+    },
+    "connection_type": "block-relay-only"
   }
-]
+}
 ```
 
 *See also*
