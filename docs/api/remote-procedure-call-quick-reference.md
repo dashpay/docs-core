@@ -137,7 +137,7 @@ These RPCs are all Dash-specific and not found in Bitcoin Core
 * [JoinPSBTs](../api/remote-procedure-calls-raw-transactions.md#joinpsbts): joins multiple distinct PSBTs with different inputs and outputs into one PSBT with inputs and outputs from all of the PSBTs.
 * [SendRawTransaction](../api/remote-procedure-calls-raw-transactions.md#sendrawtransaction): validates a transaction and broadcasts it to the peer-to-peer network. _Updated in Dash Core 0.15.0_
 * [SignRawTransactionWithKey](../api/remote-procedure-calls-raw-transactions.md#signrawtransactionwithkey): signs a transaction in the serialized transaction format using private keys provided in the call. _New in Dash Core 0.17.0_
-* [TestMempoolAccept](../api/remote-procedure-calls-raw-transactions.md#testmempoolaccept): returns the results of mempool acceptance tests indicating if raw transaction (serialized, hex-encoded) would be accepted by mempool. _New in Dash Core 18.0.0_
+* [TestMempoolAccept](../api/remote-procedure-calls-raw-transactions.md#testmempoolaccept): returns the results of mempool acceptance tests indicating if raw transaction (serialized, hex-encoded) would be accepted by mempool. **Updated in Dash Core 20.1.0**
 * [UTXOUpdatePSBT](../api/remote-procedure-calls-raw-transactions.md#testmempoolaccept): updates a PSBT with data from output descriptors, UTXOs retrieved from the UTXO set or the mempool. _Updated in Dash Core 18.1.0_
 
 ## [Utility RPCs](../api/remote-procedure-calls-util.md)
@@ -148,7 +148,7 @@ These RPCs are all Dash-specific and not found in Bitcoin Core
 * [GetDescriptorInfo](../api/remote-procedure-calls-util.md#getdescriptorinfo): analyses a descriptor. _New in Dash Core 18.0.0_
 * [GetIndexInfo](../api/remote-procedure-calls-util.md#getindexinfo): returns the status of one or all available indices currently running in the node. **New in Dash Core 20.0.0**
 * [SignMessageWithPrivKey](../api/remote-procedure-calls-util.md#signmessagewithprivkey): signs a message with a given private key.  _New in Dash Core 0.12.3_
-* [ValidateAddress](../api/remote-procedure-calls-util.md#validateaddress): returns information about the given Dash address. _Updated in Dash Core 0.17.0_
+* [ValidateAddress](../api/remote-procedure-calls-util.md#validateaddress): returns information about the given Dash address. **Updated in Dash Core 20.1.0**
 * [VerifyMessage](../api/remote-procedure-calls-util.md#verifymessage): verifies a signed message.
 
 ## [Wallet RPCs](../api/remote-procedure-calls-wallet.md)

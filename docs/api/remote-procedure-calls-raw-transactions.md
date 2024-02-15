@@ -1494,24 +1494,28 @@ The [`testmempoolaccept` RPC](../api/remote-procedure-calls-raw-transactions.md#
 
 _Parameter #1---raw txs_
 
-| Name     | Type  | Presence                | Description                                                                  |
-| -------- | ----- | ----------------------- | ---------------------------------------------------------------------------- |
+| Name     | Type  | Presence                | Description |
+| -------- | ----- | ----------------------- | ----------- |
 | `rawtxs` | array | Required<br>(exactly 1) | An array of hex strings of raw transactions (the length must be one for now) |
 
 _Parameter #2---set max fee rate_
 
-| Name         | Type   | Presence             | Description                                                                                                                                                                                                                                                                             |
-| ------------ | ------ | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Name         | Type   | Presence             | Description |
+| ------------ | ------ | -------------------- | ----------- |
 | `maxfeerate` | number | Optional<br>(0 or 1) | Reject transactions whose fee rate is higher than the specified value, expressed in DASH/kB. Changed from `allowhighfees` in Dash Core 18.0.0. See [previous version](https://dashcore.readme.io/v0.17.0/docs/core-api-ref-remote-procedure-calls-raw-transactions#sendrawtransaction). |
 
 _Result---mempool acceptance test results_
 
-| Name                 | Type         | Presence                | Description                                                                                            |
-| -------------------- | ------------ | ----------------------- | ------------------------------------------------------------------------------------------------------ |
-| `result`             | array        | Required<br>(exactly 1) | The result of the mempool acceptance test for each raw transaction in the input array.                 |
+| Name                 | Type         | Presence                | Description |
+| -------------------- | ------------ | ----------------------- | ----------- |
+| `result`             | array        | Required<br>(exactly 1) | The result of the mempool acceptance test for each raw transaction in the input array. |
 | →<br>`txid`          | string (hex) | Required<br>(exactly 1) | The TXID of the transaction the output appeared in.  The TXID must be encoded in hex in RPC byte order |
-| →<br>`allowed`       | bool         | Required<br>(exactly 1) | If the mempool allows this tx to be inserted                                                           |
-| →<br>`reject-reason` | string       | Optional<br>(0 or 1)    | A rejection string that is only present when 'allowed' is false.                                       |
+| `package-error` | string | Optional<br>(0 or 1) | Package validation error, if any (only possible if rawtxs had more than 1 transaction). |
+| →<br>`allowed`       | bool         | Required<br>(exactly 1) | Whether this tx would be accepted to the mempool and pass client-specified maxfeerate. If not present, the tx was not fully validated due to a failure in another tx in the list. |
+| `vsize`         | number (int) | Required<br>(exactly 1) | Virtual transaction size. |
+| `fees`          | object       | Optional<br>(0 or 1)    | Transaction fees (only present if 'allowed' is true). |
+| →<br>`base`     | number       | Required<br>(exactly 1) | Transaction fee in DASH. |
+| →<br>`reject-reason` | string       | Optional<br>(0 or 1)    | A rejection string that is only present when 'allowed' is false. |
 
 _Example from Dash Core 18.0.0_
 
