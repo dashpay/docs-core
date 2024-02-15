@@ -1531,9 +1531,11 @@ The [`getmempoolinfo` RPC](../api/remote-procedure-calls-blockchain.md#getmempoo
 Name | Type | Presence | Description
 --- | --- | --- | ---
 `result` | object | Required<br>(exactly 1) | A object containing information about the memory pool
+→<br>`loaded` | boolean | Required<br>(exactly 1) | True if the mempool is fully loaded
 →<br>`size` | number (int) | Required<br>(exactly 1) | The number of transactions currently in the memory pool
 →<br>`bytes` | number (int) | Required<br>(exactly 1) | The total number of bytes in the transactions in the memory pool
 →<br>`usage` | number (int) | Required<br>(exactly 1) | *Added in Bitcoin Core 0.11.0*<br><br>Total memory usage for the mempool in bytes
+`total_fee` | number (int) | Required<br>(exactly 1) | **Added in Dash Core 20.1.0**<br><br>Total fees for the mempool in DASH, ignoring fees modified through prioritizetransaction
 →<br>`maxmempool` | number (int) | Required<br>(exactly 1) | *Added in Bitcoin Core 0.12.0*<br><br>Maximum memory usage for the mempool in bytes
 →<br>`mempoolminfee` | number | Required<br>(exactly 1) | *Added in Bitcoin Core 0.12.0*<br><br>The lowest fee per kilobyte paid by any transaction in the memory pool
 →<br>`mempoolminfee` | number | Required<br>(exactly 1) | *Added in Dash Core 0.16.0*<br><br>Minimum fee rate in DASH/kB for tx to be accepted. Is the maximum of minrelaytxfee and minimum mempool fee
@@ -1541,7 +1543,7 @@ Name | Type | Presence | Description
 →<br>`instantsendlocks` | number (int) | Required<br>(exactly 1) | *Added in Dash Core 0.15.0*<br><br>Number of InstantSend locked transactions not yet in a block
 →<br>`unbroadcastcount` | number (int) | Required<br>(exactly 1) | *Added in Dash Core 20.0.0*<br><br>Current number of transactions that haven't passed initial broadcast yet
 
-*Example from Dash Core 20.0.0*
+*Example from Dash Core 20.1.0*
 
 ``` bash
 dash-cli -testnet getmempoolinfo
@@ -1550,15 +1552,17 @@ dash-cli -testnet getmempoolinfo
 Result:
 
 ``` json
+
 {
   "loaded": true,
-  "size": 11,
-  "bytes": 10565,
-  "usage": 26560,
+  "size": 3,
+  "bytes": 1116,
+  "usage": 5072,
+  "total_fee": 0.00001116,
   "maxmempool": 300000000,
   "mempoolminfee": 0.00001000,
   "minrelaytxfee": 0.00001000,
-  "instantsendlocks": 11,
+  "instantsendlocks": 3,
   "unbroadcastcount": 0
 }
 ```
