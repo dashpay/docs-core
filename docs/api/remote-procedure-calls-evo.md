@@ -283,6 +283,15 @@ Result (truncated):
 
 The `protx info` RPC returns detailed information about a deterministic masternode.
 
+*Parameters*
+
+| Name        | Type         | Presence                | Description               |
+| ----------- | ------------ | ----------------------- | ------------------------- |
+| `proTxHash` | string | Required<br>(Exactly 1) | The hash of the initial ProRegTx |
+| `blockHash` | string | Optional<br>(0 or 1) | The hash of the block to get deterministic masternode state at. Defaults to chain tip if not provided. |
+
+*Result--Details about a specific deterministic masternode*
+
 | Name                                | Type         | Presence                | Description                                                                                |
 | ----------------------------------- | ------------ | ----------------------- | ------------------------------------------------------------------------------------------ |
 | `result`                            | object       | Required<br>(exactly 1) | A JSON object containing a provider transaction, or JSON `null` if an error occurred            |
@@ -291,7 +300,7 @@ The `protx info` RPC returns detailed information about a deterministic masterno
 | →<br>`proTxHash`                    | string (hex) | Required<br>(exactly 1) | The hash of the provider transaction as hex in RPC byte order                                   |
 | →<br>`collateralHash`               | string (hex) | Required<br>(exactly 1) | The hash of the collateral transaction as hex in RPC byte order                                 |
 | →<br>`collateralIndex`              | number (int) | Required<br>(exactly 1) | The collateral index                                                                            |
-| → →<br>`collateralAddress`          | string       | Required<br>(exactly 1) | The collateral address                                                                          |
+| →<br>`collateralAddress`          | string       | Required<br>(exactly 1) | The collateral address                                                                          |
 | →<br>`operatorReward`               | number (float) | Required<br>(exactly 1) | The operator reward %. The value must be between `0.00` and `100.00`.                         |
 | →<br>`state`                        | object/null  | Required<br>(exactly 1) | An object containing a provider transaction state                                               |
 | → →<br>`version`                    | number (int) | Required<br>(exactly 1) | **Added in Dash Core 19.2.0**<br>The version of the most recent ProRegTx or ProUpRegTx          |
@@ -325,7 +334,7 @@ The `protx info` RPC returns detailed information about a deterministic masterno
 | → →<br>`lastOutboundSuccess`        | integer      | Required<br>(exactly 1) | Unix epoch time of the last successful outbound connection                                      |
 | → →<br>`lastOutboundSuccessElapsed` | integer      | Required<br>(exactly 1) | Elapsed time since last successful outbound attempt                                             |
 
-*Example from Dash Core 19.2.0*
+*Example from Dash Core 20.1.0*
 
 ```bash
 dash-cli -testnet protx info\
