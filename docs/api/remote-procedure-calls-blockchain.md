@@ -140,21 +140,10 @@ Name | Type | Presence | Description
 `result` | object/null | Required<br>(exactly 1) | An object containing the requested block, or JSON `null` if an error occurred
 →<br>`hash` | string (hex) | Required<br>(exactly 1) | The hash of this block's block header encoded as hex in RPC byte order.  This is the same as the hash provided in parameter #1
 →<br>`confirmations` | number (int) | Required<br>(exactly 1) | The number of confirmations the transactions in this block have, starting at 1 when this block is at the tip of the best block chain.  This score will be -1 if the the block is not part of the best block chain
-→<br>`size` | number (int) | Required<br>(exactly 1) | The size of this block in serialized block format, counted in bytes
 →<br>`height` | number (int) | Required<br>(exactly 1) | The height of this block on its block chain
 →<br>`version` | number (int) | Required<br>(exactly 1) | This block's version number.  See [block version numbers](../reference/block-chain-block-headers.md#block-versions)
 →<br>`versionHex` | string (hex) | Required<br>(exactly 1) | *Added in Bitcoin Core 0.13.0*<br><br>The block version formatted in hexadecimal
 →<br>`merkleroot` | string (hex) | Required<br>(exactly 1) | The merkle root for this block, encoded as hex in RPC byte order
-→<br>`tx` | array | Required<br>(exactly 1) | An array containing the TXIDs of all transactions in this block.  The transactions appear in the array in the same order they appear in the serialized block
-→ →<br>TXID | string (hex) | Required<br>(1 or more) | The TXID of a transaction in this block, encoded as hex in RPC byte order
-→<br>`cbTx` | object | Required<br>(exactly 1) | Coinbase special transaction details
-→ →<br>`version` | number (int) | Required<br>(exactly 1) | The version of the Coinbase special transaction (CbTx)
-→ →<br>`height` | number (int) | Required<br>(exactly 1) | The height of this block on its block chain
-→ →<br>`merkleRootMNList` | string (hex) | Required<br>(exactly 1) | The merkle root for the masternode list
-→ →<br>`merkleRootQuorums` | string (hex) | Required<br>(exactly 1) | The merkle root for the quorum list
-→ →<br>`bestCLHeightDiff` | number (int) | Required<br>(exactly 1) | **Added in Dash Core 20.0.0**<br>The best ChainLock height difference
-→ →<br>`bestCLSignature` | string (hex) | Required<br>(exactly 1) | **Added in Dash Core 20.0.0**<br>The best ChainLock signature
-→ →<br>`creditPoolBalance` | number (real) | Required<br>(exactly 1) | **Added in Dash Core 20.0.0**<br>The balance of the credit pool
 →<br>`time` | number (int) | Required<br>(exactly 1) | The value of the *time* field in the block header, indicating approximately when the block was created
 →<br>`mediantime` | number (int) | Required<br>(exactly 1) | *Added in Bitcoin Core 0.12.0*<br><br>The median block time in Unix epoch time  
 →<br>`nonce` | number (int) | Required<br>(exactly 1) | The nonce which was successful at turning this particular block into one that could be added to the best block chain
@@ -165,6 +154,17 @@ Name | Type | Presence | Description
 →<br>`previousblockhash` | string (hex) | Optional<br>(0 or 1) | The hash of the header of the previous block, encoded as hex in RPC byte order.  Not returned for genesis block
 →<br>`nextblockhash` | string (hex) | Optional<br>(0 or 1) | The hash of the next block on the best block chain, if known, encoded as hex in RPC byte order
 →<br>`chainlock` | bool | Required<br>(exactly 1) | *Added in Dash Core 0.14.0*<br><br>If set to `true`, this transaction is in a block that is locked (not susceptible to a chain re-org)
+→<br>`size` | number (int) | Required<br>(exactly 1) | The size of this block in serialized block format, counted in bytes
+→<br>`tx` | array | Required<br>(exactly 1) | An array containing the TXIDs of all transactions in this block.  The transactions appear in the array in the same order they appear in the serialized block
+→ →<br>TXID | string (hex) | Required<br>(1 or more) | The TXID of a transaction in this block, encoded as hex in RPC byte order
+→<br>`cbTx` | object | Required<br>(exactly 1) | Coinbase special transaction details
+→ →<br>`version` | number (int) | Required<br>(exactly 1) | The version of the Coinbase special transaction (CbTx)
+→ →<br>`height` | number (int) | Required<br>(exactly 1) | The height of this block on its block chain
+→ →<br>`merkleRootMNList` | string (hex) | Required<br>(exactly 1) | The merkle root for the masternode list
+→ →<br>`merkleRootQuorums` | string (hex) | Required<br>(exactly 1) | The merkle root for the quorum list
+→ →<br>`bestCLHeightDiff` | number (int) | Required<br>(exactly 1) | **Added in Dash Core 20.0.0**<br>The best ChainLock height difference
+→ →<br>`bestCLSignature` | string (hex) | Required<br>(exactly 1) | **Added in Dash Core 20.0.0**<br>The best ChainLock signature
+→ →<br>`creditPoolBalance` | number (real) | Required<br>(exactly 1) | **Added in Dash Core 20.0.0**<br>The balance of the credit pool
 
 *Result (if verbosity was `2`---a JSON block with full transaction details*
 
@@ -173,11 +173,21 @@ Name | Type | Presence | Description
 `result` | object/null | Required<br>(exactly 1) | An object containing the requested block, or JSON `null` if an error occurred
 →<br>`hash` | string (hex) | Required<br>(exactly 1) | The hash of this block's block header encoded as hex in RPC byte order.  This is the same as the hash provided in parameter #1
 →<br>`confirmations` | number (int) | Required<br>(exactly 1) | The number of confirmations the transactions in this block have, starting at 1 when this block is at the tip of the best block chain.  This score will be -1 if the the block is not part of the best block chain
-→<br>`size` | number (int) | Required<br>(exactly 1) | The size of this block in serialized block format, counted in bytes
 →<br>`height` | number (int) | Required<br>(exactly 1) | The height of this block on its block chain
 →<br>`version` | number (int) | Required<br>(exactly 1) | This block's version number.  See [block version numbers](../reference/block-chain-block-headers.md#block-versions)
 →<br>`versionHex` | string (hex) | Required<br>(exactly 1) | *Added in Bitcoin Core 0.13.0*<br><br>The block version formatted in hexadecimal
 →<br>`merkleroot` | string (hex) | Required<br>(exactly 1) | The merkle root for this block, encoded as hex in RPC byte order
+→<br>`time` | number (int) | Required<br>(exactly 1) | The value of the *time* field in the block header, indicating approximately when the block was created
+→<br>`mediantime` | number (int) | Required<br>(exactly 1) | *Added in Bitcoin Core 0.12.0*<br><br>The median block time in Unix epoch time  
+→<br>`nonce` | number (int) | Required<br>(exactly 1) | The nonce which was successful at turning this particular block into one that could be added to the best block chain
+→<br>`bits` | string (hex) | Required<br>(exactly 1) | The value of the *nBits* field in the block header, indicating the target threshold this block's header had to pass
+→<br>`difficulty` | number (real) | Required<br>(exactly 1) | The estimated amount of work done to find this block relative to the estimated amount of work done to find block 0
+→<br>`chainwork` | string (hex) | Required<br>(exactly 1) | The estimated number of block header hashes miners had to check from the genesis block to this block, encoded as big-endian hex
+→<br>`nTx` | number (int) | Required<br>(exactly 1) | _Added in Dash Core 0.16.0_<br><br>The number of transactions in the block
+→<br>`previousblockhash` | string (hex) | Optional<br>(0 or 1) | The hash of the header of the previous block, encoded as hex in RPC byte order.  Not returned for genesis block
+→<br>`nextblockhash` | string (hex) | Optional<br>(0 or 1) | The hash of the next block on the best block chain, if known, encoded as hex in RPC byte order
+→<br>`chainlock` | bool | Required<br>(exactly 1) | *Added in Dash Core 0.14.0*<br><br>If set to `true`, this transaction is in a block that is locked (not susceptible to a chain re-org)
+→<br>`size` | number (int) | Required<br>(exactly 1) | The size of this block in serialized block format, counted in bytes
 →<br>`tx` | array | Required<br>(exactly 1) | An array containing the TXIDs of all transactions in this block.  The transactions appear in the array in the same order they appear in the serialized block
 → →<br>`txid` | string (hex) | Required<br>(exactly 1) | The transaction's TXID encoded as hex in RPC byte order
 → →<br>`size` | number (int) | Required<br>(exactly 1) | *Added in Bitcoin Core 0.12.0*<br><br>The serialized transaction size
@@ -221,18 +231,8 @@ Name | Type | Presence | Description
 → →<br>`bestCLHeightDiff` | number (int) | Required<br>(exactly 1) | **Added in Dash Core 20.0.0**<br>The best ChainLock height difference
 → →<br>`bestCLSignature` | string (hex) | Required<br>(exactly 1) | **Added in Dash Core 20.0.0**<br>The best ChainLock signature
 → →<br>`creditPoolBalance` | number (real) | Required<br>(exactly 1) | **Added in Dash Core 20.0.0**<br>The balance of the credit pool
-→<br>`time` | number (int) | Required<br>(exactly 1) | The value of the *time* field in the block header, indicating approximately when the block was created
-→<br>`mediantime` | number (int) | Required<br>(exactly 1) | *Added in Bitcoin Core 0.12.0*<br><br>The median block time in Unix epoch time  
-→<br>`nonce` | number (int) | Required<br>(exactly 1) | The nonce which was successful at turning this particular block into one that could be added to the best block chain
-→<br>`bits` | string (hex) | Required<br>(exactly 1) | The value of the *nBits* field in the block header, indicating the target threshold this block's header had to pass
-→<br>`difficulty` | number (real) | Required<br>(exactly 1) | The estimated amount of work done to find this block relative to the estimated amount of work done to find block 0
-→<br>`chainwork` | string (hex) | Required<br>(exactly 1) | The estimated number of block header hashes miners had to check from the genesis block to this block, encoded as big-endian hex
-→<br>`nTx` | number (int) | Required<br>(exactly 1) | _Added in Dash Core 0.16.0_<br><br>The number of transactions in the block
-→<br>`previousblockhash` | string (hex) | Optional<br>(0 or 1) | The hash of the header of the previous block, encoded as hex in RPC byte order.  Not returned for genesis block
-→<br>`nextblockhash` | string (hex) | Optional<br>(0 or 1) | The hash of the next block on the best block chain, if known, encoded as hex in RPC byte order
-→<br>`chainlock` | bool | Required<br>(exactly 1) | *Added in Dash Core 0.14.0*<br><br>If set to `true`, this transaction is in a block that is locked (not susceptible to a chain re-org)
 
-*Example from Dash Core 20.0.0*
+*Example from Dash Core 20.1.0*
 
 Get a block in raw hex:
 
@@ -272,12 +272,21 @@ Result:
 ``` json
 {
   "hash": "000000e344040c68d19552dcf22114961a6d441cd840d61821e2d18a6ba5f565",
-  "confirmations": 1,
-  "size": 392,
+  "confirmations": -1,
   "height": 917286,
   "version": 536870912,
   "versionHex": "20000000",
   "merkleroot": "80b0b71b7156301c1c889a2851f8cf462b2fa3fb2d691f6b66d7243555c818e3",
+  "time": 1696348273,
+  "mediantime": 1696347803,
+  "nonce": 36867,
+  "bits": "1e01ecfa",
+  "difficulty": 0.00202846304931776,
+  "chainwork": "00000000000000000000000000000000000000000000000002d68d4d626cf7da",
+  "nTx": 1,
+  "previousblockhash": "000000ae7879362977946bbe058e1cdb159f1910181620389e6d77e00ea4e439",
+  "chainlock": false,
+  "size": 392,
   "tx": [
     "80b0b71b7156301c1c889a2851f8cf462b2fa3fb2d691f6b66d7243555c818e3"
   ],
@@ -289,16 +298,7 @@ Result:
     "bestCLHeightDiff": 0,
     "bestCLSignature": "a07b05ce98acc08f3dfc81592f183f9772008dedd06e30892039e1a4bc0ebb0cd1791205294d00754f29de459360983605f4c367bfc2bac0b38bb264f60add062dc7e172f77b20a8a060b9a58b76b31fddeb8f96411d0c8c19848422903769b3",
     "creditPoolBalance": 62430.25191932
-  },
-  "time": 1696348273,
-  "mediantime": 1696347803,
-  "nonce": 36867,
-  "bits": "1e01ecfa",
-  "difficulty": 0.00202846304931776,
-  "chainwork": "00000000000000000000000000000000000000000000000002d68d4d626cf7da",
-  "nTx": 1,
-  "previousblockhash": "000000ae7879362977946bbe058e1cdb159f1910181620389e6d77e00ea4e439",
-  "chainlock": true
+  }
 }
 ```
 
@@ -312,14 +312,24 @@ dash-cli -testnet getblock \
 Result:
 
 ``` json
+
 {
   "hash": "000000e344040c68d19552dcf22114961a6d441cd840d61821e2d18a6ba5f565",
-  "confirmations": 2,
-  "size": 392,
+  "confirmations": -1,
   "height": 917286,
   "version": 536870912,
   "versionHex": "20000000",
   "merkleroot": "80b0b71b7156301c1c889a2851f8cf462b2fa3fb2d691f6b66d7243555c818e3",
+  "time": 1696348273,
+  "mediantime": 1696347803,
+  "nonce": 36867,
+  "bits": "1e01ecfa",
+  "difficulty": 0.00202846304931776,
+  "chainwork": "00000000000000000000000000000000000000000000000002d68d4d626cf7da",
+  "nTx": 1,
+  "previousblockhash": "000000ae7879362977946bbe058e1cdb159f1910181620389e6d77e00ea4e439",
+  "chainlock": false,
+  "size": 392,
   "tx": [
     {
       "txid": "80b0b71b7156301c1c889a2851f8cf462b2fa3fb2d691f6b66d7243555c818e3",
@@ -385,7 +395,7 @@ Result:
         "creditPoolBalance": 62430.25191932
       },
       "hex": "03000500010000000000000000000000000000000000000000000000000000000000000000ffffffff060326ff0d0101ffffffff0397f4e127000000001976a914c69a0bda7daaae481be8def95e5f347a1d00a4b488ac94196f1600000000016a4dd56325000000001976a91464f2b2b84f62d68a2cd7f7f5fb2b5aa75ef716d788ac00000000af030026ff0d00739f69d98c43d95c201a42cae33abd9762429c6b598c5989cd4c0c0bf81a3a821f136139da5605a50f47aab22ff8f36de83f8c47f2667ce9483d39d50d39254700a07b05ce98acc08f3dfc81592f183f9772008dedd06e30892039e1a4bc0ebb0cd1791205294d00754f29de459360983605f4c367bfc2bac0b38bb264f60add062dc7e172f77b20a8a060b9a58b76b31fddeb8f96411d0c8c19848422903769b3fc834c91ad050000",
-      "instantlock": true,
+      "instantlock": false,
       "instantlock_internal": false
     }
   ],
@@ -397,17 +407,7 @@ Result:
     "bestCLHeightDiff": 0,
     "bestCLSignature": "a07b05ce98acc08f3dfc81592f183f9772008dedd06e30892039e1a4bc0ebb0cd1791205294d00754f29de459360983605f4c367bfc2bac0b38bb264f60add062dc7e172f77b20a8a060b9a58b76b31fddeb8f96411d0c8c19848422903769b3",
     "creditPoolBalance": 62430.25191932
-  },
-  "time": 1696348273,
-  "mediantime": 1696347803,
-  "nonce": 36867,
-  "bits": "1e01ecfa",
-  "difficulty": 0.00202846304931776,
-  "chainwork": "00000000000000000000000000000000000000000000000002d68d4d626cf7da",
-  "nTx": 1,
-  "previousblockhash": "000000ae7879362977946bbe058e1cdb159f1910181620389e6d77e00ea4e439",
-  "nextblockhash": "000001045ef47d29483b8021b1cafe2deddac22bf8d2fb13aed80524a4ffa30c",
-  "chainlock": true
+  }
 }
 ```
 
