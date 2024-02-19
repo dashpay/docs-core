@@ -501,49 +501,53 @@ The [`getpeerinfo` RPC](../api/remote-procedure-calls-network.md#getpeerinfo) re
 
 *Result---information about each currently-connected network node*
 
-| Name                            | Type                | Presence                | Description                                                                                                                                                                                                                                                                          |
-| ------------------------------- | ------------------- | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `result`                        | array               | Required<br>(exactly 1) | An array of objects each describing one connected node.  If there are no connections, the array will be empty                                                                                                                                                                        |
-| →<br>Node                       | object              | Optional<br>(0 or more) | An object describing a particular connected node                                                                                                                                                                                                                                     |
-| → →<br>`id`                     | number (int)        | Required<br>(exactly 1) | The node's index number in the local node address database                                                                                                                                                                                                                           |
-| → →<br>`addr`                   | string              | Required<br>(exactly 1) | The IP address and port number used for the connection to the remote node                                                                                                                                                                                                            |
-| → →<br>`addrlocal`              | string              | Optional<br>(0 or 1)    | Our IP address and port number according to the remote node.  May be incorrect due to error or lying.  Most SPV nodes set this to `127.0.0.1:9999`                                                                                                                                   |
-| → →<br>`network`                | string              | Optional<br>(0 or 1)    | **Added in Dash Core 20.0.0**<br>The network being used (ipv4, ipv6, onion, not_publicly_routable)                                                                                                                    |
-| → →<br>`mapped_as`              | string              | Optional<br>(0 or 1)    | _Added in Dash Core 18.0.0_<br>The AS in the BGP route to the peer used for diversifying peer selection                                                                                                                                                                            |
-| → →<br>`addrbind`               | string              | Optional<br>(0 or 1)    | Bind address of the connection to the peer                                                                                                                                                                                                                                           |
-| → →<br>`services`               | string (hex)        | Required<br>(exactly 1) | The services advertised by the remote node in its [`version` message](../reference/p2p-network-control-messages.md#version)                                                                                                                                                                 |
-| → →<br>`servicesnames`          | array               | Required<br>(exactly 1) | _Added in Dash Core 18.0.0_<br>An array of strings describing the services offered, in human-readable form.                                                                                                                                                                        |
-| → → →<br>SERVICE_NAME           | string              | Required<br>(exactly 1) | The service name if it is recognised.                                                                                                                                                                                                                                                |
-| → →<br>`verified_proregtx_hash` | string (hex)        | Optional<br>(0 or 1)    | The ProRegTx of the masternode                                                                                                                                                                                                                                                       |
-| → →<br>`verified_pubkey_hash`   | string (hex)        | Optional<br>(0 or 1)    | The hashed operator public key of the masternode                                                                                                                                                                                                                                     |
-| → →<br>`lastsend`               | number (int)        | Required<br>(exactly 1) | The Unix epoch time when we last successfully sent data to the TCP socket for this node                                                                                                                                                                                              |
-| → →<br>`lastrecv`               | number (int)        | Required<br>(exactly 1) | The Unix epoch time when we last received data from this node                                                                                                                                                                                                                        |
-| → →<br>`bytessent`              | number (int)        | Required<br>(exactly 1) | The total number of bytes we've sent to this node                                                                                                                                                                                                                                    |
-| → →<br>`bytesrecv`              | number (int)        | Required<br>(exactly 1) | The total number of bytes we've received from this node                                                                                                                                                                                                                              |
-| → →<br>`conntime`               | number (int)        | Required<br>(exactly 1) | The Unix epoch time when we connected to this node                                                                                                                                                                                                                                   |
-| → →<br>`timeoffset`             | number (int)        | Required<br>(exactly 1) | *Added in Bitcoin Core 0.12.0*<br><br>The time offset in seconds                                                                                                                                                                                                                     |
-| → →<br>`pingtime`               | number (real)       | Required<br>(exactly 1) | The number of seconds this node took to respond to our last P2P [`ping` message](../reference/p2p-network-control-messages.md#ping)                                                                                                                                                         |
-| → →<br>`minping`                | number (real)       | Optional<br>(0 or 1)    | *Updated in Bitcoin Core 0.13.0*<br><br>The minimum observed ping time (if any at all)                                                                                                                                                                                               |
-| → →<br>`pingwait`               | number (real)       | Optional<br>(0 or 1)    | The number of seconds we've been waiting for this node to respond to a P2P [`ping` message](../reference/p2p-network-control-messages.md#ping).  Only shown if there's an outstanding [`ping` message](../reference/p2p-network-control-messages.md#ping)                                          |
-| → →<br>`version`                | number (int)        | Required<br>(exactly 1) | The protocol version number used by this node.  See the [protocol versions section](../reference/p2p-network-protocol-versions.md) for more information                                                                                                                                     |
-| → →<br>`subver`                 | string              | Required<br>(exactly 1) | The user agent this node sends in its [`version` message](../reference/p2p-network-control-messages.md#version).  This string will have been sanitized to prevent corrupting the JSON results.  May be an empty string                                                                      |
-| → →<br>`inbound`                | bool                | Required<br>(exactly 1) | Set to `true` if this node connected to us (inbound); set to `false` if we connected to this node (outbound)                                                                                                                                                                         |
-| → →<br>`addnode`                | bool                | Required<br>(exactly 1) | Set to `true` if this node was added via the [`addnode` RPC](../api/remote-procedure-calls-network.md#addnode).                                                                                                                                                                   |
-| → →<br>`masternode`             | bool                | Required<br>(exactly 1) | *Added in Dash Core 0.16.0*<br>Whether connection was due to masternode connection attempt                                                                                                                                                                                           |
-| → →<br>`startingheight`         | number (int)        | Required<br>(exactly 1) | The height of the remote node's block chain when it connected to us as reported in its [`version` message](../reference/p2p-network-control-messages.md#version)                                                                                                                            |
-| → →<br>`banscore`               | number (int)        | Required<br>(exactly 1) | The ban score we've assigned the node based on any misbehavior it's made.  By default, Dash Core disconnects when the ban score reaches `100`                                                                                                                                        |
-| → →<br>`synced_headers`         | number (int)        | Required<br>(exactly 1) | The highest-height header we have in common with this node based the last P2P [`headers` message](../reference/p2p-network-data-messages.md#headers) it sent us.  If a [`headers` message](../reference/p2p-network-data-messages.md#headers) has not been received, this will be set to `-1`      |
-| → →<br>`synced_blocks`          | number (int)        | Required<br>(exactly 1) | The highest-height block we have in common with this node based on P2P [`inv` messages](../reference/p2p-network-data-messages.md#inv) this node sent us.  If no block [`inv` messages](../reference/p2p-network-data-messages.md#inv) have been received from this node, this will be set to `-1` |
-| → →<br>`inflight`               | array               | Required<br>(exactly 1) | An array of blocks which have been requested from this peer.  May be empty                                                                                                                                                                                                           |
-| → → →<br>Blocks                 | number (int)        | Optional<br>(0 or more) | The height of a block being requested from the remote peer                                                                                                                                                                                                                           |
-| → →<br>`whitelisted`            | bool                | Required<br>(exactly 1) | Set to `true` if the remote peer has been whitelisted; otherwise, set to `false`.  Whitelisted peers will not be banned if their ban score exceeds the maximum (100 by default).  By default, peers connecting from localhost are whitelisted                                        |
-| → →<br>`permissions`            | array               | Required<br>(exactly 1) | _Added in Dash Core 18.0.0_<br>Any special permissions that have been granted to this peer                                                                                                                                                                                         |
-| → →<br>`bytessent_per_msg`      | string : <br>object | Required<br>(exactly 1) | *Added in Bitcoin Core 0.13.0*<br><br>Information about total sent bytes aggregated by message type                                                                                                                                                                                  |
-| → → →<br>Message Type           | number (int)        | Required<br>(1 or more) | Total sent bytes aggregated by message type. One field for every used message type                                                                                                                                                                                                   |
-| → →<br>`bytesrecv_per_msg`      | string : <br>object | Required<br>(exactly 1) | *Added in Bitcoin Core 0.13.0*<br><br>Information about total received bytes aggregated by message type                                                                                                                                                                              |
-| → → →<br>Message Type           | number (int)        | Required<br>(1 or more) | Total received bytes aggregated by message type. One field for every used message type                                                                                                                                                                                               |
+| Name | Type | Presence | Description |
+| ---- | ---- | -------- | ----------- |
+| `result`                        | array               | Required<br>(exactly 1) | An array of objects each describing one connected node.  If there are no connections, the array will be empty |
+| →<br>Node                       | object              | Optional<br>(0 or more) | An object describing a particular connected node |
+| → →<br>`id`                     | number (int)        | Required<br>(exactly 1) | The node's index number in the local node address database |
+| → →<br>`addr`                   | string              | Required<br>(exactly 1) | The IP address and port number used for the connection to the remote node |
+| → →<br>`addrlocal`              | string              | Optional<br>(0 or 1)    | Our IP address and port number according to the remote node.  May be incorrect due to error or lying.  Most SPV nodes set this to `127.0.0.1:9999` |
+| → →<br>`network`                | string              | Optional<br>(0 or 1)    | **Added in Dash Core 20.0.0**<br>The network being used (ipv4, ipv6, onion, i2p, not_publicly_routable)                                                                                                                    |
+| → →<br>`mapped_as`              | string              | Optional<br>(0 or 1)    | _Added in Dash Core 18.0.0_<br>The AS in the BGP route to the peer used for diversifying peer selection |
+| → →<br>`addrbind`               | string              | Optional<br>(0 or 1)    | Bind address of the connection to the peer |
+| → →<br>`services`               | string (hex)        | Required<br>(exactly 1) | The services advertised by the remote node in its [`version` message](../reference/p2p-network-control-messages.md#version) |
+| → →<br>`servicesnames`          | array               | Required<br>(exactly 1) | _Added in Dash Core 18.0.0_<br>An array of strings describing the services offered, in human-readable form. |
+| → → →<br>SERVICE_NAME           | string              | Required<br>(exactly 1) | The service name if it is recognised. |
+| → →<br>`verified_proregtx_hash` | string (hex)        | Optional<br>(0 or 1)    | The ProRegTx of the masternode |
+| → →<br>`verified_pubkey_hash`   | string (hex)        | Optional<br>(0 or 1)    | The hashed operator public key of the masternode |
+| `relaytxes`          | bool         | Required<br>(exactly 1) | Whether peer has asked us to relay transactions to it. |
+| → →<br>`lastsend`               | number (int)        | Required<br>(exactly 1) | The Unix epoch time when we last successfully sent data to the TCP socket for this node |
+| → →<br>`lastrecv`               | number (int)        | Required<br>(exactly 1) | The Unix epoch time when we last received data from this node |
+| `last_transaction`   | number (int) | Required<br>(exactly 1) | **Added in Dash Core 20.1.0**<br>The UNIX epoch time of the last valid transaction received from this peer. |
+| `last_block`         | number (int) | Required<br>(exactly 1) | **Added in Dash Core 20.1.0**<br>The UNIX epoch time of the last block received from this peer. |
+| → →<br>`bytessent`              | number (int)        | Required<br>(exactly 1) | The total number of bytes we've sent to this node |
+| → →<br>`bytesrecv`              | number (int)        | Required<br>(exactly 1) | The total number of bytes we've received from this node |
+| → →<br>`conntime`               | number (int)        | Required<br>(exactly 1) | The Unix epoch time when we connected to this node |
+| → →<br>`timeoffset`             | number (int)        | Required<br>(exactly 1) | *Added in Bitcoin Core 0.12.0*<br><br>The time offset in seconds |
+| → →<br>`pingtime`               | number (real)       | Required<br>(exactly 1) | The number of seconds this node took to respond to our last P2P [`ping` message](../reference/p2p-network-control-messages.md#ping) |
+| → →<br>`minping`                | number (real)       | Optional<br>(0 or 1)    | *Updated in Bitcoin Core 0.13.0*<br><br>The minimum observed ping time (if any at all) |
+| → →<br>`pingwait`               | number (real)       | Optional<br>(0 or 1)    | The number of seconds we've been waiting for this node to respond to a P2P [`ping` message](../reference/p2p-network-control-messages.md#ping).  Only shown if there's an outstanding [`ping` message](../reference/p2p-network-control-messages.md#ping) |
+| → →<br>`version`                | number (int)        | Required<br>(exactly 1) | The protocol version number used by this node.  See the [protocol versions section](../reference/p2p-network-protocol-versions.md) for more information |
+| → →<br>`subver`                 | string              | Required<br>(exactly 1) | The user agent this node sends in its [`version` message](../reference/p2p-network-control-messages.md#version).  This string will have been sanitized to prevent corrupting the JSON results.  May be an empty string |
+| → →<br>`inbound`                | bool                | Required<br>(exactly 1) | Set to `true` if this node connected to us (inbound); set to `false` if we connected to this node (outbound) |
+| → →<br>`addnode`                | bool                | Required<br>(exactly 1) | Set to `true` if this node was added via the [`addnode` RPC](../api/remote-procedure-calls-network.md#addnode). |
+| → →<br>`masternode`             | bool                | Required<br>(exactly 1) | *Added in Dash Core 0.16.0*<br>Whether connection was due to masternode connection attempt |
+| → →<br>`startingheight`         | number (int)        | Required<br>(exactly 1) | The height of the remote node's block chain when it connected to us as reported in its [`version` message](../reference/p2p-network-control-messages.md#version) |
+| → →<br>`banscore`               | number (int)        | Required<br>(exactly 1) | The ban score we've assigned the node based on any misbehavior it's made.  By default, Dash Core disconnects when the ban score reaches `100` |
+| → →<br>`synced_headers` | number (int) | Required<br>(exactly 1) | The highest-height header we have in common with this node based the last P2P [`headers` message](../reference/p2p-network-data-messages.md#headers) it sent us. If a [`headers` message](../reference/p2p-network-data-messages.md#headers) has not been received, this will be set to `-1` |
+| → →<br>`synced_blocks` | number (int) | Required<br>(exactly 1) | The highest-height block we have in common with this node based on P2P [`inv` messages](../reference/p2p-network-data-messages.md#inv) this node sent us. If no block [`inv` messages](../reference/p2p-network-data-messages.md#inv) have been received from this node, this will be set to `-1` |
+| → →<br>`inflight` | array | Required<br>(exactly 1) | An array of blocks which have been requested from this peer. May be empty |
+| → → →<br>Blocks | number (int) | Optional<br>(0 or more) | The height of a block being requested from the remote peer |
+| → →<br>`whitelisted` | bool | Required<br>(exactly 1) | Set to `true` if the remote peer has been whitelisted; otherwise, set to `false`. Whitelisted peers will not be banned if their ban score exceeds the maximum (100 by default). By default, peers connecting from localhost are whitelisted |
+| → →<br>`permissions` | array | Required<br>(exactly 1) | _Added in Dash Core 18.0.0_<br>Any special permissions that have been granted to this peer |
+| → →<br>`bytessent_per_msg` | string : <br>object | Required<br>(exactly 1) | *Added in Bitcoin Core 0.13.0*<br><br>Information about total sent bytes aggregated by message type |
+| → → →<br>Message Type | number (int) | Required<br>(1 or more) | Total sent bytes aggregated by message type. One field for every used message type |
+| → →<br>`bytesrecv_per_msg` | string : <br>object | Required<br>(exactly 1) | *Added in Bitcoin Core 0.13.0*<br><br>Information about total received bytes aggregated by message type |
+| → → →<br>Message Type | number (int) | Required<br>(1 or more) | Total received bytes aggregated by message type. One field for every used message type |
+| `connection_type` | string | Required<br>(exactly 1) | **Added in Dash Core 20.1.0**<br>Type of connection:<br>outbound-full-relay, block-relay-only, inbound, manual, addr-fetch, feeler.<br>Describes how the connection was established.<br>**Note: This output is subject to change in future releases as connection behaviors are refined.** |
 
-*Example from Dash Core 18.0.0*
+*Example from Dash Core 20.1.0*
 
 ```bash
 dash-cli -testnet getpeerinfo
@@ -554,60 +558,82 @@ Result (edited to show only a single entry, with IP addresses changed to
 
 ```json
 [
-   {
-    "id": 1332,
-    "addr": "[2a00:1398:4:2a03:215:5dff:fed6:1032]:55788",
-    "addrbind": "[2406:9840:f:8a4:1c82:234d:617c:e875]:9999",
-    "addrlocal": "[2406:9840:f:8a4:1c82:234d:617c:e875]:9999",
-    "network": "ipv6",
-    "services": "0000000000000001",
+  {
+    "id": 0,
+    "addr": "198.51.100.1:19999",
+    "addrbind": "192.0.2.1:34896",
+    "addrlocal": "203.0.113.1:34896",
+    "network": "ipv4",
+    "services": "0000000000000c05",
     "servicesnames": [
-      "NETWORK"
+      "NETWORK",
+      "BLOOM",
+      "NETWORK_LIMITED",
+      "HEADERS_COMPRESSED"
     ],
-    "relaytxes": true,
-    "lastsend": 1690400596,
-    "lastrecv": 1690400484,
-    "bytessent": 87759,
-    "bytesrecv": 3836,
-    "conntime": 1690393760,
-    "timeoffset": 4,
-    "pingtime": 0.289504,
-    "minping": 0.223147,
-    "version": 70215,
-    "subver": "/dsn.tm.kit.edu/dash:0.14.0.2/",
-    "inbound": true,
+    "relaytxes": false,
+    "lastsend": 1707941906,
+    "lastrecv": 1707941902,
+    "last_transaction": 0,
+    "last_block": 1707934590,
+    "bytessent": 240367,
+    "bytesrecv": 252966,
+    "conntime": 1707934579,
+    "timeoffset": 0,
+    "pingtime": 0.09482599999999999,
+    "minping": 0.093489,
+    "version": 70230,
+    "subver": "/Dash Core:20.0.2/",
+    "inbound": false,
     "addnode": false,
     "masternode": false,
-    "startingheight": -1,
+    "startingheight": 970213,
     "banscore": 0,
-    "synced_headers": -1,
-    "synced_blocks": -1,
+    "synced_headers": 970268,
+    "synced_blocks": 970268,
     "inflight": [
     ],
     "whitelisted": false,
     "permissions": [
     ],
     "bytessent_per_msg": {
-      "addr": 29992,
-      "getheaders": 1085,
-      "inv": 52767,
-      "ping": 1824,
-      "pong": 1824,
+      "dsq": 151226,
+      "getdata": 10361,
+      "getheaders2": 1053,
+      "getsporks": 24,
+      "govsync": 69618,
+      "headers2": 3180,
+      "inv": 671,
+      "ping": 1984,
+      "pong": 1984,
+      "sendaddrv2": 24,
       "sendcmpct": 33,
-      "senddsq": 25,
-      "sendheaders": 24,
+      "sendheaders2": 24,
       "verack": 24,
       "version": 161
     },
     "bytesrecv_per_msg": {
-      "getaddr": 24,
-      "ping": 1824,
-      "pong": 1824,
+      "addrv2": 40,
+      "block": 209737,
+      "clsig": 624,
+      "getheaders2": 1053,
+      "headers2": 27918,
+      "inv": 4427,
+      "mnauth": 152,
+      "ping": 1984,
+      "pong": 1984,
+      "sendaddrv2": 24,
+      "sendcmpct": 33,
+      "senddsq": 25,
+      "sendheaders2": 24,
+      "spork": 2420,
+      "ssc": 2336,
       "verack": 24,
-      "version": 140
-    }
+      "version": 161
+    },
+    "connection_type": "block-relay-only"
   }
-]
+}
 ```
 
 *See also*

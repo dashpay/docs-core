@@ -812,7 +812,7 @@ Note: For backwards compatibility, passing in a `true` instead of an object will
 | → <br>`changeAddress`          | string             | Optional<br>(0 or 1)    | The address to receive the change. If not set, the address is chosen from address pool                                                                                                                                    |
 | → <br>`changePosition`         | nummeric (int)     | Optional<br>(0 or 1)    | The index of the change output. If not set, the change position is randomly chosen |
 | `includeWatching`              | bool               | Optional<br>(0 or 1)    | Inputs from watch-only addresses are also considered. The default is `false` for non-watching-only wallets and `true` for watching-only wallets                                                                           |
-| → <br>`lockUnspent`            | bool               | Optional<br>(0 or 1)    | The selected outputs are locked after running the rpc call. The default is `false` |
+| → <br>`lockUnspent`            | bool               | Optional<br>(0 or 1)    | The selected outputs are locked after running the rpc call. The default is `false`. This applies to manually selected coins also since Dash Core 20.1.0. |
 | → <br>`feeRate`                | numeric (bitcoins) | Optional<br>(0 or 1)    | The specific feerate  you are willing to pay (BTC per KB). If not set, the wallet determines the fee |
 | → <br>`subtractFeeFromOutputs` | array              | Optional<br>(0 or 1)    | A json array of integers. The fee will be equally deducted from the amount of each specified output. The outputs are specified by their zero-based index, before any change output is added.                              |
 | → →<br>Output index            | numeric (int)      | Optional<br>(0 or more) | A output index number (vout) from which the fee should be subtracted. If multiple vouts are provided, the total fee will be divided by the number of vouts listed and each vout will have that amount subtracted from it. |
@@ -1232,14 +1232,14 @@ _Result (if verbose=`false`)---the serialized transactions_
 | Name     | Type         | Presence                | Description |
 | -------- | ------------ | ----------------------- | ----------- |
 | `result` | object | Required<br>(exactly 1) | If the transaction was found, this will be an object containing the serialized transaction encoded as hex. |
-|→<br>TXID / Raw tx | string:string | Required<br>(1 or more) | A key/value pair with the transaction ID (key) and raw transaction data (value). See the [`getrawtransaction` RPC](../api/remote-procedure-calls-raw-transactions.md#rpc-raw-txs-getrawtx-hex) for an example of the hex transaction data. |
+|→<br>TXID / Raw tx | string:string | Required<br>(1 or more) | A key/value pair with the transaction ID (key) and raw transaction data (value). See the [`getrawtransaction` RPC](#rpc-raw-txs-getrawtx-hex) for an example of the hex transaction data. |
 
 _Result (if verbose=`true`)---the decoded transactions_
 
 | Name                        | Type           | Presence                | Description |
 | --------------------------- | -------------- | ----------------------- | ----------- |
 | `result`                    | object         | Required<br>(exactly 1) | If the transaction was found, this will be an object describing it |
-|→<br>TXID / Decoded tx | string:string | Required<br>(1 or more) | A key/value pair with the transaction ID (key) and decoded transaction data represented in JSON (value). See the [`getrawtransaction` RPC](../api/remote-procedure-calls-raw-transactions.md#rpc-raw-txs-getrawtx-decoded) for an example of the decoded transaction data. |
+|→<br>TXID / Decoded tx | string:string | Required<br>(1 or more) | A key/value pair with the transaction ID (key) and decoded transaction data represented in JSON (value). See the [`getrawtransaction` RPC](#rpc-raw-txs-getrawtx-decoded) for an example of the decoded transaction data. |
 
 _Examples from Dash Core 20.1.0_
 
@@ -1266,7 +1266,7 @@ _See also:_
 
 ## GetTxChainlocks
 
-The [`gettxchainlocks` RPC](../api/remote-procedure-calls-raw-transactions.md#gettxchainlocks) returns the block height each transaction was mined at and whether it is ChainLocked or not.
+The [`gettxchainlocks` RPC](../api/remote-procedure-calls-raw-transactions.md#gettxchainlocks) returns the block height each transaction was mined at and indicates whether it is in the mempool, ChainLocked, or neither.
 
 _Parameter #1---Transaction IDs_
 
@@ -1277,17 +1277,18 @@ _Parameter #1---Transaction IDs_
 
 _Result---transaction information_
 
-| Name                 | Type         | Presence                | Description                                                                                            |
-| -------------------- | ------------ | ----------------------- | ------------------------------------------------------------------------------------------------------ |
-| `result`             | array        | Required<br>(exactly 1) | An array of objects providing transaction information for each transaction ID in the input array. |
-| →<br>Transaction info | object      | Optional<br>(0 or more) | An object containting transaction details |
-| →<br>`height`        | number       | Required<br>(exactly 1) | Height of the block containing the transaction |
-| →<br>`chainlock`     | bool         | Required<br>(exactly 1) | ChainLock status for the block containing the transaction |
+| Name                 | Type         | Presence                | Description |
+| -------------------- | ------- | ----------------------- | ----------- |
+| `result`             | array   | Required<br>(exactly 1) | An array of objects providing transaction information for each transaction ID in the input array. |
+| →<br>Transaction info | object | Optional<br>(0 or more) | An object containting transaction details |
+| →<br>`height`        | number  | Required<br>(exactly 1) | Height of the block containing the transaction (-1 if the transaction is not in a block) |
+| →<br>`chainlock`     | bool    | Required<br>(exactly 1) | ChainLock status for the block containing the transaction |
+| →<br>`mempool`       | bool    | Required<br>(exactly 1) | **Added in Dash Core 20.1.0**<br><br>Mempool status for the transaction |
 
-_Example from Dash Core 20.0.0_
+_Example from Dash Core 20.1.0_
 
 ```bash
-dash-cli -testnet gettxchainlocks "[\"5aa787033352f815e6cd9d59733903362c80f6725f7427200e335502dd7d8b10\", \"77363fbcabce942f339cfac1e2ddd8fd6eaa641c53facf925ce87aeefaa9baad\"]"
+dash-cli -testnet gettxchainlocks "[\"d743b1ab2ff390bcc60b4672c293d95909989ca402fdea487f582b22da051ce8\", \"dd7a41e421c4f522353a8f91f077e15a1325518e60812d0c6c9995c1d61ab60e\"]"
 ```
 
 Result:
@@ -1295,12 +1296,14 @@ Result:
 ```json
 [
   {
-    "height": 917009,
-    "chainlock": true
+    "height": 957527,
+    "chainlock": true,
+    "mempool": false
   },
   {
-    "height": 916003,
-    "chainlock": true
+    "height": -1,
+    "chainlock": false,
+    "mempool": true
   }
 ]
 ```
@@ -1491,24 +1494,28 @@ The [`testmempoolaccept` RPC](../api/remote-procedure-calls-raw-transactions.md#
 
 _Parameter #1---raw txs_
 
-| Name     | Type  | Presence                | Description                                                                  |
-| -------- | ----- | ----------------------- | ---------------------------------------------------------------------------- |
+| Name     | Type  | Presence                | Description |
+| -------- | ----- | ----------------------- | ----------- |
 | `rawtxs` | array | Required<br>(exactly 1) | An array of hex strings of raw transactions (the length must be one for now) |
 
 _Parameter #2---set max fee rate_
 
-| Name         | Type   | Presence             | Description                                                                                                                                                                                                                                                                             |
-| ------------ | ------ | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Name         | Type   | Presence             | Description |
+| ------------ | ------ | -------------------- | ----------- |
 | `maxfeerate` | number | Optional<br>(0 or 1) | Reject transactions whose fee rate is higher than the specified value, expressed in DASH/kB. Changed from `allowhighfees` in Dash Core 18.0.0. See [previous version](https://dashcore.readme.io/v0.17.0/docs/core-api-ref-remote-procedure-calls-raw-transactions#sendrawtransaction). |
 
 _Result---mempool acceptance test results_
 
-| Name                 | Type         | Presence                | Description                                                                                            |
-| -------------------- | ------------ | ----------------------- | ------------------------------------------------------------------------------------------------------ |
-| `result`             | array        | Required<br>(exactly 1) | The result of the mempool acceptance test for each raw transaction in the input array.                 |
+| Name                 | Type         | Presence                | Description |
+| -------------------- | ------------ | ----------------------- | ----------- |
+| `result`             | array        | Required<br>(exactly 1) | The result of the mempool acceptance test for each raw transaction in the input array. |
 | →<br>`txid`          | string (hex) | Required<br>(exactly 1) | The TXID of the transaction the output appeared in.  The TXID must be encoded in hex in RPC byte order |
-| →<br>`allowed`       | bool         | Required<br>(exactly 1) | If the mempool allows this tx to be inserted                                                           |
-| →<br>`reject-reason` | string       | Optional<br>(0 or 1)    | A rejection string that is only present when 'allowed' is false.                                       |
+| `package-error` | string | Optional<br>(0 or 1) | Package validation error, if any (only possible if rawtxs had more than 1 transaction). |
+| →<br>`allowed`       | bool         | Required<br>(exactly 1) | Whether this tx would be accepted to the mempool and pass client-specified maxfeerate. If not present, the tx was not fully validated due to a failure in another tx in the list. |
+| `vsize`         | number (int) | Required<br>(exactly 1) | Virtual transaction size. |
+| `fees`          | object       | Optional<br>(0 or 1)    | Transaction fees (only present if 'allowed' is true). |
+| →<br>`base`     | number       | Required<br>(exactly 1) | Transaction fee in DASH. |
+| →<br>`reject-reason` | string       | Optional<br>(0 or 1)    | A rejection string that is only present when 'allowed' is false. |
 
 _Example from Dash Core 18.0.0_
 

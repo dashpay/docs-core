@@ -43,6 +43,7 @@ Name | Type | Presence | Description
 →<br>`transactions` | array (objects) | Optional<br>(0 or more) | Non-coinbase transactions to be included in the next block
 → →<br>Transaction | object | Optional<br>(0 or more) | Non-coinbase transaction
 → → →<br>`data` | string (hex) | Optional<br>(0 or more) | Transaction data encoded in hex (byte-for-byte)
+→ → →<br>`txid` | string (hex) | Optional<br>(0 or more) | Transaction ID encoded in little-endian hexadecimal |
 → → →<br>`hash` | string (hex) | Optional<br>(0 or more) | The hash/id encoded in little-endian hex
 → → →<br>`depends` | array (numbers) | Required<br>(0 or more) | An array holding TXIDs of unconfirmed transactions this TX depends upon (parent transactions).
 → → → →<br>Transaction number | number | Optional<br>(1 or more) | Transactions before this one (by 1-based index in `transactions` list) that must be present in the final block if this one is
@@ -51,6 +52,7 @@ Name | Type | Presence | Description
 →<br>`coinbaseaux` | object | Required<br>(exactly 1) | A object containing data that should be included in the coinbase scriptSig content
 →<br>`coinbasevalue` | number | Required<br>(exactly 1) | The maximum allowable input to coinbase transaction, including the generation award and transaction fees (in duffs)
 →<br>`coinbasetxn` | object | Required<br>(exactly 1) | **Removed in Dash Core 20.0.0**
+`longpollid` | string | Required<br>(exactly 1) | An ID to include with a request to longpoll on an update to this template
 →<br>`target` | string | Required<br>(exactly 1) | The hash target
 →<br>`mintime` | number | Required<br>(exactly 1) | The minimum timestamp appropriate for next block time in seconds since epoch
 →<br>`mutable` | array (string) | Required<br>(exactly 1) | The list of ways the block template may be changed
