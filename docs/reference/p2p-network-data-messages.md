@@ -36,7 +36,6 @@ The currently-available type identifiers are:
 | 26               | MSG_QUORUM_PREMATURE_COMMITMENT    | The hash is a long-living masternode quorum premature commitment.<br>_Added in 0.14.0_
 | 28               | MSG_QUORUM_RECOVERED_SIG                        | The hash is a long-living masternode quorum recovered signature. <br><br>**Note**: Only relayed to other masternodes in the same quorum and nodes that have sent a [`qwatch` message](../reference/p2p-network-quorum-messages.md#qwatch) as of Dash Core 0.17.0<br>_Added in 0.14.0_
 | 29               | MSG_CLSIG                                     | The hash is a ChainLock signature.<br>_Added in 0.14.0_
-| 30               | MSG_ISLOCK                                   | The hash is an LLMQ-based InstantSend lock ([DIP10](https://github.com/dashpay/dips/blob/master/dip-0010.md)).<br>_Added in 0.14.0_
 | 31               | MSG_ISDLOCK                                   | The hash is an LLMQ-based deterministic InstantSend lock ([DIP22](https://github.com/dashpay/dips/blob/master/dip-0022.md)).<br>_Added in 18.0_
 
 **Deprecated Type Identifiers**
@@ -45,8 +44,7 @@ The following type identifiers have been deprecated recently. To see type identi
 
 | Type Identifier | Name                                                                          | Description
 |-----------------|-------------------------------------------------------------------------------|---------------
-| 4               | MSG_LEGACY_TXLOCK_REQUEST | **Deprecated in 20.0.0**<br><br>`MSG_TXLOCK_REQUEST` prior to Dash Core 0.15.0. The hash is an InstantSend transaction lock request. Transactions received this way are automatically converted to a standard [`tx` message](../reference/p2p-network-data-messages.md#tx) as of Dash Core 0.15.0.
-| 5               | MSG_TXLOCK_VOTE          | **Deprecated in 0.15.0**<br><br>The hash is an InstantSend transaction vote.
+| 30               | MSG_ISLOCK                                   | **Deprecated in 20.1.0**<br>The hash is an LLMQ-based InstantSend lock ([DIP10](https://github.com/dashpay/dips/blob/master/dip-0010.md)).<br>_Added in 0.14.0_
 
 Type identifier zero and type identifiers greater than those shown in the table above are reserved for future implementations. Dash Core ignores all inventories with one of these unknown types.
 
