@@ -37,7 +37,7 @@ Currently, the following notifications are supported:
 | zmqpubrawchainlocksig | Raw [`block`](../reference/p2p-network-data-messages.md#block) with ChainLock signature ([`clsig`](../reference/p2p-network-instantsend-messages.md#clsig)) concatenated |
 | zmqpubrawtx | Raw transaction ([`tx`](../reference/transactions-raw-transaction-format.md))  |
 | zmqpubrawtxlock | Raw InstantSend transaction ([`tx`](../reference/transactions-raw-transaction-format.md))  |
-| zmqpubrawtxlocksig | Raw InstantSend transaction ([`tx`](../reference/transactions-raw-transaction-format.md)) with InstantSend lock signature ([`islock`](../reference/p2p-network-instantsend-messages.md#islock)) concatenated |
+| zmqpubrawtxlocksig | Raw InstantSend transaction ([`tx`](../reference/transactions-raw-transaction-format.md)) with InstantSend lock signature ([`isdlock`](../reference/p2p-network-instantsend-messages.md#isdlock)) concatenated |
 | zmqpubrawgovernancevote | Raw governance vote ([`govobjvote`](../reference/p2p-network-governance-messages.md#govobjvote)) |
 | zmqpubrawgovernanceobject | Raw governance object ([`govobject`](../reference/p2p-network-governance-messages.md#govobj)) |
 | zmqpubrawinstantsend<br>doublespend | Raw transaction ([`tx`](../reference/transactions-raw-transaction-format.md)) attempting to double-spend an InstantSend-locked input |
@@ -62,7 +62,7 @@ The option to set the PUB socket's outbound message [high water mark](https://ze
 | zmqpubrawchainlockhwm | Raw [`block`](../reference/p2p-network-data-messages.md#block) receiving a ChainLock high water mark |
 | zmqpubrawchainlocksighwm | Raw [`block`](../reference/p2p-network-data-messages.md#block) with ChainLock signature ([`clsig`](../reference/p2p-network-instantsend-messages.md#clsig)) concatenated high water mark |
 | zmqpubrawtxlockhwm | Raw InstantSend transaction ([`tx`](../reference/transactions-raw-transaction-format.md)) high water mark |
-| zmqpubrawtxlocksighwm | Raw InstantSend transaction ([`tx`](../reference/transactions-raw-transaction-format.md)) with InstantSend lock signature ([`islock`](../reference/p2p-network-instantsend-messages.md#islock)) concatenated high water mark |
+| zmqpubrawtxlocksighwm | Raw InstantSend transaction ([`tx`](../reference/transactions-raw-transaction-format.md)) with InstantSend lock signature ([`isdlock`](../reference/p2p-network-instantsend-messages.md#isdlock)) concatenated high water mark |
 | zmqpubrawgovernancevotehwm | Raw governance vote ([`govobjvote`](../reference/p2p-network-governance-messages.md#govobjvote)) high water mark |
 | zmqpubrawgovernanceobjecthwm | Raw governance object ([`govobject`](../reference/p2p-network-governance-messages.md#govobj)) high water mark |
 | zmqpubrawinstantsenddoublespendhwm | Raw transaction ([`tx`](../reference/transactions-raw-transaction-format.md)) attempting to double-spend an InstantSend-locked input high water mark |

@@ -560,7 +560,7 @@ Sending the [`mempool` message](../reference/p2p-network-data-messages.md#mempoo
 
 > 📘 InstantSend and ChainLock Synchronization
 >
-> Dash Core 0.15.0 expanded the mempool message to include syncing of [InstantSend Lock](../reference/p2p-network-instantsend-messages.md#islock) inventories. Additionally, nodes now attempt to sync their mempool with peers at startup by default (limited to peers using protocol version 70216 or higher). This allows nodes to more quickly detect any double-spend attempts as well as show InstantSend lock status correctly for transactions received while offline.
+> Dash Core 0.15.0 expanded the mempool message to include syncing of [InstantSend Lock](../reference/p2p-network-deprecated-messages.md#islock) inventories. Additionally, nodes now attempt to sync their mempool with peers at startup by default (limited to peers using protocol version 70216 or higher). This allows nodes to more quickly detect any double-spend attempts as well as show InstantSend lock status correctly for transactions received while offline.
 >
 >Dash Core 0.17.0 expanded the mempool message to include syncing of [ChainLock](../reference/p2p-network-instantsend-messages.md#clsig) inventories. This allows nodes to more quickly show ChainLock status correctly after being offline.
 
@@ -574,7 +574,7 @@ There is no payload in a [`mempool` message](../reference/p2p-network-data-messa
 
 _Added in protocol version 70001 as described by BIP37._
 
-The [`merkleblock` message](../reference/p2p-network-data-messages.md#merkleblock) is a reply to a [`getdata` message](../reference/p2p-network-data-messages.md#getdata) which requested a [block](../resources/glossary.md#block) using the inventory type `MSG_MERKLEBLOCK`.  It is only part of the reply: if any matching transactions are found, they will be sent separately as [`tx` messages](../reference/p2p-network-data-messages.md#tx). As of Dash Core 0.17.0 [`islock` messages](../reference/p2p-network-instantsend-messages.md#islock) for matching transactions are sent if present.
+The [`merkleblock` message](../reference/p2p-network-data-messages.md#merkleblock) is a reply to a [`getdata` message](../reference/p2p-network-data-messages.md#getdata) which requested a [block](../resources/glossary.md#block) using the inventory type `MSG_MERKLEBLOCK`.  It is only part of the reply: if any matching transactions are found, they will be sent separately as [`tx` messages](../reference/p2p-network-data-messages.md#tx). As of Dash Core 18.0.0 [`isdlock` messages](../reference/p2p-network-instantsend-messages.md#isdlock) for matching transactions are sent if present.
 
 > 🚧
 >

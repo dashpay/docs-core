@@ -147,7 +147,7 @@ The following response demonstrates the notification provided by Dash Core when 
   1. The TXID of the transaction is received (`HASHTX`) - at this point the transaction is not locked
   2. The TXID of a locked transaction is received (`HASHTXLOCK`). Since this is the same value as the `HASHTX` already received, we know that the transaction has now received an InstantSend lock.
   3. The raw transaction (`RAWTXLOCK`) (this could be decoded using the [`decoderawtransaction` RPC](../api/remote-procedure-calls-raw-transactions.md#decoderawtransaction) for example)
-  4. A combination of the raw transaction and the InstantSend [lock signature](../reference/p2p-network-instantsend-messages.md#islock) (`RAWTXLOCKSIG`)
+  4. A combination of the raw transaction and the InstantSend [lock signature](../reference/p2p-network-instantsend-messages.md#isdlock) (`RAWTXLOCKSIG`)
 
 ```
 Received HASHTX containing:

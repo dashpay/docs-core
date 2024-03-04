@@ -51,6 +51,6 @@ A [miner](../resources/glossary.md#miner) may still include any transaction, but
 | **LLMQ Results**             |   |                         | Quorum results broadcast to the network |
 |                             | ← | [`inv` message](../reference/p2p-network-data-messages.md#inv) (islock or isdlock)  | Quorum responds with lock inventory
 | [`getdata` message](../reference/p2p-network-data-messages.md#getdata) (islock or isdlock)  | → |                         | Client requests lock message
-|                             | ← | [`islock` message](../reference/p2p-network-instantsend-messages.md#islock) or [`isdlock` message](../reference/p2p-network-instantsend-messages.md#isdlock)        | Quorum responds with lock message
+|                             | ← | [`isdlock` message](../reference/p2p-network-instantsend-messages.md#isdlock)        | Quorum responds with lock message
 
 Once a transaction lock is approved, the `instantlock` field of various RPCs is set to `true` (e.g. the [`getmempoolentry` RPC](../api/remote-procedure-calls-blockchain.md#getmempoolentry)).

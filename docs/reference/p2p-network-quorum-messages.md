@@ -645,7 +645,7 @@ More information can be found in the [Recovered threshold signatures section of 
 
 The following annotated hexdump shows a [`qsigrec` message](../reference/p2p-network-quorum-messages.md#qsigrec). (The message header has been omitted.)
 
-**Note:** The following [`qsigrec` message](../reference/p2p-network-quorum-messages.md#qsigrec) corresponds to the example [`islock` message](../reference/p2p-network-instantsend-messages.md#islock) hexdump. The message hash below corresponds to the `islock` TXID field and the BLS signature matches the BLS signature of the `islock` example.
+**Note:** The following [`qsigrec` message](../reference/p2p-network-quorum-messages.md#qsigrec) corresponds to the example [`islock` message](../reference/p2p-network-deprecated-messages.md#islock) hexdump. The message hash below corresponds to the `islock` TXID field and the BLS signature matches the BLS signature of the `islock` example.
 
 ``` text
 01 ......................................... LLMQ Type: 1 (LLMQ_50_60)

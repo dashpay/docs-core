@@ -44,7 +44,7 @@ dcd5497d105932e609016dac075f02df
 >
 > *Added in protocol version 70220 of Dash Core*
 
-The [`isdlock` message](../reference/p2p-network-instantsend-messages.md#isdlock) is used to provide details of transactions that have been locked by InstantSend. The message includes all details present in the [`islock` message](#islock) along with additional version and cycle information introduced by [DIP22](https://github.com/dashpay/dips/blob/master/dip-0022.md).  This enables nodes to determine what quorum signed the message and validate the signature in the future after the quorum is no longer active. Additional details about the change are available in [DIP22 - Making InstantSend Deterministic using Quorum Cycles](https://github.com/dashpay/dips/blob/master/dip-0022.md).
+The [`isdlock` message](../reference/p2p-network-instantsend-messages.md#isdlock) is used to provide details of transactions that have been locked by InstantSend. The message includes all details present in the [`islock` message](../reference/p2p-network-deprecated-messages.md#islock) along with additional version and cycle information introduced by [DIP22](https://github.com/dashpay/dips/blob/master/dip-0022.md).  This enables nodes to determine what quorum signed the message and validate the signature in the future after the quorum is no longer active. Additional details about the change are available in [DIP22 - Making InstantSend Deterministic using Quorum Cycles](https://github.com/dashpay/dips/blob/master/dip-0022.md).
 
 | Bytes | Name | Data type | Description |
 | --- | --- | --- | --- |
