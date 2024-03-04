@@ -47,7 +47,7 @@ Furthermore, a few additional changes are introduced to how discouraged addresse
 | Net | Bloom Filter Size | **100** | Maximum script element size (520) exceeded (`filterload` message or [`filteradd` message](../reference/p2p-network-control-messages.md#filteradd))
 | Net | MN List Diff | 1 | Failed to get masternode list diff (`getmnlistd` message)
 | Net | Unrequested MN List Diff | **100** | Peer provided an unrequested masternode list diff (`mnlistdiff` message)
-| InstantSend | Invalid Lock Message | **100** | Invalid TXID or inputs in lock message (`islock` message)
+| InstantSend | Invalid Lock Message | **100** | Invalid TXID or inputs in lock message (`isdlock` message)
 | InstantSend | Verify Error | 20 | Peer relayed a message that failed to verify
 | LLMQ ChainLock | Invalid | 10 | Invalid ChainLock message (`clsig` message)
 | LLMQ Commitment | Null QcTx | **100** | Peer relayed a block with a null commitment
