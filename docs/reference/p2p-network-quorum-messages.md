@@ -611,7 +611,7 @@ Signature share request 2
 
 *Added in protocol version 70214 of Dash Core*
 
-The [`qsendrecsigs` message](../reference/p2p-network-quorum-messages.md#qsendrecsigs) is used to notify a [peer](../resources/glossary.md#peer) to send plain [LLMQ](../resources/glossary.md#long-living-masternode-quorum) recovered signatures (inventory type `MSG_QUORUM_RECOVERED_SIG`). Otherwise the peer would only announce/send the higher level messages produced when a recovered signature is found (e.g. InstantSend [`islock` messages](../reference/p2p-network-instantsend-messages.md#islock) or ChainLock [`clsig` messages](../reference/p2p-network-instantsend-messages.md#clsig)).
+The [`qsendrecsigs` message](../reference/p2p-network-quorum-messages.md#qsendrecsigs) is used to notify a [peer](../resources/glossary.md#peer) to send plain [LLMQ](../resources/glossary.md#long-living-masternode-quorum) recovered signatures (inventory type `MSG_QUORUM_RECOVERED_SIG`). Otherwise the peer would only announce/send the higher level messages produced when a recovered signature is found (e.g. InstantSend [`isdlock` messages](../reference/p2p-network-instantsend-messages.md#isdlock) or ChainLock [`clsig` messages](../reference/p2p-network-instantsend-messages.md#clsig)).
 
 > 📘
 >

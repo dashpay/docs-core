@@ -7,6 +7,8 @@
 
 # InstantSend
 
+## Overview
+
 Dash Core's [InstantSend](../resources/glossary.md#instantsend) feature provides a way to lock transaction [inputs](../resources/glossary.md#input) and enable secure, instantaneous [transactions](../resources/glossary.md#transaction). The [network](../resources/glossary.md#network) automatically attempts to upgrade any qualifying transaction to InstantSend without a need for the sending [wallet](../resources/glossary.md#wallet) to explicitly request it.
 
 * To qualify for InstantSend, each transaction input must meet at least one of the following criteria:
@@ -19,11 +21,11 @@ Dash Core's [InstantSend](../resources/glossary.md#instantsend) feature provides
 | Mainnet | 6 Blocks (normal transactions)<br>**100 Blocks (mining/masternode rewards)** |
 | Testnet / Regtest / Devnet | 2 Blocks |
 
-> 📘 Transition to Deterministic InstantSend lock
->
-> Protocol version 70220 implements [DIP22](https://github.com/dashpay/dips/blob/master/dip-0022.md) which adds the `isdlock` message as a replacement for the `islock` message. Once the transition is complete, the `islock` message will be deprecated.
+The introduction of the [Long-Living Masternode Quorum](../resources/glossary.md#long-living-masternode-quorum) feature in Dash Core 0.14 provided a foundation to scale InstantSend. The transaction input locking process (and resulting network traffic) now occurs only within the quorum. This minimized network congestion since only the [`isdlock` message](../reference/p2p-network-instantsend-messages.md#isdlock) produced by the locking process is relayed to the entire Dash network. The lock message contains all the information necessary to verify a successful transaction lock.
 
-The introduction of the [Long-Living Masternode Quorum](../resources/glossary.md#long-living-masternode-quorum) feature in Dash Core 0.14 provided a foundation to scale InstantSend. The transaction input locking process (and resulting network traffic) now occurs only within the quorum. This minimizes network congestion since only the [`islock` message](../reference/p2p-network-instantsend-messages.md#islock) or [`isdlock` message](../reference/p2p-network-instantsend-messages.md#isdlock) produced by the locking process is relayed to the entire Dash network. This message contains all the information necessary to verify a successful transaction lock.
+## Deterministic InstantSend
+
+Protocol version 70220 implemented deterministic InstantSend (see [DIP22](https://github.com/dashpay/dips/blob/master/dip-0022.md)) which added the `isdlock` message as a replacement for the `islock` message. The `islock` message was deprecated and fully removed in protocol version 70231.
 
 ## Management via Spork
 
@@ -47,10 +49,10 @@ A [miner](../resources/glossary.md#miner) may still include any transaction, but
 | [`tx` message](../reference/p2p-network-data-messages.md#tx)                | → |                         | Client sends InstantSend transaction
 | **LLMQ Signing Sessions**   |   |                         | Quorums internally process locking |
 |                             |   |                         | Quorum(s) responsible for the transaction's inputs lock the inputs via LLMQ signing sessions
-|                             |   |                         | Once all inputs are locked, the quorum responsible for the overall transaction creates the transaction lock (`islock` or `isdlock`) via an LLMQ signing session
+|                             |   |                         | Once all inputs are locked, the quorum responsible for the overall transaction creates the transaction lock (`isdlock`) via an LLMQ signing session
 | **LLMQ Results**             |   |                         | Quorum results broadcast to the network |
-|                             | ← | [`inv` message](../reference/p2p-network-data-messages.md#inv) (islock or isdlock)  | Quorum responds with lock inventory
-| [`getdata` message](../reference/p2p-network-data-messages.md#getdata) (islock or isdlock)  | → |                         | Client requests lock message
+|                             | ← | [`inv` message](../reference/p2p-network-data-messages.md#inv) (isdlock)  | Quorum responds with lock inventory
+| [`getdata` message](../reference/p2p-network-data-messages.md#getdata) (isdlock)  | → |                         | Client requests lock message
 |                             | ← | [`isdlock` message](../reference/p2p-network-instantsend-messages.md#isdlock)        | Quorum responds with lock message
 
 Once a transaction lock is approved, the `instantlock` field of various RPCs is set to `true` (e.g. the [`getmempoolentry` RPC](../api/remote-procedure-calls-blockchain.md#getmempoolentry)).
