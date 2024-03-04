@@ -6,9 +6,8 @@
 
 ## Alert
 
->❗️
->
-> Deprecated since 0.15.0
+:::{deprecated} 0.15.0
+:::
 
 *Added in protocol version 311.*
 *Removed by Bitcoin in protocol version 70013, but retained by Dash until 0.15.0.*
@@ -135,9 +134,8 @@ The `ix` message (transaction lock request) has the same structure as the [`tx` 
 
 ## reject
 
->❗️
->
-> Removed in 19.0.0
+:::{deprecated} 19.0.0
+:::
 
 *Added in protocol version 70002 as described by BIP61.*
 
@@ -209,9 +207,8 @@ The annotated hexdump below shows a [`reject` message](#reject). (The message he
 
 ## txlvote
 
->❗️
->
-> Deprecated since 0.15.0
+:::{deprecated} 0.15.0
+:::
 
 The `txlvote` message (transaction lock vote) is sent by masternodes to indicate approval of a transaction lock request `ix` message.
 
