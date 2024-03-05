@@ -352,7 +352,7 @@ A Soft Fork activated by through miner signaling.
 
 ## Miner fee
 
-The amount remaining when the value of all outputs in a transaction are subtracted from all inputs in a transaction; the fee is paid to the miner who includes that transaction in a block.
+The amount paid to the miner who includes a transaction in a block. This equals 25% of the amount remaining when the value of all outputs in a transaction are subtracted from all inputs in a transaction. The remaining 75% is paid to the masternode eligible for payment at the block height where the transaction is mined. Related to [transaction fee](#transaction-fee).
 
 ## Miners
 
@@ -636,7 +636,7 @@ A transaction spending satoshis.
 
 ## Transaction fee
 
-The amount remaining when the value of all outputs in a transaction are subtracted from all inputs in a transaction; the fee is paid to the miner who includes that transaction in a block.
+The amount remaining when the value of all outputs in a transaction are subtracted from all inputs in a transaction; the fee is split between the miner (25%) that creates the block containing the transaction and the masternode (75%) eligible for payment in that block.
 
 ## Transaction identifiers
 
