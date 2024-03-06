@@ -33,9 +33,9 @@ dashd [options]
        If this block is in the chain assume that it and its ancestors are valid
        and potentially skip their script verification (0 to verify all,
        default:
-       000000000000000c8b7a3bdcd8b9f516462122314529c8342244c685a4c899bf,
+       0000000000000020d5e38b6aef5bc8e430029444d7977b46f710c7d281ef1281,
        testnet:
-       0000020c5e0f86f385cbf8e90210de9a9fd63633f01433bf47a6b3227a2851fd)
+       0000000386cf5061ea16404c66deb83eb67892fa4f79b9e58e5eaab097ec2bd6)
 
   -blockfilterindex=<type>
        Maintain an index of compact filters by block (default: 0, values:
@@ -65,7 +65,7 @@ dashd [options]
        by chainlocked block hash)
 
   -coinstatsindex
-       Maintain coinstats index used by the gettxoutset RPC (default: 0)
+       Maintain coinstats index used by the gettxoutsetinfo RPC (default: 0)
 
   -conf=<file>
        Specify path to read-only configuration file. Relative paths will be
@@ -112,9 +112,9 @@ dashd [options]
 
   -minimumchainwork=<hex>
        Minimum work assumed to exist on a valid chain in hex (default:
-       000000000000000000000000000000000000000000008d970bc6cda0b02b30fc,
+       000000000000000000000000000000000000000000009134566d753c5e08ab88,
        testnet:
-       00000000000000000000000000000000000000000000000002d68d24632e300f)
+       00000000000000000000000000000000000000000000000002ecd6cf5ad0f774)
 
   -par=<n>
        Set the number of script verification threads (-16 to 15, 0 = auto, <0 =
@@ -145,6 +145,9 @@ dashd [options]
        edited by users (use dash.conf instead for custom settings).
        Relative paths will be prefixed by datadir location. (default:
        settings.json)
+
+  -startupnotify=<cmd>
+       Execute command on startup.
 
   -syncmempool
        Sync mempool from other nodes on start (default: 1)
@@ -273,9 +276,9 @@ dashd [options]
        1)
 
   -peertimeout=<n>
-       Specify p2p connection timeout in seconds. This option determines the
-       amount of time a peer may be inactive before the connection to it
-       is dropped. (minimum: 1, default: 60)
+       Specify a p2p connection timeout delay in seconds. After connecting to a
+       peer, wait this amount of time before considering disconnection
+       based on inactivity (minimum: 1, default: 60)
 
   -permitbaremultisig
        Relay non-P2SH multisig (default: 1)
@@ -304,7 +307,9 @@ dashd [options]
        FreeBSD/Apple - 'kqueue', Windows - 'select')
 
   -timeout=<n>
-       Specify connection timeout in milliseconds (minimum: 1, default: 5000)
+       Specify socket connection timeout in milliseconds. If an initial attempt
+       to connect is unsuccessful after this amount of time, drop it
+       (minimum: 1, default: 5000)
 
   -torcontrol=<ip>:<port>
        Tor control port to use if onion listening enabled (default:
@@ -314,7 +319,8 @@ dashd [options]
        Tor control port password (default: empty)
 
   -upnp
-       Use UPnP to map the listening port (default: 0)
+       Use UPnP to map the listening port (default: 1 when listening and no
+       -proxy)
 
   -whitebind=<[permissions@]addr>
        Bind to the given address and add permission flags to the peers
@@ -451,11 +457,11 @@ dashd [options]
        (default: 0.00001)
 
   -mintxfee=<amt>
-       Fees (in DASH/kB) smaller than this are considered zero fee for
+       Fee rates (in DASH/kB) smaller than this are considered zero fee for
        transaction creation (default: 0.00001)
 
   -paytxfee=<amt>
-       Fee (in DASH/kB) to add to transactions you send (default: 0.00)
+       Fee rate (in DASH/kB) to add to transactions you send (default: 0.00)
 
   -txconfirmtarget=<n>
        If paytxfee is not set, include enough fee so transactions begin
@@ -484,7 +490,7 @@ dashd [options]
 
   -usehd
        Use hierarchical deterministic key generation (HD) after BIP39/BIP44.
-       Only has effect during wallet creation/first start (default: 0)
+       Only has effect during wallet creation/first start (default: 1)
 ```
 
 ### CoinJoin options
@@ -655,9 +661,12 @@ dashd [options]
 
 ### Debugging/Testing options
 
-```
+```text
   -addrmantest
        Allows to test address relay on localhost
+
+  -capturemessages
+       Capture all P2P messages to disk
 
   -checkblockindex
        Do a consistency check for the block tree, and  occasionally. (default:
@@ -670,30 +679,32 @@ dashd [options]
        How thorough the block verification of -checkblocks is: level 0 reads
        the blocks from disk, level 1 verifies block validity, level 2
        verifies undo data, level 3 checks disconnection of tip blocks,
-       and level 4 tries to reconnect the blocks, each level includes
-       the checks of the previous levels (0-4, default: 3)
+       level 4 tries to reconnect the blocks, each level includes the
+       checks of the previous levels (0-4, default: 3)
 
   -checkmempool=<n>
        Run checks every <n> transactions (default: 0, regtest: 1)
 
   -checkpoints
        Enable rejection of any forks from the known historical chain until
-       block 1450000 (default: 1)
+       block 2029000 (default: 1)
 
   -debug=<category>
        Output debugging information (default: -nodebug, supplying <category> is
        optional). If <category> is not supplied or if <category> = 1,
-       output all debugging information. <category> can be: net, tor,
-       mempool, http, bench, zmq, walletdb, rpc, estimatefee, addrman,
-       selectcoins, reindex, cmpctblock, rand, prune, proxy, mempoolrej,
-       libevent, coindb, qt, leveldb, chainlocks, gobject, instantsend,
-       llmq, llmq-dkg, llmq-sigs, mnpayments, mnsync, coinjoin, spork,
-       netconn.
+       output all debugging information. <category> can be: addrman,
+       bench, chainlocks, cmpctblock, coindb, coinjoin, creditpool, ehf,
+       estimatefee, gobject, http, i2p, instantsend, leveldb, libevent,
+       llmq, llmq-dkg, llmq-sigs, mempool, mempoolrej, mnpayments,
+       mnsync, net, netconn, proxy, prune, qt, rand, reindex, rpc,
+       selectcoins, spork, tor, validation, walletdb, zmq. This option
+       can be specified multiple times to output multiple categories.
 
   -debugexclude=<category>
        Exclude debugging information for a category. Can be used in conjunction
-       with -debug=1 to output debug logs for all categories except one
-       or more specified categories.
+       with -debug=1 to output debug logs for all categories except the
+       specified category. This option can be specified multiple times
+       to exclude multiple categories.
 
   -deprecatedrpc=<method>
        Allows deprecated RPC method(s) to be used
@@ -701,8 +712,9 @@ dashd [options]
   -disablegovernance
        Disable governance validation (0-1, default: 0)
 
-  -dropmessagestest=<n>
-       Randomly drop 1 of every <n> network messages
+  -fastprune
+       Use smaller block files and lower minimum prune height for testing
+       purposes
 
   -help-debug
        Print help message with debugging options and exit
@@ -827,11 +839,6 @@ dashd [options]
        Override the default LLMQ size for the LLMQ_DEVNET quorum (default: 3:2,
        devnet-only)
 
-  -llmqinstantsend=<quorum name>
-       Override the default LLMQ type used for InstantSend. Allows using
-       InstantSend with smaller LLMQs. (default: llmq_devnet,
-       devnet-only)
-
   -llmqinstantsenddip0024=<quorum name>
        Override the default LLMQ type used for InstantSendDIP0024. (default:
        llmq_devnet_dip0024, devnet-only)
@@ -843,10 +850,6 @@ dashd [options]
   -llmqplatform=<quorum name>
        Override the default LLMQ type used for Platform. (default:
        llmq_devnet_platform, devnet-only)
-
-  -llmqtestinstantsend=<quorum name>
-       Override the default LLMQ type used for InstantSend. Used mainly to test
-       Platform. (default: llmq_test_instantsend, regtest-only)
 
   -llmqtestinstantsenddip0024=<quorum name>
        Override the default LLMQ type used for InstantSendDIP0024. Used mainly
@@ -1107,11 +1110,6 @@ The following options can only be used for specific network types. These options
        Override the default LLMQ size for the LLMQ_DEVNET quorum (default: 3:2,
        devnet-only)
 
-  -llmqinstantsend=<quorum name>
-       Override the default LLMQ type used for InstantSend. Allows using
-       InstantSend with smaller LLMQs. (default: llmq_devnet,
-       devnet-only)
-
   -llmqinstantsenddip0024=<quorum name>
        Override the default LLMQ type used for InstantSendDIP0024. (default:
        llmq_devnet_dip0024, devnet-only)
@@ -1159,10 +1157,6 @@ Refer to [this table in DIP-6 - LLMQs](https://github.com/dashpay/dips/blob/mast
 ```text
   -budgetparams=<masternode>:<budget>:<superblock>
        Override masternode, budget and superblock start heights (regtest-only)
-
-  -llmqtestinstantsend=<quorum name>
-       Override the default LLMQ type used for InstantSend. Used mainly to test
-       Platform. (default: llmq_test_instantsend, regtest-only)
 
   -llmqtestinstantsenddip0024=<quorum name>
        Override the default LLMQ type used for InstantSendDIP0024. Used mainly
