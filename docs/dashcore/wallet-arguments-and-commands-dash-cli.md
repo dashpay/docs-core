@@ -54,12 +54,12 @@ dash-cli [options] help <command>
        Specify data directory
 
   -generate
-       Generate blocks immediately, equivalent to RPC generatenewaddress
-       followed by RPC generatetoaddress. Optional positional integer
-       arguments are number of blocks to generate (default: 1) and
-       maximum iterations to try (default: 1000000), equivalent to RPC
-       generatetoaddress nblocks and maxtries arguments. Example:
-       dash-cli -generate 4 1000
+       Generate blocks immediately, equivalent to RPC getnewaddress followed by
+       RPC generatetoaddress. Optional positional integer arguments are
+       number of blocks to generate (default: 1) and maximum iterations
+       to try (default: 1000000), equivalent to RPC generatetoaddress
+       nblocks and maxtries arguments. Example: dash-cli -generate 4
+       1000
 
   -getinfo
        Get general information from the remote server. Note that unlike
@@ -154,11 +154,6 @@ dash-cli [options] help <command>
 
   -llmqdevnetparams=<size>:<threshold>
        Override the default LLMQ size for the LLMQ_DEVNET quorum (default: 3:2,
-       devnet-only)
-
-  -llmqinstantsend=<quorum name>
-       Override the default LLMQ type used for InstantSend. Allows using
-       InstantSend with smaller LLMQs. (default: llmq_devnet,
        devnet-only)
 
   -llmqinstantsenddip0024=<quorum name>

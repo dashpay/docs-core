@@ -71,11 +71,6 @@ Usage:
        Override the default LLMQ size for the LLMQ_DEVNET quorum (default: 3:2,
        devnet-only)
 
-  -llmqinstantsend=<quorum name>
-       Override the default LLMQ type used for InstantSend. Allows using
-       InstantSend with smaller LLMQs. (default: llmq_devnet,
-       devnet-only)
-
   -llmqinstantsenddip0024=<quorum name>
        Override the default LLMQ type used for InstantSendDIP0024. (default:
        llmq_devnet_dip0024, devnet-only)
