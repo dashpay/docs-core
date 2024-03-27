@@ -78,7 +78,14 @@ In HD wallets, 256 bits of entropy added to the public and private keys to help 
 
 ## ChainLock
 
-ChainLocks are a feature enabling near instant consensus on the valid chain. ChainLocks use Long-Living Masternode Quorums to mitigate 51 percent attacks and reduce uncertainty when receiving funds.
+ChainLocks are a feature enabling near instant consensus on the valid chain. ChainLocks use Long-Living Masternode Quorums to sign mined blocks. This mitigates 51 percent attacks and reduces uncertainty when receiving funds.
+
+See also:
+
+* [ChainLocks (Core Guide)](../guide/dash-features-chainlocks.md)
+* [ChainLocks Overview (User docs)](inv:user:std#chainlocks)
+* [DIP-8: ChainLocks](https://github.com/dashpay/dips/blob/master/dip-0008.md)
+* [ChainLock integration developer info](inv:user:std#integration-chainlocks)
 
 ## Change output
 
@@ -270,7 +277,14 @@ An input in a transaction which contains three fields: an outpoint, a signature 
 
 ## InstantSend
 
-InstantSend is a service that allows for near-instant transactions. Through this system, inputs can be locked to specific transactions and verified by consensus of the masternode network.
+InstantSend is a service that allows for near-instant transactions. Through this system, inputs can be locked to specific transactions and verified by consensus of the masternode network. InstantSend allows for zero-confirmation transactions to be safely accepted and re-spent prior to being mined into a block.
+
+See also:
+
+* [InstantSend (Core Guide)](../guide/dash-features-instantsend.md)
+* [InstantSend Overview (User docs)](inv:user:std#instantsend)
+* [DIP-10: LLMQ InstantSend](https://github.com/dashpay/dips/blob/master/dip-0010.md)
+* [InstantSend integration developer info](inv:user:std#integration-instantsend)
 
 ## Internal byte order
 
