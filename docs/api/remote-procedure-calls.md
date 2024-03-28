@@ -1,11 +1,11 @@
 ```{eval-rst}
 .. _api-rpc:
 .. meta::
-  :title: Remote Procedure Calls
+  :title: Remote Procedure Calls (RPCs)
   :description: Dash Core provides an RPC interface for administrative tasks, wallet operations, and network/blockchain queries, with client libraries available in multiple languages and a built-in dash-cli program for command-line and RPC interaction. 
 ```
 
-# Remote Procedure Calls
+# Remote Procedure Calls (RPCs)
 
 ## Overview
 
