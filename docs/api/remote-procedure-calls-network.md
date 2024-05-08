@@ -533,12 +533,15 @@ The [`getpeerinfo` RPC](../api/remote-procedure-calls-network.md#getpeerinfo) re
 | → →<br>`inbound`                | bool                | Required<br>(exactly 1) | Set to `true` if this node connected to us (inbound); set to `false` if we connected to this node (outbound) |
 | → →<br>`addnode`                | bool                | Required<br>(exactly 1) | Set to `true` if this node was added via the [`addnode` RPC](../api/remote-procedure-calls-network.md#addnode). |
 | → →<br>`masternode`             | bool                | Required<br>(exactly 1) | *Added in Dash Core 0.16.0*<br>Whether connection was due to masternode connection attempt |
+| → →<br>`banscore`               | number (int)        | Required<br>(exactly 1) | *DEPRECATED, returned only if config option -deprecatedrpc=banscore is passed*<br>The ban score we've assigned the node based on any misbehavior it's made.  By default, Dash Core disconnects when the ban score reaches `100` |
 | → →<br>`startingheight`         | number (int)        | Required<br>(exactly 1) | The height of the remote node's block chain when it connected to us as reported in its [`version` message](../reference/p2p-network-control-messages.md#version) |
-| → →<br>`banscore`               | number (int)        | Required<br>(exactly 1) | The ban score we've assigned the node based on any misbehavior it's made.  By default, Dash Core disconnects when the ban score reaches `100` |
 | → →<br>`synced_headers` | number (int) | Required<br>(exactly 1) | The highest-height header we have in common with this node based the last P2P [`headers` message](../reference/p2p-network-data-messages.md#headers) it sent us. If a [`headers` message](../reference/p2p-network-data-messages.md#headers) has not been received, this will be set to `-1` |
 | → →<br>`synced_blocks` | number (int) | Required<br>(exactly 1) | The highest-height block we have in common with this node based on P2P [`inv` messages](../reference/p2p-network-data-messages.md#inv) this node sent us. If no block [`inv` messages](../reference/p2p-network-data-messages.md#inv) have been received from this node, this will be set to `-1` |
 | → →<br>`inflight` | array | Required<br>(exactly 1) | An array of blocks which have been requested from this peer. May be empty |
 | → → →<br>Blocks | number (int) | Optional<br>(0 or more) | The height of a block being requested from the remote peer |
+| `addr_relay_enabled`            | bool                | Required<br>(exactly 1) | Whether we participate in address relay with this peer. |
+| `addr_processed`                | number (int)        | Required<br>(exactly 1) | The total number of addresses processed, excluding those dropped due to rate limiting. |
+| `addr_rate_limited`             | number (int)        | Required<br>(exactly 1) | The total number of addresses dropped due to rate limiting. |
 | → →<br>`whitelisted` | bool | Required<br>(exactly 1) | Set to `true` if the remote peer has been whitelisted; otherwise, set to `false`. Whitelisted peers will not be banned if their ban score exceeds the maximum (100 by default). By default, peers connecting from localhost are whitelisted |
 | → →<br>`permissions` | array | Required<br>(exactly 1) | _Added in Dash Core 18.0.0_<br>Any special permissions that have been granted to this peer |
 | → →<br>`bytessent_per_msg` | string : <br>object | Required<br>(exactly 1) | *Added in Bitcoin Core 0.13.0*<br><br>Information about total sent bytes aggregated by message type |
@@ -547,7 +550,7 @@ The [`getpeerinfo` RPC](../api/remote-procedure-calls-network.md#getpeerinfo) re
 | → → →<br>Message Type | number (int) | Required<br>(1 or more) | Total received bytes aggregated by message type. One field for every used message type |
 | `connection_type` | string | Required<br>(exactly 1) | **Added in Dash Core 20.1.0**<br>Type of connection:<br>outbound-full-relay, block-relay-only, inbound, manual, addr-fetch, feeler.<br>Describes how the connection was established.<br>**Note: This output is subject to change in future releases as connection behaviors are refined.** |
 
-*Example from Dash Core 20.1.0*
+*Example from Dash Core 21.0.0*
 
 ```bash
 dash-cli -testnet getpeerinfo
@@ -571,41 +574,42 @@ Result (edited to show only a single entry, with IP addresses changed to
       "NETWORK_LIMITED",
       "HEADERS_COMPRESSED"
     ],
-    "relaytxes": false,
-    "lastsend": 1707941906,
-    "lastrecv": 1707941902,
+    "lastsend": 1715200494,
+    "lastrecv": 1715200436,
     "last_transaction": 0,
-    "last_block": 1707934590,
-    "bytessent": 240367,
-    "bytesrecv": 252966,
-    "conntime": 1707934579,
+    "last_block": 1715200219,
+    "bytessent": 70135,
+    "bytesrecv": 486133,
+    "conntime": 1715200196,
     "timeoffset": 0,
-    "pingtime": 0.09482599999999999,
-    "minping": 0.093489,
-    "version": 70230,
-    "subver": "/Dash Core:20.0.2/",
+    "pingtime": 0.11961,
+    "minping": 0.100297,
+    "version": 70231,
+    "subver": "/Dash Core:21.0.0(dcg-masternode-61)/",
     "inbound": false,
     "addnode": false,
     "masternode": false,
-    "startingheight": 970213,
-    "banscore": 0,
-    "synced_headers": 970268,
-    "synced_blocks": 970268,
+    "startingheight": 1022323,
+    "synced_headers": 1022323,
+    "synced_blocks": 1022323,
     "inflight": [
     ],
+    "relaytxes": false,
+    "addr_relay_enabled": false,
+    "addr_processed": 0,
+    "addr_rate_limited": 0,
     "whitelisted": false,
     "permissions": [
     ],
     "bytessent_per_msg": {
-      "dsq": 151226,
-      "getdata": 10361,
+      "dsq": 7802,
+      "getdata": 35555,
       "getheaders2": 1053,
       "getsporks": 24,
-      "govsync": 69618,
-      "headers2": 3180,
-      "inv": 671,
-      "ping": 1984,
-      "pong": 1984,
+      "govsync": 25182,
+      "inv": 61,
+      "ping": 96,
+      "pong": 96,
       "sendaddrv2": 24,
       "sendcmpct": 33,
       "sendheaders2": 24,
@@ -614,22 +618,23 @@ Result (edited to show only a single entry, with IP addresses changed to
     },
     "bytesrecv_per_msg": {
       "addrv2": 40,
-      "block": 209737,
-      "clsig": 624,
+      "block": 361498,
       "getheaders2": 1053,
-      "headers2": 27918,
-      "inv": 4427,
+      "govobj": 916,
+      "govobjvote": 47150,
+      "headers2": 62247,
+      "inv": 9291,
       "mnauth": 152,
-      "ping": 1984,
-      "pong": 1984,
+      "ping": 96,
+      "pong": 96,
       "sendaddrv2": 24,
       "sendcmpct": 33,
       "senddsq": 25,
       "sendheaders2": 24,
       "spork": 2420,
-      "ssc": 2336,
+      "ssc": 864,
       "verack": 24,
-      "version": 161
+      "version": 180
     },
     "connection_type": "block-relay-only"
   }
