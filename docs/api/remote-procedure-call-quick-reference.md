@@ -159,7 +159,7 @@ These RPCs are all Dash-specific and not found in Bitcoin Core
 * [AbortRescan](../api/remote-procedure-calls-wallet.md#abortrescan): stops current wallet rescan. _New in Dash Core 0.15.0_
 * [AddMultiSigAddress](../api/remote-procedure-calls-wallet.md#addmultisigaddress): adds a P2SH multisig address to the wallet. **Updated in Dash Core 20.0.0**
 * [BackupWallet](../api/remote-procedure-calls-wallet.md#backupwallet): safely copies `wallet.dat` to the specified file, which can be a directory or a path with filename.
-* [CreateWallet](../api/remote-procedure-calls-wallet.md#createwallet): creates and loads a new wallet. _Updated in Dash Core 18.1.0_
+* [CreateWallet](../api/remote-procedure-calls-wallet.md#createwallet): creates and loads a new wallet. **Updated in Dash Core 21.0.0**
 * [DumpHDInfo](../api/remote-procedure-calls-wallet.md#dumphdinfo): returns an object containing sensitive private info about this HD wallet New in Dash Core 0.12.2
 * [DumpPrivKey](../api/remote-procedure-calls-wallet.md#dumpprivkey): returns the wallet-import-format (WIP) private key corresponding to an address. (But does not remove it from the wallet.)
 * [DumpWallet](../api/remote-procedure-calls-wallet.md#dumpwallet): creates or overwrites a file with all wallet keys in a human-readable format. _Updated in Dash Core 0.17.0_

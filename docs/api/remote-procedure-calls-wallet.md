@@ -210,7 +210,13 @@ _Parameter #5---avoid coin reuse_
 | ------------- | ---- | -------------------- | ---------------------------------------------------------------------------------------------------------- |
 | `avoid_reuse` | bool | Optional<br>(0 or 1) | Keep track of coin reuse, and treat dirty and clean coins differently with privacy considerations in mind. |
 
-_Parameter #6---load on startup_
+_Parameter #6---descriptors_
+
+| Name          | Type | Presence             | Description                                                                                                                |
+| ------------- | ---- | -------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `descriptors` | bool | Optional<br>(0 or 1) | Create a native descriptor wallet. The wallet will use descriptors internally to handle address creation.                   |
+
+_Parameter #7---load on startup_
 
 | Name              | Type | Presence             | Description                                                                                                                                |
 | ----------------- | ---- | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------ |
