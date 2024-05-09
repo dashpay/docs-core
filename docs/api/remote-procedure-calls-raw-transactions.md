@@ -808,7 +808,8 @@ Note: For backwards compatibility, passing in a `true` instead of an object will
 
 | Name                           | Type               | Presence                | Description|
 | ------------------------------ | ------------------ | ----------------------- | ---------- |
-| Options                        | Object             | Optional<br>(0 or 1)    | Additional options |
+| Options                        | Object             | Optional<br>(0 or 1)    | Additional options. For backward compatibility: passing in a true instead of an object will result in {"includeWatching":true} |
+| → <br>`add_inputs`             | bool               | Optional<br>(0 or 1)    | If inputs are specified, automatically include more if they are not enough. Defaults to `true`. |
 | → <br>`changeAddress`          | string             | Optional<br>(0 or 1)    | The address to receive the change. If not set, the address is chosen from address pool                                                                                                                                    |
 | → <br>`changePosition`         | nummeric (int)     | Optional<br>(0 or 1)    | The index of the change output. If not set, the change position is randomly chosen |
 | `includeWatching`              | bool               | Optional<br>(0 or 1)    | Inputs from watch-only addresses are also considered. The default is `false` for non-watching-only wallets and `true` for watching-only wallets                                                                           |
