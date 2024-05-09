@@ -465,8 +465,10 @@ _Result---returns information about the address_
 | →<br>`iswatchonly`         | bool             | Required<br>(exactly 1) | Set to `true` if the address is watch-only.  Otherwise set to `false`.  Only returned if address is in the wallet |
 | →<br>`solvable`            | bool             | Required<br>(exactly 1) | Whether we know how to spend coins sent to this address, ignoring the possible lack of private keys |
 | →<br>`desc`                | string           | Optional<br>(0 or 1)    | A descriptor for spending coins sent to this address (only present when `solvable` is `true`) |
+| →<br>`parent_desc`         | string           | Optional<br>(0 or 1)    | The descriptor used to derive this address if this is a descriptor wallet. |
 | →<br>`isscript`            | bool             | Required<br>(exactly 1) | Set to `true` if a P2SH address; otherwise set to `false`.  Only returned if the address is in the wallet |
 | →<br>`ischange`            | bool             | Required<br>(exactly 1) | Set to `true` if the address was used for change output. |
+| →<br>`script`              | string           | Optional<br>(0 or 1)    | The output script type. Possible types include: `nonstandard`, `pubkey`, `pubkeyhash`, `scripthash`, `multisig`, `nulldata`. Only returned if `isscript` is true and the redeemscript is known. |
 | →<br>`script`              | string           | Optional<br>(0 or 1)    | Only returned for P2SH addresses belonging to this wallet. This is the type of script:<br>• `pubkey` for a P2PK script inside P2SH<br>• `pubkeyhash` for a P2PKH script inside P2SH<br>• `multisig` for a multisig script inside P2SH<br>• `nonstandard` for unknown scripts |
 | →<br>`hex`                 | string (hex)     | Optional<br>(0 or 1)    | Only returned for P2SH addresses belonging to this wallet.  This is the redeem script encoded as hex |
 | →<br>`pubkeys`             | array            | Optional<br>(0 or 1)    | Array of pubkeys associated with the known redeemscript (only if `script` is "multisig") |
@@ -480,39 +482,41 @@ _Result---returns information about the address_
 | →<br>`timestamp`           | number (int)     | Optional<br>(0 or 1)    | The creation time of the key if available in seconds since epoch (Jan 1 1970 GMT) |
 | →<br>`hdchainid`           | string (hash160) | Optional<br>(0 or 1)    | The ID of the HD chain |
 | →<br>`hdkeypath`           | string           | Optional<br>(0 or 1)    | The HD keypath if the key is HD and available |
+| →<br>`hdseedid`            | string (hex)     | Optional<br>(0 or 1)    | The Hash160 of the HD seed. |
 | →<br>`hdmasterfingerprint` | string           | Optional<br>(0 or 1)    | The fingerprint of the master key |
 | →<br>`labels`              | array            | Optional<br>(0 or 1)    | **Updated in Dash Core 20.0.0**<br>Array of labels associated with the address. The field now returns an array of label name strings. Previously, it returned an array of JSON objects containing `name` and `purpose` key/value pairs, which is now deprecated and will be removed. To re-enable the previous behavior, launch with `-deprecatedrpc=labelspurpose`. |
 | →→<br>Label Data           | object           | Optional<br>(0 or 1)    | JSON object containing label data |
 | →→→<br>`name`              | string           | Optional<br>(0 or 1)    | The label |
 | →→→<br>`purpose`           | string           | Optional<br>(0 or 1)    | **Deprecated in Dash Core 20.0.0**<br>Purpose of address (`send` for sending address, `receive` for receiving address) |
 
-_Example from Dash Core 20.0.0_
+_Example from Dash Core 21.0.0_
 
 Get info for the following P2PKH address from the wallet:
 
 ```bash
-dash-cli getaddressinfo "yYvsn6vdnkeq9VG1JbkfqKbjv3gUmFmnny"
+dash-cli getaddressinfo "yZ9fa6vzAS5yz3QjA8etgA4ka1GD2X9ouq"
 ```
 
 Result:
 
 ```json
 {
-  "address": "yYvsn6vdnkeq9VG1JbkfqKbjv3gUmFmnny",
-  "scriptPubKey": "76a9148a54e0c51084f0e5819a66bb1c4d01191f5caa3888ac",
+  "address": "yZ9fa6vzAS5yz3QjA8etgA4ka1GD2X9ouq",
+  "scriptPubKey": "76a9148cc018804bcca348bae6c8cdf8c0890b09cc42ca88ac",
   "ismine": true,
   "solvable": true,
-  "desc": "pkh([654bd9ab/44'/1'/0'/1/137]0214889c34100d00aca6e7cbfe0fa72d83c28857585740bff5f3db6b37e51d9aaa)#v9ze3g5v",
+  "desc": "pkh([2849fa86/44'/1'/0'/0/1]03ad075b0b163e9cd17a24143f8914c51abc697e0706c7a0d54594b3487f0ff15c)#k2juu6h5",
   "iswatchonly": false,
   "isscript": false,
-  "pubkey": "0214889c34100d00aca6e7cbfe0fa72d83c28857585740bff5f3db6b37e51d9aaa",
+  "pubkey": "03ad075b0b163e9cd17a24143f8914c51abc697e0706c7a0d54594b3487f0ff15c",
   "iscompressed": true,
-  "ischange": true,
-  "timestamp": 1612374776,
-  "hdchainid": "a1f28726e62a7766153dac6c90242b712dbb98f4d457b7fb46e09136461dca7e",
-  "hdkeypath": "m/44'/1'/0'/1/137",
-  "hdmasterfingerprint": "654bd9ab",
+  "ischange": false,
+  "timestamp": 1692213593,
+  "hdchainid": "51cbaf0337e7f59ae8ad81360b20ebbb68019bab8d9d2d84ce39e20dc635b940",
+  "hdkeypath": "m/44'/1'/0'/0/1",
+  "hdmasterfingerprint": "2849fa86",
   "labels": [
+    ""
   ]
 }
 ```
