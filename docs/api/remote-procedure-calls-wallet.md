@@ -478,16 +478,12 @@ _Result---returns information about the address_
 | →<br>`sigsrequired`        | number (int)     | Optional<br>(0 or 1)    | Only returned for multisig P2SH addresses belonging to the wallet.  The number of signatures required by this script |
 | →<br>`pubkey`              | string (hex)     | Optional<br>(0 or 1)    | The public key corresponding to this address.  Only returned if the address is a P2PKH address in the wallet |
 | →<br>`iscompressed`        | bool             | Optional<br>(0 or 1)    | Set to `true` if a compressed public key or set to `false` if an uncompressed public key.  Only returned if the address is a P2PKH address in the wallet |
-| →<br>`label`               | string           | Optional<br>(0 or 1)    | **Deprecated in Dash Core 20.0.0**<br>The label associated with the address. Defaults to "". Replaced by the labels array below. |
 | →<br>`timestamp`           | number (int)     | Optional<br>(0 or 1)    | The creation time of the key if available in seconds since epoch (Jan 1 1970 GMT) |
 | →<br>`hdchainid`           | string (hash160) | Optional<br>(0 or 1)    | The ID of the HD chain |
 | →<br>`hdkeypath`           | string           | Optional<br>(0 or 1)    | The HD keypath if the key is HD and available |
 | →<br>`hdseedid`            | string (hex)     | Optional<br>(0 or 1)    | The Hash160 of the HD seed. |
 | →<br>`hdmasterfingerprint` | string           | Optional<br>(0 or 1)    | The fingerprint of the master key |
-| →<br>`labels`              | array            | Optional<br>(0 or 1)    | **Updated in Dash Core 20.0.0**<br>Array of labels associated with the address. The field now returns an array of label name strings. Previously, it returned an array of JSON objects containing `name` and `purpose` key/value pairs, which is now deprecated and will be removed. To re-enable the previous behavior, launch with `-deprecatedrpc=labelspurpose`. |
-| →→<br>Label Data           | object           | Optional<br>(0 or 1)    | JSON object containing label data |
-| →→→<br>`name`              | string           | Optional<br>(0 or 1)    | The label |
-| →→→<br>`purpose`           | string           | Optional<br>(0 or 1)    | **Deprecated in Dash Core 20.0.0**<br>Purpose of address (`send` for sending address, `receive` for receiving address) |
+| →<br>`labels`              | array            | Optional<br>(0 or 1)    | **Updated in Dash Core 21.0.0**<br>An array of labels associated with the address. Currently limited to one label but returned as an array to keep the API stable if multiple labels are enabled in the future. |
 
 _Example from Dash Core 21.0.0_
 
@@ -539,6 +535,7 @@ Result:
   "isscript": true,
   "ischange": false,
   "labels": [
+    ""
   ]
 }
 ```
