@@ -10,7 +10,7 @@ With the actual help output
 INSERT "HELP <RPCNAME>" OUTPUT HERE
 ```
 
-Only list any discrepancies and output markdown table entries in a copyable code block for items missing from the documentation
+Only list any discrepancies (including parameters and/or response fields that have changed to be deprecated) and output markdown table entries in a copyable code block for items missing from the documentation
 
 ## Remove the excess whitespace at the end of tables
 
