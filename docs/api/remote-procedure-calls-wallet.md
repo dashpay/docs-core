@@ -3361,13 +3361,14 @@ _Parameters_
 | --------- | ------ | -------------------- | ----------------------------------------------------------------------- |
 | `version` | number | Optional<br>(0 or 1) | The version number to upgrade to. Default is the latest wallet version. |
 
-_Result---`null` on success_
+_Result---JSON object on success or failure_
 
 | Name     | Type | Presence                | Description                                                                |
 | -------- | ---- | ----------------------- | -------------------------------------------------------------------------- |
-| `result` | null | Required<br>(exactly 1) | `null` when the command was successful or error message if not successful. |
+| `result` | object | Required<br>(exactly 1) | A JSON object which may contain an `error` field if the upgrade fails. |
+| →<br>`error` | string | Optional<br>(0 or 1) | The error message describing why the upgrade failed, if applicable.    |
 
-_Example from Dash Core 19.0.0_
+_Example from Dash Core 21.0.0_
 
 Upgrade wallet without specifying any optional parameters:
 
@@ -3375,7 +3376,12 @@ Upgrade wallet without specifying any optional parameters:
 dash-cli -testnet upgradewallet
 ```
 
-Result (no output from dash-cli because result is set to null).
+Result (success indicated by empty object):
+
+```json
+{
+}
+```
 
 _See also_
 
