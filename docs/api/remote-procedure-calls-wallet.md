@@ -3397,7 +3397,7 @@ _Parameter #1---Inputs_
 
 | Name              | Type         | Presence                | Description                                                                                                |
 | ----------------- | ------------ | ----------------------- | ---------------------------------------------------------------------------------------------------------- |
-| Inputs            | array        | Required<br>(exactly 1) | An array of objects, each one to be used as an input to the transaction                                    |
+| Inputs            | array        | Required<br>(exactly 1) | An array of objects, each one to be used as an input to the transaction. Leave empty to add inputs automatically. See `add_inputs` option. |
 | → Input           | object       | Required<br>(1 or more) | An object describing a particular input                                                                    |
 | → →<br>`txid`     | string (hex) | Required<br>(exactly 1) | The TXID of the outpoint to be spent encoded as hex in RPC byte order                                      |
 | → →<br>`vout`     | number (int) | Required<br>(exactly 1) | The output index number (vout) of the outpoint to be spent; the first output in a transaction is index `0` |
@@ -3423,6 +3423,7 @@ _Parameter #4---Additional options_
 | Name                           | Type              | Presence                | Description |
 | ------------------------------ | ----------------- | ----------------------- | ----------- |
 | Options                        | Object            | Optional<br>(0 or 1)    | Additional options |
+| → <br>`add_inputs`             | bool              | Optional<br>(0 or 1)    | If inputs are specified, automatically include more if they are not enough. Defaults to `false`. |
 | → <br>`changeAddress`          | string            | Optional<br>(0 or 1)    | The dash address to receive the change (default=pool address) |
 | → <br>`changePosition`         | numeric (int)     | Optional<br>(0 or 1)    | The index of the change output (default=random) |
 | → <br>`includeWatching`        | bool              | Optional<br>(0 or 1)    | Also select inputs which are watch only (default=`false` for non-watching only wallets and `true` for watching only-wallets) |
