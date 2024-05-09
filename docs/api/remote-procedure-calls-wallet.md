@@ -1206,6 +1206,58 @@ _See also_
 * [ImportPrivKey](../api/remote-procedure-calls-wallet.md#importprivkey): adds a private key to your wallet. The key should be formatted in the wallet import format created by the [`dumpprivkey` RPC](../api/remote-procedure-calls-wallet.md#dumpprivkey).
 * [ListReceivedByAddress](../api/remote-procedure-calls-wallet.md#listreceivedbyaddress): lists the total number of dash received by each address.
 
+## ImportDescriptors
+
+> 📘
+>
+> Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**). Wallet must be unlocked.
+>
+> Note: Importing descriptors can take a significant amount of time if a rescan is triggered, particularly if a timestamp far back in the past is used. During this time, other RPC calls may report that the imported keys, addresses, or scripts exist but related transactions are still missing.
+
+_Added in Dash Core 21.0.0_
+
+The [`importdescriptors` RPC](../api/remote-procedure-calls-wallet.md#importdescriptors) imports multiple descriptors into the wallet, each with specific attributes. This action triggers a blockchain rescan from the specified start time to update the wallet with all relevant transactions.
+
+_Parameter #1---descriptors to import_
+
+| Name            | Type                 | Presence                | Description |
+| --------------- | -------------------- | ----------------------- | ----------- |
+| `requests`      | array                | Required<br>(exactly 1) | An array of JSON objects, each representing a descriptor to be imported. |
+| →Request         | object               | Required<br>(1 or more) | JSON object containing descriptor data. |
+| → →<br>`desc`     | string               | Required<br>(exactly 1) | Descriptor string to import. |
+| → →<br>`active`   | bool                 | Optional<br>(0 or 1)    | If true, sets this descriptor as active for generating new addresses. Defaults to `false`. |
+| → →<br>`range`    | numeric or array     | Optional<br>(0 or 1)    | If a ranged descriptor is used, this specifies the end or the range (in the form [begin,end]) to import. |
+| → →<br>`next_index`| numeric             | Optional<br>(0 or 1)    | For active ranged descriptors, the next index from which to generate addresses. |
+| → →<br>`timestamp`| integer / string    | Required<br>(exactly 1) | Time from which to start rescanning the blockchain for this descriptor, in UNIX epoch time. Use the string "now" to substitute the current synced blockchain time. "now" can be specified to bypass scanning, for outputs which are known to never have been used, and 0 can be specified to scan the entire blockchain. Blocks up to 2 hours before the earliest timestamp of all descriptors being imported will be scanned. |
+| → →<br>`internal` | bool                 | Optional<br>(0 or 1)    | If true, treats outputs as change (not incoming payments). Defaults to `false`. |
+| → →<br>`label`    | string               | Optional<br>(0 or 1)    | Label for the addresses. Only applicable if `internal` is false. Defaults to an empty string. |
+
+_Result---execution result_
+
+| Name                | Type   | Presence                | Description                                                                                      |
+| ------------------- | ------ | ----------------------- | ------------------------------------------------------------------------------------------------ |
+| `result`            | array  | Required<br>(exactly 1) | An array of objects containing results for each import request, mirroring the structure of the input array. |
+| → Result            | object | Required<br>(1 or more) | Each result corresponding to an import request.                                                  |
+| → → <br>`success`   | bool   | Required<br>(exactly 1) | Indicates whether the import was successful.                                                     |
+| → → <br>`warnings`  | array  | Optional<br>(0 or more) | Lists any warnings related to the import.                                                        |
+| → → <br>`error`     | object | Optional<br>(0 or 1)    | Contains error details if the import failed.                                                     |
+
+_Examples_
+
+```bash
+dash-cli importdescriptors '[{ "desc": "<descriptor>", "timestamp": 1455191478, "internal": true }, { "desc": "<descriptor 2>", "label": "example 2", "timestamp": 1455191480 }]'
+```
+
+```bash
+dash-cli importdescriptors '[{ "desc": "<descriptor>", "timestamp": "now", "active": true, "range": [0,100], "label": "my wallet" }]'
+```
+
+_See also_
+
+* [ImportPrivKey](../api/remote-procedure-calls-wallet.md#importprivkey): adds a private key to your wallet.
+* [ImportAddress](../api/remote-procedure-calls-wallet.md#importaddress): adds an address or script to the wallet without the associated private key.
+* [ImportWallet](../api/remote-procedure-calls-wallet.md#importwallet): imports keys from a wallet dump file, potentially triggering a rescan.
+
 ## ImportElectrumWallet
 
 The [`importelectrumwallet` RPC](../api/remote-procedure-calls-wallet.md#importelectrumwallet) imports keys from an Electrum wallet export file (.csv or .json)
