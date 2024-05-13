@@ -292,6 +292,12 @@ The [`getnodeaddresses` RPC](../api/remote-procedure-calls-network.md#getnodeadd
 | ------- | ------------ | -------------------- | -------------------------------------------------------------------------------------------------------------- |
 | `count` | number (int) | Optional<br>(0 or 1) | The number of addresses to return. Limited to the smaller of 2500 or 23% of all known addresses (default = 1). |
 
+*Parameter #2---network*
+
+| Name       | Type   | Presence             | Description                                                   |
+| ---------- | ------ | -------------------- | ------------------------------------------------------------- |
+| `network`  | string | Optional<br>(0 or 1) | The network (ipv4, ipv6, onion, i2p) the node connected through. |
+
 *Result---the current bytes in, bytes out, and current time*
 
 | Name            | Type         | Presence                | Description                                                |
@@ -301,8 +307,9 @@ The [`getnodeaddresses` RPC](../api/remote-procedure-calls-network.md#getnodeadd
 | →<br>`services` | number (int) | Required<br>(exactly 1) | The services offered                                       |
 | →<br>`address`  | string       | Required<br>(exactly 1) | The address of the node                                    |
 | →<br>`port`     | number (int) | Required<br>(exactly 1) | The port of the node                                       |
+| →<br>`network`  | string       | Required<br>(exactly 1) | The network (ipv4, ipv6, onion, i2p) the node connected through |
 
-*Example from Dash Core 18.0.0*
+*Example from Dash Core 21.0.0*
 
 ```bash
 dash-cli -testnet getnodeaddresses
@@ -313,10 +320,11 @@ Result:
 ```json
 [
   {
-    "time": 1634187034,
-    "services": 1029,
+    "time": 1713783495,
+    "services": 3077,
     "address": "34.214.102.160",
-    "port": 19999
+    "port": 19999,
+    "network": "ipv4"
   }
 ]
 ```
