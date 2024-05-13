@@ -443,6 +443,7 @@ Name | Type | Presence | Description
 → → → →<br>`timeout`      | numeric | Required | The median time past of a block at which the deployment is considered failed if not yet locked in
 → → → →<br>`since`        | numeric | Required | Height of the first block to which the status applies
 → → → →<br>`activation_height` | numeric | Optional | Expected activation height for this softfork (only for "locked_in" `status`)
+→ → → →<br>`min_activation_height` | numeric | Optional | Minimum height of blocks for which the rules may be enforced
 → → → →<br>`ehf`          | bool | Required | `true` for EHF activated hard forks
 → → → →<br>`ehf_height`   | numeric | Optional | The minimum height at which miner's signals for the deployment matter. Below this height miner signaling cannot trigger hard fork lock-in. Not returned if `ehf` is `false` or if the minimum height is not known yet.
 → → → →<br>`statistics` | string : object | Required<br>(exactly 1) | *Added in Dash Core 0.15.0*<br><br>Numeric statistics about BIP9 signaling for a softfork (only for \started\" status)"
@@ -455,7 +456,7 @@ Name | Type | Presence | Description
 → → →<br>`active` | boolean | Required | True if the rules are enforced for the mempool and the next block
 →<br>`warnings` | string | Optional<br>(0 or 1) | *Added in Dash Core 0.16.0*<br><br>Returns any network and blockchain warnings
 
-*Example from Dash Core 20.0.0*
+*Example from Dash Core 21.0.0*
 
 ``` bash
 dash-cli -testnet getblockchaininfo
@@ -466,16 +467,16 @@ Result:
 ``` json
 {
   "chain": "test",
-  "blocks": 970215,
-  "headers": 970215,
-  "bestblockhash": "00000024551f6c642b8706d2a96ae7b6c4ab31cfa99c0269bd087439d1fbdbfc",
-  "difficulty": 0.002453668038089944,
-  "time": 1707935097,
-  "mediantime": 1707933667,
-  "verificationprogress": 0.9999998477422257,
+  "blocks": 1025413,
+  "headers": 1025413,
+  "bestblockhash": "000000a7f4dbe0865dbbfacf24d8cdb2914fc0ba2d24131ed7ea0b181bec532f",
+  "difficulty": 0.002316476131335342,
+  "time": 1715629755,
+  "mediantime": 1715628900,
+  "verificationprogress": 0.9999996933131421,
   "initialblockdownload": false,
-  "chainwork": "00000000000000000000000000000000000000000000000002ee3023737c1531",
-  "size_on_disk": 3303091896,
+  "chainwork": "000000000000000000000000000000000000000000000000030928dd71247c3d",
+  "size_on_disk": 3508237778,
   "pruned": false,
   "softforks": {
     "bip34": {
@@ -545,7 +546,8 @@ Result:
         "start_time": 1693526400,
         "timeout": 9223372036854775807,
         "ehf": false,
-        "since": 905100
+        "since": 905100,
+        "min_activation_height": 0
       },
       "height": 905100,
       "active": true
@@ -557,7 +559,8 @@ Result:
         "start_time": 1693526400,
         "timeout": 9223372036854775807,
         "ehf": true,
-        "since": 0
+        "since": 0,
+        "min_activation_height": 0
       },
       "active": false
     }
