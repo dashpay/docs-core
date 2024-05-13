@@ -416,7 +416,7 @@ The [`getnetworkinfo` RPC](../api/remote-procedure-calls-network.md#getnetworkin
 | → → →<br>`score`                       | number (int)  | Required<br>(exactly 1) | The number of incoming connections during the uptime of this node that have used this `address` in their [`version` message](../reference/p2p-network-control-messages.md#version)                                                                       |
 | →<br>`warnings`                        | string        | Required<br>(exactly 1) | *Added in Bitcoin Core 0.11.0*<br><br>A plain-text description of any network warnings. If there are no warnings, an empty string will be returned.                                                                                               |
 
-*Example from Dash Core 18.0.0*
+*Example from Dash Core 21.0.0*
 
 ```bash
 dash-cli getnetworkinfo
@@ -425,22 +425,29 @@ dash-cli getnetworkinfo
 Result (actual addresses have been replaced with [RFC5737](http://tools.ietf.org/html/rfc5737) reserved addresses):
 
 ```json
+
+16:31:29
 {
-  "version": 170003,
-  "buildversion": "v0.17.0.3-649273e70",
-  "subversion": "/Dash Core:0.17.0.3/",
-  "protocolversion": 70220,
-  "localservices": "0000000000000445",
+  "version": 210000,
+  "buildversion": "v20.1.1-541-gc617d4a50bff",
+  "subversion": "/Dash Core:21.0.0/",
+  "protocolversion": 70231,
+  "localservices": "0000000000000c05",
   "localservicesnames": [
     "NETWORK",
     "BLOOM",
-    "COMPACT_FILTERS",
-    "NETWORK_LIMITED"
+    "NETWORK_LIMITED",
+    "HEADERS_COMPRESSED"
   ],
   "localrelay": true,
   "timeoffset": 0,
   "networkactive": true,
-  "connections": 8,
+  "connections": 10,
+  "connections_in": 0,
+  "connections_out": 10,
+  "connections_mn": 6,
+  "connections_mn_in": 0,
+  "connections_mn_out": 6,
   "socketevents": "epoll",
   "networks": [
     {
@@ -465,16 +472,9 @@ Result (actual addresses have been replaced with [RFC5737](http://tools.ietf.org
       "proxy_randomize_credentials": false
     },
     {
-      "name": "",
-      "limited": false,
-      "reachable": true,
-      "proxy": "",
-      "proxy_randomize_credentials": false
-    },
-    {
-      "name": "",
-      "limited": false,
-      "reachable": true,
+      "name": "i2p",
+      "limited": true,
+      "reachable": false,
       "proxy": "",
       "proxy_randomize_credentials": false
     }
@@ -483,7 +483,7 @@ Result (actual addresses have been replaced with [RFC5737](http://tools.ietf.org
   "incrementalfee": 0.00001000,
   "localaddresses": [
   ],
-  "warnings": "Warning: unknown new rules activated (versionbit 3)"
+  "warnings": "Make sure to encrypt your wallet and delete all non-encrypted backups after you have verified that the wallet works!"
 }
 ```
 
