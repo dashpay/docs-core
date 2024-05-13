@@ -200,6 +200,7 @@ These RPCs are all Dash-specific and not found in Bitcoin Core
 * [RemovePrunedFunds](../api/remote-procedure-calls-wallet.md#removeprunedfunds): deletes the specified transaction from the wallet. Meant for use with pruned wallets and as a companion to importprunedfunds. _New in Dash Core 0.12.3_
 * [RescanBlockChain](../api/remote-procedure-calls-wallet.md#rescanblockchain): rescans the local blockchain for wallet related transactions. _New in Dash Core 0.16.0_
 * [ScanTxOutset](../api/remote-procedure-calls-wallet.md#scantxoutset): scans the unspent transaction output set for entries that match certain output descriptors. _New in Dash Core 18.0.0_
+* [Send](../api/remote-procedure-calls-wallet.md#send): sends a transaction with specified outputs. **New in Dash Core 21.0.0**
 * [SendMany](../api/remote-procedure-calls-wallet.md#sendmany): creates and broadcasts a transaction which sends outputs to multiple addresses. **Updated in Dash Core 20.0.0**
 * [SendToAddress](../api/remote-procedure-calls-wallet.md#sendtoaddress): spends an amount to a given address. **Updated in Dash Core 20.0.0**
 * [SetCoinJoinAmount](../api/remote-procedure-calls-wallet.md#setcoinjoinamount): sets the amount of DASH to be processed _New in Dash Core 0.13.0_

@@ -2711,6 +2711,87 @@ _See also_
 
 * [ListUnspent](../api/remote-procedure-calls-wallet.md#listunspent): returns an array of unspent transaction outputs belonging to this wallet.
 
+## Send
+
+> 📘
+>
+> Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**).
+>
+> EXPERIMENTAL warning: This call may be changed in future releases.
+
+The [`send` RPC](../api/remote-procedure-calls-wallet.md#send) sends a transaction with specified outputs. This command creates and optionally broadcasts a transaction where none of the keys are duplicated in the output JSON array.
+
+_Parameter #1---Outputs_
+
+| Name    | Type         | Presence                | Description                                  |
+| ------- | ------------ | ----------------------- | -------------------------------------------- |
+| outputs | json array   | Required<br>(exactly 1) | A JSON array with outputs as key-value pairs. Each address can only appear once, and only one 'data' object is allowed.  |
+| → Output       | object                | Required<br>(1 or more) | Each object in the array represents an output of the transaction. |
+| → →<br>`address` | string: number (DASH) | Optional<br>(0 or 1)    | A key-value pair where the key is the Dash address and the value is the amount in DASH. The value can be specified as a numeric value or a string representing the amount. |
+| → →<br>`data`    | string: string (hex)  | Optional<br>(0 or 1)    | A key-value pair where the key must be `"data"`, and the value is hex-encoded data. |
+
+_Parameter #2---conf_target_
+
+| Name         | Type          | Presence             | Description                               |
+| ------------ | ------------- | -------------------- | ----------------------------------------- |
+| conf_target  | numeric (int) | Optional<br>(0 or 1) | Confirmation target (in blocks) for the transaction, or fee rate (for DASH/kB or duff/B estimate modes). Uses wallet's default configuration. |
+
+_Parameter #3---estimate_mode_
+
+| Name           | Type   | Presence             | Description                                                                                                               |
+| -------------- | ------ | -------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| estimate_mode  | string | Optional<br>(0 or 1) | The fee estimate mode. Must be one of: `unset`, `economical`, `conservative`, `DASH/kB`, `duff/B`. Default is `unset`.   |
+
+_Parameter #4---Options_
+
+| Name                        | Type               | Presence                | Description                                         |
+| --------------------------- | ------------------ | ----------------------- | --------------------------------------------------- |
+| options                     | json object        | Optional<br>(0 or 1)    | Additional configuration settings for the transaction. |
+| → <br>`add_inputs`          | bool               | Optional<br>(0 or 1)    | If set to `true`, automatically includes more inputs if the initially specified inputs are not sufficient. Defaults to `false`.|
+| → <br>`add_to_wallet`       | bool               | Optional<br>(0 or 1)    | If `false`, returns the transaction as a serialized hex string and does not add it to the wallet or broadcast it. Defaults to `true`. |
+| → <br>`change_address`      | string (hex)       | Optional<br>(0 or 1)    | The Dash address to receive the change. |
+| → <br>`change_position`     | numeric (int)      | Optional<br>(0 or 1)    | The index of the change output. |
+| → <br>`conf_target`         | numeric (int)      | Optional<br>(0 or 1)    | Confirmation target (in blocks) for the transaction, or fee rate for DASH/kB or duff/B estimate modes. Defaults to wallet's default configuration. |
+| → <br>`estimate_mode`       | string             | Optional<br>(0 or 1)    | The fee estimate mode. Must be one of: `unset`, `economical`, `conservative`, `DASH/kB`, `duff/B`. Default is `unset`. |
+| → <br>`include_watching`    | bool               | Optional<br>(0 or 1)    | Also select inputs which are watch only. Only solvable inputs can be used. Watch-only destinations are solvable if the public key and/or output script was imported, e.g. with `importpubkey` or `importmulti` with the 'pubkeys' or 'desc' field. |
+| → `inputs`                  | array              | Optional<br>(0 or 1)    | Specify inputs instead of adding them automatically. Array of JSON objects |
+| → → Input                   | object             | Required<br>(1 or more) | Each object in the array represents an input of the transaction.           |
+| → → →<br>`txid`             | string (hex)       | Required<br>(exactly 1) | The transaction ID of the outpoint to be spent.                            |
+| → → →<br>`vout`             | numeric (int)      | Required<br>(exactly 1) | The output number (vout) of the outpoint to be spent. |
+| → → →<br>`sequence`         | numeric (int)      | Optional<br>(0 or 1)    | The sequence number to use for the input. |
+| → <br>`locktime`            | numeric            | Optional<br>(0 or 1)    | Sets the transaction's locktime. If non-zero, it also activates the inputs. Default is `0`. |
+| → <br>`lock_unspents`       | bool               | Optional<br>(0 or 1)    | If `true`, locks the selected unspent outputs. Defaults to `false`. |
+| → <br>`psbt`                | bool               | Optional<br>(0 or 1)    | If `true`, always returns the transaction as a PSBT. Implies `add_to_wallet` is `false`. Default is automatic.|
+| → `subtract_fee_from_outputs` | array            | Optional<br>(0 or 1)    | A JSON array of integers.  The fee will be equally deducted from the amount of each specified output. Those recipients will receive less funds than you enter in their corresponding amount field. If no outputs are specified here, the sender pays the fee. |
+| → → Output index            | numeric (int)      | Required<br>(1 or more) | The zero-based output index, before a change output is added. |
+
+_Result---transaction details_
+
+| Name        | Type               | Presence                | Description                        |
+| ----------- | ------------------ | ----------------------- | ---------------------------------- |
+| Result      | object             | Required<br>(exactly 1) | JSON object containing transaction details |
+| → `complete`  | bool               | Required<br>(exactly 1) | If the transaction has a complete set of signatures. |
+| → `txid`      | string (hex)       | Required<br>(exactly 1) | The transaction id for the send. Only 1 transaction is created regardless of the number of addresses. |
+| → `hex`       | string (hex)       | Optional<br>(0 or 1)    | If `add_to_wallet` is false, the hex-encoded raw transaction with signatures. |
+| → `psbt`      | string             | Optional<br>(0 or 1)    | If more signatures are needed, or if `add_to_wallet` is false, the base64-encoded (partially) signed transaction. |
+
+_Examples from Dash Core 21.0.0_
+
+```bash
+# Send with a fee rate of 1 duff/B
+dash-cli send '{"XunLY9Tf7Zsef8gMGL2fhWA9ZmMjt4KPw0": 0.1}' 1 "duff/B"
+```
+
+```bash
+# Create a transaction that should confirm in the next block, specify a particular input, and return result without adding to wallet or broadcasting
+dash-cli send '{"XunLY9Tf7Zsef8gMGL2fhWA9ZmMjt4KPw0": 0.1}' 1 "economical" '{"add_to_wallet": false, "inputs": [{"txid":"a08e6907dbbd3d809776dbfc5d82e371b764ed838b5655e72f463568df1aadf0", "vout":1}]}'
+```
+
+_See also_
+
+* [SendMany](../api/remote-procedure-calls-wallet.md#sendmany): creates and broadcasts a transaction which sends outputs to multiple addresses.
+* [SendToAddress](../api/remote-procedure-calls-wallet.md#sendtoaddress): spends an amount to a given address.
+
 ## SendMany
 
 > 📘
@@ -2844,6 +2925,7 @@ Result:
 
 _See also_
 
+* [Send](../api/remote-procedure-calls-wallet.md#send): sends a transaction with specified outputs.
 * [SendToAddress](../api/remote-procedure-calls-wallet.md#sendtoaddress): spends an amount to a given address.
 
 ## SendToAddress
@@ -2986,6 +3068,7 @@ ba4bbe29fa06b67d6f3f3a73e381627e66abe22e217ce329aefad41ea72c3922
 
 _See also_
 
+* [Send](../api/remote-procedure-calls-wallet.md#send): sends a transaction with specified outputs.
 * [SendMany](../api/remote-procedure-calls-wallet.md#sendmany): creates and broadcasts a transaction which sends outputs to multiple addresses.
 
 ## SetLabel
