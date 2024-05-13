@@ -112,7 +112,7 @@ These RPCs are all Dash-specific and not found in Bitcoin Core
 * [GetNetworkInfo](../api/remote-procedure-calls-network.md#getnetworkinfo): returns information about the node's connection to the network. **Updated in Dash Core 21.0.0**
 * [GetNodeAddresses](../api/remote-procedure-calls-network.md#getnodeaddresses): returns the known addresses which can potentially be used to find new nodes in the network. _New in Dash Core 18.0.0_
 * [GetPeerInfo](../api/remote-procedure-calls-network.md#getpeerinfo): returns data about each connected network node. **Updated in Dash Core 21.0.0**
-* [ListBanned](../api/remote-procedure-calls-network.md#listbanned): lists all banned IPs/Subnets. _Updated in Dash Core 18.1.0_
+* [ListBanned](../api/remote-procedure-calls-network.md#listbanned): lists all banned IPs/Subnets. **Updated in Dash Core 21.0.0**
 * [Ping](../api/remote-procedure-calls-network.md#ping): sends a P2P ping message to all connected nodes to measure ping time. Results are provided by the [`getpeerinfo` RPC](../api/remote-procedure-calls-network.md#getpeerinfo) pingtime and pingwait fields as decimal seconds. The P2P [`ping` message](../reference/p2p-network-control-messages.md#ping) is handled in a queue with all other commands, so it measures processing backlog, not just network ping.
 * [SetBan](../api/remote-procedure-calls-network.md#setban): attempts add or remove a IP/Subnet from the banned list.
 * [SetNetworkActive](../api/remote-procedure-calls-network.md#setnetworkactive): disables/enables all P2P network activity.

@@ -661,15 +661,17 @@ The [`listbanned` RPC](../api/remote-procedure-calls-network.md#listbanned) list
 
 *Result---information about each banned IP/Subnet*
 
-| Name                    | Type            | Presence                    | Description                                                                                                                                                                                                                          |
-| ----------------------- | --------------- | --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `result`                | object          | Required<br>(exactly 1)     | An array of objects each describing one entry. If there are no entries in the ban list, the array will be empty                                                                                                                      |
-| →<br>Node               | object          | Optional<br>(0 or more)     | A ban list entry                                                                                                                                                                                                                     |
-| → →<br>`address`        | string          | Required<br>(exactly 1)     | The IP/Subnet of the entry                                                                                                                                                                                                           |
-| → →<br>`banned_until`   | number<br>(int) | Required<br>(exactly 1)     | The Unix epoch time when the entry was added to the ban list                                                                                                                                                                         |
-| → →<br>`ban_created`    | number<br>(int) | Required<br>(exactly 1)     | The Unix epoch time until the IP/Subnet is banned                                                                                                                                                                                    |
+| Name                    | Type            | Presence                    | Description |
+| ----------------------- | --------------- | --------------------------- | ----------- |
+| `result`                | object          | Required<br>(exactly 1)     | An array of objects each describing one entry. If there are no entries in the ban list, the array will be empty |
+| →<br>Node               | object          | Optional<br>(0 or more)     | A ban list entry |
+| → →<br>`address`        | string          | Required<br>(exactly 1)     | The IP/Subnet of the entry |
+| → →<br>`banned_until`   | number<br>(int) | Required<br>(exactly 1)     | The Unix epoch time when the entry was added to the ban list |
+| → →<br>`ban_created`    | number<br>(int) | Required<br>(exactly 1)     | The Unix epoch time until the IP/Subnet is banned |
+| `ban_duration`          | number (int)    | Required<br>(exactly 1)     | The ban duration, in seconds. |
+| `time_remaining`        | number (int)    | Required<br>(exactly 1)     | The time remaining until the ban expires, in seconds. |
 
-*Examples from Dash Core 18.1.0*
+*Examples from Dash Core 21.1.0*
 
 ```bash
 dash-cli listbanned
@@ -681,13 +683,17 @@ Result:
 [
   {
     "address": "192.0.2.201/32",
-    "banned_until": 1507906175,
-    "ban_created": 1507819775,
+    "ban_created": 1715614036,
+    "banned_until": 1715617636,
+    "ban_duration": 3600,
+    "time_remaining": 3577
   },
   {
     "address": "192.0.2.101/32",
-    "banned_until": 1507906199,
-    "ban_created": 1507819799,
+    "ban_created": 1715614056,
+    "banned_until": 1715617656,
+    "ban_duration": 3600,
+    "time_remaining": 3597
   }
 ]
 ```
