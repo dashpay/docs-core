@@ -106,7 +106,7 @@ These RPCs are all Dash-specific and not found in Bitcoin Core
 * [ClearBanned](../api/remote-procedure-calls-network.md#clearbanned): clears list of banned nodes.
 * [ClearDiscouraged](../api/remote-procedure-calls-network.md#cleardiscouraged): clears all discouraged nodes. **_New in Dash Core 19.0.0_**
 * [DisconnectNode](../api/remote-procedure-calls-network.md#disconnectnode): immediately disconnects from a specified node. _Updated in Dash Core 0.15.0_
-* [GetAddedNodeInfo](../api/remote-procedure-calls-network.md#getaddednodeinfo): returns information about the given added node, or all added nodes (except onetry nodes). Only nodes which have been manually added using the [`addnode` RPC](../api/remote-procedure-calls-network.md#addnode) will have their information displayed. _Updated in Dash Core 0.12.3_
+* [GetAddedNodeInfo](../api/remote-procedure-calls-network.md#getaddednodeinfo): returns information about the given added node, or all added nodes (except onetry nodes). Only nodes which have been manually added using the [`addnode` RPC](../api/remote-procedure-calls-network.md#addnode) will have their information displayed. **Updated in Dash Core 21.0.0**
 * [GetConnectionCount](../api/remote-procedure-calls-network.md#getconnectioncount): returns the number of connections to other nodes.
 * [GetNetTotals](../api/remote-procedure-calls-network.md#getnettotals): returns information about network traffic, including bytes in, bytes out, and the current time.
 * [GetNetworkInfo](../api/remote-procedure-calls-network.md#getnetworkinfo): returns information about the node's connection to the network. **Updated in Dash Core 21.0.0**
