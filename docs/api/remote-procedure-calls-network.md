@@ -534,7 +534,9 @@ The [`getpeerinfo` RPC](../api/remote-procedure-calls-network.md#getpeerinfo) re
 | → →<br>`version`                | number (int)        | Required<br>(exactly 1) | The protocol version number used by this node.  See the [protocol versions section](../reference/p2p-network-protocol-versions.md) for more information |
 | → →<br>`subver`                 | string              | Required<br>(exactly 1) | The user agent this node sends in its [`version` message](../reference/p2p-network-control-messages.md#version).  This string will have been sanitized to prevent corrupting the JSON results.  May be an empty string |
 | → →<br>`inbound`                | bool                | Required<br>(exactly 1) | Set to `true` if this node connected to us (inbound); set to `false` if we connected to this node (outbound) |
-| → →<br>`addnode`                | bool                | Required<br>(exactly 1) | Set to `true` if this node was added via the [`addnode` RPC](../api/remote-procedure-calls-network.md#addnode). |
+| → →<br>`bip152_hb_to`          | bool                | Required<br>(exactly 1) | Whether we selected peer as (compact blocks) high-bandwidth peer |
+| → →<br>`bip152_hb_from`        | bool                | Required<br>(exactly 1) | Whether peer selected us as (compact blocks) high-bandwidth peer |
+| → →<br>`addnode`                | bool                | Required<br>(exactly 1) | **DEPRECATED, returned only if the config option -deprecatedrpc=getpeerinfo_addnode is passed**<br>Set to `true` if this node was added via the [`addnode` RPC](../api/remote-procedure-calls-network.md#addnode). |
 | → →<br>`masternode`             | bool                | Required<br>(exactly 1) | *Added in Dash Core 0.16.0*<br>Whether connection was due to masternode connection attempt |
 | → →<br>`banscore`               | number (int)        | Required<br>(exactly 1) | *DEPRECATED, returned only if config option -deprecatedrpc=banscore is passed*<br>The ban score we've assigned the node based on any misbehavior it's made.  By default, Dash Core disconnects when the ban score reaches `100` |
 | → →<br>`startingheight`         | number (int)        | Required<br>(exactly 1) | The height of the remote node's block chain when it connected to us as reported in its [`version` message](../reference/p2p-network-control-messages.md#version) |
@@ -542,16 +544,16 @@ The [`getpeerinfo` RPC](../api/remote-procedure-calls-network.md#getpeerinfo) re
 | → →<br>`synced_blocks` | number (int) | Required<br>(exactly 1) | The highest-height block we have in common with this node based on P2P [`inv` messages](../reference/p2p-network-data-messages.md#inv) this node sent us. If no block [`inv` messages](../reference/p2p-network-data-messages.md#inv) have been received from this node, this will be set to `-1` |
 | → →<br>`inflight` | array | Required<br>(exactly 1) | An array of blocks which have been requested from this peer. May be empty |
 | → → →<br>Blocks | number (int) | Optional<br>(0 or more) | The height of a block being requested from the remote peer |
-| `addr_relay_enabled`            | bool                | Required<br>(exactly 1) | Whether we participate in address relay with this peer. |
-| `addr_processed`                | number (int)        | Required<br>(exactly 1) | The total number of addresses processed, excluding those dropped due to rate limiting. |
-| `addr_rate_limited`             | number (int)        | Required<br>(exactly 1) | The total number of addresses dropped due to rate limiting. |
-| → →<br>`whitelisted` | bool | Required<br>(exactly 1) | Set to `true` if the remote peer has been whitelisted; otherwise, set to `false`. Whitelisted peers will not be banned if their ban score exceeds the maximum (100 by default). By default, peers connecting from localhost are whitelisted |
+| → →<br>`addr_relay_enabled`            | bool                | Required<br>(exactly 1) | Whether we participate in address relay with this peer. |
+| → →<br>`addr_processed`                | number (int)        | Required<br>(exactly 1) | The total number of addresses processed, excluding those dropped due to rate limiting. |
+| → →<br>`addr_rate_limited`             | number (int)        | Required<br>(exactly 1) | The total number of addresses dropped due to rate limiting. |
+| → →<br>`whitelisted` | bool | Required<br>(exactly 1) | **DEPRECATED, returned only if config option -deprecatedrpc=whitelisted is passed**<br>Set to `true` if the remote peer has been whitelisted; otherwise, set to `false`. Whitelisted peers will not be banned if their ban score exceeds the maximum (100 by default). By default, peers connecting from localhost are whitelisted |
 | → →<br>`permissions` | array | Required<br>(exactly 1) | _Added in Dash Core 18.0.0_<br>Any special permissions that have been granted to this peer |
 | → →<br>`bytessent_per_msg` | string : <br>object | Required<br>(exactly 1) | *Added in Bitcoin Core 0.13.0*<br><br>Information about total sent bytes aggregated by message type |
 | → → →<br>Message Type | number (int) | Required<br>(1 or more) | Total sent bytes aggregated by message type. One field for every used message type |
 | → →<br>`bytesrecv_per_msg` | string : <br>object | Required<br>(exactly 1) | *Added in Bitcoin Core 0.13.0*<br><br>Information about total received bytes aggregated by message type |
 | → → →<br>Message Type | number (int) | Required<br>(1 or more) | Total received bytes aggregated by message type. One field for every used message type |
-| `connection_type` | string | Required<br>(exactly 1) | **Added in Dash Core 20.1.0**<br>Type of connection:<br>outbound-full-relay, block-relay-only, inbound, manual, addr-fetch, feeler.<br>Describes how the connection was established.<br>**Note: This output is subject to change in future releases as connection behaviors are refined.** |
+| `connection_type` | string | Required<br>(exactly 1) | **Added in Dash Core 20.1.0**<br>Type of connection:<br>outbound-full-relay, block-relay-only, inbound, manual, addr-fetch, feeler.<br>Describes how the connection was established. Set to `true` if this node was added via the [`addnode` RPC](../api/remote-procedure-calls-network.md#addnode).<br>**Note: This output is subject to change in future releases as connection behaviors are refined.** |
 
 *Example from Dash Core 21.0.0*
 
@@ -585,12 +587,13 @@ Result (edited to show only a single entry, with IP addresses changed to
     "bytesrecv": 486133,
     "conntime": 1715200196,
     "timeoffset": 0,
-    "pingtime": 0.11961,
-    "minping": 0.100297,
-    "version": 70231,
-    "subver": "/Dash Core:21.0.0(dcg-masternode-61)/",
+    "pingtime": 0.105995,
+    "minping": 0.095181,
+    "version": 70232,
+    "subver": "/Dash Core:21.0.0(dcg-masternode-7)/",
     "inbound": false,
-    "addnode": false,
+    "bip152_hb_to": false,
+    "bip152_hb_from": false,
     "masternode": false,
     "startingheight": 1022323,
     "synced_headers": 1022323,
@@ -601,7 +604,6 @@ Result (edited to show only a single entry, with IP addresses changed to
     "addr_relay_enabled": false,
     "addr_processed": 0,
     "addr_rate_limited": 0,
-    "whitelisted": false,
     "permissions": [
     ],
     "bytessent_per_msg": {
@@ -641,7 +643,7 @@ Result (edited to show only a single entry, with IP addresses changed to
     },
     "connection_type": "block-relay-only"
   }
-}
+]
 ```
 
 *See also*
