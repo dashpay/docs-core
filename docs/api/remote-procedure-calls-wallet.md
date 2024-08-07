@@ -3160,6 +3160,50 @@ _See also_
 * [Send](../api/remote-procedure-calls-wallet.md#send): sends a transaction with specified outputs.
 * [SendMany](../api/remote-procedure-calls-wallet.md#sendmany): creates and broadcasts a transaction which sends outputs to multiple addresses.
 
+## SetHDSeed
+
+> 📘
+>
+> Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**).
+
+_Added in Dash Core 21.0.0_
+
+The `sethdseed` RPC sets or generates a new HD wallet seed. Non-HD wallets will not be upgraded to
+HD wallets. Wallets that are already HD cannot be updated to a new HD seed.
+
+**Note:** You will need to make a new backup of your wallet after setting the HD wallet seed.
+Requires wallet passphrase to be set with walletpassphrase call if wallet is encrypted.
+
+_Parameter #1---newkeypool_
+
+| Name        | Type    | Presence                | Description |
+| ----------- | ------- | ----------------------- | ----------- |
+| newkeypool  | boolean | Optional<br>(0 or 1)    | Whether to flush old unused addresses, including change addresses, from the keypool and regenerate it. Default is `true`. If `true`, the next address from `getnewaddress` and change address from `getrawchangeaddress` will be from this new seed. If `false`, addresses from the existing keypool will be used until it has been depleted. |
+
+_Parameter #2---seed_
+
+| Name | Type   | Presence                | Description |
+| ---- | ------ | ----------------------- | ----------- |
+| seed | string | Optional<br>(0 or 1)    | The WIF private key to use as the new HD seed. The seed value can be retrieved using the `dumpwallet` command. It is the private key marked `hdseed=1`. Default is a random seed. |
+
+_Result---execution result_
+
+| Name | Type     | Presence                | Description |
+| ---- | -------- | ----------------------- | ----------- |
+| null | json null| Required<br>(exactly 1) | No result   |
+
+_Examples_
+
+Set a new HD seed:
+
+```bash
+dash-cli sethdseed
+```
+
+_See also_
+
+* [UpgradeToHD](../api/remote-procedure-calls-wallet.md#upgradetohd): upgrades non-HD wallets to HD.
+
 ## SetLabel
 
 > 📘

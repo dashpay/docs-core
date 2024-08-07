@@ -204,6 +204,8 @@ These RPCs are all Dash-specific and not found in Bitcoin Core
 * [Send](../api/remote-procedure-calls-wallet.md#send): sends a transaction with specified outputs. **New in Dash Core 21.0.0**
 * [SendMany](../api/remote-procedure-calls-wallet.md#sendmany): creates and broadcasts a transaction which sends outputs to multiple addresses. **Updated in Dash Core 21.0.0**
 * [SendToAddress](../api/remote-procedure-calls-wallet.md#sendtoaddress): spends an amount to a given address. **Updated in Dash Core 21.0.0**
+* [SetHDSeed](../api/remote-procedure-calls-wallet.md#sethdseed): sets or generates a new HD wallet seed **New in Dash Core 21.0.0**
+* [SetLabel](../api/remote-procedure-calls-wallet.md#setlabel): sets the label associated with the given address.
 * [SetCoinJoinAmount](../api/remote-procedure-calls-wallet.md#setcoinjoinamount): sets the amount of DASH to be processed _New in Dash Core 0.13.0_
 * [SetCoinJoinRounds](../api/remote-procedure-calls-wallet.md#setcoinjoinrounds): sets the number of rounds to use _New in Dash Core 0.13.0_
 * [SetTxFee](../api/remote-procedure-calls-wallet.md#settxfee): sets the transaction fee per kilobyte paid by transactions created by this wallet.
