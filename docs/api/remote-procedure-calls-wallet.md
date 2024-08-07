@@ -1698,17 +1698,17 @@ _Result---execution result_
 
 | Name              | Type           | Presence                | Description |
 | ----------------- | -------------- | ----------------------- | ----------- |
-| `wallet_name`     | string         | Required<br>(exactly 1) | Name of wallet this operation was performed on                                                  |
-| `descriptors`     | array          | Required<br>(exactly 1) | An array of JSON objects, each describing a descriptor                                          |
-| → Descriptor      | object         | Required<br>(1 or more) | A JSON object describing a particular descriptor                                                |
-| → →<br>`desc`     | string         | Required<br>(exactly 1) | Descriptor string representation                                                                |
-| → →<br>`timestamp`| number (int)   | Required<br>(exactly 1) | The creation time of the descriptor in Unix epoch time                                          |
-| → →<br>`active`   | bool           | Required<br>(exactly 1) | Indicates whether this descriptor is currently used to generate new addresses                   |
-| → →<br>`internal` | bool           | Optional<br>(0 or 1)    | True if this descriptor is used to generate change addresses; False if used for receiving       |
-| → →<br>`range`    | array          | Optional<br>(0 or 1)    | Defined only for ranged descriptors                                                             |
-| → →→<br>`start`   | number (int)   | Optional<br>(0 or 1)    | Range start inclusive                                                                           |
-| → →→<br>`end`     | number (int)   | Optional<br>(0 or 1)    | Range end inclusive                                                                             |
-| → →<br>`next`     | number (int)   | Optional<br>(0 or 1)    | The next index to generate addresses from; defined only for ranged descriptors                  |
+| `wallet_name`     | string         | Required<br>(exactly 1) | Name of wallet this operation was performed on |
+| `descriptors`     | array          | Required<br>(exactly 1) | An array of JSON objects, each describing a descriptor |
+| → Descriptor      | object         | Required<br>(1 or more) | A JSON object describing a particular descriptor |
+| → →<br>`desc`     | string         | Required<br>(exactly 1) | Descriptor string representation |
+| → →<br>`timestamp`| number (int)   | Required<br>(exactly 1) | The creation time of the descriptor in Unix epoch time |
+| → →<br>`active`   | bool           | Required<br>(exactly 1) | Indicates whether this descriptor is currently used to generate new addresses |
+| → →<br>`internal` | bool           | Optional<br>(0 or 1)    | True if this descriptor is used to generate change addresses; False if used for receiving |
+| → →<br>`range`    | array          | Optional<br>(0 or 1)    | Defined only for ranged descriptors |
+| → →→<br>`start`   | number (int)   | Required<br>(exactly 1) | Range start inclusive |
+| → →→<br>`end`     | number (int)   | Required<br>(exactly 1) | Range end inclusive |
+| → →<br>`next`     | number (int)   | Optional<br>(0 or 1)    | The next index to generate addresses from; defined only for ranged descriptors |
 
 _Example from Dash Core 21.1.0_
 
