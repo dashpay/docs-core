@@ -1994,9 +1994,10 @@ Name | Type | Presence | Description
 →<br>`scriptPubKey` | string : object | Optional<br>(0 or 1) | An object with information about the pubkey script.  This may be `null` if there was no pubkey script
 → →<br>`asm` | string | Required<br>(exactly 1) | The pubkey script in decoded form with non-data-pushing opcodes listed
 → →<br>`hex` | string (hex) | Required<br>(exactly 1) | The pubkey script encoded as hex
-→ →<br>`reqSigs` | number (int) | Optional<br>(0 or 1) | The number of signatures required; this is always `1` for P2PK, P2PKH, and P2SH (including P2SH multisig because the redeem script is not available in the pubkey script).  It may be greater than 1 for bare multisig.  This value will not be returned for `nulldata` or `nonstandard` script types (see the `type` key below)
+→ →<br>`reqSigs` | number (int) | Optional<br>(0 or 1) | **Deprecated in Dash Core 21.0.0** (returned only if config option -deprecatedrpc=addresses is passed)<br><br>The number of signatures required; this is always `1` for P2PK, P2PKH, and P2SH (including P2SH multisig because the redeem script is not available in the pubkey script).  It may be greater than 1 for bare multisig.  This value will not be returned for `nulldata` or `nonstandard` script types (see the `type` key below)
 → →<br>`type` | string | Optional<br>(0 or 1) | The type of script.  This will be one of the following:<br>• `pubkey` for a P2PK script<br>• `pubkeyhash` for a P2PKH script<br>• `scripthash` for a P2SH script<br>• `multisig` for a bare multisig script<br>• `nulldata` for nulldata scripts<br>• `nonstandard` for unknown scripts
-→ →<br>`addresses` | string : array | Optional<br>(0 or 1) | The P2PKH or P2SH addresses used in this transaction, or the computed P2PKH address of any pubkeys in this transaction.  This array will not be returned for `nulldata` or `nonstandard` script types
+→ →<br>`address` | string | Optional<br>(0 or 1) | Dash address (only if a well-defined address exists)
+→ →<br>`addresses` | string : array | Optional<br>(0 or 1) | **Deprecated in Dash Core 21.0.0** (returned only if config option -deprecatedrpc=addresses is passed)<br><br>The P2PKH or P2SH addresses used in this transaction, or the computed P2PKH address of any pubkeys in this transaction.  This array will not be returned for `nulldata` or `nonstandard` script types
 → → →<br>Address | string | Required<br>(1 or more) | A P2PKH or P2SH address
 →<br>`coinbase` | bool | Required<br>(exactly 1) | Set to `true` if the transaction output belonged to a coinbase transaction; set to `false` for all other transactions.  Coinbase transactions need to have 101 confirmations before their outputs can be spent
 
@@ -2021,11 +2022,8 @@ Result:
   "scriptPubKey": {
     "asm": "OP_DUP OP_HASH160 b66266c5017a759817f3bb99e8d9124bf5bb2e74 OP_EQUALVERIFY OP_CHECKSIG",
     "hex": "76a914b66266c5017a759817f3bb99e8d9124bf5bb2e7488ac",
-    "reqSigs": 1,
     "type": "pubkeyhash",
-    "addresses": [
-      "ycwoiAibTjpwnoCZSX7S4kiB2H8wULw9qo"
-    ]
+    "address": "ycwoiAibTjpwnoCZSX7S4kiB2H8wULw9qo"
   },
   "coinbase": false
 }
