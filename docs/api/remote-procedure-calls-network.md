@@ -423,13 +423,11 @@ dash-cli getnetworkinfo
 Result (actual addresses have been replaced with [RFC5737](http://tools.ietf.org/html/rfc5737) reserved addresses):
 
 ```json
-
-16:31:29
 {
-  "version": 210000,
-  "buildversion": "v20.1.1-541-gc617d4a50bff",
-  "subversion": "/Dash Core:21.0.0/",
-  "protocolversion": 70231,
+  "version": 210100,
+  "buildversion": "v21.1.0",
+  "subversion": "/Dash Core:21.1.0/",
+  "protocolversion": 70233,
   "localservices": "0000000000000c05",
   "localservicesnames": [
     "NETWORK",
@@ -471,6 +469,13 @@ Result (actual addresses have been replaced with [RFC5737](http://tools.ietf.org
     },
     {
       "name": "i2p",
+      "limited": true,
+      "reachable": false,
+      "proxy": "",
+      "proxy_randomize_credentials": false
+    },
+    {
+      "name": "cjdns",
       "limited": true,
       "reachable": false,
       "proxy": "",
