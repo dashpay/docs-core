@@ -2923,11 +2923,27 @@ _Parameter #10---fee estimate mode_
 | ---- | ---- | -------- | ----------- |
 | `estimate_mode` | string | Optional<br>(0 or 1) | The fee estimate mode, must be one of:<br>`unset`<br>`economical`<br>`conservative`<br>`DASH/kB`<br>`duff/B` |
 
-_Result---a TXID of the sent transaction_
+_Parameter #11---verbose_
 
-| Name     | Type   | Presence                | Description                                                        |
-| -------- | ------ | ----------------------- | ------------------------------------------------------------------ |
-| `result` | string | Required<br>(exactly 1) | The TXID of the sent transaction, encoded as hex in RPC byte order |
+| Name    | Type    | Presence                | Description                                                |
+| ------- | ------- | ----------------------- | ---------------------------------------------------------- |
+| verbose | boolean | Optional<br>(0 or 1)    | If `true`, return extra information about the transaction. Default is `false` |
+
+_Result---execution result_
+
+If `verbose` is not set or set to `false`:
+
+| Name | Type   | Presence                | Description                                       |
+| ---- | ------ | ----------------------- | ------------------------------------------------- |
+| hex  | string | Required<br>(exactly 1) | The transaction id for the send. Only one transaction is created regardless of the number of addresses |
+
+If `verbose` is set to `true`:
+
+| Name          | Type         | Presence                | Description                                       |
+| ------------- | ------------ | ----------------------- | ------------------------------------------------- |
+| result        | json object  | Required<br>(exactly 1) | A JSON object containing transaction details      |
+| → txid        | string       | Required<br>(exactly 1) | The transaction id for the send. Only one transaction is created regardless of the number of addresses |
+| → fee reason  | string       | Required<br>(exactly 1) | The transaction fee reason                        |
 
 _Example from Dash Core 0.17.0_
 
@@ -3053,11 +3069,27 @@ _Parameter #10---avoids partial respends_
 | ------------- | ------- | -------------------- | ----------------------------------------------------------------------------------------------------------------------- |
 | `avoid_reuse` | boolean | Optional<br>(0 or 1) | Avoid spending from dirty addresses; addresses are considered dirty if they have previously been used in a transaction. |
 
-_Result---a TXID of the sent transaction_
+_Parameter #11---verbose_
 
-| Name     | Type   | Presence                | Description                                                        |
-| -------- | ------ | ----------------------- | ------------------------------------------------------------------ |
-| `result` | string | Required<br>(exactly 1) | The TXID of the sent transaction, encoded as hex in RPC byte order |
+| Name    | Type    | Presence                | Description                                                |
+| ------- | ------- | ----------------------- | ---------------------------------------------------------- |
+| verbose | boolean | Optional<br>(0 or 1)    | If `true`, return extra information about the transaction. Default is `false` |
+
+_Result---execution result_
+
+If `verbose` is not set or set to `false`:
+
+| Name | Type   | Presence                | Description                                       |
+| ---- | ------ | ----------------------- | ------------------------------------------------- |
+| hex  | string | Required<br>(exactly 1) | The transaction id for the send |
+
+If `verbose` is set to `true`:
+
+| Name          | Type         | Presence                | Description                                       |
+| ------------- | ------------ | ----------------------- | ------------------------------------------------- |
+| result        | json object  | Required<br>(exactly 1) | A JSON object containing transaction details      |
+| → txid        | string       | Required<br>(exactly 1) | The transaction id for the send                   |
+| → fee reason  | string       | Required<br>(exactly 1) | The transaction fee reason                        |
 
 _Example from Dash Core 0.12.2_
 
