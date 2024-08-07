@@ -1686,6 +1686,65 @@ _See also_
 * [GetTransaction](../api/remote-procedure-calls-wallet.md#gettransaction): gets detailed information about an in-wallet transaction.
 * [ListAddressBalances](../api/remote-procedure-calls-wallet.md#listaddressbalances): lists addresses of this wallet and their balances
 
+## ListDescriptors
+
+> 📘
+>
+> Requires [wallet](../resources/glossary.md#wallet) support (**unavailable on masternodes**). Wallet must be unlocked.
+
+_Added in Dash Core 21.0.0_
+
+The [`listdescriptors` RPC](../api/remote-procedure-calls-wallet.md#listdescriptors) lists descriptors imported into a descriptor-enabled wallet.
+
+_Result---execution result_
+
+| Name              | Type           | Presence                | Description |
+| ----------------- | -------------- | ----------------------- | ----------- |
+| `wallet_name`     | string         | Required<br>(exactly 1) | Name of wallet this operation was performed on                                                  |
+| `descriptors`     | array          | Required<br>(exactly 1) | An array of JSON objects, each describing a descriptor                                          |
+| → Descriptor      | object         | Required<br>(1 or more) | A JSON object describing a particular descriptor                                                |
+| → →<br>`desc`     | string         | Required<br>(exactly 1) | Descriptor string representation                                                                |
+| → →<br>`timestamp`| number (int)   | Required<br>(exactly 1) | The creation time of the descriptor in Unix epoch time                                          |
+| → →<br>`active`   | bool           | Required<br>(exactly 1) | Indicates whether this descriptor is currently used to generate new addresses                   |
+| → →<br>`internal` | bool           | Optional<br>(0 or 1)    | True if this descriptor is used to generate change addresses; False if used for receiving       |
+| → →<br>`range`    | array          | Optional<br>(0 or 1)    | Defined only for ranged descriptors                                                             |
+| → →→<br>`start`   | number (int)   | Optional<br>(0 or 1)    | Range start inclusive                                                                           |
+| → →→<br>`end`     | number (int)   | Optional<br>(0 or 1)    | Range end inclusive                                                                             |
+| → →<br>`next`     | number (int)   | Optional<br>(0 or 1)    | The next index to generate addresses from; defined only for ranged descriptors                  |
+
+_Example from Dash Core 21.1.0_
+
+List all descriptors in a descriptor-enabled wallet:
+
+```bash
+dash-cli listdescriptors
+```
+
+Result (example output):
+
+```json
+{
+  "wallet_name": "test-descriptor",
+  "descriptors": [
+    {
+      "desc": "pkh([c7fe8acb/44'/1'/0']tpubDDgGSmowbmYWepHK5PJYCfzUFrKy1c7PHVumScWELYwwjaGBf73ZD1JD1xc2y4hKQDp4qHUKjxz8HQyJXmM5UQh797enQQSpq8vife8yva8/0/*)#tz4w30l2",
+      "timestamp": 1715259431,
+      "active": true,
+      "internal": false,
+      "range": [
+        0,
+        999
+      ],
+      "next": 0
+    }
+  ]
+}
+```
+
+_See also_
+
+* [ImportDescriptors](../api/remote-procedure-calls-wallet.md#importdescriptors): imports multiple descriptors into the wallet, each with specific attributes.
+
 ## ListLabels
 
 > 📘
