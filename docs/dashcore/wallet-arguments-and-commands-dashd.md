@@ -33,9 +33,9 @@ dashd [options]
        If this block is in the chain assume that it and its ancestors are valid
        and potentially skip their script verification (0 to verify all,
        default:
-       0000000000000020d5e38b6aef5bc8e430029444d7977b46f710c7d281ef1281,
+       000000000000001889bd33ef019065e250d32bd46911f4003d3fdd8128b5358d,
        testnet:
-       0000000386cf5061ea16404c66deb83eb67892fa4f79b9e58e5eaab097ec2bd6)
+       00000034bfeb926662ba547c0b8dd4ba8cbb6e0c581f4e7d1bddce8f9ca3a608)
 
   -blockfilterindex=<type>
        Maintain an index of compact filters by block (default: 0, values:
@@ -72,7 +72,11 @@ dashd [options]
        prefixed by datadir location. (default: dash.conf)
 
   -daemon
-       Run in the background as a daemon and accept commands
+       Run in the background as a daemon and accept commands (default: 0)
+
+  -daemonwait
+       Wait for initialization to be finished before exiting. This implies
+       -daemon (default: 0)
 
   -datadir=<dir>
        Specify data directory
@@ -112,9 +116,9 @@ dashd [options]
 
   -minimumchainwork=<hex>
        Minimum work assumed to exist on a valid chain in hex (default:
-       000000000000000000000000000000000000000000009134566d753c5e08ab88,
+       00000000000000000000000000000000000000000000988117deadb0db9cd5b8,
        testnet:
-       00000000000000000000000000000000000000000000000002ecd6cf5ad0f774)
+       000000000000000000000000000000000000000000000000031779704a0f54b4)
 
   -par=<n>
        Set the number of script verification threads (-16 to 15, 0 = auto, <0 =
@@ -165,8 +169,10 @@ dashd [options]
 ```text
   -addnode=<ip>
        Add a node to connect to and attempt to keep the connection open (see
-       the `addnode` RPC command help for more info). This option can be
-       specified multiple times to add multiple nodes.
+       the addnode RPC help for more info). This option can be specified
+       multiple times to add multiple nodes; connections are limited to
+       8 at a time and are counted separately from the -maxconnections
+       limit.
 
   -allowprivatenet
        Allow RFC1918 addresses to be relayed and connected to (default: 0)
@@ -175,10 +181,6 @@ dashd [options]
        Specify asn mapping used for bucketing of the peers (default:
        ip_asn.map). Relative paths will be prefixed by the net-specific
        datadir location.
-
-  -banscore=<n>
-       Threshold for disconnecting and discouraging misbehaving peers (default:
-       100)
 
   -bantime=<n>
        Default duration (in seconds) of manually configured bans (default:
@@ -190,6 +192,11 @@ dashd [options]
        connections to that address and port as incoming Tor connections
        (default: 127.0.0.1:9996=onion, testnet: 127.0.0.1:19996=onion,
        regtest: 127.0.0.1:19896=onion)
+
+  -cjdnsreachable
+       If set, then this host is configured for CJDNS (connecting to fc00::/8
+       addresses would lead us to the CJDNS network, see doc/cjdns.md)
+       (default: 0)
 
   -connect=<ip>
        Connect only to the specified node; -noconnect disables automatic
@@ -211,16 +218,17 @@ dashd [options]
   -externalip=<ip>
        Specify your own public address
 
+  -fixedseeds
+       Allow fixed seeds if DNS seeds don't provide peers (default: 1)
+
   -forcednsseed
        Always query for peer addresses via DNS lookup (default: 0)
 
   -i2pacceptincoming
-       If set and -i2psam is also set then incoming I2P connections are
-       accepted via the SAM proxy. If this is not set but -i2psam is set
-       then only outgoing connections will be made to the I2P network.
-       Ignored if -i2psam is not set. Listening for incoming I2P
-       connections is done through the SAM proxy, not by binding to a
-       local address and port (default: 1)
+       Whether to accept inbound I2P connections (default: 1). Ignored if
+       -i2psam is not set. Listening for inbound I2P connections is done
+       through the SAM proxy, not by binding to a local address and
+       port.
 
   -i2psam=<ip:port>
        I2P SAM proxy to reach I2P peers and accept I2P connections (default:
@@ -234,7 +242,9 @@ dashd [options]
 
   -maxconnections=<n>
        Maintain at most <n> connections to peers (temporary service connections
-       excluded) (default: 125)
+       excluded) (default: 125). This limit does not apply to
+       connections manually added via -addnode or the addnode RPC, which
+       have a separate limit of 8.
 
   -maxreceivebuffer=<n>
        Maximum per-connection receive buffer, <n>*1000 bytes (default: 5000)
@@ -255,18 +265,19 @@ dashd [options]
   -natpmp
        Use NAT-PMP to map the listening port (default: 0)
 
+  -networkactive
+       Enable all P2P network activity (default: 1). Can be changed by the
+       setnetworkactive RPC command
+
   -onion=<ip:port>
        Use separate SOCKS5 proxy to reach peers via Tor onion services, set
        -noonion to disable (default: -proxy)
 
   -onlynet=<net>
-       Make outgoing connections only through network <net> (ipv4, ipv6, onion,
-       i2p). Incoming connections are not affected by this option. This
-       option can be specified multiple times to allow multiple
-       networks. Warning: if it is used with non-onion networks and the
-       -onion or -proxy option is set, then outbound onion connections
-       will still be made; use -noonion or -onion=0 to disable outbound
-       onion connections in this case.
+       Make automatic outbound connections only to network <net> (ipv4, ipv6,
+       onion, i2p, cjdns). Inbound and manual connections are not
+       affected by this option. It can be specified multiple times to
+       allow multiple networks.
 
   -peerblockfilters
        Serve compact block filters to peers per BIP 157 (default: 0)
@@ -406,6 +417,10 @@ dashd [options]
        increase the risk of losing funds when restoring from an old
        backup, if none of the addresses in the original keypool have
        been used.
+
+  -maxapsfee=<n>
+       Spend up to this amount in additional (absolute) fees (in DASH) if it
+       allows the use of partial spend avoidance (default: 0.00)
 
   -rescan=<mode>
        Rescan the block chain for missing wallet transactions on startup (1 =
@@ -668,6 +683,10 @@ dashd [options]
   -capturemessages
        Capture all P2P messages to disk
 
+  -checkaddrman=<n>
+       Run addrman consistency checks every <n> operations. Use 0 to disable.
+       (default: 0)
+
   -checkblockindex
        Do a consistency check for the block tree, and  occasionally. (default:
        0, regtest: 1)
@@ -683,11 +702,12 @@ dashd [options]
        checks of the previous levels (0-4, default: 3)
 
   -checkmempool=<n>
-       Run checks every <n> transactions (default: 0, regtest: 1)
+       Run mempool consistency checks every <n> transactions. Use 0 to disable.
+       (default: 0, regtest: 1)
 
   -checkpoints
        Enable rejection of any forks from the known historical chain until
-       block 2029000 (default: 1)
+       block 2109672 (default: 1)
 
   -debug=<category>
        Output debugging information (default: -nodebug, supplying <category> is
@@ -695,7 +715,7 @@ dashd [options]
        output all debugging information. <category> can be: addrman,
        bench, chainlocks, cmpctblock, coindb, coinjoin, creditpool, ehf,
        estimatefee, gobject, http, i2p, instantsend, leveldb, libevent,
-       llmq, llmq-dkg, llmq-sigs, mempool, mempoolrej, mnpayments,
+       llmq, llmq-dkg, llmq-sigs, lock, mempool, mempoolrej, mnpayments,
        mnsync, net, netconn, proxy, prune, qt, rand, reindex, rpc,
        selectcoins, spork, tor, validation, walletdb, zmq. This option
        can be specified multiple times to output multiple categories.
@@ -738,15 +758,16 @@ dashd [options]
   -logips
        Include IP addresses in debug output (default: 0)
 
+  -logsourcelocations
+       Prepend debug output with name of the originating source location
+       (source file, line number and function name) (default: 0)
+
   -logthreadnames
        Prepend debug output with name of the originating thread (only available
        on platforms supporting thread_local) (default: 0)
 
   -logtimemicros
        Add microsecond precision to debug timestamps (default: 0)
-
-  -logtimestamps
-       Prepend debug output with timestamp (default: 1)
 
   -maxsigcachesize=<n>
        Limit sum of signature cache and script execution cache sizes to <n> MiB
@@ -805,6 +826,9 @@ dashd [options]
 ### Chain selection options
 
 ```text
+  -bip147height=<activation>
+       Override BIP147 activation height (regtest-only)
+
   -budgetparams=<masternode>:<budget>:<superblock>
        Override masternode, budget and superblock start heights (regtest-only)
 
@@ -836,8 +860,7 @@ dashd [options]
        devnet-only)
 
   -llmqdevnetparams=<size>:<threshold>
-       Override the default LLMQ size for the LLMQ_DEVNET quorum (default: 3:2,
-       devnet-only)
+       Override the default LLMQ size for the LLMQ_DEVNET quorum (devnet-only)
 
   -llmqinstantsenddip0024=<quorum name>
        Override the default LLMQ type used for InstantSendDIP0024. (default:
@@ -879,10 +902,11 @@ dashd [options]
   -testnet
        Use the test chain. Equivalent to -chain=test
 
-  -vbparams=<deployment>:<start>:<end>(:<window>:<threshold/thresholdstart>(:<thresholdmin>:<falloffcoeff>:<mnactivation>))
-       Use given start/end times for specified version bits deployment
-       (regtest-only). Specifying window, threshold/thresholdstart,
-       thresholdmin, falloffcoeff and mnactivation is optional.
+  -vbparams=<deployment>:<start>:<end>(:min_activation_height(:<window>:<threshold/thresholdstart>(:<thresholdmin>:<falloffcoeff>:<mnactivation>)))
+       Use given start/end times and min_activation_height for specified
+       version bits deployment (regtest-only). Specifying window,
+       threshold/thresholdstart, thresholdmin, falloffcoeff and
+       mnactivation is optional.
 ```
 
 ### Masternode options
@@ -995,6 +1019,13 @@ dashd [options]
   -rpccookiefile=<loc>
        Location of the auth cookie. Relative paths will be prefixed by a
        net-specific datadir location. (default: data dir)
+
+  -rpcexternaluser=<users>
+       List of comma-separated usernames for JSON-RPC external connections
+
+  -rpcexternalworkqueue=<n>
+       Set the depth of the work queue to service external RPC calls (default:
+       16)
 
   -rpcpassword=<pw>
        Password for JSON-RPC connections

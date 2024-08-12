@@ -46,6 +46,14 @@ dash-cli [options] help <command>
   -?
        Print this help message and exit
 
+  -addrinfo
+       Get the number of addresses known to the node, per network and total.
+
+  -color=<when>
+       Color setting for CLI output (default: auto). Valid values: always, auto
+       (add color codes when standard output is connected to a terminal
+       and OS is not WIN32), never.
+
   -conf=<file>
        Specify configuration file. Relative paths will be prefixed by datadir
        location. (default: dash.conf)
@@ -101,6 +109,10 @@ dash-cli [options] help <command>
   -rpcwait
        Wait for RPC server to start
 
+  -rpcwaittimeout=<n>
+       Timeout in seconds to wait for the RPC server to start, or 0 for no
+       timeout. (default: 0)
+
   -rpcwallet=<walletname>
        Send RPC for non-default wallet on RPC server (needs to exactly match
        corresponding -wallet option passed to dashd). This changes the
@@ -153,8 +165,7 @@ dash-cli [options] help <command>
        devnet-only)
 
   -llmqdevnetparams=<size>:<threshold>
-       Override the default LLMQ size for the LLMQ_DEVNET quorum (default: 3:2,
-       devnet-only)
+       Override the default LLMQ size for the LLMQ_DEVNET quorum (devnet-only)
 
   -llmqinstantsenddip0024=<quorum name>
        Override the default LLMQ type used for InstantSendDIP0024. (default:

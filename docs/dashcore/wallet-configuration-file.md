@@ -95,8 +95,6 @@ The options to choose a network (`regtest=` and `testnet=`) must be specified ou
 
 ## settings.json
 
-> 👍 Added in Dash Core 18.1.0
-
 Since Dash Core 18.1, wallets created or loaded in the GUI will now be automatically loaded on startup so they don't need to be manually reloaded the next time Dash is started. The list of wallets to load on startup is stored in `\<datadir\>/settings.json`. Additionally, any wallets specified in `-wallet=` settings on the command line or in the `dash.conf` file are also loaded. Wallets that are unloaded in the GUI are also removed from the settings list so they won't automatically load on the next startup.
 
 The `createwallet`, `loadwallet`, and `unloadwallet` RPCs now accept `load_on_startup` options to modify the settings list. Unless these options are explicitly set to true or false, the list is not modified, so the RPC methods remain backwards compatible.

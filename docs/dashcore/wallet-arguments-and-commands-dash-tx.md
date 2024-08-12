@@ -61,8 +61,7 @@ Usage:
        devnet-only)
 
   -llmqdevnetparams=<size>:<threshold>
-       Override the default LLMQ size for the LLMQ_DEVNET quorum (default: 3:2,
-       devnet-only)
+       Override the default LLMQ size for the LLMQ_DEVNET quorum (devnet-only)
 
   -llmqinstantsenddip0024=<quorum name>
        Override the default LLMQ type used for InstantSendDIP0024. (default:

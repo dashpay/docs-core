@@ -25,6 +25,20 @@ Usage:
   -datadir=<dir>
        Specify data directory
 
+  -descriptors
+       Create descriptors wallet. Only for 'create'
+
+  -dumpfile=<file name>
+       When used with 'dump', writes out the records to this file. When used
+       with 'createfromdump', loads the records into a new wallet.
+
+  -format=<format>
+       The format of the wallet file to create. Either "bdb" or "sqlite". Only
+       used with 'createfromdump'
+
+  -usehd
+       Create HD (hierarchical deterministic) wallet (default: 1)
+
   -version
        Print version and exit
 
@@ -68,8 +82,7 @@ Usage:
        devnet-only)
 
   -llmqdevnetparams=<size>:<threshold>
-       Override the default LLMQ size for the LLMQ_DEVNET quorum (default: 3:2,
-       devnet-only)
+       Override the default LLMQ size for the LLMQ_DEVNET quorum (devnet-only)
 
   -llmqinstantsenddip0024=<quorum name>
        Override the default LLMQ type used for InstantSendDIP0024. (default:
@@ -100,6 +113,12 @@ Usage:
 ```text
   create
        Create new wallet file
+
+  createfromdump
+       Create new wallet file from dumped records
+
+  dump
+       Print out all of the wallet key-value records
 
   info
        Get wallet info

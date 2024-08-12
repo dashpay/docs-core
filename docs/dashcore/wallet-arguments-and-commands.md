@@ -78,10 +78,6 @@ Usage:
 
 ### dash-wallet
 
-> 👍
->
-> Introduced in Dash Core 18.0.0
-
 View all [command line options for dash-wallet](../dashcore/wallet-arguments-and-commands-dash-wallet.md).
 
 ```bash
