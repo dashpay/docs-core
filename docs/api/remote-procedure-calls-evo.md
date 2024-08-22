@@ -1800,7 +1800,7 @@ The `protx revoke` RPC creates and sends a ProUpRevTx to the network.
 
 | Name     | Type   | Presence                | Description                |
 | -------- | ------ | ----------------------- | -------------------------- |
-| `reason` | number | Optional<br>(0 or 1)    | The reason for revocation. |
+| `reason` | number | Optional<br>(0 or 1)    | The reason for revocation. This is  informational and does not effect the revocation:<br>`0` - Reason not specified<br>`1` - Termination of service<br>`2` - Compromised keys<br>`3` - Change of keys |
 
 *Parameter #4---fee source address*
 
