@@ -10,10 +10,11 @@
 
 The table below lists some notable versions of the P2P network protocol, with the most recent versions listed first.
 
-As of Dash Core 21.0, the most recent protocol version is 70232.
+As of Dash Core 21.1, the most recent protocol version is 70233.
 
 | Version | Initial Release                    | Major Changes
 |---------|------------------------------------|--------------
+| 70233 | [Dash Core 21.1](https://github.com/dashpay/dash/blob/v21.1.0/doc/release-notes.md) <br> (Aug 2024) | • [Enhanced hard fork update](https://github.com/dashpay/dash/pull/6175)
 | 70232 | [Dash Core 21.0](https://github.com/dashpay/dash/blob/v21.0.0/doc/release-notes.md) <br> (Jul 2024) | • Masternode reward location reallocation<br>• Mainnet spork hardening<br>• Experimental descriptor wallet support
 | 70231 | [Dash Core 20.1](https://github.com/dashpay/dash/blob/v20.1.0/doc/release-notes.md) <br> (Mar 2024) | • HD wallets by default<br>• Legacy InstantSend deprecated (`islock` p2p and inv messages)
 | 70230 | [Dash Core 20.0](https://github.com/dashpay/dash/blob/v20.0.0/doc/release-notes.md) <br> (Nov 2023) | • [DIP 29](https://github.com/dashpay/dips/blob/master/dip-0028.md): ChainLock-based random beacon<br>• [Treasury expansion](https://www.dashcentral.org/p/TREASURY-REALLOCATION-60-20-20)<br>• Sentinel functionality integrated into Core<br>• Asset lock transactions<br>• [Coinbase transaction updates](https://github.com/dashpay/dips/blob/master/dip-0004.md) and changes to [DIP 4](https://github.com/dashpay/dips/blob/master/dip-0004.md)
