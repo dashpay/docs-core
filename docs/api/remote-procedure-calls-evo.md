@@ -1794,13 +1794,13 @@ The `protx revoke` RPC creates and sends a ProUpRevTx to the network.
 
 | Name             | Type         | Presence                | Description                                                               |
 | ---------------- | ------------ | ----------------------- | ------------------------------------------------------------------------- |
-| `operatorPubKey` | string (hex) | Required<br>(exactly 1) | The operator private key belonging to the registered operator public key. |
+| `operatorKey`    | string (hex) | Required<br>(exactly 1) | The operator private key belonging to the registered operator public key. |
 
 *Parameter #3---reason*
 
 | Name     | Type   | Presence                | Description                |
 | -------- | ------ | ----------------------- | -------------------------- |
-| `reason` | number | Required<br>(exactly 1) | The reason for revocation. |
+| `reason` | number | Optional<br>(0 or 1)    | The reason for revocation. |
 
 *Parameter #4---fee source address*
 
