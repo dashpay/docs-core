@@ -196,7 +196,7 @@ _Parameter #3---blank_
 
 | Name    | Type | Presence             | Description                                                                                                        |
 | ------- | ---- | -------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| `blank` | bool | Optional<br>(0 or 1) | Create a blank wallet. A blank wallet has no keys or HD seed. Use [`upgradetohd`](#upgradetohd) to add an HD seed. |
+| `blank` | bool | Optional<br>(0 or 1) | Create a blank wallet. A blank wallet has no keys or HD seed. Use [`upgradetohd`](#upgradetohd) (mnemonic) or [`sethdseed`](#sethdseed) (WIF private key) to add an HD seed. |
 
 _Parameter #4---passphrase_
 
