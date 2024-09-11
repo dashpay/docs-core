@@ -1008,8 +1008,8 @@ The special transaction type used for Masternode Hard Fork Signal Transactions i
 
 | Bytes | Name | Data type |  Description |
 | ---------- | ----------- | -------- | -------- |
-| 1 | version | uint_8 | Special transaction version number. Currently set to 1. Please note that this is not the same as the versionBit field of the `mnhfsignal` message.
-| 129 | commitment | mnhfsignal | The payload of the `mnhfsignal` message defined in [DIP23](https://github.com/dashpay/dips/blob/master/dip-0023.md#new-system)
+| 1 | version | uint_8 | Special transaction version number. Currently set to 1. Please note that this is *not* the same as the `versionBit` field of the `mnhfsignal` message. |
+| 129 | commitment | mnhfsignal | The payload of the `mnhfsignal` message defined in [DIP23](https://github.com/dashpay/dips/blob/master/dip-0023.md#new-system) |
 
 The `mnhfsignal` message contains:
 
@@ -1019,14 +1019,64 @@ The `mnhfsignal` message contains:
 | 32 | quorumHash | uint256 | Hash of the quorum signing this message |
 | 96 | sig | CBLSSig | BLS signature on `version` by a public key associated with the quorum referenced by `quorumHash` |
 
-The following annotated hexdump shows a MnHfTx transaction.
-
-An itemized masternode hard fork signal transaction:
+The following annotated hexdump shows a MnHfTx transaction. (Parts of the classical transaction section have been omitted.)
 
 ``` text
 0300 ....................................... Version (3)
 0700 ....................................... Type (7 - Masternode Hard Fork Signal)
-<Add example mnhfsignal when available>
+00000000000082 ............................. Extra payload size (130)
+
+Masternode Hard Fork Payload
+| 01 ....................................... MnHfTx version (1)
+|
+| Commitment Signal
+| | 0a ..................................... Hard fork bit (10)
+| | 
+| | 27b679cb0c70b6d93f22d1a690c1e99f
+| | 72fb9fdb4be9987c1000000000000000 ....... Quorum hash
+| |
+| | a12bc6a3d43e76fd6ab5d48dff119988
+| | 11747bf51ffe722d9fda93ae892e4b18
+| | a716f58045c86459d0dafd38ae1f7f52
+| | 0519002983fc307e92fa606c3eb5ac8c
+| | f6ca03a102889866d58c9207b483e0b9
+| | 75baee63c1202209293ff7393222f812 ....... BLS signature
+```
+
+### Example MnHfTx
+
+```Text Raw Transaction hex
+0300070000000000000082010a27b679cb0c70b6d93f22d1a690c1e99f72fb9fdb4be9987c1000000000000000a12bc6a3d43e76fd6ab5d48dff11998811747bf51ffe722d9fda93ae892e4b18a716f58045c86459d0dafd38ae1f7f520519002983fc307e92fa606c3eb5ac8cf6ca03a102889866d58c9207b483e0b975baee63c1202209293ff7393222f812
+```
+
+The JSON representation of a raw transaction can be obtained with the [`getrawtransaction` RPC](../api/remote-procedure-calls-raw-transactions.md#getrawtransaction) or the [`decoderawtransaction` RPC](../api/remote-procedure-calls-raw-transactions.md#decoderawtransaction).
+
+```json JSON Representation
+{
+  "txid": "5acff2cce2486b897258746202017649c5bdd873ece9e6d0298e5cccf0f23275",
+  "version": 3,
+  "type": 7,
+  "size": 141,
+  "locktime": 0,
+  "vin": [
+  ],
+  "vout": [
+  ],
+  "extraPayloadSize": 130,
+  "extraPayload": "010a27b679cb0c70b6d93f22d1a690c1e99f72fb9fdb4be9987c1000000000000000a12bc6a3d43e76fd6ab5d48dff11998811747bf51ffe722d9fda93ae892e4b18a716f58045c86459d0dafd38ae1f7f520519002983fc307e92fa606c3eb5ac8cf6ca03a102889866d58c9207b483e0b975baee63c1202209293ff7393222f812",
+  "mnhfTx": {
+    "version": 1,
+    "signal": {
+      "versionBit": 10,
+      "quorumHash": "00000000000000107c98e94bdb9ffb729fe9c190a6d1223fd9b6700ccb79b627",
+      "sig": "a12bc6a3d43e76fd6ab5d48dff11998811747bf51ffe722d9fda93ae892e4b18a716f58045c86459d0dafd38ae1f7f520519002983fc307e92fa606c3eb5ac8cf6ca03a102889866d58c9207b483e0b975baee63c1202209293ff7393222f812"
+    }
+  },
+  "fee": 0.00000000,
+  "hex": "0300070000000000000082010a27b679cb0c70b6d93f22d1a690c1e99f72fb9fdb4be9987c1000000000000000a12bc6a3d43e76fd6ab5d48dff11998811747bf51ffe722d9fda93ae892e4b18a716f58045c86459d0dafd38ae1f7f520519002983fc307e92fa606c3eb5ac8cf6ca03a102889866d58c9207b483e0b975baee63c1202209293ff7393222f812",
+  "instantlock": true,
+  "instantlock_internal": false
+}
 ```
 
 ```{eval-rst}
