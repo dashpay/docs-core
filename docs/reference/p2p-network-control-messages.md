@@ -426,7 +426,7 @@ can remain operational. See [PR 4024](https://github.com/dashpay/dash/pull/4024)
 
 **Spork 19 values**
 
-ASpork 19 supports two different enable values:
+Spork 19 supports two different enable values:
 
 * `0` - Masternodes create ChainLocks for all blocks.
 * `1` - Masternodes retain existing ChainLocks, but do not sign new ones.
