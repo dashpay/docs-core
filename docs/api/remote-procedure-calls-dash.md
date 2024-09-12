@@ -1758,10 +1758,6 @@ Mixing was reset
 
 The [`spork` RPC](#spork) shows information about the current state of sporks.
 
-> 🚧
->
-> Dash Core 18.1 moved spork setting functionality into a dedicated RPC, [`sporkupdate`](#sporkupdate).
-
 To display the status of sporks, use the `show` or `active` syntax.
 
 *Parameter #1---Command mode*

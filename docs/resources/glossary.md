@@ -382,7 +382,7 @@ Mining is the act of creating valid Dash blocks, which requires demonstrating pr
 
 ## Multi-phased fork
 
-A spork is a mechanism unique to Dash used to safely deploy new features to the network through network-level variables to avoid the risk of unintended network forking during upgrades.
+A spork is a mechanism unique to Dash used to safely deploy new features to the network through network-level variables to avoid the risk of unintended network forking during upgrades. Dash Core 21.0.0 [hardened all spork values on mainnet](https://github.com/dashpay/dash/blob/v21.0.0/doc/release-notes.md#mainnet-spork-hardening). On test networks, spork values can still be updated dynamically.
 
 ## Multisig
 
@@ -614,7 +614,7 @@ Special Transactions provide a way to include non-financial, consensus-assisting
 
 ## Spork
 
-A spork is a mechanism unique to Dash used to safely deploy new features to the network through network-level variables to avoid the risk of unintended network forking during upgrades.
+A spork is a mechanism unique to Dash used to safely deploy new features to the network through network-level variables to avoid the risk of unintended network forking during upgrades. Dash Core 21.0.0 [hardened all spork values on mainnet](https://github.com/dashpay/dash/blob/v21.0.0/doc/release-notes.md#mainnet-spork-hardening). On test networks, spork values can still be updated dynamically.
 
 ## Stale block
 

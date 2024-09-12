@@ -363,7 +363,7 @@ There is no payload in a [`sendheaders2` message](../reference/p2p-network-contr
 
 ## spork
 
-Sporks are a mechanism by which updated code is released to the network, but not immediately made active (or “enforced”). Enforcement of the updated code can be activated remotely. Should problems arise, the code can be deactivated in the same manner, without the need for a network-wide rollback or client update.
+Sporks are a mechanism by which updated code is released to test networks, but not immediately made active (or “enforced”). Enforcement of the updated code can be activated remotely. Should problems arise, the code can be deactivated in the same manner, without the need for a network-wide rollback or client update.
 
 A [`spork` message](../reference/p2p-network-control-messages.md#spork) may be sent in response to a [`getsporks` message](../reference/p2p-network-control-messages.md#getsporks).
 
@@ -394,6 +394,10 @@ d32020c827a89f8128a00acd210f4ea4
 
 ### Active sporks
 
+:::{note}
+Dash Core 21.0.0 [hardened all spork values on mainnet](https://github.com/dashpay/dash/blob/v21.0.0/doc/release-notes.md#mainnet-spork-hardening). Spork values can only be updated dynamically on test networks.
+:::
+
 The list of all active sporks can be found in
 [`src/spork.h`](https://github.com/dashpay/dash/blob/v20.x/src/spork.h#L36). See the [removed
 sporks section](#removed-sporks) for a list of previously removed sporks.
@@ -411,7 +415,7 @@ sporks section](#removed-sporks) for a list of previously removed sporks.
 
 **Spork 2 values**
 
-As of Dash Core 0.17.0, spork 2 supports two different enabled values:
+Spork 2 supports two different enabled values:
 
 * `0` - Masternodes create InstantSend locks for all transactions.
 * `1` - Masternodes only create InstantSend locks for transactions included in a block. Transactions
@@ -422,7 +426,7 @@ can remain operational. See [PR 4024](https://github.com/dashpay/dash/pull/4024)
 
 **Spork 19 values**
 
-As of Dash Core 19.2.0, spork 19 supports two different enable values:
+ASpork 19 supports two different enable values:
 
 * `0` - Masternodes create ChainLocks for all blocks.
 * `1` - Masternodes retain existing ChainLocks, but do not sign new ones.
@@ -438,16 +442,11 @@ See [PR 5398](https://github.com/dashpay/dash/pull/5398) for implementation deta
 
 ### Removed sporks
 
-The following sporks were used in the past but are no longer necessary and have been removed recently. To see sporks removed longer ago, please see the [previous version of documentation](https://dashcore.readme.io/v0.16.0/docs/core-ref-p2p-network-control-messages#spork).
-
-Note that spork 6 was never enabled on mainnet and  was removed in Dash Core 0.16.0. The associated logic was hardened in [PR  3662](https://github.com/dashpay/dash/pull/3662) to support testnet (where it is enabled). If testnet is reset at some point in the future, the remaining logic will be removed.
+The following sporks were used in the past but are no longer necessary and have been removed recently. To see sporks removed longer ago, please see the [previous version of documentation](https://docs.dash.org/projects/core/en/20.0.0/docs/reference/p2p-network-control-messages.html#removed-sporks).
 
 | Spork ID | Num. | Name | Description |
 | :----------: | :----------: | ----------- | ----------- |
-| *10005* | *6* | `NEW_SIGS` | _Removed in Dash Core 0.16.0.<br>Turns on and off new signature format for Dash-specific messages_
-| *10014* | *15* | `DETERMINISTIC_MNS_`<br>`ENABLED` | _Removed in Dash Core 0.16.0.<br>Deterministic masternode lists are enabled_
-| *10015* | *16* | `INSTANTSEND_AUTOLOCKS` | _Removed in Dash Core 0.16.0.<br>Automatic InstantSend for transactions with <=4 inputs (also eliminates the special InstantSend fee requirement for these transactions)_
-| *10019* | *20* | `SPORK_20_INSTANTSEND_`<br>`LLMQ_BASED` | _Removed in Dash Core 0.16.0.<br>Enable LLMQ-based InstantSend._
+| *10005* | *6* | `NEW_SIGS` | _Removed in Dash Core 0.16.0.<br>Turns on and off new signature format for Dash-specific messages.<br>Never enabled on mainnet. The associated logic was hardened in [PR  3662](https://github.com/dashpay/dash/pull/3662) to support testnet (where it is enabled). If testnet is reset at some point in the future, the remaining logic will be removed._
 | *10021* | *22* | `SPORK_22_PS_MORE_`<br>`PARTICIPANTS` | *Removed in Dash Core 0.17.0*<br>*Increase the maximum number of participants in CoinJoin sessions.*
 
 ### Spork verification

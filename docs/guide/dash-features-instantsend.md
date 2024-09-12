@@ -29,7 +29,11 @@ Protocol version 70220 implemented deterministic InstantSend (see [DIP22](https:
 
 ## Management via Spork
 
-Spork 2 (`SPORK_2_INSTANTSEND_ENABLED`) is used to manage InstantSend. [Spork](../resources/glossary.md#spork) 2 enables or disables the entire InstantSend feature. As of Dash Core 0.17.0, it also can be used to limit locking to transactions found in blocks.
+:::{note}
+Dash Core 21.0.0 [hardened all spork values on mainnet](https://github.com/dashpay/dash/blob/v21.0.0/doc/release-notes.md#mainnet-spork-hardening). The following information only relates to test networks where spork values can still be updated dynamically.
+:::
+
+Spork 2 (`SPORK_2_INSTANTSEND_ENABLED`) is used to manage InstantSend on test networks. [Spork](../resources/glossary.md#spork) 2 enables or disables the entire InstantSend feature. As of Dash Core 0.17.0, it also can be used to limit locking to transactions found in blocks.
 
 In the event of a sustained overload of InstantSend, the spork can be set to a value of `1`. This mode enables a clean transition to fully disabling InstantSend without interfering with ChainLocks. In this mode masternodes will stop creating locks for new transactions when they enter the mempool and will only lock them once mined into a block. Once all existing locked transactions are mined into blocks, InstantSend can then be disabled by setting the spork value to `0` without disrupting ChainLocks.
 
