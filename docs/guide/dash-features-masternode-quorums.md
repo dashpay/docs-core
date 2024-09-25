@@ -86,7 +86,7 @@ Note the following timeouts defined by Dash Core related to signing sessions:
 
 Mainnet and Testnet only use quorums of pre-defined sizes that are hard coded into Dash Core. RegTest and Devnet environments each have a quorum that supports custom size and threshold parameters that are controlled via command line or configuration file parameters (`llmqtestparams`/`llmqdevnetparams`).
 
-A list of all the quorums and their default sizes can be found in the [Current LLMQ Types table](https://github.com/dashpay/dips/blob/master/dip-0006.md#current-llmq-types) found in DIP-6.
+A list of all the quorums and their default sizes can be found in the [Current LLMQ Types table](https://github.com/dashpay/dips/blob/master/dip-0006/llmq-types.md) found in DIP-6.
 
 The specific quorum type used for a feature can vary based on the network. The following table shows which quorums are used for each feature on the various networks:
 

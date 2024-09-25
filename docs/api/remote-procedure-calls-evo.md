@@ -2063,7 +2063,7 @@ The `quorum info` RPC returns information about a specific quorum.
 
 | Name       | Type   | Presence                | Description                                                                                                                                                                               |
 | ---------- | ------ | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `llmqType` | number | Required<br>(exactly 1) | [Type of quorums](https://github.com/dashpay/dips/blob/master/dip-0006.md#current-llmq-types) to list:<br>`1` - LLMQ_50_60<br>`2` - LLMQ_400_60<br>`3` - LLMQ_400_85<br>`4` - LLMQ_100_67 |
+| `llmqType` | number | Required<br>(exactly 1) | [Type of quorums](https://github.com/dashpay/dips/blob/master/dip-0006/llmq-types.md) to list:<br>`1` - LLMQ_50_60<br>`2` - LLMQ_400_60<br>`3` - LLMQ_400_85<br>`4` - LLMQ_100_67 |
 
 *Parameter #2---quorum hash*
 
@@ -2190,7 +2190,7 @@ The `quorum list` RPC displays the status of the current DKG process.
 | → → →<br>`llmqType`                       | string           | Required<br>(exactly 1) | *Added in Dash Core 18.0.0*<br>[Quorum type name](https://github.com/dashpay/dips/blob/master/dip-0006/llmq-types.md)                                                          |
 | → → →<br>`quorumIndex`                    | number           | Required<br>(exactly 1) | *Added in Dash Core 18.0.0*<br>The index of the quorum                                                                                                                         |
 | → → →<br>`status`                         | object           | Required<br>(exactly 1) | DKG session status information                                                                                                                                                   |
-| → → → →<br>`llmqType`                     | number           | Required<br>(exactly 1) | [Type of quorum](https://github.com/dashpay/dips/blob/master/dip-0006.md#current-llmq-types):<br>`1` - LLMQ_50_60<br>`2` - LLMQ_400_60<br>`3` - LLMQ_400_85<br>`4` - LLMQ_100_67 |
+| → → → →<br>`llmqType`                     | number           | Required<br>(exactly 1) | [Type of quorum](https://github.com/dashpay/dips/blob/master/dip-0006/llmq-types.md):<br>`1` - LLMQ_50_60<br>`2` - LLMQ_400_60<br>`3` - LLMQ_400_85<br>`4` - LLMQ_100_67 |
 | → → → →<br>`quorumHash`                   | string (hex)     | Required<br>(exactly 1) | The block hash of the quorum                                                                                                                                                     |
 | → → → →<br>`quorumHeight`                 | number           | Required<br>(exactly 1) | The block height of the quorum                                                                                                                                                   |
 | → → → →<br>`phase`                        | number           | Required<br>(exactly 1) | The active DKG phase<br>`1` - Initialized<br>`2` - Contributing<br>`3` - Complaining<br>`4` - Justifying<br>`5` - Committing<br>`6` - Finalizing                                 |
@@ -2861,7 +2861,7 @@ The `quorum sign` RPC requests threshold-signing for a message.
 
 | Name       | Type   | Presence                | Description                                                                                                                                                                      |
 | ---------- | ------ | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `llmqType` | number | Required<br>(exactly 1) | [Type of quorum](https://github.com/dashpay/dips/blob/master/dip-0006.md#current-llmq-types):<br>`1` - LLMQ_50_60<br>`2` - LLMQ_400_60<br>`3` - LLMQ_400_85<br>`4` - LLMQ_100_67 |
+| `llmqType` | number | Required<br>(exactly 1) | [Type of quorum](https://github.com/dashpay/dips/blob/master/dip-0006/llmq-types.md):<br>`1` - LLMQ_50_60<br>`2` - LLMQ_400_60<br>`3` - LLMQ_400_85<br>`4` - LLMQ_100_67 |
 
 *Parameter #2---id*
 
@@ -2902,7 +2902,7 @@ For general signing requests, any 32 byte hex string can be provided as the requ
 | Name                | Type         | Presence                | Description                                                                                                                                                                      |
 | ------------------- | ------------ | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | result              | object       | Required<br>(exactly 1) | JSON object containing signature share details                                                                                                                                   |
-| →<br>`llmqType`     | number       | Required<br>(exactly 1) | [Type of quorum](https://github.com/dashpay/dips/blob/master/dip-0006.md#current-llmq-types):<br>`1` - LLMQ_50_60<br>`2` - LLMQ_400_60<br>`3` - LLMQ_400_85<br>`4` - LLMQ_100_67 |
+| →<br>`llmqType`     | number       | Required<br>(exactly 1) | [Type of quorum](https://github.com/dashpay/dips/blob/master/dip-0006/llmq-types.md):<br>`1` - LLMQ_50_60<br>`2` - LLMQ_400_60<br>`3` - LLMQ_400_85<br>`4` - LLMQ_100_67 |
 | →<br>`quorumHash`   | string (hex) | Required<br>(exactly 1) | The quorum identifier                                                                                                                                                            |
 | →<br>`quorumMember` | number       | Required<br>(exactly 1) | Which quorum member created this signature share                                                                                                                                 |
 | →<br>`id`           | string (hex) | Required<br>(exactly 1) | Signing request ID                                                                                                                                                               |
@@ -2957,7 +2957,7 @@ The `quorum getrecsig` RPC gets the recovered signature for a previous threshold
 
 | Name       | Type   | Presence                | Description                                                                                                                                                                      |
 | ---------- | ------ | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `llmqType` | number | Required<br>(exactly 1) | [Type of quorum](https://github.com/dashpay/dips/blob/master/dip-0006.md#current-llmq-types):<br>`1` - LLMQ_50_60<br>`2` - LLMQ_400_60<br>`3` - LLMQ_400_85<br>`4` - LLMQ_100_67 |
+| `llmqType` | number | Required<br>(exactly 1) | [Type of quorum](https://github.com/dashpay/dips/blob/master/dip-0006/llmq-types.md):<br>`1` - LLMQ_50_60<br>`2` - LLMQ_400_60<br>`3` - LLMQ_400_85<br>`4` - LLMQ_100_67 |
 
 *Parameter #2---id*
 
@@ -2976,7 +2976,7 @@ The `quorum getrecsig` RPC gets the recovered signature for a previous threshold
 | Name              | Type         | Presence                | Description                                                                                                                                                                      |
 | ----------------- | ------------ | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | result            | bool         | Required<br>(exactly 1) | Recovered signature details                                                                                                                                                      |
-| →<br>`llmqType`   | number       | Required<br>(exactly 1) | [Type of quorum](https://github.com/dashpay/dips/blob/master/dip-0006.md#current-llmq-types):<br>`1` - LLMQ_50_60<br>`2` - LLMQ_400_60<br>`3` - LLMQ_400_85<br>`4` - LLMQ_100_67 |
+| →<br>`llmqType`   | number       | Required<br>(exactly 1) | [Type of quorum](https://github.com/dashpay/dips/blob/master/dip-0006/llmq-types.md):<br>`1` - LLMQ_50_60<br>`2` - LLMQ_400_60<br>`3` - LLMQ_400_85<br>`4` - LLMQ_100_67 |
 | →<br>`quorumHash` | string (hex) | Required<br>(exactly 1) | The block hash of the quorum                                                                                                                                                     |
 | →<br>`id`         | string (hex) | Required<br>(exactly 1) | The signing session ID                                                                                                                                                           |
 | →<br>`msgHash`    | string (hex) | Required<br>(exactly 1) | The message hash                                                                                                                                                                 |
@@ -3016,7 +3016,7 @@ Used for testing on the RegTest network only.
 
 | Name       | Type   | Presence                | Description                                                                                                                                                                      |
 | ---------- | ------ | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `llmqType` | number | Required<br>(exactly 1) | [Type of quorum](https://github.com/dashpay/dips/blob/master/dip-0006.md#current-llmq-types):<br>`1` - LLMQ_50_60<br>`2` - LLMQ_400_60<br>`3` - LLMQ_400_85<br>`4` - LLMQ_100_67 |
+| `llmqType` | number | Required<br>(exactly 1) | [Type of quorum](https://github.com/dashpay/dips/blob/master/dip-0006/llmq-types.md):<br>`1` - LLMQ_50_60<br>`2` - LLMQ_400_60<br>`3` - LLMQ_400_85<br>`4` - LLMQ_100_67 |
 
 *Parameter #2---id*
 
@@ -3062,7 +3062,7 @@ Used for testing on the RegTest network only.
 
 | Name       | Type   | Presence                | Description                                                                                                                                                                      |
 | ---------- | ------ | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `llmqType` | number | Required<br>(exactly 1) | [Type of quorum](https://github.com/dashpay/dips/blob/master/dip-0006.md#current-llmq-types):<br>`1` - LLMQ_50_60<br>`2` - LLMQ_400_60<br>`3` - LLMQ_400_85<br>`4` - LLMQ_100_67 |
+| `llmqType` | number | Required<br>(exactly 1) | [Type of quorum](https://github.com/dashpay/dips/blob/master/dip-0006/llmq-types.md):<br>`1` - LLMQ_50_60<br>`2` - LLMQ_400_60<br>`3` - LLMQ_400_85<br>`4` - LLMQ_100_67 |
 
 *Parameter #2---id*
 
@@ -3119,7 +3119,7 @@ The [`quorum` RPC](../api/remote-procedure-calls-evo.md#quorum) checks which quo
 | `result`                 | Array of objects | Required<br>(exactly 1) | Array containing info for quorum's the masternode belongs to                                 |
 | →<br>Quorum              | object           | Required<br>(0 or more) | An object describing quorum details                                                          |
 | → →<br>`height`          | number           | Required<br>(exactly 1) | Block height of the quorum                                                                   |
-| → →<br>`type`            | string           | Required<br>(exactly 1) | [Type of quorum](https://github.com/dashpay/dips/blob/master/dip-0006.md#current-llmq-types) |
+| → →<br>`type`            | string           | Required<br>(exactly 1) | [Type of quorum](https://github.com/dashpay/dips/blob/master/dip-0006/llmq-types.md) |
 | → →<br>`quorumHash`      | string (hex)     | Required<br>(exactly 1) | The hash of the quorum                                                                       |
 | → →<br>`minedBlock`      | string (hex)     | Required<br>(exactly 1) | The hash of the block that established the quorum                                            |
 | → →<br>`quorumPublicKey` | string (hex)     | Required<br>(exactly 1) | Quorum public key                                                                            |
@@ -4014,7 +4014,7 @@ The `quorum selectquorum` RPC returns information about the quorum that would/sh
 
 | Name       | Type   | Presence                | Description                                                                                                                                                                               |
 | ---------- | ------ | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `llmqType` | number | Required<br>(exactly 1) | [Type of quorums](https://github.com/dashpay/dips/blob/master/dip-0006.md#current-llmq-types) to list:<br>`1` - LLMQ_50_60<br>`2` - LLMQ_400_60<br>`3` - LLMQ_400_85<br>`4` - LLMQ_100_67 |
+| `llmqType` | number | Required<br>(exactly 1) | [Type of quorums](https://github.com/dashpay/dips/blob/master/dip-0006/llmq-types.md) to list:<br>`1` - LLMQ_50_60<br>`2` - LLMQ_400_60<br>`3` - LLMQ_400_85<br>`4` - LLMQ_100_67 |
 
 *Parameter #2---request id*
 
@@ -4084,7 +4084,7 @@ The `quorum verify` RPC tests if a quorum signature is valid for a request id an
 
 | Name       | Type   | Presence                | Description                                                                                                                                                                      |
 | ---------- | ------ | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `llmqType` | number | Required<br>(exactly 1) | [Type of quorum](https://github.com/dashpay/dips/blob/master/dip-0006.md#current-llmq-types):<br>`1` - LLMQ_50_60<br>`2` - LLMQ_400_60<br>`3` - LLMQ_400_85<br>`4` - LLMQ_100_67 |
+| `llmqType` | number | Required<br>(exactly 1) | [Type of quorum](https://github.com/dashpay/dips/blob/master/dip-0006/llmq-types.md):<br>`1` - LLMQ_50_60<br>`2` - LLMQ_400_60<br>`3` - LLMQ_400_85<br>`4` - LLMQ_100_67 |
 
 *Parameter #2---id*
 

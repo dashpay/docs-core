@@ -1181,7 +1181,7 @@ The quorum names used in these options are:
 |    106    | llmq_test_platform    |
 |    107    | llmq_devnet_platform  |
 
-Refer to [this table in DIP-6 - LLMQs](https://github.com/dashpay/dips/blob/master/dip-0006.md#current-llmq-types) for details on each quorum type.
+Refer to [this table in DIP-6 - LLMQs](https://github.com/dashpay/dips/blob/master/dip-0006/llmq-types.md) for details on each quorum type.
 
 ### Regtest Options
 
