@@ -3742,6 +3742,78 @@ Result:
 
 *See also: none*
 
+### Quorum PlatformSign
+
+:::{versionadded} 21.0.0
+:::
+
+The `quorum platformsign` RPC requests threshold-signing for a message. It signs messages only for
+Platform quorums. It is equivalent to `quorum sign <platform LLMQ type>`.
+
+*Parameter #1---id*
+
+| Name | Type         | Presence                | Description |
+| ---- | ------------ | ----------------------- | ----------- |
+| `id` | string (hex) | Required<br>(exactly 1) | Signing request ID |
+
+*Parameter #2---message hash*
+
+| Name      | Type         | Presence                | Description                      |
+| --------- | ------------ | ----------------------- | -------------------------------- |
+| `msgHash` | string (hex) | Required<br>(exactly 1) | Hash of the message to be signed |
+
+*Parameter #3---quorum hash*
+
+| Name         | Type         | Presence             | Description           |
+| ------------ | ------------ | -------------------- | --------------------- |
+| `quorumHash` | string (hex) | Optional<br>(0 or 1) | The quorum identifier |
+
+*Parameter #4---submit*
+
+| Name     | Type | Presence             | Description |
+| -------- | ---- | -------------------- | ----------- |
+| `submit` | bool | Optional<br>(0 or 1) | Submits the signature share to the network if this is `true` (default). Returns an object containing the signature share if this is `false`. |
+
+*Result---(if submit = `true`) status*
+
+| Name   | Type | Presence                | Description                        |
+| ------ | ---- | ----------------------- | ---------------------------------- |
+| result | bool | Required<br>(exactly 1) | True or false depending on success |
+
+*Result---(if submit = `false`) signature share JSON object*
+
+| Name                | Type         | Presence                | Description |
+| ------------------- | ------------ | ----------------------- | ----------- |
+| result              | object       | Required<br>(exactly 1) | JSON object containing signature share details |
+| →<br>`llmqType`     | number       | Required<br>(exactly 1) | [Type of quorum](https://github.com/dashpay/dips/blob/master/dip-0006/llmq-types.md):<br>`4` - LLMQ_100_67 |
+| →<br>`quorumHash`   | string (hex) | Required<br>(exactly 1) | The quorum identifier |
+| →<br>`quorumMember` | number       | Required<br>(exactly 1) | Which quorum member created this signature share |
+| →<br>`id`           | string (hex) | Required<br>(exactly 1) | Signing request ID |
+| →<br>`msgHash`      | string (hex) | Required<br>(exactly 1) | Hash of the message that was signed |
+| →<br>`signHash`     | string (hex) | Required<br>(exactly 1) | Hash of `llmqType`, `quorumHash`, `id`, and `msgHash` |
+| →<br>`signature`    | string (hex) | Required<br>(exactly 1) | Signature share |
+
+*Example from Dash Core 21.0.0*
+
+Submit signature share to network (default):
+
+```bash
+dash-cli -testnet quorum platformsign \
+  "abcd1234abcd1234abcd1234abcd1234abcd1234abcd1234abcd1234abcd1234" \
+  "51c11d287dfa85aef3eebb5420834c8e443e01d15c0b0a8e397d67e2e51aa239"
+```
+
+Result:
+
+```json
+false
+```
+
+_See also_
+
+* [Quorum Sign](#quorum-sign): requests threshold-signing for a message.
+* [Quorum Info](#quorum-info): retrieves information about a specific quorum, including its members and the threshold required for signing.
+
 ### Quorum RotationInfo
 
 The `quorum rotationinfo` RPC returns  quorum rotation information. The response is a JSON representation of the data that would be returned in a [`qrinfo` message](../reference/p2p-network-data-messages.md#qrinfo).
