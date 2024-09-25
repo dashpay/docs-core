@@ -14,7 +14,15 @@ The [`debug` RPC](../api/remote-procedure-calls-control.md#debug) changes the de
 
 Name | Type | Presence | Description
 --- | --- | --- | ---
-Debug category | string | Required<br>(1 or more) | The debug category to activate. Use a `+` to specify multiple categories. Categories will be one of the following:<br>• `0` - Disables all categories <br>• `1` or `all` - Enables all categories <br>• `addrman` <br>• `bench` <br>• `cmpctblock` <br>• `coindb` <br>• `walletdb` (**renamed from `db` in Dash Core 18.0.0**)<br>• `estimatefee` <br>• `http` <br>• `i2p` <br>• `leveldb` <br>• `mempool` <br>• `mempoolrej` <br>• `net` <br>• `netconn` <br>• `proxy` <br>• `prune` <br>• `qt` <br>• `rand` <br>• `reindex` <br>• `rpc` <br>• `selectcoins` <br>• `tor` <br>• `validation` <br>• `zmq` <br>• `dash` (all subcategories)<br><br>The `dash` sub-categories can be enabled individually:<br>• `chainlocks` <br>• `coinjoin` <br>• `creditpool` <br>• `ehf` <br>• `gobject` <br>• `instantsend` <br>• `llmq` <br>• `llmq-dkg` <br>• `llmq-sigs` <br>• `mnpayments` <br>• `mnsync` <br>• `spork` <br><br><br>Note: No error will be thrown even if the specified category doesn't match any of the above
+Debug category | string | Required<br>(1 or more) | The debug category to activate. Use a `+` to specify multiple categories. Categories are shown in the [table below](#debug-logging-categories).<br><br>Note: No error will be thrown even if the specified category doesn't match any of the above
+
+### Debug logging categories
+
+| Type | Category |
+| - | - |
+| Special | • `0` or `none` - Disables all categories <br>• `1` or `all` - Enables all categories <br>• `dash` - Enables/disables all Dash categories |
+| Standard | `addrman`, `bench`, `cmpctblock`, `coindb`, `estimatefee`, `http`, `i2p`, `ipc`, `leveldb`, `libevent`, `lock`, `mempool`, `mempoolrej`, `net`, `netconn`, `proxy`, `prune`, `qt`, `rand`, `reindex`, `rpc`, `selectcoins`, `tor`, `validation`, `walletdb`, `zmq`|
+| Dash | `chainlocks`, `coinjoin`, `creditpool`, `ehf`, `gobject`, `instantsend`, `llmq`, `llmq-dkg`, `llmq-sigs`, `mnpayments`, `mnsync`, `spork` |
 
 Note: `libevent` logging is configured on startup and cannot be modified by this RPC during runtime.
 
@@ -198,7 +206,7 @@ The categories are:
 | Type | Category |
 | - | - |
 | Special | • `0` or `none` - Disables all categories <br>• `1` or `all` - Enables all categories <br>• `dash` - Enables/disables all Dash categories |
-| Standard | `addrman`, `bench` <br>`cmpctblock`, `coindb`, `estimatefee`, `http`, `i2p`, `leveldb`, `libevent`, `mempool`, `mempoolrej`, `net`, `netconn`, `proxy`, `prune`, `qt`, `rand`, `reindex`, `rpc`, `selectcoins`, `tor`, `walletdb` (**renamed from `db` in Dash Core 18.0.0**), `validation`, `zmq`|
+| Standard | `addrman`, `bench`, `cmpctblock`, `coindb`, `estimatefee`, `http`, `i2p`, `ipc`, `leveldb`, `libevent`, `lock`, `mempool`, `mempoolrej`, `net`, `netconn`, `proxy`, `prune`, `qt`, `rand`, `reindex`, `rpc`, `selectcoins`, `tor`, `validation`, `walletdb`, `zmq`|
 | Dash | `chainlocks`, `coinjoin`, `creditpool`, `ehf`, `gobject`, `instantsend`, `llmq`, `llmq-dkg`, `llmq-sigs`, `mnpayments`, `mnsync`, `spork` |
 
 *Result---a list of the logging categories that are active*
@@ -207,103 +215,105 @@ Name | Type | Presence | Description
 --- | --- | --- | ---
 `result` | object | Required<br>(exactly 1) | A JSON object show a list of the logging categories that are active
 
-*Example from Dash Core 20.0.1*
+*Example from Dash Core 21.1.0*
 
 Include a category in logging
 
 ```bash
-dash-cli -testnet logging '["llmq", "spork"]'
+dash-cli -testnet logging '["llmq", "chainlocks"]'
 ```
 
 Result:
 
 ```json
 {
-  "net": false,
-  "tor": false,
-  "mempool": false,
-  "http": false,
-  "bench": false,
-  "zmq": false,
-  "walletdb": false,
-  "rpc": false,
-  "estimatefee": false,
   "addrman": false,
-  "selectcoins": false,
-  "reindex": false,
+  "bench": false,
+  "chainlocks": true,
   "cmpctblock": false,
-  "rand": false,
-  "prune": false,
-  "proxy": false,
-  "mempoolrej": false,
-  "libevent": false,
   "coindb": false,
-  "qt": false,
-  "leveldb": false,
-  "validation": false,
-  "i2p": false,
-  "chainlocks": false,
+  "coinjoin": false,
+  "creditpool": false,
+  "ehf": false,
+  "estimatefee": false,
   "gobject": false,
+  "http": false,
+  "i2p": false,
   "instantsend": false,
+  "leveldb": false,
+  "libevent": false,
   "llmq": true,
   "llmq-dkg": false,
   "llmq-sigs": false,
+  "lock": false,
+  "mempool": false,
+  "mempoolrej": false,
   "mnpayments": false,
   "mnsync": false,
-  "coinjoin": false,
-  "spork": true,
+  "net": false,
   "netconn": false,
-  "creditpool": false,
-  "ehf": false
+  "proxy": false,
+  "prune": false,
+  "qt": false,
+  "rand": false,
+  "reindex": false,
+  "rpc": false,
+  "selectcoins": false,
+  "spork": false,
+  "tor": false,
+  "validation": false,
+  "walletdb": false,
+  "zmq": false
 }
 ```
 
 Excluding a previously included category (without including any new ones):
 
 ```bash
-dash-cli -testnet logging '[]' '["spork"]'
+dash-cli -testnet logging '[]' '["chainlocks"]'
 ```
 
 Result:
 
 ```json
 {
-  "net": false,
-  "tor": false,
-  "mempool": false,
-  "http": false,
-  "bench": false,
-  "zmq": false,
-  "walletdb": false,
-  "rpc": false,
-  "estimatefee": false,
   "addrman": false,
-  "selectcoins": false,
-  "reindex": false,
-  "cmpctblock": false,
-  "rand": false,
-  "prune": false,
-  "proxy": false,
-  "mempoolrej": false,
-  "libevent": false,
-  "coindb": false,
-  "qt": false,
-  "leveldb": false,
-  "validation": false,
-  "i2p": false,
+  "bench": false,
   "chainlocks": false,
+  "cmpctblock": false,
+  "coindb": false,
+  "coinjoin": false,
+  "creditpool": false,
+  "ehf": false,
+  "estimatefee": false,
   "gobject": false,
+  "http": false,
+  "i2p": false,
   "instantsend": false,
+  "leveldb": false,
+  "libevent": false,
   "llmq": true,
   "llmq-dkg": false,
   "llmq-sigs": false,
+  "lock": false,
+  "mempool": false,
+  "mempoolrej": false,
   "mnpayments": false,
   "mnsync": false,
-  "coinjoin": false,
-  "spork": false,
+  "net": false,
   "netconn": false,
-  "creditpool": false,
-  "ehf": false
+  "proxy": false,
+  "prune": false,
+  "qt": false,
+  "rand": false,
+  "reindex": false,
+  "rpc": false,
+  "selectcoins": false,
+  "spork": false,
+  "tor": false,
+  "validation": false,
+  "walletdb": false,
+  "zmq": false
 }
 ```
 
