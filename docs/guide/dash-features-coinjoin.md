@@ -52,22 +52,31 @@ In protocol version 70208, collateral inputs can be anything from 2x the minimum
 
 This phase involves exchanging a sequence of messages with a [masternode](../resources/glossary.md#masternode) so it can construct a denominate transaction with inputs from the clients in its pool.
 
-*Data Flow*
+### Data Flow
+
+:::{attention}
+Since protocol version 70234 (Dash Core 22.0.0), the [`dsq`
+message](../reference/p2p-network-privatesend-messages.md#dsq) is broadcast using the inventory
+system instead of being relayed to all connected peers. This reduces the bandwidth needs for all
+nodes, especially highly connected masternodes.
+:::
 
 |   | **Clients** | **Direction**  | **Masternode**   | **Description** |
 | --- | --- | :---: | --- | --- |
 | 0 | | | | Client determines whether to join an existing pool or create a new one |
 | 1 | [`dsa` message](../reference/p2p-network-privatesend-messages.md#dsa)                            | → |                            | Client asks to join pool or have the masternode create a new one
 | 2 |                                                | ← | [`dssu` message](../reference/p2p-network-privatesend-messages.md#dssu)       | Masternode provides a pool status update (Typical - State: `POOL_STATE_QUEUE`, Message: `MSG_NOERR`)
-| 3 |                                                | ← | [`dsq` message](../reference/p2p-network-privatesend-messages.md#dsq)        | Masternode notifies clients when it is ready to receive inputs
-| 4 | [`dsi` message](../reference/p2p-network-privatesend-messages.md#dsi)                                 | → |                       | Upon receiving a [`dsq` message](../reference/p2p-network-privatesend-messages.md#dsq) with the Ready bit set, clients each provide a list of their inputs (unsigned), collateral, and a list of outputs where funds should be sent
-| 5 |                                                | ← | [`dssu` message](../reference/p2p-network-privatesend-messages.md#dssu)       | Masternode provides a pool status update (typical - State: `POOL_STATE_ACCEPTING_ENTRIES`, Message: `MSG_ENTRIES_ADDED`)
-| 6 |                                                | ← | [`dsf` message](../reference/p2p-network-privatesend-messages.md#dsf)        | Masternode sends the final transaction containing all clients inputs (unsigned) and all client outputs to each client for verification
-| 7 |                                                | ← | [`dssu` message](../reference/p2p-network-privatesend-messages.md#dssu)       | Masternode provides a pool status update (Typical - State: `POOL_STATE_SIGNING`, Message: `MSG_NOERR`)
-| 8 | [`dss` message](../reference/p2p-network-privatesend-messages.md#dss)                                 | → |                       | After verifying the final transaction, clients each sign their own inputs with the `SIGHASH_ALL \| SIGHASH_ANYONECANPAY` signature type and send them back
-| 9 |                                                | ← | [`dsc` message](../reference/p2p-network-privatesend-messages.md#dsc)        | Masternode verifies the signed inputs, creates a [`dstx` message](../reference/p2p-network-privatesend-messages.md#dstx) to broadcast the transaction, and notifies clients that the denominate transaction is complete (Typical - Message: `MSG_SUCCESS`)
-| 10 |                                                | ← | [`inv` message](../reference/p2p-network-data-messages.md#inv)        | Masternode broadcasts a `dstx` inventory message
-| 11 | [`getdata` message](../reference/p2p-network-data-messages.md#getdata) (dstx)                                 | → |            | (Optional)
+| 3 |                                                | ← | [`inv` message](../reference/p2p-network-data-messages.md#inv) (dsq)   | Masternode notifies clients when it is ready to receive inputs by sending a `dsq` inventory message
+| 4 | [`getdata` message](../reference/p2p-network-data-messages.md#getdata) (dsq)                                  | → |            | Client requests a [`dsq` message](../reference/p2p-network-privatesend-messages.md#dsq)
+| 5 |                                                | ← | [`dsq` message](../reference/p2p-network-privatesend-messages.md#dsq)        | Masternode responds with the requested [`dsq` message](../reference/p2p-network-privatesend-messages.md#dsq)
+| 6 | [`dsi` message](../reference/p2p-network-privatesend-messages.md#dsi)                                 | → |                       | Upon receiving a [`dsq` message](../reference/p2p-network-privatesend-messages.md#dsq) with the Ready bit set, clients each provide a list of their inputs (unsigned), collateral, and a list of outputs where funds should be sent
+| 7 |                                                | ← | [`dssu` message](../reference/p2p-network-privatesend-messages.md#dssu)       | Masternode provides a pool status update (typical - State: `POOL_STATE_ACCEPTING_ENTRIES`, Message: `MSG_ENTRIES_ADDED`)
+| 8 |                                                | ← | [`dsf` message](../reference/p2p-network-privatesend-messages.md#dsf)        | Masternode sends the final transaction containing all clients inputs (unsigned) and all client outputs to each client for verification
+| 9 |                                                | ← | [`dssu` message](../reference/p2p-network-privatesend-messages.md#dssu)       | Masternode provides a pool status update (Typical - State: `POOL_STATE_SIGNING`, Message: `MSG_NOERR`)
+| 10 | [`dss` message](../reference/p2p-network-privatesend-messages.md#dss)                                | → |                       | After verifying the final transaction, clients each sign their own inputs with the `SIGHASH_ALL \| SIGHASH_ANYONECANPAY` signature type and send them back
+| 11 |                                               | ← | [`dsc` message](../reference/p2p-network-privatesend-messages.md#dsc)        | Masternode verifies the signed inputs, creates a [`dstx` message](../reference/p2p-network-privatesend-messages.md#dstx) to broadcast the transaction, and notifies clients that the denominate transaction is complete (Typical - Message: `MSG_SUCCESS`)
+| 12 |                                                | ← | [`inv` message](../reference/p2p-network-data-messages.md#inv)        | Masternode broadcasts a `dstx` inventory message
+| 13 | [`getdata` message](../reference/p2p-network-data-messages.md#getdata) (dstx)                                 | → |            | (Optional)
 
 **Additional notes**
 
