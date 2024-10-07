@@ -114,7 +114,7 @@ _**Step 8 - Final Transaction (unsigned)**_
 
 * Once the masternode has received valid [`dsi` messages](../reference/p2p-network-privatesend-messages.md#dsi) from all clients, it creates the final transaction and sends a [`dsf` message](../reference/p2p-network-privatesend-messages.md#dsf)
   * Inputs/outputs are ordered deterministically as defined by [BIP-69](https://github.com/dashevo/bips/blob/master/bip-0069.mediawiki#Abstract) to avoid leaking any data ([Dash Core Reference](https://github.com/dashpay/dash/blob/v21.1.x/src/coinjoin/server.cpp#L301-L302))
-  * Clients must sign their inputs to the Final Transaction within 15 seconds or risk forfeiting the collateral they provided in the [`dsi` message](../reference/p2p-network-privatesend-messages.md#dsi) (Step 4) ([Dash Core Reference](https://github.com/dashpay/dash/blob/develop/src/coinjoin/coinjoin.h#L45))
+  * Clients must sign their inputs to the Final Transaction within 15 seconds or risk forfeiting the collateral they provided in the [`dsi` message](../reference/p2p-network-privatesend-messages.md#dsi) (Step 4) ([Dash Core Reference](https://github.com/dashpay/dash/blob/v21.1.x/src/coinjoin/coinjoin.h#L44))
 
 _**Step 12 - Final Transaction broadcast**_
 
