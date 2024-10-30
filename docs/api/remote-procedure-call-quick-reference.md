@@ -235,3 +235,7 @@ These RPCs are all Dash-specific and not found in Bitcoin Core
 ## [Removed RPCs](../api/remote-procedure-calls-removed.md)
 
 * [GObject vote-conf](../api/remote-procedure-calls-removed.md#gobject-vote-conf): **was removed in Dash Core 20.0.0**
+* [Protx Register HPMN](../api/remote-procedure-calls-evo.md#protx-register-evo): **was removed in Dash Core 22.0.0**
+* [Protx Register Fund HPMN](../api/remote-procedure-calls-evo.md#protx-register-fund-evo): **was removed in Dash Core 22.0.0**
+* [Protx Register Prepare HPMN](../api/remote-procedure-calls-evo.md#protx-register-prepare-evo): **was removed in Dash Core 22.0.0**
+* [Protx Update Service HPMN](../api/remote-procedure-calls-evo.md#protx-update-service-evo): **was removed in Dash Core 22.0.0**

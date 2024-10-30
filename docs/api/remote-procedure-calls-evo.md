@@ -1401,12 +1401,6 @@ ec66f97568727a9e5188acb3ccf680086ae11217236efcccd67b0b72e83c79a043d6c6d064378fdd
 47d9401e0a569a5488728e09542d0545ab56f8249a4b21e03445fa411e
 ```
 
-### ProTx Register HPMN
-
-:::{deprecated} 20.0.0
-The `protx *_hpmn` RPC commands were renamed in Dash Core 20.0.0 and can now be accessed as `protx *_evo` (e.g. `protx register_hpmn` is now `protx register_evo`).
-:::
-
 ### ProTx Register Fund Evo
 
 The `protx register_fund_evo` RPC creates, funds, and sends a ProTx to the network. The resulting transaction will move 4000 Dash to the address specified by `collateralAddress` and will then function as the collateral of your evonode. A few of the limitations you see in the arguments are temporary and might be lifted after DIP3 is fully deployed. Requires the wallet passphrase to be provide with the [`walletpassphrase` RPC](../api/remote-procedure-calls-wallet.md#walletpassphrase) if the wallet is encrypted.
@@ -1536,12 +1530,6 @@ c207ebd525793ccb43f60ce34a5cd5f4011976a9145a375814e9caf5b8575a8221be246457e5c5c2
 8d88ac45084a0f63d6f06767c941ffd5af4ed17ea0e28afa481e46b2bdbadbd8446c8c00\
 ```
 
-### ProTx Register Fund HPMN
-
-:::{deprecated} 20.0.0
-The `protx *_hpmn` RPC commands were renamed in Dash Core 20.0.0 and can now be accessed as `protx *_evo` (e.g. `protx register_hpmn` is now `protx register_evo`).
-:::
-
 ### ProTx Register Prepare Evo
 
 The `protx register_prepare_evo` RPC creates an unsigned ProTx and a message that must be signed externally with the private key that corresponds to `collateralAddress` to prove collateral ownership. The prepared transaction will also contain inputs and outputs to cover fees.
@@ -1648,12 +1636,6 @@ Result:
 }
 ```
 
-### ProTx Register Prepare HPMN
-
-:::{deprecated} 20.0.0
-The `protx *_hpmn` RPC commands were renamed in Dash Core 20.0.0 and can now be accessed as `protx *_evo` (e.g. `protx register_hpmn` is now `protx register_evo`).
-:::
-
 ### ProTx Update Service Evo
 
 The `protx update_service_evo` RPC creates and sends a ProUpServTx to the network. This will update the IP address and the Platform fields of an evonode. If this is done for an evonode that was PoSe-banned, the ProUpServTx will also revive this evonode.
@@ -1727,12 +1709,6 @@ Result:
 ```bash
 5b6cfa1bdd3c8b7e0b9550b9c4e809381f81a410bc7f241d3879dd736fd51270
 ```
-
-### ProTx Update Service HPMN
-
-:::{deprecated} 20.0.0
-The `protx *_hpmn` RPC commands were renamed in Dash Core 20.0.0 and can now be accessed as `protx *_evo` (e.g. `protx register_hpmn` is now `protx register_evo`).
-:::
 
 ### ProTx Register Submit
 
