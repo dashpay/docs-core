@@ -2925,6 +2925,64 @@ Result:
 }
 ```
 
+### Quorum GetData
+
+The [`quorum getdata` RPC](../api/remote-procedure-calls-quorum.md#quorum-getdata) sends a [`qgetdata` message](../reference/p2p-network-quorum-messages.md#qgetdata) to a specified peer, requesting specific quorum-related data from that peer.
+
+_Parameter #1---the internal node ID_
+
+| Name     | Type   | Presence                | Description |
+|----------|--------|-------------------------|-------------|
+| `nodeId` | number | Required<br>(exactly 1) | The internal nodeId of the peer from which quorum data is requested |
+
+_Parameter #2---the LLMQ type_
+
+| Name      | Type   | Presence                | Description |
+|-----------|--------|-------------------------|-------------|
+| `llmqType`| number | Required<br>(exactly 1) | The LLMQ type associated with the quorum data being requested    |
+
+_Parameter #3---the quorum hash_
+
+| Name         | Type   | Presence                | Description |
+|--------------|--------|-------------------------|-------------|
+| `quorumHash` | string | Required<br>(exactly 1) | The quorum hash for the quorum data being requested          |
+
+_Parameter #4---the data mask_
+
+| Name        | Type   | Presence                | Description |
+|-------------|--------|-------------------------|-------------|
+| `dataMask`  | number | Required<br>(exactly 1) | Specifies the type of data requested. Possible values are:<br>`1` - Quorum verification vector<br>`2` - Encrypted contributions for member specified by `proTxHash` (`proTxHash` must be specified if this option is used)<br>`3` - Both (1 and 2) |
+
+_Parameter #5---the ProTxHash_
+
+| Name       | Type   | Presence                  | Description |
+|------------|--------|---------------------------|-------------|
+| `proTxHash`| string | Optional<br>(default="") | The ProTxHash for the contributions requested. Must be a member of the specified LLMQ. Cannot be specified if `dataMask` is set to `1`. Required if `dataMask` is set to `2`. |
+
+_Result---execution result_
+
+| Name                | Type            | Presence                | Description |
+|---------------------|-----------------|-------------------------|-------------|
+| `success`           | bool            | Required<br>(exactly 1) | Displays `true` if the data request was successful or `false` if it failed |
+
+_Example from Dash Core 22.0.0_
+
+Requesting the quorum verification vector from a peer with node ID `12` for a quorum of type `2`:
+
+```bash
+dash-cli quorum getdata 1 2 "000000822d2b1b311af360750b6448917f10d8b92d2ea2a7bbae221e859354f9" 1
+```
+
+Result:
+
+```text
+true
+```
+
+_See also_
+
+* [Quorum List](#quorum-list): displays a list of on-chain quorums.
+
 ### Quorum GetRecSig
 
 The `quorum getrecsig` RPC gets the recovered signature for a previous threshold-signing message request.
