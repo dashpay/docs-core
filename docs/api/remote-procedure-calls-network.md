@@ -12,20 +12,26 @@ The [`addnode` RPC](../api/remote-procedure-calls-network.md#addnode) attempts t
 
 *Parameter #1---hostname/IP address and port of node to add or remove*
 
-| Name   | Type   | Presence                | Description                                                       |
-| ------ | ------ | ----------------------- | ----------------------------------------------------------------- |
+| Name   | Type   | Presence                | Description |
+| ------ | ------ | ----------------------- | ----------- |
 | `node` | string | Required<br>(exactly 1) | The node to add as a string in the form of `<IP address>:<port>`. |
 
 *Parameter #2---whether to add or remove the node, or to try only once to connect*
 
-| Name      | Type   | Presence                | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| --------- | ------ | ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Name      | Type   | Presence                | Description |
+| --------- | ------ | ----------------------- | ----------- |
 | `command` | string | Required<br>(exactly 1) | What to do with the IP address above.  Options are:<br>• `add` to add a node to the addnode list.  Up to 8 nodes can be added additional to the default 8 nodes. Not limited by `-maxconnections`<br>• `remove` to remove a node from the list.  If currently connected, this will disconnect immediately<br>• `onetry` to immediately attempt connection to the node even if the outgoing connection slots are full; this will only attempt the connection once |
+
+*Parameter #3---v2 transport*
+
+| Name   | Type   | Presence                | Description |
+| ------ | ------ | ----------------------- | ----------- |
+| `v2transport` | bool | Optional<br>(0 or1) | Attempt to connect using BIP324 v2 transport protocol (ignored for `remove` command). Default=set by `-v2transport` option. |
 
 _Result---`null` plus error on failed remove_
 
-| Name     | Type | Presence                | Description                                                                                                                                                                                                                                             |
-| -------- | ---- | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Name     | Type | Presence                | Description |
+| -------- | ---- | ----------------------- | ----------- |
 | `result` | null | Required<br>(exactly 1) | Always JSON `null` whether the node was added, removed, tried-and-connected, or tried-and-not-connected.  The JSON-RPC error field will be set only if you try adding a node that was already added or removing a node that is not on the addnodes list |
 
 *Example from Dash Core 0.12.2*

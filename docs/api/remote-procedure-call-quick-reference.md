@@ -103,7 +103,7 @@ These RPCs are all Dash-specific and not found in Bitcoin Core
 
 ## [Network RPCs](../api/remote-procedure-calls-network.md)
 
-* [AddNode](../api/remote-procedure-calls-network.md#addnode): attempts to add or remove a node from the addnode list, or to try a connection to a node once.
+* [AddNode](../api/remote-procedure-calls-network.md#addnode): attempts to add or remove a node from the addnode list, or to try a connection to a node once. **Updated in Dash Core 22.0.0**
 * [AddPeerAddress](../api/remote-procedure-calls-network.md#addpeeraddress): adds the address of a potential peer to the address manager. **Updated in Dash Core 22.0.0**
 * [ClearBanned](../api/remote-procedure-calls-network.md#clearbanned): clears list of banned nodes.
 * [ClearDiscouraged](../api/remote-procedure-calls-network.md#cleardiscouraged): clears all discouraged nodes. **_New in Dash Core 19.0.0_**
