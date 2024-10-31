@@ -564,8 +564,10 @@ The [`getpeerinfo` RPC](../api/remote-procedure-calls-network.md#getpeerinfo) re
 | → →<br>`bytesrecv_per_msg` | string : <br>object | Required<br>(exactly 1) | *Added in Bitcoin Core 0.13.0*<br><br>Information about total received bytes aggregated by message type |
 | → → →<br>Message Type | number (int) | Required<br>(1 or more) | Total received bytes aggregated by message type. One field for every used message type |
 | `connection_type` | string | Required<br>(exactly 1) | **Added in Dash Core 20.1.0**<br>Type of connection:<br>outbound-full-relay, block-relay-only, inbound, manual, addr-fetch, feeler.<br>Describes how the connection was established. Set to `true` if this node was added via the [`addnode` RPC](../api/remote-procedure-calls-network.md#addnode).<br>**Note: This output is subject to change in future releases as connection behaviors are refined.** |
+| `transport_protocol_type`| string | Optional<br>(0 or 1) | **Added in Dash Core 22.0.0**<br>The transport protocol type:<br>`detecting` - peer could be v1 or v2<br>`v1` - plaintext transport protocol<br>`v2` - BIP324 encrypted transport protocol |
+| `session_id` | string | Optional<br>(0 or 1) | **Added in Dash Core 22.0.0**<br>The session ID for this connection, or "" if there is none ("v2" transport protocol only). |
 
-*Example from Dash Core 21.0.0*
+*Example from Dash Core 22.0.0*
 
 ```bash
 dash-cli -testnet getpeerinfo
@@ -599,20 +601,20 @@ Result (edited to show only a single entry, with IP addresses changed to
     "timeoffset": 0,
     "pingtime": 0.105995,
     "minping": 0.095181,
-    "version": 70232,
-    "subver": "/Dash Core:21.0.0(dcg-masternode-7)/",
+    "version": 70233,
+    "subver": "/Dash Core:21.1.0(dcg-masternode-7)/",
     "inbound": false,
     "bip152_hb_to": false,
     "bip152_hb_from": false,
     "masternode": false,
-    "startingheight": 1022323,
-    "synced_headers": 1022323,
-    "synced_blocks": 1022323,
+    "startingheight": 1131692,
+    "synced_headers": 1131804,
+    "synced_blocks": 1131804,
     "inflight": [
     ],
-    "relaytxes": false,
-    "addr_relay_enabled": false,
-    "addr_processed": 0,
+    "relaytxes": true,
+    "addr_relay_enabled": true,
+    "addr_processed": 519,
     "addr_rate_limited": 0,
     "permissions": [
     ],
@@ -651,7 +653,9 @@ Result (edited to show only a single entry, with IP addresses changed to
       "verack": 24,
       "version": 180
     },
-    "connection_type": "block-relay-only"
+    "connection_type": "outbound-full-relay",
+    "transport_protocol_type": "v1",
+    "session_id": ""
   }
 ]
 ```
