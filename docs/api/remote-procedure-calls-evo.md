@@ -2927,7 +2927,7 @@ Result:
 
 ### Quorum GetData
 
-The [`quorum getdata` RPC](../api/remote-procedure-calls-quorum.md#quorum-getdata) sends a [`qgetdata` message](../reference/p2p-network-quorum-messages.md#qgetdata) to a specified peer, requesting specific quorum-related data from that peer.
+The [`quorum getdata` RPC](#quorum-getdata) sends a [`qgetdata` message](../reference/p2p-network-quorum-messages.md#qgetdata) to a specified peer, requesting specific quorum-related data from that peer.
 
 _Parameter #1---the internal node ID_
 
