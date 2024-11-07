@@ -505,6 +505,8 @@ The following service identifiers have been assigned.
 | 0x08 | `NODE_XTHIN` | **Dash Core does not support this service**<br>This node supports Xtreme Thinblocks.
 | 0x40 | `NODE_COMPACT_FILTERS` | This node supports basic block filter requests. See [BIP157](https://github.com/bitcoin/bips/blob/master/bip-0157.mediawiki) and [BIP158](https://github.com/bitcoin/bips/blob/master/bip-0158.mediawiki) for details on how this is implemented.
 | 0x400 | `NODE_NETWORK_LIMITED` | This is the same as `NODE_NETWORK` with the limitation of only serving the last 288 blocks. See [BIP159](https://github.com/bitcoin/bips/blob/master/bip-0159.mediawiki) for details on how this is implemented. *Not supported prior to Dash Core 0.16.0*
+| 0x800 | `NODE_HEADERS_COMPRESSED` | This node supports compressed headers as described in [DIP-25](https://github.com/dashpay/dips/blob/master/dip-0025.md)
+| 0x1000 | `NODE_P2P_V2` | This node supports the version 2 of the peer-to-peer protocol, which provides an encrypted transport protocol. See [BIP-324](https://github.com/bitcoin/bips/blob/master/bip-0324.mediawiki) for details. *Not supported prior to Dash Core 22.0.0*
 
 The following annotated hexdump shows a [`version` message](../reference/p2p-network-control-messages.md#version). (The message header has been omitted and the actual IP addresses have been replaced with [RFC5737](http://tools.ietf.org/html/rfc5737) reserved IP addresses.)
 
