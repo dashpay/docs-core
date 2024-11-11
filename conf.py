@@ -159,3 +159,4 @@ html_context = {
 
 def setup(app):
     app.add_js_file('js/pydata-search-close.js')
+    app.add_js_file('js/redirect.js')
