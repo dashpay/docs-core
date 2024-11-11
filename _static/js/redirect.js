@@ -11,6 +11,7 @@
 document.addEventListener('DOMContentLoaded', function () {
   // Get the current path and host
   var currentPath = window.location.pathname; // e.g., /projects/core/en/core-docs-redirects/
+  var currentHash = window.location.hash; // This captures any anchor (e.g., #section1)  
   var newBaseURL = 'https://docs.dash.org';
 
     // Insert a breakpoint
@@ -37,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   console.log(transformedPath);
   // Construct the new URL
-  var newURL = newBaseURL + transformedPath;
+  var newURL = newBaseURL + transformedPath + currentHash;
   console.log(newURL);
 
   // Redirect to the new URL
