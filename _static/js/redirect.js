@@ -13,6 +13,9 @@ document.addEventListener('DOMContentLoaded', function () {
   var currentPath = window.location.pathname; // e.g., /projects/core/en/core-docs-redirects/
   var newBaseURL = 'https://docs.dash.org';
 
+    // Insert a breakpoint
+    debugger;
+
   // Transform the path
   // Remove '/projects/core/' and replace 'en' with 'develop/docs/core'
   // Transform the path by replacing only the start of the path
