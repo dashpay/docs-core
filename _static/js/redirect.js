@@ -1,29 +1,24 @@
-// document.addEventListener('DOMContentLoaded', function () {
-//   // Assuming `window.location.pathname` gives the current relative URL path.
-//   // Replace 'https://new-location.example.com' with your target base URL.
-//   var currentPath = window.location.pathname;
-//   var newBaseURL = 'https://docs.dash.org/en/develop/docs/core/';
-//   var newURL = newBaseURL + currentPath;
-
-//   window.location.replace(newURL);
-// });
+// As part of the migration of the docs-core repo into dashpay/docs the docs-core pages need to be
+// redirect docs.dash.org for anyone still accessing docs via outdated links. This script
+// accomplishes the redirects without having to manually define through the readthedocs console.
 
 document.addEventListener('DOMContentLoaded', function () {
   // Get the current path and host
-  var currentPath = window.location.pathname; // e.g., /projects/core/en/core-docs-redirects/
+  var currentPath = window.location.pathname; // e.g., /projects/core/en/some-branch/
   var currentHash = window.location.hash; // This captures any anchor (e.g., #section1)  
   var newBaseURL = 'https://docs.dash.org';
 
-    // Insert a breakpoint
+    // Insert a breakpoint for debugging if Developer Tools are open
     debugger;
 
-  // Transform the path
-  // Remove '/projects/core/' and replace 'en' with 'develop/docs/core'
   // Transform the path by replacing only the start of the path
+  // Remove '/projects/core/' and replace 'en' with 'develop/docs/core'
   var replacements = [
     { pattern: /^\/projects\/core\/en\/core-docs-redirects\/docs\//, replacement: '/en/develop/docs/core/' },
     { pattern: /^\/projects\/core\/en\/core-docs-redirects\//, replacement: '/en/develop/docs/core/' },
+    { pattern: /^\/projects\/core\/en\/develop\/docs\//, replacement: '/en/develop/docs/core/' },
     { pattern: /^\/projects\/core\/en\/develop\//, replacement: '/en/develop/docs/core/' },
+    { pattern: /^\/projects\/core\/en\/latest\/docs\//, replacement: '/en/latest/docs/core/' },
     { pattern: /^\/projects\/core\/en\/latest\//, replacement: '/en/latest/docs/core/' }
   ];
 
@@ -36,10 +31,8 @@ document.addEventListener('DOMContentLoaded', function () {
       }
   }
 
-  console.log(transformedPath);
   // Construct the new URL
   var newURL = newBaseURL + transformedPath + currentHash;
-  console.log(newURL);
 
   // Redirect to the new URL
   window.location.replace(newURL);
