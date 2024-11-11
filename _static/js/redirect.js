@@ -29,9 +29,9 @@ document.addEventListener('DOMContentLoaded', function () {
       }
   }
 
-  // Construct the new URL
-  var newURL = newBaseURL + transformedPath + currentHash;
-
-  // Redirect to the new URL
-  window.location.replace(newURL);
+  // Only redirect if the transformed path is different from the original path
+  if (transformedPath !== currentPath) {
+    var newURL = newBaseURL + transformedPath + currentHash;
+    window.location.replace(newURL);
+  }
 });
