@@ -19,9 +19,20 @@ document.addEventListener('DOMContentLoaded', function () {
   // Transform the path
   // Remove '/projects/core/' and replace 'en' with 'develop/docs/core'
   // Transform the path by replacing only the start of the path
-  var transformedPath = currentPath.replace(/^\/projects\/core\/en\/core-docs-redirects\//, '/en/develop/docs/core/');
-  var transformedPath = currentPath.replace(/^\/projects\/core\/en\/develop\//, '/en/develop/docs/core/');
-  var transformedPath = currentPath.replace(/^\/projects\/core\/en\/latest\//, '/en/latest/docs/core/');
+  var replacements = [
+    { pattern: /^\/projects\/core\/en\/core-docs-redirects\//, replacement: '/en/develop/docs/core/' },
+    { pattern: /^\/projects\/core\/en\/develop\//, replacement: '/en/develop/docs/core/' },
+    { pattern: /^\/projects\/core\/en\/latest\//, replacement: '/en/latest/docs/core/' }
+  ];
+
+  var transformedPath = currentPath; // Start with the original path
+
+  for (var i = 0; i < replacements.length; i++) {
+      if (replacements[i].pattern.test(currentPath)) {
+          transformedPath = currentPath.replace(replacements[i].pattern, replacements[i].replacement);
+          break; // Stop after the first match
+      }
+  }
 
   console.log(transformedPath);
   // Construct the new URL
